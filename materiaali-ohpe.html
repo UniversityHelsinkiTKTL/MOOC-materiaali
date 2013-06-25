@@ -8385,7 +8385,7 @@ public class Ohjelma {
 }
 </pre>
 <p>Huomaamme, että metodin määrittelyssä on nyt määre <code>static</code>. Syynä on se, että metodi ei liity mihinkään olioon vaan kyseessä on <em>luokkametodi</em>. Luokkametodeja kutsutaan usein myös <i>staattisiksi metodeiksi</i>. Toisin kuin olioiden metodit (joilla ei ole määrettä static), staattiseen metodiin ei liity mitään olioa. Staattinen metodi ei siis voi viitata <code>this</code>-määreellä olioon itseensä toisin kuin oliometodit.</p>
-<p>Staattiselle metodille voi toki antaa olion parametrina. Staattinen metodi ei voi käsitellä mitään muita lukuja, merkkijonoja, taulukoita tai oliota kuin niitä, jotka on sille parametrina annettu. Toisin sanoin, staattisen metodin kutsuja antaa metodille aina käsiteltävät arvot ja oliot.</p>
+<p>Staattiselle metodille voi toki antaa olion parametrina. Staattinen metodi ei voi käsitellä mitään muita lukuja, merkkijonoja, taulukoita tai oliota kuin niitä, jotka on sille parametrina annettu tai jotka ovat staattisia luokkamuuttujia. Toisin sanoin, staattisen metodin kutsuja antaa metodille aina käsiteltävät arvot ja oliot. </p>
 <p>Koska staattinen metodi ei liity mihinkään olioon, ei sitä kutsuta oliometodien tapaan <code>olionNimi.metodinNimi()</code>, vaan ylläolevan esimerkin tapaan käytetään pelkkää staattisen metodin nimeä.</p>
 <p>Jos staattisen metodin koodi on eri luokan sisällä kuin sitä kutsuva metodi, tapahtuu kutsu muodossa <code>LuokanNimi.staattisenMetodinNimi()</code>. Edellinen esimerkki alla muutettuna siten, että pääohjelma ja metodi ovat omissa luokissaan (eli eri tiedostoissa):</p>
 <pre class="sh_java">
