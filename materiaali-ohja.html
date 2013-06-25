@@ -9144,7 +9144,7 @@ public class Tallentaja {
     }
 
     public void lisaaTiedostoon(String tiedostonNimi, String teksti) throws Exception {
-        FileWriter kirjoittaja = new FileWriter(tiedostonNimi);
+        FileWriter kirjoittaja = new FileWriter(tiedostonNimi, true);
         kirjoittaja.append(teksti);
         kirjoittaja.close();
     }
