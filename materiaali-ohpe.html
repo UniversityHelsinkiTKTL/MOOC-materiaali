@@ -669,9 +669,8 @@ Jakolasku: 3 / 2 = 1.5
 </div>
     <div class="tehtava">
     <h3 class="req">Ympyrän kehän pituus</h3>
-    <p>Ympyrän kehän pituus lasketaan kaavalla säde on <code>2 * pii * säde</code>.
-      Tee ohjelma, joka kysyy käyttäjältä ympyrän säteen ja
-      laskee sen perusteella ympyrän kehän pituuden.
+    <p>Ympyrän kehän pituus lasketaan kaavalla <code>2 * pii * säde</code>.
+      Tee ohjelma, joka kysyy käyttäjältä ympyrän säteen ja laskee sen perusteella ympyrän kehän pituuden.
       Javasta löytyy valmis piin arvo, saat sen kirjoittamalla <code>Math.PI</code> laskutoimitukseen.</p>
 <pre>
 Anna ympyrän säde: <font color="red">20</font>
@@ -765,7 +764,7 @@ NHLStatistics.teamStatistics("NYR");            // New York Rangersin tilastot
     <p>Joukkueentilastot tulostuvat siinä järjestyksessä mihin ne ovat edelliseksi kutsutulla <code>sortBy...()</code>-komennolla asetettu.</p>
     <p>Joukkueen nimi tulee antaa virallisena kolmekirjaimisena lyhenteenä. Joukkueiden lyhenteet kerrottu esim. <a href="http://everything2.com/title/Ice+hockey+acronyms+and+abbreviations">täällä</a>. Myös tilastokomponetti kertoo käytössä olevat lyhenteet jos yrität pyytää olemassa olemattoman joukkueen tilastoja.</p>
     <p><strong>Tee ohjelmarunkoon seuraavat asiat tekevä ohjelma. Tee
-      asiat juui siinä järjestyksessä kun ne tässä mainitaan. Tee kaikki
+      asiat juuri siinä järjestyksessä kuin ne tässä mainitaan. Tee kaikki
       asiat pääohjelmaan peräkkäin, poistamatta mitään tehtyä osaa. </strong></p>
     <p>Huom: kun suoritat ohjelman ensimmäisen kerran, saattaa suoritus kestää jonkun aikaa (internetissä oleva palvelin voi olla lepotilassa ja sen herääminen kestää jonkin aikaa). Tämänjälkeisillä kerroilla suoritus on nopea.</p>
     <ul>
@@ -849,7 +848,7 @@ if ( onkoPienempi ) {
   1 on pienempi kuin 3!
 </pre>
   <h3 id="sisennys">Koodin sisennys</h3> 
-  <p>Huomaa, että if-komennon jälkeisen lohkon, eli {-merkkiä seuraavien rivien komentoja ei kirjoiteta samalle tasolle (eli yhtä "vasemmalle") kuin komentoa if, vaan ne <b>sisennetään</b> hieman oikealle. Sisentäminen tapahtuu tabulaattorimerkillä (q:n vasemmalla puolella oleva merkki). Kun lohko sulkeutuu, eli tulee }-merkki, sisennys loppuu. }-merkki on samalla tasolla kuin if.</p>
+  <p>Huomaa, että if-komennon jälkeisen lohkon, eli {-merkkiä seuraavien rivien komentoja ei kirjoiteta samalle tasolle (eli yhtä "vasemmalle") kuin komentoa if, vaan ne <b>sisennetään</b> hieman oikealle. Sisentäminen tapahtuu tabulaattorimerkillä (q:n vasemmalla puolella oleva näppäin). Kun lohko sulkeutuu, eli tulee }-merkki, sisennys loppuu. }-merkki on samalla tasolla kuin if.</p>
   <p class="help">Sisennys on oleellinen seikka ohjelmien ymmärrettävyyden kannalta. Tällä kurssilla ja kaikkialla "oikeassa elämässä" edellytetään, että koodi sisennetään asiallisesti. NetBeans auttaa sisennyksessä. Ohjelman saa sisennettyä helposti painamalla yhtä aikaa shift, alt ja f.</p>
   <h3>else</h3>
   <p>Jos valinnan ehto on epätotta, eli totuusarvo on false, voidaan suorittaa toinen vaihtoehtoinen lohko koodia, tämä käy komennon <code>else</code> avulla.</p>
@@ -1779,7 +1778,7 @@ while( i&lt;10 ) {
 </pre>
   <p>Toistokertojen määrää kontrolloiva muuttuja <code>i</code> on aluksi 0 ja toistoja on tarkoitus tehdä niin kauan kuin <code>i&lt;10</code>. Käy kuitenkin hieman hassusti: muuttujan <code>i</code> arvoa ei muuteta missään, joten toistoehto pysyy ikuisesti totena.</p>
   <h3>while ja lopetus</h3>
-  <p>Olemme tehneet peräkkäin jo muutamia toistotehtäviä, joissa toistoehto on suunnilleen muotoa:</p>
+  <p>Olemme tehneet peräkkäin jo muutamia toistotehtäviä, joissa toistoehto on muotoa:</p>
 <pre class="sh_java">
 int i = 1;
 while ( i &lt; 10 ) {
@@ -2019,7 +2018,7 @@ Terveiset metodimaailmasta!
 Terveiset metodimaailmasta!
 Terveiset metodimaailmasta!
 </pre>
-  <p>Huomionarvoista tässä on koodin suoritusjärjestys. Koodin suoritus etenee siten, että pääohjelman --  eli main:in -- rivit suoritetaan ylhäältä alas yksi kerrallaan. Koodirivin ollessa metodikutsu, mennään suorittamaan metodin koodirivit, jonka jälkeen palataan josta metodin kutsu tapahtui. Tarkemmin ottaen metodikutsun jälkeiselle riville. </p>
+  <p>Huomionarvoista tässä on koodin suoritusjärjestys. Koodin suoritus etenee siten, että pääohjelman --  eli main:in -- rivit suoritetaan ylhäältä alas yksi kerrallaan. Koodirivin ollessa metodikutsu, mennään suorittamaan metodin koodirivit, jonka jälkeen palataan kohtaan, josta metodin kutsu tapahtui. Tarkemmin ottaen metodikutsun jälkeiselle riville. </p>
   <p>Jos ollaan tarkkoja on pääohjelma eli main itsekin metodi. Kun ohjelma käynnistyy, kutsuu käyttöjärjestelmä main:ia. Metodi main on siis ohjelman käynnistyspiste, jonka ylimmältä riviltä ohjelman suoritus lähtee liikkeelle. Ohjelman suoritus loppuu kun päädytään mainin loppuun. </p>
   <p>Jatkossa kun esittelemme metodeja, emme erikseen mainitse että niiden täytyy sijaita omalla paikallaan.  Metodia ei esimerkiksi voi määritellä toisen metodin sisällä.</p>
 <div class="tehtavat">
@@ -4151,7 +4150,7 @@ public static void poista(ArrayList&lt;Integer&gt; luvut, int poistettava) {
 
   <h2 id="olio_ohjelmointi">Olio-ohjelmointi</h2>
   <p>Pieni johdanto olio-ohjelmointiin ennen aloitusta.</p>
-  <p>Proseduraalisessa ohjelmoinnissa, eli tähän asti opiskelemassamme ohjelmointityylissä, ohjelma jäsennellään jakamalla se pienempiin osiin eli metodeihin.  Metodi toimii ohjelman erillisenä osana, ja sitä voi kutsua mistä tahansa ohjelmasta.  Metodia kutsuttaessa ohjelman suoritus siirtyy metodin alkuun, ja suorituksen päätyttyä palataan takaisin siihen kohtaan mistä metodia kutsuttiin.</p>
+  <p>Proseduraalisessa ohjelmoinnissa, eli tähän asti opiskelemassamme ohjelmointityylissä, ohjelma jäsennellään jakamalla se pienempiin osiin eli metodeihin.  Metodi toimii ohjelman erillisenä osana, ja sitä voi kutsua mistä tahansa ohjelmastan sisältä.  Metodia kutsuttaessa ohjelman suoritus siirtyy metodin alkuun, ja suorituksen päätyttyä palataan takaisin siihen kohtaan mistä metodia kutsuttiin.</p>
   <p>Olio-ohjelmoinnissa, kuten proseduraalisessa ohjelmoinnissa, pyritään jakamaan ohjelma pieniin osiin.  Olio-ohjelmoinnissa pienet osat ovat olioita.  Jokaisella oliolla on oma yksittäinen vastuunsa eli se sisältää joukon yhteenkuuluvaa tietoa ja toiminnallisuutta.  Olio-ohjelmat koostuvat useista olioista, joiden yhteinen toiminta määrittelee järjestelmän toiminnan.</p>
   <h3>Olio</h3>
   <p>Olemme käyttäneet jo monia Javan valmiita olioita. Esimerkiksi <code>ArrayList</code>:it ovat olioita. Jokainen yksittäinen lista koostuu yhteenkuuluvasta tiedosta, eli <i>olion tilasta</i>. Listaolioihin liittyy toiminnallisuutta, eli metodt joilla olion tilaa voidaan muuttaa. Esimerkiksi seuraavassa ohjelmanpätkässä on kaksi <code>ArrayList</code>-olioa <code>kaupungit</code> ja <code>maat</code>:</p>
@@ -4174,7 +4173,7 @@ public static void main(String[] args) {
 }
 </pre>
   <p>Sekä <code>maat</code>-olio että <code>kaupungit</code>-olio elää omaa elämäänsä. Molempien "tila" on toisten olioiden tilasta riippumaton. Esim. olion <code>maat</code> tila koostuu listalla olevista merkkijonoista "Suomi", "Saksa" ja "Hollanti" ja todennäköisesti myös tiedosta kuinka monta maata listalla on.</p>
-  <p>Olioon liittyvää metodikutsua tehdessä (esimerkiksi <code>maat.add("Suomi");</code>) pisteen vasemmalle puolelle tulee sen olion nimi, jolle metodia kutsutaan, oikealle metodin nimi. Kun kysytään monta merkkijonoa listalla <code>maat</code> on, kutsu on muotoa <code>maat.size()</code> eli kutsutaan <code>maat</code> oliolle sen metodia <code>size</code>. Metodin palauttama tulos riippuu olion <code>maat</code> tilasta, eli muut oliot kuten <code>kaupungit</code> eivät vaikuta metodin suoritukseen millään tavalla.</p>
+  <p>Olioon liittyvää metodikutsua tehdessä (esimerkiksi <code>maat.add("Suomi");</code>) pisteen vasemmalle puolelle tulee sen olion nimi, jolle metodia kutsutaan, oikealle metodin nimi. Kun kysytään montako merkkijonoa listalla <code>maat</code> on, kutsu on muotoa <code>maat.size()</code> eli kutsutaan <code>maat</code> oliolle sen metodia <code>size</code>. Metodin palauttama tulos riippuu olion <code>maat</code> tilasta, eli muut oliot kuten <code>kaupungit</code> eivät vaikuta metodin suoritukseen millään tavalla.</p>
   <p>Olemme jo useasti käyttämään komentoa <code>new</code>. Esimerkiksi listan (<code>ArrayList</code>) ja lukijan (<code>Scanner</code>) luominen on tapahtunut <code>new</code>-komennolla. Syy on se, että kumpikin näistä on <em>Luokkia</em>, joista olio luodaan. Java-kielessä oliot luodaan aina <code>new</code>-komennolla muutamaa poikkeusta lukuunottamatta.</p>
   <p>Yksi näistä poikkeuksista ovat merkkijonot, joiden luomiseen ei aina tarvita <code>new</code>:iä. Tuttu tapa merkkijonon luomiseen on oikeastaan Javan lyhennysmerkintä <code>new</code>:in käytölle. Merkkijonon voi luoda myös new:illä kuten muutkin oliot:</p>
 <pre class="sh_java">
@@ -4302,7 +4301,7 @@ public class Henkilo {
 </pre>
   <p>Määrittelimme yllä että kaikilla <code>Henkilo</code>-luokan olioilla on <code>nimi</code> ja <code>ika</code>. Määritettely tapahtuu hiukan kuten normaalin muuttujan määrittely. Eteen on kuitenkin nyt laitettu avainsana <code>private</code>. Tämä tarkoittaa sitä, että nimi ja ikä eivät näy suoraan olion ulkopuolelle vaan ovat "piilossa" olion sisällä. Olion sisälle piilottamista kutsutaan <em>kapseloinniksi</em>.</p>
   <p>Luokan sisälle määriteltyjä muuttujia kutsutaan <i>oliomuuttujiksi</i> tai <i>olion kentiksi</i> tai <i>olion attribuuteiksi</i>. Rakkaalla lapsella on monta nimeä.</p>
-  <p>Eli olemme määritelleet rakennuspiirrustukset -- luokan -- henkilöoliolle. Kaikilla henkilöolioilla on muuttujat <code>nimi</code> ja <code>ika</code>. Henkilöiden "tila" koostuu niiden nimeen ja ikään asetetuista arvoista.</p>
+  <p>Eli olemme määritelleet rakennuspiirustukset -- luokan -- henkilöoliolle. Kaikilla henkilöolioilla on muuttujat <code>nimi</code> ja <code>ika</code>. Henkilöiden "tila" koostuu niiden nimeen ja ikään asetetuista arvoista.</p>
   <h3>Oman luokan määritteleminen - konstruktori eli tilan alustus</h3>
   <p>Luotavalle oliolle halutaan asettaa luontivaiheessa jokin alkutila. Itse määritellyn olion luominen tapahtuu hyvin samaan tapaan kuin Javan valmiiden olioiden kuten <code>ArrayList</code>:ien luominen. Oliot siis luodaan <code>new</code>-komennolla. Olion synnyttämisen yhteydessä olisikin kätevä pystyä antamaan arvo joillekin olioiden muuttujille. Esim. henkilön synnytyksessä olisi kätevää pystyä antamaan nimi jo syntymähetkellä: </p>
   <pre class="sh_java">
@@ -4427,7 +4426,7 @@ Antti, ikä 0 vuotta
 Pekka, ikä 2 vuotta
 Antti, ikä 0 vuotta
 </pre>
-  <p>Eli "syntyessään" molemmat oliot ovat nollavuotiaita (konstruktorissa suoritetaan mm. rivi <code>this.ika = 0;</code>). Olion <code>pekka</code> metodia <code>vanhene</code> kutsutaan kaksi kertaa. Kuten tulostus näyttää, tämä saa aikaan sen että Pekan ikä vanhenemisen jälkeen 2 vuotta. Kutsumalla metodia Pekkaa vastaavalle oliolle, toisen henkilöolion ikä ei muutu.</p>
+  <p>Eli "syntyessään" molemmat oliot ovat nollavuotiaita (konstruktorissa suoritetaan mm. rivi <code>this.ika = 0;</code>). Olion <code>pekka</code> metodia <code>vanhene</code> kutsutaan kaksi kertaa. Kuten tulostus näyttää, tämä saa aikaan sen että Pekan ikä on vanhenemisen jälkeen 2 vuotta. Kutsumalla metodia Pekkaa vastaavalle oliolle, toisen henkilöolion ikä ei muutu.</p>
   <p>Jokaisella oliolla on siis oma sisäinen tilansa.</p>
   <p>Aivan kuiten edellisellä viikolla käsittelemämme olioihin liittymättömät metodit, myös olioihin liittyvät metodit voivat palauttaa arvon. Lisätään Henkilölle metodi joka palauttaa henkilön iän:</p>
   <pre class="sh_java">
@@ -6118,7 +6117,7 @@ Pekka, ikä 24 vuotta
 Pekka, ikä 49 vuotta
 Pekka Mikkola, ikä 24 vuotta
 </pre>
-<p>Muuttuja <code>pekka</code> viittaa siis ensin yhteen olioon, mutta rupeaa sitten viittaamaan toiseen olion. 
+<p>Muuttuja <code>pekka</code> viittaa siis ensin yhteen olioon, mutta rupeaa sitten viittaamaan toiseen olioon. 
   
   Seuraavassa kuva tilanteesta viimeisen koodirivin jälkeen:</p>
 <p> <img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/lanka3.PNG"/> </p>
@@ -8267,7 +8266,7 @@ public class Main {
 
 <div class="tehtava">
   <h3>Tähtitaivas</h3>
-  <p>Luodaan ohjelma tähtitaivaan tulostamiseen. Tähtitaivaan tähtien määrä kerrotaan tiheyden avulla. Esimerkiksi jos tähtitaivaan tiheys on <code>0.2</code>, on noin 20% tähtitaivaasta peitettynä tähdillä. Pääset harjoittelemaan siis myös satunnaisuuslukujen käyttöä.</p>
+  <p>Luodaan ohjelma tähtitaivaan tulostamiseen. Tähtitaivaan tähtien määrä kerrotaan tiheyden avulla. Esimerkiksi jos tähtitaivaan tiheys on <code>0.2</code>, on noin 20% tähtitaivaasta peitettynä tähdillä. Pääset harjoittelemaan siis myös satunnaislukujen käyttöä.</p>
   <p>Käytä tähtien tulostamiseen <code>*</code>-merkkiä. Alla on esimerkki lopullisen <code>Tahtitaivas</code>-luokan käytöstä ja käyttöä vastaavasti tulostuksesta.</p>
   <pre class="sh_java">
 Tahtitaivas tahtitaivas = new Tahtitaivas(0.1, 39, 10);
@@ -9971,7 +9970,7 @@ return true;
       metodiin! Tehtävänäsi on <em>refaktoroida</em> eli siistiä Kurtin
       ohjelma edellisen tehtävän mallin mukaan.</p>
     <h4>Komennot pois mainista</h4>
-    <p>Luo jokaiselle komennolle (paitsi lopeta) oma metodeihinsa.
+    <p>Luo jokaiselle komennolle (paitsi lopeta) oma metodin.
       Komentoa vastaava metodi saa parametrinaan lukijan (jotta se voi
       kysyä käyttäjältä asioita) ja listan rivejä (jotta se voi muokata
       niitä). Toteuta siis metodit:</p>
@@ -10087,7 +10086,7 @@ return true;
         tilien välillä.</li>
       <li>Metodi <code>double pankinSaldo()</code> palauttaa pankissa olevien tilien saldojen summan.</li>
     </ul>
-    <p><em>Tehtäväsi on</em> luoda pääohjelmaan nimeltä <code>Ohjelma</code> ohjelma joka</p>
+    <p><em>Tehtäväsi on</em> luoda pääluokkaan nimeltä <code>Ohjelma</code> ohjelma joka</p>
     <ol>
       <li>luo kaksi Pankki-oliota, nimiltään MegaPankki, ja HassuPankki<br/>
         <strong>muistutus:</strong> olio siis luodaan seuraavasti <code>Pankki megaPankki = new Pankki("MegaPankki")</code></li>
