@@ -5192,7 +5192,7 @@ public class Henkilo implements Tunnistettava {
     }
 
     @Override
-    pulic toString(){
+    public toString(){
         return this.nimi + " hetu: " +this.henkilotunnus;
     }
 }
@@ -5271,7 +5271,7 @@ public class Henkilo implements Tunnistettava, Comparable&lt;Henkilo&gt; {
 
     @Override
     public int compareTo(Henkilo toinen) {
-        return this.getTunniste().compareTo(toinen.getTunniste());
+        return this.getTunnus().compareTo(toinen.getTunnus());
     }
 }
   </pre>
@@ -5280,7 +5280,7 @@ public class Henkilo implements Tunnistettava, Comparable&lt;Henkilo&gt; {
 
   <pre class="sh_java">
     public List&lt;Tunnistettava&gt; haeKaikkiJarjestyksessa() {
-        ArrayList&lt;Tunnistettava&gt; kaikki = new ArrayList&lt;Tunnistettava&gt;(rekisteroidyt.values());;
+        ArrayList&lt;Tunnistettava&gt; kaikki = new ArrayList&lt;Tunnistettava&gt;(rekisteroidyt.values());
         Collections.sort(kaikki);
         return kaikki;
     }
@@ -5294,7 +5294,7 @@ public class Henkilo implements Tunnistettava, Comparable&lt;Tunnistettava&gt; {
 
     @Override
     public int compareTo(Tunnistettava toinen) {
-        return this.getTunniste().compareTo(toinen.getTunniste());
+        return this.getTunnus().compareTo(toinen.getTunnus());
     }
 }
   </pre>
