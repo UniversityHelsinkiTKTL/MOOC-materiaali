@@ -2,7 +2,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Ohjelmoinnin perusteet, kevät 2013</title>
+<title>Ohjelmoinnin perusteet</title>
 
 <link rel="stylesheet" href="stylesheets/menu.css" type="text/css" media="screen" />
 
@@ -706,77 +706,50 @@ Kerro ikä: <font color="red">12</font>
 Matti ja Arto ovat yhteensä 26 vuotta vanhoja.
 </pre>
 </div>
+
 <div class="tehtava">
-    <h3 class="req">NHL-tilastot, osa1</h3>
-    <p>Tehtäväpohjaasi on liitetty mukaan valmis komponentti <code>NHLStatistics</code> jonka avulla on mahdollista tarkastella
-      NHL:n pelaajien pistetietoja, eli pelattuja otteluita, tehtyjä maaleja, syöttöjä, pisteitä ja jäähymääriä.</p>
-    <p>Pääohjelma "importoi" eli ottaa komponentin käyttöönsä lisäämällä koodin yläosaan <code>import nhlstats.NHLStatistics;</code>. Seuraavassa esimerkkiohjelma 10 parhaan pisteidentekijän tulostamisesta:</p>
+
+    <h3 class="req">Robottiohjain, osa1</h3>
+
+    <p>Tehtäväpohjaan on liitetty valmis komponentti <code>Ohjain</code> jonka avulla on mahdollista ohjata pientä robottia.</p>
+    <p>Pääohjelma "importoi" eli ottaa komponentin käyttöönsä lisäämällä koodin yläosaan <code>import robotti.Ohjain;</code>. Komennolla <code>Ohjain.kaynnista();</code> robottiohjain käynnistää robotin, ja asettaa sen maailmaan.</p>
+
+    <img src="img/exercises/13-robotcontrol-init.png"/>
+
+    <p>Robottia liikutetaan komennoilla <code>Ohjain.ylos();</code>, <code>Ohjain.oikealle();</code>, <code>Ohjain.alas();</code>, ja <code>Ohjain.vasemmalle();</code>. Seuraavassa on esimerkkiohjelma robottiohjaimen käytöstä siten, että robottia siirretään kaksi ruutua ylöspäin:</p>
+
 <pre class="sh_java">
 import java.util.Scanner;
-import nhlstats.NHLStatistics;
+import robotti.Ohjain;
 
 public class Paaohjelma {
     public static void main(String[] args) throws Exception {
         Scanner lukija = new Scanner(System.in);
 
-        System.out.println("10 parasta pistemiestä");
-        NHLStatistics.sortByPoints();
-        NHLStatistics.top(10);
+        // käynnistetään robotti
+        Ohjain.kaynnista();
+
+        Ohjain.ylos();
+        Ohjain.ylos();
+
+        // sammutetaan robotti
+        Ohjain.sammuta();
     }
 }
 </pre>
-    <p>Tulostuu (tämä oli maanantain 9.1. tilanne):</p>
-<pre>
-10 parasta pistemiestä
-Henrik Sedin           VAN        43 11 + 38= 49  36
-Phil Kessel            TOR        41 24 + 24= 48  10
-Claude Giroux          PHI        36 18 + 30= 48  16
-Joffrey Lupul          TOR        41 19 + 28= 47  36
-Daniel Sedin           VAN        42 18 + 29= 47  32
-Steven Stamkos         TBL        40 28 + 17= 45  34
-Marian Hossa           CHI        41 17 + 27= 44  14
-Evgeni Malkin          PIT        33 16 + 28= 44  30
-Jordan Eberle          EDM        41 17 + 26= 43   6
-Jason Pominville       BUF        41 14 + 29= 43   8
-</pre>
-    <p>Pelaajasta tulostuvat nimi, seuran lyhenne, ottelut, maalit, syötöt, pisteet ja jäähyt.</p>
-    <p>Ensimmäinen komento <code>NHLStatistics.sortByPoints()</code> järjestää pelaajat tehtyjen pisteiden mukaiseen järjestykseen. 
-      Toinen komento <code>NHLStatistics.top(10);</code> tulostaa 10 ensimmäistä pelaajaa senhetkistä järjestystä noudattaen. Parametriksi voidaan antaa mikä tahansa luku. </p>
-    <p>Vastaavalla tavalla saadaan tulostettua pelaajat tehtyjen maalien, syöttöjen tai jäähyminuuttien mukaan järjestettynä. 
-      Eli ensin kutsutaan pelaajat sopivaan järjestykseen laittavaa komentoa, joita ovat:</p>
-<pre class="sh_java">
-NHLStatistics.sortByPoints();     // aseta pelaajat pisteiden mukaiseen järjestykseen
-NHLStatistics.sortByGoals();      // aseta pelaajat tehtyjen maalien mukaiseen järjestykseen
-NHLStatistics.sortByAssists();    // aseta pelaajat syöttöjen mukaiseen järjestykseen
-NHLStatistics.sortByPenalties();  // aseta pelaajat jäähyminuuttien mukaiseen järjestykseen
-</pre>
-    <p>Ja tämän jälkeen tulostetaan pelaajat komennolla <code>top</code> ja parametrina annetaan tulostettavien pelaajien määrä</p>
-    .
-    <p>Komponentti mahdollistaa myös tietyn pelaajan tilastotietojen kyselyn:</p>
-<pre class="sh_java">
-NHLStatistics.searchByPlayer("Jaromir Jagr");   // tulostaa Jaromir Jagr:in tilastot
-NHLStatistics.searchByPlayer("Koivu");          // tulostaa Mikko ja Saku Koivun tilastot
-NHLStatistics.searchByPlayer("Teemu");          // tulostaa kaikkien Teemujen tilastot
-</pre>
-    <p>Sekä tietyn joukkueen kaikkien pelaajien tilastojen tulostuksen:</p>
-<pre class="sh_java">
-NHLStatistics.teamStatistics("NYR");            // New York Rangersin tilastot
-</pre>
-    <p>Joukkueentilastot tulostuvat siinä järjestyksessä mihin ne ovat edelliseksi kutsutulla <code>sortBy...()</code>-komennolla asetettu.</p>
-    <p>Joukkueen nimi tulee antaa virallisena kolmekirjaimisena lyhenteenä. Joukkueiden lyhenteet kerrottu esim. <a href="http://everything2.com/title/Ice+hockey+acronyms+and+abbreviations">täällä</a>. Myös tilastokomponetti kertoo käytössä olevat lyhenteet jos yrität pyytää olemassa olemattoman joukkueen tilastoja.</p>
-    <p><strong>Tee ohjelmarunkoon seuraavat asiat tekevä ohjelma. Tee
-      asiat juuri siinä järjestyksessä kuin ne tässä mainitaan. Tee kaikki
-      asiat pääohjelmaan peräkkäin, poistamatta mitään tehtyä osaa. </strong></p>
-    <p>Huom: kun suoritat ohjelman ensimmäisen kerran, saattaa suoritus kestää jonkun aikaa (internetissä oleva palvelin voi olla lepotilassa ja sen herääminen kestää jonkin aikaa). Tämänjälkeisillä kerroilla suoritus on nopea.</p>
-    <ul>
-      <li>Tulosta 10 parasta maalintekijää</li>
-      <li>Tulosta 25 eniten jäähyjä saanutta pelaajaa</li>
-      <li>Tulosta Sidney Crosbyn tilastot</li>
-      <li>Tulosta Philadelphia Flyersin (lyhenne PHI) tilastot </li>
-      <li>Huomioi missä järjestyksessä pelaajat tulostuvat ja mistä tämä mahtaa johtua!</li>
-      <li>Tulosta Anaheim Ducksin (lyhenne ANA) pelaajat pistemäärän mukaisessa järjestykessä</li>
-    </ul>
-    <p>Kun olet lähettänyt tehtävän tarkastettavaksi ja palautusautomaatti hyväksyy sen, voit muutella koodia vapaasti! </p>
+
+    <p>Yllä oleva ohjelma päätyy seuraavaan tilanteeseen:</p>
+
+    <img src="img/exercises/13-robotcontrol-twoup.png"/>
+
+    <p>Kuten huomaat, robotti jättää liikkuessaan jäljen kohtiin, missä se on käynyt.</p>
+
+    <p>Tehtävänäsi on tehdä ohjelmarunkoon ohjelma, joka kuljettaa robottia siten, että lopputilanne on seuraavanlainen.</p>
+
+    <img src="img/exercises/13-robotcontrol.png"/>
+
+    <p>Kun olet lähettänyt tehtävän tarkastettavaksi ja palautusautomaatti hyväksyy sen, voit yrittää tehdä erilaisia kuvioita ja muutella koodia vapaasti!</p>
+
   </div>
 </div>
   <h2 id="valinta_ja_totuusarvot">Valinta ja totuusarvot</h2>
