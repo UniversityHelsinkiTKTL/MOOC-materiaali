@@ -709,7 +709,7 @@ Matti ja Arto ovat yhteensä 26 vuotta vanhoja.
 
 <div class="tehtava">
 
-    <h3 class="req">Robottiohjain, osa1</h3>
+    <h3 class="req">Robottiohjain</h3>
 
     <p>Tehtäväpohjaan on liitetty valmis komponentti <code>Ohjain</code> jonka avulla on mahdollista ohjata pientä robottia.</p>
     <p>Pääohjelma "importoi" eli ottaa komponentin käyttöönsä lisäämällä koodin yläosaan <code>import robotti.Ohjain;</code>. Komennolla <code>Ohjain.kaynnista();</code> robottiohjain käynnistää robotin, ja luo ikkunan, jossa robotin kulkemista voi seurata.</p>
@@ -1308,74 +1308,88 @@ Kuvaaja.lisaaNumero(13.0);
   </div>
   <div class="tehtava">
 
-  <h3 class="req">NHL-tilastot, osa 2</h3>
-  <p>Jatketaan NHL-komponentin käyttöä ja tehdään ohjelma jonka avulla käyttäjä voi kysellä haluamiaan tilastotietoja.</p>
-  <p>Ohjelma rakentuu samaan tapaan kuin edellä oleva laskin-esimerkki. Ohjelman runko on seuraava:</p>
-<pre class="sh_java">
-public static void main(String[] args) {
-    Scanner lukija = new Scanner(System.in);
+  <h3 class="req">Robottiohjain, versio 2</h3>
+  
+  <p>Robottimme on kehittynyt, sillä on silmät ja suunta! Huraa!</p>
 
-    System.out.println("NHL-tilastopalvelu");
-    while ( true ) {
-        System.out.println("");
-        System.out.print("komento (pisteet, maalit, syotot, jaahyt, pelaaja, joukkue, lopeta): ");
-        String komento = lukija.nextLine();
+  <p>Tässä tehtävässä ohjaamme robottia, jonka tehtävänä on työntää varastossa oleva laatikko rahtialueelle.</p>
 
-        if ( komento.equals("lopeta")) {
-            break;
-        }
+  <p>Uusi robottimme ei enää kuuntele käskyjä "ylös", "alas", "vasemmalle" ja "oikealle", vaan se kulkee siihen suuntaan, mihin se osoittaa. Robottia voi kääntää komennoilla <code>Ohjain.vasen();</code> ja <code>Ohjain.oikea();</code>, jotka kääntävät robottia vastapäivään ja myötäpäivään. Robotin liikuttaminen tapahtuu komennoilla <code>Ohjain.liiku();</code>, joka siirtää robottia yhden askeleen robotin osoittamaan suuntaan, ja <code>Ohjain.liikuMonta(int montako);</code>, joka liikuttaa robottia annetun määrän askelia osoitettuun suuntaan.</p>
 
-        if ( komento.equals("pisteet")) {
-            // tulosta 10 parasta pisteiden tekijää    
-        } else if ( komento.equals("maalit")) {
-            // tulosta 10 parasta maalintekijää     
-        } else if ( komento.equals("syotot")) {
-            // tulosta 10 parasta syöttäjää      
-        } else if ( komento.equals("jaahyt")) {
-            // tulosta 10 eniten jäähyjä saanutta    
-        } else if ( komento.equals("pelaaja")) {
-            // kysy käyttäjältä kenen tiedot halutaan tulostaa ja tulosta ne     
-        } else if ( komento.equals("joukkue")) {
-            // kysy käyttäjältä minkä joukkueen tilastot halutaan ja tulosta ne 
-            // huom: tulostus tulee tapahtua pisteidentekojärjestyksessä (eli eniten pisteitä tehneet ensin) 
-        }
-    }
-}
-</pre>
-  <p>Ohjelma siis pyytää käyttäjältä komentoa ja suorittaa sitten komentoa vastaavan toimenpiteen. Komennot ovat <em>pisteet, maalit, syotot, jaahyt, pelaaja, joukkue, lopeta</em>. Huomaa että komentojen nimissä ä ja ö on korvattu a:lla ja o:lla.</p>
-  <p>Ohjelmarunkoon on merkattu kommentein ne kohdat jotka sinun tulee täydentää.</p>
-  <p>Seuraavassa esimerkki miten ohjelman tulisi toimia:</p>
+  <p>Robotin alkutilanteessa se suuntaa katseensa oikealle. Alla olevassa tilanteessa robottia on käännetty vasemmalle, jolloin sen katse suuntaa ylös, ja sitä on komennettu liikkumaan kaksi kertaa.</p>
+
+  <img src="img/exercises/24-robotti-init.png"/>
+
+  <p>Tehtävä on jaettu useampaan osaan, joissa ensimmäisessä toteutetaan manuaalinen ohjaus robotille, ja seuraavissa kehitämme automaattista ohjausta.</p>
+
+  <h4>Ohjaus komentoriviltä</h4>
+
+  <p>Tässä tehtävässä tavoitteena on rakentaa robotille manuaalinen ohjaus. Rakenna ohjelma samalla tavalla kuin edellä oleva laskin-esimerkki. Ohjelman tulee seurata seuraavia komentoja:</p>
+
+  <p>
+    <ol>
+      <li><em>sammuta</em> sammuttaa robottiohjaimen (komento <code>Ohjain.sammuta();</code>) ja poistuu ohjelmasta.</li>
+      <li><em>vasen</em> kääntää robottia vasemmalle (komento <code>Ohjain.vasen();</code>).</li>
+      <li><em>oikea</em> kääntää robottia oikealle (komento <code>Ohjain.oikea();</code>).</li>
+      <li><em>liiku</em> liikuttaa robottia yhden askeleen (komento <code>Ohjain.liiku();</code>).</li>
+      <li><em>liikuMonta</em> kysyy käyttäjältä askelten lukumäärää ja liikuttaa robottia halutun määrän (komento <code>Ohjain.liikuMonta(int montako);</code>).</li>
+    </ol>
+  </p>
+
+  <p>Toteuta ohjelma siten, että ohjain suorittaa käyttäjän pyytämät komennot. Alla on esimerkki annetuista komennoista sekä kuva lopputilasta.</p>
+
 <pre>
-NHL-tilastopalvelu
+komento (sammuta, vasen, oikea, liiku, liikuMonta): liiku
 
-komento (pisteet, maalit, syotot, jaahyt, pelaaja, joukkue): <font color="red">syotot</font>
-Henrik Sedin           VAN        43 11 + 38= 49  36
-Erik Karlsson          OTT        43  6 + 35= 41  24
-Claude Giroux          PHI        36 18 + 30= 48  16
-Pavel Datsyuk          DET        41 13 + 30= 43  10
-Brian Campbell         FLA        42  3 + 30= 33   4
-Daniel Sedin           VAN        42 18 + 29= 47  32
-Jason Pominville       BUF        41 14 + 29= 43   8
-Nicklas Backstrom      WSH        38 13 + 29= 42  22
-Joffrey Lupul          TOR        41 19 + 28= 47  36
-Evgeni Malkin          PIT        33 16 + 28= 44  30
+komento (sammuta, vasen, oikea, liiku, liikuMonta): vasen
 
-komento (pisteet, maalit, syotot, jaahyt, pelaaja, joukkue): <font color="red">pelaaja</font>
-kuka pelaaja: Jokinen
-Olli Jokinen           CGY        43 12 + 21= 33  32
-Jussi Jokinen          CAR        40  4 + 19= 23  30
+komento (sammuta, vasen, oikea, liiku, liikuMonta): liiku
 
-komento (pisteet, maalit, syotot, jaahyt, pelaaja, joukkue): <font color="red">joukkue</font>
-mikä joukkue: DET
-Pavel Datsyuk          DET        41 13 + 30= 43  10
-Johan Franzen          DET        41 16 + 20= 36  34
-Valtteri Filppula      DET        40 14 + 21= 35  10
-Henrik Zetterberg      DET        41  8 + 24= 32  14
-// lisää pelaajien nimiö
+komento (sammuta, vasen, oikea, liiku, liikuMonta): liiku
 
-komento (pisteet, maalit, syotot, jaahyt, pelaaja, joukkue): <font color="red">lopeta</font>
+komento (sammuta, vasen, oikea, liiku, liikuMonta): oikea
+
+komento (sammuta, vasen, oikea, liiku, liikuMonta): liikuMonta
+Kuinka monta askelta: 3
 </pre>
-  <p>Huom: kun suoritat ohjelman ensimmäisen kerran, saattaa suoritus kestää jonkun aikaa (internetissä oleva palvelin voi olla lepotilassa ja sen herääminen kestää jonkin aikaa). Tämänjälkeisillä kerroilla suoritus on nopea.</p>
+
+  <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/24-robotcontrol-keyboard.png"/></p>
+
+  <p>Huom! Voit palauttaa tehtävän jo tässä välissä vaikka kaikki tehtävän osa-alueet eivät vielä menisikään läpi!</p>
+
+  <h4>Automaattinen ohjaus</h4>
+
+  <p>Lisää tekstikäyttöliittymään komento "ratkaise", joka siirtää laatikon loppualueelle. Ratkaisua ohjelmoidessa voit olettaa, että robotti aloittaa liikkumisen aina samasta ruudusta, ja että laatikko ja rahtialue ovat allaolevan kuvan näyttämissä kohdissa (sama kuin ohjelmassa).</p>
+
+  <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/24-robotcontrol-init.png"/></p>
+
+<pre>
+komento (sammuta, vasen, oikea, liiku, liikuMonta, ratkaise): ratkaise
+</pre>
+
+
+
+  <h4>Parempi automaattinen ohjaus</h4>
+
+  <p>Tehdään ohjauksesta parempi. Kuten aiemminkin, komennon "ratkaise" tulee siirtää laatikko rahtialueelle. Tässä tapauksessa tosin laatikko ei ole aina samassa paikassa, vaan se on tuotu satunnaisesti alueelle. Voit olettaa, että laatikko on aina robotin oikealla yläpuolella ja rahtialueen vasemmalla yläpuolella, robotti aloittaa liikkumisen aina samasta ruudusta, ja rahtialue on aina samassa ruudussa.</p>
+
+  <p>Ohjelmoinnin mahdollistamiseksi Ohjaimeen on lisätty seuraavat komennot:</p>
+
+<pre class="sh_java">
+// kertoo robotin x- ja y-koordinaatit
+int robottiX = Ohjain.robottiX();
+int robottiY = Ohjain.robottiY();
+
+// kertoo laatikon x- ja y-koordinaatit
+int laatikkoX = Ohjain.laatikkoX();
+int laatikkoY = Ohjain.laatikkoY();
+
+// kertoo rahtialueen x- ja y-koordinaatit
+int tavoiteX = Ohjain.tavoiteX();
+int tavoiteY = Ohjain.tavoiteY();
+</pre>
+
+
 </div>
 </div>
 </div>
