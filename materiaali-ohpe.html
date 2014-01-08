@@ -1389,6 +1389,25 @@ int tavoiteX = Ohjain.tavoiteX();
 int tavoiteY = Ohjain.tavoiteY();
 </pre>
 
+  <p>Yllä olevien optimaalisen reitin laskemista helpottavien komentojen lisäksi käytössä on komento <code>Ohjain.asetaLaatikkoSatunnaisesti();</code>, joka asettaa laatikon satunnaisesti pelialueelle. Kutsu sitä ennen käynnistystä seuraavasti:</p>
+
+<pre class="sh_java">
+public class Paaohjelma {
+
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        Ohjain.asetaLaatikkoSatunnaisesti();
+        Ohjain.kaynnista();
+        
+        // toteuta ohjelma tänne
+
+        // oma toteutuksesi, joka saattaa alkaa muodossa
+        while (true) {
+        // ...
+
+</pre>
+
 
 </div>
 </div>
