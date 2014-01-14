@@ -2361,167 +2361,65 @@ Onneksi olkoon, oikein arvattu!
 </pre>
   </div>
 <div class="tehtava">
-  <h3 class="req">Tekstikäyttöliittymä hirsipuu-pelille</h3>
-  <p>Kaverisi ohjelmoi käyttöösi Hirsipuu-pelin, jolta puuttuu vielä käyttöliittymätoiminnallisuus. Hirsipuulla on seuraavat metodit:</p>
-  <ul>
-    <li><em>hirsipuu.peliKaynnissa()</em><br />
-      Kertoo onko peli käynnissä. </li>
-    <li><em>hirsipuu.tulostaTilanne()</em><br />
-      Tulostaa pelin tilanteen. Kertoo tehtyjen arvausten määrän ja käyttämättömät kirjaimet.</li>
-    <li><em>hirsipuu.tulostaSana()</em><br />
-      Tulostaa arvattavan sanan. Pelin aikana arvaamattomat kirjaimet on piilotettu kysymysmerkein, esimerkiksi "muu??uja".</li>
-    <li><em>hirsipuu.tulostaUkko()</em><br />
-      Piirtää hirsipuun.</li>
-    <li><em>hirsipuu.arvaa(String kirjain)</em><br />
-      Arvaa onko sanassa parametrina annettava kirjain.</li>
-  </ul>
-  <p>Käytössäsi on palautusautomaatista tuleva ohjelmarunko, jossa on jo hieman toiminnallisuutta:</p>
-<pre class="sh_java">
-Scanner lukija = new Scanner(System.in);
-Hirsipuu hirsipuu = new Hirsipuu();
 
-System.out.println("************");
-System.out.println("* HIRSIPUU *");
-System.out.println("************");
-System.out.println("");
-tulostaValikko();
-System.out.println("");
+  <h3 class="req">Viivakimara</h3>
 
-// OHJELMOI TOTEUTUKSESI TÄNNE
+    <p>Käytämme tällä kertaa robottia viivataiteen luomiseen. Käytössä olevat komennot ovat <code>Ohjain.kaynnista()</code>, <code>Ohjain.sammuta()</code>, <code>Ohjain.vasen()</code>, <code>Ohjain.oikea()</code> ja <code>Ohjain.liiku()</code>, joiden lisäksi yksittäisen askeleen odotusajan voi asettaa komennolla <code>Ohjain.asetaOdotusaika(int millisekuntia)</code>.</p>
 
-System.out.println("Kiitos pelistä!");
-</pre>
-  <p>Rungon lisäksi käytössäsi on metodi <code>tulostaValikko</code>:</p>
-<pre class="sh_java">
-public static void tulostaValikko() {
-    System.out.println(" * valikko *");
-    System.out.println("lopeta   - lopettaa pelin");
-    System.out.println("tilanne  - tulostaa tarkemman tilanteen");
-    System.out.println("yksittäinen kirjain arvaa annettua kirjainta");
-    System.out.println("tyhjä rivi tulostaa tämän valikon");
-}
-</pre>
-  <p>Tehtävä toteutetaan pienissä osissa.</p>
-  <h4>Toistolauseke ja siitä poistuminen</h4>
-  <p>Luo ohjelmaan toistolauseke, joka toimii käyttöliittymän pohjana. Lue toistolausekkeen sisällä käyttäjältä komento. Jos komento on "lopeta", poistu toistolauseesta.</p>
-  <p>Käytä whilen ehtona komentoa <code>hirsipuu.peliKaynnissa()</code>, eli toisto on muotoa:</p>
-<pre class="sh_java">
-while (hirsipuu.peliKaynnissa()) {
-  String komento = lukija.nextLine();
-  // ...
-}
-</pre>
-  <p>Ensi viikolla ymmärrämme mistä tässä hieman erikoiselta näyttävässä toiston lopetusehdossa on tarkkaan ottaen kysymys.</p>
-  <p>Tässä vaiheessa ohjelman tulisi toimia seuraavasti:</p>
-<pre>
-************
-* HIRSIPUU *
-************
+    <p>Tämän tehtäväsarjan lopussa sinulla on koodi, jolla voit yhdellä metodikutsulla luoda esimerkiksi seuraavanlaisen kuvion.</p>
 
-* valikko *
-lopeta   - lopettaa pelin
-tilanne  - tulostaa tarkemman tilanteen
-yksittäinen kirjain arvaa annettua kirjainta
-tyhjä rivi tulostaa tämän valikon
+    <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/42-viivakimara-11.png"/></p>
 
-Anna komento:
-<font color="red">ei lopeta</font>
+    <p>Aloitetaan.</p>
 
-Anna komento:
-<font color="red">lopeta</font>
-Kiitos pelistä!
-</pre>
-  <h4>Tilanteen näyttäminen</h4>
-  <p>Jos käyttäjä syöttää merkkijonon "tilanne", tulosta tilanne  metodin <code>hirsipuu.tulostaTilanne()</code> avulla.</p>
-<pre>
-************
-* HIRSIPUU *
-************
+    <h4>Useampi askel</h4>
+    
+  <p>Toteuta metodi <code>public static void liikuMonta(int montakoAskelta)</code>, joka siirtää robottia halutun määrän askelia siihen suuntaan, mihin robotti osoittaa. Esimerkiksi metodikutsu <code>liikuMonta(5);</code> siirtää robottia siten, että lopputila on seuraavanlainen.</p>
 
-* valikko *
-lopeta   - lopettaa pelin
-tilanne  - tulostaa tarkemman tilanteen
-yksittäinen kirjain arvaa annettua kirjainta
-tyhjä rivi tulostaa tämän valikon
+  <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/42-viivakimara-liikumonta-5.png"/></p>
 
-Anna komento:
-<font color="red">tilanne</font>
-Et ole vielä tehnyt yhtään arvausta.
-Käyttämättömät kirjaimet: abcdefghijklmnopqrstuvwxyzåäö
 
-Anna komento:
-<font color="red">lopeta</font>
-Kiitos pelistä!
-</pre>
-  <h4>Arvauksen tekeminen</h4>
-  <p>Jos käyttäjä kirjoittaa komentona yhden merkin pituisen merkkijonon, eli yksittäisen kirjaimen, käytä syötettä arvaamiseen. Arvaaminen tapahtuu metodilla <code>hirsipuu.arvaa(komento)</code>. Arvauskomennolla on oma tulostustoiminnallisuus, jolla se tulostaa lisätietoa arvauksen onnistumisesta.</p>
-  <p><b>Vihje:</b> komennon toteaminen yksittäiseksi kirjaimeksi onnistuu seuraavasti:</p>
-  <pre class="sh_java">
-String komento = lukija.nextLine();
+  <h4>Neliön piirtäminen</h4>
 
-if(komento.length() == 1) {  // komento on vain yksi kirjain, eli kyseessä on arvaus
-    hirsipuu.arvaa(komento);
-}
-</pre>
-<pre>
-...
-Anna komento:
-<font color="red">a</font>
-Kirjainta a ei löytynyt sanasta.
+  <p>Toteuta metodi <code>public static void piirraNelio(int sivunPituus)</code>, joka piirtää annetun kokoisen neliön (parametri sivunPituus kertoo yksittäisen sivun pituuden). Hyödynnä tässä edellisessä osassa tehtyä metodia <code>liikuMonta</code>.</p>
 
-Anna komento:
-<font color="red">b</font>
-Kirjainta b ei löytynyt sanasta.
+  <p>Metodikutsun <code>piirraNelio(8);</code> tulee siirtää robottia siten, että lopputilanne on seuraavanlainen. Huomaa, että aina kun sivu on valmis, robotti kääntyy oikealle.</p>
 
-Anna komento:
-<font color="red">c</font>
-Kirjain c löytyi sanasta!
+  <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/42-viivakimara-piirranelio-8.png"/></p>
 
-Anna komento:
-<font color="red">lopeta</font>
-Kiitos pelistä!
-</pre>
-  <h4>Valikon tulostaminen</h4>
-  <p>Jos käyttäjä syöttää tyhjän merkkijonon, eli merkkijonon jonka pituus on nolla, kutsu metodia <code>tulostaValikko</code>. Huomaa, että metodi <code>tulostaValikko</code> ei liity Hirsipuu-peliin, vaan omaan ohjelmaasi.</p>
-  <p><b>Vihje:</b> merkkijonon tyhjyyden tarkastaminen onnistuu seuraavasti:</p>
-<pre class="sh_java">
-String nalle = "puh";
-if(nalle.isEmpty()) {
-    System.out.println("Tyhjä merkkijono");
-} else {
-    System.out.println("Löytyipäs sieltä jotain!");
-}
-</pre>
-  <h4>Pelitilanteen tulostaminen</h4>
-  <p>Jos käyttäjä ei ole syöttänyt komentoa <code>lopeta</code>, kutsu toistolausekkeen lopussa hirsipuupelin komentoja <code>hirsipuu.tulostaUkko()</code> ja <code>hirsipuu.tulostaSana()</code>.</p>
-<pre>
-...
-Anna komento:
-<font color="red">a</font>
-Kirjainta a ei löytynyt sanasta.
-____
-|
-|
-|
-|
-/|\
-Arvattava sana: ????
+  <h4>Sisäkkäiset neliot</h4>
 
-Anna komento:
-<font color="red">m</font>
-Kirjain m löytyi sanasta!
-____
-|
-|
-|
-|
-/|\
-Arvattava sana: m???
+  <p>Toteuta seuraavaksi metodi <code>public static void sisakkaisetNeliot(int montako)</code>, joka piirtää sisäkkäisiä neliöitä. Suurimman neliön sivun pituus on <code>montako</code>-parametrille annettava arvo, ja pienimmän neliön sivun pituus on yksi.</p>
 
-Anna komento:
-<font color="red">lopeta</font>
-Kiitos pelistä!
-</pre></div>
+  <p>Alla olevassa kuvassa metodia on kutsuttu parametrilla 10 (<code>sisakkaisetNeliot(10);</code>)</p>
+
+  <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/42-viivakimara-sisakkaisetneliot-10.png"/></p>
+
+  <p>Hyödynnä tässä aiemmin toteutettua metodia <code>piirraNelio</code>.</p>
+
+
+  <h4>Sisäkkäiset neliot, osa 2</h4>
+
+
+  <p>Toteuta seuraavaksi metodi <code>sisakkaisetNeliot(int suurin, int pienin);</code> sisäkkäisten metodien piirtämiseen. Tämä metodi saa parametrina kaksi arvoa, joista ensimmäinen kertoo suurimman piirrettävän neliön sivun pituuden, ja toinen kertoo pienimmän piirrettävän neliön sivun pituuden.</p>
+
+  <p>Alla olevassa kuvassa metodia on kutsuttu parametreilla 8 ja 4 (<code>sisakkaisetNeliot(8, 4);</code>)</p>
+
+  <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/42-viivakimara-sisakkaisetneliot-8-4.png"/></p>
+
+  <p>Muuta myös edellisessä tehtävässä olevan <code>sisakkaisetNeliot</code>-metodin toimintaa siten, että se kutsuu tätä metodia.</p>
+
+  <h4>Viivakimara</h4>
+
+  <p>Viimeinkin!</p>
+
+  <p>Toteuta metodi <code>public static void viivakimara(int koko)</code>, jonka avulla voit piirtää esimerkiksi allaolevan kuvan. Metodin viivakimara tulee hyödyntää metodeja <code>sisakkaisetNeliot</code> ja <code>liikuMonta</code>.</p>
+
+  <p>Alla olevassa kuvassa metodia on kutsuttu parametrin arvolla 11 (<code>viivakimara(11);</code>).</p>
+
+  <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/42-viivakimara-11.png"/></p>
+
+
 </div>
 </div>
 </section>
