@@ -1611,8 +1611,11 @@ while (luku &gt;= 1) {
 100
 </pre>
 </div>
+
 <div class="tehtava">
-    <h3 class="req">Lukuun asti</h3>
+    <h3 class="req">Mihin ja mistä?</h3>
+
+    <h4>Mihin asti?</h4>
     <p>Kirjoita ohjelma, joka tulostaa kokonaisluvut 1:stä
       käyttäjän antamaan lukuun asti.</p>
 <pre>
@@ -1630,27 +1633,55 @@ Mihin asti? <font color="red">5</font>
 5
 </pre>
     <p><strong>Vihje:</strong> käyttäjältä lukemasi luku toimii nyt whilen lopetusehdon ylärajana. Muista että Javassa <code>a &lt;= b</code> tarkoittaa <em>a pienempi tai yhtä suuri kuin b</em>.</p>
-</div>
-<div class="tehtava">
-    <h3>Alaraja ja yläraja</h3>
-    <p>Kirjoita ohjelma, joka kysyy käyttäjältä
-      ensimmäisen ja viimeisen luvun
-      ja tulostaa niiden välissä olevat luvut.</p>
+
+
+    <h4>Mistä lähtien?</h4>
+    <p>Lisää ohjelmaan käyttäjältä kysyttävä alaraja.</p>
 <pre>
-Ensimmäinen: <font color="red">5</font>
-Viimeinen: <font color="red">8</font>
+Mihin asti? <font color="red">8</font>
+Mistä lähtien? <font color="red">5</font>
 5
 6
 7
 8
 </pre>
-    <p>Jos ensimmäinen on suurempi kuin viimeinen ei tulostu mitään:</p>
+    <p>Jos tavoite on suurempi kuin lähtökohta ei tulostu mitään:</p>
 <pre>
-Ensimmäinen: <font color="red">16</font>
-Viimeinen: <font color="red">12</font>
+Mihin asti? <font color="red">12</font>
+Mistä lähtien? <font color="red">16</font>
 </pre>
     <p><em>Huom!</em> muista että ala- ja yläraja voivat olla myös negatiivisia!</p>
+</div>
+
+<div class="tehtava">
+    <h3 class="req">Portaikko</h3>
+    
+    <p>Robotti on taas täällä! Käytössä olevat komennot ovat <code>Ohjain.kaynnista()</code>, <code>Ohjain.sammuta()</code>, <code>Ohjain.vasen()</code>, <code>Ohjain.oikea()</code> ja <code>Ohjain.liiku()</code>. </p>
+
+    <h4>Montako ylös?</h4>
+
+    <p>Kirjoita ohjelma, joka kysyy käyttäjältä piirrettävien portaiden lukumäärää.</p>
+
+    <p>Kun käyttäjä syöttää esimerkiksi luvun kolme, tulee robotin piirtää kolme porrasaskelmaa.</p>
+<pre>
+Montako ylös? <font color="red">3</font>
+</pre>
+
+    <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/31-robotcontrol-up-3.png"/></p>
+
+    <h4>Montako alas?</h4>
+
+    <p>Täydennä ohjelmaa siten, että robotti kulkee portaita myös alas.</p>
+
+    <p>Alla olevassa esimerkissä robotti nousee ensin viisi askelta ylös, ja laskeutuu sitten kaksi askelta alas.</p>
+<pre>
+Montako ylös? <font color="red">5</font>
+Montako alas? <font color="red">3</font>
+</pre>
+
+    <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/31-robotcontrol-up-5-down-3.png"/></p>
   </div>
+
 </div>
   <h3>Sijoitusoperaatiot</h3>
   <p>Koska vanhan muuttujan arvon muuttaminen on hyvin yleinen operaatio, on Javassa sitä varten
