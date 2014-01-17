@@ -51,6 +51,14 @@
 <section class="viikkoraja" id="0">
 <div div class="viikkoraja-mooc" id="Huomautus lukijalle" tekija="Arto Vihavainen, Matti Luukkainen" deadline=" ">
 
+</div>
+</section>
+
+<section class="viikkoraja" id="1" >
+  <div class="viikkoraja"></div>
+  <div class="viikkoraja-mooc" id="Viikko 1" deadline=" " data-first-chapter-index="1" data-first-exercise-index="1" data-first-week-index="1"  data-first-chapter-index-mooc="1" data-first-exercise-index-mooc="1" data-first-week-index-mooc="1" tekija="Arto Vihavainen, Matti Luukkainen">
+
+
 <h2>Huomautus lukijalle</h2>
 <p>Tämä materiaali on tarkoitettu Helsingin yliopiston tietojenkäsittelytieteen laitoksen Ohjelmoinnin perusteet -kurssille.
  Materiaali pohjautuu syksyn 2012 ja
@@ -67,14 +75,6 @@ keväiden 2013, 2012, 2011 ja 2010 kurssimateriaaleihin, joiden sisältöön ova
   joka tapauksessa ohjelmoijan urallasi etsimään tietoa myös omatoimisesti. Kurssin harjoitukset sisältävät jo jonkun verran ohjeita, mistä suunnista ja miten
   hyödyllistä tietoa on mahdollista löytää.</p>
 <p>Muutamiin kohtiin olemme myös liittäneet screencasteja joita katsomalla voi pelkän valmiin koodin lukemisen sijaan seurata miten ohjelma muodostuu.</p>
-
-</div>
-</section>
-
-<section class="viikkoraja" id="1" >
-  <div class="viikkoraja">Viikko1</div>
-  <div class="viikkoraja-mooc" id="Viikko 1" deadline=" " data-first-chapter-index="1" data-first-exercise-index="1" data-first-week-index="1"  data-first-chapter-index-mooc="1" data-first-exercise-index-mooc="1" data-first-week-index-mooc="1" tekija="Arto Vihavainen, Matti Luukkainen">
-
 
 
 
@@ -967,7 +967,7 @@ Luvut ovat yhtä suuret!
     <h3 class="req">Arvosanat ja pisteet</h3>
     <p>Tee ohjelma, joka ilmoittaa kurssiarvosanan
       seuraavan taulukon mukaisesti.</p>
-    <table border style="margin-left:50px">
+    <table class="table">
       <tr>
         <th>pistemäärä</th>
         <th>arvosana</th>
@@ -1230,7 +1230,6 @@ System.out.println("kiitos ja kuulemiin.");
 </pre>
   <p>Screencast joka näyttää miten ohjelma syntyy:</p>
   <a class="ahy" href="http://www.youtube.com/watch?feature=player_embedded&v=ZPLBrgbxzqQ" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
-  <a class="amooc" href="http://www.youtube.com/watch?feature=player_embedded&v=ZPLBrgbxzqQ" height="300" target="_blank"><img src="https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
 
 <!--syntax ok-->
   <!--
@@ -1655,7 +1654,7 @@ Mistä lähtien? <font color="red">16</font>
 
 <div class="tehtava">
     <h3 class="req">Portaikko</h3>
-    
+
     <p>Robotti on taas täällä! Käytössä olevat komennot ovat <code>Ohjain.kaynnista()</code>, <code>Ohjain.sammuta()</code>, <code>Ohjain.vasen()</code>, <code>Ohjain.oikea()</code> ja <code>Ohjain.liiku()</code>. </p>
 
     <h4>Montako ylös?</h4>
@@ -2373,7 +2372,7 @@ Onneksi olkoon, oikein arvattu!
     <p>Aloitetaan.</p>
 
     <h4>Useampi askel</h4>
-    
+
   <p>Toteuta metodi <code>public static void liikuMonta(int montakoAskelta)</code>, joka siirtää robottia halutun määrän askelia siihen suuntaan, mihin robotti osoittaa. Esimerkiksi metodikutsu <code>liikuMonta(5);</code> siirtää robottia siten, että lopputila on seuraavanlainen.</p>
 
   <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/42-viivakimara-liikumonta-5.png"/></p>
