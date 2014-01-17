@@ -347,62 +347,81 @@ int camelCase = 5; // Ei sallittu -- muuttuja camelCase on jo käytössä!
   <h2 id="laskentaa">Laskentaa</h2>
   <p>Laskentaoperaatiot ovat varsin suoraviivaisia: <code>+</code>, <code>-</code>, <code>*</code> ja <code>/</code>.  Erikoisempana operaationa on <code>%</code>, joka on jakojäännös, eli modulo.  Laskentajärjestys on myös varsin suoraviivainen: operaatiot lasketaan vasemmalta oikealle sulut huomioon ottaen. Kuitenkin <code>*</code> ja <code>/</code> laskentaan ennen <code>+</code> ja <code>-</code> operaatioita. <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html">Tässä vielä tarkemmin laskujärjestyksestä javassa.</a> Linkin takana oleva materiaali ei ole kuitenkaan aloittelijan kannalta kovin oleellista.</p>
 <pre class="sh_java">
-int eka = 2; // kokonaislukutyyppinen muuttuja eka saa arvon 2
-int toka = 4; // kokonaislukutyyppinen muuttuja toka saa arvon 4
-int summa = eka + toka;  // kokonaislukutyyppinen muuttuja summa saa arvon eka + toka, eli 2 + 4
+int eka = 2;
+System.out.println(eka); // tulostaa 2
+int toka = 4;
+System.out.println(toka); // tulostaa 4
 
-System.out.println(summa); // tulostetaan muuttujan summa arvo
+int summa = eka + toka; // muuttujaan summa asetetaan muuttujien eka ja toka arvojen summa
+System.out.println(summa); // tulostaa 6
 </pre>
 <pre class="sh_java">
-int laskuSuluilla = (1 + 1) + 3 * (2 + 5);   // 23
-int laskuSuluitta = 1 + 1 + 3 * 2 + 5;       // 13
+int laskuSuluilla = (1 + 1) + 3 * (2 + 5);
+System.out.println(laskuSuluilla); // tulostaa 23
+
+int laskuSuluitta = 1 + 1 + 3 * 2 + 5;
+System.out.println(laskuSuluitta); // tulostaa 13
 </pre>
+
   <p>Yllä olevan sulkuesimerkin voi suorittaa myös askeleittain.</p>
+
 <pre class="sh_java">
 int laskuSuluilla = (1 + 1);
-laskuSuluilla = laskuSuluilla + 3 * (2 + 5)   // 23
+System.out.println(laskuSuluilla); // tulostaa 2
+laskuSuluilla = laskuSuluilla + 3 * (2 + 5);
+System.out.println(laskuSuluilla); // tulostaa 23
 
 int laskuSuluitta = 1 + 1;
 laskuSuluitta = laskuSuluitta + 3 * 2;
-laskuSuluitta = laskuSuluitta + 5;      // 13
+laskuSuluitta = laskuSuluitta + 5;
+System.out.println(laskuSuluitta); // tulostaa 13
 </pre>
   <p>Laskentaoperaatioita voidaan suorittaa lähes missä tahansa kohdassa ohjelmakoodia.</p>
 <pre class="sh_java">
 int eka = 2;
 int toka = 4;
 
-System.out.println(eka+toka);
-System.out.println(2 + toka - eka - toka);
+System.out.println(eka+toka); // tulostaa 6
+System.out.println(2 + toka - eka - toka); // tulostaa 0
 </pre>
   <h3 id="liuku_eli_desimaali">Liukuluvut eli desimaaliluvut</h3>
   <p>Kokonaislukujen jako ja jakojäännös ovat hieman hankalampia.  Liukuluku ja kokonaisluku menevät helposti sekaisin.  Jos kaikki laskuoperaatiossa olevat muuttujat ovat kokonaislukuja, on tulos myös kokonaisluku.</p>
 <pre class="sh_java">
-int tulos = 3 / 2;      // tulos on 1 (kokonaisluku), sillä 3 ja 2 ovat myös kokonaislukuja
+int tulos = 3 / 2;
+System.out.println(tulos); // Huom! tulostaa 1 (kokonaisluku), sillä 3 ja 2 ovat myös kokonaislukuja
 </pre>
 <pre class="sh_java">
 int eka = 3:
 int toka = 2;
-double tulos = eka / toka;      // nytkin tulos on 1, sillä eka ja toka ovat kokonaislukuja
+double tulos = eka / toka;
+System.out.println(tulos); // nytkin tulostus on 1, sillä eka ja toka ovat kokonaislukuja
 </pre>
   <p>Jakojäännös-operaation (%) avulla saadaan selville jakojäännös.  Esimerkiksi laskun <code>7 % 2</code> jakojäännös on 1.</p>
 <pre class="sh_java">
-int jakojaannos = 7 % 2; // jakojaannos on 1 (kokonaisluku)
+int jakojaannos = 7 % 2;
+System.out.println(jakojaannos); // tulostaa 1
 </pre>
   <p>Jos jakolaskun jakaja tai jaettava (tai molemmat!) ovat liukulukuja, tulee tulokseksi myös liukuluku</p>
 <pre class="sh_java">
-double kunJaettavaOnLiukuluku = 3.0 / 2;  // tulokseksi: 1.5
-double kunJakajaOnLiukuluku = 3 / 2.0;    // tulokseksi: 1.5
+double kunJaettavaOnLiukuluku = 3.0 / 2;
+System.out.println(kunJaettavaOnLiukuluku); // tulostaa 1.5
+
+double kunJakajaOnLiukuluku = 3 / 2.0;
+System.out.println(kunJakajaOnLiukuluku); // tulostaa 1.5
 </pre>
   <p>Kokonaisluku voidaan tarvittaessa muuttaa liukuluvuksi lisäämällä sen eteen tyyppimuunnosoperaatio <code>(double)</code>:</p>
 <pre class="sh_java">
 int eka = 3;
 int toka = 2;
 
-double tulos1 = (double)eka / toka;  // tulokseksi: 1.5
+double tulos1 = (double)eka / toka;
+System.out.println(tulos1); // tulostaa 1.5
 
-double tulos2 = eka / (double)toka;  // tulokseksi: 1.5
+double tulos2 = eka / (double)toka;
+System.out.println(tulos2); // tulostaa 1.5
 
-double tulos3 = (double)(eka / toka);  // tulokseksi: 1
+double tulos3 = (double)(eka / toka);
+System.out.println(tulos3); // tulostaa 1
 </pre>
   <p>Jälkimmäisessä tulos pyöristyy väärin sillä laskuoperaatio kokonaisluvuilla suoritetaan ennen tyyppimuunnosta.</p>
   <p>Jos jakolaskun tulos asetetaan kokonaislukutyyppiseen muuttujaan, on tulos automaattisesti kokonaisluku</p>
