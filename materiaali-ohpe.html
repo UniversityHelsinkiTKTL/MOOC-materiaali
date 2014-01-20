@@ -3798,6 +3798,174 @@ Merkkijono ei ole palindromi!
 </pre>
 </div>
   </div>
+
+  <h3>FizzBuzz</h3>
+
+  <p>Tutustutaan klassiseen <em>FizzBuzz</em> ohjelmointitehtävään:</p>
+
+  <p><em>"Write a program that prints the numbers from 1 to 100. But for multiples of three print "Fizz" instead of the number and for the multiples of five print "Buzz". For numbers which are multiples of both three and five print "FizzBuzz"."</em></p>
+
+  <p>Ohjelmoija lähtee tyypillisesti ratkaisemaan tehtävää lukemalla ehdot yksi kerrallaan läpi, jolloin ohjelman rakenne muotoutuu ajatusketjun:
+    <ol>
+      <li>Tulosta kaikki luvut, eli tee toistolause joka tulostaa luvut yhdestä sataan.</li>
+      <li>Jos luku on jaollinen kolmella, tulosta luvun sijaan merkkijono "Fizz".</li>
+      <li>Jos luku on jaollinen viidellä, tulosta luvun sijaan merkkijono "Buzz".</li>
+      <li>Jos luku on jaollinen kolmella ja viidellä, tulosta luvun sijan merkkijono "FizzBuzz".</li>
+    </ol>
+
+    Ajatusketju muodostuu ongelmalliseksi viimeistään neljännen kohdan paikkeilla. Alla oleva koodi seurailee ylläolevaa ajatusketjua, mutta ei toimi oikein. Kokeile itse!</p>
+
+<pre class="sh_java">
+public class FizzBuzz {
+
+    public static void main(String[] args) {
+        int luku = 1;
+        while (luku &lt;= 100) {
+            if (luku % 3 == 0) {
+                System.out.print("Fizz");
+            } else if (luku % 5 == 0) {
+                System.out.print("Buzz");
+            } else if (luku % 3 == 0 && luku % 5 == 0) {
+                System.out.print("FizzBuzz");
+            } else {
+                System.out.print(luku);
+            }
+
+            System.out.println();
+            luku++;
+        }
+    }
+}
+</pre>
+
+  <p>Yksi lähestymistapa ylläolevan ajatusketjun parantamiseen on ensin etsiä <em>vaativin ehto</em>, ja toteuttaa se. Tämän jälkeen toteutettaisiin muut ehdot. Yllä olevassa esimerkissä ehto "jos luku on jaollinen kolmella <strong>ja</strong> viidellä" vaatii kahden tapauksen toteutumista. Nyt ajatusketju olisi muotoa.    
+    <ol>
+      <li>Tee toistolause joka tulostaa luvut yhdestä sataan.</li>
+      <li>Jos luku on jaollinen kolmella ja viidellä, tulosta luvun sijan merkkijono "FizzBuzz".</li>
+      <li>Jos luku on jaollinen kolmella, tulosta luvun sijaan merkkijono "Fizz".</li>
+      <li>Jos luku on jaollinen viidellä, tulosta luvun sijaan merkkijono "Buzz".</li>
+    </ol>
+
+    Nyt ongelmakin tuntuu ratkeavan.</p>
+
+<pre class="sh_java">
+public class FizzBuzz {
+
+    public static void main(String[] args) {
+        int luku = 1;
+        while (luku &lt;= 100) {
+            if (luku % 3 == 0 && luku % 5 == 0) {
+                System.out.print("FizzBuzz");
+            } else if (luku % 5 == 0) {
+                System.out.print("Buzz");
+            } else if (luku % 3 == 0) {
+                System.out.print("Fizz");
+            } else {
+                System.out.print(luku);
+            }
+
+            System.out.println();
+            luku++;
+        }
+    }
+}
+</pre>
+
+  <p>Vastaavalla tavalla esimerkiksi karkausvuosien tulostaminen muuttuu helpommaksi. Vaativin ehto on "jos vuosi on jaollinen sadalla ja neljälläsadalla, se on karkausvuosi", ym.</p>
+
+<pre class="sh_java">
+public class Karkausvuosi {
+
+    public static void main(String[] args) {
+        int vuosi = 1980;
+        while (vuosi &lt;= 2120) {
+            System.out.print(vuosi + " ");
+            if (vuosi % 100 == 0 && vuosi % 400 == 0) {
+                System.out.println("on karkausvuosi");
+            } else if (vuosi % 100 == 0) {
+                System.out.println("ei ole karkausvuosi");
+            } else if (vuosi % 4 == 0) {
+                System.out.println("on karkausvuosi");
+            } else {
+                System.out.println("ei ole karkausvuosi");
+            }
+
+            vuosi++;
+        }
+    }
+}
+</pre>
+
+
+  <h3>Komento Continue: "Portsari"</h3>
+
+  <p>Ohjelmoijalla voi tulee silloin tällöin toistolausekkeissa vastaan poikkeustapauksia, joiden käsittelyn haluaa jättää väliin. Tähän asti olemme ratkoneet poikkeustapaukset if-else -komennoilla. Tehdään ohjelma, joka lukee näppäimistöltä sanoja, ja tallentaa ne listalle. Jos sana on "lopeta", ohjelma lopettaa suorituksen. Listalle ei myöskään lisätä sanoja, joissa ei ole mitään, eli ne ovat tyhjiä. Yksi tapa toteuttaa ohjelma on seuraava.</p>
+
+<pre class="sh_java">
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class SanojenLukija {
+
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+        ArrayList&lt;String&gt; sanat = new ArrayList&lt;String&gt;();
+
+        while (true) {
+            String sana = lukija.nextLine();
+            if (sana.equals("lopeta")) {
+                break;
+            }
+
+            if (!sana.isEmpty()) {
+                sanat.add(sana);
+            }
+        }
+
+        System.out.println("Kiitos!");
+    }
+}
+</pre>
+
+  <p>Yllä olevassa lähestymistavassa ehto "jos sana ei ole tyhjä" on erikoistapaus, jonka sisältämä koodi suoritetaan vain jos tapaus toteutuu.</p>
+
+  <p>Toinen tapa on käyttää komentoa <code>continue</code>, jonka avulla saamme koodin suorituksen alkamaan uudestaan toistolauseen alusta (<em>for-toistolauseen tapauksessa for-ehto suoritetaan myös, eli esimerkiksi muuttujaan haetaan uusi arvo</em>). Voimme muokata ylläolevaa koodia siten, että sanan tyhjyys on erikoistapaus, jonka tapauksessa palaamme takaisin koodin alkuun komennolla "continue". Muutoin koodin suoritus jatkuu, ja sana lisätään tyhjälle listalle.</p>
+
+<pre class="sh_java">
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class SanojenLukija {
+
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+        ArrayList&lt;String&gt; sanat = new ArrayList&lt;String&gt;();
+
+        while (true) {
+            String sana = lukija.nextLine();
+            if (sana.equals("lopeta")) {
+                break;
+            }
+
+            // portsari: jos sana on tyhjä, jatkeataan toistolauseen alusta
+            if (sana.isEmpty()) {
+                continue;
+            }
+
+            sanat.add(sana);
+        }
+
+        System.out.println("Kiitos!");
+    }
+}
+</pre>
+
+
+  <p>Komennon <code>continue</code> avulla ohjelmakoodista voi saada selkeämpää siten, että oleellinen koodi pysyy samalla tasolla muun koodin kanssa.</p>
+
+  
+
+
   <h3>ArrayListin kopioiminen</h3>
   <p>Joskus on tarpeen muodostaa ArrayLististä kopio, johon voi tehdä muutoksia vaikuttamatta alkuperäisen ArrayListin sisältöön. Kopion voi muodostaa luomalla uuden ArrayListin käyttäen vanhaa ArrayListiä parametrina:</p>
 <pre class="sh_java">
@@ -3935,8 +4103,14 @@ System.out.println(luvut); // tulostuu [3,7,3]
   <p>Miksi <code>int</code>-parametrista ainoastaan arvo kopioituu metodille mutta parametrin ollessa <code>ArrayList</code> metodi käsittelee suoraan listan sisältöä? Javassa ainoastaan <strong><em>alkeistietotyyppisten</em></strong> eli tyyppien <code>int</code>, <code>double</code>, <code>char</code>, <code>boolean</code> (ja muutamien muiden joita emme ole käsitelleet) arvot kopioidaan metodille. Muun tyyppisten parametrien tapauksessa metodille kopioidaan <em>viite</em>, ja metodista käsitellään viitteen takana olevaa parametria suoraan. Ei-alkeistyyppiset muuttujat -- eli <strong><em>viittaustyyppiset</em></strong> muuttujat ovat siis edellisen kuvan tapaan "langan päässä" -- metodille välitetään lanka parametriin, ja näin metodi käsittelee parametria suoraan.</p>
   <div class="tehtavat">
     <div class="tehtava">
-    <h3>ArrayListien yhdistäminen</h3>
-    <p>Toteuta metodi <code>public static void yhdista(ArrayList&lt;Integer&gt; eka, ArrayList&lt;Integer&gt; toka)</code>, joka lisää toisena parametrina <code>toka</code> olevassa ArrayListissa olevat luvut ensimmäisenä parametrina olevaan ArrayList:iin <code>eka</code>. Alkioiden talletusjärjestyksellä ei ole väliä, ja sama alkio voi päätyä listalle useamman kerran. Esimerkki metodin toiminnasta:</p>
+      <h3>Yhdistelya</h3>
+
+      <p>Harjoitellaan vielä hieman ArrayList-joukkojen yhdistelyä.</p>
+
+      <h4>ArrayListien yhdistäminen</h4>
+
+      <p>Toteuta metodi <code>public static void yhdista(ArrayList&lt;Integer&gt; eka, ArrayList&lt;Integer&gt; toka)</code>, joka lisää toisena parametrina <code>toka</code> olevassa ArrayListissa olevat luvut ensimmäisenä parametrina olevaan ArrayList:iin <code>eka</code>. Alkioiden talletusjärjestyksellä ei ole väliä, ja sama alkio voi päätyä listalle useamman kerran. Esimerkki metodin toiminnasta:</p>
+
     <pre class="sh_java">
 ArrayList&lt;Integer&gt; lista1= new ArrayList&lt;Integer&gt;();
 ArrayList&lt;Integer&gt; lista2= new ArrayList&lt;Integer&gt;();
@@ -3954,13 +4128,17 @@ System.out.println(lista1); // tulostuu [4, 3, 5, 10, 7]
 
 System.out.println(lista2); // tulostuu [5, 10, 7]
   </pre>
-    <p>Listalle voi lisätä toisen listan sisällön ArrayList-luokan tarjoaman <code>addAll</code>-metodin avulla. Lista saa parametrinä toisen listan, jonka alkiot listalle lisätään.</p>
+
+      <p>Listalle voi lisätä toisen listan sisällön ArrayList-luokan tarjoaman <code>addAll</code>-metodin avulla. Lista saa parametrinä toisen listan, jonka alkiot listalle lisätään.</p>
+
+      <h4>Joukkoyhdistäminen</h4>
+
+      <p>Toteuta metodi <code>joukkoYhdista</code> joka toimii muuten samoin kuin edellisen tehtävän <code>yhdista</code>-metodi, mutta parantele sitä niin, että yhdistäminen lisää listaan <code>eka</code> lukuja vain, jos ne eivät jo ennestään löydy listalta. Tehtävässä kannattaa käyttää hyväkseen ArrayListin <code>contains</code>-metodia, jolla voit tarkistaa sisältääkö lista jo jonkin luvun.</p>
+
+    </div>
   </div>
-  <div class="tehtava">
-    <h3>Joukkoyhdistäminen</h3>
-    <p>Toteuta metodi <code>joukkoYhdista</code> joka toimii muuten samoin kuin edellisen tehtävän <code>yhdista</code>-metodi, mutta parantele sitä niin, että yhdistäminen lisää listaan <code>eka</code> lukuja vain, jos ne eivät jo ennestään löydy listalta. Tehtävässä kannattaa käyttää hyväkseen ArrayListin <code>contains</code>-metodia, jolla voit tarkistaa sisältääkö lista jo jonkin luvun.</p>
-  </div>
-</div>
+
+
   <h2>Ohjeita koodin kirjoittamiseen ja ongelmanratkaisuun</h2>
   <p>Kaksi maailman johtavaa ohjelmistonkehittäjää, <em>Martin Fowler</em> ja <em>Kent Beck</em> ovat lausunut kirjassa <em>Refactoring: Improving the Design of Existing Codeseuraavasti</em> seuraavasti:</p>
   <ul>
