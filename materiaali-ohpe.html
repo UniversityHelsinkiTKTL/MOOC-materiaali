@@ -4351,27 +4351,27 @@ komento (lopeta, vaalenna, tummenna, negatiivi, peilaa)?
       <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu-peilaa.png"/></p>
 
 
-      <h4>Pehmentaminen</h4>
+      <h4>Sumentaminen</h4>
 
-      <p>Lisää käyttöliittymään komento <code>pehmenna</code>, jonka avulla avatusta kuvasta luodaan pehmennetty versio. Pehmentäminen tapahtuu ottamalla jokaisen pikselin läheiset pikselit ja laskemalla niissä olevista väreistä keskiarvo, joka lopulta asetetaan takaisin pehmennettävään pikseliin. Mitä suurempi pehmennys tehdään, sitä kauempaa olevia pikseleitä käytetään pehmentämiseen.</p>
+      <p>Lisää käyttöliittymään komento <code>sumenna</code>, jonka avulla avatusta kuvasta luodaan sumennettu versio. Kuvan sumentaminen tapahtuu ottamalla jokaisen pikselin läheiset pikselit ja laskemalla niissä olevista väreistä keskiarvo, joka lopulta asetetaan takaisin pikseliin -- jokainen pikseli tulee lopulta sisältämään keskiarvon sen läheisten pikselien väreistä. Mitä suurempi sumennus tehdään, sitä kauempana olevia pikseleitä käytetään sumentamiseen.</p>
 
-      <p>Komentoa <code>pehmenna</code> käytettäessä käyttöliittymän tulee kysyä paljonko pehmennetään.</p>
+      <p>Komentoa <code>sumenna</code> käytettäessä käyttöliittymän tulee kysyä sumentamiseen käytettävää etäisyyttä.</p>
 
       <p>Fotari tarjoaa metodit <code>Fotari.punaiset(x, y, etaisyys)</code>, <code>Fotari.vihreat(x, y, etaisyys)</code>, ja <code>Fotari.siniset(x, y, etaisyys)</code>, jotka palauttavat ArrayList-tyyppisen listan Integer-arvoja, missä on tietyn etäisyyden päässä olevien pikselien väriarvot kullekin värille.</p>
 
-      <p>Toteuta metodi <code>public static void pehmenna(int paljonko);</code>, sekä käyttöliittymän toiminnallisuus.</p>
+      <p>Toteuta metodi <code>public static void sumenna(int paljonko);</code>, sekä käyttöliittymän toiminnallisuus.</p>
 
 <pre>
 Mikä kuva avataan? puu.jpg
-komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, pehmenna)? pehmenna
+komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, sumenna)? sumenna
 Kuinka paljon? 3
-komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, pehmenna)?
+komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, sumenna)?
 </pre>
 
 
       <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu-pehmenna-3.png"/></p>
 
-      <p>Yllä olevassa esimerkissä käyttäjä syöttää komennon <code>pehmenna</code> ja antaa pehmennyksen määräksi arvon <code>3</code>. Tällöin pehmennyksen tulee ottaa jokaisen pikselin kohdalla huomioon ne pikselit, jotka ovat kolmen pisteen päässä kustakin pikselistä. Hyödynnä tässä komentoja <code>Fotari.punaiset(x, y, etaisyys)</code> ym., jossa <code>etaisyys</code>-parametrille voi antaa arvoksi käyttäjän syöttämän arvon.</p>
+      <p>Yllä olevassa esimerkissä käyttäjä syöttää komennon <code>sumenna</code> ja antaa määräksi arvon <code>3</code>. Tällöin sumennus ottaa jokaisen pikselin kohdalla huomioon ne pikselit, jotka ovat kolmen pisteen päässä kyseisestä pikselistä. Hyödynnä tässä komentoja <code>Fotari.punaiset(x, y, etaisyys)</code> ym., missä <code>etaisyys</code>-parametrille voi antaa arvoksi käyttäjän syöttämän arvon.</p>
 
 
     </div>
