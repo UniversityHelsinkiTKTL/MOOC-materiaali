@@ -4353,12 +4353,11 @@ komento (lopeta, vaalenna, tummenna, negatiivi, peilaa)?
 
       <h4>Pehmentaminen</h4>
 
+      <p>Lisää käyttöliittymään komento <code>pehmenna</code>, jonka avulla avatusta kuvasta luodaan pehmennetty versio. Pehmentäminen tapahtuu ottamalla jokaisen pikselin läheiset pikselit ja laskemalla niissä olevista väreistä keskiarvo, joka lopulta asetetaan takaisin pehmennettävään pikseliin. Mitä suurempi pehmennys tehdään, sitä kauempaa olevia pikseleitä käytetään pehmentämiseen.</p>
 
-      <p>Lisää käyttöliittymään komento <code>pehmenna</code>, jonka avulla avatusta kuvasta luodaan pehmennetty versio. Pehmentäminen tapahtuu ottamalla jokaisen pikselin lähimmät pikselit, ja laskemalla niissä olevista väreistä keskiarvo, joka lopulta asetetaan takaisin pehmennettävään pikseliin.</p>
+      <p>Komentoa <code>pehmenna</code> käytettäessä käyttöliittymän tulee kysyä paljonko pehmennetään.</p>
 
-      <p>Komentoa <code>pehmenna</code> käytettäessä käyttöliittymän tulee kysyä paljonko pehmennetään. Käyttäjän antama vastaus annetaan pehmentämismetodille parametrina.</p>
-
-      <p>Fotari tarjoaa metodit <code>Fotari.punaiset(x, y, etaisyys)</code>, <code>Fotari.vihreat(x, y, etaisyys)</code>, ja <code>Fotari.siniset(x, y, etaisyys)</code>, jotka palauttavat ArrayList-tyyppisen listan Integer-arvoja, missä on tietyn etäisyyden päässä olevien pikselien väriarvot.</p>
+      <p>Fotari tarjoaa metodit <code>Fotari.punaiset(x, y, etaisyys)</code>, <code>Fotari.vihreat(x, y, etaisyys)</code>, ja <code>Fotari.siniset(x, y, etaisyys)</code>, jotka palauttavat ArrayList-tyyppisen listan Integer-arvoja, missä on tietyn etäisyyden päässä olevien pikselien väriarvot kullekin värille.</p>
 
       <p>Toteuta metodi <code>public static void pehmenna(int paljonko);</code>, sekä käyttöliittymän toiminnallisuus.</p>
 
@@ -4369,8 +4368,10 @@ Kuinka paljon? 3
 komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, pehmenna)?
 </pre>
 
+
       <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu-pehmenna-3.png"/></p>
 
+      <p>Yllä olevassa esimerkissä käyttäjä syöttää komennon <code>pehmenna</code> ja antaa pehmennyksen määräksi arvon <code>3</code>. Tällöin pehmennyksen tulee ottaa jokaisen pikselin kohdalla huomioon ne pikselit, jotka ovat kolmen pisteen päässä kustakin pikselistä. Hyödynnä tässä komentoja <code>Fotari.punaiset(x, y, etaisyys)</code> ym., jossa <code>etaisyys</code>-parametrille voi antaa arvoksi käyttäjän syöttämän arvon.</p>
 
 
     </div>
