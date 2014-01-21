@@ -4271,6 +4271,110 @@ public static void poista(ArrayList&lt;Integer&gt; luvut, int poistettava) {
 </pre>
   <p>Loimme yllä loogiselle kokonaisuudelle -- tietyn luvun kaikkien esiintymien poistolle -- oman kuvaavasti nimetyn metodin. Lopputuloksena oleva pääohjelma on nyt erittäin ymmärrettävä, lähes suomen kieltä. Molemmat metodit ovat myös erittäin yksinkertaisia ja selkeitä ymmärtää.</p>
   <p>Kent Beck olisi varmaan tyytyväinen aikaansaannokseemme, koodi on helposti ymmärrettävää, helposti muokattavaa eikä sisällä copy-pastea.</p>
+
+
+  <div class="tehtavat">
+    <div class="tehtava">
+      <h3>Fotari</h3>
+
+      <p>Käytössämme on kuvankäsittelyohjelma nimeltä Fotari (kiitos KICKELIGNELL!), joka tarjoaa toiminnallisuuden ladattavan kuvan vaalentamiseen. Fotaria käytetään komentoriviltä seuraavasti:</p>
+
+<pre>
+Mikä kuva avataan? puu.jpg
+</pre>
+
+      <p>Komento avaa ikkunan, jossa käsiteltävä kuva näkyy.</p>
+
+      <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu.png"/></p>
+
+      <p>Komento <code>vaalenna</code> vaalentaa kuvaa. Esimerkiksi allaoleva käyttötapaus luo seuraavanlaisen kuvan.</p>
+
+<pre>
+Mikä kuva avataan? puu.jpg
+komento (lopeta, vaalenna)? vaalenna
+komento (lopeta, vaalenna)? vaalenna
+komento (lopeta, vaalenna)? 
+</pre>
+
+      <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu-vaalennettu-x-2.png"/></p>
+
+      <p>Tässä tehtävässä Fotariin lisätään lisää toiminnallisuutta. Käytössäsi ovat kuvat <code>puu.jpg</code>, <code>ilta.jpg</code> ja <code>kukka.jpg</code>, sekä niistä pienemmät versiot <code>puu-small.jpg</code>, <code>ilta-small.jpg</code> ja <code>kukka-small.jpg</code>. Älä poista kuvia tehtäväpohjasta!</p>
+
+
+      <p><em>Hieman esitietoa: Tietokoneelle tallennetut kuvat koostuvat pikseleistä, jotka ovat käytännössä pienimpiä ruudulla näkyviä pisteitä. Jokainen pikseli sisältää tietyn määrän punaista, vihreää, ja sinistä väriä, joista pikselin väri koostuu. Punaisen, vihreän, ja sinisen määrä on luku, joka on väliltä 0-255.</em></p>
+
+      <p>Huom! Voit palauttaa tehtävän jokaisen välikohdan jälkeen myös palvelimelle, jolloin voit saada osan tehtäväpisteistä.</p>
+
+      <h4>Kuvan tummentaminen</h4>
+
+      <p>Lisää käyttöliittymään komento <code>tummenna</code>, jonka avulla avattua kuvaa tummennetaan. Toteuta tummennustoiminnallisuus uuteen metodiin <code>public static void tummenna()</code> ja ota sen toteutukseen mallia komennosta <code>vaalenna</code>. Yhden tummennuskomennon pitää vähentää jokaista väriarvoa kolmellakymmenellä, mutta kuitenkin siten, että yksikään väriarvo ei mene alle nollan.</p>
+
+<pre>
+Mikä kuva avataan? puu.jpg
+komento (lopeta, vaalenna, tummenna)? tummenna
+komento (lopeta, vaalenna, tummenna)?
+</pre>
+
+      <p>Yllä olevalla komentosarjalla avattava kuva tummenee, ja näyttää seuraavankaltaiselta.</p>
+
+      <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu-tummennettu.png"/></p>
+
+      <h4>Negatiivi</h4>
+
+      <p>Lisää käyttöliittymään komento <code>negatiivi</code>, jonka avulla avatusta kuvasta luodaan negatiivi. Negatiivi luodaan asettamalla jokaiseen pikseliin väriarvoon luvun 255 ja aiemman väriarvon erotus. Toteuta negatiivitoiminnallisuus uuteen metodiin <code>public static void negatiivi()</code>.</p>
+
+<pre>
+Mikä kuva avataan? puu.jpg
+komento (lopeta, vaalenna, tummenna, negatiivi)? negatiivi
+komento (lopeta, vaalenna, tummenna, negatiivi)?
+</pre>
+
+      <p>Yllä olevalla komentosarjalla avattavasta kuvasta luodaan negatiivi, joka näyttää seuraavankaltaiselta.</p>
+
+      <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu-negatiivi.png"/></p>
+
+      <h4>Peilaus</h4>
+
+      <p>Lisää käyttöliittymään komento <code>peilaa</code>, jonka avulla avatusta kuvasta luodaan osittainen peilikuva. Osittainen peilikuva luodaan kopioimalla oikean laidan pikseleitä vasemmalle siten, että x-koordinaattiin 0 tulee koordinaatissa kuvan leveys - 1 olevat väriarvot, x-koordinaattiin 1 tulee koordinaatissa kuvan leveys - 2 olevat väriarvot jne. Peilaaminen siis kopioi kuvan oikean laidan kuvan vasemmalle laidalle, mutta ei kopioi vasenta laitaa oikealle laidalle.</p>
+
+      <p>Toteuta peilaustoiminnallisuus uuteen metodiin <code>public static void peilaa()</code>.</p>
+
+<pre>
+Mikä kuva avataan? puu.jpg
+komento (lopeta, vaalenna, tummenna, negatiivi, peilaa)? peilaa
+komento (lopeta, vaalenna, tummenna, negatiivi, peilaa)?
+</pre>
+
+      <p>Yllä olevalla komentosarjalla avattavasta kuvasta luodaan osittain peilattu kuva, joka näyttää seuraavankaltaiselta.</p>
+
+      <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu-peilaa.png"/></p>
+
+
+      <h4>Pehmentaminen</h4>
+
+
+      <p>Lisää käyttöliittymään komento <code>pehmenna</code>, jonka avulla avatusta kuvasta luodaan pehmennetty versio. Pehmentäminen tapahtuu ottamalla jokaisen pikselin lähimmät pikselit, ja laskemalla niissä olevista väreistä keskiarvo, joka lopulta asetetaan takaisin pehmennettävään pikseliin.</p>
+
+      <p>Komentoa <code>pehmenna</code> käytettäessä käyttöliittymän tulee kysyä paljonko pehmennetään. Käyttäjän antama vastaus annetaan pehmentämismetodille parametrina.</p>
+
+      <p>Fotari tarjoaa metodit <code>Fotari.punaiset(x, y, etaisyys)</code>, <code>Fotari.vihreat(x, y, etaisyys)</code>, ja <code>Fotari.siniset(x, y, etaisyys)</code>, jotka palauttavat ArrayList-tyyppisen listan Integer-arvoja, missä on tietyn etäisyyden päässä olevien pikselien väriarvot.</p>
+
+      <p>Toteuta metodi <code>public static void pehmenna(int paljonko);</code>, sekä käyttöliittymän toiminnallisuus.</p>
+
+<pre>
+Mikä kuva avataan? puu.jpg
+komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, pehmenna)? pehmenna
+Kuinka paljon? 3
+komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, pehmenna)?
+</pre>
+
+      <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu-pehmenna-3.png"/></p>
+
+
+
+    </div>
+  </div>
+
 </div>
 </section>
 <div class="tyhja"></div>
