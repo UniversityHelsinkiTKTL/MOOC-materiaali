@@ -1970,7 +1970,7 @@ Parittomia: 1
   <div class="ekstra">
     <p> <big><strong>Lisätietoa: toisto for-lauseen avulla</strong></big> </p>
     <p>Edellä esitellyn while-toistolauseen lisäksi Javassa toiston voi hoitaa myös for-toistolauseen avulla. Varsinaisesti rupeamme käyttämään for:ia vasta hieman myöhemmin kurssilla, mutta jo tässä vaiheessa mainittakoon, että toistolause</p>
-<pre class="java">
+<pre class="sh_java sh_sourceCode">
 int i = 0;
 while ( i &lt; 10 ) {
     System.out.println( i );
@@ -1978,7 +1978,7 @@ while ( i &lt; 10 ) {
 }
 </pre>
     <p>tehtäisiin for:in avulla seuraavasti:</p>
-<pre class="java">
+<pre class="sh_java">
 for ( int i = 0; i &lt; 10 ; i ++ ) {
     System.out.println( i );
 }
@@ -1990,7 +1990,7 @@ for ( int i = 0; i &lt; 10 ; i ++ ) {
   <p> Huomaamme, että jälkimmäinen joukko edellä lueteltuja komentoja poikkeaa if:istä ja while:stä ym. siinä, että komennon perässä on sulut ja joskus sulkujen sisällä komennolle annettava syöte. "Sulkuihin päättyvät" eivät oikeastaan olekaan komentoja vaan <strong>metodeja</strong>. </p>
   <p> Teknisesti ottaen metodi tarkoittaa koodinpätkää, jota voi kutsua muualta ohjelmakoodista. Koodirivi <code>System.out.println("olen metodille annettava parametri!")</code> siis tarkoittaa, että kutsutaan metodia, joka suorittaa ruudulle tulostamisen. Metodin suorituksen jälkeen palataan siihen kohtaa missä ennen metodikutsua oltiin menossa. Metodille suluissa annettua syötettä kutsutaan <i>metodin parametriksi</i>. </p>
   <p> Parametrin lisäksi metodilla voi olla <i>paluuarvo</i>. Esim. tuttu koodinpätkä: </p>
-<pre class="java">
+<pre class="sh_java">
 int luku = Integer.parseInt( lukija.nextLine() );
 </pre>
   <p> sisältää kaksi metodikutsua. Ensin kutsutaan sisempänä olevaa metodia <code>lukija.nextLine</code>. Metodilla on paluuarvonaan käyttäjän syöttämä merkkijono. Seuraavaksi
@@ -2214,8 +2214,9 @@ Hei Martin, terveiset metodimaailmasta!
 Hei Martin, terveiset metodimaailmasta!
 </pre>
   <p>Screencast aiheesta:</p>
-  <p><a class="ahy" href="http://www.youtube.com/watch?feature=player_embedded&v=sIosUNnRJVo" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
-  <a class="amooc" href="http://www.youtube.com/watch?feature=player_embedded&v=sIosUNnRJVo" height="300" target="_blank"><img src="https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a> </p>
+  <p>
+    <a href="http://www.youtube.com/watch?feature=player_embedded&v=sIosUNnRJVo" height="300" target="_blank"><img src="https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a> </p>
+  </p>
 <div class="tehtavat">
  <div class="tehtava">
     <h3>Tulostelua</h3>
