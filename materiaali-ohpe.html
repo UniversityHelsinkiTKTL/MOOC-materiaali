@@ -4493,9 +4493,9 @@ System.out.println(artonSveitsilainenTili);
       että <code>mista</code>-tilin saldo riittää.</p>
     <p>Tämän jälkeen tee <code>main</code>-metodissasi seuraavaa:</p>
     <ol class="lista">
-      <li>Luo tili <code>"A"</code> saldolla 100.0</li>
-      <li>Luo tili <code>"B"</code> saldolla 0.0</li>
-      <li>Luo tili <code>"C"</code> saldolla 0.0</li>
+      <li>Luo tili <code>"tili A"</code> saldolla 100.0</li>
+      <li>Luo tili <code>"tili B"</code> saldolla 0.0</li>
+      <li>Luo tili <code>"tili C"</code> saldolla 0.0</li>
       <li>Siirrä 50.0 tililtä A tilille B.</li>
       <li>Siirrä 25.0 tililtä B tilille C.</li>
     </ol>
@@ -5072,20 +5072,21 @@ System.out.println( antti.toString() );
 
   <div class="tehtavat">
     <div class="tehtava">
-    <h3>Lyyra-kortti</h3>
-    <p>Helsingin Yliopiston opiskelijaruokaloissa eli Unicafeissa opiskelijat maksavat lounaansa käyttäen <a href="http://www.lyyra.fi" target="_blank">Lyyra-korttia</a>.</p>
-    <p>Tässä tehtäväsäsarjassa tehdään luokka <code>LyyraKortti</code>, jonka tarkoituksena on jäljitellä Lyyra-kortin käyttämistä Unicafessa.</p>
+    <h3>Maksukortti</h3>
+    <p>Helsingin Yliopiston opiskelijaruokaloissa eli Unicafeissa opiskelijat maksavat lounaansa käyttäen maksukorttia.</p>
+    <p>Tässä tehtäväsäsarjassa tehdään luokka <code>Maksukortti</code>, jonka tarkoituksena on jäljitellä Unicafeissa tapahtuvaa maksutoimintaa.</p>
+
     <h4 class="req">Luokan runko</h4>
     <p>Projektiin tulee kuulumaan kaksi kooditiedostoa:</p>
-    <p>Tehtäväpohjan eli projektin <em>Viikko4_077.Lyyrakortti</em> mukana tulee kooditiedosto <code>Paaohjelma</code> jonka sisällä on <code>main</code>-metodi.</p>
-    <p>Lisää projektiin uusi luokka nimeltä <code>LyyraKortti</code>. Uuden luokan saa lisättyä seuraavasti: Ruudun vasemmalla reunalla on projektilistaus. Paina projektin nimen <em>Viikko4_077.Lyyrakortti</em> kohdalla hiiren oikeaa nappia. Valitse avautuvasta valikosta <em>New</em> ja <em>Java Class</em>. Anna luokan nimeksi (Class Name) <code>LyyraKortti</code>. </p>
-    <p>Tee ensin <code>LyyraKortti</code>-olion konstruktori, jolle annetaan kortin alkusaldo ja joka tallentaa sen olion sisäiseen muuttujaan. Tee sitten <code>toString</code>-metodi, joka palauttaa kortin saldon muodossa "Kortilla on rahaa X euroa".</p>
-    <p>Seuraavassa on luokan <code>LyyraKortti</code> runko:</p>
+    <p>Tehtäväpohjan eli projektin <em>Viikko4_077.Maksukortti</em> mukana tulee kooditiedosto <code>Paaohjelma</code> jonka sisällä on <code>main</code>-metodi.</p>
+    <p>Lisää projektiin uusi luokka nimeltä <code>Maksukortti</code>. Uuden luokan saa lisättyä seuraavasti: Ruudun vasemmalla reunalla on projektilistaus. Paina projektin nimen <em>Viikko4_077.Maksukortti</em> kohdalla hiiren oikeaa nappia. Valitse avautuvasta valikosta <em>New</em> ja <em>Java Class</em>. Anna luokan nimeksi (Class Name) <code>Maksukortti</code>. </p>
+    <p>Tee ensin <code>Maksukortti</code>-olion konstruktori, jolle annetaan kortin alkusaldo ja joka tallentaa sen olion sisäiseen muuttujaan. Tee sitten <code>toString</code>-metodi, joka palauttaa kortin saldon muodossa "Kortilla on rahaa X euroa".</p>
+    <p>Seuraavassa on luokan <code>Maksukortti</code> runko:</p>
     <pre class="sh_java">
-public class LyyraKortti {
+public class Maksukortti {
     private double saldo;
 
-    public LyyraKortti(double alkusaldo) {
+    public Maksukortti(double alkusaldo) {
         // kirjoita koodia tähän
     }
 
@@ -5098,7 +5099,7 @@ public class LyyraKortti {
     <pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
-        LyyraKortti kortti = new LyyraKortti(50);
+        Maksukortti kortti = new Maksukortti(50);
         System.out.println(kortti);
     }
 }
@@ -5108,7 +5109,7 @@ public class Paaohjelma {
 Kortilla on rahaa 50.0 euroa
 </pre>
     <h4 class="req">Kortilla maksaminen</h4>
-    <p>Täydennä <code>LyyraKortti</code>-luokkaa seuraavilla metodeilla:</p>
+    <p>Täydennä <code>Maksukortti</code>-luokkaa seuraavilla metodeilla:</p>
     <pre class="sh_java">
 public void syoEdullisesti() {
     // kirjoita koodia tähän
@@ -5123,7 +5124,7 @@ public void syoMaukkaasti() {
     <pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
-        LyyraKortti kortti = new LyyraKortti(50);
+        Maksukortti kortti = new Maksukortti(50);
         System.out.println(kortti);
 
         kortti.syoEdullisesti();
@@ -5147,7 +5148,7 @@ Kortilla on rahaa 41.0 euroa
     <pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
-        LyyraKortti kortti = new LyyraKortti(5);
+        Maksukortti kortti = new Maksukortti(5);
         System.out.println(kortti);
 
         kortti.syoMaukkaasti();
@@ -5166,7 +5167,7 @@ Kortilla on rahaa 1.0 euroa
 </pre>
     <p>Yllä toinen metodin <code>syoMaukkaasti</code> kutsu ei vaikuttanut saldoon, koska saldo olisi mennyt negatiiviseksi.</p>
     <h4 class="req">Kortin lataaminen</h4>
-    <p>Lisää <code>LyyraKortti</code>-luokkaan seuraava metodi:</p>
+    <p>Lisää <code>Maksukortti</code>-luokkaan seuraava metodi:</p>
     <pre class="sh_java">
 public void lataaRahaa(double rahamaara) {
     // kirjoita koodia tähän
@@ -5177,7 +5178,7 @@ public void lataaRahaa(double rahamaara) {
     <pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
-        LyyraKortti kortti = new LyyraKortti(10);
+        Maksukortti kortti = new Maksukortti(10);
         System.out.println(kortti);
 
         kortti.lataaRahaa(15);
@@ -5204,7 +5205,7 @@ Kortilla on rahaa 150.0 euroa
     <pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
-        LyyraKortti kortti = new LyyraKortti(10);
+        Maksukortti kortti = new Maksukortti(10);
         System.out.println(kortti);
         kortti.lataaRahaa(-15);
         System.out.println(kortti);
@@ -5219,8 +5220,8 @@ Kortilla on rahaa 10.0 euroa
     <h4 class="req">Monta korttia</h4>
     <p>Tee pääohjelma, joka sisältää seuraavan tapahtumasarjan:</p>
     <ul>
-      <li> Luo Pekan lyyrakortti. Kortin alkusaldo on 20 euroa</li>
-      <li> Luo Matin lyyrakortti. Kortin alkusaldo on 30 euroa</li>
+      <li> Luo Pekan kortti. Kortin alkusaldo on 20 euroa</li>
+      <li> Luo Matin kortti. Kortin alkusaldo on 30 euroa</li>
       <li> Pekka syö maukkaasti</li>
       <li> Matti syö edullisesti</li>
       <li> Korttien arvot tulostetaan (molemmat omalle rivilleen, rivin alkuun kortin omistajan nimi)</li>
@@ -5236,8 +5237,8 @@ Kortilla on rahaa 10.0 euroa
     <pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
-        LyyraKortti pekanKortti = new LyyraKortti(20);
-        LyyraKortti matinKortti = new LyyraKortti(30);
+        Maksukortti pekanKortti = new Maksukortti(20);
+        Maksukortti matinKortti = new Maksukortti(30);
 
         // kirjoita koodia tähän
     }
@@ -5245,15 +5246,18 @@ public class Main {
 </pre>
     <p>Ohjelman tulisi tuottaa seuraava tulostus:</p>
 <pre>
-Pekka: Kortilla on rahaa 16.0 euroa
+Pekka: Kortilla on rahaa 15.7 euroa
 Matti: Kortilla on rahaa 27.5 euroa
-Pekka: Kortilla on rahaa 36.0 euroa
-Matti: Kortilla on rahaa 23.5 euroa
-Pekka: Kortilla on rahaa 31.0 euroa
-Matti: Kortilla on rahaa 73.5 euroa
+Pekka: Kortilla on rahaa 35.7 euroa
+Matti: Kortilla on rahaa 23.2 euroa
+Pekka: Kortilla on rahaa 30.7 euroa
+Matti: Kortilla on rahaa 73.2 euroa
 </pre>
+
+    <p><em>Saatat huomata, että osassa luvuista ilmenee pyöristysvirheitä. Esimerkiksi pekan saldo 30.7 saattaa tulostua muodossa <code>30.700000000000003</code>. Tämä liittyy siihen, että liukuluvut kuten <code>double</code> tallennetaan oikeasti muuttujiin binäärimuodossa, eli nollina ja ykkösinä vain rajattua määrää lukuja käyttäen. Koska liukulukuja on ääretön määrä (keksitkö miksi? kuinka monta liuku- tai desimaalilukua mahtuu vaikkapa lukujen 5 ja 6 väliin?), ei kaikkia voi esittää rajatulla määrällä nollia ja ykkösiä, jolloin tietokone joutuu rajoittamaan tallennustarkkuutta.</em></p>
   </div>
 </div>
+
   <h3>Lisää metodeja</h3>
   <p>Jatketaan taas <code>Henkilo</code>-luokan parissa. Päätetään että haluamme laskea henkilöiden painoindeksejä. Tätä varten teemme henkilölle metodit pituuden ja painon asettamista varten, sekä metodin joka laskee painoindeksin. Henkilön uudet ja muuttuneet osat seuraavassa:</p>
   <pre class="sh_java">
@@ -5355,7 +5359,7 @@ Juhana, painoindeksisi on 20,90
         Mutta jos laskurin arvo ylittää ylärajan, sen arvoksi tulee 0.</li>
       <li> Metodi <code>toString</code> palauttaa laskurin arvon merkkijonona.</li>
     </ul>
-    <p>Tehtäväpohjassa on valmiina pääohjelmaa varten tiedosto <code>Paaohjelma</code>. Aloita tekemällä luokka <code>YlhaaltaRajoitettuLaskuri</code> vastaavasti kuin LyyraKortti-tehtävässä. Näin tehdään myös tulevissa tehtäväsarjoissa.</p>
+    <p>Tehtäväpohjassa on valmiina pääohjelmaa varten tiedosto <code>Paaohjelma</code>. Aloita tekemällä luokka <code>YlhaaltaRajoitettuLaskuri</code> vastaavasti kuin Maksukortti-tehtävässä. Näin tehdään myös tulevissa tehtäväsarjoissa.</p>
     <p>Luokan rungoksi tulee seuraava:</p>
     <pre class="sh_java">
 public class YlhaaltaRajoitettuLaskuri {
@@ -5569,7 +5573,7 @@ public String toString() {
 <p><iframe allowfullscreen="" frameborder="0" height="450" width="700" src="http://www.youtube.com/embed/owhvYkDTX2g"></iframe></p>
 -->
 
-  <p>Nyt on aika harjoitella lisää yksinkertaisten olioiden tekemistä käytännössä:</p>
+  <p>Nyt on aika harjoitella lisää olioiden tekemistä käytännössä:</p>
   <div class="tehtavat">
     <div class="tehtava">
     <h3>Lukutilasto</h3>
@@ -5846,7 +5850,7 @@ public class Ohjelma {
         while ( i &lt; 10 ) {
             System.out.println( noppa.heita() );
             i++;
-          }
+        }
     }
 }
 </pre>
@@ -5878,7 +5882,7 @@ import java.util.Random;
 public class SalasananArpoja {
     // Määrittele muuttuja tässä
 
-    public SalasananArpoja(int pituus) {
+    public SalasananArpoja(int salasananPituus) {
         // Alusta muuttuja tässä
     }
 
@@ -5927,7 +5931,7 @@ char merkki = "abcdefghijklmnopqrstuvxyz".charAt(luku);
 import java.util.ArrayList;
 import java.util.Random;
 
-    public class LottoRivi {
+public class LottoRivi {
     private ArrayList&lt;Integer&gt; numerot;
 
     public LottoRivi() {
@@ -5954,8 +5958,8 @@ import java.util.Random;
     <pre class="sh_java">
 import java.util.ArrayList;
 
-    public class Ohjelma {
-        public static void main(String[] args) {
+public class Ohjelma {
+    public static void main(String[] args) {
         LottoRivi lottoRivi = new LottoRivi();
         ArrayList&lt;Integer&gt; lottonumerot = lottoRivi.numerot();
 
@@ -5979,11 +5983,13 @@ Lottonumerot:
     <p><strong>Huom!</strong> Sama numero saa esiintyä lottorivissä vain kerran.</p>
   </div>
   <div class="tehtava">
-    <h3>Viikon huipennus: hirsipuun logiikka</h3>
+    <h3>Hirsipuun logiikka</h3>
     <p>Hirsipuu-pelistä pitävä kaverisi ohjelmoi hirsipuupelin joka näyttää seuraavalta.</p>
     <p><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/hirsipuu-tikkuukko.png"/></p>
-    <p>Hänen koneestaan hajosi kovalevy, eikä hän ollut tehnyt <a href="http://fi.wikipedia.org/wiki/Varmuuskopiointi" target="_blank"><em>varmuuskopiota</em></a>. Hän on kuitenkin luvannut pelin lahjaksi pikkuveljelleen, ja aikataulukiireidensä takia tarvitsee apuasi pelin toteutukseen. Tässä tehtäväsarjassa toteutat kaverisi hirsipuu-pelille arvauslogiikan ja annetun sanan salaamisen.</p>
+    <p>Hänen koneestaan hajosi kovalevy, eikä hän ollut tehnyt <a href="http://fi.wikipedia.org/wiki/Varmuuskopiointi" target="_blank">varmuuskopiota</a> tai käyttänyt <a href="http://fi.wikipedia.org/wiki/Ohjelmiston_versiohallinta" target="_blank">versionhallintajärjestelmää</a> lähdekoodien tallennukseen. Hän on kuitenkin luvannut pelin lahjaksi pikkuveljelleen, ja aikataulukiireidensä takia tarvitsee apuasi pelin toteutukseen. Tässä tehtäväsarjassa toteutat kaverisi hirsipuu-pelille arvauslogiikan ja annetun sanan salaamisen.</p>
+
     <p>Kaverisi on luonut pelille käyttöliittymän sekä valmiin rungon sovelluksen logiikkaan. Kun lataat projektin TMC:ltä, näet käyttöliittymä- ja testiluokkien lisäksi allaolevan ohjelmarungon.</p>
+
     <pre class="sh_java">
 public class HirsipuuLogiikka {
 
@@ -6586,7 +6592,7 @@ punnituksia tehty 6
 </pre>
 </div>
 <div class="tehtava">
-  <h3>Lyyra-kortti ja Kassapääte</h3>
+  <h3>TODO: Muuta Lyyra-kortti ja Kassapääte</h3>
   <h4 class="req">"Tyhmä" Lyyra-kortti</h4>
   <p>Teimme viime viikolla luokan LyyraKortti. Kortilla oli metodit edullisesti ja maukkaasti syömistä sekä rahan lataamista varten.</p>
   <p>Viime viikon tyylillä tehdyssä Lyyra-kortissa oli kuitenkin ongelma. Kortti tiesi lounaiden hinnan ja osasi sen ansiosta vähentää saldoa oikean määrän. Entä kun hinnat nousevat? Tai jos myyntivalikoimaan tulee uusia tuotteita? Hintojen muuttaminen tarkoittaisi, että kaikki jo käytössä olevat Lyyra-kortit pitäisi korvata uusilla, uudet hinnat tuntevilla korteilla. </p>
@@ -7922,7 +7928,7 @@ numero ei tiedossa
 </pre>
 </div>
 <div class="tehtava">
-  <h3>Raha</h3>
+  <h3>TODO: muuta lyyra Raha</h3>
   <p>Lyyrakortti-tehtävässä käytimme rahamäärän tallettamiseen double-tyyppistä oliomuuttujaa. Todellisissa sovelluksissa näin ei kannata tehdä, sillä kuten jo olemme nähneet, doubleilla laskenta ei ole tarkkaa. Onkin järkevämpää toteuttaa rahamäärän käsittely oman luokkansa avulla. Seuraavassa on luokan runko:</p>
   <pre class="sh_java">
 public class Raha {
