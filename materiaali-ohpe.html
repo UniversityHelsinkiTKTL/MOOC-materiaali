@@ -1844,17 +1844,17 @@ while ( i &lt; 10 ) {
 }
 </pre>
   <p>Ylläolevassa rungossa muuttuja <code>i</code> muistaa toistokertojen määrän, ja lopetusehto perustuu <code>i</code>:n vertailuun.</p>
-  <p>Muistellaan taas toiston lopetusta. Toiston lopetuksen ei tarvitse perustua toistokertojen laskemiseen. Katsotaan esimerkkiä jossa kysytään käyttäjän ikää. Jos ikä ei ole välillä 5-85, annetaan huomautus ja kysytään ikä uudelleen. Toistolauseen <em>while</em>-lauseen ehto voi siis olla mitä tahansa totuusarvon tuottavaa.</p>
+  <p>Muistellaan taas toiston lopetusta. Toiston lopetuksen ei tarvitse perustua toistokertojen laskemiseen. Katsotaan esimerkkiä jossa kysytään käyttäjän ikää. Jos ikä ei ole välillä 1-120, annetaan huomautus ja kysytään ikä uudelleen. Toistolauseen <em>while</em>-lauseen ehto voi siis olla mitä tahansa totuusarvon tuottavaa.</p>
 <pre class="sh_java">
 System.out.println("ikäsi: ");
 
 int ika = Integer.parseInt(lukija.nextLine());
 
-while( ika &lt; 5 || ika  &gt; 85 ) {   // ikä pienempi kuin 5 TAI suurempi kuin 85
+while( ika &lt; 1 || ika  &gt; 120 ) {   // ikä pienempi kuin 5 TAI suurempi kuin 85
     System.out.println("Valehtelet");
-    if ( ika &lt; 5 ) {
+    if ( ika &lt; 1 ) {
         System.out.println("Olet niin nuori ettet osaa kirjoittaa");
-    } else if ( ika &gt; 85 ) {
+    } else if ( ika &gt; 120 ) {
         System.out.println("Olet niin vanha ettet osaa käyttää tietokonetta");
     }
 
@@ -1871,14 +1871,14 @@ System.out.println("ikäsi: ");
 while( true ) {
     int ika = Integer.parseInt(lukija.nextLine());
 
-    if ( ika &gt;= 5 &amp;&amp; ika &lt;= 85 ) {   // ikä 5:n JA 85:n välillä
+    if ( ika &gt;= 1 &amp;&amp; ika &lt;= 120 ) {   // ikä 1:n JA 120:n välillä
         break;                              // lopetetaan toisto
     }
 
     System.out.println("Valehtelet");
-    if ( ika &lt; 5 ) {
+    if ( ika &lt; 1 ) {
         System.out.println("Olet niin nuori ettet osaa kirjoittaa");
-    } else {  // ikä siis yli 85
+    } else {  // ikä siis yli 120
         System.out.println("Olet niin vanha ettet osaa käyttää tietokonetta");
     }
 
