@@ -182,8 +182,8 @@ Ohje ohjelmoinnin aloittamiseen NetBeans-ohjelmointiympäristössä löytyy   <a
     <p class="help">Seuraavissa tehtävissä harjoitellaan tuntuman saamista NetBeansiin ja ruudulle tulostamista.</p>
 
     <p><strong>Muista ensin katsoa ohje NetBeansin käyttöön</strong>
-    <a class="hidden-in-mooc" href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans-ohjeita">täältä</a>
-    <a class="hidden-in-hy" href="http://mooc.cs.helsinki.fi/ohjelmointi/ilmoittautuminen-ja-alkutoimet">täältä</a>.
+    <!-- TODO fix links -->
+    <a href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans-ohjeita">täältä</a>
 </p>
 
     <p class="help"><strong>Jos et ole vielä käynyt vastaamassa kyselyyn, tee se NYT <a href="http://laatu.mooc.fi/">klikkaamalla tästä</a></strong></p>
@@ -1557,7 +1557,6 @@ while (luku &gt;= 1) {
 }
 </pre>
   <p>Screencast aiheesta:</p>
-  <a class="ahy" href="http://www.youtube.com/watch?feature=player_embedded&v=us9GXUZ60ws" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
   <a  class="amooc" href="http://www.youtube.com/watch?feature=player_embedded&v=us9GXUZ60ws" height="300" target="_blank"><img src="https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
 
   <!--
@@ -1569,10 +1568,10 @@ while (luku &gt;= 1) {
     <ul>
       <li> Kaikki NetBeans-vihjeet löytyvät
     <!-- BEGIN mini MOOC SNIP-->
-    <a class="ahy" href="../../netbeans/">täältä</a>
+    <a class="hidden-in-mooc" href="https://www.cs.helsinki.fi/group/java/k14-materiaali/nb-vihjeitä">täältä</a>
     <!-- END mini MOOC SNIP-->
     <!-- BEGIN mini SNIP-->
-    <a class="amooc" href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans">täältä</a>
+    <a class="hidden-in-hy" href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans">täältä</a>
     <!-- END mini SNIP-->
          </li>
       <li> <b>Koodin automaattinen täydennys</b>
@@ -1971,7 +1970,7 @@ Parittomia: 1
   <div class="ekstra">
     <p> <big><strong>Lisätietoa: toisto for-lauseen avulla</strong></big> </p>
     <p>Edellä esitellyn while-toistolauseen lisäksi Javassa toiston voi hoitaa myös for-toistolauseen avulla. Varsinaisesti rupeamme käyttämään for:ia vasta hieman myöhemmin kurssilla, mutta jo tässä vaiheessa mainittakoon, että toistolause</p>
-<pre class="java">
+<pre class="sh_java sh_sourceCode">
 int i = 0;
 while ( i &lt; 10 ) {
     System.out.println( i );
@@ -1979,7 +1978,7 @@ while ( i &lt; 10 ) {
 }
 </pre>
     <p>tehtäisiin for:in avulla seuraavasti:</p>
-<pre class="java">
+<pre class="sh_java">
 for ( int i = 0; i &lt; 10 ; i ++ ) {
     System.out.println( i );
 }
@@ -1991,7 +1990,7 @@ for ( int i = 0; i &lt; 10 ; i ++ ) {
   <p> Huomaamme, että jälkimmäinen joukko edellä lueteltuja komentoja poikkeaa if:istä ja while:stä ym. siinä, että komennon perässä on sulut ja joskus sulkujen sisällä komennolle annettava syöte. "Sulkuihin päättyvät" eivät oikeastaan olekaan komentoja vaan <strong>metodeja</strong>. </p>
   <p> Teknisesti ottaen metodi tarkoittaa koodinpätkää, jota voi kutsua muualta ohjelmakoodista. Koodirivi <code>System.out.println("olen metodille annettava parametri!")</code> siis tarkoittaa, että kutsutaan metodia, joka suorittaa ruudulle tulostamisen. Metodin suorituksen jälkeen palataan siihen kohtaa missä ennen metodikutsua oltiin menossa. Metodille suluissa annettua syötettä kutsutaan <i>metodin parametriksi</i>. </p>
   <p> Parametrin lisäksi metodilla voi olla <i>paluuarvo</i>. Esim. tuttu koodinpätkä: </p>
-<pre class="java">
+<pre class="sh_java">
 int luku = Integer.parseInt( lukija.nextLine() );
 </pre>
   <p> sisältää kaksi metodikutsua. Ensin kutsutaan sisempänä olevaa metodia <code>lukija.nextLine</code>. Metodilla on paluuarvonaan käyttäjän syöttämä merkkijono. Seuraavaksi
@@ -2215,8 +2214,9 @@ Hei Martin, terveiset metodimaailmasta!
 Hei Martin, terveiset metodimaailmasta!
 </pre>
   <p>Screencast aiheesta:</p>
-  <p><a class="ahy" href="http://www.youtube.com/watch?feature=player_embedded&v=sIosUNnRJVo" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
-  <a class="amooc" href="http://www.youtube.com/watch?feature=player_embedded&v=sIosUNnRJVo" height="300" target="_blank"><img src="https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a> </p>
+  <p>
+    <a href="http://www.youtube.com/watch?feature=player_embedded&v=sIosUNnRJVo" height="300" target="_blank"><img src="https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a> </p>
+  </p>
 <div class="tehtavat">
  <div class="tehtava">
     <h3>Tulostelua</h3>
@@ -2800,8 +2800,8 @@ char merkki = kirja.charAt(kirja.length());
     <ul>
       <li> Kaikki NetBeans-vihjeet löytyvät
 
-    <a class="ahy" href="../../netbeans/">täältä</a>
-    <a class="amooc" href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans">täältä</a>
+    <a class="hidden-in-mooc" href="https://www.cs.helsinki.fi/group/java/k14-materiaali/nb-vihjeitä">täältä</a>
+    <a class="hidden-in-hy" href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans">täältä</a>
       <li> <b>Uudelleennimentä</b>
         <p>Muuttujat, metodit ja ensi viikolla opittavat luokat kannattaa nimetä kuvaavasti. Usein käy, että valittu nimi on hieman epäkuvaava ja tulee tarve nimen muuttamiselle. NetBeans:issa tämä on todella helppoa. Maalaa huono nimi jostain kohtaa koodiasi hiirellä. Paina (yhtäaikaa) ctrl ja r ja kirjoita muuttujalle/metodille uusi nimi. </p>
       </li>
@@ -4281,6 +4281,7 @@ public static void poista(ArrayList&lt;Integer&gt; luvut, int poistettava) {
 
 <pre>
 Mikä kuva avataan? puu.jpg
+komento (lopeta, vaalenna)?
 </pre>
 
       <p>Komento avaa ikkunan, jossa käsiteltävä kuva näkyy.</p>
@@ -4293,10 +4294,10 @@ Mikä kuva avataan? puu.jpg
 Mikä kuva avataan? puu.jpg
 komento (lopeta, vaalenna)? vaalenna
 komento (lopeta, vaalenna)? vaalenna
-komento (lopeta, vaalenna)? 
+komento (lopeta, vaalenna)?
 </pre>
 
-      <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu-vaalennettu-x-2.png"/></p>
+      <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu-vaalenna-x-2.png"/></p>
 
       <p>Tässä tehtävässä Fotariin lisätään lisää toiminnallisuutta. Käytössäsi ovat kuvat <code>puu.jpg</code>, <code>ilta.jpg</code> ja <code>kukka.jpg</code>, sekä niistä pienemmät versiot <code>puu-small.jpg</code>, <code>ilta-small.jpg</code> ja <code>kukka-small.jpg</code>. Älä poista kuvia tehtäväpohjasta!</p>
 
@@ -4317,7 +4318,7 @@ komento (lopeta, vaalenna, tummenna)?
 
       <p>Yllä olevalla komentosarjalla avattava kuva tummenee, ja näyttää seuraavankaltaiselta.</p>
 
-      <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu-tummennettu.png"/></p>
+      <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu-tummenna.png"/></p>
 
       <h4>Negatiivi</h4>
 
@@ -4335,7 +4336,7 @@ komento (lopeta, vaalenna, tummenna, negatiivi)?
 
       <h4>Peilaus</h4>
 
-      <p>Lisää käyttöliittymään komento <code>peilaa</code>, jonka avulla avatusta kuvasta luodaan osittainen peilikuva. Osittainen peilikuva luodaan kopioimalla oikean laidan pikseleitä vasemmalle siten, että x-koordinaattiin 0 tulee koordinaatissa kuvan leveys - 1 olevat väriarvot, x-koordinaattiin 1 tulee koordinaatissa kuvan leveys - 2 olevat väriarvot jne. Peilaaminen siis kopioi kuvan oikean laidan kuvan vasemmalle laidalle, mutta ei kopioi vasenta laitaa oikealle laidalle.</p>
+      <p>Lisää käyttöliittymään komento <code>peilaa</code>, jonka avulla avatusta kuvasta luodaan osittainen peilikuva. Osittainen peilikuva luodaan kopioimalla oikean laidan pikseleitä vasemmalle siten, että x-koordinaattiin 0 tulee koordinaatissa kuvan leveys - 1 olevat väriarvot, x-koordinaattiin 1 tulee koordinaatissa kuvan leveys - 2 olevat väriarvot, x-koordinaattiin 2 tulee koordinaatissa kuvan leveys - 3 olevat väriarvot jne. Peilaaminen siis kopioi kuvan oikean laidan sisällön kuvan vasemmalle laidalle, mutta ei kopioi vasenta laitaa oikealle laidalle.</p>
 
       <p>Toteuta peilaustoiminnallisuus uuteen metodiin <code>public static void peilaa()</code>.</p>
 
@@ -4350,26 +4351,27 @@ komento (lopeta, vaalenna, tummenna, negatiivi, peilaa)?
       <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu-peilaa.png"/></p>
 
 
-      <h4>Pehmentaminen</h4>
+      <h4>Sumentaminen</h4>
 
+      <p>Lisää käyttöliittymään komento <code>sumenna</code>, jonka avulla avatusta kuvasta luodaan sumennettu versio. Kuvan sumentaminen tapahtuu ottamalla jokaisen pikselin läheiset pikselit ja laskemalla niissä olevista väreistä keskiarvo, joka lopulta asetetaan takaisin pikseliin -- jokainen pikseli tulee lopulta sisältämään keskiarvon sen läheisten pikselien väreistä. Mitä suurempi sumennus tehdään, sitä kauempana olevia pikseleitä käytetään sumentamiseen.</p>
 
-      <p>Lisää käyttöliittymään komento <code>pehmenna</code>, jonka avulla avatusta kuvasta luodaan pehmennetty versio. Pehmentäminen tapahtuu ottamalla jokaisen pikselin lähimmät pikselit, ja laskemalla niissä olevista väreistä keskiarvo, joka lopulta asetetaan takaisin pehmennettävään pikseliin.</p>
+      <p>Komentoa <code>sumenna</code> käytettäessä käyttöliittymän tulee kysyä sumentamiseen käytettävää etäisyyttä.</p>
 
-      <p>Komentoa <code>pehmenna</code> käytettäessä käyttöliittymän tulee kysyä paljonko pehmennetään. Käyttäjän antama vastaus annetaan pehmentämismetodille parametrina.</p>
+      <p>Fotari tarjoaa metodit <code>Fotari.punaiset(x, y, etaisyys)</code>, <code>Fotari.vihreat(x, y, etaisyys)</code>, ja <code>Fotari.siniset(x, y, etaisyys)</code>, jotka palauttavat ArrayList-tyyppisen listan Integer-arvoja, missä on tietyn etäisyyden päässä olevien pikselien väriarvot kullekin värille.</p>
 
-      <p>Fotari tarjoaa metodit <code>Fotari.punaiset(x, y, etaisyys)</code>, <code>Fotari.vihreat(x, y, etaisyys)</code>, ja <code>Fotari.siniset(x, y, etaisyys)</code>, jotka palauttavat ArrayList-tyyppisen listan Integer-arvoja, missä on tietyn etäisyyden päässä olevien pikselien väriarvot.</p>
-
-      <p>Toteuta metodi <code>public static void pehmenna(int paljonko);</code>, sekä käyttöliittymän toiminnallisuus.</p>
+      <p>Toteuta metodi <code>public static void sumenna(int paljonko);</code>, sekä käyttöliittymän toiminnallisuus.</p>
 
 <pre>
 Mikä kuva avataan? puu.jpg
-komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, pehmenna)? pehmenna
+komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, sumenna)? sumenna
 Kuinka paljon? 3
-komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, pehmenna)?
+komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, sumenna)?
 </pre>
+
 
       <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/71-fotari-puu-pehmenna-3.png"/></p>
 
+      <p>Yllä olevassa esimerkissä käyttäjä syöttää komennon <code>sumenna</code> ja antaa määräksi arvon <code>3</code>. Tällöin sumennus ottaa jokaisen pikselin kohdalla huomioon ne pikselit, jotka ovat kolmen pisteen päässä kyseisestä pikselistä. Hyödynnä tässä komentoja <code>Fotari.punaiset(x, y, etaisyys)</code> ym., missä <code>etaisyys</code>-parametrille voi antaa arvoksi käyttäjän syöttämän arvon.</p>
 
 
     </div>
@@ -4518,10 +4520,10 @@ public class Main {
   <p>Kuten muuttujien ja metodien nimien, myös luokan nimen on aina oltava mahdollisimman kuvaava. Joskus ohjelmoinnin edetessä luokka elää ja muuttaa muotoaan. Tällaisissa tilanteissa luokan voi nimetä uudelleen (
 
         <!-- BEGIN mini MOOC SNIP-->
-    <a class="ahy"  href="../../netbeans/">ks. NetBeans ohje</a>
+    <a class="hidden-in-mooc"  href="https://www.cs.helsinki.fi/group/java/k14-materiaali/nb-vihjeitä">ks. NetBeans ohje</a>
     <!-- END mini MOOC SNIP-->
     <!-- BEGIN mini SNIP-->
-    <a class="amooc"  href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans">ks. NetBeans ohje</a>
+    <a class="hidden-in-hy"  href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans">ks. NetBeans ohje</a>
     <!-- END mini SNIP-->).</p>
   </div>
   <p>Luodaan luokka nimeltä <code>Henkilo</code>. Luokasta muodostuu oma tiedostonsa <code>Henkilo.java</code>. Eli ohjelma koostuu nyt kahdesta tiedostosta, sillä pääohjelma on omassa tiedostossaan. Aluksi luokka on tyhjä:</p>
@@ -6478,7 +6480,15 @@ Juhana ei pääse jäseneksi
 </pre>
 <div class="help"> <p><big><b>Muutama NetBeans-vihje</b></big></p>
   <ul>
-    <li> Kaikki NetBeans-vihjeet löytyvät <a href="netbeans.html">täältä</a> </li>
+
+
+
+
+
+    <li> Kaikki NetBeans-vihjeet löytyvät
+      <a class="hidden-in-mooc"  href="https://www.cs.helsinki.fi/group/java/k14-materiaali/nb-vihjeitä">ks. NetBeans ohje</a>
+      <a class="hidden-in-hy"  href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans">ks. NetBeans ohje</a>
+    </li>
     <li> <b>Konstruktorien, getterien ja setterien automaattinen generointi</b>
       <p> Mene luokan koodilohkon sisäpuolelle mutta kaikkien metodien ulkopuolelle ja paina yhtä aikaa ctrl ja välilyönti. Jos luokallasi on esim. oliomuuttuja <code>saldo</code>, tarjoaa NetBeans mahdollisuuden generoida oliomuuttujalle getteri- ja setterimetodit sekä konstruktorin joka asettaa oliomuuttujalle alkuarvon. <b>HUOM:</b> laitoksen koneilla tämä saadaan aikaan painamalla yhtä aikaa ctrl, alt ja välilyönti. </p>
     </li>
