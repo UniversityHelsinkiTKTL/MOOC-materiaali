@@ -1580,6 +1580,15 @@ while (luku &gt;= 1) {
       <li> <b>sout</b>
         <p>Muista että saat ruudulle tekstin <em>System.out.println("")</em> kirjoittamalla <em>sout</em> ja painamalla <em>tabulaattoria</em> eli q:n vasemmalla puolella olevaa näppäintä </p>
       </li>
+	  <li>
+	    <p><b>HUOM2:</b> Pääset tarkastelemaan NetBeansin valmiiksi määrittelemiä lyhenteitä seuraavasti:</p>
+		<pre>Tools -> Options -> Editor -> Code Templates</pre>
+		<p>Pystyt myös lisäämään omia lyhenteitäsi <b>New</b> painikkeella.</p>
+		<p>Voi luoda itsellesi esimerkiksi uuden komennon ipn</p>
+		<pre>int ${luku newVarName} = Integer.parseInt(${lukija instanceof="java.util.Scanner"}.nextLine());</pre>
+		<p>Nyt kirjoittamalla <b>ipn</b> pitäisi ruudulle ilmestyä jotakin tämän tapaista:</p>
+		<pre>int i = Integer.parseInt(lukija.nextLine());</pre>
+	  </li>
     </ul>
   </div>
   <!--syntax ok-->
@@ -3619,10 +3628,15 @@ public static void main(String[] args) {
 </pre>
     <p>(Lukujen keskiarvo on 3.5, joten otosvarianssi on
       ((3 - 3.5)² + (2 - 3.5)² + (7 - 3.5)² + (2 - 3.5)²)/(4 - 1) ˜ 5,666667.) </p>
+	<p>Kun listassa on N kappaletta lukuja voidaan otosvarianssi lasketaan seuraavasti:</p>
+	<pre><b>(</b>(luku<sub>1</sub> - keskiarvo)² + (luku<sub>2</sub> - keskiarvo)² + ... + (luku<sub>N</sub> - keskiarvo)²<b>)</b> / (N - 1)</pre>
     <p><strong>Huom!</strong> Muistathan kokeillessasi ohjelmaa, että
       yhden alkion kokoisen listan (otos)varianssia ei ole määritelty!
       Kaavassa tapahtuu tällöin nollalla jakaminen. Java esittää
-      nollalla jakamisen tuloksen <em>epänumerona</em> <code>NaN</code></p>
+      nollalla jakamisen tuloksen <em>epänumerona</em> <code>NaN</code>
+	</p>
+	<pre><b>(</b><i>(luku<sub>1</sub> - keskiarvo)&sup2; + (luku<sub>2</sub> - keskiarvo)&sup2; + ... + (luku<sub>N</sub> - keskiarvo)&sup2;</i><b>)</b> / (<i>N - 1</i>)</pre>
+
   </div>
 </div>
   <h2>Totuusarvojen käyttö</h2>
