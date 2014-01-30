@@ -5132,7 +5132,7 @@ public void syoMaukkaasti() {
       // kirjoita koodia tähän
 }
 </pre>
-    <p>Metodin <code>syoEdullisesti</code> tulisi vähentää kortin saldoa 2.50 eurolla ja metodin <code>syoMaukkaasti</code> tulisi vähentää kortin saldoa 4.00 eurolla.</p>
+    <p>Metodin <code>syoEdullisesti</code> tulisi vähentää kortin saldoa 2.50 eurolla ja metodin <code>syoMaukkaasti</code> tulisi vähentää kortin saldoa 4.30 eurolla.</p>
     <p>Seuraava pääohjelma testaa luokkaa:</p>
     <pre class="sh_java">
 public class Paaohjelma {
@@ -5149,11 +5149,11 @@ public class Paaohjelma {
     }
 }
 </pre>
-    <p>Ohjelman tulisi tuottaa seuraava tulostus:</p>
+    <p>Ohjelman tulisi tuottaa kutakuinkin seuraava tulostus:</p>
     <pre>
 Kortilla on rahaa 50.0 euroa
 Kortilla on rahaa 47.5 euroa
-Kortilla on rahaa 41.0 euroa
+Kortilla on rahaa 40.7 euroa
 </pre>
     <h4 class="req">Ei-negatiivinen saldo</h4>
     <p>Mitä tapahtuu, jos kortilta loppuu raha kesken? Ei ole järkevää, että saldo muuttuu negatiiviseksi. Muuta metodeita <code>syoEdullisesti</code> ja <code>syoMaukkaasti</code> niin, että ne eivät vähennä saldoa, jos saldo menisi negatiiviseksi.</p>
@@ -5175,8 +5175,8 @@ public class Paaohjelma {
     <p>Ohjelman tulisi tuottaa seuraava tulostus:</p>
 <pre>
 Kortilla on rahaa 5.0 euroa
-Kortilla on rahaa 1.0 euroa
-Kortilla on rahaa 1.0 euroa
+Kortilla on rahaa 0.7 euroa
+Kortilla on rahaa 0.7 euroa
 </pre>
     <p>Yllä toinen metodin <code>syoMaukkaasti</code> kutsu ei vaikuttanut saldoon, koska saldo olisi mennyt negatiiviseksi.</p>
     <h4 class="req">Kortin lataaminen</h4>
@@ -5267,7 +5267,7 @@ Pekka: Kortilla on rahaa 30.7 euroa
 Matti: Kortilla on rahaa 73.2 euroa
 </pre>
 
-    <p><em>Saatat huomata, että osassa luvuista ilmenee pyöristysvirheitä. Esimerkiksi pekan saldo 30.7 saattaa tulostua muodossa <code>30.700000000000003</code>. Tämä liittyy siihen, että liukuluvut kuten <code>double</code> tallennetaan oikeasti muuttujiin binäärimuodossa, eli nollina ja ykkösinä vain rajattua määrää lukuja käyttäen. Koska liukulukuja on ääretön määrä (keksitkö miksi? kuinka monta liuku- tai desimaalilukua mahtuu vaikkapa lukujen 5 ja 6 väliin?), ei kaikkia voi esittää rajatulla määrällä nollia ja ykkösiä, jolloin tietokone joutuu rajoittamaan tallennustarkkuutta.</em></p>
+    <p><em>Saatat huomata, että osassa luvuista ilmenee pyöristysvirheitä. Esimerkiksi pekan saldo 30.7 saattaa tulostua muodossa <code>30.700000000000003</code>. Tämä liittyy siihen, että liukuluvut kuten <code>double</code> tallennetaan oikeasti binäärimuodossa, eli nollina ja ykkösinä vain rajattua määrää lukuja käyttäen. Koska liukulukuja on ääretön määrä (keksitkö miksi? kuinka monta liuku- tai desimaalilukua mahtuu vaikkapa lukujen 5 ja 6 väliin?), ei kaikkia voi esittää rajatulla määrällä nollia ja ykkösiä, ja tietokone joutuu rajoittamaan tallennustarkkuutta.</em></p>
   </div>
 </div>
 
@@ -5995,6 +5995,7 @@ Lottonumerot:
 </pre>
     <p><strong>Huom!</strong> Sama numero saa esiintyä lottorivissä vain kerran.</p>
   </div>
+
   <div class="tehtava">
     <h3>Hirsipuun logiikka</h3>
     <p>Hirsipuu-pelistä pitävä kaverisi ohjelmoi hirsipuupelin joka näyttää seuraavalta.</p>
@@ -6113,6 +6114,19 @@ HirsipuuIkkuna peliIkkuna = new HirsipuuIkkuna(logiikka);
 peliIkkuna.pelaa();
 </pre>
     <p>Peliä pelataan näppäimistöltä, pelin voi lopettaa painamalla peli-ikkunan vasemmassa yläkulmassa olevaa x-merkkiä.</p>
+  </div>
+
+  <div class="tehtava no-number">
+
+    <h3>Osallistuminen tutkimukseen</h3>
+
+    <p>Tässä tehtävässä osallistut kokeellisessa psykologiassa käytettyyn <a href="http://en.wikipedia.org/wiki/Task_switching_(psychology)" target="_blank">tehtävänvaihtotestiin</a>, missä tutkitaan aivojen mukautumista kahden tai useamman samanaikaisen tehtävän suorittamiseen.</p>
+
+    <p>Käytössä olevassa testiohjelmassa on neljä osaa. Ensimmäisessä osassa mitataan reaktioaikaa, toisessa osassa parittoman (odd) ja parillisen (even) luvun tunnistamista, kolmannessa osassa konsonantin (consonant) ja vokaalin (vowel) tunnistamista, ja viimeisessä osassa yhdistetään osat kaksi ja kolme. Näet jokaisen osion jälkeen edellisen osion tulokset.</p>
+
+    <p>Testin tulokset tulevat vain tutkimuskäyttöön, eikä mahdollisesti raportoitavista tuloksista voida yksilöidä yksittäisiä vastaajia. Tehtävän suorittamiseen menee noin 10-15 minuuttia.</p>
+
+    <p>Aloita testi osoitteessa <a href="http://lukiot.it.helsinki.fi/ts-cs/" target="_blank">http://lukiot.it.helsinki.fi/ts-cs/</a>. Kiitos jo nyt osallistumisesta!</p>
   </div>
 </div>
 </div>
