@@ -6630,17 +6630,17 @@ punnituksia tehty 6
 </pre>
 </div>
 <div class="tehtava">
-  <h3>TODO: Muuta Lyyra-kortti ja Kassapääte</h3>
-  <h4 class="req">"Tyhmä" Lyyra-kortti</h4>
-  <p>Teimme viime viikolla luokan LyyraKortti. Kortilla oli metodit edullisesti ja maukkaasti syömistä sekä rahan lataamista varten.</p>
-  <p>Viime viikon tyylillä tehdyssä Lyyra-kortissa oli kuitenkin ongelma. Kortti tiesi lounaiden hinnan ja osasi sen ansiosta vähentää saldoa oikean määrän. Entä kun hinnat nousevat? Tai jos myyntivalikoimaan tulee uusia tuotteita? Hintojen muuttaminen tarkoittaisi, että kaikki jo käytössä olevat Lyyra-kortit pitäisi korvata uusilla, uudet hinnat tuntevilla korteilla. </p>
+  <h3>Maksukortti ja Kassapääte</h3>
+  <h4 class="req">"Tyhmä" Maksukortti</h4>
+  <p>Teimme viime viikolla luokan Maksukortti. Kortilla oli metodit edullisesti ja maukkaasti syömistä sekä rahan lataamista varten.</p>
+  <p>Viime viikon tyylillä tehdyssä Maksukortti-luokassa oli kuitenkin ongelma. Kortti tiesi lounaiden hinnan ja osasi sen ansiosta vähentää saldoa oikean määrän. Entä kun hinnat nousevat? Tai jos myyntivalikoimaan tulee uusia tuotteita? Hintojen muuttaminen tarkoittaisi, että kaikki jo käytössä olevat kortit pitäisi korvata uusilla, uudet hinnat tuntevilla korteilla. </p>
   <p>Parempi ratkaisu on tehdä kortit "tyhmiksi", hinnoista ja myytävistä tuotteista tietämättömiksi pelkän saldon säilyttäjiksi. Kaikki äly kannattaakin laittaa erillisiin olioihin, kassapäätteisiin.</p>
-  <p>Toteutetaan ensin Lyyra-kortista "tyhmä" versio. Kortilla on ainoastaan metodit saldon kysymiseen, rahan lataamiseen ja rahan ottamiseen. Täydennä alla (ja tehtäväpohjassa) olevaan luokkaan metodin <code>public boolean otaRahaa(double maara)</code> ohjeen mukaan:</p>
+  <p>Toteutetaan ensin Maksukortista "tyhmä" versio. Kortilla on ainoastaan metodit saldon kysymiseen, rahan lataamiseen ja rahan ottamiseen. Täydennä alla (ja tehtäväpohjassa) olevaan luokkaan metodin <code>public boolean otaRahaa(double maara)</code> ohjeen mukaan:</p>
   <pre class="sh_java">
-public class LyyraKortti {
+public class Maksukortti {
     private double saldo;
 
-    public LyyraKortti(double saldo) {
+    public Maksukortti(double saldo) {
       this.saldo = saldo;
     }
 
@@ -6662,7 +6662,7 @@ public class LyyraKortti {
   <pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
-        LyyraKortti pekanKortti = new LyyraKortti(10);
+        Maksukortti pekanKortti = new Maksukortti(10);
 
         System.out.println("rahaa " + pekanKortti.saldo() );
         boolean onnistuiko = pekanKortti.otaRahaa(8);
@@ -6684,7 +6684,7 @@ onnistuiko otto: false
 rahaa 2.0
 </pre>
   <h4 class="req">Kassapääte ja käteiskauppa</h4>
-  <p>Unicafessa asioidessa asiakas maksaa joko käteisellä tai Lyyra-kortilla. Myyjä käyttää kassapäätettä kortin velottamiseen ja käteismaksujen hoitamiseen. Tehdään ensin kassapäätteestä käteismaksuihin sopiva versio. </p>
+  <p>Unicafessa asioidessa asiakas maksaa joko käteisellä tai maksukortilla. Myyjä käyttää kassapäätettä kortin velottamiseen ja käteismaksujen hoitamiseen. Tehdään ensin kassapäätteestä käteismaksuihin sopiva versio. </p>
   <p>Kassapäätteen runko. Metodien kommentit kertovat halutun toiminnallisuuden:</p>
   <pre class="sh_java">
 public class Kassapaate {
@@ -6703,7 +6703,7 @@ public class Kassapaate {
     }
 
     public double syoMaukkaasti(double maksu) {
-        // maukas lounas maksaa 4.00 euroa.
+        // maukas lounas maksaa 4.30 euroa.
         // kasvatetaan kassan rahamäärää maukkaan lounaan hinnalla ja palautetaan vaihtorahat
         // jos parametrina annettu maksu ei ole riittävän suuri, ei lounasta myydä ja metodi palauttaa koko summan
     }
@@ -6725,7 +6725,7 @@ public class Paaohjelma {
         vaihtorahaa = unicafeExactum.syoEdullisesti(5);
         System.out.println("vaihtorahaa jäi "  + vaihtorahaa );
 
-        vaihtorahaa = unicafeExactum.syoMaukkaasti(4);
+        vaihtorahaa = unicafeExactum.syoMaukkaasti(4.3);
         System.out.println("vaihtorahaa jäi "  + vaihtorahaa );
 
         System.out.println( unicafeExactum );
@@ -6736,23 +6736,23 @@ public class Paaohjelma {
 vaihtorahaa jäi 7.5
 vaihtorahaa jäi 2.5
 vaihtorahaa jäi 0.0
-kassassa rahaa 1009.0 edullisia lounaita myyty 2 maukkaita lounaita myyty 1
+kassassa rahaa 1009.3 edullisia lounaita myyty 2 maukkaita lounaita myyty 1
 </pre>
   <h4 class="req">Kortilla maksaminen</h4>
-  <p>Laajennetaan kassapäätettä siten että myös kortilla voi maksaa. Teemme kassapäätteelle siis metodit joiden parametrina kassapääte saa lyyrakortin jolta se vähentää valitun lounaan hinnan.
+  <p>Laajennetaan kassapäätettä siten että myös kortilla voi maksaa. Teemme kassapäätteelle siis metodit joiden parametrina kassapääte saa maksukortin jolta se vähentää valitun lounaan hinnan.
     Seuraavassa uusien metodien rungot ja ohje niiden toteuttamiseksi:</p>
 <pre class="sh_java">
 public class Kassapaate {
     // ...
 
-    public boolean syoEdullisesti(LyyraKortti kortti) {
+    public boolean syoEdullisesti(Maksukortti kortti) {
         // edullinen lounas maksaa 2.50 euroa.
         // jos kortilla on tarpeeksi rahaa, vähennetään hinta kortilta ja palautetaan true
         // muuten palautetaan false
     }
 
-    public boolean syoMaukkaasti(LyyraKortti kortti) {
-        // maukas lounas maksaa 4.00 euroa.
+    public boolean syoMaukkaasti(Maksukortti kortti) {
+        // maukas lounas maksaa 4.30 euroa.
         // jos kortilla on tarpeeksi rahaa, vähennetään hinta kortilta ja palautetaan true
         // muuten palautetaan false
     }
@@ -6770,7 +6770,7 @@ public class Paaohjelma {
         double vaihtorahaa = unicafeExactum.syoEdullisesti(10);
         System.out.println("vaihtorahaa jäi " + vaihtorahaa );
 
-        LyyraKortti antinKortti = new LyyraKortti(7);
+        Maksukortti antinKortti = new Maksukortti(7);
 
         boolean onnistuiko = unicafeExactum.syoMaukkaasti(antinKortti);
         System.out.println("riittikö raha: " + onnistuiko);
@@ -6793,7 +6793,7 @@ kassassa rahaa 1002.5 edullisia lounaita myyty 2 maukkaita lounaita myyty 1
   <h4 class="req">Rahan lataaminen</h4>
   <p>Lisätään vielä kassapäätteelle metodi jonka avulla kortille voidaan ladata lisää rahaa. Muista, että rahan lataamisen yhteydessä ladattava summa viedään kassapäätteeseen. Metodin runko:</p>
   <pre class="sh_java">
-public void lataaRahaaKortille(LyyraKortti kortti, double summa) {
+public void lataaRahaaKortille(Maksukortti kortti, double summa) {
     // ...
 }
 </pre>
@@ -6804,7 +6804,7 @@ public class Paaohjelma {
         Kassapaate unicafeExactum = new Kassapaate();
         System.out.println( unicafeExactum );
 
-        LyyraKortti antinKortti = new LyyraKortti(2);
+        Maksukortti antinKortti = new Maksukortti(2);
 
         System.out.println("kortilla rahaa " + antinKortti.saldo() + " euroa");
 
@@ -7966,8 +7966,8 @@ numero ei tiedossa
 </pre>
 </div>
 <div class="tehtava">
-  <h3>TODO: muuta lyyra Raha</h3>
-  <p>Lyyrakortti-tehtävässä käytimme rahamäärän tallettamiseen double-tyyppistä oliomuuttujaa. Todellisissa sovelluksissa näin ei kannata tehdä, sillä kuten jo olemme nähneet, doubleilla laskenta ei ole tarkkaa. Onkin järkevämpää toteuttaa rahamäärän käsittely oman luokkansa avulla. Seuraavassa on luokan runko:</p>
+  <h3>Raha</h3>
+  <p>Maksukortti-tehtävässä käytimme rahamäärän tallettamiseen double-tyyppistä oliomuuttujaa. Todellisissa sovelluksissa näin ei kannata tehdä, sillä kuten jo olemme nähneet, doubleilla laskenta ei ole tarkkaa. Onkin järkevämpää toteuttaa rahamäärän käsittely oman luokkansa avulla. Seuraavassa on luokan runko:</p>
   <pre class="sh_java">
 public class Raha {
 
