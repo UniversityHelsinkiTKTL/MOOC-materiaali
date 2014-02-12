@@ -9520,15 +9520,63 @@ public class Viikko {
   <h2 class="amooc">Palaute</h2>
   <div class="tehtavat">
     <div class="tehtava">
-    <h3 class="ahy">Kurssipalaute</h3>
-    <h3 class="amooc">Palaute</h3>
-    <div>
-      <p>Vaikka olemme saaneet paljon arvokasta palautetta eri tehtävistä TMC:n kautta, toivomme että annatte palautetta kattavammin kaikista tähänastisita tehtävistä, materiaalista yms.</p>
+      <h3 class="ahy">Kurssipalaute</h3>
+      <h3 class="amooc">Palaute</h3>
+      <div>
+	<p>Vaikka olemme saaneet paljon arvokasta palautetta eri tehtävistä TMC:n kautta, toivomme että annatte palautetta kattavammin kaikista tähänastisita tehtävistä, materiaalista yms.</p>
+      </div>
+      <p>Jotta saat merkatuksi tämän tehtävän, aja tehtävän TMC-testit ja lähetä tehtävä palvelimelle. </p>
     </div>
-  <p>Jotta saat merkatuksi tämän tehtävän, aja tehtävän TMC-testit ja lähetä tehtävä palvelimelle. </p>
-</div>
-</div>
-</div>
+  </div>
+
+  <h2>Tulevan fiilistelyä</h2>
+  
+  <p>Kevään lopulla teemme koko matopelin itse. Fiilistellään tässä välissä hieman, ja pohditaan <em>matopelin älyn</em> rakentamista.</p>
+
+  <div class="tehtavat">
+    <div class="tehtava">
+      <h3>Älykäs mato</h3>
+
+      <p>Matopelin ideana on ohjata matoa (joka sattumalta on eräs Rho-bottimme inkarnaatio) siten, että mato saa kerättyä pelialueelta mahdollisimman monta omenaa törmäämättä itseensä tai seiniin.</p>
+
+      <img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/108-matoaly.png"/>
+
+      <p>Tämä tehtävä on avoin tehtävä, jossa pääset pohtimaan matopelin tekoälyn toteuttamista. Tehtävän vaatimukset ovat ensisijaisesti se, että tekoälysi ei saa päätyä poikkeustilaan (esimerkiksi ArrayIndexOutOfBoundsException, joka tarkoittaa että yritetään hakea tietoa käytössä olevan alueen ulkopuolelta), ja että tekoälysi ohjaa matosi keräämään ainakin muutamia omenoita.</p>
+
+      <p>Tehtäväpohjassa on mukana luokka <code>Main</code>, missä on matopelin käynnistämiseen tarvittavat lähdekoodit -- luokkaa ei tarvitse muokata, sekä luokka <code>Matoaly</code>, johon toteutet <em>älyä</em> omenan jahtaamiseen.</p>
+
+      <p>Luokan <code>Matoaly</code> metodin <code>annaSiirto</code> tulee palauttaa merkkijono <code>"YLOS"</code>, <code>"ALAS"</code>, <code>"VASEN"</code> tai <code>"OIKEA"</code>, jolla kerrotaan suunta, mihin madon tulee seuraavaksi liikkua.</p>
+
+      <p>Käytössäsi ovat seuraavat <code>Matopeli</code>-luokan metodit, joista saat apua älyn tekemiseen (luokka <code>Matoaly</code> saa <code>Matopeli</code>-luokan ilmentymän metodin <code>annaSiirto</code> parametrina).:</p>
+
+      <ol>
+	<li>ArrayList&lt;Pala&gt; madonPalat(); palauttaa palat, joista mato koostuu. Jokaisella palalla on metodit <code>getX()</code> ja <code>getY()</code>, joilla pääset käsiksi kyseisen palan sijaintiin.</li>
+	<li>int matoX(); palauttaa madon pään x-koordinaatin.</li>	
+	<li>int matoY(); palauttaa madon pään y-koordinaatin.</li>
+	<li>int omenaX(); palauttaa omenan x-koordinaatin.</li>
+	<li>int omenaY(); palauttaa omenan y-koordinaatin.</li>
+      </ol>
+
+      <p>Näiden lisäksi metodi <code>int[][] annaAlusta()</code> palauttaa <em>kaksiulotteisen</em> taulukon, joka sisältää matopelin tilanteen. Jos taulukosta halutaan koordinaatin (3, 2) tilanne (ensimmäinen luku on x-koordinaatti, toinen y-koordinaatti), taulukkoa käytetään seuraavasti:</p>
+
+<pre class="sh_java">
+int[][] taulukko = matopeli.annaAlusta();
+int tilanne = taulukko[3][2];
+
+System.out.println(tilanne);
+</pre> 
+
+      <p>Yllä olevassa esimerkissä tulostetaan x-koordinaatissa 3 ja y-koordinaatissa 2 oleva tilanne. Taulukon alkiot ovat merkitty seuraavasti: luku -2 tarkoittaa madon päätä, luku -1 madon muuta osaa, ja luku 8 omenaa. Luku 0 tarkoittaa, että kohta on vapaa.</p>
+      
+      <p>Huom! Saat taulukon leveyden komennolla <code>int leveys = taulukko.length;</code>, taulukon korkeus taas löytyy komennolla <code>int korkeus = taulukko[0].length;</code>. Taulukon indeksöinti alkaa nollasta, eli ensimmäinen alkio on kohdassa <code>taulukko[0][0];</code>, ja viimeinen alkio on kohdassa <code>taulukko[leveys-1][korkeus-1];</code>.</p>
+      
+      <p>Vinkki: Yksi tapa lähteä pohtimaan ongelmaa on miettiä suuntaa mihin madon pitäisi liikkua; tämän jälkeen voit alkaa pohtimaan miten häntää kannattaa välttää, jonka jälkeen voit aloittaa reunojen välttelemisen.</p>							      
+      <p>Vinkki2: Erittäin hyvin toimivan matoälyn tekeminen on haastavaa; hyviin lähestymistapoihin tutustutaan tarkemmin mm. kurssilla tietorakenteet.</p>
+      
+    </div>
+  </div>
+
+  </div>
 </section>
 <!-- BEGIN MOOC SNIP -->
 <!-- BEGIN SNIP -->
