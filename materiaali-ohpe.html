@@ -1572,15 +1572,15 @@ while (luku &gt;= 1) {
       <li> <b>sout</b>
         <p>Muista että saat ruudulle tekstin <em>System.out.println("")</em> kirjoittamalla <em>sout</em> ja painamalla <em>tabulaattoria</em> eli q:n vasemmalla puolella olevaa näppäintä </p>
       </li>
-	  <li>
-	    <p><b>HUOM2:</b> Pääset tarkastelemaan NetBeansin valmiiksi määrittelemiä lyhenteitä seuraavasti:</p>
-		<pre>Tools -> Options -> Editor -> Code Templates</pre>
-		<p>Pystyt myös lisäämään omia lyhenteitäsi <b>New</b> painikkeella.</p>
-		<p>Voi luoda itsellesi esimerkiksi uuden komennon ipn</p>
-		<pre>int ${luku newVarName} = Integer.parseInt(${lukija instanceof="java.util.Scanner"}.nextLine());</pre>
-		<p>Nyt kirjoittamalla <b>ipn</b> pitäisi ruudulle ilmestyä jotakin tämän tapaista:</p>
-		<pre>int i = Integer.parseInt(lukija.nextLine());</pre>
-	  </li>
+          <li>
+            <p><b>HUOM2:</b> Pääset tarkastelemaan NetBeansin valmiiksi määrittelemiä lyhenteitä seuraavasti:</p>
+                <pre>Tools -> Options -> Editor -> Code Templates</pre>
+                <p>Pystyt myös lisäämään omia lyhenteitäsi <b>New</b> painikkeella.</p>
+                <p>Voi luoda itsellesi esimerkiksi uuden komennon ipn</p>
+                <pre>int ${luku newVarName} = Integer.parseInt(${lukija instanceof="java.util.Scanner"}.nextLine());</pre>
+                <p>Nyt kirjoittamalla <b>ipn</b> pitäisi ruudulle ilmestyä jotakin tämän tapaista:</p>
+                <pre>int i = Integer.parseInt(lukija.nextLine());</pre>
+          </li>
     </ul>
   </div>
   <!--syntax ok-->
@@ -3620,8 +3620,8 @@ public static void main(String[] args) {
 </pre>
     <p>(Lukujen keskiarvo on 3.5, joten otosvarianssi on
       ((3 - 3.5)² + (2 - 3.5)² + (7 - 3.5)² + (2 - 3.5)²)/(4 - 1) ˜ 5,666667.) </p>
-	<p>Kun listassa on N kappaletta lukuja voidaan otosvarianssi lasketaan seuraavasti:</p>
-	<pre><b>(</b>(luku<sub>1</sub> - keskiarvo)² + (luku<sub>2</sub> - keskiarvo)² + ... + (luku<sub>N</sub> - keskiarvo)²<b>)</b> / (N - 1)</pre>
+        <p>Kun listassa on N kappaletta lukuja voidaan otosvarianssi lasketaan seuraavasti:</p>
+        <pre><b>(</b>(luku<sub>1</sub> - keskiarvo)² + (luku<sub>2</sub> - keskiarvo)² + ... + (luku<sub>N</sub> - keskiarvo)²<b>)</b> / (N - 1)</pre>
     <p><strong>Huom!</strong> Muistathan kokeillessasi ohjelmaa, että
       yhden alkion kokoisen listan (otos)varianssia ei ole määritelty!
       Kaavassa tapahtuu tällöin nollalla jakaminen. Java esittää
@@ -9520,10 +9520,16 @@ public class Viikko {
   <h2 class="hidden-in-hy">Palaute</h2>
   <div class="tehtavat">
     <div class="tehtava">
-      <h3 class="hidden-in-mooc">Kurssipalaute</h3>
-      <h3 class="hidden-in-hy">Palaute</h3>
+      <h3 class="ignore-in-mooc">Kurssipalaute</h3>
       <div>
-	<p>Vaikka olemme saaneet paljon arvokasta palautetta eri tehtävistä TMC:n kautta, toivomme että annatte palautetta kattavammin kaikista tähänastisita tehtävistä, materiaalista yms.</p>
+        <p>Vaikka olemme saaneet paljon arvokasta palautetta eri tehtävistä TMC:n kautta, toivomme että annatte palautetta kattavammin kaikista tähänastisita tehtävistä, materiaalista yms.</p>
+      </div>
+      <p>Jotta saat merkatuksi tämän tehtävän, aja tehtävän TMC-testit ja lähetä tehtävä palvelimelle. </p>
+    </div>
+    <div class="tehtava">
+      <h3 class="ignore-in-hy">Palaute</h3>
+      <div>
+        <p>Vaikka olemme saaneet paljon arvokasta palautetta eri tehtävistä TMC:n kautta, toivomme että annatte palautetta kattavammin kaikista tähänastisita tehtävistä, materiaalista yms.</p>
       </div>
       <p>Jotta saat merkatuksi tämän tehtävän, aja tehtävän TMC-testit ja lähetä tehtävä palvelimelle. </p>
     </div>
@@ -9550,11 +9556,11 @@ public class Viikko {
       <p>Käytössäsi ovat seuraavat <code>Matopeli</code>-luokan metodit, joista saat apua älyn tekemiseen (luokka <code>Matoaly</code> saa <code>Matopeli</code>-luokan ilmentymän metodin <code>annaSiirto</code> parametrina).:</p>
 
       <ol>
-	<li>ArrayList&lt;Pala&gt; madonPalat(); palauttaa palat, joista mato koostuu. Jokaisella palalla on metodit <code>getX()</code> ja <code>getY()</code>, joilla pääset käsiksi kyseisen palan sijaintiin.</li>
-	<li>int matoX(); palauttaa madon pään x-koordinaatin.</li>	
-	<li>int matoY(); palauttaa madon pään y-koordinaatin.</li>
-	<li>int omenaX(); palauttaa omenan x-koordinaatin.</li>
-	<li>int omenaY(); palauttaa omenan y-koordinaatin.</li>
+        <li>ArrayList&lt;Pala&gt; madonPalat(); palauttaa palat, joista mato koostuu. Jokaisella palalla on metodit <code>getX()</code> ja <code>getY()</code>, joilla pääset käsiksi kyseisen palan sijaintiin.</li>
+        <li>int matoX(); palauttaa madon pään x-koordinaatin.</li>
+        <li>int matoY(); palauttaa madon pään y-koordinaatin.</li>
+        <li>int omenaX(); palauttaa omenan x-koordinaatin.</li>
+        <li>int omenaY(); palauttaa omenan y-koordinaatin.</li>
       </ol>
 
       <p>Näiden lisäksi metodi <code>int[][] annaAlusta()</code> palauttaa <em>kaksiulotteisen</em> taulukon, joka sisältää matopelin tilanteen. Jos taulukosta halutaan koordinaatin (3, 2) tilanne (ensimmäinen luku on x-koordinaatti, toinen y-koordinaatti), taulukkoa käytetään seuraavasti:</p>
@@ -9564,15 +9570,15 @@ int[][] taulukko = matopeli.annaAlusta();
 int tilanne = taulukko[3][2];
 
 System.out.println(tilanne);
-</pre> 
+</pre>
 
       <p>Yllä olevassa esimerkissä tulostetaan x-koordinaatissa 3 ja y-koordinaatissa 2 oleva tilanne. Taulukon alkiot ovat merkitty seuraavasti: luku -2 tarkoittaa madon päätä, luku -1 madon muuta osaa, ja luku 8 omenaa. Luku 0 tarkoittaa, että kohta on vapaa.</p>
-      
+
       <p>Huom! Saat taulukon leveyden komennolla <code>int leveys = taulukko.length;</code>, taulukon korkeus taas löytyy komennolla <code>int korkeus = taulukko[0].length;</code>. Taulukon indeksöinti alkaa nollasta, eli ensimmäinen alkio on kohdassa <code>taulukko[0][0];</code>, ja viimeinen alkio on kohdassa <code>taulukko[leveys-1][korkeus-1];</code>.</p>
-      
-      <p>Vinkki: Yksi tapa lähteä pohtimaan ongelmaa on miettiä suuntaa mihin madon pitäisi liikkua; tämän jälkeen voit alkaa pohtimaan miten häntää kannattaa välttää, jonka jälkeen voit aloittaa reunojen välttelemisen.</p>							      
+
+      <p>Vinkki: Yksi tapa lähteä pohtimaan ongelmaa on miettiä suuntaa mihin madon pitäisi liikkua; tämän jälkeen voit alkaa pohtimaan miten häntää kannattaa välttää, jonka jälkeen voit aloittaa reunojen välttelemisen.</p>
       <p>Vinkki2: Erittäin hyvin toimivan matoälyn tekeminen on haastavaa; tehokkaisiin lähestymistapoihin tutustutaan tarkemmin mm. kurssilla tietorakenteet.</p>
-      
+
     </div>
   </div>
 
