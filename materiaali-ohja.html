@@ -7039,7 +7039,7 @@ public class Lintu {
 
 </pre>
 
-<p>Ideana on toteuttaa rengastustoimistoon toiminnallisuus jonka avulla voidaan pitää kirjaa tiettynä vuotena rengastettujen lintujen havaintojen lukumääristä ja havaintopaikoista. Havaintomääriä ja -paikkoja ei kuitenkaan talleteta Lintu-olioihin, vaan erilliseen HashMap:iin jonka avaimena käytetään Lintu-olioita. Kuten muistamme viikolta <span class="ahy">2</span><span class="amooc">8</span>, on tälläisessä tapauksessa toteutettava luokalle <code>Lintu</code> metodit <code>equals(Object t)</code> ja <code>hashCode()</code>.</p>
+<p>Ideana on toteuttaa rengastustoimistoon toiminnallisuus jonka avulla voidaan pitää kirjaa tiettynä vuotena rengastettujen lintujen havaintojen lukumääristä ja havaintopaikoista. Havaintomääriä ja -paikkoja ei kuitenkaan talleteta Lintu-olioihin, vaan erilliseen HashMap:iin jonka avaimena käytetään Lintu-olioita. Kuten muistamme viikolta 8, on tälläisessä tapauksessa toteutettava luokalle <code>Lintu</code> metodit <code>equals(Object t)</code> ja <code>hashCode()</code>.</p>
 
 <p>Joillain linnuilla on useita suomenkielisä nimiä (esim. punakottaraisesta käytetään edelleen joskus sen vanhaa nimitystä rusokottarainen), latinankielinen nimi on kuitenkin aina yksikäsitteinen. Tee luokalle <code>Lintu</code> <code>equals-</code> ja <code>hashCode-</code>metodit jotka toimivat siten, että lintu-oliot tulkitaan samoiksi jos niiden latinankielinen nimi ja rengastusvuosi ovat samat.</p>
 
