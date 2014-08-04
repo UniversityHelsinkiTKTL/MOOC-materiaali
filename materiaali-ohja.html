@@ -869,14 +869,27 @@ public static int number() {
           <tr>
             <td>
               <pre class="sh_java">
-public static int number() {
+public static int condition(int number) {
+    if(number > 30) {  return 1;
+    } else if (number > 25)
+    { return 2;
+    } else if (number > 20) {
+  return 3;
+    }
 return 4;
 }
               </pre>
             </td>
             <td>
               <pre class="sh_java">
-public static int number() {
+public static int condition(int number) {
+    if(number > 30) {
+        return 1;
+    } else if (number > 25) {
+        return 2;
+    } else if (number > 20) {
+        return 3;
+    }
     return 4;
 }
               </pre>
