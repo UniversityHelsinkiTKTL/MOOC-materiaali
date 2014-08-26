@@ -477,27 +477,36 @@
 
   <h2 id="koodia">Ohjelma ja lähdekoodi</h2>
   
-  <p>Tietokoneohjelmia verrataan usein leipomiseen. Tietokone on leipuri, tietokone-ohjelma resepti, ja tietokoneen resurssit -- esimerkiksi näyttö ja verkkokortti -- raaka-aineita. Leipurilla ja tietokoneella on kuitenkin merkittävä ero siinä, että vaikka leipuri kehittyy reseptejä toistaessa ja voi esimerkiksi soveltaa uusia raaka-aineita, tietokone ei tiedä mitä se tekee eikä myöskään osaa soveltaa. Tietokone noudattaa ohjeita säntillisesti, jopa tyhmästi, eikä osaa reagoida vaikkapa rikkinäiseen uuniin, ellei resepti ota huomioon uunin rikkoutumismahdollisuutta ja kerro täsmällisesti mitä uunin rikkoutuessa tulee tehdä.</p>
+  <p>Tietokoneohjelmia verrataan usein leipomiseen. Tietokone on leipuri, tietokone-ohjelma resepti, ja tietokoneen resurssit -- esimerkiksi näyttö ja verkkokortti -- raaka-aineita. Leipurilla ja tietokoneella on kuitenkin merkittävä ero siinä, että vaikka leipuri kehittyy reseptejä toistaessa ja voi esimerkiksi soveltaa uusia raaka-aineita, tietokone ei tiedä mitä se tekee, eikä se myöskään osaa soveltaa. Tietokone noudattaa ohjeita säntillisesti, jopa tyhmästi, eikä osaa reagoida vaikkapa rikkinäiseen uuniin, ellei resepti ota huomioon uunin rikkoutumismahdollisuutta ja kerro täsmällisesti mitä uunin rikkoutuessa tulee tehdä.</p>
 
   <p>Toisin kuin leipuri, tietokone ei myöskään kehity siinä mielessä, että se oppisi virheistä. Ohjelmoijat, reseptien -- tai lähdekoodin -- kehittäjät, onneksi kuitenkin oppivat ja kehittyvät.</p>
 
-  <h3>Lähdekoodi</h3>
+  <h3>Lähdekoodi ja Komennot</h3> 
 
-  <p>Ohjelma -- resepti -- muodostuu <em>lähdekoodista</em>.  Tietokone suorittaa lähdekoodissa olevia <em>komentoja</em> pääsääntöisesti <em>ylhäältä alaspäin</em> ja <em>vasemmalta oikealle</em>.  Lähdekoodi talletetaan tekstimuodossa ja <em>suoritetaan</em> jollakin tavalla.</p>
-  <h3>Komennot</h3>
-  <p>Varsinaisesti ohjelma muodostuu lähdekoodiin kirjoitetuista komennoista.  Tietokone suorittaa eri <em>operaatioita</em>, eli toimintoja, komentojen perusteella.  Esimerkiksi merkkijonon, eli tekstin, "Hei maailma"-tulostuksessa tärkein komento on <code>System.out.println</code>.</p>
+  <p>Ohjelma -- resepti -- muodostuu <em>lähdekoodista</em>. Tietokone suorittaa lähdekoodissa olevia <em>komentoja</em> pääsääntöisesti rivi riviltä <em>ylhäältä alaspäin</em> ja <em>vasemmalta oikealle</em>. Lähdekoodi on ohjelmoijan kirjoittamaa, ja se tallennetaan tekstimuodossa.</p>
+
+  <p>Varsinaisesti ohjelma muodostuu lähdekoodiin kirjoitetuista komennoista.  Tietokone suorittaa komentojen perusteella <em>operaatioita</em>, eli toimintoja.  Esimerkiksi tekstin (<em>merkkijono</em>) "Hei maailma"-tulostuksessa tärkein komento on <code>System.out.println</code>.</p>
+
 <pre class="sh_java">
 System.out.println("Hei maailma");
 </pre>
-  <p>Komento <code>System.out.println</code> tulostaa sille sulkeiden sisällä annetun merkkijonon.  Pääte <code>ln</code> on lyhenne sanasta <i>line</i>.  Komento siis tulostaa rivin, eli kun annettu merkkijono on tulostettu, tulostaa komento myös rivinvaihdon.</p>
-  <h3>Kääntäjä ja tulkki</h3>
-  <p>Tietokone ei suoraan ymmärrä käyttämäämme ohjelmointikieltä.  Tarvitsemme lähdekoodin ja tietokoneen väliin <em>kääntäjän</em>.  Ohjelmoidessamme komentoriviä käyttäen, komento <code>javac Hei.java</code> kääntää <code>Hei.java</code>-tiedoston <i>tavukoodiksi</i>, jota voidaan ajaa java-tulkin avulla.  Käännetty ohjelma ajetaan komentoriviltä komennolla <code>java Hei</code>, missä Hei on käännetyn java-lähdekooditiedoston nimi.</p>
 
-  <p>Käyttäessämme modernia ohjelmointiympäristöä (tästä myöhemmin lisää), ohjelmointiympäristö hoitaa lähdekoodin kääntämisen.  Valitessamme ohjelman suorittamisen, ohjelmointiympäristö kääntää ja suorittaa ohjelman.  Ohjelmointiympäristöt kääntävät ohjelmakoodia ohjelmoijan sitä kirjoittaessa, jolloin yksinkertaiset virheet huomataan ennen ohjelman suoritusta.</p>
+  <p>Komento <code>System.out.println</code> tulostaa sille sulkeiden sisällä hipsuissa annetun merkkijonon. Komennon pääte <code>ln</code> on lyhenne sanasta <i>line</i>, ja komento tulostaa annetun merkkijonon jälkeen myös rivinvaihdon.</p>
+
+  <h3>Kääntäjä ja tulkki</h3>
+
+  <p>Tietokone ei ymmärrä ohjelmointikieltä suoraan.  Tarvitsemme lähdekoodin ja tietokoneen väliin <em>kääntäjän</em>, joka kääntää ohjelman tietokoneen ymmärtämään muotoon. Java-ohjelmointikielisen ohjelman voi kääntää komentoriviä käyttäen komennolla <code>javac Hei.java</code>, mikä kääntää <code>Hei.java</code>-nimisen tiedoston sisältämän lähdekoodin tietokoneen ymmärtämäksi <em>tavukoodiksi</em>, jota voidaan ajaa java-tulkin avulla.  Käännetty ohjelma ajetaan komentoriviltä komennolla <code>java Hei</code>, missä Hei on käännetyn java-lähdekooditiedoston nimi.</p>
+
+  <p>Käyttäessämme nykyaikaista ohjelmointiympäristöä (tästä myöhemmin lisää), ohjelmointiympäristö hoitaa lähdekoodin kääntämisen puolestamme.  Valitessamme ohjelman suorittamisen, ohjelmointiympäristö kääntää ja suorittaa ohjelman automaattisesti, ilman että näemme tätä välivaihetta.  Ohjelmointiympäristöt kääntävät ohjelmakoodia ohjelmoijan sitä kirjoittaessa, jolloin yksinkertaiset virheet huomataan ja merkitään ohjelmointiympäristössä näkyvään lähdekoodiin esimerkiksi punaisella alleviivauksella.</p>
+
   <h3>Komennon osia</h3>
+
   <h4>Puolipiste</h4>
-  <p>Puolipisteellä <code>;</code> erotetaan komennot toisistaan.  Kääntäjä ja tulkki ei siis ole kiinnostunut lähdekoodissa olevista riveistä, vaan voimme kirjoittaa koko ohjelman yhdelle riville.</p>
+
+  <p>Puolipisteellä <code>;</code> erotetaan komennot toisistaan.  Kääntäjä ja tulkki ei ole kiinnostunut lähdekoodissa olevista riveistä, vaan voisimme kirjoittaa koko ohjelman yhdelle riville -- mikä ei kuitenkaan olisi kovin ymmärrettävää.</p>
+
   <p>Alla olevassa esimerkissä käytetään komentoa <code>System.out.print</code>, joka on kuten komento <code>System.out.println</code> ilman rivinvaihtoa. <code>System.out.print</code>-komento ei siis tulosta rivinvaihtoa tekstin tulostamisen jälkeen.</p>
+
   <p><b>Esimerkki puolipisteiden käytöstä</b></p>
 <pre class="sh_java">
 System.out.print("Hei "); System.out.print("maailma");
@@ -506,11 +515,17 @@ System.out.print("!");
 <pre>
 Hei maailma!
 </pre>
+
   <p>Vaikka kääntäjä ja tulkki eivät tarvitse rivinvaihtoja, on niiden käyttö hyvin tärkeää muita ihmisiä ajatellen.  Selkeä lähdekoodin osien erottelu vaatii rivinvaihtojen käyttöä. Tätä ja muita lähdekoodin luettavuuteen liittyviä seikkoja tullaan painottamaan tällä kurssilla.</p>
+
   <h4>Komennoille lähdetettävät "tiedot" eli parametrit</h4>
-  <p>Komennon käsittelemä tieto eli <em>komennon parametrit</em> lähetetään komennolle lisäämällä ne komennon nimen perässä olevien sulkujen <code>()</code> sisään.  Esimerkiksi <code>System.out.print</code> -komennon parametriksi annetaan teksti <em>hei</em> seuraavasti: <code>System.out.print("hei")</code>. </p>
+
+  <p>Komennon käsittelemä tieto eli <em>komennon parametrit</em> lähetetään komennolle lisäämällä ne komennon nimen perässä olevien sulkujen <code>()</code> sisään.  Esimerkiksi <code>System.out.print</code> -komennon parametriksi annetaan merkkijono <em>hei</em> hipsujen sisällä seuraavasti: <code>System.out.print("hei")</code>. </p>
+
   <h4>Kommentit</h4>
+
   <p>Lähdekoodin <code>kommentit</code> ovat kätevä tapa merkitä asioita itselle ja muille muistiin.  Kommentti on mikä tahansa rivi, joka alkaa kahdella vinoviivalla <code>//</code>.  Kaikki kommenttimerkkiä seuraava samalla rivillä oleva teksti tulkitaan kommentiksi.</p>
+
   <h4>Esimerkki kommenttien käytöstä</h4><br>
 
 <pre class="sh_java">
@@ -519,22 +534,26 @@ System.out.print("Hei maailma");
 
 System.out.print(" ja kaikki sen ihmiset."); // Lisäämme samalle riville tekstiä.
 
-// System.out.print("tätä riviä ei suoriteta koska se on kommentoitu ulos");
-</pre>
+// System.out.print("tätä riviä ei suoriteta koska se on kommentoitu ulos");</pre>
+
   <p>Esimerkissä alin rivi esittelee erityisen kätevän käyttökohteen kommenteille: kirjoitettua koodia ei tarvitse poistaa jos haluaa tilapäisesti kokeilla jotain.</p>
+
   <h3>Lisää tulostamisesta</h3>
+
   <p>Kuten aiemmin huomattiin, tulostamiseen on kaksi komentoa:</p>
   <p>
   <ul>
-    <li> <code>System.out.print</code> tulostaa tekstin ilman loppurivinvaihtoa</li>
-    <li> <code>System.out.println</code> tulostaa tekstin ja loppurivinvaihdon</li>
+    <li> <code>System.out.print("sana");</code> tulostaa tekstin "sana" ilman loppurivinvaihtoa</li>
+    <li> <code>System.out.println("sana");</code> tulostaa tekstin "sana" ja loppurivinvaihdon</li>
   </ul>
   </p>
+
   <p>Tulostettavan tekstin osana voi olla erikoismerkkejä.  Tärkein näistä on <code>\n</code>, joka vaihtaa riviä. Erikoismerkkejä on <a href="http://en.wikipedia.org/wiki/Escape_character" title="Escape character - Wikipedia, the free encyclopedia">muitakin</a>.</p>
 <pre class="sh_java">
-System.out.println("Ensimmäinen\nToinen\nKolmas");
-</pre>
-  <p>Ylläoleva tulostaa suoritettaessa seuraavaa:</p>
+System.out.println("Ensimmäinen\nToinen\nKolmas");</pre>
+
+  <p>Ylläoleva komento tulostaa suoritettaessa seuraavaa:</p>
+
 <pre>
 Ensimmäinen
 Toinen
@@ -542,27 +561,30 @@ Kolmas
 </pre>
 
   <h3>Pääohjelmarunko</h3>
+
   <p>Ohjelman "Esimerkki" runko on seuraavanlainen. </p>
+
 <pre class="sh_java">
 public class Esimerkki {
     public static void main(String[] args) {
-        // ohjelmakoodi
+        // ohjelmakoodi ja komennot
     }
 }
 </pre>
-  <p>Ohjelma sijaitsee samannimisessä <i>.java</i>-päätteisessä tiedostossa.  Ohjelman <i>Esimerkki</i> täytyy siis sijaita tiedostossa,
-    jonka nimi on <code>Esimerkki.java</code>.</p>
-  <p>Ohjelmaa suoritettaessa suoritetaan alue, joka on rungossamme merkitty kommentilla <i>ohjelmakoodi</i>.  Ohjelmoimme ensimmäisellä viikolla
-    vain tälle alueelle.  Kun puhumme komennoista, esimerkiksi tulostamisesta, tulee komennot kirjoittaa ohjelmarungon sisälle. Esimerkiksi <code>System.out.print("Tulostettava teksti");</code></p>
+
+  <p>Ohjelma sijaitsee <i>.java</i>-päätteisessä tiedostossa, jonka nimi on sama kuin ohjelman nimi -- tässä esimerkki -- "public class <em>Esimerkki</em>".  Ohjelman <i>Esimerkki</i> täytyy siis sijaita tiedostossa, jonka nimi on <code>Esimerkki.java</code>.</p>
+
+  <p>Ohjelmaa suoritettaessa suoritetaan alue, joka on rungossamme merkitty kommentilla <i>ohjelmakoodi ja komennot</i>.  Ohjelmoimme ensimmäisellä viikolla vain tälle alueelle.  Kun puhumme komennoista, esimerkiksi tulostamisesta, tulee komennot kirjoittaa ohjelmarungon sisälle. Esimerkiksi <code>System.out.print("Tulostettava teksti");</code></p>
+
   <pre class="sh_java">
 public class Esimerkki {
     public static void main(String[] args) {
         System.out.print("Tulostettava teksti");
     }
-}
-</pre>
+}</pre>
 
-  <p>Jatkossa esimerkeissä ei erikseen näytetä pääohjelmarunkoa.</p>
+  <p>Jatkossa esimerkeissä ei aina erikseen näytetä pääohjelmarunkoa, mutta voit olettaa, että se tarvitaan.</p>
+
 
 <h3>Tutustuminen ohjelmointiympäristöön</h3>
 
@@ -571,7 +593,7 @@ public class Esimerkki {
   <p>Nykyaikainen ohjelmointi tapahtuu lähes poikkeuksetta ohjelmointiympäristössä.  Ohjelmointiympäristö sisältää joukon ohjelmoijaa auttavia aputoimintoja.  Ohjelmointiympäristö ei rakenna ohjelmaa ohjelmoijan puolesta, mutta se muunmuassa vinkkaa helpoista virheistä ohjelmakoodissa ja auttaa ohjelmoijaa hahmottamaan ohjelman rakennetta.</p>
 <div class="help">
 <p>Käytämme tällä kurssilla <a href="http://netbeans.org/">NetBeans</a>-nimistä ohjelmointiympäristöä.
-Ohje ohjelmoinnin aloittamiseen NetBeans-ohjelmointiympäristössä löytyy   <a class="hidden-in-hy" href=" http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans-ohjeita">täältä</a><a  class="hidden-in-mooc" href="http://www.cs.helsinki.fi/group/java/k14/ohpe/nb-asennus.html">täältä</a>.
+Ohje ohjelmoinnin aloittamiseen NetBeans-ohjelmointiympäristössä löytyy   <a class="hidden-in-hy" href=" http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans-ohjeita">täältä</a><a  class="hidden-in-mooc" href="http://www.cs.helsinki.fi/group/java/s14/ohpe/nb-asennus.html">täältä</a>.
 </p>
 
   <p>Jatkossa julkaisemme pikkuhiljaa lisää ohjeita NetBeansin käyttöön. Vaikka ohjelma tuntuisi nyt sekavalta, älä hätäile. NetBeans on loppujenlopuksi hyvin helppokäyttöinen. Perusteet opit 5 minuutissa, ja kurssin myötä opit koko ajan hieman lisää ja kesäkuussa olet jo todellinen NetBeans "poweruser".</p>
@@ -588,7 +610,7 @@ Ohje ohjelmoinnin aloittamiseen NetBeans-ohjelmointiympäristössä löytyy   <a
 
     <p><strong>Muista ensin katsoa ohje NetBeansin käyttöön</strong>
     <!-- TODO fix links -->
-    <a href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans-ohjeita">täältä</a>
+    <a href="http://www.cs.helsinki.fi/group/java/s14/ohpe/nb-asennus.html">täältä</a>
 </p>
 
     <p class="help"><strong>Jos et ole vielä käynyt vastaamassa taustatietokyselyyn, tee se NYT <a href="#1taustatiedot">klikkaamalla tästä</a></strong></p>
