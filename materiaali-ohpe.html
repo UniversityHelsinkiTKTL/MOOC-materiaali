@@ -71,12 +71,9 @@
 
 <p>Pyri tekemään tai ainakin yrittämään tehtäviä sitä mukaa kuin luet tekstiä. Jos et osaa heti tehdä jotain tehtävää, älä masennu, sillä saat ohjausta tehtävän tekemiseen <a href="http://mooc.cs.helsinki.fi/content/irc-ohjeet" target="_blank">IRC:ssä</a> kanavilla #ohpe ja #mooc.fi sekä <span class="hidden-in-mooc"> pajassa</span>.</p>
 
-<p>Tekstiä ei ole tarkoitettu vain kertaalleen luettavaksi. Joudut varmasti myöhemmin palaamaan jo aiemmin lukemiisi kohtiin tai aiemmin tekemiisi tehtäviin.
-  Tämä teksti ei sisällä kaikkea oleellista ohjelmointiin liittyvää. Itse asiassa ei ole olemassa mitään kirjaa josta löytyisi kaikki oleellinen. Eli joudut
-  joka tapauksessa ohjelmoijan urallasi etsimään tietoa myös omatoimisesti. Kurssin harjoitukset sisältävät jo jonkun verran ohjeita, mistä suunnista ja miten
-  hyödyllistä tietoa on mahdollista löytää.</p>
+<p>Tekstiä ei ole tarkoitettu vain kertaalleen luettavaksi. Joudut varmasti myöhemmin palaamaan jo aiemmin lukemiisi kohtiin tai aiemmin tekemiisi tehtäviin. Tämä teksti ei sisällä kaikkea oleellista ohjelmointiin liittyvää. Itse asiassa ei ole olemassa mitään kirjaa josta löytyisi kaikki oleellinen. Eli joudut joka tapauksessa ohjelmoijan urallasi etsimään tietoa myös omatoimisesti. Kurssin harjoitukset sisältävät jo jonkun verran ohjeita, mistä suunnista ja miten hyödyllistä tietoa on mahdollista löytää.</p>
 
-<p>Muutamiin kohtiin olemme myös liittäneet screencasteja, eli videoita, joita katsomalla voi pelkän valmiin koodin lukemisen sijaan seurata miten ohjelma muodostuu. Tämän lisäksi materiaalissa on kyselyjä, joihin toivomme että vastaat rehellisesti. Kyselyjen vastauksia käytetään osana Helsingin yliopistolla tehtävää ohjelmoinnin oppimisen tutkimusta. Kyselyt ja tehtävät saa auki klikkaamalla kyselyn tai tehtävän nimeä.</p>
+<p>Muutamiin kohtiin olemme myös liittäneet screencasteja, eli videoita, joita katsomalla voi pelkän valmiin koodin lukemisen sijaan seurata miten ohjelma muodostuu. Tämän lisäksi materiaalissa on kyselyjä, joiden vastauksia käytetään osana Helsingin yliopistolla tehtävää ohjelmoinnin oppimisen tutkimusta. Kyselyt ja tehtävät saa auki klikkaamalla kyselyn tai tehtävän nimeä.</p>
 
 
 <div class="panel-group" id="1taustatiedot">
@@ -1807,23 +1804,11 @@ Kuinka monta askelta: 3
 
   <p>Huom! Voit palauttaa tehtävän jo tässä välissä vaikka kaikki tehtävän osa-alueet eivät vielä menisikään läpi!</p>
 
-  <h4>Automaattinen ohjaus</h4>
+  <h4>Viereen siirtyminen</h4>
 
-  <p>Lisää tekstikäyttöliittymään komento "ratkaise", joka siirtää laatikon loppualueelle. Ratkaisua ohjelmoidessa voit olettaa, että robotti aloittaa liikkumisen aina samasta ruudusta, ja että laatikko ja rahtialue ovat allaolevan kuvan näyttämissä kohdissa (sama kuin ohjelmassa).</p>
+  <p>Lisää tekstikäyttöliittymään komento "viereen", joka siirtää robotin laatikon viereen sen vasemmalle puolelle. Ratkaisua ohjelmoidessa voit olettaa, että robotti aloittaa liikkumisen aina samasta ruudusta ja asennosta, ja että rahtialue on aina samassa kohdassa.</p>
 
-  <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/24-robotcontrol-init.png"/></p>
-
-<pre>
-komento (sammuta, vasen, oikea, liiku, liikuMonta, ratkaise): ratkaise
-</pre>
-
-
-
-  <h4>Parempi automaattinen ohjaus</h4>
-
-  <p>Tehdään ohjauksesta parempi. Kuten aiemminkin, komennon "ratkaise" tulee siirtää laatikko rahtialueelle. Tässä tapauksessa tosin laatikko ei ole aina samassa paikassa, vaan se on tuotu satunnaisesti alueelle. Voit olettaa, että laatikko on aina robotin oikealla yläpuolella ja rahtialueen vasemmalla yläpuolella, robotti aloittaa liikkumisen aina samasta ruudusta, ja rahtialue on aina samassa ruudussa.</p>
-
-  <p>Ohjelmoinnin mahdollistamiseksi Ohjaimeen on lisätty seuraavat komennot:</p>
+  <p>Ohjaimeen on lisätty seuraavat komennot, joita tutkimalla huomannet ennen pitkää niiden hyödyn:</p>
 
 <pre class="sh_java">
 // kertoo robotin x- ja y-koordinaatit
@@ -1839,7 +1824,7 @@ int tavoiteX = Ohjain.tavoiteX();
 int tavoiteY = Ohjain.tavoiteY();
 </pre>
 
-  <p>Yllä olevien optimaalisen reitin laskemista helpottavien komentojen lisäksi käytössä on komento <code>Ohjain.asetaLaatikkoSatunnaisesti();</code>, joka asettaa laatikon satunnaisesti pelialueelle. Kutsu sitä ennen käynnistystä seuraavasti:</p>
+  <p>Yllä komentojen lisäksi käytössä on komento <code>Ohjain.asetaLaatikkoSatunnaisesti();</code>, joka asettaa laatikon satunnaisesti pelialueelle, kuitenkin siten, että se on aina robotin oikealle yläpuolella, ja rahtialueen vasemmalla yläpuolella. Kutsu sitä ennen käynnistystä seuraavasti:</p>
 
 <pre class="sh_java">
 public class Paaohjelma {
@@ -1857,6 +1842,24 @@ public class Paaohjelma {
         // ...
 
 </pre>
+
+  <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/24-robotcontrol-init.png"/></p>
+
+<pre>
+komento (sammuta, vasen, oikea, liiku, liikuMonta, viereen): viereen
+</pre>
+
+  <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/24-robotcontrol-viereen.png"/></p>
+
+  <p>Vinkki! Kannattanee hahmotella paperilla miten robotin siirtyminen ja liike riippuu laatikon sijainnista</p>
+
+
+  <h4>Automaattinen ohjaus</h4>
+
+
+  <p>Lisää vielä käyttöliittymään komento "ratkaise", joka käskee robottia työntämään laatikon rahtialueelle. Kuten edellisessäkin osassa, voit olettaa että laatikko on aina robotin oikealla yläpuolella ja rahtialueen vasemmalla yläpuolella, robotti aloittaa liikkumisen aina samasta ruudusta, ja rahtialue on aina samassa ruudussa.</p>
+
+  <p>Komennon "ratkaise" tulee toimia vaikka robotti ei olisi laatikon vieressä.</p>
 
 
 </div>
