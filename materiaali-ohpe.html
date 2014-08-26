@@ -61,7 +61,7 @@
 
 <h2>Huomautus lukijalle</h2>
 <p>Tämä materiaali on tarkoitettu Helsingin yliopiston tietojenkäsittelytieteen laitoksen Ohjelmoinnin perusteet -kurssille.
- Materiaali pohjautuu syksyn 2012 ja keväiden 2013, 2012, 2011 ja 2010 kurssimateriaaleihin, joiden sisältöön ovat vaikuttaneet Matti Paksula, Antti Laaksonen, Pekka Mikkola, Juhana Laurinharju, Martin Pärtel, Joel Kaasinen ja Mikael Nousiainen</p>
+ Materiaali pohjautuu syksyn 2012 ja keväiden 2013, 2012, 2011 ja 2010 kurssimateriaaleihin, joiden sisältöön ovat vaikuttaneet Matti Paksula, Antti Laaksonen, Pekka Mikkola, Juhana Laurinharju, Martin Pärtel, Joel Kaasinen ja Mikael Nousiainen.</p>
 
 <p>Lue materiaalia siten, että teet samalla itse kaikki lukemasi esimerkit. Esimerkkeihin kannattaa tehdä pieniä muutoksia ja tarkkailla, miten
   muutokset vaikuttavat ohjelman toimintaan. Äkkiseltään voisi luulla, että esimerkkien tekeminen myös itse ja niiden muokkaaminen hidastaa opiskelua.
@@ -69,7 +69,7 @@
   Oppiminen perustuu oleellisesti aktiiviseen tekemiseen ja rutiinin kasvattamiseen. Esimerkkien ja erityisesti erilaisten omien kokeilujen
   tekeminen on parhaita tapoja "sisäistää" luettua tekstiä. TMC:ssä on kokeiluja varten tehtäväpohja, jonka nimi on "Hiekkalaatikko".</p>
 
-<p>Pyri tekemään tai ainakin yrittämään tehtäviä sitä mukaa kuin luet tekstiä. Jos et osaa heti tehdä jotain tehtävää, älä masennu, sillä saat ohjausta tehtävän tekemiseen <a href="http://mooc.cs.helsinki.fi/content/irc-ohjeet" target="_blank">IRC:ssä</a><span class="hidden-in-mooc"> ja pajassa</span>.</p>
+<p>Pyri tekemään tai ainakin yrittämään tehtäviä sitä mukaa kuin luet tekstiä. Jos et osaa heti tehdä jotain tehtävää, älä masennu, sillä saat ohjausta tehtävän tekemiseen <a href="http://mooc.cs.helsinki.fi/content/irc-ohjeet" target="_blank">IRC:ssä</a> kanavilla #ohpe ja #mooc.fi sekä <span class="hidden-in-mooc"> pajassa</span>.</p>
 
 <p>Tekstiä ei ole tarkoitettu vain kertaalleen luettavaksi. Joudut varmasti myöhemmin palaamaan jo aiemmin lukemiisi kohtiin tai aiemmin tekemiisi tehtäviin.
   Tämä teksti ei sisällä kaikkea oleellista ohjelmointiin liittyvää. Itse asiassa ei ole olemassa mitään kirjaa josta löytyisi kaikki oleellinen. Eli joudut
@@ -477,11 +477,13 @@
 
   <h2 id="koodia">Ohjelma ja lähdekoodi</h2>
   
-  <!-- tähän tietokoneohjelmista yleisesti -->
+  <p>Tietokoneohjelmia verrataan usein leipomiseen. Tietokone on leipuri, tietokone-ohjelma resepti, ja tietokoneen resurssit -- esimerkiksi näyttö ja verkkokortti -- raaka-aineita. Leipurilla ja tietokoneella on kuitenkin merkittävä ero siinä, että vaikka leipuri kehittyy reseptejä toistaessa ja voi esimerkiksi soveltaa uusia raaka-aineita, tietokone ei tiedä mitä se tekee eikä myöskään osaa soveltaa. Tietokone noudattaa ohjeita säntillisesti, jopa tyhmästi, eikä osaa reagoida vaikkapa rikkinäiseen uuniin, ellei resepti ota huomioon uunin rikkoutumismahdollisuutta ja kerro täsmällisesti mitä uunin rikkoutuessa tulee tehdä.</p>
 
+  <p>Toisin kuin leipuri, tietokone ei myöskään kehity siinä mielessä, että se oppisi virheistä. Ohjelmoijat, reseptien -- tai lähdekoodin -- kehittäjät, onneksi kuitenkin oppivat ja kehittyvät.</p>
 
   <h3>Lähdekoodi</h3>
-  <p>Ohjelma muodostuu <em>lähdekoodista</em>.  Tietokone suorittaa lähdekoodissa olevia <em>komentoja</em> pääsääntöisesti <em>ylhäältä alaspäin</em> ja <em>vasemmalta oikealle</em>.  Lähdekoodi talletetaan tekstimuodossa ja <em>suoritetaan</em> jollakin tavalla.</p>
+
+  <p>Ohjelma -- resepti -- muodostuu <em>lähdekoodista</em>.  Tietokone suorittaa lähdekoodissa olevia <em>komentoja</em> pääsääntöisesti <em>ylhäältä alaspäin</em> ja <em>vasemmalta oikealle</em>.  Lähdekoodi talletetaan tekstimuodossa ja <em>suoritetaan</em> jollakin tavalla.</p>
   <h3>Komennot</h3>
   <p>Varsinaisesti ohjelma muodostuu lähdekoodiin kirjoitetuista komennoista.  Tietokone suorittaa eri <em>operaatioita</em>, eli toimintoja, komentojen perusteella.  Esimerkiksi merkkijonon, eli tekstin, "Hei maailma"-tulostuksessa tärkein komento on <code>System.out.println</code>.</p>
 <pre class="sh_java">
