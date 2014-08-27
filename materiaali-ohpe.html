@@ -494,7 +494,7 @@ System.out.println("Hei maailma");
 
   <p>Tietokone ei ymmärrä ohjelmointikieltä suoraan.  Tarvitsemme lähdekoodin ja tietokoneen väliin <em>kääntäjän</em>, joka kääntää ohjelman tietokoneen ymmärtämään muotoon. Java-ohjelmointikielisen ohjelman voi kääntää komentoriviä käyttäen komennolla <code>javac Hei.java</code>, mikä kääntää <code>Hei.java</code>-nimisen tiedoston sisältämän lähdekoodin tietokoneen ymmärtämäksi <em>tavukoodiksi</em>, jota voidaan ajaa java-tulkin avulla.  Käännetty ohjelma ajetaan komentoriviltä komennolla <code>java Hei</code>, missä Hei on käännetyn java-lähdekooditiedoston nimi.</p>
 
-  <p>Käyttäessämme nykyaikaista ohjelmointiympäristöä (tästä myöhemmin lisää), ohjelmointiympäristö hoitaa lähdekoodin kääntämisen puolestamme.  Valitessamme ohjelman suorittamisen, ohjelmointiympäristö kääntää ja suorittaa ohjelman automaattisesti, ilman että näemme tätä välivaihetta.  Ohjelmointiympäristöt kääntävät ohjelmakoodia ohjelmoijan sitä kirjoittaessa, jolloin yksinkertaiset virheet huomataan ja merkitään ohjelmointiympäristössä näkyvään lähdekoodiin esimerkiksi punaisella alleviivauksella.</p>
+  <p>Käyttäessämme nykyaikaista ohjelmointiympäristöä, ohjelmointiympäristö hoitaa lähdekoodin kääntämisen puolestamme.  Valitessamme ohjelman suorittamisen, ohjelmointiympäristö kääntää ja suorittaa ohjelman automaattisesti, ilman että näemme tätä välivaihetta.  Ohjelmointiympäristöt kääntävät ohjelmakoodia ohjelmoijan sitä kirjoittaessa, jolloin yksinkertaiset virheet huomataan ja merkitään ohjelmointiympäristössä näkyvään lähdekoodiin esimerkiksi punaisella alleviivauksella.</p>
 
   <h3>Komennon osia</h3>
 
@@ -583,11 +583,35 @@ public class Esimerkki {
   <p>Jatkossa esimerkeissä ei aina erikseen näytetä pääohjelmarunkoa, mutta voit olettaa, että se tarvitaan.</p>
 
 
-  <h3>Koodityylistä</h3>
+  <h3>Ohjelmointityylistä</h3>
 
-  <p>Checkstyle on staattinen koodianalyysityökalu, jolla pyritään havaitsemaan sekä välttämään koodivirheitä. Checkstyle tarkistaa mm. koodin sisennystä, metodien nimeämistä, tyhjiä lohkoja ja paljon muuta. Sen avulla koodi säilyy jatkuvasti luettavassa muodossa. Tällä kurssilla Checkstyle tarkistaa lähes ainoastaan tyylivirheitä, ja jatkossa siitä voidaan käyttää myös kyseistä nimitystä.</p>
+  <p>Vaikka tietokone ja käyttämämme ohjelmointikieli ei aseta rajoituksia kirjoitettavan ohjelmakoodin ulkoasulle, olemme osana ohjelmoinnin opetuksen ja oppimisen tutkimista huomanneet että ohjelmoijan -- tai opiskelevan ohjelmoijan -- kirjoittaman koodin ulkoasulla on merkitystä myös oppimisen kannalta. Esimerkiksi lähdekoodin luettavuus ja sisennyksen säännönmukaisuus ovat asioita, jotka vaikuttavat lähdekoodin ymmärrettävyyteen, ja sitä kautta myös oppimistuloksiin. Seuraava kood
+i on säännönmukaisesti sisennettyä.</p>
 
-  <p>Alta löydät muutamia esimerkkejä</p>
+  <pre class="sh_java">
+public class Esimerkki {
+    public static void main(String[] args) {
+        System.out.print("Heippa vaan! Tämä koodi on siististi sisennetty.");
+        System.out.print("public class -- ei sisennystä.");
+        System.out.print("public static -- neljän merkin sisennys.");
+        System.out.print("public static ... sisällä -- kahdeksan merkin sisennys -- tai enemmän.");
+    }
+}</pre>
+
+
+  <p>Tämä koodi taas ei ole kovin ymmärrettävää.</p>
+
+  <pre class="sh_java">
+               public class Esimerkki {
+    public static void main(String[] args) {
+System.out.print("Heippa vaan! Tämä koodi on siististi sisennetty.");
+                              System.out.print("public class -- ei sisennystä.");
+  System.out.print("public static -- neljän merkin sisennys."); 
+System.out.print("public static ... sisällä -- kahdeksan merkin sisennys -- tai enemmän.");}}</pre>
+
+  <p>Kurssilla käytettävässä Test My Code-ympäristössä tulee mukana Checkstyle-niminen työväline, joka ohjaa hyvään ohjelmointityyliin. Checkstyle tarkistaa mm. koodin sisennystä, metodien nimeämistä, tyhjiä lohkoja ja paljon muuta -- kurssin edetessä nämä käsitteet tulevat tutuiksi. Tällä kurssilla Checkstyle tarkistaa lähes ainoastaan tyylivirheitä, ja jatkossa siitä voidaan käyttää myös kyseistä nimitystä.</p>
+
+  <p>Alta löydät muutamia esimerkkejä -- älä huoli vaikka termistö voi tuntua vielä omituiselta.</p>
 
   <h4>Metodien nimeäminen</h4>
 
