@@ -11994,8 +11994,8 @@ public class GutenbergLukija {
         // kirjan verkosta hakeva koodi
     }
 
-    public List&lg;String&gt; rivitJoilleVoimassa(Ehto ehto){
-        List&lg;String&gt; ehdonTayttavat = new ArrayList&lg;String&gt;();
+    public List&lt;String&gt; rivitJoilleVoimassa(Ehto ehto){
+        List&lt;String&gt; ehdonTayttavat = new ArrayList&lt;String&gt;();
 
         for (String rivi : sanat) {
             if ( ehto.toteutuu(rivi)) {
@@ -12317,7 +12317,7 @@ true
 
 <p>Muokkaa matopelin konstruktorin toiminnallisuutta siten, että konstruktorissa luodaan peliin liittyvä <code>Mato</code>. Luo mato siten, että sijainti riippuu Matopeli-luokan konstruktorissa saaduista parametreista. Madon x-koordinaatin tulee olla <code>leveys / 2</code>, y-koordinaatin <code>korkeus / 2</code> ja suunnan <code>Suunta.ALAS</code>.</p>
 
-<p>Luo konstruktorissa myös omena. Konstruktorissa luotavan omenan sijainnin tulee olla satunnainen, kuitenkin niin että omenan x-koordinaatti on aina välillä <code>[0, leveys[</code>, ja y-koordinaatti välillä <code>[0, korkeus[</code>.</p>
+<p>Luo konstruktorissa myös omena. Konstruktorissa luotavan omenan sijainnin tulee olla satunnainen, kuitenkin niin että omenan x-koordinaatti on aina välillä <code>[0, leveys]</code>, ja y-koordinaatti välillä <code>[0, korkeus]</code>.</p>
 
 <p>Lisää matopeliin lisäksi seuraavat metodit</p>
 <ul>
