@@ -583,6 +583,148 @@ public class Esimerkki {
   <p>Jatkossa esimerkeissä ei aina erikseen näytetä pääohjelmarunkoa, mutta voit olettaa, että se tarvitaan.</p>
 
 
+  <h3>Koodityylistä</h3>
+
+  <p>Checkstyle on staattinen koodianalyysityökalu, jolla pyritään havaitsemaan sekä välttämään koodivirheitä. Checkstyle tarkistaa mm. koodin sisennystä, metodien nimeämistä, tyhjiä lohkoja ja paljon muuta. Sen avulla koodi säilyy jatkuvasti luettavassa muodossa. Tällä kurssilla Checkstyle tarkistaa lähes ainoastaan tyylivirheitä, ja jatkossa siitä voidaan käyttää myös kyseistä nimitystä.</p>
+
+  <p>Alta löydät muutamia esimerkkejä</p>
+
+  <h4>Metodien nimeäminen</h4>
+
+  <table class="table">
+  <thead>
+    <tr><th>Väärin</th><th>Oikein</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <pre class="sh_java">
+public static int Tama_metodi_palauttaa_satunnaisen_kokonaisluvun ( ){
+//valittu arpakuution heitolla
+return 4;
+}
+        </pre>
+      </td>
+      <td>
+        <pre class="sh_java">
+public static int tamaMetodiPalauttaaSatunnaisenKokonaisluvun() {
+    //valittu arpakuution heitolla.
+    return 4;
+}
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+
+  <p>Ensimmäinen sana kirjoitetaan pienellä ja loput alkavat isolla alkukirjaimella, tälläisestä kirjoitustavasta käytetään nimitystä camelcase.</p>
+
+  <h4>Sisentäminen</h4>
+
+  <table class="table">
+  <thead>
+    <tr><th>Väärin</th><th>Oikein</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <pre class="sh_java">
+public static int number() {
+return 4;
+}
+        </pre>
+      </td>
+      <td>
+        <pre class="sh_java">
+public static int number() {
+    return 4;
+}
+        </pre>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <pre class="sh_java">
+public static int condition(int number) {
+if(number > 30) {  return 1;
+} else if (number > 25)
+{ return 2;
+} else if (number > 20) {
+return 3;
+}
+return 4;
+}
+        </pre>
+      </td>
+      <td>
+        <pre class="sh_java">
+public static int condition(int number) {
+    if(number > 30) {
+        return 1;
+    } else if (number > 25) {
+        return 2;
+    } else if (number > 20) {
+        return 3;
+    }
+    return 4;
+}
+
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+
+  <p>Jokaisen lohkon sisältö on neljä välilyöntiä tai yhden tabulaattorin verran sisempänä kuin lohkon aloitus- ja lopetussulku.</p>
+
+  <h4>Tyhjä lohko</h4>
+
+  <table class="table">
+  <thead>
+    <tr><th>Väärin</th><th>Oikein</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <pre class="sh_java">
+public static int ehdollinenPalautus(int luku) {
+    if (luku >= 10) {
+        luku = 9;
+    } else {
+
+    }
+    return luku;
+}
+        </pre>
+      </td>
+      <td>
+        <pre class="sh_java">
+public static int ehdollinenPalautus(int luku) {
+    if (luku >= 10) {
+        luku = 9;
+    }
+    return luku;
+}
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+
+  <p>Tyhjien lohkojen kirjoittaminen on turhaa ja vaikeuttaa koodin lukemista. Jokaisella koodilohkolla tulisi olla jokin käyttötarkoitus.</p>
+
+  <p>Tehtävissä on käytössä kolme erilaista checkstyle toimintatapaa</p>
+
+  <ul>
+  <li>Poissa päältä - staattista analyysia ei suoriteta</li>
+  <li>Varoitus - testien yhteydessä näytetään myös checkstyle virheet, tehtävän voi kuitenkin palauttaa ja siitä saada pisteitä</li>
+  <li>Vaadittu - tehtävän voi palauttaa ja siitä voi saada pisteitä vain jos kaikki checkstyle tarkistukset menevät läpi</li>
+  </ul>
+
+  <p>NetBeans näyttää tyylivirheet keltaisella ja normaalit testit tavalliseen tapaan punaisella. Edistymispalkki muuttuu myöskin keltaiseksi, jos koodissa havaitaan tyylivirheitä. Vaikkakin näppäinyhdistelmä ALT + SHIFT + F auttaa useimpien tyylivirheiden korjaamiseen, on koodia syytä kirjoittaa oikein alusta alkaen.</p>
+
+
+
 <h3>Tutustuminen ohjelmointiympäristöön</h3>
 
   <div>
