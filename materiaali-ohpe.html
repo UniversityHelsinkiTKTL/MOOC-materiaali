@@ -585,8 +585,7 @@ public class Esimerkki {
 
   <h3>Ohjelmointityylistä</h3>
 
-  <p>Vaikka tietokone ja käyttämämme ohjelmointikieli ei aseta rajoituksia kirjoitettavan ohjelmakoodin ulkoasulle, olemme osana ohjelmoinnin opetuksen ja oppimisen tutkimista huomanneet että ohjelmoijan -- tai opiskelevan ohjelmoijan -- kirjoittaman koodin ulkoasulla on merkitystä myös oppimisen kannalta. Esimerkiksi lähdekoodin luettavuus ja sisennyksen säännönmukaisuus ovat asioita, jotka vaikuttavat lähdekoodin ymmärrettävyyteen, ja sitä kautta myös oppimistuloksiin. Seuraava kood
-i on säännönmukaisesti sisennettyä.</p>
+  <p>Vaikka tietokone ja käyttämämme ohjelmointikieli ei aseta rajoituksia kirjoitettavan ohjelmakoodin ulkoasulle, olemme osana ohjelmoinnin opetuksen ja oppimisen tutkimista huomanneet että ohjelmoijan -- tai opiskelevan ohjelmoijan -- kirjoittaman koodin ulkoasulla on merkitystä myös oppimisen kannalta. Esimerkiksi lähdekoodin luettavuus ja sisennyksen säännönmukaisuus ovat asioita, jotka vaikuttavat lähdekoodin ymmärrettävyyteen, ja sitä kautta myös oppimistuloksiin. Seuraava koodi on säännönmukaisesti sisennettyä.</p>
 
   <pre class="sh_java">
 public class Esimerkki {
@@ -609,144 +608,9 @@ System.out.print("Heippa vaan! Tämä koodi on siististi sisennetty.");
   System.out.print("public static -- neljän merkin sisennys."); 
 System.out.print("public static ... sisällä -- kahdeksan merkin sisennys -- tai enemmän.");}}</pre>
 
-  <p>Kurssilla käytettävässä Test My Code-ympäristössä tulee mukana Checkstyle-niminen työväline, joka ohjaa hyvään ohjelmointityyliin. Checkstyle tarkistaa mm. koodin sisennystä, metodien nimeämistä, tyhjiä lohkoja ja paljon muuta -- kurssin edetessä nämä käsitteet tulevat tutuiksi. Tällä kurssilla Checkstyle tarkistaa lähes ainoastaan tyylivirheitä, ja jatkossa siitä voidaan käyttää myös kyseistä nimitystä.</p>
+  <p>Kurssilla käytettävässä Test My Code-ympäristössä tulee mukana Checkstyle-niminen työväline, joka ohjaa hyvään ohjelmointityyliin. Checkstyle tarkistaa mm. koodin sisennystä, metodien nimeämistä, tyhjiä lohkoja ja paljon muuta -- kurssin edetessä nämä käsitteet tulevat tutuiksi. Tällä kurssilla Checkstyle tarkistaa lähes ainoastaan tyylivirheitä -- ohjeita tulee kurssin edetessä.</p>
 
-  <p>Alta löydät muutamia esimerkkejä -- älä huoli vaikka termistö voi tuntua vielä omituiselta.</p>
-
-  <h4>Metodien nimeäminen</h4>
-
-  <table class="table">
-  <thead>
-    <tr><th>Väärin</th><th>Oikein</th></tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <pre class="sh_java">
-public static int Tama_metodi_palauttaa_satunnaisen_kokonaisluvun ( ){
-//valittu arpakuution heitolla
-return 4;
-}
-        </pre>
-      </td>
-      <td>
-        <pre class="sh_java">
-public static int tamaMetodiPalauttaaSatunnaisenKokonaisluvun() {
-    //valittu arpakuution heitolla.
-    return 4;
-}
-        </pre>
-      </td>
-    </tr>
-  </tbody>
-  </table>
-
-  <p>Ensimmäinen sana kirjoitetaan pienellä ja loput alkavat isolla alkukirjaimella, tälläisestä kirjoitustavasta käytetään nimitystä camelcase.</p>
-
-  <h4>Sisentäminen</h4>
-
-  <table class="table">
-  <thead>
-    <tr><th>Väärin</th><th>Oikein</th></tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <pre class="sh_java">
-public static int number() {
-return 4;
-}
-        </pre>
-      </td>
-      <td>
-        <pre class="sh_java">
-public static int number() {
-    return 4;
-}
-        </pre>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <pre class="sh_java">
-public static int condition(int number) {
-if(number > 30) {  return 1;
-} else if (number > 25)
-{ return 2;
-} else if (number > 20) {
-return 3;
-}
-return 4;
-}
-        </pre>
-      </td>
-      <td>
-        <pre class="sh_java">
-public static int condition(int number) {
-    if(number > 30) {
-        return 1;
-    } else if (number > 25) {
-        return 2;
-    } else if (number > 20) {
-        return 3;
-    }
-    return 4;
-}
-
-        </pre>
-      </td>
-    </tr>
-  </tbody>
-  </table>
-
-  <p>Jokaisen lohkon sisältö on neljä välilyöntiä tai yhden tabulaattorin verran sisempänä kuin lohkon aloitus- ja lopetussulku.</p>
-
-  <h4>Tyhjä lohko</h4>
-
-  <table class="table">
-  <thead>
-    <tr><th>Väärin</th><th>Oikein</th></tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <pre class="sh_java">
-public static int ehdollinenPalautus(int luku) {
-    if (luku >= 10) {
-        luku = 9;
-    } else {
-
-    }
-    return luku;
-}
-        </pre>
-      </td>
-      <td>
-        <pre class="sh_java">
-public static int ehdollinenPalautus(int luku) {
-    if (luku >= 10) {
-        luku = 9;
-    }
-    return luku;
-}
-        </pre>
-      </td>
-    </tr>
-  </tbody>
-  </table>
-
-  <p>Tyhjien lohkojen kirjoittaminen on turhaa ja vaikeuttaa koodin lukemista. Jokaisella koodilohkolla tulisi olla jokin käyttötarkoitus.</p>
-
-  <p>Tehtävissä on käytössä kolme erilaista checkstyle toimintatapaa</p>
-
-  <ul>
-  <li>Poissa päältä - staattista analyysia ei suoriteta</li>
-  <li>Varoitus - testien yhteydessä näytetään myös checkstyle virheet, tehtävän voi kuitenkin palauttaa ja siitä saada pisteitä</li>
-  <li>Vaadittu - tehtävän voi palauttaa ja siitä voi saada pisteitä vain jos kaikki checkstyle tarkistukset menevät läpi</li>
-  </ul>
-
-  <p>NetBeans näyttää tyylivirheet keltaisella ja normaalit testit tavalliseen tapaan punaisella. Edistymispalkki muuttuu myöskin keltaiseksi, jos koodissa havaitaan tyylivirheitä. Vaikkakin näppäinyhdistelmä ALT + SHIFT + F auttaa useimpien tyylivirheiden korjaamiseen, on koodia syytä kirjoittaa oikein alusta alkaen.</p>
-
+  <p>Tyylivirheet näytetään ohjelmointiympäristössä keltaisella, ja normaalit testi-ilmoitukset punaisella. Kurssilla tutuksi tuleva tehtävän edistymispalkki muuttuu myöskin keltaiseksi, jos koodissa havaitaan tyylivirheitä. Vaikkakin näppäinyhdistelmä alt + shift + f auttaa useimpien tyylivirheiden korjaamiseen, on koodia syytä kirjoittaa oikein alusta alkaen.</p>
 
 
 <h3>Tutustuminen ohjelmointiympäristöön</h3>
@@ -1434,11 +1298,43 @@ if ( onkoPienempi ) {
   <pre>
   1 on pienempi kuin 3!
 </pre>
+
   <h3 id="sisennys">Koodin sisennys</h3>
-  <p>Huomaa, että if-komennon jälkeisen lohkon, eli {-merkkiä seuraavien rivien komentoja ei kirjoiteta samalle tasolle (eli yhtä "vasemmalle") kuin komentoa if, vaan ne <b>sisennetään</b> hieman oikealle. Sisentäminen tapahtuu tabulaattorimerkillä (q:n vasemmalla puolella oleva näppäin). Kun lohko sulkeutuu, eli tulee }-merkki, sisennys loppuu. }-merkki on samalla tasolla kuin if.</p>
+
+  <p>Huomaa, että if-komennon jälkeisen lohkon, eli {-merkkiä seuraavien rivien komentoja ei kirjoiteta samalle tasolle (eli yhtä "vasemmalle") kuin komentoa if, vaan ne <b>sisennetään</b> hieman -- maagiset neljä merkkiä -- oikealle. Neljä merkkiä saa myös tabulaattorimerkillä (q:n vasemmalla puolella oleva näppäin). Kun lohko sulkeutuu, eli tulee }-merkki, sisennys loppuu. }-merkki on samalla tasolla kuin if.</p>
+
+
+  <table class="table">
+  <thead>
+    <tr><th>Väärin</th><th>Oikein</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <pre class="sh_java">
+if (luku >= 10) {
+luku = 9;
+}
+        </pre>
+      </td>
+      <td>
+        <pre class="sh_java">
+if (luku >= 10) {
+    luku = 9;
+}
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+
+
   <p class="help">Sisennys on oleellinen seikka ohjelmien ymmärrettävyyden kannalta. Tällä kurssilla ja kaikkialla "oikeassa elämässä" edellytetään, että koodi sisennetään asiallisesti. NetBeans auttaa sisennyksessä. Ohjelman saa sisennettyä helposti painamalla yhtä aikaa shift, alt ja f.</p>
+
+
   <h3>else</h3>
-  <p>Jos valinnan ehto on epätotta, eli totuusarvo on false, voidaan suorittaa toinen vaihtoehtoinen lohko koodia, tämä käy komennon <code>else</code> avulla.</p>
+
+  <p>Jos valinnan ehto on epätotta, eli totuusarvo on false, voidaan suorittaa toinen vaihtoehtoinen lohko koodia, tämä käy komennon <code>else</code> avulla. Huomaa lähdekoodin sisennystyyli myös tässä.</p>
 <pre class="sh_java">
 int luku = 4;
 
@@ -1468,6 +1364,8 @@ Anna luku: <font color="red">-2</font>
 
 Luku ei ole positiivinen.
 </pre>
+
+
     <p><b>Onhan koodisi varmasti sisennetty oikein?</b></p>
     Kertaa materiaalista kohta
     <a class="ahy" href="#sisennys">Koodin sisennys</a>.
@@ -2772,9 +2670,13 @@ for ( int i = 0; i &lt; 10 ; i ++ ) {
 </pre>
     <p>eli for-komento sisältää samalla rivillä indeksimuuttujan alustuksen, toistoehton ja indeksimuuttujan kasvatuksen puolipistein eroteltuna. Voit unohtaa for:in olemassaolon toistaiseksi jos et halua sekoittaa päätäsi sen olemassaololla.</p>
   </div>
+
   <h2 id="metodit1">Metodit</h2>
+
   <p> Olemme käyttäneet useita erilaisia komentoja Javassa: sijoitusta, laskutoimituksia, vertailuja, if:iä ja whileä. Ruudulle tulostaminen on tehty "komentoa" <code>System.out.println()</code> käyttäen. Kahden luvun maksimi osataan laskea "komennolla" <code>Math.max()</code>. Tuttuja ovat myös <code>lukija.nextLine()</code> ja sen kanssa usein nähty <code>Integer.parseInt()</code>. </p>
+
   <p> Huomaamme, että jälkimmäinen joukko edellä lueteltuja komentoja poikkeaa if:istä ja while:stä ym. siinä, että komennon perässä on sulut ja joskus sulkujen sisällä komennolle annettava syöte. "Sulkuihin päättyvät" eivät oikeastaan olekaan komentoja vaan <strong>metodeja</strong>. </p>
+
   <p> Teknisesti ottaen metodi tarkoittaa koodinpätkää, jota voi kutsua muualta ohjelmakoodista. Koodirivi <code>System.out.println("olen metodille annettava parametri!")</code> siis tarkoittaa, että kutsutaan metodia, joka suorittaa ruudulle tulostamisen. Metodin suorituksen jälkeen palataan siihen kohtaa missä ennen metodikutsua oltiin menossa. Metodille suluissa annettua syötettä kutsutaan <i>metodin parametriksi</i>. </p>
   <p> Parametrin lisäksi metodilla voi olla <i>paluuarvo</i>. Esim. tuttu koodinpätkä: </p>
 <pre class="sh_java">
@@ -2787,7 +2689,9 @@ int luku = Integer.parseInt( lukija.nextLine() );
     osassa on kyse. Tarkka lukija tietysti huomaa, että <code>System.out.println()</code>:ssa on "kaksi pistettä". Metodin nimi tässä
     on println, ja <code>System.out</code> on se kenen metodista on kyse. Karkeasti ottaen <code>System.out</code> tarkoittaa koneen näyttöä. </p>
   <p> Tähän mennessä käyttämämme metodit ovat kaikki olleet Javan valmiita metodeita. Nyt opettelemme tekemään omia metodeita. </p>
+
   <h2 id="metodit">Omat metodit</h2>
+
   <p>Olemme tähän mennessä ohjelmoineet ohjelmamme siten, että kaikki tapahtuu yhdessä jatkumossa ja koodia luetaan ylhäältä alas. </p>
   <p>Edellä mainittiin että "metodi tarkoittaa koodinpätkää, jota voi kutsua muualta ohjelmakoodista". Javan valmiita metodeja on käytetty jo oikeastaan ensimmäisestä ohjelmasta lähtien. </p>
   <p>Javan valmiiden metodien käytön lisäksi ohjelmoija voi kirjoittaa itse metodeja joita sovellus kutsuu. Oikeastaan on hyvin poikkeuksellista jos ohjelmassa ei ole yhtään itse kirjoitettua metodia. Tästälähtien lähes jokainen kurssilla tehty ohjelma sisältääkin itsekirjoitettuja metodeja.</p>
@@ -2796,14 +2700,12 @@ int luku = Integer.parseInt( lukija.nextLine() );
 import java.util.Scanner;
 
 public class OhjelmaRunko {
-    // omia metodeja tänne
-
     public static void main(String[] args) {
         Scanner lukija = new Scanner(System.in);
         // ohjelmakoodi
     }
 
-    // omia metodeja tai tänne
+    // omia metodeja tänne
 }
 </pre>
   <p>Luodaan metodi <code>tervehdi</code>.</p>
@@ -2822,7 +2724,7 @@ public class OhjelmaRunko {
         // ohjelmakoodi
     }
 
-    // omat metodit
+    // omia metodeja tänne
     public static void tervehdi() {
         System.out.println("Terveiset metodimaailmasta!");
     }
@@ -2862,7 +2764,9 @@ Terveiset metodimaailmasta!
 Terveiset metodimaailmasta!
 Terveiset metodimaailmasta!
 </pre>
+
   <p>Huomionarvoista tässä on koodin suoritusjärjestys. Koodin suoritus etenee siten, että pääohjelman --  eli main:in -- rivit suoritetaan ylhäältä alas yksi kerrallaan. Koodirivin ollessa metodikutsu, mennään suorittamaan metodin koodirivit, jonka jälkeen palataan kohtaan, josta metodin kutsu tapahtui. Tarkemmin ottaen metodikutsun jälkeiselle riville. </p>
+
   <p>Jos ollaan tarkkoja on pääohjelma eli main itsekin metodi. Kun ohjelma käynnistyy, kutsuu käyttöjärjestelmä main:ia. Metodi main on siis ohjelman käynnistyspiste, jonka ylimmältä riviltä ohjelman suoritus lähtee liikkeelle. Ohjelman suoritus loppuu kun päädytään mainin loppuun. </p>
   <p>Jatkossa kun esittelemme metodeja, emme erikseen mainitse että niiden täytyy sijaita omalla paikallaan.  Metodia ei esimerkiksi voi määritellä toisen metodin sisällä.</p>
 <div class="tehtavat">
@@ -2914,6 +2818,37 @@ Alussa olivat suo, kuokka ja Java.
     <p><strong>huom:</strong> tulosta kehote <em>Kuinka monta?</em> omalle rivilleen!</p>
   </div>
 </div>
+
+  <h4>Metodien nimennästä</h4>
+
+  <p>Metodit nimetään siten, että ensimmäinen sana kirjoitetaan pienellä ja loput alkavat isolla alkukirjaimella, tälläisestä kirjoitustavasta käytetään nimitystä camelcase. Tämän lisäksi, metodin sisällä koodi on sisennetty taas neljä merkkiä.</p>
+
+  <table class="table">
+  <thead>
+    <tr><th>Väärin</th><th>Oikein</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <pre class="sh_java">
+public static int Tama_metodi_palauttaa_satunnaisen_kokonaisluvun ( ){
+//valittu arpakuution heitolla
+return 4;
+}
+        </pre>
+      </td>
+      <td>
+        <pre class="sh_java">
+public static int tamaMetodiPalauttaaSatunnaisenKokonaisluvun() {
+    //valittu arpakuution heitolla.
+    return 4;
+}
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+
 
   <h3>Metodin parametrit</h3>
   <p>Metodista saa huomattavasti monikäyttöisemmän antamalla sille <em>parametreja</em>. Parametrit ovat muuttujia, jotka määritellään metodin ylimmällä rivillä metodin nimen jälkeen olevien sulkujen sisällä.  Kun metodia kutsutaan, sen parametreille annetaan arvot kutsuvaiheessa.</p>
