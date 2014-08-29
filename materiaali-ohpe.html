@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+1<!DOCTYPE html>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -63,17 +63,19 @@
 <p>Tämä materiaali on tarkoitettu Helsingin yliopiston tietojenkäsittelytieteen laitoksen Ohjelmoinnin perusteet -kurssille.
  Materiaali pohjautuu syksyn 2012 ja keväiden 2013, 2012, 2011 ja 2010 kurssimateriaaleihin, joiden sisältöön ovat vaikuttaneet Matti Paksula, Antti Laaksonen, Pekka Mikkola, Juhana Laurinharju, Martin Pärtel, Joel Kaasinen ja Mikael Nousiainen.</p>
 
-<p>Lue materiaalia siten, että teet samalla itse kaikki lukemasi esimerkit. Esimerkkeihin kannattaa tehdä pieniä muutoksia ja tarkkailla, miten
-  muutokset vaikuttavat ohjelman toimintaan. Äkkiseltään voisi luulla, että esimerkkien tekeminen myös itse ja niiden muokkaaminen hidastaa opiskelua.
-  Tämä ei kuitenkaan pidä ollenkaan paikkansa. Ohjelmoimaan ei ole vielä tietääksemme kukaan ihminen oppinut lukemalla (tai esim. luentoa kuuntelemalla).
-  Oppiminen perustuu oleellisesti aktiiviseen tekemiseen ja rutiinin kasvattamiseen. Esimerkkien ja erityisesti erilaisten omien kokeilujen
-  tekeminen on parhaita tapoja "sisäistää" luettua tekstiä. TMC:ssä on kokeiluja varten tehtäväpohja, jonka nimi on "Hiekkalaatikko".</p>
+<p>Lue materiaalia siten, että teet samalla itse kaikki lukemasi esimerkit. Esimerkkeihin kannattaa tehdä pieniä muutoksia ja tarkkailla, miten muutokset vaikuttavat ohjelman toimintaan. Äkkiseltään voisi luulla, että esimerkkien tekeminen myös itse ja niiden muokkaaminen hidastaa opiskelua. Tämä ei kuitenkaan pidä ollenkaan paikkansa. Ohjelmoimaan ei ole vielä tietääksemme kukaan ihminen oppinut pelkästään lukemalla (tai esim. luentoa kuuntelemalla). Oppiminen perustuu oleellisesti aktiiviseen tekemiseen, rutiinin kasvattamiseen sekä opittavien asioiden pohtimiseen ja itselleen ja muille selittämiseen. Esimerkkien ja erityisesti erilaisten omien kokeilujen tekeminen on parhaita tapoja "sisäistää" luettua tekstiä. TMC:ssä on kokeiluja varten tehtäväpohja, jonka nimi on "Hiekkalaatikko".</p>
 
 <p>Pyri tekemään tai ainakin yrittämään tehtäviä sitä mukaa kuin luet tekstiä. Jos et osaa heti tehdä jotain tehtävää, älä masennu, sillä saat ohjausta tehtävän tekemiseen <a href="http://mooc.cs.helsinki.fi/content/irc-ohjeet" target="_blank">IRC:ssä</a> kanavilla #ohpe ja #mooc.fi sekä <span class="hidden-in-mooc"> pajassa</span>.</p>
 
 <p>Tekstiä ei ole tarkoitettu vain kertaalleen luettavaksi. Joudut varmasti myöhemmin palaamaan jo aiemmin lukemiisi kohtiin tai aiemmin tekemiisi tehtäviin. Tämä teksti ei sisällä kaikkea oleellista ohjelmointiin liittyvää. Itse asiassa ei ole olemassa mitään kirjaa josta löytyisi kaikki oleellinen. Eli joudut joka tapauksessa ohjelmoijan urallasi etsimään tietoa myös omatoimisesti. Kurssin harjoitukset sisältävät jo jonkun verran ohjeita, mistä suunnista ja miten hyödyllistä tietoa on mahdollista löytää.</p>
 
 <p>Muutamiin kohtiin olemme myös liittäneet screencasteja, eli videoita, joita katsomalla voi pelkän valmiin koodin lukemisen sijaan seurata miten ohjelma muodostuu. Tämän lisäksi materiaalissa on kyselyjä, joiden vastauksia käytetään osana Helsingin yliopistolla tehtävää ohjelmoinnin oppimisen tutkimusta. Kyselyt ja tehtävät saa auki klikkaamalla kyselyn tai tehtävän nimeä.</p>
+
+<h3>Kurssin tehtävistä ja arvostelusta</h3>
+
+<p>Kurssilla on kahdenlaisia tehtäviä, joiden tekemisestä saa viikoittaisia tehtäväpisteitä. Ensimmäisellä viikolla alkavat ohjelmointitehtävät, ja toisesta viikosta lähtien ohjelmointitehtävien lisäksi materiaalissa on myös selitystehtäviä, joissa annettuun kysymykseen tai ongelmaan tulee kirjoittaa selitys ohjeiden mukaan. Kaksi kolmasosaa kurssin kokonaispistemäärästä tulee näiden tehtävien tekemisestä, viimeinen kolmasosa tulee kurssikokeesta. Katso <a href="http://www.cs.helsinki.fi/group/java/s14/" target="_blank">kurssisivulta</a> tarkempaa tietoa viikoittaisesta pisteytyksestä.</p>
+
+<p>Ohjelmointi- ja selitystehtävien lisäksi materiaalissa on tutkimuskysymyksiä ja kyselyitä. Vastaamalla kaikkiin materiaalissa oleviin tutkimuskysymyksiin voit saada neljä ylimääräistä tehtäväpistettä, joilla voi esimerkiksi paikata tekemättä jääneitä tehtäviä tai mahdollisia pulmia kokeessa. Kokeesta tulee näistä neljästä ylimääräisestä pisteestä huolimatta saada kuitenkin vähintään puolet pisteistä kurssin läpäisemiseen.</p>
 
 
 <div class="panel-group" id="1taustatiedot">
@@ -87,9 +89,10 @@
       <div class="panel-body">
 
         <!-- Taustatiedot -->
-        <form class="form-horizontal" id="taustatiedot-form">
+<form class="form-horizontal" id="taustatiedot-form">
             <fieldset>
-                <p class="help-block">Käytämme taustatietoja kurssiemme kehittämiseen ja tutkimukseen. Taustatietoja ei luovuteta kolmansille osapuolille.</p>
+                <legend id="taustatiedot-form-legend">Tutkimus: Taustatiedot</legend>
+                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
 
                 <!-- TMC-tunnus-->
                 <div class="form-group">
@@ -425,13 +428,6 @@
                         </div>
 
                         <div class="checkbox col-md-4">
-                            <label for="osallistuminen-koska-pidan-verkko-opiskelusta">
-                                <input type="checkbox" name="osallistuminen" id="osallistuminen-koska-pidan-verkko-opiskelusta" value="osallistuminen-koska-pidan-verkko-opiskelusta">
-                                Koska pidän verkko-opiskelusta
-                            </label>
-                        </div>
-
-                        <div class="checkbox col-md-4">
                             <label for="osallistuminen-koska-kurssia-suositeltiin-minulle">
                                 <input type="checkbox" name="osallistuminen" id="osallistuminen-koska-kurssia-suositeltiin-minulle" value="osallistuminen-koska-kurssia-suositeltiin-minulle">
                                 Koska sitä suositeltiin minulle
@@ -445,6 +441,18 @@
                                 Muu, mikä?
                             </label>
                             <input id="osallistuminen-muu-teksti" name="osallistuminen-muu-teksti" type="text" class="form-control input-md hidden">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="suoritus">Aion läpäistä tämän kurssin kunnialla</label>
+                    <div class="form-inline col-md-8">
+                        <div class="checkbox col-md-4">
+                            <label for="aion-lapaista-kurssin-kunnialla">
+                                <input type="checkbox" name="suoritus" id="aion-lapaista-kurssin-kunnialla" value="aion-lapaista-kurssin-kunnialla">
+                                Kyllä!
+                            </label>
                         </div>
                     </div>
                 </div>
