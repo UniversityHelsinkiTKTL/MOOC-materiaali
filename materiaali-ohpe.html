@@ -480,6 +480,74 @@
   </div>
 </div>
 
+<!-- msql-motivaatio-form -->
+<div class="panel-group" id="2mslqmotivaatio">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#2mslqmotivaatio" href="#2mslqmotivaatio2">
+      <div class="panel-heading">
+	<h4 id="msql-motivaatio-form-legend">Kysely: Oppimiskokemukset ja motivaatio</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="2mslqmotivaatio2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="msql-motivaatio-form">
+            <fieldset>
+                <legend id="msql-motivaatio-form-legend">Tutkimus: Oppimiskokemukset ja motivaatio</legend>
+                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="msql-motivaatio-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="msql-motivaatio-form-tmc-tunnus" name="msql-motivaatio-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <p class="help-block">Seuraavilla kysymyksillä kartoitetaan opiskelukokemuksiasi ja motivaatiotasi tällä kurssilla. Tässä kyselyssä ei ole oikeita tai vääriä vastauksia, vastaa niin tarkasti kuin pystyt. Käytä seuraavaa skaalaa vastausten antamiseen. Jos olet sitä mieltä, että väite pätee sinuun erittäin hyvin, valitse 7; jos olet sitä mieltä, että väite ei päde sinuun lainkaan, valitse 1. Jos väite on enemmän tai vähemmän totta kohdallasi, valitse sinua parhaiten kuvaava arvo lukujen 1 ja 7 väliltä.</p>
+
+                <div class="row" id="msql-motivaatio-skaala">
+                    <div class="col-md-3">Väite ei päde minuun lainkaan.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Väite pätee minuun erittäin hyvin.</div>
+                </div>
+
+                <div id="msql-motivaatio">
+
+
+                </div>
+
+                <input type="hidden" id="msql-motivaatio-form-started-entering" name="msql-motivaatio-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="msql-motivaatio-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="msql-motivaatio-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   <h2 id="koodia">Ohjelma ja lähdekoodi</h2>
   
   <p>Tietokoneohjelmia verrataan usein leipomiseen. Tietokone on leipuri, tietokone-ohjelma resepti, ja tietokoneen resurssit -- esimerkiksi näyttö ja verkkokortti -- raaka-aineita. Leipurilla ja tietokoneella on kuitenkin merkittävä ero siinä, että vaikka leipuri kehittyy reseptejä toistaessa ja voi esimerkiksi soveltaa uusia raaka-aineita, tietokone ei tiedä mitä se tekee, eikä se myöskään osaa soveltaa. Tietokone noudattaa ohjeita säntillisesti, jopa tyhmästi, eikä osaa reagoida vaikkapa rikkinäiseen uuniin, ellei resepti ota huomioon uunin rikkoutumismahdollisuutta ja kerro täsmällisesti mitä uunin rikkoutuessa tulee tehdä.</p>
