@@ -919,7 +919,7 @@ System.out.println(laskuSuluitta); // tulostaa 13
 int eka = 2;
 int toka = 4;
 
-System.out.println(eka+toka); // tulostaa 6
+System.out.println(eka + toka); // tulostaa 6
 System.out.println(2 + toka - eka - toka); // tulostaa 0
 </pre>
   <h3 id="liuku_eli_desimaali">Liukuluvut eli desimaaliluvut</h3>
@@ -952,13 +952,13 @@ System.out.println(kunJakajaOnLiukuluku); // tulostaa 1.5
 int eka = 3;
 int toka = 2;
 
-double tulos1 = (double)eka / toka;
+double tulos1 = (double) eka / toka;
 System.out.println(tulos1); // tulostaa 1.5
 
-double tulos2 = eka / (double)toka;
+double tulos2 = eka / (double) toka;
 System.out.println(tulos2); // tulostaa 1.5
 
-double tulos3 = (double)(eka / toka);
+double tulos3 = (double) (eka / toka);
 System.out.println(tulos3); // tulostaa 1
 </pre>
   <p>Jälkimmäisessä tulos pyöristyy väärin sillä laskuoperaatio kokonaisluvuilla suoritetaan ennen tyyppimuunnosta.</p>
@@ -1002,9 +1002,9 @@ Vuodessa on X sekuntia.
 <pre class="sh_java">
 String tervehdys = "Hei ";
 String nimi = "Matti";
-String hyvästely = ", ja näkemiin!";
+String hyvastely = ", ja näkemiin!";
 
-String lause = tervehdys + nimi + hyvästely;
+String lause = tervehdys + nimi + hyvastely;
 
 System.out.println(lause);
 </pre>
@@ -1018,7 +1018,7 @@ System.out.println( 2 + " &lt;-- tuossa on kokonaisluku");
 </pre>
     <p>Edellä esitellyt laskusäännöt pätevät täälläkin:</p>
 <pre class="sh_java">
-System.out.println("Neljä: " + (2+2));
+System.out.println("Neljä: " + (2 + 2));
 System.out.println("Mutta! kaksikymmentäkaksi: " + 2 + 2);
 </pre>
 <pre>
@@ -1430,6 +1430,8 @@ if ( luku &gt; 5 ) {
   Lukusi on viisi tai alle!
 </pre>
 
+  <p><strong>Huom! Komento else tulee samalle riville loppuvan aaltosulun kanssa.</strong> Jos et tee näin, tyylitarkastaja valittaa "Line xx: '}' should be on the same line."</p>
+
 
   <div class="tehtavat">
     <div class="tehtava">
@@ -1808,10 +1810,10 @@ while ( true ) {
     int toka = Integer.parseInt(lukija.nextLine());
 
     if ( komento.equals("summa") ) {
-        int summa = eka+toka;
+        int summa = eka + toka;
         System.out.println( "lukujen summa " + summa );
     } else if ( komento.equals("erotus") ) {
-        int erotus = eka-toka;
+        int erotus = eka - toka;
         System.out.println( "lukujen erotus " + erotus );
     } else {
         System.out.println( "tuntematon komento" );
@@ -2264,9 +2266,9 @@ while (true) {
 
     // TEE JOTAIN TÄÄLLÄ
 
-    System.out.println("Summa nyt: "+summa);
+    System.out.println("Summa nyt: " + summa);
 }
-System.out.println("Summa lopussa: "+summa);
+System.out.println("Summa lopussa: " + summa);
 </pre>
     <p>Ohjelman tulee toimia seuraavasti:</p>
     <pre>
@@ -2493,7 +2495,7 @@ pituus %= 3;  // sama kuin pituus = pituus % 3;
 
 // muuttujan pituus arvo 1
 </pre>
-  <p>Usein ohjelmissa esiintyy toisto jonka aikana muuttujaan lasketaan jokin toistosta riippuvainen arvo. Seuraava ohjelma laskee tulon 4*3 hieman kömpelöllä tavalla eli summana 3+3+3+3:</p>
+  <p>Usein ohjelmissa esiintyy toisto jonka aikana muuttujaan lasketaan jokin toistosta riippuvainen arvo. Seuraava ohjelma laskee tulon 4*3 hieman kömpelöllä tavalla eli summana 3 + 3 + 3 + 3:</p>
 <pre class="sh_java">
 int tulos = 0;
 
@@ -2746,7 +2748,7 @@ while ( i &lt; 10 ) {
 </pre>
     <p>tehtäisiin for:in avulla seuraavasti:</p>
 <pre class="sh_java">
-for ( int i = 0; i &lt; 10 ; i ++ ) {
+for ( int i = 0; i &lt; 10 ; i++ ) {
     System.out.println( i );
 }
 </pre>
@@ -7057,8 +7059,8 @@ l.arvaaKirjain("D");   // väärä
 l.arvaaKirjain("S");   // oikea
 l.arvaaKirjain("F");   // väärä
 l.arvaaKirjain("D");   // Tämän ei pitäisi kasvattaa virheiden lukumäärää koska D oli jo arvattu
-System.out.println("Arvatut kirjaimet: "+l.arvatutKirjaimet());
-System.out.println("Virheiden lukumäärä: "+l.virheidenLukumaara());
+System.out.println("Arvatut kirjaimet: " + l.arvatutKirjaimet());
+System.out.println("Virheiden lukumäärä: " + l.virheidenLukumaara());
 </pre>
 <pre>
 Arvataan: A, D, S, F, D
@@ -7076,7 +7078,7 @@ Virheiden lukumäärä: 2
     <p>Esimerkki metodin toiminnasta:</p>
     <pre class="sh_java">
 HirsipuuLogiikka l = new HirsipuuLogiikka("kissa");
-System.out.println("Sana on: "+l.salattuSana());
+System.out.println("Sana on: " + l.salattuSana());
 
 System.out.println("Arvataan: A, D, S, F, D");
 l.arvaaKirjain("A");
@@ -7084,9 +7086,9 @@ l.arvaaKirjain("D");
 l.arvaaKirjain("S");
 l.arvaaKirjain("F");
 l.arvaaKirjain("D");
-System.out.println("Arvatut kirjaimet: "+l.arvatutKirjaimet());
-System.out.println("Virheiden lukumäärä: "+l.virheidenLukumaara());
-System.out.println("Sana on: "+l.salattuSana());
+System.out.println("Arvatut kirjaimet: " + l.arvatutKirjaimet());
+System.out.println("Virheiden lukumäärä: " + l.virheidenLukumaara());
+System.out.println("Sana on: " + l.salattuSana());
 </pre>
 <pre>
 Sana on: _____
@@ -7592,19 +7594,19 @@ public static void main(String[] args) {
     Henkilo eero = new Henkilo("Eero", 1, 110, 7);
     Henkilo pekka = new Henkilo("Pekka", 33, 176, 85);
 
-    System.out.println("punnituksia tehty "+haaganNeuvola.punnitukset());
+    System.out.println("punnituksia tehty " + haaganNeuvola.punnitukset());
 
     haaganNeuvola.punnitse(eero);
     haaganNeuvola.punnitse(pekka);
 
-    System.out.println("punnituksia tehty "+haaganNeuvola.punnitukset());
+    System.out.println("punnituksia tehty " + haaganNeuvola.punnitukset());
 
     haaganNeuvola.punnitse(eero);
     haaganNeuvola.punnitse(eero);
     haaganNeuvola.punnitse(eero);
     haaganNeuvola.punnitse(eero);
 
-    System.out.println("punnituksia tehty "+haaganNeuvola.punnitukset());
+    System.out.println("punnituksia tehty " + haaganNeuvola.punnitukset());
 }
 </pre>
   <p>Tulostuu:</p>
@@ -7694,7 +7696,7 @@ public class Kassapaate {
     }
 
     public String toString() {
-        return "kassassa rahaa "+rahaa+" edullisia lounaita myyty "+edulliset+" maukkaita lounaita myyty "+maukkaat;
+        return "kassassa rahaa " + rahaa + " edullisia lounaita myyty " + edulliset + " maukkaita lounaita myyty " + maukkaat;
     }
 }
 </pre>
@@ -7708,10 +7710,10 @@ public class Paaohjelma {
         System.out.println("vaihtorahaa jäi " + vaihtorahaa );
 
         vaihtorahaa = unicafeExactum.syoEdullisesti(5);
-        System.out.println("vaihtorahaa jäi "  + vaihtorahaa );
+        System.out.println("vaihtorahaa jäi " + vaihtorahaa );
 
         vaihtorahaa = unicafeExactum.syoMaukkaasti(4.3);
-        System.out.println("vaihtorahaa jäi "  + vaihtorahaa );
+        System.out.println("vaihtorahaa jäi " + vaihtorahaa );
 
         System.out.println( unicafeExactum );
     }
