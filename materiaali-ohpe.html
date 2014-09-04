@@ -1956,7 +1956,7 @@ Kuinka monta askelta: 3
 
   <p>Lisää tekstikäyttöliittymään komento "viereen", joka siirtää robotin laatikon viereen sen vasemmalle puolelle. Ratkaisua ohjelmoidessa voit olettaa, että robotti lähtee liikkeelle aina sen alkusijainnista, se katsoo aluksi aina samaan suuntaan, ja että rahtialue on aina samassa kohdassa.</p>
 
-  <p>Ohjaimeen on lisätty seuraavat komennot, joita tutkimalla huomannet ennen pitkää niiden hyödyn:</p>
+  <p>Ohjaimeen on lisätty seuraavat komennot, joiden avulla saat käyttöösi robotin, laatikon ja rahtialueen sijainnin. Voit käyttää niitä robotin tarvitsemien siirtymien laskemiseen.</p>
 
 <pre class="sh_java">
 // kertoo robotin x- ja y-koordinaatit
@@ -2001,7 +2001,7 @@ komento (sammuta, vasen, oikea, liiku, liikuMonta, viereen): viereen
 
   <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/24-robotcontrol-viereen.png"/></p>
 
-  <p>Vinkki! Kannattanee hahmotella paperilla miten robotin siirtyminen ja liike riippuu laatikon sijainnista</p>
+  <p>Vinkki! Kannattanee hahmotella paperilla miten robotin siirtyminen ja liike riippuu laatikon sijainnista.</p>
 
 
   <h4>Automaattinen ohjaus</h4>
@@ -2032,10 +2032,262 @@ komento (sammuta, vasen, oikea, liiku, liikuMonta, viereen, ratkaise): ratkaise
 <div class="viikkoraja-mooc" id="Viikko 2" deadline="avautuu kun 85 %  1. viikosta tehty" data-first-chapter-index="11" data-first-exercise-index="25" data-first-week-index="2" data-first-chapter-index-mooc="11" data-first-exercise-index-mooc="25" data-first-week-index-mooc="2" tekija="Arto Vihavainen, Matti Luukkainen">
 
 
-    <div class="tehtava no-number">
-      <h3>Tutkimus: Tehtävänvaihtotesti 1</h3>
+<div class="panel-group" id="2mslqtoimintatavat">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#2mslqtoimintatavat" href="#2mslqtoimintatavat2">
+      <div class="panel-heading">
+	<h4 id="msql-toimintatavat-form-legend">Kysely: Opiskeluun liittyvät toimintatavat</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="2toimintatavat2">
+      <div class="panel-body">
 
-      <p>Tässä tehtävässä osallistut kokeellisessa psykologiassa käytettyyn <a href="http://en.wikipedia.org/wiki/Task_switching_(psychology)" target="_blank">tehtävänvaihtotestiin</a>, missä tutkitaan aivojen mukautumista kahden tai useamman samanaikaisen tehtävän suorittamiseen. Tavoitteenamme on selvittää vaikuttaako ohjelmointi aivojen kykyyn hoitaa useampia samanaikaisia tehtäviä. Tämä testi tehdään useamman kerran kurssin aikana.</p>
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="msql-toimintatavat-form">
+            <fieldset>
+                <legend id="msql-toimintatavat-form-legend">Tutkimus: Opiskeluun liittyvät toimintatavat</legend>
+                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="msql-toimintatavat-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="msql-toimintatavat-form-tmc-tunnus" name="msql-toimintatavat-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <p class="help-block">Seuraavilla kysymyksillä kartoitetaan opiskeluun liittyviä toimintatapojasi. Tässä kyselyssä ei ole oikeita tai vääriä vastauksia, vastaa niin tarkasti kuin pystyt. Käytä alla määriteltyä skaalaa vastausten antamiseen. Jos olet sitä mieltä, että väite pätee sinuun erittäin hyvin, valitse 7; jos olet sitä mieltä, että väite ei päde sinuun lainkaan, valitse 1. Jos väite on enemmän tai vähemmän totta kohdallasi, valitse sinua parhaiten kuvaava arvo lukujen 1 ja 7 väliltä.</p>
+
+		<p>&nbsp;</p>
+
+                <div class="row" id="msql-toimintatavat-skaala">
+                    <div class="col-md-3">Väite ei päde minuun lainkaan.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Väite pätee minuun erittäin hyvin.</div>
+                </div>
+		<p>&nbsp;</p>
+
+                <div id="msql-toimintatavat">
+
+
+                </div>
+
+                <input type="hidden" id="msql-toimintatavat-form-started-entering" name="msql-toimintatavat-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="msql-toimintatavat-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="msql-toimintatavat-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="panel-group" id="2at-et-lister-one">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#2at-et-lister-one" href="#2at-et-lister-one2">
+      <div class="panel-heading">
+	<h4 id="at-et-lister-one-form-legend">Kysely: Opiskeluun liittyvät toimintatavat</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="2at-et-lister-one2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="at-et-lister-one-form">
+            <fieldset>
+                <legend id="at-et-lister-one-form-legend">Tutkimus: Opiskeluun liittyvät toimintatavat</legend>
+                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="at-et-lister-one-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="at-et-lister-one-tmc-tunnus" name="at-et-lister-one-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+
+                <p class="help-block">Tässä kyselyssä kartoitetaan tähän mennessä kertynyttä ohjelmointirutiiniasi sekä muuttujien ymmärrystä. Vastaathan kyselyyn nykyisen osaamisesi perusteella, älä siis esimerkiksi kokeile koodinpätkiä tietokoneella ennen vastauksen antamista.</p>
+
+		<p>&nbsp;</p>
+
+                <div id="at-et-lister-one">
+<h4>Kysymys 1</h4>
+
+                    <h5>Osa 1</h5>
+
+                    <p>Tutki seuraavaa koodia.</p>
+
+                    <pre class="sh_java">
+int a = 1;
+int b = 2;
+a = 3;</pre>
+
+                    <p>Kun koodi on suoritettu, mitkä ovat muuttujien a ja b arvot?</p>
+
+                    <p>Muuttujan a arvo on <input type="text" class="input-sm" name="kysymys-1-osa-1-muuttuja-a"/></p>
+                    
+                    <p>Muuttujan b arvo on <input type="text" class="input-sm" name="kysymys-1-osa-1-muuttuja-b"/></p>
+
+
+                    <hr/>
+
+                    <h5>Osa 2</h5>
+
+                    <p>Tutki seuraavaa koodia.</p>
+                    
+                    <pre class="sh_java">
+int r = 2;
+int s = 4;
+r = s;</pre>
+
+                    <p>Kun koodi on suoritettu, mitkä ovat muuttujien r ja s arvot?</p>
+
+                    <p>Muuttujan r arvo on <input type="text" class="input-sm" name="kysymys-1-osa-2-muuttuja-r"/></p>
+                    
+                    <p>Muuttujan s arvo on <input type="text" class="input-sm" name="kysymys-1-osa-2-muuttuja-s"/></p>
+
+
+                    <hr/>
+
+                    <h5>Osa 3</h5>
+
+                    <p>Tutki seuraavaa koodia.</p>
+
+                    <pre class="sh_java">
+int p = 1;
+int q = 8;
+q = p;
+<strong>p = q;</strong></pre>
+
+                    <p>Kun koodi on suoritettu, mitkä ovat muuttujien p ja q arvot?</p>
+
+                    <p>Muuttujan p arvo on <input type="text" class="input-sm" name="kysymys-1-osa-3-muuttuja-p"/></p>
+                    
+                    <p>Muuttujan q arvo on <input type="text" class="input-sm" name="kysymys-1-osa-3-muuttuja-q"/></p>
+
+                    <hr/>
+
+                    <h5>Osa 4</h5>
+
+                    <p>Tutki seuraavaa koodia.</p>
+                    <pre class="sh_java">
+int x = 7;
+int y = 5;
+int z = 0;
+z = x;
+x = y;
+y = z;</pre>
+
+                    <p>Koodin suorituksen lopuksi, mitkä ovat muuttujien x, y ja z arvot?</p>
+
+                    <p>Muuttujan x arvo on <input type="text" class="input-sm" name="kysymys-1-osa-4-muuttuja-x"/></p>
+                    
+                    <p>Muuttujan y arvo on <input type="text" class="input-sm" name="kysymys-1-osa-4-muuttuja-y"/></p>
+                    
+                    <p>Muuttujan z arvo on <input type="text" class="input-sm" name="kysymys-1-osa-4-muuttuja-z"/></p>
+
+                    <hr/>
+
+                    <h5>Osa 5</h5>
+
+                    <p>Tutki edellisessä osassa (Osa 4) esiintynyttä koodia. Kuvaile koodin toimintaa yhdellä lauseella alla olevaan tekstilaatikkoon.</p>
+
+                    <textarea class="form-control" rows="2" name="kysymys-1-osa-5"></textarea>
+
+                    <hr/>
+
+                    <h4>Kysymys 2</h4>
+
+                    <h5>Osa 1</h5>
+
+                    <p>Allaolevan lähdekoodin tarkoitus on vaihtaa muuttujien a ja b arvot keskenään, riippumatta siitä, mitkä muuttujien a ja b arvot ovat. Voit olettaa, että muuttujat a, b ja c ovat olemassa, ja että niihin on asetettu jotkin arvot.</p>
+
+
+                    <pre class="sh_java">
+c = a;
+a = b;
+b = c;</pre>
+                    
+                    <p>Mikä on muuttujan c rooli (tai tehtävä) ylläolevassa koodissa? Vastaa yhdellä lauseella.</p>
+
+                    <textarea class="form-control" rows="2" name="kysymys-2-osa-1"></textarea>
+
+
+                    <hr/>
+
+                    <h5>Osa 2</h5>
+
+                    <p>Tutki allaolevaa koodia.</p>
+
+                    <pre class="sh_java">
+j = i;
+i = k;
+k = j;</pre>
+
+                    <p>Kuvaa koodin toiminta yhdellä lauseella allaolevaan laatikkoon. Voit olettaa, että muuttujat i, j ja k ovat olemassa, ja että niihin on asetettu jotkin arvot.</p>
+                    
+                    <textarea class="form-control" rows="3" name="kysymys-2-osa-2"></textarea>
+
+
+                    <hr/>
+
+                    <h4>Kysymys 3</h4>
+
+                    <p>Oleta, että käytössäsi on muuttujat eka ja toka, joihin kumpaankin on asetettu joku arvo. Kirjoita allaolevaan laatikkoon koodi, joka vaihtaa muuttujien eka ja toka arvot keskenään.</p>
+
+                    <textarea class="form-control" rows="3" name="kysymys-3"></textarea>
+                </div>
+
+                <input type="hidden" id="at-et-lister-one-form-started-entering" name="at-et-lister-one-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="at-et-lister-one-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="at-et-lister-one-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="tehtava no-number">
+      <h3>Kysely / tutkimus: Tehtävänvaihtotesti 1</h3>
+
+      <p>Tässä osallistut kokeellisessa psykologiassa käytettyyn <a href="http://en.wikipedia.org/wiki/Task_switching_(psychology)" target="_blank">tehtävänvaihtotestiin</a>, missä tutkitaan aivojen mukautumista kahden tai useamman samanaikaisen tehtävän suorittamiseen. Tavoitteenamme on selvittää vaikuttaako ohjelmointi aivojen kykyyn hoitaa useampia samanaikaisia tehtäviä. Tämä testi tehdään useamman kerran kurssin aikana.</p>
 
       <p>Käytössä olevassa testiohjelmassa on neljä osaa. Ensimmäisessä osassa mitataan reaktioaikaa, toisessa osassa parittoman (odd) ja parillisen (even) luvun tunnistamista, kolmannessa osassa konsonantin (consonant) ja vokaalin (vowel) tunnistamista, ja viimeisessä osassa yhdistetään osat kaksi ja kolme. Näet jokaisen osion jälkeen edellisen osion tulokset.</p>
 
