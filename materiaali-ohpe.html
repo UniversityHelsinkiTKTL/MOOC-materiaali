@@ -2581,14 +2581,7 @@ while (luku &gt;= 1) {
 
   <div class="help"> <big><b>Muutama NetBeans-vihje</b></big>
     <ul>
-      <li> Kaikki NetBeans-vihjeet löytyvät
-    <!-- BEGIN mini MOOC SNIP-->
-    <a class="hidden-in-mooc" href="https://www.cs.helsinki.fi/group/java/k14-materiaali/nb-vihjeitä">täältä</a>
-    <!-- END mini MOOC SNIP-->
-    <!-- BEGIN mini SNIP-->
-    <a class="hidden-in-hy" href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans">täältä</a>
-    <!-- END mini SNIP-->
-         </li>
+      <li> Kaikki NetBeans-vihjeet löytyvät <a class="hidden-in-hy" href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans">täältä</a></li>
       <li> <b>Koodin automaattinen täydennys</b>
         <p> Jos ohjelmassasi on käytössä esim. muuttuja <code>String sukunimi;</code>, ei koko muuttujan nimeä tarvitse välttämättä joka kerta kirjoittaa kokonaan. Kokeile mitä tapahtuu kun kirjoitat <code>s</code> ja sen jälkeen painat yhtäaikaa ctrl ja välilyönti. <b>HUOM:</b> laitoksen koneilla automaattinen täydennys saadaan aikaan painamalla yhtä aikaa ctrl, alt ja välilyönti.
           Vastaavalla tavalla NetBeans osaa täydentää muitakin nimiä, esim. komennon <code>while</code> aikaansaamiseksi riittää kirjoittaa w ja painaa ctrl+välilyönti... </p>
@@ -5934,19 +5927,10 @@ public class Main {
     public static void main(String[] args) {
 
     }
-
-}
-  </pre>
+}</pre>
   <div class="help">
   <p>Luomme nyt projektiimme eli ohjelmaamme uuden luokan. Tämä tapahtuu valitsemalla NetBeansissa vasemmalta <em>projects</em>-kohdasta hiiren oikealla napilla <em>new</em> ja <em>java class</em>. Avautuvaan dialogiin annetaan luokalle nimi.</p>
-  <p>Kuten muuttujien ja metodien nimien, myös luokan nimen on aina oltava mahdollisimman kuvaava. Joskus ohjelmoinnin edetessä luokka elää ja muuttaa muotoaan. Tällaisissa tilanteissa luokan voi nimetä uudelleen (
-
-        <!-- BEGIN mini MOOC SNIP-->
-    <a class="hidden-in-mooc"  href="https://www.cs.helsinki.fi/group/java/k14-materiaali/nb-vihjeitä">ks. NetBeans ohje</a>
-    <!-- END mini MOOC SNIP-->
-    <!-- BEGIN mini SNIP-->
-    <a class="hidden-in-hy"  href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans">ks. NetBeans ohje</a>
-    <!-- END mini SNIP-->).</p>
+  <p>Kuten muuttujien ja metodien nimien, myös luokan nimen on aina oltava mahdollisimman kuvaava. Joskus ohjelmoinnin edetessä luokka elää ja muuttaa muotoaan. Tällaisissa tilanteissa luokan voi nimetä uudelleen (<a href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans" target="_blank">ks. MOOC.fi NetBeans ohje</a>.</p>
   </div>
   <p>Luodaan luokka nimeltä <code>Henkilo</code>. Luokasta muodostuu oma tiedostonsa <code>Henkilo.java</code>. Eli ohjelma koostuu nyt kahdesta tiedostosta, sillä pääohjelma on omassa tiedostossaan. Aluksi luokka on tyhjä:</p>
   <pre class="sh_java">
@@ -5981,9 +5965,8 @@ public class Henkilo {
     public Henkilo(String nimiAlussa) {
         this.ika = 0;
         this.nimi = nimiAlussa;
-      }
-}
-</pre>
+    }
+}</pre>
   <p>Konstruktori on siis nimeltään sama kuin luokan nimi. Yllä luokka (<em>class</em>) on <code>Henkilo</code>, ja konstruktori <code>public Henkilo(String nimiAlussa)</code>. Konstruktorille parametrina tuleva arvo tulee sulkuihin konstruktorin nimen perään. Konstruktorin voi ajatella olevan metodi, jonka Java suorittaa kun olio luodaan sanomalla <code>new Henkilo("Pekka");</code> Aina kun jostain luokasta luodaan olio, kutsutaan kyseisen luokan konstruktoria. </p>
   <p>Muutama huomio: konstruktorin sisällä on komento <code>this.ika = 0</code>. Tässä asetetaan arvo 0 <em>juuri tämän olion, eli "this"-olion</em> sisäiselle muuttujalle <code>ika</code>. Toinen komento <code>this.nimi = nimiAlussa;</code> taas asettaa juuri tämän olion sisäiselle muuttujalle <code>nimi</code> arvoksi parametrina annetun merkkijonon. Olion muuttujat <code>ika</code> ja <code>nimi</code> näkyvät konstruktorissa ja muuallakin olion sisällä automaattisesti. Niihin viitataan <code>this</code>-etuliitteellä. Koska niissä on private-määre, niin olion ulkopuolelle ne eivät näy.</p>
   <p>Vielä yksi huomio: jos ohjelmoija ei tee luokalle konstruktoria, tekee Java automaattisesti luokalle oletuskonstruktorin. Oletuskonstruktori on konstruktori joka ei tee mitään. Eli jos konstruktoria ei jostain syystä tarvita, ei sellaista tarvitse ohjelmoida.</p>
@@ -6019,8 +6002,7 @@ public class Main {
         antti.tulostaHenkilo();
         martin.tulostaHenkilo();
     }
-}
-</pre>
+}</pre>
   <p>Tulostuu:</p>
 <pre>
 Pekka, ikä 0 vuotta
@@ -6041,8 +6023,7 @@ Martin, ikä 0 vuotta
       <li>Konstruktori <code>public Tuote(String nimiAlussa, double hintaAlussa, int maaraAlussa)</code></li>
       <li>Metodi <code>public void tulostaTuote()</code> joka tulostaa tuotteen tiedot tässä muodossa:
         <pre>
-Banaani, hinta 1.1, 13 kpl
-      </pre>
+Banaani, hinta 1.1, 13 kpl</pre>
       </li>
     </ul>
   </div>
@@ -6058,7 +6039,7 @@ public class Henkilo {
     // ...
 
     public void vanhene() {
-      this.ika = this.ika + 1;
+        this.ika = this.ika + 1;
     }
 }
 </pre>
@@ -6081,7 +6062,7 @@ public class Main {
 
         pekka.tulostaHenkilo();
         antti.tulostaHenkilo();
-      }
+    }
 }
 </pre>
   <p>Ohjelman tulostus on seuraava:</p>
@@ -6351,12 +6332,12 @@ public class Henkilo {
 public class Henkilo {
   // ...
 
-  public boolean taysiIkainen(){
-      if ( this.ika &lt; 18 ) {
-          return false;
-      }
+    public boolean taysiIkainen(){
+        if ( this.ika &lt; 18 ) {
+            return false;
+        }
 
-      return true;
+        return true;
     }
 
     /*
@@ -6412,7 +6393,7 @@ public class Henkilo {
 
     public String getNimi() {
         return this.nimi;
-      }
+    }
 }
 </pre>
   <p>Metodi <code>getNimi</code> palauttaa oliomuuttujan <code>nimi</code> kutsujalle. Metodin nimi on hieman erikoinen. Javassa on usein tapana nimetä oliomuuttujan palauttava metodi juuri näin, eli <code>getMuuttujanNimi</code>. Tälläisiä metodeja kutsutaan usein "gettereiksi".</p>
@@ -6752,10 +6733,10 @@ public void setPituus(int pituus) {
     this.pituus = pituus;
 }
 </pre>
-  <p>Nyt metodissa <code>pituus</code> tarkottaa nimenomaan <em>pituus</em>-nimistä parametria ja <code>this.pituus</code> saman nimistä oliomuuttujaa. Esim. seuraava ei toimisi sillä koodi ei viittaa ollenkaan oliomuuttujaan <em>pituus</em>:</p>
+  <p>Nyt metodissa <code>pituus</code> tarkottaa nimenomaan <em>pituus</em>-nimistä parametria ja <code>this.pituus</code> saman nimistä oliomuuttujaa. Esim. seuraava ei toimisi sillä koodi ei viittaa ollenkaan oliomuuttujaan <em>pituus</em> -- koodi käytännössä asettaa parametrina saadulle <code>pituus</code>-muuttujalle siinä jo olevan arvon:</p>
   <pre class="sh_java">
 public void setPituus(int pituus) {
-    // EI TOIMI ÄLÄ TEE NÄIN!!!
+    // ÄLÄ TEE NÄIN!!!
     pituus = pituus;
 }
 </pre>
@@ -7937,9 +7918,7 @@ Juhana ei pääse jäseneksi
 
 
 
-    <li> Kaikki NetBeans-vihjeet löytyvät
-      <a class="hidden-in-mooc"  href="https://www.cs.helsinki.fi/group/java/k14-materiaali/nb-vihjeitä">ks. NetBeans ohje</a>
-      <a class="hidden-in-hy"  href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans">ks. NetBeans ohje</a>
+    <li> Kaikki NetBeans-vihjeet löytyvät <a href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans">MOOC.fi:n vinkeistä</a>
     </li>
     <li> <b>Konstruktorien, getterien ja setterien automaattinen generointi</b>
       <p> Mene luokan koodilohkon sisäpuolelle mutta kaikkien metodien ulkopuolelle ja paina yhtä aikaa ctrl ja välilyönti. Jos luokallasi on esim. oliomuuttuja <code>saldo</code>, tarjoaa NetBeans mahdollisuuden generoida oliomuuttujalle getteri- ja setterimetodit sekä konstruktorin joka asettaa oliomuuttujalle alkuarvon. <b>HUOM:</b> laitoksen koneilla tämä saadaan aikaan painamalla yhtä aikaa ctrl, alt ja välilyönti. </p>
