@@ -7238,32 +7238,31 @@ Martin, ikä 1 vuotta
     <pre class="sh_java">
 Aani aani = new Aani(261.6, 2);
 System.out.println("Äänen taajuus on " + aani.getTaajuus() + " hertsiä.");
-System.out.println("Äänen kesto on " + aani.getKesto() + " sekuntia.");
-System.out.println(aani);</pre>
+System.out.println("Äänen kesto on " + aani.getKesto() + " sekuntia.");</pre>
 
 <pre>
 Äänen taajuus on 261.6 hertsiä.
-Äänen kesto on 2 sekuntia.
-261.1 Hz (2s)</pre>
+Äänen kesto on 2 sekuntia.</pre>
 
     <h4 class="req">Lista ääniä -- vai musiikkiako?</h4>
 
-    <p>Toteuta luokan <code>Paaohjelma</code> <code>main</code>-metodiin toiminnallisuus, millä käyttäjältä kysytään soitettavat nuotit merkkijonona. Kun merkkijono on saatu, luodaan merkeistä ääni-olioita, joita lisätään listaan. Lopulta, kun lista on valmis, luo ohjelmassa valmiina tulevasta luokasta <code>Soitin</code> olio ja anna lista soitin-olion <code>soita</code>-metodille.</p>
+    <p><em>Sopivat äänet ovat oikeastaan säveliä..</em></p>
+
+    <p>Toteuta luokan <code>Paaohjelma</code> <code>main</code>-metodiin toiminnallisuus, millä käyttäjältä kysytään soitettavat sävelet merkkijonona. Kun merkkijono on saatu, luodaan annetuista merkeistä ääni-olioita, joita lisätään listaan. Lopulta, kun lista on valmis, luo ohjelmassa valmiina tulevasta luokasta <code>Soitin</code> olio ja anna lista soitin-olion <code>soita</code>-metodille.</p>
 
 <pre class="sh_java">
 ArrayList&lt;Aani&gt; aanet = new ArrayList&lt;&gt;();
 
-// luetaan käyttäjältä nuotit ja tehdään niistä ääni-olioita, joita
+// luetaan käyttäjältä äänet ja tehdään niistä ääni-olioita, joita
 // lisätään aanet-listalle
 
 Soitin soitin = new Soitin();
 soitin.soita(aanet);</pre>
 
-
-    <p>Käytä seuraavaa taulukkoa muunnokseen (muunnokset <a href="http://en.wikipedia.org/wiki/Piano_key_frequencies" target="_blank">Wikipediasta</a>):</p>
+    <p>Käytä seuraavaa taulukkoa käyttäjän syötteen muunnokseen (muunnokset <a href="http://en.wikipedia.org/wiki/Piano_key_frequencies" target="_blank">Wikipediasta</a>):</p>
 
     <table>
-      <tr><td>nuotti</td><td>taajuus</td><td>kesto</td></tr>
+      <tr><td>merkki</td><td>taajuus</td><td>kesto</td></tr>
       <tr><td>C</td><td>261.626</td><td>0.2</td></tr>
       <tr><td>D</td><td>293.665</td><td>0.2</td></tr>
       <tr><td>E</td><td>329.628</td><td>0.2</td></tr>
@@ -7276,7 +7275,7 @@ soitin.soita(aanet);</pre>
     <p>Tämän lisäksi, jos merkkijonossa on tyhjä merkki, lisää listalle taukoa kuvaava ääni-olio, jonka taajuus on <code>0</code> ja kesto <code>0.05</code>. Ohjelman toiminta on esimerkiksi seuraavanlainen:</p>
 
 <pre>
-Kirjoita soitettava kappale
+Kirjoita soitettavat äänet
 CDEFG G GFEDC
 Soitetaan!</pre>
 
