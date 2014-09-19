@@ -7123,11 +7123,13 @@ Parittomien summa: 5
 </div>
 
 <h3>Olioita listalla</h3>
+
 <p>Olemme käyttäneet <code>ArrayList</code>:ejä jo monessa esimerkissä ja tehtävässä. ArrayList-olioon pystyy lisäämään esimerkiksi merkkijonoja ja listalla olevien merkkijonojen läpikäynti, etsiminen, poistaminen, järjestäminen ym. ovat vaivattomia toimenpiteitä.</p>
+
 <p>ArrayList:eihin voidaan laittaa minkä tahansa tyyppisiä oliota. Luodaan seuraavassa henkilölista, eli tyyppiä <code>ArrayList&lt;Henkilo&gt;</code> oleva ArrayList ja laitetaan sinne muutama henkilöolio:</p>
 <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
+    ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;Henkilo&gt;();
 
     // voidaan ensin ottaa henkilö muuttujaan
     Henkilo juhana = new Henkilo("Juhana");
@@ -7169,7 +7171,7 @@ Martin, ikä 1 vuotta
 
 <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
+    ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;Henkilo&gt;();
 
     // voidaan ensin ottaa henkilö muuttujaan
     Henkilo juhana = new Henkilo("Juhana");
@@ -7226,23 +7228,28 @@ Martin, ikä 1 vuotta
 
   <div class="tehtavat">
     <div class="tehtava">
+
     <h3>Musiikkia</h3>
     <h4 class="req">Aani</h4>
     <p>Tee luokka <code>Aani</code>, jolla on <code>double</code>-tyyppinen oliomuuttuja <code>taajuus</code> ja <code>double</code>-tyyppinen oliomuuttuja <code>kesto</code>. Tee luokalle konstruktori, joka saa ensimmäisenä parametrina taajuuden ja toisena parametrina keston. Lisää lisäksi luokalle seuraavat metodit:</p>
     <ul>
       <li> metodi <code>getTaajuus</code> palauttaa olioon liittyvän taajuus-muuttujan arvon</li>
       <li> metodi <code>getKesto</code> palauttaa olioon liittyvän kesto-muuttujan arvon</li>
+      <li> metodi <code>toString</code> palauttaa olioa kuvaavan merkkijonoesityksen</li>    
     </ul>
 
     <p>Luokan pitäisi toimia seuraavasti:</p>
     <pre class="sh_java">
 Aani aani = new Aani(261.6, 2);
 System.out.println("Äänen taajuus on " + aani.getTaajuus() + " hertsiä.");
-System.out.println("Äänen kesto on " + aani.getKesto() + " sekuntia.");</pre>
+System.out.println("Äänen kesto on " + aani.getKesto() + " sekuntia.");
+System.out.println(aani);
+</pre>
 
 <pre>
 Äänen taajuus on 261.6 hertsiä.
-Äänen kesto on 2 sekuntia.</pre>
+Äänen kesto on 2.0 sekuntia.
+261.6Hz (2.0s)</pre>
 
     <h4 class="req">Lista ääniä -- vai musiikkiako?</h4>
 
@@ -7251,7 +7258,7 @@ System.out.println("Äänen kesto on " + aani.getKesto() + " sekuntia.");</pre>
     <p>Toteuta luokan <code>Paaohjelma</code> <code>main</code>-metodiin toiminnallisuus, millä käyttäjältä kysytään soitettavat sävelet merkkijonona. Kun merkkijono on saatu, luodaan annetuista merkeistä ääni-olioita, joita lisätään listaan. Lopulta, kun lista on valmis, luo ohjelmassa valmiina tulevasta luokasta <code>Soitin</code> olio ja anna lista soitin-olion <code>soita</code>-metodille.</p>
 
 <pre class="sh_java">
-ArrayList&lt;Aani&gt; aanet = new ArrayList&lt;&gt;();
+ArrayList&lt;Aani&gt; aanet = new ArrayList&lt;Aani&gt;();
 
 // luetaan käyttäjältä äänet ja tehdään niistä ääni-olioita, joita
 // lisätään aanet-listalle
@@ -7263,29 +7270,31 @@ soitin.soita(aanet);</pre>
 
     <table>
       <tr><td>merkki</td><td>taajuus</td><td>kesto</td></tr>
-      <tr><td>C</td><td>261.626</td><td>0.2</td></tr>
-      <tr><td>D</td><td>293.665</td><td>0.2</td></tr>
-      <tr><td>E</td><td>329.628</td><td>0.2</td></tr>
-      <tr><td>F</td><td>349.228</td><td>0.2</td></tr>
-      <tr><td>G</td><td>391.995</td><td>0.2</td></tr>
-      <tr><td>A</td><td>440.000</td><td>0.2</td></tr>
-      <tr><td>H</td><td>493.883</td><td>0.2</td></tr>
+      <tr><td>C</td><td>261.626</td><td>0.5</td></tr>
+      <tr><td>D</td><td>293.665</td><td>0.5</td></tr>
+      <tr><td>E</td><td>329.628</td><td>0.5</td></tr>
+      <tr><td>F</td><td>349.228</td><td>0.5</td></tr>
+      <tr><td>G</td><td>391.995</td><td>0.5</td></tr>
+      <tr><td>A</td><td>440.000</td><td>0.5</td></tr>
+      <tr><td>H</td><td>493.883</td><td>0.5</td></tr>
     </table>
 
-    <p>Tämän lisäksi, jos merkkijonossa on tyhjä merkki, lisää listalle taukoa kuvaava ääni-olio, jonka taajuus on <code>0</code> ja kesto <code>0.05</code>. Ohjelman toiminta on esimerkiksi seuraavanlainen:</p>
+    <p>Tämän lisäksi, jos merkkijonossa on tyhjä merkki, lisää listalle taukoa kuvaava ääni-olio, jonka taajuus on <code>0</code> ja kesto <code>0.1</code>. Ohjelman toiminta on esimerkiksi seuraavanlainen:</p>
 
 <pre>
 Kirjoita soitettavat äänet
 CDEFG G GFEDC
 Soitetaan!</pre>
 
-    <p>Yllä olevalla merkkijonolla soitetaan nuotit CDEFG, pidetään tauko, soitetaan nuotti g, pidetään tauko, ja soitetaan nuotit GFEDC.</p>
+    <p>Yllä olevalla merkkijonolla soitetaan nuotit CDEFG, pidetään tauko, soitetaan nuotti G, pidetään tauko, ja soitetaan nuotit GFEDC.</p>
 
     <p>Kokeile myös soittaa merkkijono "E E F G G F E D C C D E E D D E E F G G F E D C C D E D C C"!</p>
 
+    <p><strong>Huom! Älä huoli jos kaiuttimista kuuluu pientä "napsuvaa" ääntä -- ongelma liittyy äänen taajuuksista toiseen hyppäämiseen (tai käytettävään kirjastoon), jota ei ole vielä tässä versiossa korjattu..</strong></p>
+
     <h4 class="req">Piilotettu viesti</h4>
 
-    <p>Lisää ohjelmaan ns. <a href="http://en.wikipedia.org/wiki/Easter_egg_(media)" target="_blank">Easter egg</a>, eli tässä tapauksessa salainen kappale, joka soitetaan kun käyttäjä kirjoittaa merkkijonon "TKO-ALY". Saat itse päättää soitettavan kappaleen.</p>
+    <p>Lisää ohjelmaan ns. <a href="http://en.wikipedia.org/wiki/Easter_egg_(media)" target="_blank">Easter egg</a>, eli tässä tapauksessa salainen kappale, joka soitetaan kun käyttäjä kirjoittaa merkkijonon "TKO-ALY". Saat itse päättää soitettavan ääniyhdistelmän tai kappaleen.</p>
 
     </div>
   </div>
