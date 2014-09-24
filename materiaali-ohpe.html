@@ -7617,12 +7617,13 @@ Soitetaan!</pre>
 
 <section class="viikkoraja" id="5">
 <div class="viikkoraja"></div>
-<div class="viikkoraja-mooc" id="Viikko 5" deadline="avautuu kun 85 %  4. viikosta tehty" data-first-chapter-index="22" data-first-exercise-index="84" data-first-week-index="5" data-first-chapter-index-mooc="22" data-first-exercise-index-mooc="84" data-first-week-index-mooc="5" tekija="Arto Vihavainen, Matti Luukkainen">
+<div class="viikkoraja-mooc" id="Viikko 5" deadline="avautuu kun 85 %  4. viikosta tehty" data-first-chapter-index="20" data-first-exercise-index="80" data-first-week-index="5" data-first-chapter-index-mooc="20" data-first-exercise-index-mooc="80" data-first-week-index-mooc="5" tekija="Arto Vihavainen, Matti Luukkainen">
 
 
 
   <h2>Satunnaisuus</h2>
-  <p>Ohjelmoidessa satunnaisuutta tarvitaan silloin tällöin. Satunnaisuutta, esimerkiksi sään arvaamattomuutta tai tietokoneen tietokonepeleissä tekemien yllättäviä siirtoja, voidaan useimmiten simuloida tietokoneelta pyydettävien satunnaislukujen avulla. Satunnaislukujen pyytäminen onnistuu käyttäen Javasta löytyvää <code>Random</code>-luokkaa. Random-luokkaa voi käyttää seuraavalla tavalla.</p>
+
+  <p>Tietokoneohjelmissa satunnaisuutta käytetään esimerkiksi salausalgoritmeissa, koneoppimisessa sekä tietokonepelien ennustettavuuden vähentämisessä. Satunnaisuutta mallinnetaan käytännössä <em>satunnaislukujen</em> avulla, joiden luomiseen Java valmiin <code>Random</code>-luokan. Random-luokasta voi tehdä olion jota voi käyttää seuraavalla tavalla.</p>
   <pre class="sh_java">
 import java.util.Random;
 
@@ -7639,8 +7640,11 @@ public class Arvontaa {
     }
 }
 </pre>
-  <p>Yllä olevassa koodissa luodaan ensin <code>Random</code>-luokan ilmentymä käyttäen avainsanaa <code>new</code> -- samoin kuin muitakin olioita luodessa. Random-olio tarjoaa metodin <code>nextInt</code>, jolle annetaan parametrina kokonaisluku. Metodi palauttaa satunnaisen kokonaisluvun väliltä <em>0..(annettu kokonaisluku - 1)</em>.</p>
+
+  <p>Yllä olevassa koodissa luodaan ensin <code>Random</code>-luokasta olio käyttäen avainsanaa <code>new</code> -- samoin kuin muitakin olioita luodessa. Random-olio tarjoaa metodin <code>nextInt</code>, jolle annetaan parametrina kokonaisluku. Metodi palauttaa satunnaisen kokonaisluvun väliltä <em>0..(annettu kokonaisluku - 1)</em>.</p>
+
   <p>Ohjelman tulostus voisi olla vaikka seuraavanlainen:</p>
+
 <pre>
 2
 2
@@ -7653,13 +7657,78 @@ public class Arvontaa {
 7
 8
 </pre>
-  <p>Tarvitsemme liukulukuja esimerkiksi todennäköisyyslaskennan yhteydessä. Tietokoneella todennäköisyyksiä simuloidaan yleensä väliltä [0..1] olevilla luvuilla.  Random-oliolta saa satunnaisia liukulukuja metodilla <code>nextDouble</code>. Tarkastellaan seuraavia säämahdollisuuksia:</p>
+
+  <p>Satunnaisia kokonaislukuja voidaan käyttää esimerkiksi nopanheittojen mallintamiseen.</p>
+
+  <div id="viikko5" class="tehtavat">
+    <div class="tehtava">
+    <h3 class="req">Nopan heittäminen</h3>
+    <p> Tehtäväpohjassa on luokka <code>Noppa</code>, jonka runko on seuraava:</p>
+    <pre class="sh_java">
+import java.util.Random;
+
+public class Noppa {
+    private Random random;
+    private int tahkojenMaara;
+
+    public Noppa(int tahkojenMaara) {
+        this.random = new Random();
+        // Alusta oliomuuttuja tahkojenMaara tässä 
+    }
+
+    public int heita() {
+        // arvo täällä luku jonka tulee olla yhdestä tahkojen määrään
+        // ([1-tahkojenMaara]) ja palauta se
+    }
+}
+</pre>
+
+    <p>Muokkaa luokkaa siten, että sen konstruktori<code>Noppa(int tahkojenMaara)</code> luo uuden noppa-olion annetulla nopan tahkojen (eri oman numeronsa sisältämien "puolien") määrällä. Muokkaa myös metodia <code>heita</code> siten, että se antaa satunnaisen nopanheiton tuloksen, jonka arvon tulee olla väliltä <code>1...tahkojen määrä</code>.</p>
+
+    <p>Seuraavassa noppaa testaava pääohjelma: </p>
+
+    <pre class="sh_java">
+public class Ohjelma {
+    public static void main(String[] args) {
+        Noppa noppa = new Noppa(6);
+
+        int i = 0;
+        while ( i &lt; 10 ) {
+            System.out.println(noppa.heita());
+            i++;
+        }
+    }
+}
+</pre>
+    <p>Tulostus voisi olla esimerkiksi seuraava:</p>
+<pre>
+1
+6
+3
+5
+3
+3
+2
+2
+6
+1
+</pre>
+</div>
+</div>
+
+
+  <p>Random-luokasta tehdyn olion kautta päästään käsiksi myös satunnaisiin liukulukuihin, joita käytetään muunmuassa todennäköisyyslaskennan yhteydessä; tietokoneilla todennäköisyyksiä simuloidaan yleensä väliltä [0..1] olevilla luvuilla.</p>
+
+  <p>Random-oliolta satunnaisia liukulukuja saa metodilla <code>nextDouble</code>. Tarkastellaan seuraavia säämahdollisuuksia:</p>
+
   <ul>
     <li>Sataa räntää todennäköisyydellä 0.1 (10%)</li>
     <li>Sataa lunta todennäköisyydellä 0.3 (30%)</li>
     <li>Aurinko paistaa todennäköisyydellä 0.6 (60%)</li>
   </ul>
+
   <p>Luodaan edellä olevista arvioista sääennustaja.</p>
+
   <pre class="sh_java">
 import java.util.ArrayList;
 import java.util.Random;
@@ -7688,14 +7757,19 @@ public class SaaEnnustaja {
     }
 }
 </pre>
+
   <p>Metodi <code>ennustaLampotila</code> on monella tapaa mielenkiintoinen. Metodin sisällä tehtävä kutsu <code>this.random.nextGaussian()</code> on tavallinen metodikutsu, jonka kaltaisia olemme nähneet aikaisemminkin. Kiinnostavaa tässä <code>Random</code>-luokan ilmentymän tarjoamassa metodissa on se, että metodin palauttama luku on <em>normaalijakautunut</em> (jos et koe mielenkiintoa satunnaisuuden eri lajeihin se ei haittaa!).</p>
+
   <pre class="sh_java">
 public int ennustaLampotila() {
     return (int) ( 4 * this.random.nextGaussian() - 3 );
 }
 </pre>
+
   <p>Edellisessä lausekkeessa kiinnostava on myös osa <code>(int)</code>. Tämä kohta lausekkeessa muuttaa suluissa olevan liukuluvun kokonaisluvuksi. Vastaavalla menetelmällä voidaan muuttaa myös kokonaislukuja liukuluvuiksi kirjoittamalla <code>(double) kokonaisluku</code>. Tätä kutsutaan <em>eksplisiittiseksi tyyppimuunnokseksi</em>.</p>
+
   <p>Luodaan vielä pääohjelma josta luokkaa <code>SaaEnnustaja</code> käytetään.</p>
+
   <pre class="sh_java">
 public class Ohjelma {
 
@@ -7716,7 +7790,9 @@ public class Ohjelma {
     }
 }
 </pre>
+
   <p>Ohjelman tulostus voisi olla esimerkiksi seuraavanlainen:</p>
+
 <pre>
 Seuraavan viikon sääennuste:
 Ma: Sataa lunta 1 astetta.
@@ -7730,60 +7806,8 @@ Su: Aurinko paistaa -5 astetta
 
     <div class="self-explanation" data-key="q-luokkaSaaEnnustaja"></div>
 
-  <div id="viikko4" class="tehtavat">
-    <div class="tehtava">
-    <h3 class="req">Nopan heittäminen</h3>
-    <p> Tehtäväpohjassa on luokka <code>Noppa</code>, jolla on seuraavat toiminnot:</p>
-    <ul>
-      <li> konstruktori <code>Noppa(int tahkojenMaara)</code> luo uuden noppa-olion annetulla nopan tahkojen (eri oman numeronsa sisältämien "puolien") määrällä</li>
-      <li> metodi <code>heita</code> kertoo nopanheiton tuloksen (tulos riippuu tahkojen määrästä)</li>
-    </ul>
-    <p>Luokan runko on seuraava:</p>
-    <pre class="sh_java">
-import java.util.Random;
-
-public class Noppa {
-    private Random random = new Random();
-    private int tahkojenMaara;
-
-    public Noppa(int tahkojenMaara) {
-      // Alusta muuttuja tahkojenMaara tässä
-    }
-
-    public int heita() {
-        // arvotaan luku väliltä 1-tahkojenMaara
-    }
-}
-</pre>
-    <p>Täydennä luokkaa <code>Noppa</code> siten, että noppa palauttaa jokaisella heitolla arvotun luvun väliltä <code>1...tahkojen määrä</code>. Seuraavassa noppaa testaava pääohjelma: </p>
-    <pre class="sh_java">
-public class Ohjelma {
-    public static void main(String[] args) {
-        Noppa noppa = new Noppa(6);
-
-        int i = 0;
-        while ( i &lt; 10 ) {
-            System.out.println( noppa.heita() );
-            i++;
-        }
-    }
-}
-</pre>
-    <p>Tulostus voisi olla esimerkiksi seuraava:</p>
-<pre>
-1
-6
-3
-5
-3
-3
-2
-2
-6
-1
-</pre>
-</div>
-<div class="tehtava">
+<div class="tehtavat">
+  <div class="tehtava">
     <h3>Salasanan arpoja</h3>
     <p>Tehtävänäsi on täydentää luokkaa <code>SalasananArpoja</code>, jossa on seuraavat toiminnot:</p>
     <ul>
@@ -7832,16 +7856,19 @@ char merkki = "abcdefghijklmnopqrstuvwxyz".charAt(luku);
 </pre>
     <p><b>Vihje2:</b> tehtävän 78 vihjeestä lienee tässäkin tehtävässä apua.</p>
   </div>
+
   <div class="tehtava">
     <h3>Lottoarvonta</h3>
     <p>Tehtävänäsi on täydentää luokkaa <code>LottoRivi</code>, joka arpoo viikon lottonumerot. Lottonumerot ovat väliltä 1&ndash;39 ja niitä arvotaan 7. Lottorivi koostuu siis 7:stä eri numerosta väliltä 1&ndash;39. Luokassa on seuraavat toiminnot:</p>
     <ul>
       <li> konstruktori <code>LottoRivi</code> luo uuden LottoRivi-olion joka sisältää uudet, arvotut numerot</li>
       <li> metodi <code>numerot</code> palauttaa tämän lottorivin lottonumerot</li>
-      <li> metodi <code>arvoNumerot</code> arpoo riville uudet numerot</li>
       <li> metodi <code>sisaltaaNumeron</code> kertoo onko arvotuissa numeroissa annettu numero</li>
+      <li> metodi <code>arvoNumerot</code> arpoo riville uudet numerot</li>
     </ul>
+
     <p>Luokan runko on seuraava:</p>
+
     <pre class="sh_java">
 import java.util.ArrayList;
 import java.util.Random;
@@ -7860,16 +7887,18 @@ public class LottoRivi {
         return this.numerot;
     }
 
-    public void arvoNumerot() {
-        // Kirjoita numeroiden arvonta tänne käyttämällä metodia sisaltaaNumeron()
-    }
-
     public boolean sisaltaaNumeron(int numero) {
         // Testaa tässä onko numero jo arvottujen numeroiden joukossa
     }
+
+    public void arvoNumerot() {
+        // Kirjoita numeroiden arvonta tänne käyttämällä metodia sisaltaaNumeron()
+    }
 }
 </pre>
+
     <p>Tehtäväpohjan mukana tulee seuraava pääohjelma:</p>
+
     <pre class="sh_java">
 import java.util.ArrayList;
 
@@ -7887,6 +7916,7 @@ public class Ohjelma {
 }
 </pre>
     <p>Ohjelman mahdollisia tulostuksia ovat seuraavat:</p>
+
 <pre>
 Lottonumerot:
 3 5 10 14 15 27 37
@@ -7898,143 +7928,11 @@ Lottonumerot:
     <p><strong>Huom!</strong> Sama numero saa esiintyä lottorivissä vain kerran.</p>
   </div>
 
-  <div class="tehtava">
-    <h3>Hirsipuun logiikka</h3>
-    <p>Hirsipuu-pelistä pitävä kaverisi ohjelmoi hirsipuupelin joka näyttää seuraavalta.</p>
-    <p><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/hirsipuu-tikkuukko.png"/></p>
-    <p>Hänen koneestaan hajosi kovalevy, eikä hän ollut tehnyt <a href="http://fi.wikipedia.org/wiki/Varmuuskopiointi" target="_blank">varmuuskopiota</a> tai käyttänyt <a href="http://fi.wikipedia.org/wiki/Ohjelmiston_versiohallinta" target="_blank">versionhallintajärjestelmää</a> lähdekoodien tallennukseen. Hän on kuitenkin luvannut pelin lahjaksi pikkuveljelleen, ja aikataulukiireidensä takia tarvitsee apuasi pelin toteutukseen. Tässä tehtäväsarjassa toteutat kaverisi hirsipuu-pelille arvauslogiikan ja annetun sanan salaamisen.</p>
-
-    <p>Kaverisi on luonut pelille käyttöliittymän sekä valmiin rungon sovelluksen logiikkaan. Kun lataat projektin TMC:ltä, näet käyttöliittymä- ja testiluokkien lisäksi allaolevan ohjelmarungon.</p>
-
-    <pre class="sh_java">
-public class HirsipuuLogiikka {
-
-    private String sana;
-    private String arvatutKirjaimet;
-    private int virheidenLukumaara;
-
-    public HirsipuuLogiikka(String sana) {
-        this.sana = sana.toUpperCase();
-        this.arvatutKirjaimet = "";
-        this.virheidenLukumaara = 0;
-    }
-
-    public int virheidenLukumaara() {
-        return this.virheidenLukumaara;
-    }
-
-    public String arvatutKirjaimet() {
-        return this.arvatutKirjaimet;
-    }
-
-    public int virheitaHavioon() {
-        return 12;
-    }
-
-    public void arvaaKirjain(String kirjain) {
-        // Ohjelmoi tänne toiminnallisuus kirjaimen arvaamiseksi.
-
-        // Arvattua kirjainta ei saa arvata uudestaan. Jos arvattava sana
-        // ei sisällä kirjainta, virheiden lukumäärän tulee kasvaa.
-        // Lisää arvattu kirjain arvattuihin kirjaimiin
-
-    }
-
-    public String salattuSana() {
-        // Ohjelmoi tänne toiminnallisuus salatun sanan luomiseksi
-        // ja antamiseksi.
-
-        // Luo uusi salattu sana this.sana-merkkijonoa kirjain kirjaimelta
-        // läpikäyden. Jos kirjain on arvatuissa kirjaimissa, voit lisätä sen
-        // sellaisenaan. Jos ei, lisää uuteen sanaan merkki "_".
-
-        // Muista varmistaa ettet ohjelmoi päättymätöntä toistolauseketta!
-
-        // palauta lopuksi salattua sanaa kuvaava merkkijono.
-
-        return "";
-    }
-}
-</pre>
-    <p>Tässä tehtävässä <em>sinun tulee lisätä toiminnallisuutta vain luokan <code>HirsipuuLogiikka</code> metodeihin <code>arvaaKirjain(String kirjain)</code> ja <code>salattuSana()</code></em>.</p>
-    <p><strong>Logiikan testaaminen</strong></p>
-    <p>Tehtäväpohja sisältää <em>kaksi</em> testiluokkaa. Luokka <code>Main</code> käynnistää kaverisi toteuttaman graafisen version pelistä. Luokkaa <code>Testiohjelma</code> taas voit käyttää <code>HirsipuuLogiikka</code>-luokan testaamiseen.</p>
-    <h4>Kirjaimen arvaaminen</h4>
-    <p>Muokkaa tässä tehtävässä vain metodin <code>arvaaKirjain(String kirjain)</code> toiminnallisuutta.</p>
-    <p>Kun käyttäjä arvaa jonkin kirjaimen, kutsuu hirsipuun käyttöliittymä hirsipuulogiikan metodia <code>arvaaKirjain</code> jonka tulee tarkistaa onko arvattava kirjain jo arvattujen kirjainten (joita hirsipuulogiikka säilyttää oliomuuttujassa <code>this.arvatutKirjaimet</code>) joukossa. Jos kirjain on jo arvattujen kirjainten joukossa, metodin ei tule tehdä mitään. Jos arvattavaa kirjainta ei ole arvattu aiemmin, on tarkastettava onko se arvattavassa sanassa (jota hirsipuulogiikka säilyttää oliomuuttujassa <code>this.sana</code>). Jos ei, virheiden lukumäärää (oliomuuttuja <code>this.virheidenLukumaara</code>) pitää kasvattaa yhdellä. Arvattu kirjain pitää lopuksi lisätä osaksi arvattuja kirjaimia, jos se ei ole jo siellä.</p>
-    <p>Esimerkki <code>arvaaKirjain</code>-metodin toiminnasta:</p>
-    <pre class="sh_java">
-HirsipuuLogiikka l = new HirsipuuLogiikka("kissa");
-System.out.println("Arvataan: A, D, S, F, D");
-l.arvaaKirjain("A");   // oikea
-l.arvaaKirjain("D");   // väärä
-l.arvaaKirjain("S");   // oikea
-l.arvaaKirjain("F");   // väärä
-l.arvaaKirjain("D");   // Tämän ei pitäisi kasvattaa virheiden lukumäärää koska D oli jo arvattu
-System.out.println("Arvatut kirjaimet: " + l.arvatutKirjaimet());
-System.out.println("Virheiden lukumäärä: " + l.virheidenLukumaara());
-</pre>
-<pre>
-Arvataan: A, D, S, F, D
-Arvatut kirjaimet: ADSF
-Virheiden lukumäärä: 2
-</pre>
-<h4>Salatun sanan luominen</h4>
-    <p>Hirsipuun käyttöliittymä näyttää käyttäjälle salatun muodon arvattavana olevasta sanasta. Yllä olevassa kuvassa salattu sana on <code>METO_I</code>, eli arvattavana olevasta sanasta näytetään vain arvatut kirjaimet, muut korvataan alaviivalla. Salatun sanan muodostaa hirsipuulogiikan metodi <code>salattuSana()</code> jonka sisältöä tässä tehtävässä on tarkoitus muokata.</p>
-    <p>Salattu sana luodaan luomalla arvattavasta sanasta (<code>this.sana</code>) uusi versio. Jokainen kirjain jota ei ole vielä arvattu tulee vaihtaa merkkiin "_". Jos kirjain on jo arvattu, eli se löytyy arvatuista kirjaimista, voidaan se lisätä sellaisenaan salattuun sanaan.</p>
-    <p>Avainsanoista <code>while</code>, <code>charAt</code> ja <code>contains</code> lienee tästä hyötyä. Saat muutettua yksittäisen merkin merkkijonoksi seuraavasti:</p>
-    <pre class="sh_java">
-  char merkki = 'a';
-  String merkkijono = "" + merkki;
-</pre>
-    <p>Esimerkki metodin toiminnasta:</p>
-    <pre class="sh_java">
-HirsipuuLogiikka l = new HirsipuuLogiikka("kissa");
-System.out.println("Sana on: " + l.salattuSana());
-
-System.out.println("Arvataan: A, D, S, F, D");
-l.arvaaKirjain("A");
-l.arvaaKirjain("D");
-l.arvaaKirjain("S");
-l.arvaaKirjain("F");
-l.arvaaKirjain("D");
-System.out.println("Arvatut kirjaimet: " + l.arvatutKirjaimet());
-System.out.println("Virheiden lukumäärä: " + l.virheidenLukumaara());
-System.out.println("Sana on: " + l.salattuSana());
-</pre>
-<pre>
-Sana on: _____
-Arvataan: A, D, S, F, D
-Arvatut kirjaimet: ADSF
-Virheiden lukumäärä: 2
-Sana on: __SSA
-</pre>
-    <p>Testaa lopuksi sinun ja kaverisi yhteistyössä tekemää ohjelmaa <code>Main</code>-luokan avulla! Voit muuttaa arvattavaa sanaa muuttamalla HirsipuuLogiikka-luokan konstruktorille parametrina annettavaa merkkijonoa:</p>
-    <pre class="sh_java">
-HirsipuuLogiikka logiikka = new HirsipuuLogiikka("parametri");
-HirsipuuIkkuna peliIkkuna = new HirsipuuIkkuna(logiikka);
-peliIkkuna.pelaa();
-</pre>
-    <p>Peliä pelataan näppäimistöltä, pelin voi lopettaa painamalla peli-ikkunan vasemmassa yläkulmassa olevaa x-merkkiä.</p>
-  </div>
-
-  <div class="tehtava no-number">
-
-    <h3>Osallistuminen tutkimukseen</h3>
-
-    <p>Tässä tehtävässä osallistut kokeellisessa psykologiassa käytettyyn <a href="http://en.wikipedia.org/wiki/Task_switching_(psychology)" target="_blank">tehtävänvaihtotestiin</a>, missä tutkitaan aivojen mukautumista kahden tai useamman samanaikaisen tehtävän suorittamiseen. Vaikka mahdollisesti osallistuit tähän jo viime viikolla, pyydämme että osallistut myös toistamiseen.</p>
-
-    <p>Käytössä olevassa testiohjelmassa on neljä osaa. Ensimmäisessä osassa mitataan reaktioaikaa, toisessa osassa parittoman (odd) ja parillisen (even) luvun tunnistamista, kolmannessa osassa konsonantin (consonant) ja vokaalin (vowel) tunnistamista, ja viimeisessä osassa yhdistetään osat kaksi ja kolme. Näet jokaisen osion jälkeen edellisen osion tulokset.</p>
-
-    <p>Testin tulokset tulevat vain tutkimuskäyttöön, eikä mahdollisesti raportoitavista tuloksista voida yksilöidä yksittäisiä vastaajia. Tehtävän suorittamiseen menee noin 10-15 minuuttia.</p>
-
-    <p>Aloita testi osoitteessa <a href="http://lukiot.it.helsinki.fi/ts-cs/" target="_blank">http://lukiot.it.helsinki.fi/ts-cs/</a>. Kiitos jo nyt osallistumisesta!</p>
-  </div>
-</div>
 </div>
 
 
 <h2>Lisää luokista ja olioista</h2>
+
 <h3>Useita konstruktoreja</h3>
 <p>Palataan jälleen henkilöitä käsittelevän luokan pariin. Luokka <code>Henkilo</code> näyttää tällä hetkellä seuraavalta:</p>
 <pre class="sh_java">
@@ -8068,7 +7966,7 @@ public class Henkilo {
         return true;
     }
 
-    public double painoindeksi(){
+    public double painoindeksi() {
         double pituusMetreina = this.pituus/100.0;
 
         return this.paino / (pituusMetreina*pituusMetreina);
@@ -8097,8 +7995,8 @@ public class Henkilo {
     public String getNimi(){
         return this.nimi;
     }
-}
-</pre>
+}</pre>
+
 <p>Kaikki henkilöoliot ovat luontihetkellä 0-vuotiaita, sillä konstruktori asettaa uuden henkilön ika-oliomuuttujan arvoksi 0:</p>
 <pre class="sh_java">
 public Henkilo(String nimi) {
@@ -8106,9 +8004,10 @@ public Henkilo(String nimi) {
     this.ika = 0;
     this.paino = 0;
     this.pituus = 0;
-}
-</pre>
-<p>Haluaisimme myös luoda henkilöitä siten, että nimen lisäksi konstruktorin parametrina annettaisiin ikä. Tämä onnistuu helposti, sillä konstruktoreja voi olla useita. Tehdään vaihtoehtoinen konstruktori. Vanhaa konstruktoria ei tarvise poistaa. </p>
+}</pre>
+
+<p>Haluaisimme luoda henkilöitä myös siten, että konstruktorin parametrina annettaisiin ikä nimen lisäksi. Tämä onnistuu, sillä konstruktoreja voi olla useita. Tehdään vaihtoehtoinen konstruktori. Vanhaa konstruktoria ei tarvise poistaa. </p>
+
 <pre class="sh_java">
 public Henkilo(String nimi) {
     this.nimi = nimi;
@@ -8124,25 +8023,35 @@ public Henkilo(String nimi, int ika) {
     this.pituus = 0;
 }
 </pre>
+
 <p>Nyt olioiden luonti onnistuu kahdella vaihtoehtoisella tavalla:</p>
+
 <pre class="sh_java">
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka", 24);
     Henkilo esko = new Henkilo("Esko");
 
-    System.out.println( pekka );
-    System.out.println( esko );
+    System.out.println(pekka);
+    System.out.println(esko);
 }
 </pre>
 <pre>
 Pekka, ikä 24 vuotta
 Esko, ikä 0 vuotta
 </pre>
+
 <p>Tekniikkaa jossa luokalla on kaksi konstruktoria, kutsutaan <em>konstruktorin kuormittamiseksi</em>. Luokalla voi siis olla useita konstruktoreja, jotka poikkeavat toisistaanparametriensa määrältä tai tyypeiltä. Ei kuitenkaan ole mahdollista tehdä kahta erilaista konstruktoria joilla on täysin saman tyyppiset parametrit. Emme siis voi edellisten lisäksi lisätä konstruktoria <code>public Henkilo(String nimi, int paino)</code> sillä Javan on mahdoton erottaa tätä kaksiparametrisesta konstruktorissa, jossa luku tarkoittaa ikää.</p>
+
 <h3>Oman konstruktorin kutsuminen</h3>
-<p>Mutta hetkinen, luvussa 21 todettiin että "copy-paste"-koodi ei ole hyvä idea. Kun tarkastellaan edellä tehtyjä kuormitettuja konstruktoreita, niissä on aika paljon samaa. Emme ole oikein tyytyväisiä tilanteeseen.</p>
-<p>Konstruktoreista ylempi on oikeastaan alemman erikoistapaus. Entä jos ylempi konstruktori voisi "kutsua" alempaa konstruktoria? Tämä onnistuu, sillä konstruktorin sisältä voi kutsua toista konstruktoria juuri tähän olioon liittyvän <code>this</code>-ilmauksen avulla!</p>
+
+<p>Mutta hetkinen, aiemmin todettiin että "copy-paste"-koodi ei ole hyvä idea. Kun tarkastellaan edellä tehtyjä kuormitettuja konstruktoreita, niissä on aika paljon samaa. Emme ole oikein tyytyväisiä tilanteeseen.</p>
+
+<p>Konstruktoreista ylempi on oikeastaan alemman erikoistapaus. Entä jos ylempi konstruktori voisi "kutsua" alempaa konstruktoria?</p>
+
+<p>Tämä onnistuu, sillä konstruktorin sisältä voi kutsua toista konstruktoria juuri tähän olioon liittyvän <code>this</code>-ilmauksen avulla!</p>
+
 <p>Muutetaan ylempää konstruktoria siten, että se ei itse tee mitään vaan ainoastaan kutsuu alempaa konstruktoria ja pyytää sitä asettamaan iäksi 0:</p>
+
 <pre class="sh_java">
 public Henkilo(String nimi) {
     this(nimi, 0);  // suorita tässä toisen konstruktorin koodi ja laita ika-parametrin arvoksi 0
@@ -8155,8 +8064,29 @@ public Henkilo(String nimi, int ika) {
     this.pituus = 0;
 }
 </pre>
-<p>Oman konstruktorin kutsu <code>this(nimi, 0);</code> saattaa vaikuttaa erikoiselta. Asiaa voi vaikka ajatella siten, että kutsun kohdalle tulee "copy-pastena" automaattisesti alemman konstruktorin koodi, siten että ika parametrin arvoksi tulee 0.</p>
+
+<p>Oman konstruktorin kutsu <code>this(nimi, 0);</code> saattaa vaikuttaa erikoiselta. Asiaa voi vaikka ajatella siten, että kutsun kohdalle tulee "copy-pastena" automaattisesti alemman konstruktorin koodi, siten että ika parametrin arvoksi tulee 0. Huom! Jos konstruktorista kutsutaan toista konstruktoria, tulee konstruktorin kutsun tulee olla ensimmäinen toiminto konstruktorin sisällä.</p>
+
+<p>Olioiden luonti onnistuu aivan kuten edellisessä esimerkissä:</p>
+
+<pre class="sh_java">
+public static void main(String[] args) {
+    Henkilo pekka = new Henkilo("Pekka", 24);
+    Henkilo esko = new Henkilo("Esko");
+
+    System.out.println(pekka);
+    System.out.println(esko);
+}
+</pre>
+
+<pre>
+Pekka, ikä 24 vuotta
+Esko, ikä 0 vuotta
+</pre>
+
+
 <h3>Metodin kuormittaminen</h3>
+
 <p>Konstruktorien tapaan myös metodeja voi kuormittaa, eli samannimisestä metodista voi olla useita versioita. Jälleen eri versioiden parametrien tyyppien on oltava erilaiset. Tehdään <code>vanhene</code>-metodista toinen versio, joka mahdollistaa henkilön vanhentamisen parametrina olevalla vuosimäärällä:</p>
 <pre class="sh_java">
 public void vanhene() {
@@ -8185,7 +8115,9 @@ Pekka, ikä 24 vuotta
 Pekka, ikä 25 vuotta
 Pekka, ikä 35 vuotta
 </pre>
-<p>Henkilöllä on siis <code>vanhene</code>-nimisiä metodeja 2 kappaletta. Se kumpi metodeista valitaan suoritettavaksi, riippuu metodikutsussa käytettyjen parametrien määrästä. Metodin <code>vanhene</code> voi myös toteuttaa metodin <code>vanhene(int vuodet)</code> avulla: </p>
+<p>Henkilöllä on nyt siis käytännössä kaksi kappaletta <code>vanhene</code>-nimisiä metodeja. Se kumpi metodeista valitaan suoritettavaksi, riippuu metodikutsussa käytettyjen parametrien määrästä.</p>
+
+<p>Ohjelmaa voi muokata myös niin, että parametriton metodi <code>vanhene</code> toteutetaan metodin <code>vanhene(int vuodet)</code> avulla: </p>
 <pre class="sh_java">
 public void vanhene() {
     this.vanhene(1);
@@ -8200,7 +8132,7 @@ public void vanhene(int vuodet) {
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=b6YmqoQopvs" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
 
-<div class="tehtavat" id="viikko5">
+<div class="tehtavat">
   <div class="tehtava">
   <h3>Kuormitettu laskuri</h3>
   <h4>Monta konstruktoria</h4>
@@ -8230,15 +8162,17 @@ public void vanhene(int vuodet) {
   </ul>
 </div>
 </div>
+
 <h3>Olio on langan päässä</h3>
-<p>Luvussa 20 mainittiin, että <code>ArrayList</code> on "langan päässä". Myös oliot ovat langan päässä. Mitä tämä oikein tarkoittaa? Tarkastellaan seuraavaa esimerkkiä:</p>
+<p>Aiemmin mainittiin, että <code>ArrayList</code> on "langan päässä". Myös oliot ovat langan päässä. Mitä tämä oikein tarkoittaa? Tarkastellaan seuraavaa esimerkkiä:</p>
+
 <pre class="sh_java">
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka", 24);
 
-    System.out.println( pekka );
-}
-</pre>
+    System.out.println(pekka);
+}</pre>
+
 <p>Kun suoritamme lauseen <code>Henkilo pekka = new Henkilo("Pekka", 24);</code> syntyy olio. Olioon päästään käsiksi muuttujan <code>pekka</code> avulla. Teknisesti ottaen olio ei ole muuttujan <code>pekka</code> "sisällä" (eli lokerossa pekka) vaan <code>pekka</code> viittaa syntyneeseen olioon. Toisin sanonen olio on <code>pekka</code>-nimisestä muuttujasta lähtevän "langan päässä". Kuvana asiaa voisi havainnollistaa seuraavasti: </p>
 <p> <img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/lanka1.PNG"/> </p>
 <p>Lisätään ohjelmaan <code>Henkilo</code>-tyyppinen muuttuja <code>henkilo</code> ja annetaan sille alkuarvoksi <code>pekka</code>. Mitä nyt tapahtuu?</p>
@@ -8336,12 +8270,24 @@ at Main.main(Main.java:20)
 Java Result: 1</font>
 </pre>
 <p>Eli käy huonosti. Tämän on ehkä ensimmäinen kerta elämässäsi kun näet tekstin <b>NullPointerException</b>. Voimme luvata, että tulet näkemään sen vielä uudelleen. NullPointerException on poikkeustila, joka syntyy kun <code>null</code>-arvoisen olion metodeja yritetään kutsua.</p>
+
 <h3>Metodin parametrina olio</h3>
-<p>Olemme nähneet että metodien parametrina voi olla esim. <code>int, double, String</code> tai ArrayList. ArrayListit ja merkkijonot ovat olioita, joten kuten arvata saattaa, metodi voi saada
-  parametriksi minkä tahansa tyyppisen olion. Demonstroidaan tätä esimerkillä.</p>
-<p>Painonvartijoihin hyväksytään jäseniksi henkilöitä, joiden painoindeksi ylittää jonkun annetun rajan.
-  Kaikissa painonvartijayhdistyksissä raja ei ole sama. Tehdään painonvartijayhdistystä vastaava luokka.
-  Olioa luotaessa konstruktorille annetaan parametriksi pienin painoindeksi, jolla yhdistyksen jäseneksi pääsee. </p>
+
+<p>Olemme nähneet että metodien parametrina voi olla esim. <code>int, double, String</code> tai ArrayList. ArrayListit ja merkkijonot ovat olioita, joten kuten arvata saattaa, metodin parametriksi voi määritellä minkä tahansa tyyppisen olion. Demonstroidaan tätä esimerkillä.</p>
+
+<p>Painonvartijoihin hyväksytään jäseniksi henkilöitä, joiden painoindeksi ylittää jonkun annetun rajan. Kaikissa painonvartijayhdistyksissä raja ei ole sama. Tehdään painonvartijayhdistystä vastaava luokka. Olioa luotaessa konstruktorille annetaan parametriksi pienin painoindeksi, jolla yhdistyksen jäseneksi pääsee. </p>
+
+<pre class="sh_java">
+public class PainonvartijaYhdistys {
+    private double alinPainoindeksi;
+
+    public PainonvartijaYhdistys(double indeksiRaja) {
+        this.alinPainoindeksi = indeksiRaja;
+    }
+}</pre>
+
+<p>Tehdään sitten metodi, jonka avulla voidaan tarkastaa hyväksytäänkö tietty henkilö yhdistyksen jäseneksi, eli onko henkilön painoindeksi tarpeeksi suuri. Metodi palauttaa <code>true</code> jos parametrina annettu henkilö hyväksytään, <code>false</code> jos ei.</p>
+
 <pre class="sh_java">
 public class PainonvartijaYhdistys {
     private double alinPainoindeksi;
@@ -8350,25 +8296,20 @@ public class PainonvartijaYhdistys {
         this.alinPainoindeksi = indeksiRaja;
     }
 
-}
-</pre>
-<p>Tehdään sitten metodi, jonka avulla voidaan tarkastaa hyväksytäänkö tietty henkilö
-  yhdistyksen jäseneksi, eli onko henkilön painoindeksi tarpeeksi suuri.
-  Metodi palauttaa <code>true</code> jos parametrina annettu henkilö hyväksytään, <code>false</code> jos ei.</p>
-<pre class="sh_java">
-public class PainonvartijaYhdistys {
-    // ...
-
     public boolean hyvaksytaanJaseneksi(Henkilo henkilo) {
         if ( henkilo.painoIndeksi() &lt; this.alinPainoindeksi ) {
             return false;
         }
+
         return true;
-        }
+    }
 }
 </pre>
+
 <p>Painonvartijayhdistys-olion metodi <code>hyvaksytaanJaseneksi</code> saa siis parametriksi <code>Henkilo</code>-olion (tarkemmin sanottuna "langan" henkilöön) ja kutsuu parametrina saamansa henkilön metodia <code>painoIndeksi</code>. </p>
+
 <p>Seuraavassa testipääohjelma jossa painonvartijayhdistyksen metodille annetaan ensin parametriksi henkilöolio <code>matti</code> ja sen jälkeen henkilöolio <code>juhana</code>:</p>
+
 <pre class="sh_java">
 public static void main(String[] args) {
     Henkilo matti = new Henkilo("Matti");
@@ -8394,17 +8335,16 @@ public static void main(String[] args) {
     }
 }
 </pre>
+
 <p> Ohjelma tulostaa: </p>
+
 <pre>
 Matti pääsee jäseneksi
 Juhana ei pääse jäseneksi
 </pre>
+
 <div class="help"> <p><big><b>Muutama NetBeans-vihje</b></big></p>
   <ul>
-
-
-
-
 
     <li> Kaikki NetBeans-vihjeet löytyvät <a href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans">MOOC.fi:n vinkeistä</a>
     </li>
@@ -8421,7 +8361,9 @@ Juhana ei pääse jäseneksi
 
 <div class="tehtavat">
   <div class="tehtava">
+
   <h3>Kasvatuslaitos</h3>
+
   <p>Tehtäväpohjassasi on valmiina jo tutuksi tullut luokka <code>Henkilo</code> sekä runko luokalle <code>Kasvatuslaitos</code>. Kasvatuslaitosoliot käsittelevät ihmisiä eri tavalla, esim. punnitsevat ja syöttävät ihmisiä. Rakennamme tässä tehtävässä kasvatuslaitoksen. Luokan Henkilö koodiin ei tehtävässä ole tarkoitus koskea!</p>
   <h4>Henkilöiden punnitseminen</h4>
   <p>Kasvatuslaitoksen luokkarungossa on valmiina runko metodille <code>punnitse</code>:</p>
@@ -8485,10 +8427,11 @@ Pekka paino: 85 kiloa
 Eero paino: 10 kiloa
 Pekka paino: 85 kiloa
 </pre>
+
   <h4>laske punnitukset</h4>
-  <p>Tee kasvatuslaitokselle metodi <code>public int
-    punnitukset()</code> joka kertoo kuinka monta punnitusta
-    kasvatuslaitos on ylipäätään tehnyt. Testipääohjelma:</p>
+
+  <p>Tee kasvatuslaitokselle metodi <code>public int punnitukset()</code> joka kertoo kuinka monta punnitusta kasvatuslaitos on ylipäätään tehnyt. Testipääohjelma:</p>
+
   <pre class="sh_java">
 public static void main(String[] args) {
     // esimerkkipääohjelma tehtävän ensimmäiseen kohtaan
@@ -8513,7 +8456,9 @@ public static void main(String[] args) {
     System.out.println("punnituksia tehty " + haaganNeuvola.punnitukset());
 }
 </pre>
+
   <p>Tulostuu:</p>
+
 <pre>
 punnituksia tehty 0
 punnituksia tehty 2
@@ -8574,7 +8519,9 @@ rahaa 2.0
 onnistuiko otto: false
 rahaa 2.0
 </pre>
+
   <h4 class="req">Kassapääte ja käteiskauppa</h4>
+
   <p>Unicafessa asioidessa asiakas maksaa joko käteisellä tai maksukortilla. Myyjä käyttää kassapäätettä kortin velottamiseen ja käteismaksujen hoitamiseen. Tehdään ensin kassapäätteestä käteismaksuihin sopiva versio. </p>
   <p>Kassapäätteen runko. Metodien kommentit kertovat halutun toiminnallisuuden:</p>
   <pre class="sh_java">
@@ -8730,6 +8677,7 @@ kassassa rahaa 1100.0 edullisia lounaita myyty 0 maukkaita lounaita myyty 1
     
 
 <h3>Metodin parametrina toinen samantyyppinen olio</h3>
+
 <p>Jatkamme edelleen luokan <code>Henkilo</code> parissa. Kuten muistamme, henkilöt tietävät ikänsä:</p>
 <pre class="sh_java">
 public class Henkilo {
@@ -8742,6 +8690,9 @@ public class Henkilo {
     // ...
 }
 </pre>
+
+<p>TODO:JATKA TÄSTÄ</p>
+
 <p>Haluamme vertailla kahden henkilön ikää. Vertailu voidaan hoitaa usealla tavalla. Henkilölle voitaisiin määritellä getterimetodi <code>getIka</code> ja kahden henkilön iän vertailu tapauhtuisi tällöin seuraavasti:</p>
 <pre class="sh_java">
 Henkilo pekka = new Henkilo("Pekka");
@@ -12674,6 +12625,146 @@ return true;
       </pre>
   </div>s
 </section>
+
+
+
+  <div class="tehtava">
+    <h3>Hirsipuun logiikka</h3>
+    <p>Hirsipuu-pelistä pitävä kaverisi ohjelmoi hirsipuupelin joka näyttää seuraavalta.</p>
+    <p><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/hirsipuu-tikkuukko.png"/></p>
+    <p>Hänen koneestaan hajosi kovalevy, eikä hän ollut tehnyt <a href="http://fi.wikipedia.org/wiki/Varmuuskopiointi" target="_blank">varmuuskopiota</a> tai käyttänyt <a href="http://fi.wikipedia.org/wiki/Ohjelmiston_versiohallinta" target="_blank">versionhallintajärjestelmää</a> lähdekoodien tallennukseen. Hän on kuitenkin luvannut pelin lahjaksi pikkuveljelleen, ja aikataulukiireidensä takia tarvitsee apuasi pelin toteutukseen. Tässä tehtäväsarjassa toteutat kaverisi hirsipuu-pelille arvauslogiikan ja annetun sanan salaamisen.</p>
+
+    <p>Kaverisi on luonut pelille käyttöliittymän sekä valmiin rungon sovelluksen logiikkaan. Kun lataat projektin TMC:ltä, näet käyttöliittymä- ja testiluokkien lisäksi allaolevan ohjelmarungon.</p>
+
+    <pre class="sh_java">
+public class HirsipuuLogiikka {
+
+    private String sana;
+    private String arvatutKirjaimet;
+    private int virheidenLukumaara;
+
+    public HirsipuuLogiikka(String sana) {
+        this.sana = sana.toUpperCase();
+        this.arvatutKirjaimet = "";
+        this.virheidenLukumaara = 0;
+    }
+
+    public int virheidenLukumaara() {
+        return this.virheidenLukumaara;
+    }
+
+    public String arvatutKirjaimet() {
+        return this.arvatutKirjaimet;
+    }
+
+    public int virheitaHavioon() {
+        return 12;
+    }
+
+    public void arvaaKirjain(String kirjain) {
+        // Ohjelmoi tänne toiminnallisuus kirjaimen arvaamiseksi.
+
+        // Arvattua kirjainta ei saa arvata uudestaan. Jos arvattava sana
+        // ei sisällä kirjainta, virheiden lukumäärän tulee kasvaa.
+        // Lisää arvattu kirjain arvattuihin kirjaimiin
+
+    }
+
+    public String salattuSana() {
+        // Ohjelmoi tänne toiminnallisuus salatun sanan luomiseksi
+        // ja antamiseksi.
+
+        // Luo uusi salattu sana this.sana-merkkijonoa kirjain kirjaimelta
+        // läpikäyden. Jos kirjain on arvatuissa kirjaimissa, voit lisätä sen
+        // sellaisenaan. Jos ei, lisää uuteen sanaan merkki "_".
+
+        // Muista varmistaa ettet ohjelmoi päättymätöntä toistolauseketta!
+
+        // palauta lopuksi salattua sanaa kuvaava merkkijono.
+
+        return "";
+    }
+}
+</pre>
+    <p>Tässä tehtävässä <em>sinun tulee lisätä toiminnallisuutta vain luokan <code>HirsipuuLogiikka</code> metodeihin <code>arvaaKirjain(String kirjain)</code> ja <code>salattuSana()</code></em>.</p>
+    <p><strong>Logiikan testaaminen</strong></p>
+    <p>Tehtäväpohja sisältää <em>kaksi</em> testiluokkaa. Luokka <code>Main</code> käynnistää kaverisi toteuttaman graafisen version pelistä. Luokkaa <code>Testiohjelma</code> taas voit käyttää <code>HirsipuuLogiikka</code>-luokan testaamiseen.</p>
+    <h4>Kirjaimen arvaaminen</h4>
+    <p>Muokkaa tässä tehtävässä vain metodin <code>arvaaKirjain(String kirjain)</code> toiminnallisuutta.</p>
+    <p>Kun käyttäjä arvaa jonkin kirjaimen, kutsuu hirsipuun käyttöliittymä hirsipuulogiikan metodia <code>arvaaKirjain</code> jonka tulee tarkistaa onko arvattava kirjain jo arvattujen kirjainten (joita hirsipuulogiikka säilyttää oliomuuttujassa <code>this.arvatutKirjaimet</code>) joukossa. Jos kirjain on jo arvattujen kirjainten joukossa, metodin ei tule tehdä mitään. Jos arvattavaa kirjainta ei ole arvattu aiemmin, on tarkastettava onko se arvattavassa sanassa (jota hirsipuulogiikka säilyttää oliomuuttujassa <code>this.sana</code>). Jos ei, virheiden lukumäärää (oliomuuttuja <code>this.virheidenLukumaara</code>) pitää kasvattaa yhdellä. Arvattu kirjain pitää lopuksi lisätä osaksi arvattuja kirjaimia, jos se ei ole jo siellä.</p>
+    <p>Esimerkki <code>arvaaKirjain</code>-metodin toiminnasta:</p>
+    <pre class="sh_java">
+HirsipuuLogiikka l = new HirsipuuLogiikka("kissa");
+System.out.println("Arvataan: A, D, S, F, D");
+l.arvaaKirjain("A");   // oikea
+l.arvaaKirjain("D");   // väärä
+l.arvaaKirjain("S");   // oikea
+l.arvaaKirjain("F");   // väärä
+l.arvaaKirjain("D");   // Tämän ei pitäisi kasvattaa virheiden lukumäärää koska D oli jo arvattu
+System.out.println("Arvatut kirjaimet: " + l.arvatutKirjaimet());
+System.out.println("Virheiden lukumäärä: " + l.virheidenLukumaara());
+</pre>
+<pre>
+Arvataan: A, D, S, F, D
+Arvatut kirjaimet: ADSF
+Virheiden lukumäärä: 2
+</pre>
+<h4>Salatun sanan luominen</h4>
+    <p>Hirsipuun käyttöliittymä näyttää käyttäjälle salatun muodon arvattavana olevasta sanasta. Yllä olevassa kuvassa salattu sana on <code>METO_I</code>, eli arvattavana olevasta sanasta näytetään vain arvatut kirjaimet, muut korvataan alaviivalla. Salatun sanan muodostaa hirsipuulogiikan metodi <code>salattuSana()</code> jonka sisältöä tässä tehtävässä on tarkoitus muokata.</p>
+    <p>Salattu sana luodaan luomalla arvattavasta sanasta (<code>this.sana</code>) uusi versio. Jokainen kirjain jota ei ole vielä arvattu tulee vaihtaa merkkiin "_". Jos kirjain on jo arvattu, eli se löytyy arvatuista kirjaimista, voidaan se lisätä sellaisenaan salattuun sanaan.</p>
+    <p>Avainsanoista <code>while</code>, <code>charAt</code> ja <code>contains</code> lienee tästä hyötyä. Saat muutettua yksittäisen merkin merkkijonoksi seuraavasti:</p>
+    <pre class="sh_java">
+  char merkki = 'a';
+  String merkkijono = "" + merkki;
+</pre>
+    <p>Esimerkki metodin toiminnasta:</p>
+    <pre class="sh_java">
+HirsipuuLogiikka l = new HirsipuuLogiikka("kissa");
+System.out.println("Sana on: " + l.salattuSana());
+
+System.out.println("Arvataan: A, D, S, F, D");
+l.arvaaKirjain("A");
+l.arvaaKirjain("D");
+l.arvaaKirjain("S");
+l.arvaaKirjain("F");
+l.arvaaKirjain("D");
+System.out.println("Arvatut kirjaimet: " + l.arvatutKirjaimet());
+System.out.println("Virheiden lukumäärä: " + l.virheidenLukumaara());
+System.out.println("Sana on: " + l.salattuSana());
+</pre>
+<pre>
+Sana on: _____
+Arvataan: A, D, S, F, D
+Arvatut kirjaimet: ADSF
+Virheiden lukumäärä: 2
+Sana on: __SSA
+</pre>
+    <p>Testaa lopuksi sinun ja kaverisi yhteistyössä tekemää ohjelmaa <code>Main</code>-luokan avulla! Voit muuttaa arvattavaa sanaa muuttamalla HirsipuuLogiikka-luokan konstruktorille parametrina annettavaa merkkijonoa:</p>
+    <pre class="sh_java">
+HirsipuuLogiikka logiikka = new HirsipuuLogiikka("parametri");
+HirsipuuIkkuna peliIkkuna = new HirsipuuIkkuna(logiikka);
+peliIkkuna.pelaa();
+</pre>
+    <p>Peliä pelataan näppäimistöltä, pelin voi lopettaa painamalla peli-ikkunan vasemmassa yläkulmassa olevaa x-merkkiä.</p>
+  </div>
+
+
+  <div class="tehtava no-number">
+
+    <h3>Osallistuminen tutkimukseen</h3>
+
+    <p>Tässä tehtävässä osallistut kokeellisessa psykologiassa käytettyyn <a href="http://en.wikipedia.org/wiki/Task_switching_(psychology)" target="_blank">tehtävänvaihtotestiin</a>, missä tutkitaan aivojen mukautumista kahden tai useamman samanaikaisen tehtävän suorittamiseen. Vaikka mahdollisesti osallistuit tähän jo viime viikolla, pyydämme että osallistut myös toistamiseen.</p>
+
+    <p>Käytössä olevassa testiohjelmassa on neljä osaa. Ensimmäisessä osassa mitataan reaktioaikaa, toisessa osassa parittoman (odd) ja parillisen (even) luvun tunnistamista, kolmannessa osassa konsonantin (consonant) ja vokaalin (vowel) tunnistamista, ja viimeisessä osassa yhdistetään osat kaksi ja kolme. Näet jokaisen osion jälkeen edellisen osion tulokset.</p>
+
+    <p>Testin tulokset tulevat vain tutkimuskäyttöön, eikä mahdollisesti raportoitavista tuloksista voida yksilöidä yksittäisiä vastaajia. Tehtävän suorittamiseen menee noin 10-15 minuuttia.</p>
+
+    <p>Aloita testi osoitteessa <a href="http://lukiot.it.helsinki.fi/ts-cs/" target="_blank">http://lukiot.it.helsinki.fi/ts-cs/</a>. Kiitos jo nyt osallistumisesta!</p>
+  </div>
+</div>
+
+
+
 
 <!-- END MOOC SNIP -->
 <!-- END SNIP -->
