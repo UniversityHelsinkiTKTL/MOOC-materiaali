@@ -9285,8 +9285,90 @@ Kornelius Ankanpää, äiti tuntematon ja isä tuntematon.</pre>
 
     <p>Olettaen että Kornelius Ankanpää on tulostettavan henkilön nimi.</p>
 
+
     <h4>Henkilön suvusta kertominen</h4>
 
+    <p>Huom! Tämä tehtävä on kahden tehtäväpisteen arvoinen.</p>
+    
+    <p>Lisää sukututkijalle metodi <code>public void kerroHenkilonSuvusta(Henkilo henkilo)</code>, joka kertoo tulostaa henkilön sekä henkilön jokaisen sukulaisen tiedot edellisen tehtävän muodossa.</p>
+
+    <p>Alla muutamia esimerkkejä metodin toiminnasta.</p>
+
+<pre class="sh_java">
+Henkilo tupu = new Henkilo("Tupu Ankka");
+
+Sukututkija peloton = new Sukututkija();
+peloton.kerroHenkilonSuvusta(tupu);
+</pre>
+<pre>
+Tupu Ankka, äiti tuntematon ja isä tuntematon.</pre>
+
+<pre class="sh_java">
+Henkilo tupu = new Henkilo("Tupu Ankka");
+Henkilo della = new Henkilo("Della Ankka");
+tupu.setAiti(della);
+
+Sukututkija peloton = new Sukututkija();
+peloton.kerroHenkilonSuvusta(tupu);
+</pre>
+
+<pre>
+Tupu Ankka, äiti Della Ankka ja isä tuntematon.
+Della Ankka, äiti tuntematon ja isä tuntematon.</pre>
+
+    <p>Jos osa henkilön esi-isistä ovat sukua toisilleen, ei haittaa vaikka osa henkilöistä tulostetaan useamman kerran. Alla esimerkkinä muutama <a href="http://en.wikipedia.org/wiki/Charles_II_of_Spain" target="_blank">Charles II of Spain</a>in esi-isistä.</p>
+
+<pre class="sh_java">
+Henkilo charles = new Henkilo("Charles II of Spain");
+Henkilo mariana = new Henkilo("Mariana of Austria");
+Henkilo philipIV = new Henkilo("Philip IV of Spain");
+
+charles.setIsa(philipIV);
+charles.setAiti(mariana);
+
+Henkilo mariaSpain = new Henkilo("Maria Anna of Spain");
+Henkilo ferdinandIII = new Henkilo("Ferdinand III, Holy Roman Emperor");
+
+mariana.setIsa(ferdinandIII);
+mariana.setAiti(mariaSpain);
+
+Henkilo philipIII = new Henkilo("Philip III of Spain");
+Henkilo margaret = new Henkilo("Margaret of Austria");
+
+philipIV.setIsa(philipIII);
+philipIV.setAiti(margaret);
+
+mariaSpain.setIsa(philipIII);
+mariaSpain.setAiti(margaret);
+
+Henkilo ferdinandII = new Henkilo("Ferdinand II, Holy Roman Emperor");
+Henkilo mariaBavaria = new Henkilo("Maria Anna of Bavaria");
+
+ferdinandIII.setIsa(ferdinandII);
+ferdinandIII.setAiti(mariaBavaria);
+
+
+Sukututkija darwin = new Sukututkija();
+darwin.kerroHenkilonSuvusta(charles);</pre>
+
+<pre>
+Charles II of Spain, äiti Mariana of Austria ja isä Philip IV of Spain.
+Mariana of Austria, äiti Maria Anna of Spain ja isä Ferdinand III, Holy Roman Emperor.
+Maria Anna of Spain, äiti Margaret of Austria ja isä Philip III of Spain.
+Margaret of Austria, äiti tuntematon ja isä tuntematon.
+Philip III of Spain, äiti tuntematon ja isä tuntematon.
+Ferdinand III, Holy Roman Emperor, äiti Maria Anna of Bavaria ja isä Ferdinand II, Holy Roman Emperor.
+Maria Anna of Bavaria, äiti tuntematon ja isä tuntematon.
+Ferdinand II, Holy Roman Emperor, äiti tuntematon ja isä tuntematon.
+Philip IV of Spain, äiti Margaret of Austria ja isä Philip III of Spain.
+Margaret of Austria, äiti tuntematon ja isä tuntematon.
+Philip III of Spain, äiti tuntematon ja isä tuntematon.</pre>
+
+    <p>Ei siis haittaa jos osa henkilöistä tulostuu useamman kerran.</p>
+
+    <p><strong>Huom!</strong> henkilöiden tulostusjärjestyksellä ei myöskään ole tässä väliä. Voit siis hyvin kertoa ensin esimerkiksi henkilöstä Philip III of Spain ennen Mariana of Austriasta kertomista.</p>
+
+    <p>Vinkki! Kannattanee hyödyntää edellisessä tehtävässä toteutettua metodia <code>kerroHenkilosta</code>. Katso myös mitä käy jos esimerkiksi annat metodille <code>kerroHenkilonSuvusta</code> tarkasteltavan henkilön vanhemman.</p> 
 
 </div>
 </div>
