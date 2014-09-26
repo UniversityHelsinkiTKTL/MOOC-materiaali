@@ -9145,25 +9145,18 @@ public class Main {
   <div class="tehtava">
     <h3>Sukututkija</h3>
 
-    <p>Tehtäväpohjassa tulee mukana luokka Henkilo, jolla on oliomuuttujat nimi sekä isä ja äiti.</p>
+    <p>Tehtäväpohjassa tulee mukana luokka Henkilo, jolla on oliomuuttujat nimi sekä isä ja äiti. Kodissa on lisäksi myös konstruktori, jolla asetetaan luotavalle henkilölle nimi. Konstruktorin lisäksi luokassa on gettereitä ja settereitä, joilla pääsee käsiksi oliomuuttujiin.</p>
 
 <pre class="sh_java">
 public class Henkilo {
 
     private String nimi;
     private Henkilo isa;
-    private Henkilo aiti;</pre>
+    private Henkilo aiti;
 
-    <p>Kodissa on lisäksi myös konstruktori, jolla asetetaan luotavalle henkilölle nimi.</p>
-
-<pre class="sh_java">
     public Henkilo(String nimi) {
         this.nimi = nimi;
-    }</pre>
-
-    <p>Konstruktorin lisäksi luokassa on gettereitä ja settereitä, joilla pääsee käsiksi oliomuuttujiin.</p>
-
-<pre class="sh_java">
+    }
 
     public String getNimi() {
         return nimi;
@@ -9187,7 +9180,8 @@ public class Henkilo {
 
     public void setAiti(Henkilo aiti) {
         this.aiti = aiti;
-    }</pre>
+    }
+}</pre>
 
     <p>Luokan <code>Henkilo</code> avulla voi mallintaa sukupuuta. Alla olevassa koodissa hahmotellaan <a href="http://en.wikipedia.org/wiki/Charles_II_of_Spain" target="_blank">Charles II of Spain</a>in esi-isiä.</p>
 
