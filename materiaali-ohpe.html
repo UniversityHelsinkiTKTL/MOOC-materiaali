@@ -2484,7 +2484,7 @@ System.out.println( pituus );   // tulostuu 24
   <div>
 
       <p class="hidden-in-mooc"><strong>Selitystehtävät</strong></p>
-      <p class="hidden-in-mooc">Materiaalissa on viikosta 2 lähtien ohjelmointitehtävien lisäksi selitystehtäviä, joihin vastataan suoraan kurssisivun kautta. Selitystehtäviä on viikoittain kolme. </p>
+      <p class="hidden-in-mooc">Materiaalissa on viikosta 2 lähtien ohjelmointitehtävien lisäksi selitystehtäviä, joihin vastataan suoraan kurssisivun kautta. Selitystehtäviä on viikoilla 2 ja 3 kolme, viikoilla 4, 5, 6 ja 7 kaksi. </p>
       
       <div class="self-explanation" data-key="q-lahjakortit"></div>
   </div>
@@ -7623,6 +7623,244 @@ Soitetaan!</pre>
 
 
 
+<div class="panel-group" id="2rosenberg">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#2rosenberg" href="#2rosenberg2">
+      <div class="panel-heading">
+	<h4 id="rosenberg-form-legend">Kysely: Itsetunto</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="2rosenberg2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="rosenberg-form">
+            <fieldset>
+                <legend id="rosenberg-form-legend">Tutkimus: Itsetunto</legend>
+                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="rosenberg-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="rosenberg-form-tmc-tunnus" name="rosenberg-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+
+                <p class="help-block">Tiedustelemme tällä lomakkeella itseänne koskevia piirteitä. Valitkaa jokaisesta kohdasta se vaihtoehto, joka parhaiten vastaa käsitystänne tällä hetkellä. Jos olet täysin samaa mieltä, valitse 1, jos olet lähes samaa mieltä, valitse 2, jos olet hieman eri mieltä, valitse 3, ja jos olet täysin eri mieltä, valitse 4.</p>
+
+		<p>&nbsp;</p>
+
+
+                <div class="row" id="rosenberg-skaala">
+		    <div class="col-md-3">&nbsp;</div>
+                    <div class="col-md-2">Täysin samaa mieltä.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-3">Täysin eri mieltä.</div>
+                </div>
+
+		<p>&nbsp;</p>
+
+                <div id="rosenberg">
+
+
+                </div>
+
+                <input type="hidden" id="rosenberg-form-started-entering" name="rosenberg-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="rosenberg-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="rosenberg-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel-group" id="2tehtavanvaihto-wk5">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#2tehtavanvaihto-wk2" href="#2tehtavanvaihto-wk52">
+      <div class="panel-heading">
+	<h4 id="taskswitching-form-wk5-legend">Kysely / tutkimus: Tehtävänvaihtotesti 2</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="2tehtavanvaihto-wk52">
+      <div class="panel-body">
+	
+	<p>Tässä osallistut taas kokeellisessa psykologiassa käytettyyn <a href="http://en.wikipedia.org/wiki/Task_switching_(psychology)" target="_blank">tehtävänvaihtotestiin</a>, missä tutkitaan aivojen mukautumista kahden tai useamman samanaikaisen tehtävän suorittamiseen. Tavoitteenamme on selvittää vaikuttaako ohjelmointi aivojen kykyyn hoitaa useampia samanaikaisia tehtäviä. Tämä testi tehdään useamman kerran kurssin aikana.</p>
+
+	<p>Käytössä olevassa testiohjelmassa on neljä osaa. Ensimmäisessä osassa mitataan reaktioaikaa, toisessa osassa parittoman (odd) ja parillisen (even) luvun tunnistamista, kolmannessa osassa konsonantin (consonant) ja vokaalin (vowel) tunnistamista, ja viimeisessä osassa yhdistetään osat kaksi ja kolme. Näet jokaisen osion jälkeen edellisen osion tulokset.</p>
+	
+	<p>Testin tulokset tulevat vain tutkimuskäyttöön, eikä mahdollisesti raportoitavista tuloksista voida yksilöidä yksittäisiä vastaajia. Tehtävän suorittamiseen menee noin 10-15 minuuttia.</p>
+	
+	<p>Kun olet vastannut allaolevaan lomakkeeseen, testi aukeaa uudessa ikkunassa. Varmistathan, että selaimesi sallii uusien ikkunoiden avaamisen tästä ohjelmointimateriaalista!</p>
+	
+	<div>
+	  <form class="form-horizontal" id="taskswitching-form-wk5"> 
+            <legend>Tehtävänvaihtotestin taustakysely</legend>
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="taskswitching-tmc-tunnus">TMC-tunnus</label>  
+              <div class="col-md-4">
+		<input id="taskswitching-tmc-tunnus" name="taskswitching-tmc-tunnus" type="text" class="form-control input-md">
+              </div>
+            </div>
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="vireystila">Oloni on tällä hetkellä</label>
+              <div class="col-md-4">
+		<div class="radio">
+                  <label for="vireystila-1">
+                    <input type="radio" name="vireystila" id="vireystila-1" value="vireystila-1">
+                    1 erittäin vireä
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-2">
+                    <input type="radio" name="vireystila" id="vireystila-2" value="vireystila-2">
+                    2 hyvin vireä
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-3">
+                    <input type="radio" name="vireystila" id="vireystila-3" value="vireystila-3">
+                    3 vireä
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-4">
+                    <input type="radio" name="vireystila" id="vireystila-4" value="vireystila-4">
+                    4 melko vireä
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-5">
+                    <input type="radio" name="vireystila" id="vireystila-5" value="vireystila-5">
+                    5 ei vireä eikä unelias
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-6">
+                    <input type="radio" name="vireystila" id="vireystila-6" value="vireystila-6">
+                    6 hieman unelias
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-7">
+                    <input type="radio" name="vireystila" id="vireystila-7" value="vireystila-7">
+                    7 unelias, mutta ei vaikeuksia pysyä hereillä
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-8">
+                    <input type="radio" name="vireystila" id="vireystila-8" value="vireystila-8">
+                    8 unelias, hereillä pysyminen vaatii jonkin verran ponnistelua
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-9">
+                    <input type="radio" name="vireystila" id="vireystila-9" value="vireystila-9">
+                    9 erittäin unelias, nukahtamaisillaan;<br/>hereillä pysyminen vaatii paljon ponnistelua
+                  </label>
+		</div>
+              </div>
+            </div>
+	    
+	    
+            <div class="form-group">
+              <label class="col-md-8 control-label">Arvioi EDELLISEN TUNNIN aikana kokemaasi kuormitustasoa seuraavalla asteikoilla:</label>
+            </div>
+	    
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="mental">Henkinen vaatimustaso</label>
+              <label class="col-md-4">
+		<input id="mental" name="mental" type="range" min="0" max="100" value="50" step="1"><span class="pull-left">vähän</span><span class="pull-right">paljon</span>
+              </label>
+            </div>
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="physical">Fyysinen vaatimustaso</label>
+              <label class="col-md-4">
+		<input id="physical" name="physical" type="range" min="0" max="100" value="50" step="1"><span class="pull-left">vähän</span><span class="pull-right">paljon</span>
+              </label>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-md-4 control-label">Miten kuvailisit edellisen tunnin tempoa<br/> - hidas, sopiva vai nopeatempoinen?<br></label>
+            </div>
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="temporal">Ajallinen vaatimustaso</label>
+              <label class="col-md-4">
+		<input id="temporal" name="temporal" type="range" min="0" max="100" value="50" step="1"><span class="pull-left">hidas</span><span class="pull-right">nopea</span>
+              </label>
+            </div>
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="performance">Kuinka hyvin mielestäsi suoriuduit?</label>
+              <label class="col-md-4">
+		<input id="performance" name="performance" type="range" min="0" max="100" value="50" step="1"><span class="pull-left">hyvin</span><span class="pull-right">heikosti</span>
+              </label>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="effort">Kuinka paljon sinun täytyi ponnistella henkisesti ja fyysisesti?</label>
+              <label class="col-md-4">
+		<input id="effort" name="effort" type="range" min="0" max="100" value="50" step="1"><span class="pull-left">vähän</span><span class="pull-right">paljon</span>
+              </label>
+            </div>
+	    
+            <input type="hidden" name="week" value="week5"/>
+            <input type="hidden" id="taskswitching-form-wk5-started-entering" name="taskswitching-form-wk5-started-entering" value="">
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="frustration">Kuinka turhautunut olit?</label>
+              <label class="col-md-4">
+		<input id="frustration" name="frustration" type="range" min="0" max="100" value="50" step="1"><span class="pull-left">vähän</span><span class="pull-right">paljon</span>
+              </label>
+            </div>
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label">&nbsp;</label>
+              <div class="form-inline col-md-8">
+		<strong><label id="taskswitching-form-wk5-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+              </div>
+            </div>
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label">&nbsp;</label>
+              <div class="form-inline col-md-8">
+		<button type="button" id="taskswitching-form-wk5-submit" class="btn btn-primary">Lähetä lomake ja käynnistä tutkimus</button>
+              </div>
+            </div>
+	  </form>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
   <h2>Satunnaisuus</h2>
 
   <p>Tietokoneohjelmissa satunnaisuutta käytetään esimerkiksi salausalgoritmeissa, koneoppimisessa sekä tietokonepelien ennustettavuuden vähentämisessä. Satunnaisuutta mallinnetaan käytännössä <em>satunnaislukujen</em> avulla, joiden luomiseen Java valmiin <code>Random</code>-luokan. Random-luokasta voi tehdä olion jota voi käyttää seuraavalla tavalla.</p>
@@ -7805,8 +8043,6 @@ Pe: Sataa lunta -3 astetta.
 La: Sataa lunta -3 astetta.
 Su: Aurinko paistaa -5 astetta
 </pre>
-
-    <div class="self-explanation" data-key="q-luokkaSaaEnnustaja"></div>
 
 <div class="tehtavat">
   <div class="tehtava">
@@ -8745,9 +8981,6 @@ public class Henkilo {
 <p>Vaikka <code>ika</code> onkin olion yksityinen (<code>private</code>) oliomuuttuja, pystymme lukemaan muuttujan arvon kirjoittamalla <code>verrattava.ika</code>. Tämä johtuu siitä, että <code>private</code>-muuttujat ovat luettavissa kaikissa metodeissa, jotka kyseinen luokka sisältää. Huomaa, että syntaksi (kirjoitusasu) vastaa tässä jonkin olion metodin kutsumista. Toisin kuin metodia kutsuttaessa, viittaamme olion kenttään, jolloin metodikutsun osoittavia sulkeita ei kirjoiteta. </p>
 
 
-    <div class="self-explanation" data-key="q-mistaOnKyseThis"></div>
-    
-
 <h3>Päiväys oliona</h3>
 
 <p>Toinen esimerkki samasta teemasta. Tehdään luokka, jonka avulla voidaan esittää päiväyksiä.</p>
@@ -8879,6 +9112,10 @@ System.out.println(jakomakiKolmio.kalliimpi(kallioKaksio));   // true
 </pre>
 </div>
 </div>
+
+
+    <div class="self-explanation" data-key="q-mistaOnKyseThis"></div>
+    
 
  
 <h3>Lisää olioita listalla</h3>
@@ -13019,6 +13256,8 @@ peliIkkuna.pelaa();
 </div>
 
 
+
+    <div class="self-explanation" data-key="q-luokkaSaaEnnustaja"></div>
 
 
 <!-- END MOOC SNIP -->
