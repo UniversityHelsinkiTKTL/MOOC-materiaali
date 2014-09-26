@@ -6758,15 +6758,15 @@ public static void main(String[] args) {
     Henkilo antti = new Henkilo("Antti");
 
     int i = 0;
-    while ( i &lt; 30 ) {
+    while (i &lt; 30) {
         pekka.vanhene();
         i++;
     }
 
     antti.vanhene();
 
-    System.out.println( antti ); // sama kun System.out.println( antti.toString() );
-    System.out.println( pekka ); // sama kun System.out.println( pekka.toString() );
+    System.out.println(antti); // sama kun System.out.println( antti.toString() );
+    System.out.println(pekka); // sama kun System.out.println( pekka.toString() );
 }
 </pre>
   <p>Periaatteena on, että <code>System.out.println</code>-metodi pyytää olion merkkijonoesityksen ja tulostaa sen. Merkkijonoesityksen palauttavan <code>toString</code>-metodin kutsua ei tarvitse kirjoittaa itse, sillä Java lisää sen automaattisesti. Ohjelmoijan kirjoittaessa:</p>
@@ -7204,7 +7204,9 @@ public class Paaohjelma {
 02:00
 </pre>
     <h4>Kello, toinen versio</h4>
-    <p>Laajenna kelloasi myös sekuntiviisarilla. Tee lisäksi luokalle <code>YlhaaltaRajoitettuLaskuri</code> metodi <code>asetaArvo</code>, jolla laskurille pystyy asettamaan halutun arvon. Jos laskurille yritetään asettaa kelvoton arvo eli negatiivinen luku tai ylärajaa suurempi luku, ei laskurin arvo muutu.</p>
+    <p>Laajenna kelloasi myös sekuntiviisarilla. Tee lisäksi luokalle <code>YlhaaltaRajoitettuLaskuri</code> metodi <code>asetaArvo</code>, jolla laskurille pystyy asettamaan halutun arvon -- jos et ole ihan varma mitä tässä pitäisi tehdä, kertaa materiaalista kohta missä puhutaan "settereistä".</p>
+
+    <p>Jos laskurille yritetään asettaa kelvoton arvo eli negatiivinen luku tai ylärajaa suurempi luku, ei laskurin arvo muutu.</p>
     <p>Tämän metodin avulla voit muuttaa kellon ajan heti ohjelman alussa haluamaksesi.</p>
     <p>Voit testata kellon toimintaa seuraavalla ohjelmalla</p>
     <pre class="sh_java">
@@ -8101,12 +8103,13 @@ public void vanhene(int vuodet) {
 <pre class="sh_java">
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka", 24);
+    System.out.println(pekka );
 
-    System.out.println( pekka );
     pekka.vanhene();
-    System.out.println( pekka );
+    System.out.println(pekka);
+
     pekka.vanhene(10);
-    System.out.println( pekka );
+    System.out.println(pekka);
 }
 </pre>
 <p>Tulostuu:</p>
@@ -8180,12 +8183,12 @@ public static void main(String[] args) {
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka", 24);
 
-    System.out.println( pekka );
+    System.out.println(pekka);
 
     Henkilo henkilo = pekka;
     henkilo.vanhene(25);
 
-    System.out.println( pekka );
+    System.out.println(pekka);
 }
 </pre>
 <p>Tulostuu:</p>
@@ -8691,64 +8694,64 @@ public class Henkilo {
 }
 </pre>
 
-<p>TODO:JATKA TÄSTÄ</p>
 
 <p>Haluamme vertailla kahden henkilön ikää. Vertailu voidaan hoitaa usealla tavalla. Henkilölle voitaisiin määritellä getterimetodi <code>getIka</code> ja kahden henkilön iän vertailu tapauhtuisi tällöin seuraavasti:</p>
 <pre class="sh_java">
 Henkilo pekka = new Henkilo("Pekka");
 Henkilo juhana = new Henkilo("Juhana")
 
-if ( pekka.getIka() &gt; juhana.getIka() ) {
-    System.out.println( pekka.getNimi() + " on vanhempi kuin " + juhana.getNimi() );
+if (pekka.getIka() &gt; juhana.getIka()) {
+    System.out.println(pekka.getNimi() + " on vanhempi kuin " + juhana.getNimi());
 }
 </pre>
+
 <p>Opettelemme kuitenkin nyt hieman "oliohenkisemmän" tavan kahden henkilön ikävertailun tekemiseen.</p>
+
 <p>Teemme Henkilö-luokalle metodin <code>boolean vanhempiKuin(Henkilo verrattava)</code> jonka avulla tiettyä henkilö-olioa voi verrata parametrina annettuun henkilöön iän perusteella. </p>
+
 <p>Metodia on tarkoitus käyttää seuraavaan tyyliin:</p>
 <pre class="sh_java">
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka", 24);
     Henkilo antti = new Henkilo("Antti", 22);
 
-    if ( pekka.vanhempiKuin(antti) ) {  //  sama kun pekka.vanhempiKuin(antti)==true
-        System.out.println( pekka.getNimi() + " on vanhempi kuin " + antti.getNimi() );
+    if (pekka.vanhempiKuin(antti)) {  //  sama kun pekka.vanhempiKuin(antti)==true
+        System.out.println(pekka.getNimi() + " on vanhempi kuin " + antti.getNimi());
     } else {
-        System.out.println( pekka.getNimi() + " ei ole vanhempi kuin " + antti.getNimi() );
+        System.out.println(pekka.getNimi() + " ei ole vanhempi kuin " + antti.getNimi());
     }
-}
-</pre>
-<p>Tässä siis kysytään Pekalta onko hän Anttia vanhempi, Pekka vastaa true jos on ja false muuten. Käytännössä kutsutaan "Pekkaa" vastaavan olion johon <code>pekka</code> viittaa metodia <code>vanhempiKuin</code>, jolle annetaan parametriksi "Anttia" vastaavan olion viite <code>antti</code>. </p>
+}</pre>
+
+<p>Tässä siis kysytään onko pekka anttia vanhempi "jos pekka on vanhempi kuin antti". Metodi <code>vanhempiKuin</code> palauttaa arvon <code>true</code> jos olio jonka kohdalla metodia kutsutaan (<code>olio.vanhempiKuin(parametrinaAnnettavaOlio)</code>) on vanhempi kuin parametrina annettava olio, ja <code>false</code> muuten. Käytännössä yllä kutsutaan "Pekkaa" vastaavan olion, johon muuttuja <code>pekka</code> viittaa, metodia <code>vanhempiKuin</code>, jolle annetaan parametriksi "Anttia" vastaavan olion viite <code>antti</code>. </p>
 <p>Ohjelman tulostaa:</p>
 <pre>
 Pekka on vanhempi kuin Antti
 </pre>
+
 <p>Metodi saa parametrikseen henkilöolion (tarkemmin sanottuna viitteen henkilöolioon, eli "langan päässä" olevan henkilön) ja vertaa omaa ikäänsä <code>this.ika</code> verrattavaksi annetun henkilön ikään <code>verrattava.ika</code>. Toteutus näyttää seuraavalta:</p>
 <pre class="sh_java">
 public class Henkilo {
     // ...
 
     public boolean vanhempiKuin(Henkilo verrattava) {
-        if ( this.ika &gt; verrattava.ika ) {
+        if (this.ika &gt; verrattava.ika) {
             return true;
         }
 
         return false;
-      }
-}
-</pre>
-<p>Vaikka <code>ika</code> onkin olion yksityinen (<code>private</code>) oliomuuttuja,
-  pystymme lukemaan muuttujan arvon kirjoittamalla <code>verrattava.ika</code>.
-  Tämä johtuu siitä, että <code>private</code>-muuttujat ovat luettavissa kaikissa
-  metodeissa, jotka kyseinen luokka sisältää. Huomaa, että syntaksi (kirjoitusasu) vastaa
-  tässä jonkin olion metodin kutsumista. Toisin kuin metodia kutsuttaessa, viittaamme olion kenttään,
-  jolloin metodikutsun osoittavia sulkeita ei kirjoiteta. </p>
+    }
+}</pre>
+
+<p>Vaikka <code>ika</code> onkin olion yksityinen (<code>private</code>) oliomuuttuja, pystymme lukemaan muuttujan arvon kirjoittamalla <code>verrattava.ika</code>. Tämä johtuu siitä, että <code>private</code>-muuttujat ovat luettavissa kaikissa metodeissa, jotka kyseinen luokka sisältää. Huomaa, että syntaksi (kirjoitusasu) vastaa tässä jonkin olion metodin kutsumista. Toisin kuin metodia kutsuttaessa, viittaamme olion kenttään, jolloin metodikutsun osoittavia sulkeita ei kirjoiteta. </p>
 
 
     <div class="self-explanation" data-key="q-mistaOnKyseThis"></div>
     
 
 <h3>Päiväys oliona</h3>
+
 <p>Toinen esimerkki samasta teemasta. Tehdään luokka, jonka avulla voidaan esittää päiväyksiä.</p>
+
 <p>Olion sisällä päiväys esitetään kolmella oliomuuttujalla. Tehdään myös metodi jolla voi vertailla onko päivämäärä aiemmin kuin parametrina annettu päivämäärä:</p>
 <pre class="sh_java">
 public class Paivays {
@@ -8766,20 +8769,22 @@ public class Paivays {
         return this.paiva + "." + this.kuukausi + "." + this.vuosi;
     }
 
+    // metodilla tarkistetaan onko tämä päiväysolio (<code>this</code>) ennen 
+    // parametrina annettavaa päiväysoliota (<code>verrattava</code>)
     public boolean aiemmin(Paivays verrattava) {
         // ensin verrataan vuosia
-        if ( this.vuosi &lt; verrattava.vuosi ) {
+        if (this.vuosi &lt; verrattava.vuosi) {
             return true;
         }
 
         // jos vuodet ovat samat, verrataan kuukausia
-        if ( this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi &lt; verrattava.kuukausi ) {
+        if (this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi &lt; verrattava.kuukausi) {
             return true;
         }
 
         // vuodet ja kuukaudet samoja, verrataan päivää
-        if ( this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi == verrattava.kuukausi &amp;&amp;
-            this.paiva &lt; verrattava.paiva ) {
+        if (this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi == verrattava.kuukausi &amp;&amp;
+            this.paiva &lt; verrattava.paiva) {
             return true;
         }
 
@@ -8787,7 +8792,9 @@ public class Paivays {
     }
 }
 </pre>
+
 <p>Käyttöesimerkki:</p>
+
 <pre class="sh_java">
 public static void main(String[] args) {
     Paivays p1 = new Paivays(14, 2, 2011);
@@ -8805,6 +8812,7 @@ public static void main(String[] args) {
     System.out.println( p1 + " aiemmin kuin " + p4 + ": " + p1.aiemmin(p4));
 }
 </pre>
+
 <pre>
 14.2.2011 aiemmin kuin 21.2.2011: true
 21.2.2011 aiemmin kuin 14.2.2011: false
@@ -8844,8 +8852,8 @@ Asunto eiraYksio = new Asunto(1, 16, 5500);
 Asunto kallioKaksio = new Asunto(2, 38, 4200);
 Asunto jakomakiKolmio = new Asunto(3, 78, 2500);
 
-System.out.println( eiraYksio.suurempi(kallioKaksio) );       // false
-System.out.println( jakomakiKolmio.suurempi(kallioKaksio) );  // true
+System.out.println(eiraYksio.suurempi(kallioKaksio));       // false
+System.out.println(jakomakiKolmio.suurempi(kallioKaksio));  // true
 </pre>
   <h4>Hintaero</h4>
   <p>Tee metodi <code>public int hintaero(Asunto verrattava)</code> joka palauttaa asunto-olion jolle metodia kutsuttiin ja parametrina olevan asunto-olion hintaeron. Hintaero on asuntojen hintojen (=neliöhinta*neliöt) itseisarvo.</p>
@@ -8855,8 +8863,8 @@ Asunto eiraYksio = new Asunto(1, 16, 5500);
 Asunto kallioKaksio = new Asunto(2, 38, 4200);
 Asunto jakomakiKolmio = new Asunto(3, 78, 2500);
 
-System.out.println( eiraYksio.hintaero(kallioKaksio) );        // 71600
-System.out.println( jakomakiKolmio.hintaero(kallioKaksio) );   // 35400
+System.out.println(eiraYksio.hintaero(kallioKaksio));        // 71600
+System.out.println(jakomakiKolmio.hintaero(kallioKaksio));   // 35400
 </pre>
   <h4>Kalliimpi</h4>
   <p>Tee metodi <code>public boolean kalliimpi(Asunto verrattava)</code> joka palauttaa true jos asunto-olio, jolle metodia kutsutaan on kalliimpi kuin verrattavana oleva asunto-olio.</p>
@@ -8866,54 +8874,56 @@ Asunto eiraYksio = new Asunto(1, 16, 5500);
 Asunto kallioKaksio = new Asunto(2, 38, 4200);
 Asunto jakomakiKolmio = new Asunto(3, 78, 2500);
 
-System.out.println( eiraYksio.kalliimpi(kallioKaksio) );       // false
-System.out.println( jakomakiKolmio.kalliimpi(kallioKaksio) );   // true
+System.out.println(eiraYksio.kalliimpi(kallioKaksio));       // false
+System.out.println(jakomakiKolmio.kalliimpi(kallioKaksio));   // true
 </pre>
 </div>
 </div>
 
-<h3>Olioita listalla</h3>
-<p>Olemme käyttäneet <code>ArrayList</code>:ejä jo monessa esimerkissä ja tehtävässä. ArrayList-olioon pystyy lisäämään esimerkiksi merkkijonoja ja listalla olevien merkkijonojen läpikäynti, etsiminen, poistaminen, järjestäminen ym. ovat vaivattomia toimenpiteitä.</p>
-<p>ArrayList:eihin voidaan laittaa minkä tahansa tyyppisiä oliota. Luodaan seuraavassa henkilölista, eli tyyppiä <code>ArrayList&lt;Henkilo&gt;</code> oleva ArrayList ja laitetaan sinne muutama henkilöolio:</p>
+ 
+<h3>Lisää olioita listalla</h3>
+
+  <p>ArrayList:eihin voidaan laittaa minkä tahansa tyyppisiä oliota. Luodaan seuraavassa asuntolista, eli tyyppiä <code>ArrayList&lt;Asunto&gt;</code> oleva ArrayList, laitetaan sinne muutama aiemmin näkemämme asunto, ja etsitään asunnoista suurin -- hyödynnetään tässä edellisessä tehtävässä tehtyä metodia -- oletetaan lisäksi, että Asunto-luokalla on metodi <code>getNeliot()</code>, joka palauttaa asunnon neliöiden määrän:</p>
+
 <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;Henkilo&gt; opettajat = new ArrayList&lt;Henkilo&gt;();
+    ArrayList&lt;Asunto&gt; asunnot = new ArrayList&lt;Asunto&gt;();
 
-    // voidaan ensin ottaa henkilö muuttujaan
-    Henkilo opettaja = new Henkilo("Juhana");
-    // ja lisätä se sitten listalle
-    opettajat.add(opettaja);
+    asunnot.add(new Asunto(1, 16, 5500));
+    asunnot.add(new Asunto(2, 38, 4200));
+    asunnot.add(new Asunto(3, 78, 2500));
 
-    // tai voidaan myös luoda olio lisättäessä:
-    opettajat.add( new Henkilo("Matti") );
-    opettajat.add( new Henkilo("Martin") );
+    Asunto suurin = null;
 
-    System.out.println("opettajat vastasyntyneenä: ");
-    for ( Henkilo hlo : opettajat ) {
-        System.out.println( hlo );
+    for(Asunto asunto: asunnot) {
+        if(suurin == null) {
+            suurin = asunto;
+            continue; // jatketaan seuraavan asunnon tarkastelulla
+        }
+
+        // jos tarkasteltava asunto on suurempi kuin suurin, 
+        // asetetaan tarkasteltava suurimmaksi
+        if(asunto.suurempi(suurin)) {
+            suurin = asunto;
+        }
     }
 
-    for ( Henkilo hlo : opettajat ) {
-        hlo.vanhene( 30 );
-    }
-
-    System.out.println("30 vuoden kuluttua: ");
-    for ( Henkilo hlo : opettajat ) {
-        System.out.println( hlo );
+    if (suurin == null) {
+        System.out.println("Ei löytynyt suurinta asuntoa :(");
+    } else {
+        System.out.println("Suurin asunto löytyi!");
+        System.out.println("Asunnossa on " + suurin.getNeliot() + " neliötä.");
     }
 }
 </pre>
+
 <p>Ohjelman tulostus:</p>
+
 <pre>
-opettajat vastasyntyneenä:
-Juhana, ikä 0 vuotta
-Matti, ikä 0 vuotta
-Martin, ikä 0 vuotta
-30 vuoden kuluttua:
-Juhana, ikä 30 vuotta
-Matti, ikä 30 vuotta
-Martin, ikä 30 vuotta
+Suurin asunto löytyi!
+Asunnossa on 78 neliötä.
 </pre>
+
 
 <div class="tehtavat">
   <div class="tehtava">
@@ -8999,7 +9009,9 @@ Taina Taulukko (014662803)
 </pre>
 </div>
 </div>
+
 <h3>Olion sisällä olio</h3>
+
 <p>Olioiden sisällä voi olla olioita, ei pelkästään merkkijonoja vaan myös itse määriteltyjä oliota. Jatketaan taas <code>Henkilo</code>-luokan parissa ja lisätään henkilölle syntymäpäivä. Syntymäpäivä on luonnollista esittää aiemmin tehdyn <code>Paivays</code>-olion avulla:</p>
 <pre class="sh_java">
 public class Henkilo {
@@ -9011,7 +9023,9 @@ public class Henkilo {
 
     // ...
   </pre>
+
 <p>Tehdään henkilölle uusi konstruktori, joka mahdollistaa syntymäpäivän asettamisen:</p>
+
 <pre class="sh_java">
 public Henkilo(String nimi, int paiva, int kuukausi, int vuosi) {
     this.nimi = nimi;
@@ -9020,15 +9034,18 @@ public Henkilo(String nimi, int paiva, int kuukausi, int vuosi) {
     this.syntymaPaiva = new Paivays(paiva, kuukausi, vuosi);
 }
 </pre>
-<p>Eli konstruktorin parametrina annetaan erikseen päiväyksen osat (päivä, kuukausi, vuosi), niistä
-  luodaan päiväysolio joka <i>sijoitetaan</i> oliomuuttujaan <code>syntymaPaiva</code>.</p>
+
+<p>Eli konstruktorin parametrina annetaan erikseen päiväyksen osat (päivä, kuukausi, vuosi), niistä luodaan päiväysolio joka <i>sijoitetaan</i> oliomuuttujaan <code>syntymaPaiva</code>.</p>
 <p>Muokataan <code>toString</code> siten, että iän sijaan se näyttää syntymäpäivän:</p>
+
 <pre class="sh_java">
 public String toString() {
     return this.nimi + ", syntynyt " + this.syntymaPaiva;
 }
 </pre>
+
 <p>Ja kokeillaan miten uusittu Henkilö-luokka toimii:</p>
+
 <pre class="sh_java">
 public static void main(String[] args) {
     Henkilo martin = new Henkilo("Martin", 24, 4, 1983);
@@ -9056,11 +9073,13 @@ int vuosi = Calendar.getInstance().get(Calendar.YEAR);
 System.out.println("tänään on " + paiva + "." + kuukausi + "." + vuosi );
 </pre>
 <p>Kun ikä poistetaan, täytyy <code>vanhempiKuin</code>-metodi muuttaa toimimaan syntymäpäiviä
-  vertaamalla. Teemme muutoksen harjoitustehtävänä.</p>
+  vertaamalla. Jätämme vertailun toteutuksen omatoimiseksi harjoitustehtäväksi.</p>
+
 <div class="tehtavat">
   <div class="tehtava">
     <h3>Kellosta olio</h3>
-  <p>Edellisen viikon tehtävässä 78 tehtiin ensin luokka <code>YlhaaltaRajoitettuLaskuri</code> ja rakennettiin laskurien avulla pääohjelmaan kello. Tehdään nyt myös itse kellosta olio. Luokan kello runko näyttää seuraavalta:</p>
+  <p>Edellisellä viikolla tehtiin luokka <code>YlhaaltaRajoitettuLaskuri</code> ja rakennettiin laskurien avulla pääohjelmaan kello. Tehdään nyt myös itse kellosta olio. Luokan kello runko näyttää seuraavalta:</p>
+
   <pre class="sh_java">
 
 public class Kello {
@@ -9069,7 +9088,8 @@ public class Kello {
     private YlhaaltaRajoitettuLaskuri sekunnit;
 
     public Kello(int tunnitAlussa, int minuutitAlussa, int sekunnitAlussa) {
-      // luodaan kello joka asetetaan parametrina annettuun aikaan
+      // laskurit tunneille, minuuteille ja sekunneille; 
+      // laskurien arvot tulee asettaa parametreina saatuun aikaan
     }
 
     public void etene(){
@@ -9081,7 +9101,9 @@ public class Kello {
       }
 }
 </pre>
-  <p>Kopioi uuteen projektiin viime viikon tehtävän 78 <code>YlhaaltaRajoitettuLaskuri</code>-luokka.</p>
+
+  <p>Kopioi uuteen projektiin viime viikon tehtävässä <code>YlhaaltaRajoitettuLaskuri</code>-toteutettu <code>YlhaaltaRajoitettuLaskuri</code>-luokka.</p>
+
   <p>Toteuta luokan <code>Kello</code> konstruktori ja puuttuvat
     metodit. Voit testata kelloasi seuraavalla pääohjelmalla:</p>
   <pre class="sh_java">
@@ -9119,7 +9141,159 @@ public class Main {
 
 <!-- foobar -->
 
+<div class="tehtavat">
+  <div class="tehtava">
+    <h3>Sukututkija</h3>
+
+    <p>Tehtäväpohjassa tulee mukana luokka Henkilo, jolla on oliomuuttujat nimi sekä isä ja äiti.</p>
+
+<pre class="sh_java">
+public class Henkilo {
+
+    private String nimi;
+    private Henkilo isa;
+    private Henkilo aiti;</pre>
+
+    <p>Kodissa on lisäksi myös konstruktori, jolla asetetaan luotavalle henkilölle nimi.</p>
+
+<pre class="sh_java">
+    public Henkilo(String nimi) {
+        this.nimi = nimi;
+    }</pre>
+
+    <p>Konstruktorin lisäksi luokassa on gettereitä ja settereitä, joilla pääsee käsiksi oliomuuttujiin.</p>
+
+<pre class="sh_java">
+
+    public String getNimi() {
+        return nimi;
+    }
+
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public Henkilo getIsa() {
+        return isa;
+    }
+
+    public void setIsa(Henkilo isa) {
+        this.isa = isa;
+    }
+
+    public Henkilo getAiti() {
+        return aiti;
+    }
+
+    public void setAiti(Henkilo aiti) {
+        this.aiti = aiti;
+    }</pre>
+
+    <p>Luokan <code>Henkilo</code> avulla voi mallintaa sukupuuta. Alla olevassa koodissa hahmotellaan <a href="http://en.wikipedia.org/wiki/Charles_II_of_Spain" target="_blank">Charles II of Spain</a>in esi-isiä.</p>
+
+<pre class="sh_java">
+        Henkilo charles = new Henkilo("Charles II of Spain");
+        Henkilo mariana = new Henkilo("Mariana of Austria");
+        Henkilo philipIV = new Henkilo("Philip IV of Spain");
+        
+        charles.setIsa(philipIV);
+        charles.setAiti(mariana);
+        
+        Henkilo mariaSpain = new Henkilo("Maria Anna of Spain");
+        Henkilo ferdinandIII = new Henkilo("Ferdinand III, Holy Roman Emperor");
+        
+        mariana.setIsa(ferdinandIII);
+        mariana.setAiti(mariaSpain);</pre>
+
+    <p>Koodi luo käytännössä seuraavanlaisen sukupuun.</p>
+
+    <p><img src="http://www.cs.helsinki.fi/group/java/tmp/90-sukupuu.png"/></p>
+
+    <p>Tässä tehtävässä harjoitellaan olioviitteiden käsittelyä ja tehdään <em>Sukututkija</em> henkilöiden suhteiden tulostamiseen.</p>
+
+
+    <h4>Sukututkija</h4>
+
+    <p>Luo luokka <code>Sukututkija</code>. Luokalla ei ole yhtään oliomuuttujaa ja sillä tulee olla konstruktori, jolla ei ole yhtäkään parametria.</p>
+
+    <p>Lisää tämän jälkeen sukututkijalle metodi <code>public void kerroHenkilosta(Henkilo henkilo)</code>. Metodin ei tarvitse tehdä vielä tässä vaiheessa mitään.</p>
+
+    <p>Voit nyt luoda uuden sukututkijan, ja kutsua sille metodia <code>kerroHenkilosta</code> seuraavasti. Alla käytössä myös tehtäväpohjassa valmiina tuleva luokka <code>Henkilo</code>.</p>
+
+<pre class="sh_java">
+Henkilo tupu = new Henkilo("Tupu Ankka");
+
+Sukututkija peloton = new Sukututkija();
+peloton.kerroHenkilosta(tupu);
+</pre>
+
+    <p>Metodin <code>kerroHenkilosta</code> ei tarvitse vielä tehdä mitään.</p>
+
+    <h4>Henkilöstä kertominen</h4>
+
+    <p>Muokkaa metodia <code>kerroHenkilosta</code> siten, että se tulostaa parametrina annetun henkilön nimen sekä henkilön vanhempien nimet.</p>
+
+    <p>Jos henkilön vanhempia ei tunneta (ne ovat null), sanotaan että kyseinen vanhempi on tuntematon.</p>
+
+<pre class="sh_java">
+Henkilo hannu = new Henkilo("Hannu Hanhi");
+Henkilo hjalmar = new Henkilo("Hjalmar Hanhi");
+Henkilo dora = new Henkilo("Dora Ankka");
+
+hannu.setIsa(hjalmar);
+hannu.setAiti(dora);
+
+Sukututkija peloton = new Sukututkija();
+peloton.kerroHenkilosta(hannu);
+</pre>
+
+    <p>Ylläolevan koodin tulee tulostaa seuraavanlainen lause:</p>
+<pre>
+Hannu Hanhi, äiti Dora Ankka ja isä Hjalmar Hanhi.</pre>
+
+    <p>Jos vanhempaa ei ole asetettu, tulostetaan kyseisen vanhemman kohdalla tuntematon.</p>
+
+<pre class="sh_java">
+Henkilo tupu = new Henkilo("Tupu Ankka");
+Henkilo della = new Henkilo("Della Ankka");
+tupu.setAiti(della);
+
+Sukututkija peloton = new Sukututkija();
+peloton.kerroHenkilosta(tupu);
+</pre>
+
+    <p>Ylläoleva koodi tulostaa.</p>
+<pre>
+Tupu Ankka, äiti Della Ankka ja isä tuntematon.</pre>
+
+<pre class="sh_java">
+Henkilo kornelius = new Henkilo("Kornelius Ankanpää");
+Henkilo julle = new Henkilo("Julle Ankanpää");
+kornelius.setIsa(julle);
+
+Sukututkija peloton = new Sukututkija();
+peloton.kerroHenkilosta(kornelius);
+</pre>
+
+    <p>Ylläoleva koodi tulostaa.</p>
+<pre>
+Kornelius Ankanpää, äiti tuntematon ja isä Julle Ankanpää.</pre>
+
+    <p>Vastaavasti jos molemmat vanhemmat ovat tuntemattomia, tulostus on esimerkiksi. </p>
+<pre>
+Kornelius Ankanpää, äiti tuntematon ja isä tuntematon.</pre>
+
+    <p>Olettaen että Kornelius Ankanpää on tulostettavan henkilön nimi.</p>
+
+    <h4>Henkilön suvusta kertominen</h4>
+
+
+</div>
+</div>
+
+
 <h3>Olion sisällä listallinen olioita</h3>
+
 <p>Laajennetaan <code>PainonvartijaYhdistys</code>-oliota siten, että yhdistys tallettaa kaikki jäsenensä <code>ArrayList</code>-olioon. Listalle tulee siis <code>Henkilo</code>-olioita. Yhdistykselle annetaan laajennetussa versiossa konstruktorin parametrina nimi:</p>
 <pre class="sh_java">
 public class PainonvartijaYhdistys {
@@ -9346,6 +9520,19 @@ Maaleja yhteensä: 40
 </pre>
 </div>
 </div>
+
+
+</div>
+</section>
+
+
+
+
+<section class="viikkoraja" id="6">
+  <div class="viikkoraja"></div>
+  <div class="viikkoraja-mooc" id="Viikko 6" deadline="avautuu kun 85 %  5. viikosta tehty" data-first-chapter-index="23" data-first-exercise-index="94" data-first-week-index="6" data-first-chapter-index-mooc="23" data-first-exercise-index-mooc="94" data-first-week-index-mooc="6" tekija="Arto Vihavainen, Matti Luukkainen">
+
+
 <h3>Metodi palauttaa olion</h3>
 <p>Olemme nähneet metodeja jotka palauttavat totuusarvoja, lukuja, listoja ja merkkijonoja. On helppoa arvata, että metodi voi palauttaa minkä tahansa tyyppisen olion. Tehdään painovartijayhdistykselle metodi, jolla saadaan tietoon yhdistyksen suurimman painoindeksin omaava henkilö. </p>
 <pre class="sh_java">
@@ -9716,8 +9903,8 @@ public class Main {
       Henkilo pekka = new Henkilo("Pekka", new Paivays(15, 2, 1983));
       Henkilo sepe = new Henkilo("Sepe");
 
-      System.out.println( pekka );
-      System.out.println( sepe );
+      System.out.println(pekka);
+      System.out.println(sepe);
     }
 }
 </pre>
@@ -9729,15 +9916,7 @@ Sepe, syntynyt 9.2.2012
   <p><b>Huom:</b> jälkimmäinen rivi riippuu päivämäärästä, jolloin koodi ajetaan!</p>
 </div>
 </div>
-</div>
-</section>
 
-
-
-
-<section class="viikkoraja" id="6">
-  <div class="viikkoraja"></div>
-  <div class="viikkoraja-mooc" id="Viikko 6" deadline="avautuu kun 85 %  5. viikosta tehty" data-first-chapter-index="23" data-first-exercise-index="94" data-first-week-index="6" data-first-chapter-index-mooc="23" data-first-exercise-index-mooc="94" data-first-week-index-mooc="6" tekija="Arto Vihavainen, Matti Luukkainen">
 
   <div class="hidden-in-hy alert alert-warning">
       <blockquote class="normal-text">
