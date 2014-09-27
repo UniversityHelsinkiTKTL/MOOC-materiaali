@@ -9377,12 +9377,247 @@ public class Main {
 </div>
 
 <!-- foobar -->
+<h3>Lisää omien metodien kutsumisesta</h3>
+
+<p>Olemme oppineet aiemmin, että metodeista voi kutsua muita metodeja. Esimerkiksi, seuraavassa luokassa <code>Esine</code> kutsutaan metodia <code>getNimi</code> metodista <code>toString</code>.</p>
+
+<pre class="sh_java">
+public class Esine {
+    private String nimi;
+    private int paino;
+
+    public Esine(String nimi, int paino) {
+        this.nimi = nimi;
+        this.paino = paino;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+
+    public int getPaino() {
+        return this.paino;
+    }
+
+    public String toString() {
+        return this.getNimi() + " " + this.getPaino() + "kg.";
+    }
+}</pre>
+
+<pre class="sh_java">
+Esine tuoli = new Esine("Tuoli", 1);
+Esine tiskikone = new Esine("Tiskikone", 22);
+
+
+System.out.println(tuoli);
+System.out.println(tiskikone);</pre>
+
+<pre>
+Tuoli 1kg.
+Tiskikone 22kg.</pre>
+
+<p><strong>Metodista voi kutsua myös samaa metodia.</strong></p>
+
+<p>Pohditaan hyvin sokkelomaista huoneistokompleksia. Jokaisessa huoneistokompleksin huoneessa on kolme ovea, joista pääsee muihin huoneisiin. Ovien lisäksi jokaisella huoneella on nimi.</p>
+
+<p>Voimme mallintaa tätä sokkelomaista huoneistokompleksia luokan <code>Huone</code> avulla. Huoneeseen liittyy nimi, sekä kaksi muuta huonetta, joihin pääsee ovien kautta. Luokan <code>Huone</code> oliomuuttujat ovat seuraavanlaiset:</p>
+
+<pre class="sh_java">
+public class Huone {
+    private String nimi;
+
+    private Huone vasen;
+    private Huone oikea;
+}</pre>
+
+<p>Lisätään huoneelle konstruktori ja setterit. Setterien avulla voimme asettaa huoneeseen liittyvät huoneet vasta niiden luomisen jälkeen.</p>
+
+<pre class="sh_java">
+public class Huone {
+    private String nimi;
+
+    private Huone vasen;
+    private Huone oikea;
+
+    public Huone(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public void setVasen(Huone huone) {
+        this.vasen = huone;
+    }
+
+    public void setOikea(Huone huone) {
+        this.oikea = huone;
+    }
+}</pre>
+
+<p>Lisätään huoneeseen vielä metodit <code>valitseVasenOvi</code> ja <code>valitseOikeaOvi</code>, jotka johtavat valittaviin huoneisiin.</p>
+
+<pre class="sh_java">
+public class Huone {
+    private String nimi;
+
+    private Huone vasen;
+    private Huone oikea;
+
+    public Huone(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public Huone valitseVasenOvi() {
+        return this.vasen;
+    }
+
+    public void setVasen(Huone huone) {
+        this.vasen = huone;
+    }
+
+    public Huone valitseOikeaOvi() {
+        return this.oikea;
+    }
+
+    public void setOikea(Huone huone) {
+        this.oikea = huone;
+    }
+}</pre>
+
+<p>Luodaan huoneistosokkelo, mistä eteisestä pääsee olohuoneeseen ja kylpyhuoneeseen. Olohuoneesta pääsee kylpyhuoneeseen ja makuuhuoneeseen. Kylpyhuoneesta pääsee makuuhuoneeseen.</p>
+
+<pre class="sh_java">
+Huone eteinen = new Huone("Eteinen");
+Huone kylpyhuone = new Huone("Kylpyhuone");
+Huone olohuone = new Huone("Olohuone");
+Huone makuuhuone = new Huone("Makuuhuone");
+
+eteinen.setVasen(olohuone);
+eteinen.setOikea(kylpyhuone);
+
+olohuone.setOikea(kylpyhuone);
+olohuone.setVasen(makuuhuone);
+
+kylpyhuone.setVasen(makuuhuone);
+</pre>
+
+<p>Huoneistosokkelomme on siitä mielenkiintoinen, että siellä ei ole ovia takaisinpäin. Tämä on tarkoituksellista tässä esimerkissä -- näemme kohta miksi :). Pohditaan seuraavaksi huoneiden läpikäyntiä -- tehdään luokka <code>Huoneistokauppias</code>, joka käy huoneiston jokaisen huoneen läpi annetusta huoneesta lähtien, ja kertoo huoneen nimen.</p>
+
+<pre class="sh_java">
+public class Huoneistokauppias {
+ 
+    public Huoneistokauppias() {
+    }
+
+    public void vieraile(Huone huone) {
+        System.out.println("Olen huoneessa " + huone.getNimi());
+
+    }
+}
+</pre>
+
+<p>Yllä oleva metodimme ei kuitenkaan kerro muusta kuin nykyisestä huoneesta, ja haluaisimme että huoneistokauppias vierailee jokaisessa huoneessa. Voimme pyytää huoneistokauppiasta vierailemaan myös huoneen viereisessä huoneessa.</p>
+
+<pre class="sh_java">
+    public void vieraile(Huone huone) {
+        System.out.println("Olen huoneessa " + huone.getNimi());
+        
+        this.vieraile(huone.getVasenOvi());
+    }
+</pre>
+
+<p>Nyt huoneistokauppias vierailee jokaisen huoneen vasemmalla olevassa huoneessa. Mutta! Kun suoritamme seuraavan koodin, näemme virheen.</p>
+
+<pre class="sh_java">
+Huone eteinen = new Huone("Eteinen");
+Huone kylpyhuone = new Huone("Kylpyhuone");
+Huone olohuone = new Huone("Olohuone");
+Huone makuuhuone = new Huone("Makuuhuone");
+
+eteinen.setVasen(olohuone);
+eteinen.setOikea(kylpyhuone);
+
+olohuone.setOikea(kylpyhuone);
+olohuone.setVasen(makuuhuone);
+
+kylpyhuone.setVasen(makuuhuone);
+
+Huoneistokauppias jethro = new Huoneistokauppias();
+jethro.vieraile(eteinen);
+</pre>
+
+<pre>
+Olen huoneessa Eteinen
+Olen huoneessa Olohuone
+Olen huoneessa Makuuhuone
+<font color="red">Exception in thread "main" java.lang.NullPointerException
+at Main.main(Main.java:<em>rivi</em>)
+Java Result: 1</font>
+</pre>
+
+<p>Virhe johtuu siitä, että huoneistokauppias on erittäin innostunut menemään myös huoneisiin, joita ei ole -- metodi <code>getVasenOvi()</code> palauttaa <em>null</em>-viitteen jos huoneen vasemmaksi huoneeksi ei ole asetettu mitään.</p>
+
+<p>Voimme korjata tilanteen lisäämällä vierailumetodin alkuun tarkistuksen. Jos huone jossa vieraillaan on null, palataan metodista <em>heti</em>.</p>
+
+<pre class="sh_java">
+    public void vieraile(Huone huone) {
+        if (huone == null) {
+            return;
+        }
+
+        System.out.println("Olen huoneessa " + huone.getNimi());
+        
+        this.vieraile(huone.getVasenOvi());
+    }
+</pre>
+
+<p>Nyt huoneistokauppias pystyy vierailemaan jokaisen huoneen vasemmalla olevan oven takana. Selvennetään huoneistokauppiaan kulkua vielä hieman lisäämällä tarkennus hänen kulkemiseen.</p>
+<pre class="sh_java">
+    public void vieraile(Huone huone) {
+        if (huone == null) {
+            return;
+        }
+
+        System.out.println("Olen huoneessa " + huone.getNimi());
+        
+        this.vieraile(huone.getVasenOvi());
+        
+        System.out.println("Poistun huoneesta " + huone.getNimi());
+    }
+</pre>
+
+<p>Nyt ohjelmakoodi toimii varsin hienosti.</p>
+
+<pre class="sh_java">
+Huone eteinen = new Huone("Eteinen");
+Huone kylpyhuone = new Huone("Kylpyhuone");
+Huone olohuone = new Huone("Olohuone");
+Huone makuuhuone = new Huone("Makuuhuone");
+
+eteinen.setVasen(olohuone);
+eteinen.setOikea(kylpyhuone);
+
+olohuone.setOikea(kylpyhuone);
+olohuone.setVasen(makuuhuone);
+
+kylpyhuone.setVasen(makuuhuone);
+
+Huoneistokauppias jethro = new Huoneistokauppias();
+jethro.vieraile(eteinen);
+</pre>
+
+<pre>
+Olen huoneessa Eteinen
+Olen huoneessa Olohuone
+Olen huoneessa Makuuhuone
+Poistun huoneesta Makuuhuone
+Poistun huoneesta Olohuone
+Poistun huoneesta eteinen
+</pre>
 
 <div class="tehtavat">
   <div class="tehtava">
     <h3>Sukututkija</h3>
 
-    <p>Tehtäväpohjassa tulee mukana luokka Henkilo, jolla on oliomuuttujat nimi sekä isä ja äiti. Kodissa on lisäksi myös konstruktori, jolla asetetaan luotavalle henkilölle nimi. Konstruktorin lisäksi luokassa on gettereitä ja settereitä, joilla pääsee käsiksi oliomuuttujiin.</p>
+    <p>Tehtäväpohjassa tulee mukana luokka <code>Henkilo</code>, jolla on oliomuuttujat nimi sekä isä ja äiti. Koodissa on lisäksi myös konstruktori, jolla asetetaan luotavalle henkilölle nimi. Konstruktorin lisäksi luokassa on gettereitä ja settereitä, joilla pääsee käsiksi oliomuuttujiin.</p>
 
 <pre class="sh_java">
 public class Henkilo {
@@ -9521,7 +9756,7 @@ Kornelius Ankanpää, äiti tuntematon ja isä tuntematon.</pre>
 
     <p>Huom! Tämä tehtävä on kahden tehtäväpisteen arvoinen.</p>
     
-    <p>Lisää sukututkijalle metodi <code>public void kerroHenkilonSuvusta(Henkilo henkilo)</code>, joka kertoo tulostaa henkilön sekä henkilön jokaisen sukulaisen tiedot edellisen tehtävän muodossa.</p>
+    <p>Lisää sukututkijalle metodi <code>public void kerroHenkilonSuvusta(Henkilo henkilo)</code>, joka kertoo tulostaa henkilön sekä henkilön jokaisen sukulaisen tiedot edellisen tehtävän muodossa. Huom! Kutsun tulee myös tulostaa jokainen tutkittava esi-isä -- ei esimerkiksi vain kahta sukupolvea.</p>
 
     <p>Alla muutamia esimerkkejä metodin toiminnasta.</p>
 
@@ -9599,7 +9834,7 @@ Philip III of Spain, äiti tuntematon ja isä tuntematon.</pre>
 
     <p><strong>Huom!</strong> henkilöiden tulostusjärjestyksellä ei myöskään ole tässä väliä. Voit siis hyvin kertoa ensin esimerkiksi henkilöstä Philip III of Spain ennen Mariana of Austriasta kertomista.</p>
 
-    <p>Vinkki! Kannattanee hyödyntää edellisessä tehtävässä toteutettua metodia <code>kerroHenkilosta</code>. Katso myös mitä käy jos esimerkiksi annat metodille <code>kerroHenkilonSuvusta</code> tarkasteltavan henkilön vanhemman.</p> 
+    <p>Vinkki! Kannattanee hyödyntää edellisessä tehtävässä toteutettua metodia <code>kerroHenkilosta</code>. Kun olet toteuttanut metodin, joka kertoo nykyisestä henkilöstä, katso mitä käy jos annat metodille <code>kerroHenkilonSuvusta</code> tällä hetkellä tarkasteltavan henkilön vanhemman (jos sellainen on olemassa).</p> 
 
 </div>
 </div>
