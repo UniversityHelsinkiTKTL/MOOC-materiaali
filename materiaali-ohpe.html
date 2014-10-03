@@ -10083,22 +10083,625 @@ Maaleja yhteensä: 40
   <div class="viikkoraja-mooc" id="Viikko 6" deadline="avautuu kun 85 %  5. viikosta tehty" data-first-chapter-index="23" data-first-exercise-index="94" data-first-week-index="6" data-first-chapter-index-mooc="23" data-first-exercise-index-mooc="94" data-first-week-index-mooc="6" tekija="Arto Vihavainen, Matti Luukkainen">
 
 
+    <h2 id="lohkoista">Lohkoista ja sisäkkäisistä toistolauseista</h2>
+
+    <p>Aaltosululla <code>{</code> alkavaa ja aaltosululla <code>}</code> loppuvaa koodia sisältävää aluetta kutsutaan <em>lohkoksi</em>.  Kuten on jo nähty, lohkoja käytetään muun muassa ehto- ja toistolauseiden alueen rajaamisessa. <em>Tärkeä lohkon ominaisuus on se, että lohkossa määritellyt muuttujat ovat voimassa vain lohkon sisällä</em>.</p>
+
+    <p>Seuraavassa esimerkissä määritellään ehtolausekkeeseen liittyvän lohkon sisällä tekstimuuttuja <code>teksti</code>, joka on olemassa vain lohkon sisällä.  Lohkossa esitellyn muuttujan tulostus lohkon ulkopuolella ei toimi!</p>
+
+<pre class="sh_java">
+int luku = 5;
+
+if(luku == 5){
+    String teksti = "Oho!";
+}
+
+System.out.println(teksti); // ei toimi!
+</pre>
+
+    <p>Lohkossa voidaan käyttää ja muuttaa sen ulkopuolella ennen lohkoa määriteltyjä muuttujia.</p>
+
+<pre class="sh_java">
+int luku = 5;
+
+if(luku == 5) {
+    luku = 6;
+}
+
+System.out.println(luku); // tulostaa luvun 6
+</pre>
+
+
+<pre class="sh_java">
+String teksti = "Jee!";
+int luku = 5;
+
+if(luku == 5) {
+    teksti = "Oho!";
+}
+
+System.out.println(teksti); // tulostaa "Oho!"
+</pre>
+
+
+    <p>Lohkon sisällä voi olla mitä tahansa koodia. Esimerkiksi while-toistolauseen määrittelemän lohkon sisällä voi olla toinen while-toistolauseke. Tarkastellaan seuraavaa ohjelmaa:</p>
+
+<pre class="sh_java">
+int rivinumero = 0;
+
+while (rivinumero &lt; 3) {
+    System.out.print(rivinumero + ": ");
+
+    int luku = 0;
+    while(luku &lt; 3) {
+        System.out.print(luku + " ");
+        luku++;
+    }
+    
+    System.out.println();
+    rivinumero++;
+}
+</pre>
+
+    <p>Ohjelman tulostus on seuraava:</p>
+
+<pre>
+0: 0 1 2
+1: 0 1 2
+2: 0 1 2
+</pre>
+
+    <p>Eli mitä ohjelmassa tapahtuukaan? Jos ajatellaan pelkkää ulommaista while-lohkoa, on toiminnallisuus helppo ymmärtää: </p>
+
+<pre class="sh_java">
+int rivinumero = 0;
+
+while (rivinumero &lt; 3) {
+    System.out.print(rivinumero + ": ");
+
+    // sisempi while
+
+    System.out.println();
+    rivinumero++;
+}
+</pre>
+
+    <p>Eli ensin <code>rivinumero=0</code> ja tulostuu <code>0:</code> ja rivinvaihto. Tämän jälkeen rivinumero kasvaa ja tulostuu ykkönen, jne., eli ulompi for saa aikaan seuraavan:</p>
+
+<pre>
+0:
+1:
+2:
+</pre>
+
+    <p>Myös sisempi while on helppo ymmärtää erillään. Se saa aina aikaan tulosteen <code>0 1 2</code>. Kun yhdistämme nämä kaksi, huomaamme, että sisempi while-toistolause suorittaa tulosteensa aina juuri ennen ulomman while-toistolauseen tulostamaa rivinvaihtoa.</p>
+
+
+    <h3>Toisen muuttujan käyttö toiston ehtona</h3>
+
+    <p>Tutkitaan seuraavaa muunnosta edelliseen esimerkkiin:</p>
+
+<pre class="sh_java">
+int rivinumero = 0;
+
+while (rivinumero &lt; 3) {
+    System.out.print(rivinumero + ": ");
+
+    int luku = 0;
+    while(luku &lt;= rivinumero) {
+        System.out.print(luku + " ");
+        luku++;
+    }
+    
+    System.out.println();
+    rivinumero++;
+}
+</pre>
+
+    <p>Sisemmän toistolausekkeen toistojen määrä riippuukin nyt ulommassa toistolausekkeessa käytettävän muuttujan <code>rivinumero</code> arvosta. Eli kun <code>rivinumero=0</code>, tulostaa sisempi toistolause luvun 0, kun <code>rivinumero=1</code>, tulostaa sisempi toistolauseke "0 1 ", jne. Koko ohjelman tulostus on seuraava: </p>
+
+<pre>
+0: 0
+1: 0 1
+2: 0 1 2
+</pre>
+
+    <p>Seuraava ohjelma tulostaa lukujen 1..10 kertotaulun. </p>
+
+<pre class="sh_java">
+int rivinumero = 1;
+
+while (rivinumero &lt;= 10) {
+    
+    int sarake = 1;
+
+    while (sarake &lt;= 10) {
+        System.out.print(rivinumero * sarake + " ");
+
+        sarake++;
+    }
+
+    System.out.println();
+    rivinumero++;
+}
+</pre>
+
+    <p> Tulostus näyttää seuraavalta: </p>
+
+<pre>
+1 2 3 4 5 6 7 8 9 10
+2 4 6 8 10 12 14 16 18 20
+3 6 9 12 15 18 21 24 27 30
+4 8 12 16 20 24 28 32 36 40
+5 10 15 20 25 30 35 40 45 50
+6 12 18 24 30 36 42 48 54 60
+7 14 21 28 35 42 49 56 63 70
+8 16 24 32 40 48 56 64 72 80
+9 18 27 36 45 54 63 72 81 90
+10 20 30 40 50 60 70 80 90 100
+</pre>
+
+    <p>Ylimmällä rivillä on luvun 1 kertotaulu. Alussa <code>rivinumero=1</code> ja sisemmän toistolauseen muuttuja <code>sarake</code> saa arvot 1...10. Jokaisella <code>rivinumero, sarake</code> -arvoparilla tulostetaan niiden tulo. Eli alussa <code>rivinumero=1, sarake=1</code>, sitten <code>rivinumero=1, sarake=2</code>, ..., <code>rivinumero=1, sarake=10</code> seuraavaksi <code>rivinumero=2, sarake=1</code>, jne. </p>
+
+    <p>Kertotaulu-ohjelman voi toki pilkkoa pienempiin osiin. Voimme määritellä metodit <code>public void tulostaKertotaulunRivi(int kerroin, int montakokertaa)</code> ja <code>public void tulostaKertotaulu(int mihinAsti)</code>.</p>
+
+<pre class="sh_java">
+public class Kertotaulu {
+
+    public void tulosta(int mihinAsti) {
+        int rivinumero = 1;
+
+        while(rivinumero &lt;= mihinAsti) {
+            tulostaKertotaulunRivi(rivinumero, mihinAsti);
+
+            System.out.println();
+            rivinumero++;
+        }
+    }
+
+
+    public void tulostaKertotaulunRivi(int rivi, int lukuja) {
+        int sarake = 1;
+
+        while(sarake &lt;= lukuja) {
+            System.out.print(rivi * sarake + " ");
+            sarake++;
+        }
+    }
+}
+</pre>
+
+<p>Nyt kutsu <code>new Kertotaulu().tulosta(5);</code> tulostaa allaolevan kertotaulun.</p>
+<pre>
+1 2 3 4 5
+2 4 6 8 10
+3 6 9 12 15
+4 8 12 16 20
+5 10 15 20 25
+</pre>
+
+
+<div class="tehtavat">
+  <p>Harjoitellaan taas toistolausekkeiden, muuttujien ja indeksien käyttöä.</p>
+
+  <div class="tehtava">
+    <h3>Lukutulostin</h3>
+
+    <p>Toteuta luokka <code>Lukutulostin</code> ja tee sille seuraavat toiminnallisuudet. <strong>Huom!</strong> Tässä tehtävässä ei ole etenemistä ohjaavia automaattisia testejä, jotta voit harjoitella ohjelmointia ilman "apupyöriä". Palauta tehtävä kun tiedät itse, että se toimii halutusti. Pajassa saat tukea myös tehtäviin, joissa apupyöriä ei ole!</p>
+
+    <h4>Lukuporras</h4>
+
+    <p>Toteuta luokalle <code>Lukutulostin</code> metodi <code>public void lukuporras(int luku)</code>. Metodin tulee toimia seuraavasti.</p>
+
+<pre class="sh_java">
+Lukutulostin tulostin = new Lukutulostin();
+tulostin.lukuporras(2);
+System.out.println();
+tulostin.lukuporras(3);
+</pre>
+
+<pre>
+1
+1 2
+
+1
+1 2
+1 2 3
+</pre>
+
+<pre class="sh_java">
+Lukutulostin tulostin = new Lukutulostin();
+tulostin.lukuporras(5);
+System.out.println();
+tulostin.lukuporras(2);
+</pre>
+
+<pre>
+1
+1 2 
+1 2 3
+1 2 3 4
+1 2 3 4 5
+
+1
+1 2
+</pre>
+
+    <h4>Rajattu lukuporras</h4>
+
+    <p>Toteuta luokalle <code>Lukutulostin</code> metodi <code>public void rajattuLukuporras(int alku, int loppu)</code>. Metodin tulee toimia seuraavasti.</p>
+
+<pre class="sh_java">
+Lukutulostin tulostin = new Lukutulostin();
+tulostin.rajattuLukuporras(2, 2);
+System.out.println();
+tulostin.rajattuLukuporras(2, 3);
+</pre>
+
+<pre>
+1 2
+
+1 2
+1 2 3
+</pre>
+
+<pre class="sh_java">
+Lukutulostin tulostin = new Lukutulostin();
+tulostin.rajattuLukuporras(3, 5);
+System.out.println();
+tulostin.rajattuLukuporras(1, 2);
+</pre>
+
+<pre>
+1 2 3
+1 2 3 4
+1 2 3 4 5
+
+1
+1 2
+</pre>
+
+
+    <h4>Jatkuva lukuporras</h4>
+
+
+    <p>Toteuta luokalle <code>Lukutulostin</code> metodi <code>public void jatkuvaLukuporras(int luku)</code>. Metodin tulee toimia seuraavasti.</p>
+
+<pre class="sh_java">
+Lukutulostin tulostin = new Lukutulostin();
+tulostin.jatkuvaLukuporras(2);
+System.out.println();
+tulostin.jatkuvaLukuporras(3);
+</pre>
+
+<pre>
+1
+2 3
+
+1
+2 3
+4 5 6
+</pre>
+
+<pre class="sh_java">
+Lukutulostin tulostin = new Lukutulostin();
+tulostin.jatkuvaLukuporras(5);
+System.out.println();
+tulostin.jatkuvaLukuporras(2);
+</pre>
+
+<pre>
+1
+2 3 
+4 5 6
+7 8 9 10
+11 12 13 14 15
+
+1
+2 3
+</pre>
+
+    <h4>Kertokolmio</h4>
+
+    <p>Toteuta luokalle <code>Lukutulostin</code> metodi <code>public void kertokolmio(int luku)</code>. Kertokolmio-metodin tulee toimia seuraavien esimerkkien mukaisesti.</p>
+
+
+<pre class="sh_java">
+Lukutulostin tulostin = new Lukutulostin();
+tulostin.kertokolmio(2);
+</pre>
+
+<pre>
+1
+2 4
+</pre>
+
+<pre class="sh_java">
+Lukutulostin tulostin = new Lukutulostin();
+tulostin.kertokolmio(5);
+System.out.println();
+tulostin.kertokolmio(3);
+</pre>
+
+
+<pre>
+1
+2 4 
+3 6 9
+4 8 12 16
+5 10 15 20 25
+
+1
+2 4
+3 6 9
+</pre>
+
+
+
+
+  </div>
+
+  <div class="tehtava">
+    <h3>Sanatulostin</h3>
+
+    <p>Toteuta luokka <code>Sanatulostin</code>, jossa on seuraavat toiminnallisuudet. Kuten edellisessä tehtävässä, myös tässäkään tehtävässä ei ole apupyöriä.</p>
+
+    <h4>Sanaporras</h4>
+
+    <p>Toteuta luokalle <code>Sanatulostin</code> merkkijonon vastaanottava konstruktori sekä metodi <code>public void sanaporras(int luku)</code>, joka toimii seuraavasti:</p>
+
+<pre class="sh_java">
+Sanatulostin tulostin = new Sanatulostin("Ananas");
+tulostin.sanaporras(2);
+System.out.println();
+tulostin.sanaporras(4);
+</pre>
+
+<pre>
+A
+na
+
+A
+na
+nas
+Anan
+</pre>
+
+<pre class="sh_java">
+Sanatulostin tulostin = new Sanatulostin("Sauna");
+tulostin.sanaporras(3);
+</pre>
+
+<pre>
+S
+au
+naS
+</pre>
+
+
+    <h4>Laskeva sanaporras</h4>
+
+    <p>Toteuta luokalle <code>Sanatulostin</code> metodi <code>public void laskevaSanaporras(int luku)</code> joka toimii seuraavasti:</p>
+
+<pre class="sh_java">
+Sanatulostin tulostin = new Sanatulostin("Ananas");
+tulostin.laskevaSanaporras(2);
+System.out.println();
+tulostin.laskevaSanaporras(3);
+</pre>
+
+<pre>
+An
+a
+
+Ana
+na
+s
+</pre>
+
+<pre class="sh_java">
+Sanatulostin tulostin = new Sanatulostin("Sauna");
+tulostin.laskevaSanaporras(4);
+</pre>
+
+<pre>
+Saun
+aSa
+un
+a
+</pre>
+
+
+<h4>Sanapyramidi</h4>
+
+    <p>Toteuta luokalle <code>Sanatulostin</code> metodi <code>public void sanapyramidi(int luku)</code>, joka toimii seuraavasti:</p>
+
+<pre class="sh_java">
+Sanatulostin tulostin = new Sanatulostin("Nauris");
+tulostin.sanapyramidi(3);
+System.out.println();
+tulostin.sanapyramidi(1);
+</pre>
+
+<pre>
+N
+au
+ris
+Na
+u
+
+N
+</pre>
+
+<pre class="sh_java">
+Sanatulostin tulostin = new Sanatulostin("Saippuakauppias");
+tulostin.sanapyramidi(4);
+System.out.println();
+tulostin.sanapyramidi(2);
+</pre>
+
+<pre>
+S
+ai
+ppu
+akau
+ppi
+as
+S
+
+S
+ai
+p
+</pre>
+
+
+  </div>
+
+</div>
+
+
+<h2>Olioharjoittelua</h2>
+
+
+    <p>Kertaa edellisen viikon materiaali ennen jatkamista!</p>
+
+
+<div class="tehtavat">
+  <div class="tehtava">
+    <h3>Ostoslista</h3>
+
+    <p>Jatkamme vielä tehtävien tekemistä siten, että niissä ei ole apupyöriä. Tehdään tässä luokka ostoslistan ylläpitoon.</p>
+
+    <h4>Lisääminen ja tarkistus</h4>
+    
+    <p>Toteuta luokka <code>Ostoslista</code>, jolla on parametriton konstruktori, ja joka sisältää listan <code>String</code>-olioita. Toteuta luokalle metodit <code>public void lisaa(String tuote)</code> ja <code>public boolean onkoListalla(String tuote)</code>.</p>
+
+    <p>Luokkaa <code>Ostoslista</code> ja luotavia metodeja tulee voida käyttää seuraavasti:</p>
+
+<pre class="sh_java">
+Ostoslista lista = new Ostoslista();
+lista.lisaa("porkkana");
+lista.lisaa("nauris");
+
+if(lista.onkoListalla("kauris")) {
+    System.out.println("kauris ei ole listalla");
+}
+
+if(lista.onkoListalla("nauris")) {
+    System.out.println("nauris on listalla");
+}
+</pre>
+
+<pre>
+kauris ei ole listalla
+nauris on listalla
+</pre>
+
+
+    <h4>Kappalemäärä</h4>
+
+<p>Lisää luokalle <code>Ostoslista</code> metodi <code>public int kappalemaara(String tuote)</code>, joka palauttaa listalla olevien sanojen tuotteiden haetulle tuotteelle. Metodin tulee toimia seuraavasti.</p>
+
+<pre class="sh_java">
+Ostoslista lista = new Ostoslista();
+lista.lisaa("porkkana");
+lista.lisaa("porkkana");
+lista.lisaa("nauris");
+lista.lisaa("porkkana");
+
+System.out.println("Porkkanaa: " + lista.kappalemaara("porkkana") + " kpl");
+System.out.println("Tomaatteja: " + lista.kappalemaara("tomaatti") + " kpl");
+</pre>
+
+<pre>
+Porkkanaa: 3 kpl
+Tomaatteja: 0 kpl
+</pre>
+
+    <h4>Listalta poistaminen</h4>
+
+<p>Lisää luokalle <code>Ostoslista</code> metodi <code>public void poista(String tuote)</code>, joka poistaa <em>yhden</code> kappaleen annettua tuotetta. Metodin tulee toimia seuraavasti.</p>
+
+<pre class="sh_java">
+Ostoslista lista = new Ostoslista();
+lista.lisaa("porkkana");
+lista.lisaa("porkkana");
+lista.lisaa("nauris");
+lista.lisaa("porkkana");
+
+System.out.println("Porkkanaa: " + lista.kappalemaara("porkkana") + " kpl");
+System.out.println("Tomaatteja: " + lista.kappalemaara("tomaatti") + " kpl");
+
+lista.poista("porkkana");
+
+System.out.println();
+
+System.out.println("Porkkanaa: " + lista.kappalemaara("porkkana") + " kpl");
+System.out.println("Tomaatteja: " + lista.kappalemaara("tomaatti") + " kpl");
+</pre>
+
+<pre>
+Porkkanaa: 3 kpl
+Tomaatteja: 0 kpl
+
+Porkkanaa: 2 kpl
+Tomaatteja: 0 kpl
+</pre>
+
+
+<h4>Siisti tulostus</h4>
+
+    <p>Lisää luokalle <code>Ostoslista</code> metodi, jonka avulla siitä tehtävä olio voidaan tulostaa <code>System.out.println()</code>-komennon avulla. Tulostuksen tulee toimia seuraavasti (huomaathan että tuotteet tulostetaan aakkosjärjestyksessä):</p>
+
+<pre class="sh_java">
+Ostoslista lista = new Ostoslista();
+lista.lisaa("porkkana");
+lista.lisaa("porkkana");
+lista.lisaa("nauris");
+lista.lisaa("porkkana");
+lista.lisaa("satsuma");
+
+System.out.println(lista);
+
+lista.poista("porkkana");
+
+System.out.println(lista);
+</pre>
+
+<pre>
+Ostetaan seuraavat tuotteet
+nauris 1 kpl.
+porkkana 3 kpl.
+satsuma 1 kpl.
+
+Ostetaan seuraavat tuotteet
+nauris 1 kpl.
+porkkana 2 kpl.
+satsuma 1 kpl.
+</pre>
+
+
+  </div>
+</div>
+
 <h3>Metodi palauttaa olion</h3>
+
 <p>Olemme nähneet metodeja jotka palauttavat totuusarvoja, lukuja, listoja ja merkkijonoja. On helppoa arvata, että metodi voi palauttaa minkä tahansa tyyppisen olion. Tehdään painovartijayhdistykselle metodi, jolla saadaan tietoon yhdistyksen suurimman painoindeksin omaava henkilö. </p>
+
 <pre class="sh_java">
 public class PainonvartijaYhdistys {
     // ...
 
     public Henkilo suurinPainoindeksinen() {
         // jos jasenlista on tyhjä, palautetaan null-viite
-        if ( this.jasenet.isEmpty() ) {
+        if (this.jasenet.isEmpty()) {
             return null;
         }
 
         Henkilo painavinTahanAsti = this.jasenet.get(0);
 
-        for ( Henkilo henkilo : this.jasenet) {
-            if ( henkilo.painoIndeksi() &gt; painavinTahanAsti.painoIndeksi() ) {
+        for (Henkilo henkilo : this.jasenet) {
+            if (henkilo.painoIndeksi() &gt; painavinTahanAsti.painoIndeksi()) {
                 painavinTahanAsti = henkilo;
             }
         }
@@ -10107,8 +10710,11 @@ public class PainonvartijaYhdistys {
     }
 }
 </pre>
-<p>Logiikaltaan metodi toimii samaan tapaan kuin suurimman luvun etsiminen taulukosta. Käytössä on apumuuttuja <code>painavinTahanAsti</code> joka laitetaan aluksi viittaamaan listan ensimmäiseen henkilöön. Sen jälkeen käydään lista läpi ja katsotaan tuleeko vastaan suuremman painoindeksin omaavia henkilöitä, jos tulee, niin otetaan viite talteen muuttujaan <code>painavinTahanAsti</code>. Lopuksi palautetaan muuttujan arvo eli <i>viite henkilöolioon</i>.</p>
-<p>Tehdään lisäys edelliseen pääohjelmaan. Pääohjelma ottaa vastaan metodin palauttaman viitteen muuttujaan <code>painavin</code>.</p>
+
+    <p>Logiikaltaan metodi toimii samaan tapaan kuin suurimman luvun etsiminen taulukosta. Käytössä on apumuuttuja <code>painavinTahanAsti</code> joka laitetaan aluksi viittaamaan listan ensimmäiseen henkilöön. Sen jälkeen käydään lista läpi ja katsotaan tuleeko vastaan suuremman painoindeksin omaavia henkilöitä, jos tulee, niin otetaan viite talteen muuttujaan <code>painavinTahanAsti</code>. Lopuksi palautetaan muuttujan arvo eli <i>viite henkilöolioon</i>.</p>
+
+    <p>Tehdään lisäys edelliseen pääohjelmaan. Pääohjelma ottaa vastaan metodin palauttaman viitteen muuttujaan <code>painavin</code>.</p>
+
 <pre class="sh_java">
 public static void main(String[] args) {
     PainonvartijaYhdistys painonVartija = new PainonvartijaYhdistys("Kumpluan paino", 25);
@@ -10125,8 +10731,11 @@ public static void main(String[] args) {
 suurin painoindeksinen jäsen: Petri
 painoindeksi 37,42
 </pre>
+
 <h3>Metodi palauttaa luomansa olion</h3>
-<p>Edellisessä esimerkissä metodi palautti yhden painonVartija-olion sisältämistä Henkilo-olioista. On myös mahdollista, että metodi palauttaa kokonaan uuden olion. Seuraavassa yksinkertainen laskuri, jolla on metodi <code>kloonaa</code>, jonka avulla laskurista voidaan tehdä klooni, eli uusi laskurio-olio, jolla on luomishetkellä sama arvo kuin kloonattavalla laskurilla:</p>
+
+    <p>Edellisessä esimerkissä metodi palautti yhden painonVartija-olion sisältämistä Henkilo-olioista. On myös mahdollista, että metodi palauttaa kokonaan uuden olion. Seuraavassa yksinkertainen laskuri, jolla on metodi <code>kloonaa</code>, jonka avulla laskurista voidaan tehdä klooni, eli uusi laskurio-olio, jolla on luomishetkellä sama arvo kuin kloonattavalla laskurilla:</p>
+
 <pre class="sh_java">
 public Laskuri {
     private int arvo;
@@ -10144,7 +10753,7 @@ public Laskuri {
     }
 
     public String toString(){
-        return "arvo: "+arvo;
+        return "arvo: " + arvo;
     }
 
     public Laskuri kloonaa(){
@@ -10156,7 +10765,9 @@ public Laskuri {
     }
 }
 </pre>
-<p>Seuraavassa käyttöesimerkki:</p>
+
+    <p>Seuraavassa käyttöesimerkki:</p>
+
 <pre class="sh_java">
 Laskuri laskuri = new Laskuri();
 laskuri.kasvata();
@@ -10182,8 +10793,8 @@ klooni.kasvata();
 System.out.println(laskuri);         // tulostuu 6
 System.out.println(klooni);          // tulostuu 3
 </pre>
-<p>Kloonattavan ja kloonin arvo on siis kloonauksen tapahduttua sama. Kyseessä on kuitenkin kaksi erillistä olioa, eli jatkossa kun toista laskureista kasvatetaan, ei kasvatus vaikuta toisen arvoon millään tavalla.</p>
 
+<p>Kloonattavan ja kloonin arvo on siis kloonauksen tapahduttua sama. Kyseessä on kuitenkin kaksi erillistä olioa, eli jatkossa kun toista laskureista kasvatetaan, ei kasvatus vaikuta toisen arvoon millään tavalla.</p>
 
     <div class="self-explanation" data-key="q-olioParametrinaJaMetodinPaluuarvona"></div>
     
@@ -10191,7 +10802,7 @@ System.out.println(klooni);          // tulostuu 3
 <div class="tehtavat">
   <div class="tehtava">
   <h3>Päiväys</h3>
-  <p>Tehtäväpohjan mukana tulee luvussa 24.7 esitelty luokka <code>Paivays</code>, jossa päivämäärä talletetaan oliomuuttujien <code>vuosi</code>, <code>kuukausi</code>, ja <code>paiva</code> avulla:
+  <p>Tehtäväpohjan mukana tulee luvussa 24.7 esitelty luokka <code>Paivays</code>, jossa päivämäärä talletetaan oliomuuttujien <code>vuosi</code>, <code>kuukausi</code>, ja <code>paiva</code> avulla:</p>
   <pre class="sh_java">
 public class Paivays {
     private int paiva;
@@ -10229,7 +10840,9 @@ public class Paivays {
     }
 }
 </pre>
+
   <p>Tässä tehtäväsarjassa laajennetaan luokkaa.</p>
+
   <h4 class="req">Seuraava päivä</h4>
   <p>Toteuta metodi <code>public void etene()</code>, joka siirtää päiväystä yhdellä päivällä. Tässä tehtävässä oletetaan, että jokaisessa kuukaudessa on 30 päivää. Huom! Sinun tulee <em>tietyissä</em> tilanteissa muuttaa kuukauden ja vuoden arvoa.</p>
   <h4 class="req">Tietty määrä päiviä eteenpäin</h4>
@@ -10468,39 +11081,31 @@ Sepe, syntynyt 9.2.2012
 </div>
 
 
-  <div class="hidden-in-hy alert alert-warning">
-      <blockquote class="normal-text">
-      <p>
-        <img src="http://www.cs.helsinki.fi/group/java/k13/ohpe/img/hy-clear.gif" width="30px;" height="30px;" >
-        <strong>HUOM:</strong> Helsingin Yliopiston logolla merkatut tehtävät ovat kaikille yliopistoon MOOCin kautta hakeville pakollisia.
-       <footer>Katso lisätietoja <a href="http://mooc.cs.helsinki.fi/ohjelmointi/mooc-v%C3%A4yl%C3%A4-yliopistoon"><cite title="MOOC.fi">MOOC.fi väylänä yliopistoon</cite></a></footer>
-      </p>
-     </blockquote>
-  </div>
-<h2>Nopea kertaus</h2>
-<p>Aloitetaan viikko muutamalla viime viikon tärkeimpiä teemoja kertaavalla tehtävällä. Kertaa tarvittaessa luku 24.10 ennen tehtävää 94 ja luvut 24.6 ja 24.12 ennen tehtävää 95.</p>
 <p><strong>MUISTUTUS</strong> kun lisäät ohjelmaasi ArrayList:in, Scanner:in tai Random:in ei Java tunnista luokkaa ellet "importoi" sitä lisäämällä ohjelmatiedoston alkuun:</p>
 <pre class="sh_java">
 import java.util.ArrayList;    // importoi ArrayListin
 import java.util.*;            // importoi kaikki java.util:sissa olevat työkalut, mm. ArrayListin, Scannerin ja Randomin
-  </pre>
+</pre>
+
+
 <div class="tehtavat" id="viikko6">
   <div class="tehtava">
   <h3>Puhelinmuistio</h3>
-  <p>Tehtävässä tehdään yksinkertainen puhelinmuistio. </p>
+  <p>Tehtävässä tehdään puhelinmuistio. </p>
+
   <h4>Henkilö</h4>
   <p>Tee ensin luokka <code>Henkilo</code> Luokan pitää toimia seuraavan esimerkin osoittamalla tavalla:</p>
   <pre class="sh_java">
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka Mikkola", "040-123123");
 
-    System.out.println( pekka.haeNimi() );
-    System.out.println( pekka.haeNumero() );
+    System.out.println(pekka.haeNimi());
+    System.out.println(pekka.haeNumero());
 
-    System.out.println( pekka );
+    System.out.println(pekka);
 
     pekka.vaihdaNumeroa("050-333444");
-    System.out.println( pekka );
+    System.out.println(pekka);
 }
   </pre>
   <p> Tulostuu: </p>
@@ -10509,8 +11114,10 @@ Pekka Mikkola
 040-123123
 Pekka Mikkola  puh: 040-123123
 Pekka Mikkola  puh: 050-333444
-  </pre>
+</pre>
+
   <p>Tee siis luokalle</p>
+
   <ul>
     <li> metodi <code>public String toString()</code>, joka palauttaa henkilön merkkijonoesityksen (yo. esimerkin tapaan muotoiltuna)</li>
     <li> konstruktori, jolla asetetaan henkilölle nimi ja puhelinnumero</li>
@@ -10518,6 +11125,7 @@ Pekka Mikkola  puh: 050-333444
     <li> <code>public String haeNumero()</code>, joka palauttaa puhelinnumeron</li>
     <li> metodi <code>public void vaihdaNumeroa(String uusiNumero)</code>, joka muuttaa henkilön puhelinnumeroa</li>
   </ul>
+
   <h4>Henkilöiden lisäys puhelinmuistioon</h4>
   <p>Tee luokka <code>Puhelinmuistio</code> joka tallettaa sisällään olevaan ArrayListiin <code>Henkilo</code>-olioita. Tässä vaiheessa luokalle tehdään seuraavat metodit:</p>
   <ul>
@@ -10537,13 +11145,17 @@ public static void main(String[] args) {
 }
   </pre>
   <p>Ohjelman tulostus oikein toteutetuilla luokilla on:</p>
+
 <pre>
 Pekka Mikkola  puh: 040-123123
 Antti Laaksonen  puh: 045-456123
 Juhana Laurinharju  puh: 050-222333
-  </pre>
+</pre>
+
   <h4>Numerojen haku muistiosta</h4>
+
   <p>Tehdään puhelinmuistiolle metodi <code>public String haeNumero(String nimi)</code>, joka  palauttaa parametrina annetun henkilön numeron. Jos henkilö ei ole muistiossa, palautetaan merkkijono "numero ei tiedossa". Esimerkki metodin toiminnasta:</p>
+
   <pre class="sh_java">
 public static void main(String[] args) {
     Puhelinmuistio muistio = new Puhelinmuistio();
@@ -10564,8 +11176,11 @@ public static void main(String[] args) {
 numero ei tiedossa
 </pre>
 </div>
+
 <div class="tehtava">
+
   <h3>Raha</h3>
+
   <p>Maksukortti-tehtävässä käytimme rahamäärän tallettamiseen double-tyyppistä oliomuuttujaa. Todellisissa sovelluksissa näin ei kannata tehdä, sillä kuten jo olemme nähneet, doubleilla laskenta ei ole tarkkaa. Onkin järkevämpää toteuttaa rahamäärän käsittely oman luokkansa avulla. Seuraavassa on luokan runko:</p>
   <pre class="sh_java">
 public class Raha {
@@ -10596,8 +11211,11 @@ public class Raha {
     }
 }
 </pre>
+
   <p>Määrittelyssä pistää silmään oliomuuttujien määrittelyn yhteydessä käytetty sana <code>final</code>, tällä saadaan aikaan se, että oliomuuttujien arvoa ei pystytä muuttamaan sen jälkeen kun ne on konstruktorissa asetettu. Raha-luokan oliot ovatkin muuttumattomia eli <em>immutaabeleita</em>, eli jos halutaan esim. kasvattaa rahamäärää, on luotava uusi olio, joka kuvaa kasvatettua rahasummaa.</p>
+
   <p>Luomme seuraavassa muutaman operaation rahojen käsittelyyn.</p>
+
   <h4>Plus</h4>
   <p>Tee ensin metodi <code>public Raha plus(Raha lisattava)</code>, joka palauttaa uuden raha-olion, joka on arvoltaan yhtä suuri kuin se olio jolle metodia kutsuttiin ja parametrina oleva olio yhteensä.</p>
   <p>Metodin runko on seuraavanlainen:</p>
@@ -10609,8 +11227,10 @@ public Raha plus(Raha lisattava) {
     return uusi;
 }
 </pre>
+
   <p>Seuraavassa esimerkkejä metodin toiminnasta</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 Raha a = new Raha(10,0);
 Raha b = new Raha(5,0);
 
@@ -10627,7 +11247,9 @@ System.out.println(a);  // 25.00e
 System.out.println(b);  // 5.00e
 System.out.println(c);  // 15.00e
 </pre>
+
   <h4>Vähemmän</h4>
+
   <p>Tee metodi <code>public boolean vahemman(Raha verrattava)</code>, joka palauttaa true jos raha-olio jolle metodia kutsutaan on arvoltaan pienempi kuin raha-olio, joka on metodin parametrina.</p>
   <pre class="sh_java">
 Raha a = new Raha(10,0);
@@ -10638,10 +11260,14 @@ System.out.println(a.vahemman(b));  // false
 System.out.println(b.vahemman(c));  // true
 
 </pre>
+
   <h4>Miinus</h4>
+
   <p>Tee metodi <code>public Raha miinus(Raha vahentaja)</code>, joka palauttaa uuden raha-olion, jonka arvoksi tulee sen olion jolle metodia kutsuttiin ja parametrina olevan olion arvojen erotus. Jos erotus olisi negatiivinen, tulee luotavan raha-olion arvoksi 0.</p>
+
   <p>Seuraavassa esimerkkejä metodin toiminnasta</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 Raha a = new Raha(10,0);
 Raha b = new Raha(3,50);
 
@@ -10665,7 +11291,9 @@ System.out.println(c);  // 0.00e
 
 
 <h3>Merkkijonot ovat immutaabeleja</h3>
+
 <p>Javan String-oliot ovat Raha-luokan olioiden tyyliin muuttumattomia, eli immutaabelena. Jos esim. merkkijonon perään katenoidaan eli liitetään +-operaatiolla uusi merkkijono, ei alkuperäistä merkkijonoa pidennetä vaan syntyy uusi merkkijono-olio:</p>
+
 <pre class="sh_java">
 String jono = "koe";
 jono + "häntä";
@@ -10680,7 +11308,11 @@ jono = jono + "häntä";   // tai jono += "häntä";
 System.out.println( jono );  // koehäntä
   </pre>
 <p>Nyt siis muuttuja <code>jono</code> viittaa <em>uuteen</em> merkkijono-olioon, joka luotiin yhdistämällä muuttujan aiemmin viittaama merkkijono "koe" ja merkkijono "häntä". Merkkijono-olioon "koe" ei enää viitata.</p>
+
+
+
 <h2 id="taulukko">Taulukko</h2>
+
 <p>Olemme käyttäneet kurssin aikana lukemattomia kertoja ArrayList:ejä erilaisten olioiden säilömiseen. ArrayList on helppokäyttöinen sillä se tarjoaa paljon valmiita työvälineitä jotka helpottavat ohjelmoijan elämää: muun muassa automaattisen listan kasvatuksen, jonka ansioista listalta ei lopu tila kesken (ellei lista kasva niin suureksi että se käyttää loppuun ohjelmalle varatun muistimäärän).</p>
 <p>ArrayListin helppokäyttöisyydesta huolimatta  ohjelmissa on joskus tarvetta ArrayListin esi-isälle eli <em>taulukolle</em>.</p>
 <p><em>Taulukko</em> on olio, joka voidaan käsittää eräänlaisena järjestettynä <em>lokerikkona</em> arvoille. Taulukon <em>pituus</em> tai <em>koko</em> on lokerikon paikkojen lukumäärä, eli kuinka monta arvoa taulukkoon voi laittaa. Taulukon arvoja kutsutaan taulukon <em>alkioiksi</em>. ArrayLististä poiketen taulukon kokoa (eli sen alkioiden määrää) ei voi muuttaa, taulukon kasvattaminen vaatii siis aina uuden taulukon luomista ja vanhassa olevien alkioiden kopiointia uuteen.</p>
@@ -10713,11 +11345,16 @@ luvut[1] = 101;  // asetetaan luku 101 indeksiin 1
 
 // luvut-taulukko on nyt {1,101,42}
 </pre>
-<p>Jos indeksillä osoitetaan taulukon ohi, eli alkioon jota ei ole olemassa, niin saadaan virheilmoitus <em>ArrayIndexOutOfBoundsException</em>, joka kertoo että indeksiä johon osoitimme ei ole olemassa.  Taulukon ohi, eli indeksiin joka on pienempi kuin 0 tai suurempi tai yhtäsuuri kuin taulukon koko ei siis saa viitata.</p>
-<p>Huomaamme, että taulukko on selvästi sukua ArrayList:ille. Aivan kuten listoilla, myös taulukossa alkiot ovat tietyssä paikassa!</p>
-<h3>Taulukon läpikäynti</h3>
-<p>Taulukko-olion koon saa selville kirjoittamalla koodiin <code>taulukko.length</code>, huomaa että ilmauksessa ei tule käyttää sulkuja eli <code>taulukko.length()</code> ei toimi!</p>
-<p>Taulukon alkioiden läpikäynti on helppo toteuttaa <code>while</code>-komennon avulla:</p>
+
+    <p>Jos indeksillä osoitetaan taulukon ohi, eli alkioon jota ei ole olemassa, niin saadaan virheilmoitus <em>ArrayIndexOutOfBoundsException</em>, joka kertoo että indeksiä johon osoitimme ei ole olemassa.  Taulukon ohi, eli indeksiin joka on pienempi kuin 0 tai suurempi tai yhtäsuuri kuin taulukon koko ei siis saa viitata.</p>
+    <p>Huomaamme, että taulukko on selvästi sukua ArrayList:ille. Aivan kuten listoilla, myös taulukossa alkiot ovat tietyssä paikassa!</p>
+
+    <h3>Taulukon läpikäynti</h3>
+
+    <p>Taulukko-olion koon saa selville kirjoittamalla koodiin <code>taulukko.length</code>, huomaa että ilmauksessa ei tule käyttää sulkuja eli <code>taulukko.length()</code> ei toimi!</p>
+
+    <p>Taulukon alkioiden läpikäynti on helppo toteuttaa <code>while</code>-komennon avulla:</p>
+
 <pre class="sh_java">
 int[] luvut = {1, 8, 10, 3, 5};
 
@@ -10727,8 +11364,10 @@ while (i &lt; luvut.length ) {
     i++;
 }
   </pre>
+
 <p>Esimerkissä käydään muuttujan <code>i</code> avulla läpi indeksit 0, 1, 2, 3, ja 4, ja tulostetaan taulukon kussakin indeksissä olevan muuttujan arvo. Ensin siis tulostuu <code>luvut[0]</code>, sitten <code>luvut[1]</code> jne. Muuttujan <code>i</code> kasvatus loppuu kun koko taulukko on käyty läpi, eli kun sen arvo on yhtäsuuri kuin taulukon pituus.</p>
 <p>Taulukon läpikäynnissä ei ole aina todellista tarvetta taulukon indeksien luetteluun, vaan ainoa kiinnostava asia ovat taulukon arvot. Tällöin voidaan käyttää aiemmin tutuksi tullutta for-each-rakennetta arvojen läpikäyntiin. Nyt toistolauseen rungossa annetaan vain muuttujan nimi, johon kukin taulukon arvo asetetaan vuorollaan, ja taulukon nimi kaksoispisteellä erotettuna.</p>
+
 <pre class="sh_java">
     int[] luvut = {1,8,10,3,5};
 
@@ -10745,14 +11384,19 @@ String[] nimet = {"Juhana L.", "Matti P.", "Matti L.", "Pekka M."};
 }
 </pre>
 <p><strong>Huom:</strong> for-each-tyylisellä läpikäynnillä taulukon alkioihin ei voi asettaa arvoja! Seuraavaksi nähtävällä for-lauseen toisella muodolla sekin onnistuu.</p>
+
 <h3>for-komennon toinen muoto</h3>
-<p>Olemme toistaiseksi käyttäneet toistolauseissa whileä tai for-lauseen ns. "for-each"-muotoa. Toistolauseesta for on olemassa myös toinen muoto, joka on kätevä erityisesti taulukoiden käsittelyn yhteydessä. Seuraavassa tulostetaan for-toistolauseen avulla luvut 0, 1 ja 2:</p>
+    
+    <p>Olemme toistaiseksi käyttäneet toistolauseissa whileä tai for-lauseen ns. "for-each"-muotoa. Toistolauseesta for on olemassa myös toinen muoto, joka on kätevä erityisesti taulukoiden käsittelyn yhteydessä. Seuraavassa tulostetaan for-toistolauseen avulla luvut 0, 1 ja 2:</p>
+
 <pre class="sh_java">
 for (int i = 0; i &lt; 3; i++ ) {
     System.out.println(i);
 }
 </pre>
-<p>Esimerkin for toimii <em>täsmälleen</em> samalla tavalla kuin alla oleva while:</p>
+
+    <p>Esimerkin for toimii <em>täsmälleen</em> samalla tavalla kuin alla oleva while:</p>
+
 <pre class="sh_java">
 int i = 0;  // toistossa käytettävän muuttujan alustus
 while ( i &lt; 3 ) {  // toistoehto
@@ -10760,7 +11404,9 @@ while ( i &lt; 3 ) {  // toistoehto
     i++;   // toistossa käytettävän muuttujan päivitys
 }
 </pre>
-<p>for-komento, kuten yllä esitelty <code>for (int i = 0; i &lt; 3; i++ )</code> sisältää kolme osaa: <em>looppimuuttujien alustus; toistoehto; looppimuuttujien päivitys</em>: </p>
+
+    <p>for-komento, kuten yllä esitelty <code>for (int i = 0; i &lt; 3; i++ )</code> sisältää kolme osaa: <em>looppimuuttujien alustus; toistoehto; looppimuuttujien päivitys</em>: </p>
+
 <ul>
   <li>Ensimmäisessä osassa alustetaan toistolauseessa käytettävät muuttujat. Yllä olevassa esimerkissä alustimme muuttujan <code>i</code> lauseella <code>int i=0</code>. Ensimmäinen osa suoritetaan vain kerran, juuri for:in suorituksen alussa.</li>
   <li>Toisessa osassa määritellään toistoehto, joka määrittelee miten kauan for:in yhteydessä olevassa koodilohkossa olevaa koodia suoritetaan. Esimerkissämme toistoehto oli <code>i &lt; 3</code>. Toistoehdon voimassaolo tarkastetaan <em>ennen jokaista for:in toistokertaa</em>. Toistoehto toimii täsmälleen samoin kuin while:n toistoehto.</li>
@@ -10822,7 +11468,12 @@ public static void  main(String[] args) {
 
 <div class="tehtavat">
   <div class="tehtava">
+
   <h3 class="req">Taulukon lukujen summa</h3>
+
+  <p><b>Huom:</b> tämän tehtävän metodi samoin kuin muutamien seuraavien tehtävien taulukkoa käsittelevät metodit ovat viikkojen 2 ja 3 tapaan <code>static</code> eli staattisia metodeja. Karkeasti ottaen tämä johtuu siitä, että metodi ei liity mihinkään olioon, vaan saa kaiken datan jota se käyttää eli tässä tapauksessa taulukon, parametrina. Palaamme seuraavalla viikolla tarkemmin aiheeseen staattiset vs. olioihin liittyvät metodit.</p>
+
+
   <p>Tee metodi <code>public static int laskeTaulukonLukujenSumma(int[] taulukko)</code>, joka palauttaa taulukossa olevien lukujen summan.</p>
   <p>Ohjelman runko on seuraava:</p>
   <pre class="sh_java">
@@ -10843,7 +11494,6 @@ public class Main {
 <pre>
 15
 </pre>
-  <p><b>Huom:</b> tämän tehtävän metodi samoin kuin muutamien seuraavien tehtävien taulukkoa käsittelevät metodit ovat viikkojen 2 ja 3 tapaan <code>static</code> eli staattisia metodeja. Karkeasti ottaen tämä johtuu siitä, että metodi ei liity mihinkään olioon, vaan saa kaiken datan jota se käyttää eli tässä tapauksessa taulukon, parametrina. Luvussa 28 palaamme tarkemmin aiheeseen staattiset vs. olioihin liittyvät metodit.</p>
   </div>
   <div class="tehtava">
   <h3 class="req">Tyylikäs tulostus</h3>
@@ -10991,135 +11641,6 @@ käännetty: [4, 3, 2, 1]
 <p><iframe allowfullscreen="" frameborder="0"  height="450" width="700" src="http://www.youtube.com/embed/COVbFEPZGQw"></iframe></p>
 -->
 
-<h2 id="lohkoista">Lohkoista ja sisäkkäisistä toistolauseista</h2>
-<p>Aaltosululla <code>{</code> alkavaa ja aaltosululla <code>}</code> koodia sisältävää aluetta siis sanotaan <em>lohkoksi</em>.  Kuten on jo nähty, lohkoja käytetään muun muassa ehto- ja toistolauseiden alueen rajaamisessa. <em>Tärkeä lohkon ominaisuus on se, että lohkossa määritellyt muuttujat ovat voimassa vain lohkon sisällä</em>.</p>
-<p>Seuraavassa esimerkissä määritellään ehtolausekkeeseen liittyvän lohkon sisällä tekstimuuttuja <code>lohkonSisallaMaariteltyTeksti</code>, joka on olemassa vain lohkon sisällä.  Lohkossa esitellyn muuttujan tulostus lohkon ulkopuolella ei toimi!</p>
-<pre class="sh_java">
-int luku = 5;
-
-if( luku == 5 ){
-    String lohkonSisallaMaariteltyTeksti = "Jea!";
-}
-
-System.out.println(lohkonSisallaMaariteltyTeksti); // ei toimi!
-</pre>
-<p>Lohkossa voidaan toki käyttää ja muuttaa sen ulkopuolella määriteltyjä muuttujia.</p>
-<pre class="sh_java">
-int luku = 5;
-
-if( luku == 5 ) {
-    luku = 6;
-}
-
-System.out.println(luku); // tulostaa luvun 6
-</pre>
-<p>Lohkon sisällä voi olla mitä tahansa koodia. Esimerkiksi for-toistolauseen määrittelemän lohkon sisällä voi olla toinen for-toistolauseke tai vaikkapa while-toistolauseke. Tarkastellaan seuraavaa ohjelmaa:</p>
-<pre class="sh_java">
-for(int i = 0; i &lt; 3; i++) {
-    System.out.print(i + ": ");
-
-    for(int j = 0; j &lt; 3; j++) {
-        System.out.print(j + " ");
-    }
-
-    System.out.println();
-}
-</pre>
-<p>Ohjelman tulostus on seuraava:</p>
-<pre>
-0: 0 1 2
-1: 0 1 2
-2: 0 1 2
-</pre>
-<p>Eli mitä ohjelmassa tapahtuukaan? Jos ajatellaan pelkkää ulommaista for:ia, on toiminnallisuus helppo ymmärtää: </p>
-<pre class="sh_java">
-for(int i = 0; i &lt; 3; i++) {
-    System.out.print(i + ": ");
-
-    // sisemmäinen for
-
-    System.out.println();
-}
-</pre>
-<p>Eli ensin <code>i=0</code> ja tulostuu <code>0:</code> ja rivinvaihto. Tämän jälkeen i kasvaa ja tulostuu ykkönen, jne., eli ulompi for saa aikaan seuraavan:</p>
-<pre>
-0:
-1:
-2:
-</pre>
-<p>Myös sisempi for on helppo ymmärtää erillään. Se saa aina aikaan tulosteen <code>0 1 2</code>. Kun yhdistämme nämä kaksi, huomaamme, että sisin for suorittaa tulosteensa aina juuri ennen uloimman for:in tulostamaa rivinvaihtoa.</p>
-<h3>for-toistolauseen ulkopuolella määriteltyjen muuttujien käyttö toiston ehtona</h3>
-<p>Tutkitaan seuraavaa muunnosta edelliseen esimerkkiin:</p>
-<pre class="sh_java">
-for(int i = 0; i &lt; 3; i++) {
-    System.out.print(i + ": ");
-
-    for(int j = 0; j &lt;= i; j++) {
-        System.out.print(j + " ");
-    }
-
-    System.out.println();
-}
-</pre>
-<p>Sisemmän for:in toistojen määrä riippuukin nyt ulomman for:in muuttujan <code>i</code> arvosta. Eli kun <code>i=0</code>, tulostaa sisin looppi luvun 0, kun <code>i=1</code>, tulostaa sisempi toistolauseke 0 1, jne. Koko ohjelman tulostus on seuraava: </p>
-<pre>
-0: 0
-1: 0 1
-2: 0 1 2
-</pre>
-<p>Seuraava ohjelma tulostaa lukujen 1..10 kertotaulun. </p>
-<pre class="sh_java">
-for(int i = 1; i &lt;= 10; i++) {
-
-    for(int j = 1; j &lt;= 10; j++) {
-        System.out.print(i * j + " ");
-    }
-
-    System.out.println();
-}
-</pre>
-<p> Tulostus näyttää seuraavalta: </p>
-<pre>
-1 2 3 4 5 6 7 8 9 10
-2 4 6 8 10 12 14 16 18 20
-3 6 9 12 15 18 21 24 27 30
-4 8 12 16 20 24 28 32 36 40
-5 10 15 20 25 30 35 40 45 50
-6 12 18 24 30 36 42 48 54 60
-7 14 21 28 35 42 49 56 63 70
-8 16 24 32 40 48 56 64 72 80
-9 18 27 36 45 54 63 72 81 90
-10 20 30 40 50 60 70 80 90 100
-</pre>
-<p>Ylimmällä rivillä luvun 1 kertotaulu. Alussa <code>i=1</code> ja sisimmän loopin muuttuja <code>j</code> saa arvot 1...10. Jokaisella <code>i, j</code> arvoparilla tulostetaan niiden tulo. Eli alussa <code>i=1, j=1</code>, sitten <code>i=1, j=2</code>, ..., <code>i=1, j=10</code> seuraavaksi <code>i=2, j=1</code>, jne. </p>
-<p>Kertotaulu-ohjelman voi toki pilkkoa pienempiin osiin. Voimme määritellä metodit <code>public void tulostaKertotaulunRivi(int kerroin, int montakokertaa)</code> ja <code>public void tulostaKertotaulu(int mihinAsti)</code>, jolloin ohjelman rakenne olisi esimerkiksi seuraavanlainen seuraavanlainen:</p>
-<pre class="sh_java">
-public class Kertotaulu {
-
-    public void tulosta(int mihinAsti) {
-        for(int i = 1; i &lt;= mihinAsti; i++) {
-            tulostaKertotaulunRivi(i, mihinAsti);
-
-            System.out.println();
-        }
-    }
-
-
-    public void tulostaKertotaulunRivi(int kerroin, int montakokertaa) {
-        for(int i = 1; i &lt;= montakokertaa; i++) {
-            System.out.print(i * kerroin + " ");
-        }
-    }
-}
-</pre>
-<p>Nyt kutsu <code>new Kertotaulu().tulosta(5);</code> tulostaa allaolevan kertotaulun.</p>
-<pre>
-1 2 3 4 5
-2 4 6 8 10
-3 6 9 12 15
-4 8 12 16 20
-5 10 15 20 25
-</pre>
 <div class="tehtavat">
   <div class="tehtava">
   <h3>Taulukko tähtinä</h3>
@@ -11239,6 +11760,18 @@ Tähtiä: 3
 </pre>
 </div>
 </div>
+
+
+  </div>
+</section>
+
+
+<!-- BEGIN MOOC SNIP -->
+<!-- BEGIN SNIP -->
+
+
+<!-- VK 7 -->
+
 <h2>static:illa vai ilman?</h2>
 <p>Kun aloimme olioden käytön, materiaalissa oli neuvo jättää sana static pois olioiden metodien määrittelystä. Viikkoon 3 asti taas kaikissa metodeissa esiintyi määre static. Mistä on kysymys?</p>
 <p>Seuraavassa esimerkissä on metodi <code>nollaaTaulukko</code> joka toimii nimensä mukaisesti eli asettaa nollan parametrina saamansa taulukon kaikkien lokeroiden arvoksi.</p>
@@ -11410,9 +11943,9 @@ public class Main {
     }
 }
 </pre>
-<p>Metodi <code>ilmoitaTaysiIkaisyys</code> on määritelty staattiseksi, eli se ei liity mihinkään olioon, <strong>mutta</strong> metodi saa parametrikseen henkilöolion. Metodia ei ole nyt määritelty
-  Henkilö-luokan sisälle sillä vaikka se käsittelee parametrinaan saamaan henkilöolioa, se on juuri
-  kirjoitetun pääohjelman apumetodi, jonka avulla main on saatu kirjoitettua selkeämmin. </p>
+<p>Metodi <code>ilmoitaTaysiIkaisyys</code> on määritelty staattiseksi, eli se ei liity mihinkään olioon, <strong>mutta</strong> metodi saa parametrikseen henkilöolion. Metodia ei ole nyt määritelty Henkilö-luokan sisälle sillä vaikka se käsittelee parametrinaan saamaan henkilöolioa, se on juuri kirjoitetun pääohjelman apumetodi, jonka avulla main on saatu kirjoitettua selkeämmin. </p>
+
+
 <div class="tehtavat">
   <div class="tehtava">
   <h3>Kirjaston tietojärjestelmä</h3>
@@ -11456,7 +11989,9 @@ Cheese Problems Solved, Woodhead Publishing, 2007
 NHL Hockey, Stanley Kupp, 1952
 Battle Axes, Tom A. Hawk, 1851
 </pre>
+
   <h4>Hakutoiminnallisuus</h4>
+
   <p>Kirjastosta tulee pystyä etsimään kirjoja nimikkeiden ja julkaisijoiden perusteella. Lisää kirjastolle metodit <code>public ArrayList&lt;Kirja&gt; haeKirjaNimikkeella(String nimike)</code>, <code>public ArrayList&lt;Kirja&gt; haeKirjaJulkaisijalla(String julkaisija)</code> ja <code>public ArrayList&lt;Kirja&gt; haeKirjaJulkaisuvuodella(int julkaisuvuosi)</code>. Metodit palauttavat listan kirjoista, joissa on haluttu nimike, julkaisija tai julkaisuvuosi.</p>
   <p><b>Huom:</b> joudut siis tehdä metodin jonka paluuarvona on ArrayList. Tämä onnustuu seuraavaa metodirunkoa hyödyntäen:</p>
   <pre class="sh_java">
@@ -11543,6 +12078,8 @@ The Stinky Cheese Man and Other Fairly Stupid Tales, Penguin Group, 1992
 <div class="self-explanation" data-key="q-staattisetJaEiStaattisetMetodit"></div>
 
 <h2>Tehtäviä joissa saat itse keksiä ohjelmalle sopivan rakenteen</h2>
+
+
 <div class="tehtavat">
   <p class="mooc-pakollinen"></p>
   <div class="tehtava pakollinen-hakuun">
@@ -11598,7 +12135,9 @@ Hyväksymisprosentti: 87.5
   </ul>
   <p>Hyväksyttyjä ovat muut paitsi arvosanan 0 saaneet. Hyväksyttyjä edellä on siis 7 osallistujaa 8:sta. Hyväksymisprosentti lasketaan kaavalla <em>100*hyväksytyt/osallistujat</em>. </p>
 </div>
+
 <p class="mooc-pakollinen"></p>
+
 <div class="tehtava pakollinen-hakuun">
   <h3>Lintubongarin tietokanta</h3>
   <p><b>HUOM:</b> Ohjelmassa saa käyttää vain yhtä Scanner-olioa, eli vain kertaalleen saa sanoa <code>new Scanner</code>. Jos tarvitset Scanneria monessa kohtaa, voit välittää sen muualle parametrina.</p>
@@ -12191,10 +12730,34 @@ System.out.println(tilanne);
     </div>
   </div>
 
+
+
+  <div class="hidden-in-hy alert alert-warning">
+      <blockquote class="normal-text">
+      <p>
+        <img src="http://www.cs.helsinki.fi/group/java/k13/ohpe/img/hy-clear.gif" width="30px;" height="30px;" >
+        <strong>HUOM:</strong> Helsingin Yliopiston logolla merkatut tehtävät ovat kaikille yliopistoon MOOCin kautta hakeville pakollisia.
+       <footer>Katso lisätietoja <a href="http://mooc.cs.helsinki.fi/ohjelmointi/mooc-v%C3%A4yl%C3%A4-yliopistoon"><cite title="MOOC.fi">MOOC.fi väylänä yliopistoon</cite></a></footer>
+      </p>
+     </blockquote>
   </div>
-</section>
-<!-- BEGIN MOOC SNIP -->
-<!-- BEGIN SNIP -->
+<h2>Nopea kertaus</h2>
+<p>Aloitetaan viikko muutamalla viime viikon tärkeimpiä teemoja kertaavalla tehtävällä. Kertaa tarvittaessa luku 24.10 ennen tehtävää 94 ja luvut 24.6 ja 24.12 ennen tehtävää 95.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="tyhja"></div>
 <div class="viikkoraja">Hylätyt</div>
 <section class="hylatty" id="hylatty">
