@@ -9443,6 +9443,10 @@ public class Huone {
         this.nimi = nimi;
     }
 
+    public String getNimi() {
+        return this.nimi;
+    }
+
     public void setVasen(Huone huone) {
         this.vasen = huone;
     }
@@ -9463,6 +9467,10 @@ public class Huone {
 
     public Huone(String nimi) {
         this.nimi = nimi;
+    }
+
+    public String getNimi() {
+        return this.nimi;
     }
 
     public Huone valitseVasenOvi() {
@@ -9509,7 +9517,6 @@ public class Huoneistokauppias {
 
     public void vieraile(Huone huone) {
         System.out.println("Olen huoneessa " + huone.getNimi());
-
     }
 }
 </pre>
@@ -9520,7 +9527,7 @@ public class Huoneistokauppias {
     public void vieraile(Huone huone) {
         System.out.println("Olen huoneessa " + huone.getNimi());
         
-        this.vieraile(huone.getVasenOvi());
+        this.vieraile(huone.valitseVasenOvi());
     }
 </pre>
 
@@ -9565,7 +9572,7 @@ Java Result: 1</font>
 
         System.out.println("Olen huoneessa " + huone.getNimi());
         
-        this.vieraile(huone.getVasenOvi());
+        this.vieraile(huone.valitseVasenOvi());
     }
 </pre>
 
@@ -9578,7 +9585,7 @@ Java Result: 1</font>
 
         System.out.println("Olen huoneessa " + huone.getNimi());
         
-        this.vieraile(huone.getVasenOvi());
+        this.vieraile(huone.valitseVasenOvi());
         
         System.out.println("Poistun huoneesta " + huone.getNimi());
     }
