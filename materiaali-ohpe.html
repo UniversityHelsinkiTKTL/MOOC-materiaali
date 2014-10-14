@@ -12306,9 +12306,9 @@ public class Ohjelma {
 }
 </pre>
 
-<p>Yllä olevassa esimerkissä metodilla <code>nollaaTaulukko</code> on määre <code>static</code>. Metodiin <code>nollaaTaulukko</code> ei myöskään liity oliota, ja sen vaan sen kutsuminen tapahtuu ilman tarvetta olioviitteelle. Metodin kutsuminen onnistuu <code>main</code>-metodista, jolla on myös määre <code>static</code> -- metodien, joilla on <code>static</code>-määre, kutsuminen onnistuu kuitenkin myös ei-staattisista metodeista.</p>
+<p>Yllä olevassa esimerkissä metodilla <code>nollaaTaulukko</code> on määre <code>static</code> ja sen kutsuminen tapahtuu ilman alussa olevaa olioviitettä.</p>
 
-<p>Syynä on se, että metodi ei liity mihinkään olioon vaan kyseessä on <em>luokkametodi</em>. Luokkametodeja kutsutaan usein myös <em>staattisiksi metodeiksi</em>. Toisin kuin olioiden metodit (joilla ei ole määrettä static), staattiseen metodiin ei liity mitään olioa. Toisin kuin oliometodit, joilla ei ole <code>static</code>-määrettä, staattinen metodi ei voi viitata itseensä <code>this</code>-määreellä. Staattiset metodit ovat luokkakohtaisia, eli niihin ei liity oliota, johon <code>this</code>-määre viittaisi.</p>
+<p><em>Staattiset metodit</em> eivät liity olioon vaan luokkaan. Staattisia metodeja kutsutaankin usein myös <em>luokkametodeiksi</em>. Toisin kuin olioiden metodit (joilla ei ole määrettä static), staattiseen metodiin ei liity olioa, eikä niillä voi muokata oliomuuttujia.</p>
 
 <p>Staattiselle metodille voi toki antaa olion parametrina. Staattinen metodi ei kuitenkaan voi käsitellä mitään muita lukuja, merkkijonoja, taulukoita tai oliota kuin niitä, jotka on sille annettu sille parametrina, tai jotka se luo itse.</p>
 
@@ -12351,7 +12351,7 @@ public class TaulukonKasittely {
 
 <h3>Milloin staattisia metodeja tulisi käyttää</h3>
 
-<p>Kaikki olion tilaa käsittelevät metodit tulee määritellä oliometodeina, joilla ei ole static-määrettä. Esimerkiksi edellisillä viikoilla määrittelemiemme luokkien <code>Henkilo, Paivays, Kello, Joukkue, ...</code> kaikki metodit tulee määritellä normaaleina oliometodeina eli ilman static-määrettä.</p>
+<p>Kaikki olion tilaa käsittelevät metodit tulee määritellä oliometodeina, joilla ei ole static-määrettä. Esimerkiksi edellisillä viikoilla määrittelemiemme luokkien <code>Henkilo, Paivays, Kello, Joukkue, ...</code> kaikki metodit tulee määritellä oliometodeina ilman static-määrettä.</p>
 
 <p>Palataan vielä luokkaan <code>Henkilo</code>. Seuraavassa on osa luokan määritelmästä. Kaikkiin oliomuuttujiin viitataan <code>this</code>-määreen avulla sillä korostamme, että metodeissa käsitellään olion "sisällä" olevia oliomuuttujia.</p>
 
@@ -13245,7 +13245,7 @@ System.out.println("Pienimmän indeksi: " + pienimmanIndeksi(luvut));
 <pre>
 Pienimmän indeksi: 1
 </pre>
-  <p>Taulukon pienin luku on 2, ja sen indeksi eli sijaintipaikka taulukossa on 1. Muistathan, että taulukon numerointi alkaa 0:sta.</p>
+  <p>Taulukon pienin luku on 5, ja sen indeksi eli sijaintipaikka taulukossa on 1. Muistathan, että taulukon numerointi alkaa 0:sta.</p>
   <h4 class="req">Pienimmän indeksi taulukon loppuosassa</h4>
   <p>Tee metodi <code>pienimmanIndeksiAlkaen</code>, joka toimii samalla tavalla kuin edellisen tehtävän metodi mutta ottaa huomioon vain taulukon loppuosan jostain indeksistä alkaen. Metodille annetaan taulukon lisäksi aloitusindeksi, josta lähtien pienintä lukua etsitään.</p>
   <p>Metodin runko on seuraava:</p>
