@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Ohjelmoinnin perusteet ja jatkokurssi, kevät 2013</title>
+<title>Ohjelmoinnin perusteet ja jatkokurssi</title>
 <link rel="stylesheet" href="stylesheets/menu.css" type="text/css" media="screen" />
 
 
@@ -76,20 +76,496 @@ jQuery(document).ready(function() {
   <div class="viikkoraja"></div>
   <div class="viikkoraja-mooc" id="Viikko 7" deadline=" " data-first-chapter-index="33" data-first-exercise-index="108" data-first-week-index="7"  data-first-chapter-index-mooc="33" data-first-exercise-index-mooc="108" data-first-week-index-mooc="7" tekija="Arto Vihavainen, Matti Luukkainen">
 
-    <div class="ahy">
-      <h2>Ohjelmoinnin perusteiden kertausta</h2>
 
-      <p>Tässä luvussa kerrataan pikaisesti muutamia ohjelmoinnin perusteissa tutuksi tulleita asioita.<span class="hidden-kesakurssit"> Ohjelmoinnin perusteet -kurssin materiaaliin pääsee tutustumaan tarkemmin <a class="hidden-kesakurssit" href="https://www.cs.helsinki.fi/group/java/s13/ohpe/index.html">tästä.</a></span></p>
-      <p>Ruostunutta ohjelmointitaitoa voi myös verestää
-      <a href="http://www.cs.helsinki.fi/group/java/s12/ohpe/materiaali-ohpekertaus.html">täältä</a> löytyvän tehtäväsarjan avulla. </p>
+<div class="panel-group" id="1taustatiedot">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#1taustatiedot" href="#1taustatiedot2">
+      <div class="panel-heading">
+	<h4 id="taustatiedot-form-ohja-legend">Kysely: Taustatiedot</h4>
     </div>
-    <div class="amooc">
-      <h2>Aiempien viikkojen kertausta</h2>
+    </a>
+    <div class="panel-collapse collapse" id="1taustatiedot2">
+      <div class="panel-body">
 
-      <p>Tässä luvussa kerrataan pikaisesti muutamia aiempina viikkoina tutuksi tulleita asioita.</p>
+        <!-- Taustatiedot -->
+<form class="form-horizontal" id="taustatiedot-form-ohja">
+            <fieldset>
+                <legend id="taustatiedot-form-ohja-legend">Kysely: Taustatiedot</legend>
+                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen. Vaikka osa kyselyistä on samoja kuin kurssilla ohjelmoinnin perusteet, vastaathan niihin silti.</p>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="taustatiedot-form-ohja-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="taustatiedot-form-ohja-tmc-tunnus" name="taustatiedot-form-ohja-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <!-- Syntymävuosi -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="taustatiedot-form-ohja-syntymavuosi">Syntymävuosi</label>  
+                    <div class="col-md-1">
+                        <input id="taustatiedot-form-ohja-syntymavuosi" name="taustatiedot-form-ohja-syntymavuosi" type="text" class="form-control" maxlength="4">
+                    </div>
+                </div>
+
+                <!-- Sukupuoli -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="sukupuoli">Sukupuoli</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label for="sukupuoli-nainen">
+                                <input type="radio" name="sukupuoli" id="sukupuoli-nainen" value="sukupuoli-nainen">
+                                Nainen
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="sukupuoli-mies">
+                                <input type="radio" name="sukupuoli" id="sukupuoli-mies" value="sukupuoli-mies">
+                                Mies
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label for="sukupuoli-muu">
+                                <input type="radio" name="sukupuoli" id="sukupuoli-muu" value="sukupuoli-muu">
+                                Muu tai en halua kertoa
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Kätisyys -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="katisyys">Kätisyys</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label for="katisyys-vasen">
+                                <input type="radio" name="katisyys" id="katisyys-vasen" value="katisyys-vasen">
+                                Vasen
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="katisyys-oikea">
+                                <input type="radio" name="katisyys" id="katisyys-oikea" value="katisyys-oikea">
+                                Oikea
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label for="katisyys-muu">
+                                <input type="radio" name="katisyys" id="katisyys-muu" value="katisyys-muu">
+                                Muu tai en halua kertoa
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Koulutusaste -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="koulutusaste">Koulutusaste</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label for="koulutusaste-peruskoulu-kansakoulu">
+                                <input type="radio" name="koulutusaste" id="koulutusaste-peruskoulu-kansakoulu" value="koulutusaste-peruskoulu-kansakoulu">
+                                Peruskoulu tai kansakoulu
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="koulutusaste-keskiaste">
+                                <input type="radio" name="koulutusaste" id="koulutusaste-keskiaste" value="koulutusaste-keskiaste">
+                                Keskiaste (lukio / ammatilliset oppilaitokset)
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="koulutusaste-ammattikorkeakoulu">
+                                <input type="radio" name="koulutusaste" id="koulutusaste-ammattikorkeakoulu" value="koulutusaste-ammattikorkeakoulu">
+                                Ammattikorkeakoulututkinto
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label for="koulutusaste-alempi-korkeakoulu">
+                                <input type="radio" name="koulutusaste" id="koulutusaste-alempi-korkeakoulu" value="koulutusaste-alempi-korkeakoulu">
+                                Alempi korkeakoulututkinto
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label for="koulutusaste-ylempi-korkeakoulu">
+                                <input type="radio" name="koulutusaste" id="koulutusaste-ylempi-korkeakoulu" value="koulutusaste-ylempi-korkeakoulu">
+                                Ylempi korkeakoulututkinto
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label for="koulutusaste-lisensiaatti-tai-tohtori">
+                                <input type="radio" name="koulutusaste" id="koulutusaste-lisensiaatti-tai-tohtori" value="koulutusaste-lisensiaatti-tai-tohtori">
+                                Lisensiaatin- tai tohtorintutkinto
+                            </label>
+                        </div>
+                    </div>
+                </div>                
+
+                <!-- Työssäkäynti -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="tyossakaynti">Olen tällä hetkellä</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label for="tyossakaynti-opiskelija">
+                                <input type="radio" name="tyossakaynti" id="tyossakaynti-opiskelija" value="tyossakaynti-opiskelija">
+                                Opiskelija
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="tyossakaynti-opiskelija-ja-osaaikainen">
+                                <input type="radio" name="tyossakaynti" id="tyossakaynti-opiskelija-ja-osaaikainen" value="tyossakaynti-opiskelija-ja-osaaikainen">
+                                Opiskelija ja osa-aikaisesti töissä
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="tyossakaynti-opiskelija-ja-taysipaivaisesti-toissa">
+                                <input type="radio" name="tyossakaynti" id="tyossakaynti-opiskelija-ja-taysipaivaisesti-toissa" value="tyossakaynti-opiskelija-ja-taysipaivaisesti-toissa">
+                                Opiskelija ja täysipäiväisesti töissä
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="tyossakaynti-tyoelamassa">
+                                <input type="radio" name="tyossakaynti" id="tyossakaynti-tyoelamassa" value="tyossakaynti-tyoelamassa">
+                                Työelämässä
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="tyossakaynti-tyoton">
+                                <input type="radio" name="tyossakaynti" id="tyossakaynti-tyoton" value="tyossakaynti-tyoton">
+                                Työtön
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label for="tyossakaynti-vapaalla">
+                                <input type="radio" name="tyossakaynti" id="tyossakaynti-vapaalla" value="tyossakaynti-vapaalla">
+                                Vanhempainvapaalla tai muulla vastaavalla
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label for="tyossakaynti-elakkeella">
+                                <input type="radio" name="tyossakaynti" id="tyossakaynti-elakkeella" value="tyossakaynti-elakkeella">
+                                Eläkkeellä
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- tarkennus jos toissa -->
+                <div class="hidden" id="tyossakaynti-tarkennus">
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="tyossakaynti-tunteja-viikossa">Kuinka monta tuntia teet töitä viikossa?</label>  
+                        <div class="col-md-4">
+                            <input id="tyossakaynti-tunteja-viikossa" name="tyossakaynti-tunteja-viikossa" type="text" class="form-control input-md">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="tyossakaynti-tyonkuva">Kuvaile työnkuvaasi lyhyesti</label>  
+                        <div class="col-md-4">
+                            <input id="tyossakaynti-tyonkuva" name="tyossakaynti-tyonkuva" type="text" class="form-control input-md">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- tarkennus jos aiemmin toissa -->
+                <div class="hidden" id="tyossakaynti-aiempi-tarkennus">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="tyossakaynti-edellinen-tyonkuva">Jos olet ollut aiemmin töissä, kuvaile edellistä työnkuvaasi lyhyesti</label>  
+                        <div class="col-md-4">
+                            <input id="tyossakaynti-edellinen-tyonkuva" name="tyossakaynti-edellinen-tyonkuva" type="text" class="form-control input-md">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ohjelmointikokemus -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="ohjelmointikokemus">Aiempi ohjelmointikokemus</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label for="ohjelmointikokemus-ei-mitaan">
+                                <input type="radio" name="ohjelmointikokemus" id="ohjelmointikokemus-ei-mitaan" value="ohjelmointikokemus-ei-mitaan">
+                                En ole ohjelmoinut koskaan
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="ohjelmointikokemus-hieman">
+                                <input type="radio" name="ohjelmointikokemus" id="ohjelmointikokemus-hieman" value="ohjelmointikokemus-hieman">
+                                Olen osallistunut joskus ohjelmointikurssille
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="ohjelmointikokemus-itsekseni">
+                                <input type="radio" name="ohjelmointikokemus" id="ohjelmointikokemus-itsekseni" value="ohjelmointikokemus-itsekseni">
+                                Ohjelmoin silloin tällöin itsekseni
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="ohjelmointikokemus-ryhmassa-kurssi">
+                                <input type="radio" name="ohjelmointikokemus" id="ohjelmointikokemus-ryhmassa-kurssi" value="ohjelmointikokemus-ryhmassa-kurssi">
+                                Olen ohjelmoinut ryhmässä, esimerkiksi osana jotain kurssia
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="ohjelmointikokemus-ryhmassa-tyo">
+                                <input type="radio" name="ohjelmointikokemus" id="ohjelmointikokemus-ryhmassa-tyo" value="ohjelmointikokemus-ryhmassa-tyo">
+                                Olen osallistunut ohjelmistoprojektiin osana työtäni
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label for="ohjelmointikokemus-ryhmassa-tyo-useampi-projekti">
+                                <input type="radio" name="ohjelmointikokemus" id="ohjelmointikokemus-ryhmassa-tyo-useampi-projekti" value="ohjelmointikokemus-ryhmassa-tyo-useampi-projekti">
+                                Olen osallistunut useampaan ohjelmistoprojektiin osana työtäni
+                            </label>
+                        </div>
+
+
+                        <div class="radio">
+                            <label for="ohjelmointikokemus-muu">
+                                <input type="radio" name="ohjelmointikokemus" id="ohjelmointikokemus-muu" value="ohjelmointikokemus-muu">
+                                Muu, mikä?
+                            </label>
+                            <input id="ohjelmointikokemus-muu-teksti" name="ohjelmointikokemus-muu-teksti" type="text" class="form-control input-md hidden">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden" id="ohjelmointikokemus-tarkennus">
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="ohjelmointikokemus-kaytetyt-ohjelmointikielet">Mitä ohjelmointikieliä olet käyttänyt?</label>  
+                        <div class="col-md-4">
+                            <input id="ohjelmointikokemus-kaytetyt-ohjelmointikielet" name="ohjelmointikokemus-kaytetyt-ohjelmointikielet" type="text" class="form-control input-md">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="ohjelmointikokemus-tuntia-ohjelmoinut">Kuinka monta tuntia olet ohjelmoinut (arviolta)?</label>  
+                        <div class="col-md-4">
+                            <input id="ohjelmointikokemus-tuntia-ohjelmoinut" name="ohjelmointikokemus-tuntia-ohjelmoinut" type="text" class="form-control input-md">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="ohjelmointikokemus-suurin-rivimaara">Kuinka monta riviä ohjelmakoodia suurimmassa kirjoittamassasi ohjelmassa on ollut (arviolta)?</label>  
+                        <div class="col-md-4">
+                            <input id="ohjelmointikokemus-suurin-rivimaara" name="ohjelmointikokemus-suurin-rivimaara" type="text" class="form-control input-md">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Osallistuminen -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="osallistuminen">Osallistun kurssille (valitse sopivat)</label>
+                    <div class="form-inline col-md-8">
+                        <div class="checkbox col-md-4">
+                            <label for="osallistuminen-tutustuakseni-ohjelmointiin">
+                                <input type="checkbox" name="osallistuminen" id="osallistuminen-tutustuakseni-ohjelmointiin" value="osallistuminen-tutustuakseni-ohjelmointiin">
+                                Tutustuakseni ohjelmointiin
+                            </label>
+                        </div>
+
+                        <div class="checkbox col-md-4">
+                            <label for="osallistuminen-tutustuakseni-kurssin-toteutukseen">
+                                <input type="checkbox" name="osallistuminen" id="osallistuminen-tutustuakseni-kurssin-toteutukseen" value="osallistuminen-tutustuakseni-kurssin-toteutukseen">
+                                Tutustuakseni kurssin toteutustapaan
+                            </label>
+                        </div>
+
+                        <div class="checkbox col-md-4">
+                            <label for="osallistuminen-saadakseni-opintopisteita-tai-kurssisuorituksen">
+                                <input type="checkbox" name="osallistuminen" id="osallistuminen-saadakseni-opintopisteita-tai-kurssisuorituksen" value="osallistuminen-saadakseni-opintopisteita-tai-kurssisuorituksen">
+                                Saadakseni opintopisteitä tai kurssisuorituksen
+                            </label>
+                        </div>
+
+                        <div class="checkbox col-md-4">
+                            <label for="osallistuminen-oppiakseni-ohjelmointia-huvin-vuoksi">
+                                <input type="checkbox" name="osallistuminen" id="osallistuminen-oppiakseni-ohjelmointia-huvin-vuoksi" value="osallistuminen-oppiakseni-ohjelmointia-huvin-vuoksi">
+                                Oppiakseni ohjelmointia, huvin vuoksi
+                            </label>
+                        </div>
+
+
+                        <div class="checkbox col-md-4">
+                            <label for="osallistuminen-oppiakseni-ohjelmointia-opintoja-varten">
+                                <input type="checkbox" name="osallistuminen" id="osallistuminen-oppiakseni-ohjelmointia-opintoja-varten" value="osallistuminen-oppiakseni-ohjelmointia-opintoja-varten">
+                                Oppiakseni ohjelmointia, opintoja varten
+                            </label>
+                        </div>
+
+                        <div class="checkbox col-md-4">
+                            <label for="osallistuminen-oppiakseni-ohjelmointia-toita-varten">
+                                <input type="checkbox" name="osallistuminen" id="osallistuminen-oppiakseni-ohjelmointia-toita-varten" value="osallistuminen-oppiakseni-ohjelmointia-toita-varten">
+                                Oppiakseni ohjelmointia, töitä varten
+                            </label>
+                        </div>
+
+                        <div class="checkbox col-md-4">
+                            <label for="osallistuminen-paivittaakseni-ohjelmointitaitojani">
+                                <input type="checkbox" name="osallistuminen" id="osallistuminen-paivittaakseni-ohjelmointitaitojani" value="osallistuminen-paivittaakseni-ohjelmointitaitojani">
+                                Päivittääkseni ohjelmointitaitojani
+                            </label>
+                        </div>
+
+                        <div class="checkbox col-md-4">
+                            <label for="osallistuminen-koska-ilmainen">
+                                <input type="checkbox" name="osallistuminen" id="osallistuminen-koska-ilmainen" value="osallistuminen-koska-ilmainen">
+                                Koska se on ilmainen
+                            </label>
+                        </div>
+
+                        <div class="checkbox col-md-4">
+                            <label for="osallistuminen-koska-kurssia-suositeltiin-minulle">
+                                <input type="checkbox" name="osallistuminen" id="osallistuminen-koska-kurssia-suositeltiin-minulle" value="osallistuminen-koska-kurssia-suositeltiin-minulle">
+                                Koska sitä suositeltiin minulle
+                            </label>
+                        </div>
+
+
+                        <div class="checkbox col-md-8">
+                            <label for="osallistuminen-muu">
+                                <input type="checkbox" name="osallistuminen" id="osallistuminen-muu" value="osallistuminen-muu">
+                                Muu, mikä?
+                            </label>
+                            <input id="osallistuminen-muu-teksti" name="osallistuminen-muu-teksti" type="text" class="form-control input-md hidden">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="suoritus">Aion läpäistä tämän kurssin kunnialla</label>
+                    <div class="form-inline col-md-8">
+                        <div class="checkbox col-md-4">
+                            <label for="aion-lapaista-kurssin-kunnialla">
+                                <input type="checkbox" name="suoritus" id="aion-lapaista-kurssin-kunnialla" value="aion-lapaista-kurssin-kunnialla">
+                                Kyllä!
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="ohpe">Suoritin juuri kurssin ohjelmoinnin perusteet</label>
+                    <div class="form-inline col-md-8">
+                        <div class="checkbox col-md-4">
+                            <label for="just-ohpe">
+                                <input type="checkbox" name="ohpe" id="just-ohpe" value="aion-lapaista-kurssin-kunnialla">
+                                Kyllä!
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <input type="hidden" id="taustatiedot-form-ohja-started-entering" name="taustatiedot-form-ohja-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="taustatiedot-form-ohja-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="taustatiedot-form-ohja-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
     </div>
+  </div>
+</div>
+
+<!-- msql-motivaatio-form -->
+<div class="panel-group" id="2mslqmotivaatio">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#2mslqmotivaatio" href="#2mslqmotivaatio2">
+      <div class="panel-heading">
+	<h4 id="msql-motivaatio-form-legend">Kysely: Oppimiskokemukset ja motivaatio</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="2mslqmotivaatio2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="msql-motivaatio-form">
+            <fieldset>
+                <legend id="msql-motivaatio-form-legend">Tutkimus: Oppimiskokemukset ja motivaatio</legend>
+                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="msql-motivaatio-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="msql-motivaatio-form-tmc-tunnus" name="msql-motivaatio-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <p class="help-block">Seuraavilla kysymyksillä kartoitetaan opiskelukokemuksiasi ja motivaatiotasi tällä kurssilla. Tässä kyselyssä ei ole oikeita tai vääriä vastauksia, vastaa niin tarkasti kuin pystyt. Käytä seuraavaa skaalaa vastausten antamiseen. Jos olet sitä mieltä, että väite pätee sinuun erittäin hyvin, valitse 7; jos olet sitä mieltä, että väite ei päde sinuun lainkaan, valitse 1. Jos väite on enemmän tai vähemmän totta kohdallasi, valitse sinua parhaiten kuvaava arvo lukujen 1 ja 7 väliltä.</p>
+
+		<p>&nbsp;</p>
+
+                <div class="row" id="msql-motivaatio-skaala">
+                    <div class="col-md-3">Väite ei päde minuun lainkaan.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Väite pätee minuun erittäin hyvin.</div>
+                </div>
+		<p>&nbsp;</p>
+
+                <div id="msql-motivaatio">
 
 
+                </div>
+
+                <input type="hidden" id="msql-motivaatio-form-started-entering" name="msql-motivaatio-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="msql-motivaatio-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="msql-motivaatio-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <h2>Ohjelmoinnin perusteiden kertausta</h2>
+    
+    <p>Tässä luvussa kerrataan pikaisesti muutamia aiempina viikkoina tutuksi tulleita asioita. Ruostunutta ohjelmointitaitoa voi verestää myös <a href="http://www.cs.helsinki.fi/group/java/s12/ohpe/materiaali-ohpekertaus.html">täältä</a> löytyvän tehtäväsarjan avulla.</p>
 
     <h3>Ohjelma, käskyt ja muuttujat</h3>
 
