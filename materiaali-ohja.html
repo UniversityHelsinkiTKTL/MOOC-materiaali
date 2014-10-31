@@ -3126,6 +3126,82 @@ Valitse toiminto:
   <div class="viikkoraja-mooc" id="Viikko 8" deadline="avautuu kun 85 % viikosta 7 tehty" data-first-chapter-index="38" data-first-exercise-index="116" data-first-week-index="8"  data-first-chapter-index-mooc="39" data-first-exercise-index-mooc="116" data-first-week-index-mooc="8" tekija="Arto Vihavainen, Matti Luukkainen">
 
 
+
+<div class="panel-group" id="2mslqtoimintatavat">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#2mslqtoimintatavat" href="#2mslqtoimintatavat2">
+      <div class="panel-heading">
+	<h4 id="mslq-toimintatavat-form-legend">Kysely: Opiskeluun liittyvät toimintatavat</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="2mslqtoimintatavat2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="mslq-toimintatavat-form-ohja">
+            <fieldset>
+                <legend id="mslq-toimintatavat-form-ohja-legend">Tutkimus: Opiskeluun liittyvät toimintatavat</legend>
+                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="mslq-toimintatavat-form-ohja-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="mslq-toimintatavat-form-ohja-tmc-tunnus" name="mslq-toimintatavat-form-ohja-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <p class="help-block">Seuraavilla kysymyksillä kartoitetaan opiskeluun liittyviä toimintatapojasi. Tässä kyselyssä ei ole oikeita tai vääriä vastauksia, vastaa niin tarkasti kuin pystyt. Käytä alla määriteltyä skaalaa vastausten antamiseen. Jos olet sitä mieltä, että väite pätee sinuun erittäin hyvin, valitse 7; jos olet sitä mieltä, että väite ei päde sinuun lainkaan, valitse 1. Jos väite on enemmän tai vähemmän totta kohdallasi, valitse sinua parhaiten kuvaava arvo lukujen 1 ja 7 väliltä.</p>
+
+		<p>&nbsp;</p>
+
+                <div class="row" id="msql-toimintatavat-skaala">
+                    <div class="col-md-3">Väite ei päde minuun lainkaan.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Väite pätee minuun erittäin hyvin.</div>
+                </div>
+		<p>&nbsp;</p>
+
+                <div id="msql-toimintatavat">
+
+
+                </div>
+
+                <input type="hidden" id="mslq-toimintatavat-form-ohja-started-entering" name="mslq-toimintatavat-form-ohja-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="mslq-toimintatavat-form-ohja-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="mslq-toimintatavat-form-ohja-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <p>Kuten kurssilla ohjelmoinnin perusteet, myös kurssilla ohjelmoinnin jatkokurssi on selitystehtäviä. Ajattele tehtäviä niin, että harjoittelet kertomaan kurssiin liittyvistä asioista kaverillesi. Käytä kursseilta tutuksi tullutta termistöä -- kertaa myös aiempaa materiaalia tarvittaessa. Kukin selitystehtävä on kahden tehtäväpisteen arvoinen.</p>
+
+    <div class="self-explanation" data-key="q-lentokoneolio"></div>
+
+
     <h2 id="object">Object</h2>
 
     <p>Kurssilla on jo useampaan otteeseen käytetty metodia <code>public String toString()</code> olion merkkijonoesityksen muodostamiseen esim. tulostuskomennon yhteydessä. Emme ole saaneet selvyyttä <em>miksi</em> Java osaa käyttää kyseistä metodia. Olemattoman metodin kutsuminenhan tuottaa normaalisti virheen. Tutkitaan seuraavaa luokkaa <code>Kirja</code>, jolla ei ole metodia <code>public String toString()</code>, ja ohjelmaa joka yrittää tulostaa <code>Kirja</code>-luokasta luodun olion <code>System.out.println()</code>-komennolla.</p>
@@ -3421,6 +3497,7 @@ if (!kirjat.contains(olioKirja)) {
     System.out.println("Oliokirjaa ei löytynyt.");
 }
   </pre>
+
 
   <h3>Metodi hashCode</h3>
 
@@ -4794,6 +4871,9 @@ public class Kauppa {
       <p><em>Vapise, verkkokauppa.com!</em></p>
     </div>
   </div>
+
+  <div class="self-explanation" data-key="q-mikaihmeenlist"></div>
+
 
   <h2>Geneerisyys</h2>
 
