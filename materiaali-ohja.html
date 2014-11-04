@@ -9096,11 +9096,11 @@ VOITIT
 Luokka <code><a href="http://docs.oracle.com/javase/6/docs/api/java/io/FileWriter.html">FileWriter</a></code> tarjoaa toiminnallisuuden tiedostoon kirjoittamiseen. Luokan <code>FileWriter</code> konstruktorille annetaan parametrina kohdetiedoston sijaintia kuvaava merkkijono.</p>
 
 <pre class="sh_java">
-        FileWriter kirjoittaja = new FileWriter("tiedosto.txt");
-        kirjoittaja.write("Hei tiedosto!\n"); // rivinvaihto tulee myös kirjoittaa tiedostoon!
-        kirjoittaja.write("Lisää tekstiä\n");
-        kirjoittaja.write("Ja vielä lisää");
-        kirjoittaja.close(); // sulkemiskutsu sulkee tiedoston ja varmistaa että kirjoitettu teksti menee tiedostoon
+FileWriter kirjoittaja = new FileWriter("tiedosto.txt");
+kirjoittaja.write("Hei tiedosto!\n"); // rivinvaihto tulee myös kirjoittaa tiedostoon!
+kirjoittaja.write("Lisää tekstiä\n");
+kirjoittaja.write("Ja vielä lisää");
+kirjoittaja.close(); // sulkemiskutsu sulkee tiedoston ja varmistaa että kirjoitettu teksti menee tiedostoon
 </pre>
 
     <p>Esimerkissä kirjoitetaan tiedostoon "tiedosto.txt" merkkijono "Hei tiedosto!", jota seuraa rivinvaihto, ja vielä hieman lisää tekstiä. Huomaa että tiedostoon kirjoitettaessa metodi <code>write</code> ei lisää rivinvaihtoja, vaan ne tulee lisätä itse.</p>
@@ -9118,18 +9118,18 @@ public class Tallentaja {
 }
 </pre>
 
-<p>Yllä olevassa <code>kirjoitaTiedostoon</code>-metodissa luodaan ensin <code>FileWriter</code>-olio, joka kirjoittaa parametrina annetussa sijainnissa sijaitsevaan tiedostoon <code>tiedostonNimi</code>. Tämän jälkeen kirjoitetaan tiedostoon <code>write</code>-metodilla. Konstruktorin ja <code>write</code>-metodin mahdollisesti heittämä poikkeus tulee käsitellä joko <code>try-catch</code>-lohkolla tai siirtämällä poikkeuksen käsittelyvastuuta eteenpäin. Metodissa <code>kirjoitaTiedostoon</code> käsittelyvastuu on siirretty eteenpäin.</p>
+    <p>Yllä olevassa <code>kirjoitaTiedostoon</code>-metodissa luodaan ensin <code>FileWriter</code>-olio, joka kirjoittaa parametrina annetussa sijainnissa sijaitsevaan tiedostoon <code>tiedostonNimi</code>. Tämän jälkeen kirjoitetaan tiedostoon <code>write</code>-metodilla. Konstruktorin ja <code>write</code>-metodin mahdollisesti heittämä poikkeus tulee käsitellä joko <code>try-catch</code>-lohkolla tai siirtämällä poikkeuksen käsittelyvastuuta eteenpäin. Metodissa <code>kirjoitaTiedostoon</code> käsittelyvastuu on siirretty eteenpäin.</p>
 
     <p>Luodaan <code>main</code>-metodi jossa kutsutaan <code>Tallentaja</code>-olion <code>kirjoitaTiedostoon</code>-metodia. Poikkeusta ei ole pakko käsitellä <code>main</code>-metodissakaan, vaan se voi ilmoittaa heittävänsä mahdollisesti poikkeuksen määrittelyllä <code>throws Exception</code>.</p>
 
 <pre class="sh_java">
-    public static void main(String[] args) throws Exception {
-        Tallentaja tallentaja = new Tallentaja();
-        tallentaja.kirjoitaTiedostoon("paivakirja.txt", "Rakas päiväkirja, tänään oli kiva päivä.");
-    }
+public static void main(String[] args) throws Exception {
+    Tallentaja tallentaja = new Tallentaja();
+    tallentaja.kirjoitaTiedostoon("paivakirja.txt", "Rakas päiväkirja, tänään oli kiva päivä.");
+}
 </pre>
 
-    <p>Yllä olevaa metodia kutsuttaessa luodaan tiedosto "paivakirja.txt" johon kirjoitetaan teksti "Rakas päiväkirja, tänään oli kiva päivä.". Jos tiedosto on jo olemassa, pyyhkiytyy vanhan tiedoston sisältö uutta kirjoittaessa. Metodilla <code>append()</code> voidaan lisätä olemassaolevan tiedoston perään tekstiä, jolloin olemassaolevaa  tekstiä ei poisteta. Lisätään <code>Tallentaja</code>-luokalle metodi <code>lisaaTiedostoon()</code>, joka lisää parametrina annetun tekstin tiedoston loppuun.</p>
+    <p>Yllä olevaa metodia kutsuttaessa luodaan tiedosto "paivakirja.txt" johon kirjoitetaan teksti "Rakas päiväkirja, tänään oli kiva päivä.". Jos tiedosto on jo olemassa, pyyhkiytyy vanhan tiedoston sisältö uutta kirjoittaessa. <code>FileWriter</code>-luokan avulla voidaan lisätä olemassaolevan tiedoston perään tekstiä antamalla sen konstruktorille ylimääräinen parametri <code>boolean append</code>, jolloin olemassaolevaa tekstiä ei poisteta. Lisätään <code>Tallentaja</code>-luokalle metodi <code>lisaaTiedostoon()</code>, joka lisää parametrina annetun tekstin tiedoston loppuun.</p>
 
 <pre class="sh_java">
 public class Tallentaja {
@@ -9140,8 +9140,8 @@ public class Tallentaja {
     }
 
     public void lisaaTiedostoon(String tiedostonNimi, String teksti) throws Exception {
-        FileWriter kirjoittaja = new FileWriter(tiedostonNimi);
-        kirjoittaja.append(teksti);
+        FileWriter kirjoittaja = new FileWriter(tiedostonNimi, true);
+        kirjoittaja.write(teksti);
         kirjoittaja.close();
     }
 }
