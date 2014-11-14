@@ -7800,14 +7800,92 @@ komento: <font color="red">x</font>
 </section>
 
 
-<section class="viikkoraja" id="4" >
+<section class="viikkoraja" id="4">
   <div class="viikkoraja"></div>
   <div class="viikkoraja-mooc" id="Viikko 10" deadline="avautuu kun 85 % viikosta 9 tehty" data-first-chapter-index="48" data-first-exercise-index="134" data-first-week-index="10"  data-first-chapter-index-mooc="48" data-first-exercise-index-mooc="134" data-first-week-index-mooc="10" tekija="Arto Vihavainen, Matti Luukkainen">
+
+
+
+<div class="panel-group" id="2saucier-ohja">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#2saucier-ohja" href="#2saucier-ohja2">
+      <div class="panel-heading">
+	<h4 id="saucier-ohja-form-legend">Kysely: Kuvaavat adjektiivit ja persoonallisuus</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="2saucier-ohja2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="saucier-ohja-form">
+            <fieldset>
+                <legend id="saucier-ohja-form-legend">Tutkimus: Kuvaavat adjektiivit ja persoonallisuus</legend>
+                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="saucier-ohja-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="saucier-ohja-form-tmc-tunnus" name="saucier-ohja-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+
+                <p class="help-block">Seuraavassa luetellaan joukko adjektiiveja, joilla ihmisillä on tapana kuvata itseään. Käy läpi adjektiivit ja kerro, miten hyvin ne kuvaavat Sinua. Jos olet sitä mieltä, että adjektiivi pätee sinuun erittäin hyvin, valitse 7; jos olet sitä mieltä, että adjektiivi ei päde sinuun lainkaan, valitse 1. Jos adjektiivi on enemmän tai vähemmän totta kohdallasi, valitse sinua parhaiten kuvaava arvo lukujen 1 ja 7 väliltä.</p>
+
+		<p>&nbsp;</p>
+
+
+                <div class="row" id="saucier-ohja-skaala">
+                    <div class="col-md-3">Adjektiivi ei kuvaa minua lainkaan.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Adjektiivi kuvaa minua erittäin hyvin.</div>
+                </div>
+
+		<p>&nbsp;</p>
+
+                <div id="saucier-ohja">
+
+
+                </div>
+
+                <input type="hidden" id="saucier-ohja-form-started-entering" name="saucier-ohja-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="saucier-ohja-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="saucier-ohja-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <div class="tehtavat">
     <div class="tehtava">
 <h3>Rengastustoimisto</h3>
 
-<p><span class="ahy">Ohjelmoinnin perusteiden kuudennella</span><span class="amooc">Kuudennella</span>  viikolla teimme lintubongaria varten havaintotietokannan. Jatkamme hieman samasta teemasta, tällä kertaa teemme rengastustoimistolle ohjelman, jonka avulla pidetään kirjaa tiettynä vuotena rengastettujen lintujen havaintopaikoista.</p>
+<p>Ohjelmoinnin perusteissa teimme lintubongaria varten havaintotietokannan. Jatkamme hieman samasta teemasta, tällä kertaa teemme rengastustoimistolle ohjelman, jonka avulla pidetään kirjaa tiettynä vuotena rengastettujen lintujen havaintopaikoista.</p>
 
 <big>
 <p><strong>HUOM:</strong> saatat törmätä tehtävässä kummalliseen virheilmoitukseen <code>NoSuchMethodError: Lintu.equals(LLintu;)Z</code>, jos näin käy suorita <strong>clean and build</strong> eli paina harja ja vasara -kuvakkeesta.</p>
@@ -8573,6 +8651,9 @@ public class Piste3D extends Piste {
 
 <p>Metodikutsun aikaansaama toimintoketju siis on varsin monivaiheinen. Periaate on kuitenkin selkeä: suoritettavan metodin määrittelyä etsitään ensin olion todellisen tyypin määrittelystä ja jos sitä ei löydy edetään yliluokkaan. Ja jos yliluokastakaan ei löydy metodin toteutusta siirrytään etsimään yliluokan yliluokasta jne...</p>
 
+          <div class="self-explanation" data-key="q-polymorfismi"></div>
+
+
           <h3>Milloin perintää tulee käyttää?</h3>
 
           <p>Perintä on väline käsitehierarkioiden rakentamiseen ja erikoistamiseen; aliluokka on aina yliluokan erikoistapaus. Jos luotava luokka on olemassaolevan luokan erikoistapaus, voidaan uusi luokka luoda perimällä olemassaoleva luokka. Esimerkiksi auton osiin liittyvässä esimerkissä moottori <em>on</em> osa, mutta moottoriin liittyy lisätoiminnallisuutta mitä jokaisella osalla ei ole.</p>
@@ -8674,6 +8755,9 @@ public class Tilaus {
     <p>Yllä oleva luokka <code>Tilaus</code> on nyt parempi. Metodi <code>postitusosoite</code> käyttää <em>asiakas</em>-viitettä postitusosoitteen saamiseen sen sijaan että luokka perisi luokan <code>Asiakas</code>. Tämä helpottaa sekä ohjelman ylläpitoa, että sen konkreettista toiminnallisuutta. </p>
 
     <p>Nyt asiakkaan muuttaessa tarvitsee muuttaa vain asiakkaan tietoja, tilauksiin ei tarvitse tehdä muutoksia.</p>
+
+    <div class="self-explanation" data-key="q-perinnasta"></div>
+
 
 <div class="tehtavat">
 <div class="tehtava">
