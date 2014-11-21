@@ -9974,6 +9974,78 @@ VOITIT
   <div class="viikkoraja"></div>
   <div class="viikkoraja-mooc" id="Viikko 11" deadline="avautuu kun 85 % viikosta 10 tehty" data-first-chapter-index="50" data-first-exercise-index="141" data-first-week-index="11"  data-first-chapter-index-mooc="50" data-first-exercise-index-mooc="141" data-first-week-index-mooc="11" tekija="Arto Vihavainen, Matti Luukkainen">
 
+<div class="panel-group" id="2pystyvyys-ohja">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#2pystyvyys-ohja" href="#2pystyvyys-ohja2">
+      <div class="panel-heading">
+	<h4 id="pystyvyys-ohja-form-legend">Kysely: Minäpystyvyys</h4>
+      </div>
+    </a>
+    <div class="panel-collapse collapse" id="2pystyvyys-ohja2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+          <form class="form-horizontal" id="pystyvyys-ohja-form">
+            <fieldset>
+                <legend id="pystyvyys-ohja-form-legend">Tutkimus</legend>
+                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="pystyvyys-ohja-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="pystyvyys-ohja-form-tmc-tunnus" name="pystyvyys-ohja-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+
+                <p class="help-block">Tällä kyselyllä kartoitetaan erilaisissa tilanteissa selviytymistä. Jos olet sitä mieltä, että väite pätee sinuun erittäin hyvin, valitse 7; jos olet sitä mieltä, että väite ei päde sinuun lainkaan, valitse 1. Jos väite on enemmän tai vähemmän totta kohdallasi, valitse sinua parhaiten kuvaava arvo lukujen 1 ja 7 väliltä.</p>
+
+                <p>&nbsp;</p>
+
+
+                <div class="row" id="pystyvyys-ohja-skaala">
+                    <div class="col-md-3">Väite ei päde minuun lainkaan.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Väite pätee minuun erittäin hyvin.</div>
+                </div>
+
+		<p>&nbsp;</p>
+
+                <div id="pystyvyys-ohja">
+
+
+                </div>
+
+                <input type="hidden" id="pystyvyys-ohja-form-started-entering" name="pystyvyys-ohja-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="pystyvyys-ohja-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="pystyvyys-ohja-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <h2 id="tiedostostoon_kirjoitus">Tiedostoon kirjoittaminen</h3>
 
 <p>Luvussa <span class="ahy">15</span><span class="amooc">49</span> opimme, että tekstitiedostojen lukeminen onnistuu <code>Scanner</code>- ja <code>File</code>-luokkien avulla.
@@ -10245,6 +10317,8 @@ sanakirja.tallenna();
 <p>Eli käytön aluksi ladataan sanakirja tiedostosta ja lopussa tallennetaan se takaisin tiedostoon jotta sanakirjaan tehdyt muutokset pysyvät voimassa seuraavallekin käynnistyskerralle.</p>
 </div>
 </div>
+
+  <div class="self-explanation" data-key="q-api-filewriter-printwriter"></div>
 
 
 <h2 id="kalit">Käyttöliittymät</h2>
@@ -10766,6 +10840,11 @@ public class Kayttoliittyma implements Runnable {
         container.add(lisaaNappi);
     }
 </pre>
+
+
+
+  <div class="self-explanation" data-key="q-rajapintojen-hyodyt"></div>
+
 
 <div class="tehtavat">
     <div class="tehtava">
