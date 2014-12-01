@@ -6922,16 +6922,16 @@ Kortilla on rahaa 150.0 euroa
 public class Paaohjelma {
     public static void main(String[] args) {
         Maksukortti kortti = new Maksukortti(10);
-        System.out.println(kortti);
+        System.out.println("Pekka: " + kortti);
         kortti.lataaRahaa(-15);
-        System.out.println(kortti);
+        System.out.println("Pekka: " + kortti);
     }
 }
 </pre>
     <p>Ohjelman tulisi tuottaa seuraava tulostus:</p>
 <pre>
-Kortilla on rahaa 10.0 euroa
-Kortilla on rahaa 10.0 euroa
+Pekka: Kortilla on rahaa 10.0 euroa
+Pekka: Kortilla on rahaa 10.0 euroa
 </pre>
     <h4 class="req">Monta korttia</h4>
     <p>Tee pääohjelma, joka sisältää seuraavan tapahtumasarjan:</p>
