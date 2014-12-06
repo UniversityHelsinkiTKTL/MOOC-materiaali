@@ -13388,7 +13388,1158 @@ true
 <section class="viikkoraja" id="7" >
   <div class="viikkoraja"></div>
   <div class="viikkoraja-mooc" id="Viikko 14" deadline="avautuu kun 85 % viikosta 11 tehty" data-first-chapter-index="53" data-first-exercise-index="151" data-first-week-index="12"  data-first-chapter-index-mooc="53" data-first-exercise-index-mooc="151" data-first-week-index-mooc="12" tekija="Arto Vihavainen, Matti Luukkainen">
-    
+
+<div class="panel-group" id="2yhdesta-sataan">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#2yhdesta-sataan" href="#2yhdesta-sataan2">
+      <div class="panel-heading">
+	<h4 id="ohja-kysely-osaaminen-form-legend">Kysely: Oma arvio osaamisesta</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="2yhdesta-sataan2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="ohja-kysely-osaaminen-form">
+            <fieldset>
+                <legend id="ohja-kysely-osaaminen-form-legend">Tutkimus: Oma arvio osaamisesta</legend>
+                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="ohja-kysely-osaaminen-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="ohja-kysely-osaaminen-form-tmc-tunnus" name="ohja-kysely-osaaminen-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+
+                <p class="help-block">Tässä kyselyssä tutkitaan suhtautumistasi omaan kurssin aikana karttuneeseen osaamiseesi.</p>
+
+		<p>&nbsp;</p>
+
+                <div id="yhdesta-sataan">
+		  
+		  <p>Arvioi skaalalla yhdestä sataan tämän kurssin sisällön hallitsemistasi. Kirjoita arvo <code>1</code> jos olet sitä mieltä että et hallitse kurssin sisältöä lainkaan, arvo <code>50</code> jos olet sitä mieltä että hallitset noin puolet kurssin sisällöstä, ja arvo <code>100</code>, jos olet sitä mieltä että hallitset tähänastisen kurssin sisällön täysin.</p> 
+
+		  <input class="form-control" name="hallinta" style="width:200px"></input>
+		  
+		  <p>&nbsp;</p>
+
+		  <p>Kirjoita allaolevaan laatikkoon ne kurssin asiat, mitkä ovat olleet mielestäsi helpoimpia:</p>
+                  
+		  <textarea class="form-control" rows="4" name="helpoimmat"></textarea>
+
+		  <p>&nbsp;</p>
+
+		  <p>Kirjoita allaolevaan laatikkoon ne kurssin asiat, mitkä ovat olleet mielestäsi vaikeimpia:</p>
+                  
+		  <textarea class="form-control" rows="4" name="vaikeimmat"></textarea>
+
+		  <p>&nbsp;</p>
+
+		  <p>Tällä hetkellä, minkä arvosanan (0-5) uskot saavasi kurssista:</p>
+
+		  <input class="form-control" name="arvosana" style="width:200px"></input>
+
+                </div>
+
+                <input type="hidden" id="ohja-kysely-osaaminen-form-started-entering" name="ohja-kysely-osaaminen-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="ohja-kysely-osaaminen-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="ohja-kysely-osaaminen-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="panel-group" id="2tehtavanvaihto-flap">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#2tehtavanvaihto-flap" href="#2tehtavanvaihto-flap2">
+      <div class="panel-heading">
+	<h4 id="ts-form-flap-legend">Kysely / tutkimus: Tehtävänvaihtotesti</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="2tehtavanvaihto-flap2">
+      <div class="panel-body">
+	
+	<p>Tässä osallistut taas kokeellisessa psykologiassa käytettyyn <a href="http://en.wikipedia.org/wiki/Task_switching_(psychology)" target="_blank">tehtävänvaihtotestiin</a>, missä tutkitaan aivojen mukautumista kahden tai useamman samanaikaisen tehtävän suorittamiseen. Tavoitteenamme on selvittää vaikuttaako ohjelmointi aivojen kykyyn hoitaa useampia samanaikaisia tehtäviä. Tämä testi tehdään useamman kerran kurssin aikana.</p>
+
+	<p>Käytät tässä taas peliä, missä on tavoitteena ohjata pelihahmoa porttien läpi sekä tunnistaa kuvioita.</p>
+
+	<p>Käytössä olevassa pelissä on seitsemän osaa. Ensimmäisessä osassa harjoitellaan porttien läpäisemistä, toisessa osassa porttien läpäisemisen lisäksi pidetään hahmoa tietyllä tasolla, ja kolmannessa osassa reagoidaan lisäksi kuvioihin. Neljännessä osassa, edellisten lisäksi, tunnistetaan värejä; viidennessä osassa tunnistetaan kuvioita, kuudennessa osassa tunnistetaan molempia ja harjoitellaan oikeaa testausta varten. Seitsemännessä osassa pelataan peliä.</p>
+	
+	<p>Testin tulokset tulevat vain tutkimuskäyttöön, eikä mahdollisesti raportoitavista tuloksista voida yksilöidä yksittäisiä vastaajia. Pelin pelaaminen kestää noin 10 minuuttia.</p>
+	
+	<p>Kun olet vastannut allaolevaan lomakkeeseen, testi aukeaa uudessa ikkunassa. Varmistathan, että selaimesi sallii uusien ikkunoiden avaamisen tästä ohjelmointimateriaalista!</p>
+	
+	<div>
+	  <form class="form-horizontal" id="ts-form-flap"> 
+            <legend>Tehtävänvaihtotestin taustakysely</legend>
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="ts-tmc-tunnus">TMC-tunnus</label>  
+              <div class="col-md-4">
+		<input id="ts-tmc-tunnus" name="ts-tmc-tunnus" type="text" class="form-control input-md">
+              </div>
+            </div>
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="vireystila">Oloni on tällä hetkellä</label>
+              <div class="col-md-4">
+		<div class="radio">
+                  <label for="vireystila-1">
+                    <input type="radio" name="vireystila" id="vireystila-1" value="vireystila-1">
+                    1 erittäin vireä
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-2">
+                    <input type="radio" name="vireystila" id="vireystila-2" value="vireystila-2">
+                    2 hyvin vireä
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-3">
+                    <input type="radio" name="vireystila" id="vireystila-3" value="vireystila-3">
+                    3 vireä
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-4">
+                    <input type="radio" name="vireystila" id="vireystila-4" value="vireystila-4">
+                    4 melko vireä
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-5">
+                    <input type="radio" name="vireystila" id="vireystila-5" value="vireystila-5">
+                    5 ei vireä eikä unelias
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-6">
+                    <input type="radio" name="vireystila" id="vireystila-6" value="vireystila-6">
+                    6 hieman unelias
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-7">
+                    <input type="radio" name="vireystila" id="vireystila-7" value="vireystila-7">
+                    7 unelias, mutta ei vaikeuksia pysyä hereillä
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-8">
+                    <input type="radio" name="vireystila" id="vireystila-8" value="vireystila-8">
+                    8 unelias, hereillä pysyminen vaatii jonkin verran ponnistelua
+                  </label>
+		</div>
+		<div class="radio">
+                  <label for="vireystila-9">
+                    <input type="radio" name="vireystila" id="vireystila-9" value="vireystila-9">
+                    9 erittäin unelias, nukahtamaisillaan;<br/>hereillä pysyminen vaatii paljon ponnistelua
+                  </label>
+		</div>
+              </div>
+            </div>
+	    
+	    
+            <div class="form-group">
+              <label class="col-md-8 control-label">Arvioi EDELLISEN TUNNIN aikana kokemaasi kuormitustasoa seuraavalla asteikoilla:</label>
+            </div>
+	    
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="mental">Henkinen vaatimustaso</label>
+              <label class="col-md-4">
+		<input id="mental" name="mental" type="range" min="0" max="100" value="50" step="1"><span class="pull-left">vähän</span><span class="pull-right">paljon</span>
+              </label>
+            </div>
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="physical">Fyysinen vaatimustaso</label>
+              <label class="col-md-4">
+		<input id="physical" name="physical" type="range" min="0" max="100" value="50" step="1"><span class="pull-left">vähän</span><span class="pull-right">paljon</span>
+              </label>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-md-4 control-label">Miten kuvailisit edellisen tunnin tempoa<br/> - hidas, sopiva vai nopeatempoinen?<br></label>
+            </div>
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="temporal">Ajallinen vaatimustaso</label>
+              <label class="col-md-4">
+		<input id="temporal" name="temporal" type="range" min="0" max="100" value="50" step="1"><span class="pull-left">hidas</span><span class="pull-right">nopea</span>
+              </label>
+            </div>
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="performance">Kuinka hyvin mielestäsi suoriuduit?</label>
+              <label class="col-md-4">
+		<input id="performance" name="performance" type="range" min="0" max="100" value="50" step="1"><span class="pull-left">hyvin</span><span class="pull-right">heikosti</span>
+              </label>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="effort">Kuinka paljon sinun täytyi ponnistella henkisesti ja fyysisesti?</label>
+              <label class="col-md-4">
+		<input id="effort" name="effort" type="range" min="0" max="100" value="50" step="1"><span class="pull-left">vähän</span><span class="pull-right">paljon</span>
+              </label>
+            </div>
+	    
+            <input type="hidden" name="week" value="week5"/>
+            <input type="hidden" id="ts-form-flap-started-entering" name="ts-form-flap-started-entering" value="">
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="frustration">Kuinka turhautunut olit?</label>
+              <label class="col-md-4">
+		<input id="frustration" name="frustration" type="range" min="0" max="100" value="50" step="1"><span class="pull-left">vähän</span><span class="pull-right">paljon</span>
+              </label>
+            </div>
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label">&nbsp;</label>
+              <div class="form-inline col-md-8">
+		<strong><label id="ts-form-flap-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+              </div>
+            </div>
+	    
+            <div class="form-group">
+              <label class="col-md-4 control-label">&nbsp;</label>
+              <div class="form-inline col-md-8">
+		<button type="button" id="ts-form-flap-submit" class="btn btn-primary">Lähetä lomake ja käynnistä tutkimus</button>
+              </div>
+            </div>
+	  </form>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <h2>Kertausta</h2>
+
+    <p>Kurssin viimeinen viikko koostuu kurssilla nähtyjen teemojen kertauksesta. Osa tehtävistä on jo tuttuja, osa uusia. Kaikista tehtävistä on tehty sellaisia, että että niissä ei ole testejä -- olet täysin vastuussa ohjelman toiminnasta. Palauttamalla tehtävän takaat että se toimii toivotusti, jolloin saat siitä myös pisteet. Kertaa tehtäviä tehdessäsi materiaalia -- kannattaa varata tehtäville myös ajatteluaikaa.</p> 
+
+    <p>Voit myös paikata yhden tekemättä jääneen viikon tekemällä TMC:ssä kurssin <code>XXX-ohja-kertaus</code> kokeeseen mennessä. Kertauskurssiin liittyvä materiaali löytyy <a href="https://www.cs.helsinki.fi/group/java/k13/materiaali-ohjakertaus.html" target="_blank">tämän linkin takaa</a>.</p>
+
+
+    <div class="tehtavat">
+      
+      <div class="tehtava">
+
+	<h3>Sademäärät</h3>
+
+	<p>Huom! Vaikka olisit tehnyt tehtävän jo kurssilla Ohjelmoinnin perusteet, tee se silti. Tee tehtävä nykyisen tietämyksesi perusteella, äläkä katso mahdollista aiempaa vastaustasi.</p>
+	
+	<p>Tässä ohjelmassa harjoitellaan toistolauseiden, lukujen käyttöä sekä käyttäjän antaman syötteen lukemista. Tehtäväpohjassa ei ole automaattisia testejä, joten testeistä ei ole apua ohjelman rakentamisessa. <strong>Tehtävä on kolmen tehtäväpisteen arvoinen</strong>.</p>
+	
+	<p><strong>Toteuta ohjelma sademäärien keskiarvon laskemiseen</strong></p>
+	
+	<p>Ohjelman tulee lukea käyttäjän antamasta syötteestä sademääriä kunnes käyttäjä syöttää luvun 999999. Sademääriksi kelpaavat nollat ja positiiviset luvut. Käyttäjän syöttämät negatiiviset luvut ohitetaan.</p>
+	
+	<p>Kun käyttäjä syöttää luvun 999999, ohjelman ohjelman tulee tulostaa käyttäjän syöttämien sademäärien keskiarvo tai ilmoitus siitä, ettei keskiarvoa voida laskea (koska ei syötetty yhtään sademäärää).</p>
+	
+	<p>Käytä Javan Scanner-luokkaa tai muuta sinulle tuttua tapaa käyttäjän syötteen lukemiseen. Voit olettaa, että syötteet ovat desimaalilukuja (<code>double</code>).</p>
+	
+	<p>Sinun ei tarvitse huomioida mitenkään tapauksia, joissa käyttäjä antaa tyhjän syötteen tai syöttää luvuiksi kelpaamaattomia merkkejä.</p>
+	
+	<p>Luku 999999 annetaan vain lopettamisen merkiksi, eikä sitä tule ottaa mukaan keskiarvoon.</p>
+	
+	<p>Alla on annettu esimerkki siitä, miltä ohjelman käyttäminen voi näyttää. Käyttäjän antamat syötteet on merkitty punaisella värillä. Sinun EI ole pakko tuottaa pilkulleen samanlaista tulostetta, mutta ohjelman on laskettava oikea tulos syötteen perusteella tähän tapaan.</p>
+
+<pre>
+Anna sademääriä, lopeta luvulla 999999.
+Anna sademäärä:
+<font color="red">1000</font>
+Anna sademäärä:
+<font color="red">2000.50</font>
+Anna sademäärä:
+<font color="red">0</font>
+Anna sademäärä:
+<font color="red">-100</font>
+Anna sademäärä:
+<font color="red">999.50</font>
+Anna sademäärä:
+<font color="red">999999</font>
+Sademäärien keskiarvo on 1000.0.
+</pre>
+
+	<p>Tässä taas keskiarvoa ei saada määritettyä:</p>
+
+<pre>
+Anna sademääriä, lopeta luvulla 999999.
+Anna sademäärä:
+<font color="red">999999</font>
+Yhtään sademäärää ei syötetty.
+</pre>
+
+	<p>Jos käy niin, että jäät täysin "jumiin" etkä saa tehtyä ratkaisua, palauta kuitenkin paras yrityksesi ja laita ohjelmasi alkuun mukaan kommentti, jossa kerrot, mikä tehtävässä tuntui vaikealta tai muuten aiheutti "jumituksen". Saat tällöin myös tehtävästä pisteet.</p>
+
+      </div>
+
+
+      <div class="tehtava">
+	<h3>Lintubongarin tietokanta</h3>
+
+
+	<p>Huom! Kuten edellisessä tehtässä; vaikka olisit tehnyt tehtävän jo kurssilla Ohjelmoinnin perusteet, tee se silti. Tee tehtävä nykyisen tietämyksesi perusteella, äläkä katso mahdollista aiempaa vastaustasi.</p>
+	
+
+	<p><b>Tehtävä vastaa kolmea yksiosaista tehtävää. </b></p>
+
+
+	<p>Tässä tehtävässä suunnittelet ja toteutat tietokannan lintubongareille. Tietokanta sisältää lintuja, joista jokaisella on nimi (merkkijono) ja latinankielinen nimi (merkkijono). Tämän lisäksi tietokanta laskee kunkin linnun havaintokertoja.</p>
+	<p>Ohjelmasi täytyy toteuttaa seuraavat komennot:</p>
+	<ul>
+	  <li><code>Lisaa</code> - lisää linnun (<b>huom:</b> komennon nimessä ei ä-kirjainta!)</li>
+	  <li><code>Havainto</code> - lisää havainnon</li>
+	  <li><code>Tilasto</code> - tulostaa kaikki linnut</li>
+	  <li><code>Nayta</code> - tulostaa yhden linnun (<b>huom:</b> komennon nimessä ei ä-kirjainta!)</li>
+	  <li><code>Lopeta</code> - lopettaa ohjelman</li>
+	</ul>
+	<p>Lisäksi virheelliset syötteet pitää käsitellä. (Ks. <code>Simo</code> alla). Tässä vielä esimerkki ohjelman toiminnasta:</p>
+
+<pre>
+? <font color="red">Lisaa</font>
+Nimi: <font color="red">Korppi</font>
+Latinankielinen nimi: <font color="red">Corvus Corvus</font>
+? <font color="red">Lisaa</font>
+Nimi: <font color="red">Haukka</font>
+Latinankielinen nimi: <font color="red">Dorkus Dorkus</font>
+? <font color="red">Havainto</font>
+Mikä havaittu? <font color="red">Haukka</font>
+? <font color="red">Havainto</font>
+Mikä havaittu? <font color="red">Simo</font>
+Ei ole lintu!
+? <font color="red">Havainto</font>
+Mikä havaittu? <font color="red">Haukka</font>
+? <font color="red">Tilasto</font>
+Haukka (Dorkus Dorkus): 2 havaintoa
+Korppi (Corvus Corvus): 0 havaintoa
+? <font color="red">Nayta</font>
+Mikä? <font color="red">Haukka</font>
+Haukka (Dorkus Dorkus): 2 havaintoa
+? <font color="red">Lopeta</font>
+</pre>
+
+	<p><strong>Huom!</strong> Ohjelmasi rakenne on täysin vapaa. Testaamme vain että <code>Paaohjelma</code> luokan <code>main</code>-metodi toimii kuten tässä on kuvailtu. Yritä miettiä millaisista luokista ja olioista olisi hyötyä ohjelman toteuttamisessa!</p>
+      </div>
+
+
+      <div class="tehtava">
+
+	<h3>Pomo ja koodarit</h3>
+
+	<p>Tässä tehtaväsarjassa hahmotellaan pomon ja siihen liittyvien alaisten tallentamista. Vaikka tehtäväsarjassa on tarkemmat ohjeet tehtävän tekemiseen, toimivat testit kuten edellisissä tapauksissa -- niitä ei ole. Tehtävä on yhteensä viiden tehtäväpisteen arvoinen.</p>
+
+	<h4>Rajapinta tai abstrakti luokka työntekijä</h4>
+
+	<p>Tee rajapinta tai abstrakti luokka <code>Tyontekija</code>, joka vaatii seuraavien metodien olemassaolon:</p>
+
+	<ul>
+	  <li><code>public String haeNimi()</code><br />
+	    Metodi palauttaa työntekijän nimen.</li>
+	  <li><code>public int haePalkka()</code><br />
+	    Metodi palauttaa työntekijän palkan.</li>
+	  <li><code>public int laskeAlaiset()</code><br />
+	    Metodi palauttaa, kuinka monta alaista työntekijällä on.</li>
+	  <li><code>public void lisaaKieli(String kieli)</code><br />
+	    Metodi lisää ohjelmointikielen työntekijän hallitsemiin kieliin.</li>
+	  <li><code>public boolean onkoTaitoa(String kieli)</code><br />
+	    Metodi palauttaa arvon <code>true</code>, jos työntekijä tai työntekijän alainen hallitsee annettua ohjelmointikieltä, ja muuten arvon <code>false</code>.</li>
+	</ul>
+
+
+	<h4>Koodari</h4>
+
+	<p>Tee luokka <code>Koodari</code>, joka toteuttaa rajapinnan <code>Tyontekija</code>. Luokan konstruktorissa annetaan nimi ja palkka. Koodarin alaisten määrä on aina 0.</p>
+
+	<p>Testaa koodarin toimintaa ainakin seuraavalla koodilla:</p>
+
+<pre class="sh_java">
+Koodari aapeli = new Koodari(&quot;Aapeli&quot;, 1000);
+System.out.println(aapeli.haeNimi());
+System.out.println(aapeli.haePalkka());
+System.out.println(aapeli.laskeAlaiset());
+aapeli.lisaaKieli(&quot;Java&quot;);
+aapeli.lisaaKieli(&quot;Python&quot;);
+System.out.println(aapeli.onkoTaitoa(&quot;Cobol&quot;));
+System.out.println(aapeli.onkoTaitoa(&quot;Java&quot;));
+System.out.println(aapeli.onkoTaitoa(&quot;Python&quot;));
+</pre>
+
+	<p>Koodin tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+1000
+0
+false
+true
+true
+</pre>
+
+      <h4>Pomo</h4>
+
+	<p>Tee luokka <code>Pomo</code>, joka toteuttaa rajapinnan <code>Tyontekija</code>. Lisää luokkaan vielä seuraava metodi:</p>
+
+	<ul>
+	  <li><code>public void lisaaAlainen(Tyontekija alainen)</code><br />
+	    Metodi lisää pomolle uuden alaisen.</li>
+	</ul>
+
+	<p>Testaa pomon toimintaa ainakin seuraavalla koodilla:</p>
+
+<pre class="sh_java">
+Koodari aapeli = new Koodari(&quot;Aapeli&quot;, 1000);
+Pomo maija = new Pomo(&quot;Maija&quot;, 2000);
+maija.lisaaAlainen(aapeli);
+System.out.println(maija.haeNimi());
+System.out.println(maija.haePalkka());
+</pre>
+
+	<p>Koodin tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+Maija
+2000
+</pre>
+
+         <h4>Pomon alaiset</h4>
+
+	<p>Muuta luokan <code>Pomo</code> metodi <code>laskeAlaiset</code> toimivaksi. Sen tulee laskea pomon alaisten, alaisten alaisten jne. määrät.</p>
+
+	<p>Testaa luokan toteutusta ainakin seuraavalla koodilla:</p>
+
+<pre class="sh_java">
+Koodari jenna = new Koodari(&quot;Jenna&quot;, 1000);
+Koodari kalle = new Koodari(&quot;Kalle&quot;, 1000);
+Koodari pauli = new Koodari(&quot;Pauli&quot;, 1000);
+Koodari arto = new Koodari(&quot;Arto&quot;, 1000);
+Koodari matti = new Koodari(&quot;Matti&quot;, 1000);
+
+Pomo jarmo = new Pomo(&quot;Jarmo&quot;, 2000);
+jarmo.lisaaAlainen(jenna);
+jarmo.lisaaAlainen(kalle);
+jarmo.lisaaAlainen(pauli);
+
+Pomo pekka = new Pomo(&quot;Pekka&quot;, 2000);
+pekka.lisaaAlainen(arto);
+pekka.lisaaAlainen(matti);
+
+Pomo maija = new Pomo(&quot;Maija&quot;, 4000);
+maija.lisaaAlainen(jarmo);
+maija.lisaaAlainen(pekka);
+
+System.out.println(kalle.laskeAlaiset());
+System.out.println(jarmo.laskeAlaiset());
+System.out.println(pekka.laskeAlaiset());
+System.out.println(maija.laskeAlaiset());
+</pre>
+
+	<p>Koodi vastaa seuraavaa tilannetta:</p>
+
+<pre>           
+             Maija
+            /     \
+      Jarmo         Pekka
+     /  |  \         / \
+Jenna Kalle Pauli Arto Matti
+</pre>
+
+	<p>Koodin tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+3
+2
+7
+</pre>
+
+        <h4>Ohjelmointikielet</h4>
+
+	<p>Muuta luokan <code>Pomo</code> metodi <code>onkoTaitoa</code> toimivaksi. Sen tulee palauttaa <code>true</code>, jos pomo itse tai joku pomon alaisista, alaisten alaisista jne. hallitsee annettua ohjelmointikieltä.</p>
+
+	<p>Testaa toteutustasi seuraavalla koodilla:</p>
+
+<pre class="sh_java">
+Koodari jenna = new Koodari(&quot;Jenna&quot;, 1000);
+Koodari kalle = new Koodari(&quot;Kalle&quot;, 1000);
+Koodari pauli = new Koodari(&quot;Pauli&quot;, 1000);
+Koodari arto = new Koodari(&quot;Arto&quot;, 1000);
+Koodari matti = new Koodari(&quot;Matti&quot;, 1000);
+
+Pomo jarmo = new Pomo(&quot;Jarmo&quot;, 2000);
+jarmo.lisaaAlainen(jenna);
+jarmo.lisaaAlainen(kalle);
+jarmo.lisaaAlainen(pauli);
+
+Pomo pekka = new Pomo(&quot;Pekka&quot;, 2000);
+pekka.lisaaAlainen(arto);
+pekka.lisaaAlainen(matti);
+
+Pomo maija = new Pomo(&quot;Maija&quot;, 4000);
+maija.lisaaAlainen(jarmo);
+maija.lisaaAlainen(pekka);
+
+jenna.lisaaKieli(&quot;Fortran&quot;);
+kalle.lisaaKieli(&quot;Prolog&quot;);
+kalle.lisaaKieli(&quot;C&quot;);
+pauli.lisaaKieli(&quot;Haskell&quot;);
+arto.lisaaKieli(&quot;Java&quot;);
+matti.lisaaKieli(&quot;Java&quot;);
+jarmo.lisaaKieli(&quot;Ruby&quot;);
+pekka.lisaaKieli(&quot;C++&quot;);
+maija.lisaaKieli(&quot;Cobol&quot;);
+
+System.out.println(maija.onkoTaitoa(&quot;C&quot;));
+System.out.println(maija.onkoTaitoa(&quot;Cobol&quot;));
+System.out.println(maija.onkoTaitoa(&quot;Python&quot;));
+System.out.println(maija.onkoTaitoa(&quot;Java&quot;));
+</pre>
+
+<p>Koodin tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+true
+true
+false
+true
+</pre>
+</div>
+
+
+      <div class="tehtava">
+	<h3>Sanatutkimus</h3>
+
+	<p>Tehtäväpohjassa tulevassa tiedostossa sanalista.txt on Kotimaisten kielten keskuksen julkaisema nykysuomen sanalista, joka sisältää yli 90000 suomen kielen sanaa. Tässä tehtäväsarjassa tutkitaan listassa olevia sanoja ohjelman avulla.</p>
+
+	<p>Palauta tehtävä kun olet saanut kaikki osat valmiiksi. Tehtävä on yhteensä yhdeksän tehtäväpisteen arvoinen.</p>
+
+	<p>Tehtävissä voi ilmetä merkistöongelmia testejä suorittaessa. Tällöin tulee Scanneria luotaessa määrittää merkistöksi &quot;UTF-8&quot; (esim. Scanner lukija = new Scanner(new File("tiedosto"), "UTF-8")).</p>
+
+	<h4>Tiedoston lukeminen</h4>
+
+	<p>Tee luokka <code>Sanatutkimus</code>, joka sisältää listan sanoja. <code>ArrayList</code> sopii hyvin tietorakenteeksi. Lisää luokkaan seuraavat metodit:</p>
+
+	<ul>
+	  <li><code>public Sanatutkimus(String tiedostonimi)</code><br />
+	    Konstruktori saa parametrina nimen tiedostoon, joka sisältää aineiston sanat. Jokaisella tiedoston rivillä on yksi sana. Sanat kannattanee lukea tiedostosta listaan konstruktorissa.</li>
+	  <li><code>public int sanojenMaara()</code><br />
+	    Metodi palauttaa aineiston sanojen määrän.</li>
+	  <li><code>public boolean onkoSanaa(String sana)</code><br />
+	    Metodi palauttaa <code>true</code>, jos sana on listassa, ja muuten <code>false</code>.</li>
+	</ul>
+	
+
+	<p>Testaa luokkaasi seuraavalla koodilla:</p>
+
+<pre class="sh_java">
+Sanatutkimus tutkimus = new Sanatutkimus(&quot;sanalista.txt&quot;);
+System.out.println(tutkimus.sanojenMaara());
+System.out.println(tutkimus.onkoSanaa(&quot;porkkana&quot;));
+System.out.println(tutkimus.onkoSanaa(&quot;porkana&quot;));
+</pre>
+
+<pre>
+91591
+true
+false
+</pre>
+
+         <h4>Sanojen pituudet</h4>
+
+	<p>Lisää luokkaan <code>Sanatutkimus</code> seuraava metodi:</p>
+
+	<ul>
+	  <li><code>public int laskeSanat(int pituus)</code><br />
+	    Metodi palauttaa annetun pituisten sanojen yhteismäärän aineistossa.</li>
+	</ul>
+
+
+	<p>Seuraava koodi testaa luokkaasi:</p>
+
+<pre class="sh_java">
+Sanatutkimus tutkimus = new Sanatutkimus(&quot;sanalista.txt&quot;);
+System.out.println(tutkimus.laskeSanat(8));
+System.out.println(tutkimus.laskeSanat(15));
+</pre>
+
+	<p>Koodin tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+8412
+4411
+</pre>
+
+        <h4>Pituustilasto</h4>
+	  
+	<p>Lisää luokkaan <code>Sanatutkimus</code> seuraava metodi:</p>
+
+	<ul>
+	  <li><code>public void pituustilasto()</code><br />
+	    Metodi tulostaa esimerkin mukaisesti tilaston eri pituisten sanojen määristä.</li>
+	</ul>
+
+	<p>Seuraava koodi testaa luokkaasi:</p>
+
+<pre class="sh_java">
+Sanatutkimus tutkimus = new Sanatutkimus(&quot;sanalista.txt&quot;);
+tutkimus.pituustilasto();
+</pre>
+
+
+	<p>Koodin tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+1 0
+2 25
+3 191
+....
+28 4
+29 1
+30 1
+</pre>
+
+        <h4>Kirjainmäärät</h4>
+
+	<p>Lisää luokkaan <code>Sanatutkimus</code> seuraava metodi:</p>
+
+	<ul>
+	  <li><code>public int laskeKirjaimet(char kirjain)</code><br />
+	    Metodi palauttaa, kuinka monta kertaa annettu kirjain esiintyy yhteensä aineiston sanoissa.</li>
+	</ul>
+
+	
+	<p>Seuraava koodi testaa luokkaasi:</p>
+
+<pre class="sh_java">
+Sanatutkimus tutkimus = new Sanatutkimus(&quot;sanalista.txt&quot;);
+System.out.println(tutkimus.laskeKirjaimet(&#39;a&#39;));
+System.out.println(tutkimus.laskeKirjaimet(&#39;h&#39;));
+</pre>
+
+	<p>Koodin tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+112291
+21396
+</pre>
+
+        <h4>Kirjaintilasto</h4>
+
+	<p>Lisää luokkaan <code>Sanatutkimus</code> seuraava metodi:</p>
+	
+	<ul>
+	  <li><code>public void kirjaintilasto()</code><br />
+	    Metodi tulostaa esimerkin mukaisesti tilaston kirjainmääristä, kun kirjaimet ovat abcdefghijklmnopqrstuvwxyzåäö.</li>
+	</ul>
+
+
+	<p>Seuraava koodi testaa luokkaasi:</p>
+
+<pre class="sh_java">
+Sanatutkimus tutkimus = new Sanatutkimus(&quot;sanalista.txt&quot;);
+tutkimus.kirjaintilasto();
+</pre>
+
+<p>Koodin tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+a 112291
+b 1496
+c 213
+...
+å 1
+ä 31475
+ö 7250
+</pre>
+
+        <h4>Sanan pituudella haku</h4>
+
+	<p>Lisää luokkaan <code>Sanatutkimus</code> seuraava metodi:</p>
+
+	<ul>
+	  <li><code>public ArrayList&lt;String&gt; haePituudella(int pituus)</code><br />
+	    Metodi palauttaa listan sanoista, joiden pituus on parametrina annettu pituus.</li>
+	</ul>
+	
+
+	<p>Seuraava koodi testaa luokkaasi:</p>
+
+<pre class="sh_java">
+Sanatutkimus tutkimus = new Sanatutkimus(&quot;sanalista.txt&quot;);
+System.out.println(tutkimus.haePituudella(28));
+</pre>
+
+	<p>Koodin tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+[muotokuvanpaljastustilaisuus, sotasyyllisyysoikeudenkäynti, tietojenkäsittelyjärjestelmä, ylioppilastutkintolautakunta]
+</pre>
+
+        <h4>Sanan osalla haku</h4>
+
+	<p>Lisää luokkaan <code>Sanatutkimus</code> seuraava metodi:</p>
+
+	<ul>
+	  <li><code>public ArrayList&lt;String&gt; haeOsalla(String osa)</code><br />
+	    Metodi palauttaa listan sanoista, joiden osana on parametrina annettu merkkijono.</li>
+	</ul>
+	
+	
+	<p>Seuraava koodi testaa luokkaasi:</p>
+
+<pre class="sh_java">
+Sanatutkimus tutkimus = new Sanatutkimus(&quot;sanalista.txt&quot;);
+System.out.println(tutkimus.haeOsalla(&quot;koodi&quot;));
+</pre>
+
+	<p>Koodin tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+[juovakoodi, konekoodinen, koodi, koodijärjestelmä, koodinlukija, koodinumero, koodisanoma, koodittaa, koodittaja, kooditus, lyhytvalintakoodi, tavarakoodi, viivakoodi]
+</pre>
+
+        <h4>Palindromit</h4>
+
+	<p>Lisää luokkaan <code>Sanatutkimus</code> seuraava metodi:</p>
+
+	<ul>
+	  <li><code>public ArrayList&lt;String&gt; haePalindromit()</code><br />
+	    Metodi palauttaa listan sanoista, jotka ovat palindromeja. Palindromi tarkoittaa, että sana on sama alusta loppuun ja lopusta alkuun luettuna.</li>
+	</ul>
+	
+
+	<p>Seuraava koodi testaa luokkaasi:</p>
+
+<pre class="sh_java">
+Sanatutkimus tutkimus = new Sanatutkimus(&quot;sanalista.txt&quot;);
+System.out.println(tutkimus.haePalindromit());
+</pre>
+
+	<p>Koodin tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+[ajaja, akka, ala, alla, autioitua, ele, enne, hah, heh, huh, hyh, häh, imaami, isi, niin, oho, olo, opo, otto, piip, pop, sadas, sammas, sees, siis, sus, suuruus, sylys, sytytys, syys, syöppöys, tuut, tyyt, tööt, utu, yty, älä, ämmä, ässä]
+</pre>
+
+        <h4>Ristikkoapuri</h4>
+
+	<p>Lisää luokkaan <code>Sanatutkimus</code> seuraava metodi:</p>
+
+	<ul>
+	  <li><code>public ArrayList&lt;String&gt; haeRistikkoon(String pohja)</code><br />
+	    Metodi palauttaa listan sanoista, jotka täsmäävät annettuun pohjaan. Pohjassa kirjaimet tarkoittavat sanan kirjaimia ja merkki ? tarkoittaa mitä tahansa kirjainta.</li>
+	</ul>
+	
+
+	<p>Ideana on, että ristikon ratkaisija voi hyödyntää metodia, kun osassa ruuduista on kirjain mutta joistakin ruuduista puuttuu vielä.</p>
+	
+	<p>Seuraava koodi testaa luokkaasi:</p>
+
+<pre class="sh_java">
+Sanatutkimus tutkimus = new Sanatutkimus(&quot;sanalista.txt&quot;);
+System.out.println(tutkimus.haeRistikkoon(&quot;s???is??s&quot;));
+</pre>
+
+	<p>Koodin tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+[saalistus, salaisuus, sateisuus, satoisuus, sekaisuus, sijaisuus, siloisuus, sisäistys, sopuisuus, sotaisuus, suloisuus, suoristus, syntisyys, säröisyys, sävyisyys]
+</pre>
+
+
+
+      </div>
+</div>
+
+
+    <div class="self-explanation" data-key="q-koodin-parantelu"></div>
+
+
+<div class="tehtavat">
+      <div class="tehtava">
+	<h3>Tikkupeli</h3>
+
+	<p>Tehtävänanto on mukaelma osoitteessa <a href="http://nifty.stanford.edu/2014/laaksonen-vihavainen-game-of-sticks/handout.html" target="_blank">http://nifty.stanford.edu/2014/laaksonen-vihavainen-game-of-sticks/handout.html</a> olevasta tehtävästä.</p>
+
+	<p>Tässä tehtävässä toteutetaan peli, jossa pelaajat nostavat vuorotellen tikkuja pinosta. Viimeisen tikun nostaja häviää pelin. Kun tämä toiminnallisuus on valmis, toteutetaan tekoäly, joka oppii pelistä.</p>
+
+	<p>Tehtävä on yhteensä kahdeksan tehtäväpisteen arvoinen.</p>
+
+	<p><strong>Kuvaus</strong></p>
+
+	<p>Tikkupelissä kaksi pelaajaa ovat pöydän äärellä. Pöydällä on kasa tikkuja, ja kumpikin pelaaja ottaa vuorollaan kasasta yhdestä kolmeen tikkua. Se, joka ottaa viimeisen tikun, häviää pelin.</p>
+
+	<p>Allaoleva on esimerkki pelistä.</p>
+
+	<ul>
+	  <li>Pöydällä on aluksi 20 tikkua.</li>
+	  <li>Aapeli ottaa 3 tikkua, jolloin tikkuja on 17.</li>
+	  <li>Maija ottaa 2 tikkua, jolloin tikkuja on 15.</li>
+	  <li>Aapeli ottaa 1 tikun, jolloin tikkuja on 14.</li>
+	  <li>Maija ottaa 3 tikkua, jolloin tikkuja on 11.</li>
+	  <li>Aapeli ottaa 2 tikkua, jolloin tikkuja on 9.</li>
+	  <li>Maija ottaa 2 tikkua, jolloin tikkuja on 7.</li>
+	  <li>Aapeli ottaa 3 tikkua, jolloin tikkuja on 4.</li>
+	  <li>Maija ottaa 1 tikun, jolloin tikkuja on 3.</li>
+	  <li>Aapeli ottaa 2 tikkua, jolloin tikkuja on 1.</li>
+	  <li>Maija joutuu ottamaan viimeisen tikun ja häviää.</li>
+	</ul>
+
+	<p>Tehtävä kannattaa tehdä useammassa pienemmässä osassa:</p>
+
+	<ol>
+	  <li>Kaksinpelin toteuttaminen.</li>
+	  <li>"Tyhmän" tekoälyn, jota vastaan voi pelata, toteuttaminen.</li>
+	  <li>Oppivan tekoälyn toteuttaminen.</li>
+	</ol>
+
+	
+	<h4>Kaksinpelin toteuttaminen</h4>
+
+	<p>Toteuta peli, missä kaksi pelaajaa voivat pelata tikkupeliä. Allaolevat esimerkit antavat kuvan siitä, miten pelin tulee toimia.</p>
+  
+	<p><strong>Esimerkki 1</strong></p>
+
+<pre>
+Tervetuloa tikkupeliin!
+Kuinka monta tikkua pöydällä on aluksi (10-100)? 10
+
+Pöydällä on 10 tikkua.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 3
+
+Pöydällä on 7 tikkua.
+Pelaaja 2: Kuinka monta tikkua nostat (1-3)? 3
+
+Pöydällä on 4 tikkua.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 3
+
+Pöydällä on 1 tikku. 
+Pelaaja 2: Kuinka monta tikkua nostat (1-3)? 1
+Pelaaja 2, hävisit :/
+</pre>
+
+    <p><strong>Esimerkki 2</strong></p>
+
+<pre>
+Tervetuloa tikkupeliin!
+Kuinka monta tikkua pöydällä on aluksi (10-100)? 500
+Valitse luku väliltä 10-100
+Kuinka monta tikkua pöydällä on aluksi (10-100)? 3
+Valitse luku väliltä 10-100
+Kuinka monta tikkua pöydällä on aluksi (10-100)? 50
+
+Pöydällä on 50 tikkua.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 3
+
+Pöydällä on 47 tikkua.
+Pelaaja 2: Kuinka monta tikkua nostat (1-3)? 55
+Valitse luku väliltä 1-3
+Pelaaja 2: Kuinka monta tikkua nostat (1-3)? -2
+Valitse luku väliltä 1-3
+Pelaaja 2: Kuinka monta tikkua nostat (1-3)? 3
+
+Pöydällä on 44 tikkua.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 3
+
+Pöydällä on 41 tikkua.
+Pelaaja 2: Kuinka monta tikkua nostat (1-3)? 1
+
+Pöydällä on 40 tikkua.
+...
+
+Pöydällä on 2 tikkua.
+Pelaaja 2: Kuinka monta tikkua nostat (1-3)? 1
+
+Pöydällä on 1 tikku. 
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 1
+Pelaaja 1, hävisit :/
+</pre>
+
+	<p>Toteuta yllä kuvattu peli. Pohdi jo tässä vaiheessa pelaajan toiminnallisuutta ja sitä, että miten pelaajan voisi vaihtaa tekoälyyn.</p>
+
+
+	<h4>Tekoälyn toteuttaminen</h4>
+
+	<p>Kavereita vastaan pelaaminen on varsin jees, mutta tietojenkäsittelytieteen kurssilla on pakko fiilistellä :). Aivan kuten opiskellessa oppii siistejä asioita, myös tietokoneet voivat oppia siistejä asioita. Luodaan tekoäly tikkupelille.</p>
+
+	<p>Yksi tapa tekoälyn tekemiseen olisi tehdä matemaattinen analyysi ongelmasta, ja luoda tekoäly analyysin pohjalta. Tehdään kuitenkin toisin, ja luodaan tekoäly joka osaa oppia pelistä sitä pelaamalla.</p>
+
+
+	<ul>
+	  <li>Tekoälyllä on joukko hattuja, yksi jokaiselle pöydällä olevien tikkujen lukumäärälle. Pelin alkutilassa jokaisessa hatussa on kolme palloa; pallo, jossa on numero 1, pallo, jossa on numero 2, ja pallo, jossa on numero 3.</li>
+	  <li>Aina kun on tekoälyn vuoro pelata, se katsoo pöydällä olevien tikkujen lukumäärän ja valitsee lukumäärää vastaavan hatun. Tekoäly ottaa satunnaisen pallon kyseisestä hatusta. Kun tekoäly nostaa pallon, se katsoo pallossa olevan numeron, ottaa numeron kertoman määrän tikkuja pöydältä, ja asettaa pallon hatun viereen odottamaan.</li>
+	  <li>Jos tekoäly voittaa pelin, se asettaa jokaiseen hattuun kaksi kappaletta hatun vieressä olevaa palloa. Jos tekoäly häviää, se heittää pallon pois -- olettaen kuitenkin että kyseisiä palloja jää kuitenkin vähintään yksi hattuun.</li>
+	  <li>Kun tekoäly pelaa useamman pelin, edellistä toistaen se hiljalleen lisää voittavia palloja (eli valintoja) hattuihin -- tämä taas tarkoittaa sitä, että se nostaa paremmalla todennäköisyydellä hyvän pallon (ja tekee hyvän valinnan).</li>
+    </ul>
+
+    <p><strong>Esimerkki</strong></p>
+
+    <p>Alla olevassa esimerkissä on 10 tikkua pelin alussa. Hattujen sisällöt tekoälylle ovat seuraavat:</p>
+
+    <div>
+      <table>
+        <tr>
+          <td>hattu</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>pallot</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+        </tr>
+      </table>
+    </div>
+
+    <p>Peli voi edetä esimerkiksi seuraavasti:</p>
+
+    <ol>
+      <li>Pelaaja valitsee 3 tikkua, 7 tikkua jäljellä.</li>
+      <li>Tekoäly valitsee satunnaisen pallon hatusta numero 7. Palloksi tulee 2. Tekoäly valitsee pöydältä 2 tikkua, ja asettaa pallon hatun viereen; pöydällä on 5 tikkua jäljellä.</li>
+      <li>Pelaaja valitsee yhden tikun, 4 tikkua jäljellä.</li>
+      <li>Tekoäly valitsee satunnaisen pallon hatusta numero 4. Palloksi tulee 3. Tekoäly valitsee pöydältä 3 tikkua, ja asettaa pallon hatun viereen; pöydällä on 1 tikku jäljellä.</li>
+      <li>Pelaajan täytyy ottaa viimeinen tikku, jolloin pelaaja häviää.</li>
+    </ol>
+
+    <p>Pelin jälkeen tekoälyn tilanne on seuraava:</p>
+
+    <div>
+      <table>
+        <tr>
+          <td>hattu</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>sisältö</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+        </tr>
+        <tr>
+          <td>hattujen vieressä</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>3</td>
+          <td></td>
+          <td></td>
+          <td>2</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+
+    <p>Koska tekoäly voittaa pelin, se asettaa kaksi kappaletta vieressä olevia palloja takaisin hattuihin. Pelitilanne on tämän jälkeen seuraava:</p>
+
+    <div>
+      <table>
+        <tr>
+          <td>hattu</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>sisältö</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+          <td>1,2,3</td>
+        </tr>
+      </table>
+    </div>
+
+    <p>Nyt tekoäly ottaisi todennäköisemmin kolme tikkua joa pöydällä on 4 tikkua, ja kaksi tikkua jos pöydällä on 7 tikkua.</p>
+
+    <p>Toteuta yllä kuvattu tekoäly ja muokkaa peliä siten, että pelaaja voi valita pelaako se tekoälyä vai normaalia pelaajaa vastaan.</p>
+
+    <p>Alla oleva esimerkki näyttää miltä pelin pitäisi näyttää kun olet saanut tämän osan valmiiksi.</p>
+
+<pre>
+Tervetuloa tikkupeliin!
+Kuinka monta tikkua pöydällä on aluksi (10-100)? 10
+Vaihtoehdot:
+ Pelaa kaveria vastaan (1)
+ Pelaa tietokonetta vastaan (2)
+Minkä vaihtoehdon valitset (1-2)? 2
+
+Pöydällä on 10 tikkua.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 3
+
+Pöydällä on 7 tikkua.
+Tekoäly valitsee 2
+
+Pöydällä on 5 tikkua.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 3
+
+Pöydällä on 2 tikkua.
+Tekoäly valitsee 2
+Tekoäly häviää
+
+Pelaa uudestaan (1 = kyllä, 0 = ei)? 1
+
+Pöydällä on 10 tikkua.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 3
+
+Pöydällä on 7 tikkua.
+Tekoäly valitsee 1
+
+Pöydällä on 6 tikkua.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 1
+
+Pöydällä on 5 tikkua.
+Tekoäly valitsee 3
+
+Pöydällä on 2 tikkua.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 1
+
+Pöydällä on 1 tikku.
+Tekoäly valitsee 2
+Tekoäly häviää
+
+Pelaa uudestaan (1 = kyllä, 0 = ei)? 0
+Kiitos!
+</pre>
+
+
+    <h4>Tekoäly vastaan tekoäly</h2>
+
+    <p>Teit edellisessä osassa tekoälyn, joka oppii pelatessaan. Sitä vastaan pelatessa huomataan kuitenkin, että oppiminen vaatii paljon työtä, ja tekoäly joutuu tekemään huomattavasti toistoja ennenkuin se pärjää. Tässä osassa muokkaat ohjelmaa siten, että pelaaja voi päättää pelaako se tekoälyä vastaan joka ei ole harjoitellut, vai kouliintunutta tekoälyä vastaan.</p>
+
+    <p>Jotta tekoälyä voisi koulia, joudut toteuttamaan ohjelman, missä tekoäly ensin pelaa toista tekoälyä vastaan. Tämän jälkeen tekoäly pääsee pelaamaan pelaajaa vastaan. Tekoälyn harjoittelu vaatii hetken -- ehkä noin satatuhatta peliä -- kannattanee kokeilla erilaisia harjoitusjaksojen pituuksia.</p>
+
+    <p>Allaoleva esimerkki näyttää miten peli toimii kun tekoäly voi harjoitella myös toista tekoälyä vastaan.</p>
+
+<pre>
+Tervetuloa tikkupeliin!
+Kuinka monta tikkua pöydällä on aluksi (10-100)? 10
+Vaihtoehdot:
+ Pelaa kaveria vastaan (1)
+ Pelaa tietokonetta vastaan (2)
+ Pelaa kouliintunutta tietokonetta vastaan (2)
+Minkä vaihtoehdon valitset (1-3)? 3
+
+Treenataan...
+
+Pöydällä on 10 tikkua.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 3
+
+Pöydällä on 7 tikkua.
+Tekoäly valitsee 3
+
+Pöydällä on 4 tikkua.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 2
+
+Pöydällä on 2 tikkua.
+Tekoäly valitsee 1
+
+Pöydällä on 1 tikku.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 1
+Pelaaja 1, hävisit :/
+
+Pelaa uudestaan (1 = kyllä, 0 = ei)? 1
+
+Pöydällä on 10 tikkua.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 2
+
+Pöydällä on 8 tikkua.
+Tekoäly valitsee 1
+
+Pöydällä on 7 tikkua.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 2
+
+Pöydällä on 5 tikkua.
+Tekoäly valitsee 1
+
+Pöydällä on 4 tikkua.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 1
+
+Pöydällä on 3 tikkua.
+Tekoäly valitsee 2
+
+Pöydällä on 1 tikku.
+Pelaaja 1: Kuinka monta tikkua nostat (1-3)? 1
+Pelaaja 1, hävisit :/
+
+Pelaa uudestaan (1 = kyllä, 0 = ei)? 0
+Kiitos!
+</pre>
+
+<p>Kun olet saanut ohjelman toimimaan, haasta kaverisi pelaamaan tekoälyn vastaan! :) -- eräs mallivastaus tehtävään julkaistaan vasta kurssin jälkeen..</p>
+	
+      </div>
+    </div>  
+
+    <div class="self-explanation" data-key="q-vanhaOhjanKoeOsa2"></div>
+
     
     <h2>Kurssipalaute</h2>
     
