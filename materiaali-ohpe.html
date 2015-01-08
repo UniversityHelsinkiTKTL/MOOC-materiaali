@@ -1277,12 +1277,15 @@ System.out.println(tulos);
 
 
   <h2 id="syötteen_lukeminen">Käyttäjän syötteen lukeminen</h2>
+
   <p>Tähän asti ohjelmamme ovat olleet kovin yksipuolisia. Seuraavaksi luemme <em>syötettä</em> käyttäjältä.  Käytämme syötteen lukemiseen erityistä <em>Scanner</em>-apuvälinettä.</p>
+
   <p>Lisätään <em>Scanner</em> valmiiseen pääohjelmarunkoomme.  Älä hätäile vaikka pääohjelmarunko saattaa näyttää vaikeaselkoiselta, jatkamme koodausta kuten ennenkin, eli kohtaan mikä on merkattu kommentilla <em>ohjelmakoodi</em>.</p>
+
 <pre class="sh_java">
 import java.util.Scanner;
 
-public class OhjelmaRunko {
+public class Esimerkki {
 
     public static void main(String[] args) {
         Scanner lukija = new Scanner(System.in);
@@ -1535,7 +1538,7 @@ if (luku &gt; 10) {
 
 
 
-  <p>Ehto <code>(luku > 10)</code> on joko totta tai epätotta riippuen muuttujan <code>luku</code> arvosta. Yllä oleva ehtolause luetaan "jos muuttujan luku arvo on suurempi kuin 10".</p>
+  <p>Ehto <code>(luku > 10)</code> on joko totta tai epätotta riippuen muuttujan <code>luku</code> arvosta. Yllä oleva valintakäsky luetaan "jos muuttujan luku arvo on suurempi kuin 10".</p>
 
   <p>Ehdon jälkeen avaava aaltosulku <code>{</code> aloittaa <em>lohkon</em> (block), jonka sisältö suoritetaan jos <em>ehto</em> on tosi. <em>Lohko</em> loppuu sulkevaan aaltosulkuun <code>}</code>. Lohko voi olla kuinka pitkä tahansa.</p>
 
@@ -1554,13 +1557,13 @@ if (luku &gt; 10) {
     <tr>
       <td>
         <pre class="sh_java">
-if (luku >= 10) {
+if (luku &gt; 10) {
 luku = 9;
 }</pre>
       </td>
       <td>
         <pre class="sh_java">
-if (luku >= 10) {
+if (luku &gt; 10) {
     luku = 9;
 }</pre>
       </td>
@@ -1571,19 +1574,25 @@ if (luku >= 10) {
 
   <div class="tehtavat">
     <div class="tehtava">
-      <h3 class="req">TODO: Suurempi kuin sata</h3>
+      <h3 class="req">TODO: Ylinopeussakko</h3>
 
-      <p>Tee ohjelma, joka kysyy käyttäjältä kokonaisluvun ja tulostaa merkkijonon "Hip!" jos luku on suurempi kuin 100.</p>
+      <p>Tee ohjelma, joka kysyy käyttäjältä kokonaisluvun ja tulostaa merkkijonon "Ylinopeussakko!" jos luku on suurempi kuin 120.</p>
 
 <pre>
-Anna luku: <font color="red">15</font>
+Kerro nopeus: <font color="red">15</font>
 </pre>
 
 <pre>
-Anna luku: <font color="red">101</font>
+Kerro nopeus: <font color="red">135</font>
 
-Hip!
+Ylinopeussakko!
 </pre>
+
+
+      <p><b>Onhan koodisi varmasti sisennetty oikein?</b></p>
+
+      <p>Kertaa materiaalista kohta <a class="ahy" href="#sisennys">Koodin sisennys</a>. Kokeile mitä tapahtuu NetBeansissa kun painat yhtä aikaa shift, alt ja f! Sama toiminnallisuus eli automaattinen sisennys saadaan aikaan valitsemalla yläpalkista Source ja sen alta Format.</p>
+
     </div>
   </div>
 
@@ -1602,11 +1611,11 @@ Hip!
 <pre class="sh_java">
 int luku = 55;
 
-if ( luku != 0 ) {
+if (luku != 0) {
     System.out.println("Luku oli erisuuri kuin 0");
 }
 
-if ( luku &gt;= 1000 ) {
+if (luku &gt;= 1000) {
     System.out.println("Luku oli vähintään 1000");
 }</pre>
 
@@ -1673,9 +1682,6 @@ Anna luku: <font color="red">-2</font>
 Luku ei ole positiivinen.
 </pre>
 
-      <p><b>Onhan koodisi varmasti sisennetty oikein?</b></p>
-
-      <p>Kertaa materiaalista kohta <a class="ahy" href="#sisennys">Koodin sisennys</a>. Kokeile mitä tapahtuu NetBeansissa kun painat yhtä aikaa shift, alt ja f! Sama toiminnallisuus eli automaattinen sisennys saadaan aikaan valitsemalla yläpalkista Source ja sen alta Format.</p>
     
     </div>
     
@@ -1773,7 +1779,7 @@ if (luku == 0) {
 Luku on suurempi kuin nolla.
 </pre>
 
-  <p>Yllä oleva esimerkki tulostaa merkkijonon "Luku on suurempi kuin nolla." vaikka myös ehto <code>luku &gt; 2</code> on totta. Vertailu siis lopetetaan ensimmäiseen ehtolauseeseen, jonka ehto on totta.</p>
+  <p>Yllä oleva esimerkki tulostaa merkkijonon "Luku on suurempi kuin nolla." vaikka myös ehto <code>luku &gt; 2</code> on totta. Vertailu siis lopetetaan ensimmäiseen valintakäskyyn, jonka ehto on totta.</p>
 
   <div class="tehtavat">
     <div class="tehtava">
@@ -1831,11 +1837,11 @@ Arvosana: 5
   <p>Valinnan ehto voi olla myös monimutkaisempi, yksittäisten loogisten operaatioiden avulla koostettu ehto. Loogisia operaatioita ovat:</p>
 
   <ul>
-    <li><code>ehto1 &amp;&amp; ehto2</code> lausekkeen arvo on tosi molemmat ehtoista ovat tosia</li>
+    <li><code>ehto1 &amp;&amp; ehto2</code> lausekkeen arvo on tosi molemmat ehdoista ovat tosia</li>
     <li><code>ehto1 || ehto2</code> lausekkeen arvo on tosi jos jompi kumpi tai molemmat ehdoista tosia</li>
   </ul>
 
-  <p>Seuraavassa yhdistetään <code>&amp;&amp;</code>:lla eli ja-operaatiolla kaksi yksittäistä ehtoa, sillä halutaan tarkistaa, onko muuttujassa oleva luku suurempi kuin 4 <strong>ja</strong> pienempi kuin 11, eli siis välillä 5-10:</p>
+  <p>Seuraavassa yhdistetään <code>&amp;&amp;</code>:lla eli ja-operaatiolla kaksi yksittäistä ehtoa. Koodilla tarkistetaan, onko muuttujassa oleva luku suurempi kuin 4 <strong>ja</strong> pienempi kuin 11, eli siis välillä 5-10:</p>
 
 <pre class="sh_java">
 System.out.println("Onkohan luku väliltä 5-10: ");
@@ -1921,7 +1927,7 @@ boolean onkoSuurempi = eka &gt; toka;
 
   <p>Yllä olevassa esimerkissä totuusarvomuuttuja <code>onkoSuurempi</code> sisältää nyt totuusarvon <em>false</em>.</p>
 
-  <p>Totuusarvomuuttujaa voidaan käyttää ehtolauseessa ehtona.</p>
+  <p>Totuusarvomuuttujaa voidaan käyttää valintakäskyssä ehtona.</p>
 
   <pre class="sh_java">
 int eka = 1;
@@ -1944,12 +1950,42 @@ if (onkoPienempi) {
 
   <h3>Jakojäännös</h3>
 
-<p>Erikoisempana operaationa on <code>%</code>, joka on jakojäännös, eli modulo. Jakojäännös-operaation (%) avulla saadaan selville jakojäännös.  Esimerkiksi laskun <code>7 % 2</code> jakojäännös on 1.</p>
+
+  <p>Jakojäännös on hieman harvemmin käytetty operaatio, joka on kuitenkin varsin näppärä kun halutaan tarkistaa esimerkiksi luvun jaollisuutta. Jakojäännösoperaation merkki on <code>%</code>.</p>
+
 <pre class="sh_java">
 int jakojaannos = 7 % 2; 
 System.out.println(jakojaannos); // tulostaa 1
 </pre>
 
+  <p>Jos haluamme tietää onko käyttäjän syöttämä luku jaollinen neljälläsadalla, tarkastamme onko syötetyn luvun jakojäännös neljänsadan suhteen nolla.</p>
+
+
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+int luku = Integer.parseInt(lukija.nextLine());
+int jakojaannos = luku % 400;
+
+if(jakojaannos == 0) {
+    System.out.println("Luku " + luku + " on jaollinen neljälläsadalla.");
+} else {
+    System.out.println("Luku " + luku + " ei ole jaollinen neljälläsadalla.");
+}
+</pre>
+
+    <p>Koska jakojäännös on samanlainen operaatio kuin muutkin laskut, voi sen asettaa osaksi valintakäskyä.</p>
+
+
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+int luku = Integer.parseInt(lukija.nextLine());
+
+if(luku % 400 == 0) {
+    System.out.println("Luku " + luku + " on jaollinen neljälläsadalla.");
+} else {
+    System.out.println("Luku " + luku + " ei ole jaollinen neljälläsadalla.");
+}
+</pre>
 
 <div class="tehtavat">
   <div class="tehtava">
@@ -1968,19 +2004,92 @@ Luku 7 on pariton.
   </div>
 </div>
 
+  <h3>Monimutkaisemman ongelman ratkaiseminen osa kerrallaan</h3>
 
-<p>TODO: ratkaisustrategia</p>
+  <p>Tutustutaan klassiseen ohjelmointiongelmaan: 'Kirjoita ohjelma, joka kysyy käyttäjältä lukua yhden ja sadan väliltä ja tulostaa luvun. Jos luku on kolmella jaollinen, luvun sijaan tulostetaan "Fizz". Jos luku on viidellä jaollinen, luvun sijaan tulostetaan "Buzz". Jos luku on sekä kolmellä että viidellä jaollinen, luvun sijaan tulostetaan "FizzBuzz"'.</p>
 
-  <p>Lohkon sisällä voi olla mitä tahansa koodia, myös toinen valintakäsky. </p>
+  <p>Ohjelmoija lähtee ratkaisemaan tehtävää lukemalla ehdot yksi kerrallaan läpi ja toteuttamalla kullekin ehdolle oman vertailun. Tällöin ohjelman rakenne muotoutuu seuraavanlaisesta ajatusketjusta:</p>
+
+    <ol>
+      <li>Tee ohjelma, joka lukee luvun käyttäjältä ja tulostaa sen.</li>
+      <li>Jos luku on jaollinen kolmella, tulosta luvun sijaan merkkijono "Fizz".</li>
+      <li>Jos luku on jaollinen viidellä, tulosta luvun sijaan merkkijono "Buzz".</li>
+      <li>Jos luku on jaollinen kolmella ja viidellä, tulosta luvun sijan merkkijono "FizzBuzz".</li>
+    </ol>
+
+    <p>Ajatusketju muodostuu ongelmalliseksi viimeistään neljännen kohdan paikkeilla. Alla oleva koodi seurailee ylläolevaa ajatusketjua, mutta ei toimi oikein. Kokeile itse!</p>
+
+<pre class="sh_java">
+import java.util.Scanner;
+
+public class FizzBuzz {
+
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        int luku = Integer.parseInt(lukija.nextLine());
+
+        if (luku % 3 == 0) {
+            System.out.println("Fizz");
+        } else if (luku % 5 == 0) {
+            System.out.println("Buzz");
+        } else if (luku % 3 == 0 && luku % 5 == 0) {
+            System.out.println("FizzBuzz");
+        } else {
+            System.out.println(luku);
+        }
+    }
+}
+</pre>
+
+    <p>Ylläolevassa lähestymistavassa ongelmana on se, että <em>valintakäskyjen läpikäynti lopetetaan aina ensimmäiseen ehtoon, jonka arvo on totta</em>. Esimerkiksi luvulla 15 tulostetaan merkkijono "Fizz", sillä luku on kolmella jaollinen (15 % 3 == 0).</p>
+
+    <p>Yksi lähestymistapa ylläolevan ajatusketjun kehittämiseen on ensin etsiä <em>vaativin ehto</em> ja toteuttaa se. Tämän jälkeen toteutettaisiin muut ehdot. Yllä olevassa esimerkissä ehto "jos luku on jaollinen kolmella <strong>ja</strong> viidellä" vaatii kahden tapauksen toteutumista. Nyt ajatusketju olisi muotoa.</p>
+
+    <ol>
+      <li>Tee ohjelma, joka lukee luvun käyttäjältä ja tulostaa sen.</li>
+      <li>Jos luku on jaollinen kolmella ja viidellä, tulosta luvun sijan merkkijono "FizzBuzz".</li>
+      <li>Jos luku on jaollinen kolmella, tulosta luvun sijaan merkkijono "Fizz".</li>
+      <li>Jos luku on jaollinen viidellä, tulosta luvun sijaan merkkijono "Buzz".</li>
+    </ol>
+
+    <p>Nyt ongelmakin tuntuu ratkeavan.</p>
+
+<pre class="sh_java">
+import java.util.Scanner;
+
+public class FizzBuzz {
+
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        int luku = Integer.parseInt(lukija.nextLine());
+
+        if (luku % 3 == 0) {
+            System.out.println("Fizz");
+        } else if (luku % 5 == 0) {
+            System.out.println("Buzz");
+        } else if (luku % 3 == 0 && luku % 5 == 0) {
+            System.out.println("FizzBuzz");
+        } else {
+            System.out.println(luku);
+        }
+    }
+}
+</pre>
+
+  <h3>Valintakäskyistä ja lohkoista.</h3>
+
+  <p>Valintakäskyn lohkon sisällä voi olla mitä tahansa koodia, myös toinen valintakäsky.</p>
 
 <pre class="sh_java">
 int x = 45;
 int luku = 55;
 
-if ( luku &gt; 0 ) {
+if (luku &gt; 0) {
     System.out.println("Luku on positiivinen");
 
-    if ( luku>x ) {
+    if (luku &gt; x) {
         System.out.println(" ja suurempi kuin muuttujan x arvo");
         System.out.println("muuttujan x arvohan on " + x);
     }
@@ -1988,12 +2097,12 @@ if ( luku &gt; 0 ) {
 </pre>
 
 
-  <p>Monimutkaisempien ehtojen muodostamisessa voi hyödyntää sulkuja:</p>
+  <p>Monimutkaisempien tarkistusten muodostamisessa voi hyödyntää sulkuja:</p>
 
 <pre class="sh_java">
 int luku = 99;
 
-if ( (luku &gt; 0 &amp;&amp; luku &lt; 10) || luku &gt; 100 ) {
+if ((luku &gt; 0 &amp;&amp; luku &lt; 10) || luku &gt; 100) {
     System.out.println("luku oli joko yhden ja yhdeksän väliltä tai yli sata");
 } else {
     System.out.println("luku oli 0 tai pienempi tai väliltä 10-99");
@@ -2024,12 +2133,13 @@ if (luku &gt; 0 &amp;&amp; luku &lt; 10) {
 <div class="tehtavat">
 
 <div class="tehtava">
+
     <h3 class="">Karkausvuosi</h3>
-    <p>Vuosi on karkausvuosi, jos se on jaollinen 4:llä.
-      Kuitenkin jos vuosi on jaollinen 100:lla,
-      se on karkausvuosi vain silloin,
-      kun se on jaollinen myös 400:lla.</p>
-    <p>Tee ohjelma, joka tarkistaa, onko vuosi karkausvuosi.</p>
+
+    <p>Vuosi on karkausvuosi, jos se on jaollinen 4:llä. Kuitenkin jos vuosi on jaollinen 100:lla, se on karkausvuosi vain silloin, kun se on jaollinen myös 400:lla.</p>
+
+    <p>Tee ohjelma, joka lukee käyttäjältä vuosiluvun, ja tarkistaa, onko vuosi karkausvuosi.</p>
+
 <pre>
 Anna vuosi: <font color="red">2011</font>
 Vuosi ei ole karkausvuosi.
@@ -2046,6 +2156,7 @@ Vuosi ei ole karkausvuosi.
 Anna vuosi: <font color="red">2000</font>
 Vuosi on karkausvuosi.
 </pre>
+
   </div>
 </div>
 
@@ -2089,7 +2200,7 @@ String merkkijono = "piimä";
 if (!(merkkijono.equals("maito"))) {  // tosi jos ehto merkkijono.equals("maito") on epätosi
     System.out.println("ei ollut!");
 } else {
-    System.out.println("oli")
+    System.out.println("oli");
 }
 </pre>
 
@@ -2119,6 +2230,25 @@ if (!onkoPienempi) {
 
 
 <div class="tehtavat">
+
+  <div class="tehtava">
+
+    <h3 class="req">TODO: Onko totta</h3>
+
+    <p>Tee ohjelma, joka pyytää käyttäjää kirjoittamaan merkkijonon. Jos käyttäjä kirjoittaa merkkijonon "totta", tulostetaan merkkijono "Oikein meni!", muulloin tulostetaan merkkijono "Koitappa uudelleen!".</p>
+
+<pre>
+Kirjoita merkkijono: <font color="red">totta</font>
+Oikein meni!
+</pre>
+
+<pre>
+Kirjoita merkkijono: <font color="red">tottapa</font>
+Koitappa uudelleen!
+</pre>
+  
+  </div>
+
   <div class="tehtava">
     <h3 class="req">Käyttäjätunnukset</h3>
     <p>Tee ohjelma, joka tunnistaa seuraavat käyttäjät:</p>
@@ -2163,50 +2293,59 @@ Virheellinen tunnus tai salasana!
 </div>
 
 
-
-
   <h2 id="toiston_alkeet">Toiston alkeet</h2>
-  <p>Valintakomennon avulla saamme ohjelman toimintaan mukaan ehdollisuutta, eli esim. jos käyttäjätunnus ja salasana ovat oikein, päästetään käyttäjä kirjautumaan ohjelmaan ja muuten ei.</p>
-  <p>Ehdollisuuden lisäksi tarvitsemme toistoa: käyttäjätunnusta ja salasanaa pitää pystyä kysymään uudelleen niin kauan kunnes oikea käyttäjätunnus/salasana-pari on annettu.</p>
+
+  <p>Valintakäskyjen avulla saamme ohjelman toimintaan ehdollisuutta, eli esim. jos käyttäjätunnus ja salasana ovat oikein, päästetään käyttäjä kirjautumaan ohjelmaan ja muuten ei.</p>
+
+  <p>Ehdollisuuden lisäksi tarvitsemme usein toistoa: käyttäjätunnusta ja salasanaa pitää pystyä kysymään uudelleen niin kauan kunnes oikea käyttäjätunnus/salasana-pari on annettu.</p>
+
   <p>Yksinkertaisin toiston muoto on ikuinen toisto. Seuraava ohjelma tulostaa merkkijonoa <em>osaan ohjelmoida!</em> ikuisesti eli "äärettömän monta kertaa":</p>
+
 <pre class="sh_java">
-while ( true ) {
+while (true) {
     System.out.println("osaan ohjelmoida!");
 }
 </pre>
-  <p>Komento <code>while( true )</code> saa sen aikaan, että siihen liittyvää lohkoa, eli <code>{}</code>:lla ympäröityjä komentoja suoritetaan äärettömän monta kertaa.</p>
-  <p>Ikuinen toisto ei yleensä ole se mitä halutaan. Toisto keskeytetään komennolla <code>break</code>. </p>
+
+  <p>Komento <code>while(true)</code> saa sen aikaan, että siihen liittyvää lohkoa, eli <code>{}</code>:lla ympäröityjä komentoja suoritetaan äärettömän monta kertaa.</p>
+
+  <p>Ikuinen toisto ei yleensä ole se mitä halutaan. Saat NetBeansista käynnissä olevan ohjelman sammutettua painamalla tulostusikkunan vasemmalla puolella olevaa punaista nappia. Ohjelmakoodissa toisto keskeytetään komennolla <code>break</code>.</p>
+
 <pre class="sh_java">
-while ( true ) {
+while (true) {
     System.out.println("osaan ohjelmoida!");
 
     System.out.print("jatketaanko (ei lopettaa)? ");
     String komento = lukija.nextLine();
-    if ( komento.equals("ei") ) {
+    if (komento.equals("ei")) {
         break;
     }
 }
 
 System.out.println("kiitos ja kuulemiin.");
 </pre>
-  <p>Nyt toisto etenee siten että ensin tulostuu <em>osaan ohjelmoida!</em> ja tämän jälkeen ohjelma kysyy käyttäjältä jatketaanko vielä. Jos käyttäjä vastaa <em>ei</em>, suoritetaan komento <code>break</code> jonka ansiosta toisto lopetetaan ja suoritetaan komento joka tulostaa <em>kiitos ja kuulemiin.</em> </p>
+
+  <p>Nyt toisto etenee siten että ensin tulostuu <em>osaan ohjelmoida!</em> ja tämän jälkeen ohjelma kysyy käyttäjältä jatketaanko vielä. Jos käyttäjä vastaa <em>ei</em>, suoritetaan komento <code>break</code> jonka ansiosta toisto lopetetaan ja suoritetaan komento joka tulostaa <em>kiitos ja kuulemiin.</em></p>
+
 <pre>
 osaan ohjelmoida!
 jatketaanko (ei lopettaa)? <font color="red">joo</font>
 osaan ohjelmoida!
-jatketaanko (ei lopettaa)? <font color="red">jawohl</font>
+jatketaanko (ei lopettaa)? <font color="red">ja</font>
 osaan ohjelmoida!
 jatketaanko (ei lopettaa)? <font color="red">ei</font>
 kiitos ja kuulemiin.
 </pre>
+
   <p>Toiston sisällä voi tehdä erilaisia asioita. Seuraavassa yksinkertainen laskin. Laskin kysyy käyttäjältä komentoa. Komennossa <em>lopetus</em> suoritetaan <code>break</code> ja toisto loppuu. Tämän jälkeen kysytään kahta lukua. Jos komento oli <em>summa</em> lasketaan lukujen summa ja tulostetaan se.  Jos komento oli <em>erotus</em> toimitaan vastaavasti. Muussa tapauksessa ilmoitetaan että komento on tuntematon.</p>
+
 <pre class="sh_java">
 System.out.println("tervetuloa käyttämään laskinta");
 
-while ( true ) {
+while (true) {
     System.out.print("anna komento (summa, erotus, lopetus): ");
     String komento = lukija.nextLine();
-    if ( komento.equals("lopetus") ) {
+    if (komento.equals("lopetus")) {
         break;
     }
 
@@ -2214,19 +2353,20 @@ while ( true ) {
     int eka = Integer.parseInt(lukija.nextLine());
     int toka = Integer.parseInt(lukija.nextLine());
 
-    if ( komento.equals("summa") ) {
+    if (komento.equals("summa")) {
         int summa = eka + toka;
-        System.out.println( "lukujen summa " + summa );
-    } else if ( komento.equals("erotus") ) {
+        System.out.println("lukujen summa " + summa);
+    } else if (komento.equals("erotus")) {
         int erotus = eka - toka;
-        System.out.println( "lukujen erotus " + erotus );
+        System.out.println("lukujen erotus " + erotus);
     } else {
-        System.out.println( "tuntematon komento" );
+        System.out.println("tuntematon komento");
     }
-
 }
+
 System.out.println("kiitos ja kuulemiin.");
 </pre>
+
   <p>Screencast joka näyttää miten ohjelma syntyy:</p>
   <a class="youtube" href="http://www.youtube.com/watch?feature=player_embedded&v=ZPLBrgbxzqQ" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
 
@@ -2237,8 +2377,10 @@ System.out.println("kiitos ja kuulemiin.");
 
   <div class="tehtavat">
     <div class="tehtava">
-  <h3 class="req">Salasana</h3>
-  <p>Tässä tehtävässä luodaan ohjelma joka kyselee käyttäjältä salasanaa. Jos salasana menee oikein, nähdään salainen viesti. </p>
+      <h3 class="req">Salasana</h3>
+
+      <p>Tässä tehtävässä luodaan ohjelma joka kyselee käyttäjältä salasanaa. Jos salasana menee oikein, nähdään salainen viesti. </p>
+
 <pre>
 Anna salasana: <font color="red">nauris</font>
 Väärin!
@@ -2249,23 +2391,32 @@ Oikein!
 
 Salaisuus on: znvavbfgv grugl!
 </pre>
+
   <p>Toteutetaan ohjelma kolmessa askeleessa.</p>
+
   <h4>Salasanan kysyminen</h4>
+  
   <p>Testipalvelimelta tulevaan ohjelmarunkoon on määritelty muuttuja <code>String salasana</code>, jolle on asetettu arvoksi <code>porkkana</code> -- älä muuta tätä salasanaa. Toteuta lisätoiminnallisuus, jossa ohjelma kysyy käyttäjältä salasanaa ja vertailee sitä muuttujassa <code>salasana</code> olevaan arvoon. Muista mitä erityistä merkkijonojen vertailussa on!</p>
+
 <pre>
 Anna salasana: <font color="red">nauris</font>
 Väärin!
 </pre>
+
 <pre>
 Anna salasana: <font color="red">porkkana</font>
 Oikein!
 </pre>
+
 <pre>
 Anna salasana: <font color="red">bataatti</font>
 Väärin!
 </pre>
+
   <h4>Salasanan kysyminen kunnes käyttäjä vastaa oikein</h4>
-  <p>Muokkaa ohjelmaa siten, että se kysyy salasanaa kunnes käyttäjä syöttää oikean salasanan. Toteuta salasanan jatkuva kysyminen <code>while-true</code> -toistolausekkeen avulla. Toistolausekkeesta pääsee pois, jos ja vain jos käyttäjän syöttämä salasana on sama kuin muuttujassa <code>salasana</code> oleva arvo.</p>
+
+  <p>Muokkaa ohjelmaa siten, että se kysyy salasanaa kunnes käyttäjä syöttää oikean salasanan. Toteuta salasanan jatkuva kysyminen <code>while(true) { ... }</code> -toistolausekkeen avulla. Toistolausekkeesta pääsee pois, jos ja vain jos käyttäjän syöttämä salasana on sama kuin muuttujassa <code>salasana</code> oleva arvo.</p>
+
 <pre>
 Anna salasana: <font color="red">nauris</font>
 Väärin!
@@ -2274,8 +2425,11 @@ Väärin!
 Anna salasana: <font color="red">porkkana</font>
 Oikein!
 </pre>
+
   <h4>Salainen viesti</h4>
+
   <p>Lisää ohjelmaan oma salainen viestisi joka näytetään kun käyttäjä kirjoittaa salasanan oikein. Se voi olla mitä tahansa!</p>
+
 <pre>
 Anna salasana: <font color="red">nauris</font>
 Väärin!
@@ -2286,45 +2440,55 @@ Oikein!
 
 Salaisuus on: znvavbfgv grugl!
 </pre>
-  <p>Ylläoleva salaisuus on salattu käyttäen <a href="http://fi.wikipedia.org/wiki/Rot13" target="_blank">Rot13</a>-algoritmia. Toteutamme myöhemmin tällä kurssilla oman salausohjelman.</p>
+
+  <p>Ylläoleva salaisuus on salattu käyttäen <a href="http://fi.wikipedia.org/wiki/Rot13" target="_blank">Rot13</a>-algoritmia.</p>
+
 </div>
+
 <div class="tehtava">
   <h3 class="req">Lämpötiloja</h3>
-  <p>Saat tehtäväpohjan mukana komponentin nimeltään <code>Kuvaaja</code>. <code>Kuvaaja</code> piirtää
-    sille annetuista luvuista kuvaajan. Lukuja annetaan kuvaajalle näin: </p>
+  <p>Saat tehtäväpohjan mukana komponentin nimeltään <code>Kuvaaja</code>. <code>Kuvaaja</code> piirtää sille annetuista luvuista kuvaajan. Lukuja annetaan kuvaajalle näin: </p>
+
 <pre class="sh_java">
 Kuvaaja.lisaaNumero(13.0);
 </pre>
+
   <p>Teemme ohjelman, joka piirtää kuvaajan sille annetuista päivittäisistä lämpötiloista.</p>
+
   <h4>Kysely</h4>
-  <p>Tee ohjelma, joka kysyy käyttäjältä liukulukuja (<code>double</code>) ja lisää ne kuvaajaan. Käytä jälleen <code>while-true</code>-rakennetta.</p>
+
+  <p>Tee ohjelma, joka kysyy käyttäjältä liukulukuja (<code>double</code>) ja lisää ne kuvaajaan. Käytä jälleen <code>while(true) { ... }</code>-rakennetta.</p>
+
   <p><strong>Huom:</strong><code>double</code>-luku luetaan seuraavasti <code>double luku = Double.parseDouble( lukija.nextLine() );</code></p>
+
   <p><strong>Huom2:</strong> ohjelmasi toimii "ikuisessa" silmukassa eli on tarkoitus että sen suoritus ei pääty koskaan. Saat ohjelmasi pysähtymään painamalla NetBeansin konsoli-ikkunan oikeassa laidassa olevaa punaista neliöä.</p>
+
   <p><strong>HUOM3:</strong> Tee kaikki muutokset tiedostoon <code>Lampotiloja.java</code>. Älä muokkaa tiedostoa <code>Kuvaaja.java</code></p>
+
   <h4>Tarkastus</h4>
+
   <p>Paranna edellistä ohjelmaasi niin, että lämpötilat jotka ovat alle -30 tai yli 40 jätetään lisäämättä.</p>
   </div>
+
   <div class="tehtava">
+    <h3 class="req">Robottiohjain, versio 2</h3>
 
-  <h3 class="req">Robottiohjain, versio 2</h3>
+    <p>Robottimme on kehittynyt, sillä on silmät ja suunta! Huraa!</p>
 
-  <p>Robottimme on kehittynyt, sillä on silmät ja suunta! Huraa!</p>
+    <p>Tässä tehtävässä ohjaamme robottia, jonka tehtävänä on työntää varastossa oleva laatikko rahtialueelle. Kuvassa robotti on musta neliö jolla on silmät, laatikko harmaa, ja rahtialue turkoosi. </p>
 
-  <p>Tässä tehtävässä ohjaamme robottia, jonka tehtävänä on työntää varastossa oleva laatikko rahtialueelle. Kuvassa robotti on musta neliö jolla on silmät, laatikko harmaa, ja rahtialue turkoosi. </p>
+    <p>Uusi robottimme ei enää kuuntele käskyjä "ylös", "alas", "vasemmalle" ja "oikealle", vaan se kulkee siihen suuntaan, mihin se osoittaa. Robottia voi kääntää komennoilla <code>Ohjain.vasen();</code> ja <code>Ohjain.oikea();</code>, jotka kääntävät robottia vastapäivään ja myötäpäivään. Robotin liikuttaminen tapahtuu komennoilla <code>Ohjain.liiku();</code>, joka siirtää robottia yhden askeleen robotin osoittamaan suuntaan, ja <code>Ohjain.liikuMonta(int montako);</code>, joka liikuttaa robottia annetun määrän askelia osoitettuun suuntaan.</p>
 
-  <p>Uusi robottimme ei enää kuuntele käskyjä "ylös", "alas", "vasemmalle" ja "oikealle", vaan se kulkee siihen suuntaan, mihin se osoittaa. Robottia voi kääntää komennoilla <code>Ohjain.vasen();</code> ja <code>Ohjain.oikea();</code>, jotka kääntävät robottia vastapäivään ja myötäpäivään. Robotin liikuttaminen tapahtuu komennoilla <code>Ohjain.liiku();</code>, joka siirtää robottia yhden askeleen robotin osoittamaan suuntaan, ja <code>Ohjain.liikuMonta(int montako);</code>, joka liikuttaa robottia annetun määrän askelia osoitettuun suuntaan.</p>
-
-  <p>Robotin alkutilanteessa se suuntaa katseensa oikealle. Alla olevassa tilanteessa robottia on käännetty vasemmalle, jolloin sen katse suuntaa ylös, ja sitä on komennettu liikkumaan kolme kertaa.</p>
+    <p>Robotin alkutilanteessa se suuntaa katseensa oikealle. Alla olevassa tilanteessa robottia on käännetty vasemmalle, jolloin sen katse suuntaa ylös, ja sitä on komennettu liikkumaan kolme kertaa.</p>
 
   <img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/24-robotcontrol-start.png"/>
 
-  <p>Tehtävä on jaettu useampaan osaan, joissa ensimmäisessä toteutetaan manuaalinen ohjaus robotille, ja seuraavissa kehitämme automaattista ohjausta.</p>
+    <p>Tehtävä on jaettu useampaan osaan, joissa ensimmäisessä toteutetaan manuaalinen ohjaus robotille, ja seuraavissa kehitämme automaattista ohjausta.</p>
 
-  <h4>Ohjaus komentoriviltä</h4>
-
-  <p>Tässä tehtävässä tavoitteena on rakentaa robotille manuaalinen ohjaus. Rakenna ohjelma samalla tavalla kuin edellä oleva laskin-esimerkki. Ohjelman tulee seurata seuraavia komentoja:</p>
-
-  <p>
+    <h4>Ohjaus komentoriviltä</h4>
+  
+    <p>Tässä tehtävässä tavoitteena on rakentaa robotille manuaalinen ohjaus. Rakenna ohjelma samalla tavalla kuin edellä oleva laskin-esimerkki. Ohjelman tulee seurata seuraavia komentoja:</p>
+    
     <ol>
       <li><em>sammuta</em> sammuttaa robottiohjaimen (komento <code>Ohjain.sammuta();</code>) ja poistuu ohjelmasta.</li>
       <li><em>vasen</em> kääntää robottia vasemmalle (komento <code>Ohjain.vasen();</code>).</li>
@@ -2332,11 +2496,10 @@ Kuvaaja.lisaaNumero(13.0);
       <li><em>liiku</em> liikuttaa robottia yhden askeleen (komento <code>Ohjain.liiku();</code>).</li>
       <li><em>liikuMonta</em> kysyy käyttäjältä askelten lukumäärää ja liikuttaa robottia halutun määrän (komento <code>Ohjain.liikuMonta(int montako);</code>).</li>
     </ol>
-  </p>
+    
+    <p>Huom! Komento <code>Ohjain.sammuta()</code> sammuttaa vain robottiohjaimen, ei ohjelmaasi jonka kautta robottiohjainta käytetään. Avainsanasta <em>break</em> saattaa olla tässä hyötyä..</p>
 
-  <p>Huom! Komento <code>Ohjain.sammuta()</code> sammuttaa vain robottiohjaimen, ei ohjelmaasi jonka kautta robottiohjainta käytetään. Avainsanasta <em>break</em> saattaa olla tässä hyötyä..</p>
-
-  <p>Toteuta ohjelma siten, että ohjain suorittaa käyttäjän pyytämät komennot. Alla on esimerkki annetuista komennoista sekä kuva lopputilasta.</p>
+    <p>Toteuta ohjelma siten, että ohjain suorittaa käyttäjän pyytämät komennot. Alla on esimerkki annetuista komennoista sekä kuva lopputilasta.</p>
 
 <pre>
 komento (sammuta, vasen, oikea, liiku, liikuMonta): liiku
@@ -2353,15 +2516,15 @@ komento (sammuta, vasen, oikea, liiku, liikuMonta): liikuMonta
 Kuinka monta askelta: 3
 </pre>
 
-  <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/24-robotcontrol-keyboard.png"/></p>
+    <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/24-robotcontrol-keyboard.png"/></p>
 
-  <p>Huom! Voit palauttaa tehtävän jo tässä välissä vaikka kaikki tehtävän osa-alueet eivät vielä menisikään läpi!</p>
+    <p>Huom! Voit palauttaa tehtävän jo tässä välissä vaikka kaikki tehtävän osa-alueet eivät vielä menisikään läpi!</p>
 
-  <h4>Viereen siirtyminen</h4>
+    <h4>Viereen siirtyminen</h4>
 
-  <p>Lisää tekstikäyttöliittymään komento "viereen", joka siirtää robotin laatikon viereen sen vasemmalle puolelle. Ratkaisua ohjelmoidessa voit olettaa, että robotti lähtee liikkeelle aina sen alkusijainnista, se katsoo aluksi aina samaan suuntaan, ja että rahtialue on aina samassa kohdassa.</p>
+    <p>Lisää tekstikäyttöliittymään komento "viereen", joka siirtää robotin laatikon viereen sen vasemmalle puolelle. Ratkaisua ohjelmoidessa voit olettaa, että robotti lähtee liikkeelle aina sen alkusijainnista, se katsoo aluksi aina samaan suuntaan, ja että rahtialue on aina samassa kohdassa.</p>
 
-  <p>Ohjaimeen on lisätty seuraavat komennot, joiden avulla saat käyttöösi robotin, laatikon ja rahtialueen sijainnin. Voit käyttää niitä robotin tarvitsemien siirtymien laskemiseen.</p>
+    <p>Ohjaimeen on lisätty seuraavat komennot, joiden avulla saat käyttöösi robotin, laatikon ja rahtialueen sijainnin. Voit käyttää niitä robotin tarvitsemien siirtymien laskemiseen.</p>
 
 <pre class="sh_java">
 // kertoo robotin x- ja y-koordinaatit
@@ -2377,7 +2540,7 @@ int tavoiteX = Ohjain.tavoiteX();
 int tavoiteY = Ohjain.tavoiteY();
 </pre>
 
-  <p>Yllä komentojen lisäksi käytössä on komento <code>Ohjain.asetaLaatikkoSatunnaisesti();</code>, joka asettaa laatikon satunnaisesti pelialueelle, kuitenkin siten, että se on aina robotin oikealle yläpuolella, ja rahtialueen vasemmalla yläpuolella. Kutsu sitä ennen käynnistystä seuraavasti:</p>
+    <p>Yllä komentojen lisäksi käytössä on komento <code>Ohjain.asetaLaatikkoSatunnaisesti();</code>, joka asettaa laatikon satunnaisesti pelialueelle, kuitenkin siten, että se on aina robotin oikealle yläpuolella, ja rahtialueen vasemmalla yläpuolella. Kutsu sitä ennen käynnistystä seuraavasti:</p>
 
 <pre class="sh_java">
 public class Paaohjelma {
@@ -2404,28 +2567,28 @@ public class Paaohjelma {
 komento (sammuta, vasen, oikea, liiku, liikuMonta, viereen): viereen
 </pre>
 
-  <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/24-robotcontrol-viereen.png"/></p>
+    <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/24-robotcontrol-viereen.png"/></p>
 
-  <p>Vinkki! Kannattanee hahmotella paperilla miten robotin siirtyminen ja liike riippuu laatikon sijainnista.</p>
-
-
-  <h4>Automaattinen ohjaus</h4>
+    <p>Vinkki! Kannattanee hahmotella paperilla miten robotin siirtyminen ja liike riippuu laatikon sijainnista.</p>
 
 
-  <p>Lisää vielä käyttöliittymään komento "ratkaise", joka käskee robottia työntämään laatikon rahtialueelle. Kuten edellisessäkin osassa, voit olettaa että laatikko on aina robotin oikealla yläpuolella ja rahtialueen vasemmalla yläpuolella, robotti aloittaa liikkumisen aina samasta ruudusta, katsoo aluksi samaan suuntaan, ja että rahtialue on aina samassa ruudussa. Komennon "ratkaise" tulee toimia myös silloin, kun se annetaan komennon "viereen" jälkeen.</p>
+    <h4>Automaattinen ohjaus</h4>
+
+
+    <p>Lisää vielä käyttöliittymään komento "ratkaise", joka käskee robottia työntämään laatikon rahtialueelle. Kuten edellisessäkin osassa, voit olettaa että laatikko on aina robotin oikealla yläpuolella ja rahtialueen vasemmalla yläpuolella, robotti aloittaa liikkumisen aina samasta ruudusta, katsoo aluksi samaan suuntaan, ja että rahtialue on aina samassa ruudussa. Komennon "ratkaise" tulee toimia myös silloin, kun se annetaan komennon "viereen" jälkeen.</p>
 
 <pre>
 komento (sammuta, vasen, oikea, liiku, liikuMonta, viereen, ratkaise): ratkaise
 </pre>
 
-  <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/24-robotcontrol-ratkaise.png"/></p>
+    <p><img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/24-robotcontrol-ratkaise.png"/></p>
 
-  <p>Komennon "ratkaise" tulee toimia vaikka robotti ei olisi laatikon vieressä.</p>
+    <p>Komennon "ratkaise" tulee toimia vaikka robotti ei olisi laatikon vieressä.</p>
 
 
 
-</div>
-</div>
+  </div>
+  </div>
 </div>
 </section>
 <div class="tyhja"></div>
@@ -3443,7 +3606,7 @@ int luku = Integer.parseInt( lukija.nextLine() );
 <pre class="sh_java">
 import java.util.Scanner;
 
-public class OhjelmaRunko {
+public class Esimerkki {
     public static void main(String[] args) {
         Scanner lukija = new Scanner(System.in);
         // ohjelmakoodi
@@ -3462,7 +3625,7 @@ public static void tervehdi() {
   <pre class="sh_java">
 import java.util.Scanner;
 
-public class OhjelmaRunko {
+public class Esimerkki {
     public static void main(String[] args) {
         Scanner lukija = new Scanner(System.in);
         // ohjelmakoodi
