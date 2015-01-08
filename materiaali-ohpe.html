@@ -2020,25 +2020,18 @@ Luku 7 on pariton.
     <p>Ajatusketju muodostuu ongelmalliseksi viimeistään neljännen kohdan paikkeilla. Alla oleva koodi seurailee ylläolevaa ajatusketjua, mutta ei toimi oikein. Kokeile itse!</p>
 
 <pre class="sh_java">
-import java.util.Scanner;
+Scanner lukija = new Scanner(System.in);
 
-public class FizzBuzz {
+int luku = Integer.parseInt(lukija.nextLine());
 
-    public static void main(String[] args) {
-        Scanner lukija = new Scanner(System.in);
-
-        int luku = Integer.parseInt(lukija.nextLine());
-
-        if (luku % 3 == 0) {
-            System.out.println("Fizz");
-        } else if (luku % 5 == 0) {
-            System.out.println("Buzz");
-        } else if (luku % 3 == 0 && luku % 5 == 0) {
-            System.out.println("FizzBuzz");
-        } else {
-            System.out.println(luku);
-        }
-    }
+if (luku % 3 == 0) {
+    System.out.println("Fizz");
+} else if (luku % 5 == 0) {
+    System.out.println("Buzz");
+} else if (luku % 3 == 0 && luku % 5 == 0) {
+    System.out.println("FizzBuzz");
+} else {
+    System.out.println(luku);
 }
 </pre>
 
@@ -2056,46 +2049,22 @@ public class FizzBuzz {
     <p>Nyt ongelmakin tuntuu ratkeavan.</p>
 
 <pre class="sh_java">
-import java.util.Scanner;
+Scanner lukija = new Scanner(System.in);
 
-public class FizzBuzz {
+int luku = Integer.parseInt(lukija.nextLine());
 
-    public static void main(String[] args) {
-        Scanner lukija = new Scanner(System.in);
-
-        int luku = Integer.parseInt(lukija.nextLine());
-
-        if (luku % 3 == 0) {
-            System.out.println("Fizz");
-        } else if (luku % 5 == 0) {
-            System.out.println("Buzz");
-        } else if (luku % 3 == 0 && luku % 5 == 0) {
-            System.out.println("FizzBuzz");
-        } else {
-            System.out.println(luku);
-        }
-    }
+if (luku % 3 == 0) {
+    System.out.println("Fizz");
+} else if (luku % 5 == 0) {
+    System.out.println("Buzz");
+} else if (luku % 3 == 0 && luku % 5 == 0) {
+    System.out.println("FizzBuzz");
+} else {
+    System.out.println(luku);
 }
 </pre>
 
-  <h3>Valintakäskyistä ja lohkoista.</h3>
-
-  <p>Valintakäskyn lohkon sisällä voi olla mitä tahansa koodia, myös toinen valintakäsky.</p>
-
-<pre class="sh_java">
-int x = 45;
-int luku = 55;
-
-if (luku &gt; 0) {
-    System.out.println("Luku on positiivinen");
-
-    if (luku &gt; x) {
-        System.out.println(" ja suurempi kuin muuttujan x arvo");
-        System.out.println("muuttujan x arvohan on " + x);
-    }
-}
-</pre>
-
+  <h3>Valintakäskyistä ja lohkoista</h3>
 
   <p>Monimutkaisempien tarkistusten muodostamisessa voi hyödyntää sulkuja:</p>
 
@@ -2127,6 +2096,22 @@ if (luku &gt; 0 &amp;&amp; luku &lt; 10) {
 }
 </pre>
 
+
+  <p>Valintakäskyn lohkon sisällä voi olla mitä tahansa koodia, myös toinen valintakäsky.</p>
+
+<pre class="sh_java">
+int x = 45;
+int luku = 55;
+
+if (luku &gt; 0) {
+    System.out.println("Luku on positiivinen");
+
+    if (luku &gt; x) {
+        System.out.println(" ja suurempi kuin muuttujan x arvo");
+        System.out.println("muuttujan x arvohan on " + x);
+    }
+}
+</pre>
 
 
 
