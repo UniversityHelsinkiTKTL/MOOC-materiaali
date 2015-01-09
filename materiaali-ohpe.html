@@ -695,7 +695,8 @@ Kolmas
 
   <h4>Puolipiste</h4>
 
-  <p>Puolipisteellä <code>;</code> erotetaan komennot toisistaan.  Kääntäjä ja tulkki ei ole kiinnostunut lähdekoodissa olevista riveistä, vaan voisimme kirjoittaa koko ohjelman yhdelle riville -- mikä ei kuitenkaan olisi kovin ymmärrettävää.</p>
+<!-- Kääntäjä ja tulkki ei ole kiinnostunut lähdekoodissa olevista riveistä, -->
+  <p>Puolipisteellä <code>;</code> erotetaan komennot toisistaan. Voisimme oikeastaan kirjoittaa koko ohjelman yhdelle riville -- mikä ei kuitenkaan ole kovin ymmärrettävää.</p>
 
   <p><b>Esimerkki puolipisteiden käytöstä</b></p>
 
@@ -708,9 +709,9 @@ System.out.print("!");
 Hei maailma!
 </pre>
 
-  <p>Vaikka kääntäjä ja tulkki eivät tarvitse rivinvaihtoja, on niiden käyttö hyvin tärkeää muita ihmisiä ajatellen.  Selkeä lähdekoodin osien erottelu vaatii rivinvaihtojen käyttöä. Tätä ja muita lähdekoodin luettavuuteen liittyviä seikkoja tullaan painottamaan tällä kurssilla.</p>
+  <p>Vaikka ohjelma toimii myös ilman rivinvaihtoja, on niiden käyttö hyvin tärkeää muita ajatellen. Selkeä lähdekoodin osien erottelu vaatii rivinvaihtojen käyttöä. Tätä ja muita lähdekoodin luettavuuteen liittyviä seikkoja tullaan painottamaan tällä kurssilla.</p>
 
-  <h4>Komennoille lähdetettävät "tiedot" eli parametrit</h4>
+  <h4>Komennoille lähetettävät "tiedot" eli parametrit</h4>
 
   <p>Komennon käsittelemä tieto eli <em>komennon parametrit</em> lähetetään komennolle lisäämällä ne komennon perässä olevien sulkujen <code>()</code> sisään.  Esimerkiksi <code>System.out.println</code> -komennon parametriksi annetaan merkkijono <em>hei</em> hipsujen sisällä seuraavasti: <code>System.out.println("hei")</code>.</p>
 
@@ -2053,12 +2054,12 @@ Scanner lukija = new Scanner(System.in);
 
 int luku = Integer.parseInt(lukija.nextLine());
 
-if (luku % 3 == 0) {
+if (luku % 3 == 0 && luku % 5 == 0) {
+    System.out.println("FizzBuzz");
+} else if (luku % 3 == 0) {
     System.out.println("Fizz");
 } else if (luku % 5 == 0) {
     System.out.println("Buzz");
-} else if (luku % 3 == 0 && luku % 5 == 0) {
-    System.out.println("FizzBuzz");
 } else {
     System.out.println(luku);
 }
