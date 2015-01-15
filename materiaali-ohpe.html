@@ -2997,53 +2997,215 @@ k = j;</pre>
     </div>
   </div>
 </div>
+
+
+<p>&nbsp;</p>
+  
+<div> <big><strong>Muutama hyödyllinen vinkki</strong></big>
+  <p>&nbsp;</p>
+
+    <ul>
+      <li><strong>Vältä punaista!</strong>
+
+	<p>Kun NetBeans alleviivaa yhden tai useamman rivin punaisella ja koodialueen oikeassa laidassa näkyy punaista, NetBeans kertoo että koodisi ei ole toimivassa tilassa. Tällöin koodia ei voi myöskään suorittaa.</p>
+
+        <img src="http://www.cs.helsinki.fi/group/java/k15-images/material/non-compiling.png" alt="Kuva NetBeans-editorista, missä koodi on kääntymättömässä tilassa."/>
+
+	<p>Ylläolevassa kuvassa NetBeans kertoo kahdesta kohdasta missä on virhe. Ensimmäisessä kohdassa if-ehto on kirjoitettu väärin, ja toisessa kohdassa yritetään tulostaa muuttuja <code>luk</code>, vaikka sellaista ei ole.</p>
+
+	<p>Kun punaisten kohtien määrä kasvaa, on hyvä pysähtyä ja palata taaksepäin pisteeseen, missä koodi toimi viimeksi. Voit palata taaksepäin valitsemalla <em>undo</em> tarpeeksi monta kertaa (ctrl + z).</p>
+
+        <img src="http://www.cs.helsinki.fi/group/java/k15-images/material/non-compiling-2.png" alt="Kuva NetBeans-editorista, missä koodi kääntyy."/>
+	
+	<p>Kun koodi on kääntyvässä tilassa, kaikki on kunnossa :)</p>
+
+      </li>
+
+      <li><strong>Opettele hyödyntämään näppärää aaltosulkujen täydennystä</strong>
+
+	<p>Yksi aloittelevan ohjelmoijan tyypillinen syy punaisen koodin lisääntymiselle on aaltosulkujen liikakäyttö, tai niiden liian vähäinen käyttö. Jokaiselle aaltosululle tulee löytyä pari.</p>
+
+	<p>NetBeans auttaa tässä huomattavasti. Kun kirjoitat <code>if</code> tai <code>while</code>-ehdon, ja avaavan aaltosulkeen, koodi näyttää esimerkiksi seuraavalta:</p>
+
+        <img src="http://www.cs.helsinki.fi/group/java/k15-images/material/non-compiling-3.png" alt="Kuva NetBeans-editorista, missä yksi ylimääräinen avonainen aaltosulku."/>
+
+	<p>Koodi ei käänny -- NetBeans vinkkaa, että virhe on viimeisellä rivillä. Syy on kuitenkin käytännössä puuttuva aaltosulku.</p>
+
+	<p>Jos painat heti avaavan aaltosulkeen kirjoittamisen jälkeen enteriä, NetBeans luo kirjoittamallesi aaltosululle parin.</p>
+
+        <img src="http://www.cs.helsinki.fi/group/java/k15-images/material/non-compiling-4.png" alt="Kuva NetBeans-editorista, missä yksi ylimääräinen avonainen aaltosulku."/>
+
+	<p>Punaista ei näy taas missään ja voit jatkaa koodaamista rauhassa :) </p>
+
+      </li>
+
+      <li><strong>Opettele käyttämään koodin automaattista täydennystä</strong>
+
+        <p>Jos ohjelmassasi on käytössä esim. muuttuja <code>String sukunimi;</code>, ei koko muuttujan nimeä tarvitse kirjoittaa joka kerta kokonaan. Kokeile mitä tapahtuu kun kirjoitat <code>s</code> ja sen jälkeen painat yhtäaikaa ctrl ja välilyönti. <b>HUOM:</b> laitoksen koneilla automaattinen täydennys saadaan aikaan painamalla yhtä aikaa ctrl, alt ja välilyönti. Vastaavalla tavalla NetBeans osaa täydentää muitakin nimiä, esim. komennon <code>while</code> aikaansaamiseksi riittää kirjoittaa w ja painaa ctrl+välilyönti... </p>
+
+        <img src="http://www.cs.helsinki.fi/group/java/k15-images/material/autocomplete.png" alt="Kuva NetBeans-editorista, demonstroidaan autocompletea."/>
+
+	<p>Kun painat tätä näppäinyhdistelmää, NetBeans ehdottaa muuttujia <em>ja muuta</em>.</p>
+
+        <img src="http://www.cs.helsinki.fi/group/java/k15-images/material/autocomplete-2.png" alt="Kuva NetBeans-editorista, demonstroidaan autocompletea - osa 2."/>
+
+	<p>Muuttujan <code>sukunimi</code> voi valita NetBeansin tarjoamasta listasta.</p>
+
+      </li>
+
+
+      <li> <b>Käytä lyhennettä sout</b>
+
+        <p>Muista että saat ruudulle tekstin <em>System.out.println("")</em> kirjoittamalla <em>sout</em> ja painamalla <em>tabulaattoria</em> eli q:n vasemmalla puolella olevaa näppäintä </p>
+
+      </li>
+<!--
+      </li>
+          <li>
+            <p><b>HUOM2:</b> Pääset tarkastelemaan NetBeansin valmiiksi määrittelemiä lyhenteitä seuraavasti:</p>
+                <pre>Tools -> Options -> Editor -> Code Templates</pre>
+                <p>Pystyt myös lisäämään omia lyhenteitäsi <b>New</b> painikkeella.</p>
+                <p>Voi luoda itsellesi esimerkiksi uuden komennon ipn</p>
+                <pre>int ${luku newVarName} = Integer.parseInt(${lukija instanceof="java.util.Scanner"}.nextLine());</pre>
+                <p>Nyt kirjoittamalla <b>ipn</b> pitäisi ruudulle ilmestyä jotakin tämän tapaista:</p>
+                <pre>int i = Integer.parseInt(lukija.nextLine());</pre>
+          </li>
+-->
+    </ul>
+  </div>
+
     
 
   <h2>Muuttuvat muuttujat</h2>
+
   <p>Olemassaolevan muuttujan arvoa halutaan usein muuttaa. Tämä onnistuu tavallisen sijoituslausekkeen avulla. Seuraavassa muuttujan <code>ika</code> arvoa kasvatetaan yhdellä:</p>
+
 <pre class="sh_java">
 int ika = 1;
 
-System.out.println( ika );    // tulostuu 1
-ika = ika + 1;                // ika:n uusi arvo on ika:n vanha arvo plus yksi
-System.out.println( ika );    // tulostuu 2
+System.out.println(ika);
+ika = ika + 1;    // muuttujan ika uusi arvo on ika-muuttujan vanha arvo plus yksi
+System.out.println(ika);
 </pre>
-  <p>Komento <code>ika = ika + 1</code> siis kasvattaa muuttujan <code>ika</code> arvoa yhdellä. Muuttujan arvon kasvattaminen yhdellä onnistuu myös seuraavasti:</p>
+
+  <p>Tulostuu:</p>
+
+<pre>
+1
+2
+</pre>
+
+  <p>Tarkastellaan rivin <code>ika = ika + 1;</code> suoritusta vielä tarkemmin. Komento <code>ika = ika + 1;</code> kasvattaa muuttujan <code>ika</code> arvoa yhdellä. Käytännössä komennon suoritus tapahtuu siten, että ensin suoritetaan yhtäsuuruusmerkin oikealla puolella oleva lause <code>ika + 1</code>. Tässä tietokone etsii ensin muuttujaa <code>ika</code>. Koska muuttuja on esitelty aiemmin koodissa, se löytyy (sen arvo on <code>1</code>). Lauseen <code>ika + 1</code> muuttujan <code>ika</code> paikalle asetetaan arvo <code>1</code>. Lause on nyt muotoa <code>1 + 1</code>, jonka tietokone osaa laskea: tulokseksi tulee <code>2</code>. Komento on tämän jälkeen kokonaisuudessaan <code>ika = 2</code>, mikä tarkoittaa "aseta muuttujan ika arvoksi 2".</p>
+
+  <p>Muuttujan arvon kasvattaminen yhdellä onnistuu myös seuraavasti:</p>
+
 <pre class="sh_java">
 int ika = 1;
 
-System.out.println( ika );    // tulostuu 1
-ika++;                        // tarkoittaa samaa kuin ika = ika + 1;
-System.out.println( ika );    // tulostuu 2
+System.out.println(ika);
+ika++;                     // tarkoittaa samaa kuin ika = ika + 1;
+System.out.println(ika);
 </pre>
+
+  <p>Komento <code>ika++</code> muuntuu ohjelmaa suoritettaessa muotoon <code>ika = ika + 1;</code>. Ohjelman tulostus on sama kuin edellisessä:</p>
+
+<pre>
+1
+2
+</pre>
+
   <p>Toinen esimerkki:</p>
+
 <pre class="sh_java">
 int pituus = 100;
 
-System.out.println( pituus );   // tulostuu 100
+System.out.println(pituus);
 pituus = pituus - 50;
-System.out.println( pituus );   // tulostuu 50
+System.out.println(pituus);
 pituus = pituus * 2;
-System.out.println( pituus );   // tulostuu 100
+System.out.println(pituus);
 pituus = pituus / 4;
-System.out.println( pituus );   // tulostuu 25
-pituus--;                       // sama kuin pituus = pituus-1;
-System.out.println( pituus );   // tulostuu 24
+System.out.println(pituus);
+pituus--;                     // sama kuin pituus = pituus - 1;
+System.out.println(pituus);
 </pre>
+
+  <p>Tulostuu:</p>
+
+<pre>
+100
+50
+100
+25
+24
+</pre>
+
+
 
   <div>
 
-      <p class="hidden-in-mooc"><strong>Selitystehtävät</strong></p>
-      <p class="hidden-in-mooc">Materiaalissa on viikosta 2 lähtien ohjelmointitehtävien lisäksi selitystehtäviä, joihin vastataan suoraan kurssisivun kautta. Selitystehtäviä on viikoilla 2 ja 3 kolme, viikoilla 4, 5, 6 ja 7 kaksi. </p>
+      <p><strong>Selitystehtävät</strong></p>
+      <p>Materiaalissa on viikosta 2 lähtien ohjelmointitehtävien lisäksi selitystehtäviä, joihin vastataan suoraan kurssisivun kautta. Selitystehtäviä on viikoilla 2 ja 3 kolme, viikoilla 4, 5, 6 ja 7 kaksi. </p>
       
       <div class="self-explanation" data-key="q-lahjakortit"></div>
   </div>
+
+
+  <h3>Syötteen lukeminen</h3>
+
+  <p>Kuten edellisellä viikolla huomasimme, näppäimistöltä voidaan lukea käyttäjän antamaa syötettä <code>Scanner</code>-apuvälineen avulla:</p>
+
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+int pituus = 100;
+
+System.out.println(pituus);
+
+System.out.print("Paljonko poistetaan? ");
+pituus = pituus - Integer.parseInt(lukija.nextLine());
+System.out.println(pituus);
+
+System.out.print("Paljonko lisätään? ");
+pituus = pituus + Integer.parseInt(lukija.nextLine());
+System.out.println(pituus);
+</pre>
+
+    <p>Tulostus esimerkiksi:</p>
+
+<pre>
+100
+Paljonko poistetaan? <font color="red">42</font>
+58
+Paljonko lisätään? <font color="red">1</font>
+59
+</pre>
+
+  <p>Tarkastellaan rivin <code>pituus = pituus - Integer.parseInt(lukija.nextLine());</code> suoritusta vielä tarkemmin.</p>
+
+  <p>Rivi on asetuslause, missä muuttujaan <code>pituus</code> asetetaan lauseen <code>pituus - Integer.parseInt(lukija.nextLine())</code> tuottama arvo. Lause <code>pituus - Integer.parseInt(lukija.nextLine())</code> suoritetaan seuraavasti:</p>
+
+  <ol>
+    <li>Tietokone etsii ensin muuttujan <code>pituus</code> arvon. Koska muuttuja on luotu aiemmin, se löytyy: sen arvo on <code>100</code>. Nyt lasku on muotoa <code>100 - Integer.parseInt(lukija.nextLine());</code>.</li>
+    <li>Tietokone suorittaa lauseen <code>Integer.parseInt(lukija.nextLine())</code>:
+      <ol>
+	<li>Ensin Suoritetaan sulkujen sisällä oleva osa, eli <code>lukija.nextLine()</code>. Tämä johtaa siihen, että ohjelma jää odottamaan käyttäjältä syötettä. Kun käyttäjä antaa syötteen, esimerkiksi "42", vaihtuu komennon <code>lukija.nextLine()</code> paikalle käyttäjän syöttämä merkkijono. Seuraavaksi suoritettava komento on nyt <code>Integer.parseInt("42");</code>.</li>
+        <li>Komento <code>Integer.parseInt("42")</code> muuttaa tekstimuuttujan, jonka arvo on <code>"42"</code>, kokonaislukumuuttujaksi, jonka arvo on <code>42</code>.</li>
+      </ol>
+    </li>
+    <li>Lauseen <code>Integer.parseInt(lukija.nextLine())</code> paikalle asetetaan sen suorituksesta saatu arvo, tässä <code>42</code>. Nyt lasku on muotoa <code>100 - 42</code>.</li>
+    <li>Tietokone laskee laskun <code>100 - 42</code>, jonka tulos on <code>58</code>.</li>
+  </ol>
+
+  <p>Lopulta lause on muotoa <code>pituus = 58</code>, eli muuttujan <code>pituus</code> arvoksi asetetaan <code>58</code>.</p>
+
 
   <div class="tehtavat">
     <div class="tehtava" id="viikko2">
 
     <h3>Kolmen luvun summa</h3>
-    <p>Tee ohjelma, joka kysyy käyttäjältä kolme lukua ja tulostaa niitten summan. Tee ohjelmastasi seuraavan muotoinen:</p>
+
+    <p>Tee ohjelma, joka kysyy käyttäjältä kolme lukua ja tulostaa niitten summan. Huom! Käytä tehtäväpohjaan valmiiksi luotuja muuttujia, Älä luo ohjelmaan uusia muuttujia, vaan käytä ohjelmapohjaan valmiiksi  Tee ohjelmastasi seuraavan muotoinen:</p>
+
 <pre class="sh_java">
 Scanner lukija = new Scanner(System.in);
 int summa = 0;
@@ -3052,7 +3214,7 @@ int luettu;
 // KIRJOITA OHJELMA TÄHÄN
 // ÄLÄ KÄYTÄ MUITA MUUTTUJIA KUIN lukija, summa JA luettu!
 
-System.out.println("Summa: "+summa);
+System.out.println("Summa: " + summa);
 </pre>
 <pre>
 Anna ensimmäinen luku: <font color="red">3</font>
@@ -3062,9 +3224,19 @@ Anna kolmas luku: <font color="red">12</font>
 Summa: 21
 </pre>
 </div>
+</div>
+
+<div class="tehtavat">
   <div class="tehtava">
+
+    <p>Kertaa ennen tehtävän aloitusta viime viikon kappale <a href="../viikko1/index.html#toiston_alkeet">Toiston alkeet</a>.</p>
+
+    <hr/>
+
     <h3>Useamman luvun summa</h3>
+
     <p>Tee ohjelma, joka lukee käyttäjältä lukuja ja tulostaa niiden summan. Ohjelma lopettaa kyselemisen kun syötetään luku 0. Käytä seuraavaa pohjaa, jonka saat myös palautusautomaatilta:</p>
+
 <pre class="sh_java">
 Scanner lukija = new Scanner(System.in);
 
@@ -3098,57 +3270,95 @@ Summa lopussa: 7
 </pre>
   </div>
 </div>
+
+
+  <h3>Sijoitusoperaatiot</h3>
+
+  <p>Koska olemassaolevan muuttujan arvon muuttaminen on hyvin yleinen operaatio, on sitä varten olemassa erityiset sijoitusoperaatiot. </p>
+
+<pre class="sh_java">
+int pituus = 100;
+
+pituus += 10;  // sama kuin pituus = pituus + 10;
+pituus -= 50;  // sama kuin pituus = pituus - 50;
+</pre>
+
+  <p>Olemassaolevan muuttujan arvoa muuttava sijoitusoperaatio merkitään <code>muuttuja muutostyyppi= muutos</code>, esimerkiksi <code>muuttuja += 5</code>. Huomaa, että muuttujan tulee olla olemassa ennen kuin sille voidaan asettaa arvo. Muuttuja tulee siis aina esitellä ennen kuin se on käytettävissä. Muuttujan esittely tapahtuu kertomalla muuttujan tyyppi ja nimi.</p>
+
+  <p>Seuraava esimerkki ei toimi, sillä muuttujaa <code>leveys</code> ei ole esitelty.</p>
+
+<pre class="sh_java">
+leveys += 100;           // ei toimi!
+</pre>
+
+  <p>Kun muuttuja on esitelty, laskukin toimii oikein.</p>
+
+<pre class="sh_java">
+int leveys = 100;  // muuttujan esittely; "on olemassa int-tyyppinen muuttuja nimeltä leveys, jonka arvo on 100"
+leveys += 100;     // toimii!
+</pre>
+
+
+  <p>Myös muille kuin yhteen- ja vähennyslaskuille on Javassa vastaavat sijoitusoperaatiot.</p>
+
+<pre class="sh_java">
+int pituus = 100;
+System.out.println(pituus);
+
+pituus *= 10; // sama kuin pituus = pituus * 100;
+System.out.println(pituus);
+
+pituus /= 100; // sama kuin pituus = pituus / 100;
+System.out.println(pituus);
+
+pituus %= 3; // sama kuin pituus = pituus % 3;
+System.out.println(pituus);
+</pre>
+<pre>
+100
+1000
+10
+1
+</pre>
+
   <h2 id="lisaa_toistoa">Lisää toistoa</h2>
-  <p>Opimme aiemmin toteuttamaan <code>while(true)</code>-komennon avulla ohjelman, joka toistaa tiettyä komentosarjaa komennon <code>break</code> suorittamiseen asti.</p>
+
+  <p>Opimme edellisellä viikolla (kts. <a href="../viikko1/index.html#toiston_alkeet">Toiston alkeet</a>) toteuttamaan <code>while(true)</code>-komennon avulla ohjelman, joka toistaa tiettyä komentosarjaa komennon <code>break</code> suorittamiseen asti.</p>
+
   <p>Komento <code>break</code> ei ole ainoa tapa lopettaa toistoa. Toistokomennon yleinen muoto on <code>while (ehto)</code>, jossa ehtona voi olla mikä tahansa totuusarvoinen lauseke, eli ehto voi olla täsmälleen samaa muotoa kuin <code>if</code>-komentojen ehdot.</p>
-  <p>Seuraavassa esimerkissä tulostetaan luvut 1, 2, ..., 10.  Kun <code>luku</code>-muuttuja saa arvokseen yli 10, <code>while</code>-ehto ei ole enää voimassa ja toistaminen lopetetaan.</p>
+
+  <p>Seuraavassa esimerkissä tulostetaan luvut 1, 2, ..., 5.  Kun <code>luku</code>-muuttujan arvo on yli 5, <code>while</code>-ehto ei ole enää voimassa ja toistaminen lopetetaan.</p>
+
 <pre class="sh_java">
 int luku = 1;
 
-while (luku &lt; 11) {
+while (luku &lt; 6) {
     System.out.println(luku);
     luku++;    // luku++ tarkoittaa samaa kuin luku = luku + 1
 }
 </pre>
-  <p>Lue ylläoleva "niin pitkään kuin luku on pienempi kuin 11, tulosta luku ja kasvata lukua yhdellä".</p>
-  <p>Ylläolevassa koodissa ehdossa olevaa muuttujaa <code>luku</code> kasvatettiin jokaisella kierroksella
-    yhdellä. Päivitys voi olla mikä tahansa, eli ehdossa olevan muuttujan ei tarvitse suinkaan aina kasvaa yhdellä, esim:</p>
+
+  <p>Lue ylläoleva "niin pitkään kuin muuttujan luku arvo on pienempi kuin 6, tulosta muuttujan luku arvo ja kasvata muuttujan luku arvoa yhdellä".</p>
+
+  <p>Ylläolevassa koodissa ehdossa olevaa muuttujaa <code>luku</code> kasvatettiin jokaisella kierroksella yhdellä. Päivitys voi olla mikä tahansa, eli ehdossa olevan muuttujan ei tarvitse suinkaan aina kasvaa yhdellä, esim:</p>
+
 <pre class="sh_java">
 int luku = 1024;
 
 while (luku &gt;= 1) {
     System.out.println(luku);
-    luku = luku / 2;
+    luku /= 2; // luku /= 2 tarkoittaa samaa kuin luku = luku / 2
 }
 </pre>
+
   <p>Screencast aiheesta:</p>
+
   <a  class="amooc" href="http://www.youtube.com/watch?feature=player_embedded&v=us9GXUZ60ws" height="300" target="_blank"><img src="https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
 
-  <!--
-<p>
-  <iframe allowfullscreen="" frameborder="0"  height="450" width="700" src="http://www.youtube.com/embed/eZUaptgXwrU"></iframe></p>
--->
+  <p></p>
 
-  <div class="help"> <big><b>Muutama NetBeans-vihje</b></big>
-    <ul>
-      <li> Kaikki NetBeans-vihjeet löytyvät <a class="hidden-in-hy" href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans">täältä</a></li>
-      <li> <b>Koodin automaattinen täydennys</b>
-        <p> Jos ohjelmassasi on käytössä esim. muuttuja <code>String sukunimi;</code>, ei koko muuttujan nimeä tarvitse välttämättä joka kerta kirjoittaa kokonaan. Kokeile mitä tapahtuu kun kirjoitat <code>s</code> ja sen jälkeen painat yhtäaikaa ctrl ja välilyönti. <b>HUOM:</b> laitoksen koneilla automaattinen täydennys saadaan aikaan painamalla yhtä aikaa ctrl, alt ja välilyönti.
-          Vastaavalla tavalla NetBeans osaa täydentää muitakin nimiä, esim. komennon <code>while</code> aikaansaamiseksi riittää kirjoittaa w ja painaa ctrl+välilyönti... </p>
-      <li> <b>sout</b>
-        <p>Muista että saat ruudulle tekstin <em>System.out.println("")</em> kirjoittamalla <em>sout</em> ja painamalla <em>tabulaattoria</em> eli q:n vasemmalla puolella olevaa näppäintä </p>
-      </li>
-          <li>
-            <p><b>HUOM2:</b> Pääset tarkastelemaan NetBeansin valmiiksi määrittelemiä lyhenteitä seuraavasti:</p>
-                <pre>Tools -> Options -> Editor -> Code Templates</pre>
-                <p>Pystyt myös lisäämään omia lyhenteitäsi <b>New</b> painikkeella.</p>
-                <p>Voi luoda itsellesi esimerkiksi uuden komennon ipn</p>
-                <pre>int ${luku newVarName} = Integer.parseInt(${lukija instanceof="java.util.Scanner"}.nextLine());</pre>
-                <p>Nyt kirjoittamalla <b>ipn</b> pitäisi ruudulle ilmestyä jotakin tämän tapaista:</p>
-                <pre>int i = Integer.parseInt(lukija.nextLine());</pre>
-          </li>
-    </ul>
-  </div>
+  <p></p>
+
   <!--syntax ok-->
   <!--div class="tehtavat"-->
   <div class="tehtavat">
@@ -3267,119 +3477,185 @@ Montako alas? <font color="red">3</font>
   </div>
 
 </div>
-  <h3>Sijoitusoperaatiot</h3>
-  <p>Koska vanhan muuttujan arvon muuttaminen on hyvin yleinen operaatio, on Javassa sitä varten
-    erityiset sijoitusoperaatiot. </p>
-<pre class="sh_java">
-int pituus = 100;
 
-pituus += 10;  // sama kuin pituus = pituus + 10;
-pituus -= 50;  // sama kuin pituus = pituus - 50;
-</pre>
-  <p>Olemassaolevan muuttujan arvoa muuttava sijoitusoperaatio merkitään <code>muuttuja muutostyyppi= muutos</code>, esimerkiksi <code>muuttuja += 5</code>. Huomaa, että muuttujan tyyppi pitää aina kertoa ennen kuin sille voidaan asettaa arvo. Muuttuja tulee siis aina esitellä ennen kuin se on käytettävissä. Muuttujan esittely tapahtuu kertomalla muuttujan tyyppi ja nimi.</p>
-  <p>Seuraava esimerkki ei toimi, sillä muuttujan <code>pituus</code> tyyppiä ei ole kerrottu.</p>
-<pre class="sh_java">
-pituus = pituus + 100;   // ei toimi!
-pituus += 100;           // ei toimi!
-</pre>
-  <p>Kun tyyppi on kerrottu, laskutkin toimivat oikein.</p>
-<pre class="sh_java">
-int pituus = 0;
-pituus = pituus + 100;
-pituus += 100;
+  <h3>Milloin toisto loppuu?</h3>
 
-// muuttujan pituus arvo on 200
-</pre>
-  <p>Myös muille kuin yhteen- ja vähennyslaskuille on Javassa vastaavat sijoitusoperaatiot.</p>
+  <p>Tarkastellaan seuraavaa toistolausetta.</p>
+
 <pre class="sh_java">
-int pituus = 100;
+int luku = 1;
 
-pituus *= 10; // sama kuin pituus = 10 * pituus;
-pituus /= 100; //sama kuin pituus = pituus / 100;
-pituus %= 3;  // sama kuin pituus = pituus % 3;
-
-// muuttujan pituus arvo 1
+while (luku != 2) {
+    System.out.println(luku);
+    luku = 2;
+    System.out.println(luku);
+    luku = 1;
+}
 </pre>
-  <p>Usein ohjelmissa esiintyy toisto jonka aikana muuttujaan lasketaan jokin toistosta riippuvainen arvo. Seuraava ohjelma laskee tulon 4*3 hieman kömpelöllä tavalla eli summana 3 + 3 + 3 + 3:</p>
+
+  <p>Ohjelman tulostus seuraavanlainen:</p>
+
+<pre>
+1
+2
+1
+2
+1
+2
+...
+</pre>
+
+  <p>Vaikka muuttujan <code>luku</code> arvo on välillä 2, toistolauseen suoritus ei lopu koskaan. Miksi?</p>
+
+  <p>Toistolauseen ehto tarkistetaan vain kun toistolauseen toistaminen aloitetaan sekä silloin kun koodin suoritus on päässyt toistolauseen lopettavaan aaltosulkuun asti. Jos ehto on totta, suoritus suoritus hyppää takaisin toistolauseen alkuun, ja jos ehto on epätotta, suoritus jatkuu toistolausetta seuraavalta riviltä.</p>
+
+  <p>Vaikka muuttujan <code>luku</code> arvo on ylläolevassa toistolauseessa välillä 2, ei se ole koskaan 2 toistolauseen lopussa. Lopussa ehto <code>luku != 2</code> on aina totta, ja suoritus hyppää takaisin koodin alkuun.</p>
+
+
+  <h3>Toisto ja useampi muuttuja</h3>
+
+  <p>Usein ohjelmissa esiintyy toisto, jonka jokaisella toistokerralla muutetaan yhden tai useamman muuttujan arvoa. Seuraava ohjelma laskee tulon 4*3 hieman kömpelöllä tavalla eli summana 3 + 3 + 3 + 3:</p>
+
 <pre class="sh_java">
 int tulos = 0;
 
 int i = 0;
-while ( i &lt; 4 ) {
-    tulos = tulos + 3;
-    i++;   // tarkoittaa samaa kuin i = i+1;
+while (i &lt; 4) {
+    tulos += 3; // tarkoittaa samaa kuin tulos = tulos + 3;
+    i++;  // tarkoittaa samaa kuin i = i + 1;
 }
-</pre>
-  <p>Alussa <code>tulos = 0</code>. Toistossa muuttujan arvo nousee joka kierroksella 3:lla. Ja koska toistoja on 4, on lopulta muuttujan arvona siis 3*4. </p>
-  <p>Käyttämällä yllä esiteltyä sijoitusoperaattoria, sama saadaan aikaan seuraavasti:</p>
-<pre class="sh_java">
-int tulos = 0;
 
-int i = 0;
-while ( i &lt; 4 ) {
-    tulos += 3;      // tämä on siis sama kuin tulos = tulos + 3;
-    i++;             // tarkoittaa samaa kuin i = i+1;
-}
+System.out.println(tulos);
 </pre>
+
+  <p>Alussa <code>tulos = 0</code>. Toiston jokaisella kierroksella muuttujan <code>tulos</code> arvoon lisätään luku <code>3</code>. Koska toistoja on 4, on lopulta muuttujan arvona <code>3 * 4</code> eli 12, jonka ohjelma lopulta tulostaa.</p>
+
+  <p>Yksi näppärä tapa muuttujien arvojen tarkasteluun toistolauseessa on taulukko. Seuraavaan taulukkoon on kirjoitettu auki edellä olevassa ohjelmassa olevien muuttujien <code>tulos</code> ja <code>i</code> arvot kullakin toistolauseen ehdon <code>i &lt; 4</code> vertailuhetkellä.</p>
+
+<p>
+  <table border=1>
+    <tr>
+      <th>tulos</th>
+      <th>i</th>
+      <th>i &lt; 4</th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>3</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>4</td>
+      <td>false</td>
+    </tr>
+  </table>
+</p>
+
+  <p>Toistolauseen suoritus loppuu kun muuttujan <code>summa</code> arvo on 12 ja muuttujan <code>i</code> arvo on 4 (ehto <code>i &lt; 4</code> on tällöin epätotta).</p>
+
+
 <div class="tehtavat">
+
   <div class="tehtava">
     <h3 class="req">Lukusarjan summa</h3>
     <p>Tee ohjelma, joka laskee summan 1+2+3+...+n, missä n on käyttäjän syöttämä luku.</p>
+
     <p>Esimerkkitulostuksia:</p>
+
 <pre>
 Mihin asti? <font color="red">3</font>
 Summa on 6
 </pre>
-    <p>Edellisessä esimerkissä laskettiin 1+2+3 = 6</p>
+
+    <p>Edellisessä esimerkissä laskettiin 1 + 2 + 3 = 6</p>
+
 <pre>
 Mihin asti? <font color="red">7</font>
 Summa on 28
 </pre>
-    <p>Ja nyt laskettiin 1+2+3+4+5+6+7 = 28</p>
+
+    <p>Ja nyt laskettiin 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28</p>
+
     <p><strong>Vihje:</strong> Tee ohjelma <code>while</code>-komennon avulla. Käytä ohjelmassasi apumuuttujaa toistokertojen muistamiseen. Lisää jokaisella toistokerralla toistokerrat muistavan muuttujan arvo apumuuttujaan johon lasket summan arvon.</p>
 </div>
+
 <div class="tehtava">
     <h3 class="req">Rajoitetun lukusarjan summa</h3>
-    <p>Muuta edellistä tehtävää siten,
-      että käyttäjä määrää summan laskemisen aloituskohdan.
-      Voit olettaa, että käyttäjä antaa
-      ensin pienemmän luvun ja sitten suuremman luvun.</p>
-<p>Esimerkkitulostuksia:</p>
+
+    <p>Muuta edellistä tehtävää siten, että käyttäjä määrää summan laskemisen aloituskohdan. Voit olettaa, että käyttäjä antaa ensin pienemmän luvun ja sitten suuremman luvun.</p>
+
+    <p>Esimerkkitulostuksia:</p>
+
 <pre>
 Ensimmäinen: <font color="red">3</font>
 Viimeinen: <font color="red">5</font>
 Summa on 12
 </pre>
+
+    <p>Edellisessä laskettiin 3 + 4 + 5 = 12</p>
+
 <pre>
 Ensimmäinen: <font color="red">2</font>
 Viimeinen: <font color="red">8</font>
 Summa on 35
 </pre>
+
+    <p>Ja nyt laskettiin 2 + 3 + 4 + 5 + 6 + 7 + 8 = 35</p>
+
 </div>
+
+
 <div class="tehtava">
     <h3>Kertoma</h3>
-    <p>Tee ohjelma, joka laskee luvun n kertoman.
-      Kertoma n! lasketaan kaavalla 1*2*3*...*n.
-      Esimerkiksi 4! = 1*2*3*4 = 24.
-      Lisäksi on määritelty, että 0! = 1.</p>
-<p>Esimerkkitulostuksia:</p>
+
+    <p>Tee ohjelma, joka laskee luvun n kertoman.</p>
+
+    <p>Kertoma <code>n!</code> lasketaan kaavalla 1*2*3*...*n. Esimerkiksi luvun 4 kertoma on 24, eli 4! = 1*2*3*4 = 24. Lisäksi on määritelty, että luvun 0 kertoma on 1, eli 0! = 1.</p>
+
+    <p>Esimerkkitulostuksia:</p>
+
 <pre>
 Anna luku: <font color="red">3</font>
 Kertoma on 6
 </pre>
+
+    <p>Nyt laskettiin 1 * 2 * 3 = 6</p>
+    
+
 <pre>
 Anna luku: <font color="red">10</font>
 Kertoma on 3628800
 </pre>
+
+
+    <p>Ja nyt laskettiin 1 * 2 * 3 * ... * 8 * 9 * 10 = 3628800</p>
+
+
+    <p><em>Lisätietoa</em>: Kertomaa käytetään erityisesti todennäköisyyslaskennassa tilanteissa, missä halutaan esimerkiksi tarkastella jonkin joukon kaikkia erilaisia järjestyksiä. Esimerkiksi viiden hengen ryhmän voi järjestää 5! erilaiseen jonoon, ja 52 kortin korttipakka voi olla 52! erilaisessa järjestyksessä. Kertomaa voi käyttää myös <a href="http://fi.wikipedia.org/wiki/Kombinaatio" target="_blank">kombinaatioiden</a> laskemiseen; esimerkiksi 52 kortin korttipakasta voi ottaa viisi korttia 52! / (5! * (52 - 5)!) erilaisessa järjestyksessä.</p>
 </div>
+
+
 <div class="tehtava">
     <h3>Potenssien summa</h3>
-    <p>Tee ohjelma, joka laskee summan 2<sup>0</sup>+2<sup>1</sup>+2<sup>2</sup>+...+2<sup>n</sup>,
-      missä n on käyttäjän syöttämä luku.
-      Merkintä 2<sup>i</sup> tarkoittaa luvun 2 korottamista potenssiin i,
-      esimerkiksi 2<sup>4</sup> = 2*2*2*2 = 16.
-      Javassa merkintä a<sup>b</sup> ei ole käytössä,
-      mutta potenssin voi laskea komennolla <code>Math.pow(luku, potenssi)</code>. Huom. komento palauttaa <code>double</code>-tyyppisen eli liukulukutyyppisen luvun. Liukulukutyyppisen luvun voi muuttaa kokonaisluvuksi ( <code>int</code>-tyyppiseksi ) seuraavasti: <code>int tulos = (int) Math.pow(2, 3)</code>. Lasku asettaa muuttujaan tulos laskun 2 potenssiin 3 arvon.</p>
+
+    <p>Tee ohjelma, joka laskee summan 2<sup>0</sup>+2<sup>1</sup>+2<sup>2</sup>+...+2<sup>n</sup>, missä n on käyttäjän syöttämä luku. Merkintä 2<sup>i</sup> tarkoittaa luvun 2 korottamista potenssiin i, esimerkiksi 2<sup>4</sup> = 2*2*2*2 = 16. Javassa merkintä a<sup>b</sup> ei ole käytössä, mutta potenssin voi laskea komennolla <code>Math.pow(luku, potenssi)</code>. Huom. komento palauttaa <code>double</code>-tyyppisen eli liukulukutyyppisen luvun. Liukulukutyyppisen luvun voi muuttaa kokonaisluvuksi ( <code>int</code>-tyyppiseksi ) seuraavasti: <code>int tulos = (int) Math.pow(2, 3)</code>. Lasku asettaa muuttujaan tulos laskun 2 potenssiin 3 arvon.</p>
+
     <p>Esimerkkitulostuksia:</p>
 <pre>
 Anna luku: <font color="red">3</font>
@@ -3391,76 +3667,79 @@ Tulos on 255
 </pre>
 </div>
 </div>
+
   <h3>Ikuinen silmukka</h3>
-  <p>Yksi <em>suosituimmista</em> ohjelmointivirheistä toistolauseissa on tehdä vahingossa ikuinen silmukka. Seuraavassa yritetään tulostaa ruudulle 10 kertaa "En enää ikinä ohjelmoi ikuista silmukkaa":</p>
+
+  <p>Yksi <em>suosituimmista</em> toistolauseisiin liittyvistä ohjelmointivirheistä on vahingossa tehty ikuinen silmukka. Seuraavassa yritetään tulostaa ruudulle 3 kertaa "En enää ikinä ohjelmoi ikuista silmukkaa":</p>
+
 <pre class="sh_java">
 int i = 0;
 
-while( i&lt;10 ) {
+while(i &lt; 3) {
     System.out.println("En enää ikinä ohjelmoi ikuista silmukkaa");
 }
 </pre>
-  <p>Toistokertojen määrää kontrolloiva muuttuja <code>i</code> on aluksi 0 ja toistoja on tarkoitus tehdä niin kauan kuin <code>i&lt;10</code>. Käy kuitenkin hieman hassusti: muuttujan <code>i</code> arvoa ei muuteta missään, joten toistoehto pysyy ikuisesti totena.</p>
-  <h3>while ja lopetus</h3>
-  <p>Olemme tehneet peräkkäin jo muutamia toistotehtäviä, joissa toistoehto on muotoa:</p>
-<pre class="sh_java">
-int i = 1;
-while ( i &lt; 10 ) {
-    // ...
-    i++;
-}
-</pre>
-  <p>Ylläolevassa rungossa muuttuja <code>i</code> muistaa toistokertojen määrän, ja lopetusehto perustuu <code>i</code>:n vertailuun.</p>
-  <p>Muistellaan taas toiston lopetusta. Toiston lopetuksen ei tarvitse perustua toistokertojen laskemiseen. Katsotaan esimerkkiä jossa kysytään käyttäjän ikää. Jos ikä ei ole välillä 1-120, annetaan huomautus ja kysytään ikä uudelleen. Toistolauseen <em>while</em>-lauseen ehto voi siis olla mitä tahansa totuusarvon tuottavaa.</p>
-<pre class="sh_java">
-System.out.println("ikäsi: ");
 
-int ika = Integer.parseInt(lukija.nextLine());
+  <p>Toistokertojen määrää kontrolloiva muuttuja <code>i</code> on aluksi 0 ja toistoja on tarkoitus tehdä niin kauan kuin ehto <code>i &lt; 3</code> on totta. Käy kuitenkin hieman hassusti: muuttujan <code>i</code> arvoa ei muuteta toistolauseessa, joten toistoehto pysyy ikuisesti totena.</p>
 
-while( ika &lt; 1 || ika  &gt; 120 ) {   // ikä pienempi kuin 5 TAI suurempi kuin 120
-    System.out.println("Valehtelet");
-    if ( ika &lt; 1 ) {
-        System.out.println("Olet niin nuori ettet osaa kirjoittaa");
-    } else if ( ika &gt; 120 ) {
-        System.out.println("Olet niin vanha ettet osaa käyttää tietokonetta");
-    }
+<p>
+  <table border=1>
+    <tr>
+      <th>i</th>
+      <th>i &lt; 3</th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td colspan=2>...</td>
+    </tr>
+  </table>
+</p>
 
-    System.out.println("syötä ikäsi uudelleen: ");
-    ika = Integer.parseInt(lukija.nextLine();
-}
 
-System.out.println("Ikäsi on siis "+ ika);
-</pre>
-  <p>Ohjelman olisi voinut tehdä myös vanhaa tuttua <code>while(true)</code> -rakennetta käyttäen:</p>
-<pre class="sh_java">
-System.out.println("ikäsi: ");
+<p>&nbsp;</p>
+  <div> <big><b>Ohjelmien tekeminen pienissä paloissa</b></big>
 
-while( true ) {
-    int ika = Integer.parseInt(lukija.nextLine());
+    <p>Seuraavassa tehtävässä tehdään oikeastaan ainoastaan yksi ohjelma, mutta ohjelman rakentaminen tapahtuu hyvin pienissä paloissa. Tämä on ehdottoman suositeltava tapa <b>AINA</b> kun ohjelmoit. </p>
 
-    if ( ika &gt;= 1 &amp;&amp; ika &lt;= 120 ) {   // ikä 1:n JA 120:n välillä
-        break;                              // lopetetaan toisto
-    }
+    <p>Eli kun teet ohjelmaa, oli se sitten harjoitustehtävä tai oma projektisi, kannattaa edetä hyvin pienissä paloissa. Älä koskaan yritä ratkaista koko ongelmaa kerralla. Aloita jollain helpolla asialla jonka tiedät varmasti osaavasi. Esim. seuravaavassa tehtäväsarjassa keskitytään aluksi pelkästään siihen, että osataan pysäyttää ohjelma käyttäjän syöttäessä luvun -1. Kun yksi ohjelman osa on saatu toimimaan, voidaan siirtyä ratkaisemaan jotain seuraavaa varsinaisen ongelman osaongelmaa. </p>
 
-    System.out.println("Valehtelet");
-    if ( ika &lt; 1 ) {
-        System.out.println("Olet niin nuori ettet osaa kirjoittaa");
-    } else {  // ikä siis yli 120
-        System.out.println("Olet niin vanha ettet osaa käyttää tietokonetta");
-    }
+    <p>Osa kurssin tehtäviä on valmiiksi osiin pilkottuja. Usein osat pitää vielä pilkkoa ohjelmoinnin kannalta vieläkin pienempiin paloihin. Kannattaa tehdä siten, että suoritat ohjelman lähes jokaisen uuden koodirivin jälkeen. Tällöin varmistat, että ratkaisu on etenemässä haluttuun suuntaan.</p>
 
-    System.out.println("syötä ikäsi uudelleen: ");
-}
+  </div>
 
-System.out.println("Ikäsi on siis "+ ika);
-</pre>
-  <div class="tehtavat">
+
+<div class="tehtavat">
   <div class="tehtava">
+
     <h3>Silmukat, lopetus ja muistaminen</h3>
+
     <p>Tämä tehtäväsarja muodostaa yhden isomman ohjelman, jonka toiminnallisuus toteutetaan pienissä paloissa. <strong>Jos et tee tehtäväsarjaa loppuun asti, voit lähettää sen tarkastettavaksi vajaatekoisenakin. Tämä onnistuu painamalla testausnapin oikealla puolella olevasta "submit"-napista eli pienestä ylöspäinosoittavasta nuolesta</strong>. Vaikka palautusautomaatti valittaakin vielä tekemättä olevien tehtävänosien testeistä, kirjautuvat jo tekemiesi osien pisteet. </p>
-    <p>Huom: nyt (ja jatkossa) jokainen isomman tehtävän "alitehtävä" (kuten 36.1) on saman arvoinen tehtävä kuin alikohdaton tehtävä. Tehtävä 36 siis vastaa viittä normaalia tehtävää.</p>
+
+    <p>Huom: nyt (ja jatkossa) jokainen isomman tehtävän "alitehtävä" on saman arvoinen tehtävä kuin alikohdaton tehtävä. Tehtävä 36 siis vastaa viittä normaalia tehtävää.</p>
+
     <h4 class="req">Lukujen lukeminen</h4>
+
     <p> Tee ohjelma, joka kysyy käyttäjältä lukuja (ohjelma tulostaa käyttäjälle aluksi "Syötä luvut:"), kunnes käyttäjä antaa luvun -1. Kun käyttäjä syöttää luvun -1, ohjelma tulostaa "Kiitos ja näkemiin!" ja päättyy. </p>
+
 <pre>
 Syötä luvut:
 <font color="red">5</font>
@@ -3469,9 +3748,10 @@ Syötä luvut:
 <font color="red">-1</font>
 Kiitos ja näkemiin!
 </pre>
+
     <h4 class="req">Lukujen summa</h4>
-    <p>Laajenna edellistä ohjelmaa siten, että ohjelma ilmoittaa käyttäjän syöttämien lukujen summan.
-      (Lukua -1 ei lasketa mukaan.)</p>
+    <p>Laajenna edellistä ohjelmaa siten, että ohjelma ilmoittaa käyttäjän syöttämien lukujen summan. (Lukua -1 ei lasketa mukaan.)</p>
+
 <pre>
 Syötä luvut:
 <font color="red">5</font>
@@ -3481,10 +3761,11 @@ Syötä luvut:
 Kiitos ja näkemiin!
 Summa: 11
 </pre>
+
     <h4 class="req">Lukujen summa ja lukumäärä</h4>
-    <p>Laajenna edellistä ohjelmaa siten, että ohjelma ilmoittaa myös
-      käyttäjien antamien lukujen lukumäärän.
-      (Lukua -1 ei lasketa mukaan.)</p>
+
+    <p>Laajenna edellistä ohjelmaa siten, että ohjelma ilmoittaa myös käyttäjien antamien lukujen lukumäärän. (Lukua -1 ei lasketa mukaan.)</p>
+
 <pre>
 Syötä luvut:
 <font color="red">5</font>
@@ -3495,9 +3776,11 @@ Kiitos ja näkemiin!
 Summa: 11
 Lukuja: 3
 </pre>
+
     <h4 class="req">Lukujen keskiarvo</h4>
-    <p>Muuta edellistä ohjelmaa siten, ohjelma ilmoittaa lukujen keskiarvon.
-      (Lukua -1 ei lasketa mukaan.)</p>
+
+    <p>Muuta edellistä ohjelmaa siten, ohjelma ilmoittaa lukujen keskiarvon. (Lukua -1 ei lasketa mukaan.)</p>
+
 <pre>
 Syötä luvut:
 <font color="red">5</font>
@@ -3509,10 +3792,10 @@ Summa: 11
 Lukuja: 3
 Keskiarvo: 3.666666666666
 </pre>
+
     <h4 class="req">Parilliset ja parittomat</h4>
-    <p>Laajenna edellistä ohjelmaa siten, että  ohjelma ilmoittaa parillisten ja
-      parittomien lukujen määrän.
-      (Lukua -1 ei lasketa mukaan.)</p>
+    <p>Laajenna edellistä ohjelmaa siten, että  ohjelma ilmoittaa parillisten ja parittomien lukujen määrän. (Lukua -1 ei lasketa mukaan.)</p>
+
 <pre>
 Syötä luvut:
 <font color="red">5</font>
@@ -3534,57 +3817,124 @@ Parittomia: 1
   </div>
 
 
+  <h3>Toiston lopetuksen ei tarvitse perustua toistokertojen laskemiseen</h3>
 
-  <div> <big><b>Huomio: Ohjelmien tekeminen pienissä paloissa</b></big>
-    <p>Edeltävissä tehtävissä tehtiin oikeastaan ainoastaan yksi ohjelma, mutta ohjelman rakentaminen tapahtui hyvin pienissä paloissa. Tämä on ehdottoman suositeltava tapa <b>AINA</b> kun ohjelmoit. </p>
-    <p>Eli kun teet ohjelmaa, oli se sitten harjoitustehtävä tai oma projektisi, kannattaa edetä hyvin pienissä paloissa. Älä koskaan yritä ratkaista koko ongelmaa kerralla. Aloita jollain helpolla asialla jonka tiedät varmasti osaavasi. Esim. edellisessä tehtäväsarjassa keskityttiin aluksi pelkästään siihen, että osataan pysäyttää ohjelma käyttäjän syöttäessä luvun -1. Kun yksi ohjelman osa on saatu toimimaan, voidaan siirtyä ratkaisemaan jotain seuraavaa varsinaisen ongelman osaongelmaa. </p>
-    <p>Osa kurssin tehtäviä on edellisten tapaan valmiiksi osiin pilkottuja. Usein osat pitää vielä pilkkoa ohjelmoinnin kannalta vieläkin pienempiin paloihin. Kannattaa tehdä siten, että suoritat ohjelman lähes jokaisen uuden koodirivin jälkeen. Tällöin varmistat, että ratkaisu on etenemässä haluttuun suuntaan.</p>
-  </div>
+  <p>Olemme tehneet peräkkäin jo muutamia toistotehtäviä, joissa toistoehto on muotoa:</p>
+
+<pre class="sh_java">
+int i = 1;
+while (i &lt; 10) {
+    // ...
+    i++;
+}
+</pre>
+
+  <p>Ylläolevassa rungossa muuttujaa <code>i</code> käytetään toistokertojen määrän muistamiseen, ja lopetusehto perustuu vertailuun <code>i &lt; 10</code>.</p>
+
+  <p>Muistellaan taas toiston lopetusta. Toiston lopetuksen ei tarvitse perustua toistokertojen laskemiseen. Katsotaan esimerkkiä jossa kysytään käyttäjän ikää. Jos ikä ei ole välillä 1-120, annetaan huomautus ja kysytään ikä uudelleen. Toistolauseen <em>while</em>-lauseen ehto voi siis olla mitä tahansa totuusarvon tuottavaa.</p>
+
+<pre class="sh_java">
+System.out.println("ikäsi: ");
+
+int ika = Integer.parseInt(lukija.nextLine());
+
+while(ika &lt; 1 || ika  &gt; 120) {   // ikä pienempi kuin 1 TAI suurempi kuin 120
+    System.out.println("Valehtelet");
+    if (ika &lt; 1) {
+        System.out.println("Olet niin nuori ettet osaa kirjoittaa");
+    } else if (ika &gt; 120) {
+        System.out.println("Olet niin vanha ettet osaa käyttää tietokonetta");
+    }
+
+    System.out.println("syötä ikäsi uudelleen: ");
+    ika = Integer.parseInt(lukija.nextLine();
+}
+
+System.out.println("Ikäsi on siis "+ ika);
+</pre>
+
+  <p>Ohjelman olisi voinut tehdä myös vanhaa tuttua <code>while(true)</code> -rakennetta käyttäen:</p>
+
+<pre class="sh_java">
+System.out.println("ikäsi: ");
+
+int ika = Integer.parseInt(lukija.nextLine());
+
+while(true) {
+
+    if (ika &gt;= 1 &amp;&amp; ika &lt;= 120) {   // ikä 1:n JA 120:n välillä
+        break;                              // lopetetaan toisto
+    }
+
+    System.out.println("Valehtelet");
+    
+    if (ika &lt; 1) {
+        System.out.println("Olet niin nuori ettet osaa kirjoittaa");
+    } else {  // ikä siis yli 120
+        System.out.println("Olet niin vanha ettet osaa käyttää tietokonetta");
+    }
+
+    System.out.println("syötä ikäsi uudelleen: ");
+}
+
+System.out.println("Ikäsi on siis "+ ika);
+</pre>
+
+
 
   <div class="ekstra">
     <p> <big><strong>Lisätietoa: toisto for-lauseen avulla</strong></big> </p>
     <p>Edellä esitellyn while-toistolauseen lisäksi Javassa toiston voi hoitaa myös for-toistolauseen avulla. Varsinaisesti rupeamme käyttämään for:ia vasta hieman myöhemmin kurssilla, mutta jo tässä vaiheessa mainittakoon, että toistolause</p>
 <pre class="sh_java sh_sourceCode">
 int i = 0;
-while ( i &lt; 10 ) {
-    System.out.println( i );
+while (i &lt; 10) {
+    System.out.println(i);
     i++;
 }
 </pre>
     <p>tehtäisiin for:in avulla seuraavasti:</p>
 <pre class="sh_java">
-for ( int i = 0; i &lt; 10 ; i++ ) {
-    System.out.println( i );
+for (int i = 0; i &lt; 10 ; i++) {
+    System.out.println(i);
 }
 </pre>
+
     <p>eli for-komento sisältää samalla rivillä indeksimuuttujan alustuksen, toistoehton ja indeksimuuttujan kasvatuksen puolipistein eroteltuna. Voit unohtaa for:in olemassaolon toistaiseksi jos et halua sekoittaa päätäsi sen olemassaololla.</p>
   </div>
 
+
+
   <h2 id="metodit1">Metodit</h2>
 
-  <p> Olemme käyttäneet useita erilaisia komentoja Javassa: sijoitusta, laskutoimituksia, vertailuja, if:iä ja whileä. Ruudulle tulostaminen on tehty "komentoa" <code>System.out.println()</code> käyttäen. Kahden luvun maksimi osataan laskea "komennolla" <code>Math.max()</code>. Tuttuja ovat myös <code>lukija.nextLine()</code> ja sen kanssa usein nähty <code>Integer.parseInt()</code>. </p>
+  <p> Olemme käyttäneet useita erilaisia komentoja Javassa: sijoitusta, laskutoimituksia, vertailuja, if:iä ja whileä. Ruudulle tulostaminen on tehty "komentoa" <code>System.out.println()</code> käyttäen. Tuttuja ovat myös <code>lukija.nextLine()</code> ja sen kanssa usein nähty <code>Integer.parseInt()</code>. </p>
 
-  <p> Huomaamme, että jälkimmäinen joukko edellä lueteltuja komentoja poikkeaa if:istä ja while:stä ym. siinä, että komennon perässä on sulut ja joskus sulkujen sisällä komennolle annettava syöte. "Sulkuihin päättyvät" eivät oikeastaan olekaan komentoja vaan <strong>metodeja</strong>. </p>
+  <p>Huomaamme, että jälkimmäinen joukko edellä lueteltuja komentoja poikkeaa <code>if</code>:istä ja <code>while</code>:stä ym. siinä, että komennon perässä on sulut ja joskus sulkujen sisällä komennolle annettava syöte. "Sulkuihin päättyvät" eivät oikeastaan olekaan komentoja vaan <strong>metodeja</strong>.</p>
 
-  <p> Teknisesti ottaen metodi tarkoittaa koodinpätkää, jota voi kutsua muualta ohjelmakoodista. Koodirivi <code>System.out.println("olen metodille annettava parametri!")</code> siis tarkoittaa, että kutsutaan metodia, joka suorittaa ruudulle tulostamisen. Metodin suorituksen jälkeen palataan siihen kohtaa missä ennen metodikutsua oltiin menossa. Metodille suluissa annettua syötettä kutsutaan <i>metodin parametriksi</i>. </p>
-  <p> Parametrin lisäksi metodilla voi olla <i>paluuarvo</i>. Esim. tuttu koodinpätkä: </p>
+  <p>Teknisesti ottaen metodi tarkoittaa koodinpätkää, jota voi kutsua muualta ohjelmakoodista. Koodirivi <code>System.out.println("olen metodille annettava parametri!")</code> siis tarkoittaa, että kutsutaan metodia, joka suorittaa ruudulle tulostamisen. Metodin suorituksen jälkeen palataan takaisin koodiin siihen kohtaan missä ennen metodikutsua oltiin menossa. Metodille suluissa annettua syötettä kutsutaan <em>metodin parametriksi</em>. </p>
+
+  <p> Parametrin lisäksi metodilla voi olla <em>paluuarvo</em>. Esim. tuttu koodinpätkä: </p>
+
 <pre class="sh_java">
-int luku = Integer.parseInt( lukija.nextLine() );
+int luku = Integer.parseInt(lukija.nextLine());
 </pre>
-  <p> sisältää kaksi metodikutsua. Ensin kutsutaan sisempänä olevaa metodia <code>lukija.nextLine</code>. Metodilla on paluuarvonaan käyttäjän syöttämä merkkijono. Seuraavaksi
-    kutsutaan metodia <code>Integer.parseInt</code>. Metodikutsun parametrina on merkkijono jonka <code>lukija.nextLine</code>:n kutsu palautti ja metodin paluuarvona on merkkijonoa vastaava kokonaisluku.</p>
-  <p> Metodin nimeen näyttää liittyvän piste, esim. <code>lukija.nextLine()</code>. Oikeastaan tässä metodin nimi onkin pisteen oikeanpuoleinen osa, eli <code>nextLine()</code>. Pisteen vasemmanpuoleinen osa, eli tässä <code>lukija</code> kertoo <strong>kenen metodista on kyse</strong>.
-    Eli kyseessä on <em>lukijan</em> metodi nextLine. Opimme hiukan myöhemmin tarkemmin mistä tässä pisteen vasemmanpuoleisessa
-    osassa on kyse. Tarkka lukija tietysti huomaa, että <code>System.out.println()</code>:ssa on "kaksi pistettä". Metodin nimi tässä
-    on println, ja <code>System.out</code> on se kenen metodista on kyse. Karkeasti ottaen <code>System.out</code> tarkoittaa koneen näyttöä. </p>
-  <p> Tähän mennessä käyttämämme metodit ovat kaikki olleet Javan valmiita metodeita. Nyt opettelemme tekemään omia metodeita. </p>
+
+  <p>sisältää kaksi metodikutsua. Ensin kutsutaan sisempänä olevaa metodia <code>lukija.nextLine</code>. Metodilla on paluuarvonaan käyttäjän syöttämä merkkijono. Seuraavaksi kutsutaan metodia <code>Integer.parseInt</code>. Metodikutsun parametrina on merkkijono jonka metodin <code>lukija.nextLine</code> kutsu palautti ja metodin paluuarvona on merkkijonoa vastaava kokonaisluku.</p>
+
+  <p>Metodin nimeen näyttää liittyvän piste, esim. <code>lukija.nextLine()</code>. Oikeastaan tässä metodin nimi onkin pisteen oikeanpuoleinen osa, eli <code>nextLine()</code>. Pisteen vasemmanpuoleinen osa, eli tässä <code>lukija</code> kertoo <strong>kenen metodista on kyse</strong>. Eli kyseessä on <em>lukijan</em> metodi nextLine. Opimme hiukan myöhemmin tarkemmin mistä tässä pisteen vasemmanpuoleisessa osassa on kyse. Tarkka lukija tietysti huomaa, että <code>System.out.println()</code>:ssa on "kaksi pistettä". Metodin nimi tässä on println, ja <code>System.out</code> on se kenen metodista on kyse. Karkeasti ottaen <code>System.out</code> tarkoittaa koneen näyttöä.</p>
+
+  <p>Tähän mennessä käyttämämme metodit ovat kaikki olleet Javan valmiita metodeita. Nyt opettelemme tekemään omia metodeita. </p>
+
 
   <h2 id="metodit">Omat metodit</h2>
 
   <p>Olemme tähän mennessä ohjelmoineet ohjelmamme siten, että kaikki tapahtuu yhdessä jatkumossa ja koodia luetaan ylhäältä alas. </p>
-  <p>Edellä mainittiin että "metodi tarkoittaa koodinpätkää, jota voi kutsua muualta ohjelmakoodista". Javan valmiita metodeja on käytetty jo oikeastaan ensimmäisestä ohjelmasta lähtien. </p>
-  <p>Javan valmiiden metodien käytön lisäksi ohjelmoija voi kirjoittaa itse metodeja joita sovellus kutsuu. Oikeastaan on hyvin poikkeuksellista jos ohjelmassa ei ole yhtään itse kirjoitettua metodia. Tästälähtien lähes jokainen kurssilla tehty ohjelma sisältääkin itsekirjoitettuja metodeja.</p>
+
+  <p>Edellä mainittiin että "metodi tarkoittaa koodinpätkää, jota voi kutsua muualta ohjelmakoodista". Javan valmiita metodeja on käytetty jo oikeastaan ensimmäisestä ohjelmasta lähtien.</p>
+
+  <p>Javan valmiiden metodien käytön lisäksi ohjelmoija voi kirjoittaa itse metodeja joita sovellus kutsuu. Oikeastaan on hyvin poikkeuksellista jos ohjelmassa ei ole yhtään itse kirjoitettua metodia. Tästä lähtien lähes jokainen kurssilla tehty ohjelma sisältääkin itsekirjoitettuja metodeja.</p>
+
   <p>Ohjelmarunkoon metodit kirjoitetaan main:in aaltosulkeiden ulkopuolelle mutta kuitenkin "uloimmaisten" aaltosulkeiden sisäpuolelle, joko mainin ylä- tai alapuolelle</p>
+
 <pre class="sh_java">
 import java.util.Scanner;
 
@@ -3597,13 +3947,17 @@ public class Esimerkki {
     // omia metodeja tänne
 }
 </pre>
+
   <p>Luodaan metodi <code>tervehdi</code>.</p>
+
 <pre class="sh_java">
 public static void tervehdi() {
     System.out.println("Terveiset metodimaailmasta!");
 }
 </pre>
+
   <p>Ja asetetaan se metodeille kuuluvalle paikalle.</p>
+
   <pre class="sh_java">
 import java.util.Scanner;
 
@@ -3619,8 +3973,11 @@ public class Esimerkki {
     }
 }
 </pre>
+
   <p>Metodin määrittely sisältää kaksi osaa. Metodimäärittelyn ensimmäisellä rivillä on metodin nimi eli <i>tervehdi</i>. Nimen vasemmalla puolella tässä vaiheessa määreet <code>public static void</code>. Metodin nimen sisältävän rivin alla on aaltosulkeilla erotettu koodilohko, jonka sisälle kirjoitetaan metodin koodi, eli ne komennot jotka metodia kutsuttaessa suoritetaan. Metodimme <code>tervehdi</code> ei tee muuta kuin kirjoittaa rivillisen tekstiä ruudulle.</p>
+
   <p>Itsekirjoitetun metodin kutsu on helppoa, kirjoitetaan metodin nimi ja perään sulut ja puolipiste. Seuraavassa main eli pääohjelma kutsuu metodia ensin kerran ja sen jälkeen useita kertoja. </p>
+
 <pre class="sh_java">
 import java.util.Scanner;
 
@@ -3644,7 +4001,9 @@ public class OhjelmaRunko {
     }
 }
 </pre>
+
   <p>Ohjelman suoritus saa aikaan seuraavan tulosteen: </p>
+
 <pre>
 Kokeillaan pääsemmekö metodimaailmaan:
 Terveiset metodimaailmasta!
@@ -3654,15 +4013,19 @@ Terveiset metodimaailmasta!
 Terveiset metodimaailmasta!
 </pre>
 
-  <p>Huomionarvoista tässä on koodin suoritusjärjestys. Koodin suoritus etenee siten, että pääohjelman --  eli main:in -- rivit suoritetaan ylhäältä alas yksi kerrallaan. Koodirivin ollessa metodikutsu, mennään suorittamaan metodin koodirivit, jonka jälkeen palataan kohtaan, josta metodin kutsu tapahtui. Tarkemmin ottaen metodikutsun jälkeiselle riville. </p>
+  <p>Huomionarvoista tässä on koodin suoritusjärjestys. Koodin suoritus etenee siten, että pääohjelman --  eli main:in -- rivit suoritetaan ylhäältä alas yksi kerrallaan. Koodirivin ollessa metodikutsu, mennään suorittamaan metodissa olevat koodirivit, jonka jälkeen palataan kohtaan, josta metodin kutsu tapahtui. Tarkemmin ottaen metodikutsun jälkeiselle riville.</p>
 
-  <p>Jos ollaan tarkkoja on pääohjelma eli main itsekin metodi. Kun ohjelma käynnistyy, kutsuu käyttöjärjestelmä main:ia. Metodi main on siis ohjelman käynnistyspiste, jonka ylimmältä riviltä ohjelman suoritus lähtee liikkeelle. Ohjelman suoritus loppuu kun päädytään mainin loppuun. </p>
-  <p>Jatkossa kun esittelemme metodeja, emme erikseen mainitse että niiden täytyy sijaita omalla paikallaan.  Metodia ei esimerkiksi voi määritellä toisen metodin sisällä.</p>
+  <p>Jos ollaan tarkkoja niin pääohjelma eli main on itsekin metodi. Kun ohjelma käynnistyy, kutsuu käyttöjärjestelmä main:ia. Metodi main on siis ohjelman käynnistyspiste, jonka ylimmältä riviltä ohjelman suoritus lähtee liikkeelle. Ohjelman suoritus loppuu kun päädytään mainin loppuun.</p>
+
+  <p>Jatkossa kun esittelemme metodeja, emme erikseen mainitse että niiden täytyy sijaita omalla paikallaan. Metodia ei esimerkiksi voi määritellä toisen metodin sisällä.</p>
+
 <div class="tehtavat">
+
   <div class="tehtava">
     <h3 class="req">Tekstin tulostus</h3>
-    <p>Tee metodi <code>tulostaTeksti</code>, joka tulostaa
-      tekstin "Alussa olivat suo, kuokka ja Java." sekä rivinvaihdon.</p>
+
+    <p>Tee metodi <code>tulostaTeksti</code>, joka tulostaa tekstin "Alussa olivat suo, kuokka ja Java." sekä rivinvaihdon.</p>
+
 <pre class="sh_java">
 public static void main(String[] args) {
     tulostaTeksti();
@@ -3672,16 +4035,20 @@ public static void tulostaTeksti() {
     // kirjoita koodia tähän
 }
 </pre>
+
     <p>Ohjelman tulostus:</p>
+
 <pre>
 Alussa olivat suo, kuokka ja Java.
 </pre>
+
     </div>
+
     <div class="tehtava">
     <h3 class="req">Monta tulostusta</h3>
-    <p>Laajenna edellistä ohjelmaa siten, että pääohjelma kysyy
-      käyttäjältä, montako kertaa teksti tulostetaan eli montako kertaa
-      metodia kutsutaan.</p>
+
+    <p>Laajenna edellistä ohjelmaa siten, että pääohjelma kysyy käyttäjältä, montako kertaa teksti tulostetaan eli montako kertaa metodia kutsutaan.</p>
+
 <pre class="sh_java">
 public static void main(String[] args) {
     // kysy käyttäjältä, montako kertaa teksti tulostetaan
@@ -3692,7 +4059,9 @@ public static void tulostaTeksti() {
     // kirjoita koodia tähän
 }
 </pre>
+
 <p>Ohjelman tulostus:</p>
+
 <pre>
 Kuinka monta?
 <font color="red">7</font>
@@ -3704,13 +4073,15 @@ Alussa olivat suo, kuokka ja Java.
 Alussa olivat suo, kuokka ja Java.
 Alussa olivat suo, kuokka ja Java.
 </pre>
+
     <p><strong>huom:</strong> tulosta kehote <em>Kuinka monta?</em> omalle rivilleen!</p>
+
   </div>
 </div>
 
   <h4>Metodien nimennästä</h4>
 
-  <p>Metodit nimetään siten, että ensimmäinen sana kirjoitetaan pienellä ja loput alkavat isolla alkukirjaimella, tälläisestä kirjoitustavasta käytetään nimitystä camelcase. Tämän lisäksi, metodin sisällä koodi on sisennetty taas neljä merkkiä.</p>
+  <p>Metodit nimetään siten, että ensimmäinen sana kirjoitetaan pienellä ja loput alkavat isolla alkukirjaimella, tälläisestä kirjoitustavasta käytetään nimitystä camelCase. Tämän lisäksi, metodin sisällä koodi on sisennetty taas neljä merkkiä.</p>
 
   <table class="table">
   <thead>
@@ -3738,47 +4109,61 @@ public static int tamaMetodiSanooMur() {
 
 
   <h3>Metodin parametrit</h3>
+
   <p>Metodista saa huomattavasti monikäyttöisemmän antamalla sille <em>parametreja</em>. Parametrit ovat muuttujia, jotka määritellään metodin ylimmällä rivillä metodin nimen jälkeen olevien sulkujen sisällä.  Kun metodia kutsutaan, sen parametreille annetaan arvot kutsuvaiheessa.</p>
+
   <p>Seuraavassa esimerkissä määritellään parametrillinen metodi <code>tervehdi</code>, jolla on String-tyyppinen parametri <code>nimi</code>.</p>
+
 <pre class="sh_java">
 public static void tervehdi(String nimi) {
     System.out.println("Hei " + nimi + ", terveiset metodimaailmasta!");
 }
 </pre>
-  <p>Kutsutaan metodia <code>tervehdi</code> siten, että parametrin <code>nimi</code> arvoksi asetetaan ensimmäisellä kutsulla <code>Matti</code> ja toisella kutsulla <code>Arto</code>.</p>
+
+  <p>Kutsutaan metodia <code>tervehdi</code> siten, että parametrin <code>nimi</code> arvoksi asetetaan ensimmäisellä kutsulla <code>Verna</code> ja toisella kutsulla <code>Chang</code>.</p>
+
 <pre class="sh_java">
 public static void main(String[] args) {
-    tervehdi("Matti");
-    tervehdi("Arto");
+    tervehdi("Verna");
+    tervehdi("Chang");
 }
 </pre>
+
 <pre>
-Hei Matti, terveiset metodimaailmasta!
-Hei Arto, terveiset metodimaailmasta!
+Hei Verna, terveiset metodimaailmasta!
+Hei Chang, terveiset metodimaailmasta!
 </pre>
+
   <p>Aivan kuten kutsuttaessa Javan valmista <code>System.out.println()</code>-metodia, voi oman metodin kutsussa parametrina käyttää monimutkaisempaa ilmausta: </p>
+
 <pre class="sh_java">
 public static void main(String[] args) {
-    String nimi1 = "Antti";
-    String nimi2 = "Mikkola";
+    String nimi1 = "Ilari";
+    String nimi2 = "S";
     tervehdi( nimi1 + " " + nimi2 );
 
-    int ika = 24;
-    tervehdi("Juhana " + ika + " vuotta");
+    int ika = 20;
+    tervehdi("Jani " + ika + " vuotta");
 }
 </pre>
+
 <pre>
-Hei Antti Mikkola, terveiset metodimaailmasta!
-Hei Juhana 24 vuotta, terveiset metodimaailmasta!
+Hei Ilari S, terveiset metodimaailmasta!
+Hei Jani 20 vuotta, terveiset metodimaailmasta!
 </pre>
-  <p>Molemmissa tapauksissa metodilla on edelleen vain 1 parametri. Parametrin arvo lasketaan ennen metodin kutsumista. Ensimmäisessä tapauksessa parametrin arvo saadaan merkkijonokatenaationa <code>nimi1 + " " + nimi2</code> joka siis on arvoltaan <i>Antti Mikkola</i> ja jälkimmäisessä tapauksessa merkkijonokatenaatiosta <code>"Juhana " + ika + " vuotta"</code>. </p>
+
+  <p>Molemmissa tapauksissa metodilla on edelleen vain 1 parametri. Jos parametri on lause, kuten esimerkiksi <code>nimi1 + " " + nimi2</code>, lasketaan lauseen arvo ennen metodin kutsumista. Ensimmäisessä tapauksessa parametrin arvo saadaan merkkijonokatenaationa <code>nimi1 + " " + nimi2</code> joka siis on arvoltaan <i>Ilari S</i> ja jälkimmäisessä tapauksessa merkkijonokatenaatiosta <code>"Jani " + ika + " vuotta"</code>. </p>
+
   <h3>Monta parametria</h3>
-  <p>Metodille voidaan määritellä useita parametreja.  Tällöin metodin kutsussa parametrit annetaan samassa järjestyksessä.</p>
+
+  <p>Metodille voidaan määritellä useita parametreja. Tällöin metodin kutsussa parametrit annetaan samassa järjestyksessä.</p>
+
 <pre class="sh_java">
 public static void tervehdi(String nimi, String mistaTerveiset) {
     System.out.println("Hei " + nimi + ", terveiset " + mistaTerveiset);
 }
 </pre>
+
 <pre class="sh_java">
 String kuka = "Matti";
 String terveiset = "Kyröjoelta";
@@ -3786,13 +4171,17 @@ String terveiset = "Kyröjoelta";
 tervehdi(kuka, terveiset);
 tervehdi(kuka, terveiset + " ja Kumpulasta");
 </pre>
+
   <p>Jälkimmäisessä <code>tervehdi</code>-funktion kutsussa toinen parametri muodostetaan katenoimalla muuttujaan <code>terveiset</code> teksti <code>" ja Kumpulasta"</code>.  Tämä suoritetaan ennen varsinaista funktion suoritusta.</p>
+
 <pre>
 Hei Matti, terveiset Kyröjoelta
 Hei Matti, terveiset Kyröjoelta ja Kumpulasta
 </pre>
+
   <h3>Metodi kutsuu toista metodia</h3>
 <p>main ei ole suinkaan ainoa joka voi kutsua metodeita. Metodit voivat kutsua myös toisiaan. Tehdään metodi <code>tervehdiMontaKertaa</code>, joka tervehtii käyttäjää useasti metodin <code>tervehdi</code> avulla:</p>
+
 <pre class="sh_java">
 public static void tervehdi(String nimi) {
     System.out.println("Hei " + nimi + ", terveiset metodimaailmasta!");
@@ -3804,28 +4193,31 @@ public static void tervehdiMontaKertaa(String nimi, int kerrat) {
         tervehdi(nimi);
         i++;
     }
-
 }
 
 public static void main(String[] args) {
-    tervehdiMontaKertaa("Antti", 3);
+    tervehdiMontaKertaa("Ada-Maaria", 3);
     System.out.println("ja");
-    tervehdiMontaKertaa("Martin", 2);
+    tervehdiMontaKertaa("Juha", 2);
 }
 </pre>
+
 <p>Tulostuu:</p>
+
 <pre>
-Hei Antti, terveiset metodimaailmasta!
-Hei Antti, terveiset metodimaailmasta!
-Hei Antti, terveiset metodimaailmasta!
+Hei Ada-Maaria, terveiset metodimaailmasta!
+Hei Ada-Maaria, terveiset metodimaailmasta!
+Hei Ada-Maaria, terveiset metodimaailmasta!
 ja
-Hei Martin, terveiset metodimaailmasta!
-Hei Martin, terveiset metodimaailmasta!
+Hei Juha, terveiset metodimaailmasta!
+Hei Juha, terveiset metodimaailmasta!
 </pre>
+
   <p>Screencast aiheesta:</p>
+
   <p>
     <a href="http://www.youtube.com/watch?feature=player_embedded&v=sIosUNnRJVo" height="300" target="_blank"><img src="https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a> </p>
-  </p>
+
 <div class="tehtavat">
  <div class="tehtava">
     <h3>Tulostelua</h3>
@@ -14432,7 +14824,7 @@ System.out.println(tilanne);
         KPSTekoaly tekoaly = new KPSTekoaly();
         System.out.print("Kuinka monta kierrosta? ");
         int kierrokset = Integer.parseInt(lukija.nextLine());
-        for (int i = 0; i < kierrokset; i++) {
+        for (int i = 0; i &lt; kierrokset; i++) {
         System.out.print("Anna siirto (k, p tai s): ");
         String pelaajanSiirto = lukija.nextLine();
         String tekoalynSiirto = tekoaly.teeSiirto();
@@ -14485,7 +14877,7 @@ System.out.println(tilanne);
       KPSTuomari tuomari = new KPSTuomari();
       System.out.print("Kuinka monta kierrosta? ");
       int kierrokset = Integer.parseInt(lukija.nextLine());
-      for (int i = 0; i < kierrokset; i++) {
+      for (int i = 0; i &lt;kierrokset; i++) {
       System.out.print("Anna siirto (k, p tai s): ");
       String pelaajanSiirto = lukija.nextLine();
       String tekoalynSiirto = tekoaly.teeSiirto();
