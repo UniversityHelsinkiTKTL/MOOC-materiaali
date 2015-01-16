@@ -3074,9 +3074,45 @@ k = j;</pre>
     </ul>
   </div>
 
-    
 
+  <h2>Uusia tehtävätyyppejä!</h2>
+
+  <p>Viikosta 2 eteenpäin materiaalissa on ohjelmointitehtävien lisäksi selitystehtäviä ja koodinlukutehtäviä. Kukin selitystehtävä on kahden yksittäisen tehtävän arvoinen kurssipisteytyksessä. Koodinlukutehtävät taas on tarkoitettu lähinnä kertaamista varten.</p>
+
+  <p>Alla on kaksi esimerkkiä koodinlukutehtävästä. Kun avaat tehtävän koodinlukutehtävän sitä klikkaamalla, huomaat että tehtävään liittyy sekä "Tarkista vastaus"-nappi että "Uusi tehtävä"-nappi. Uusi tehtävä -napin avulla voit hakea itsellesi uuden samaan teemaan liittyvän koodinlukutehtävän, jolloin voit myös kerrata lukemista. Kokeile tehtäviä!</p>
+
+  <div id="parqu-exercise2"></div>
+
+  <div id="parqu-exercise3"></div>
+
+
+  <p>Selitystehtävät ovat taas tehtäviä, missä kirjoitat tehtävässä esitettyyn ongelmaan liittyvän vastauksen. Tehtävänanto kertoo mitä pitää tehdä. Selitysten ei tarvitse olla kovin pitkiä, mutta kuitenkin sellaisia, että kurssikaverisi ymmärtää mistä on kyse :). Voit testata allaolevaa selitystehtävää.</p>
+      
+  <div class="self-explanation" data-key="q-lahjakortit"></div>
+
+  <div class="hidden-in-mooc">
+
+    <p>Näiden tehtävien lisäksi pajassa tehdään myös pariohjelmointia. Pariohjelmointiin saat ohjeet pajasta.</p>
+
+  </div>
+  
   <h2>Muuttuvat muuttujat</h2>
+
+  <p>Huomattava osa edellisellä viikolla tekemistämme ohjelmista käytti muuttujia. Muuttujia käytetään tiedon säilyttämiseen sekä tiedon myöhempään noutamiseen. Muuttujan esittely tapahtui kertomalla ensin muuttujan <em>tyyppi</em>, esimerkiksi kokonaisluku (<code>int</code>), jota seuraa muuttujan nimi, esimerkiksi <code>luku</code> -- yhdessä <code>int luku</code>. Muuttujan esittelyä seuraa tyypillisesti sijoitusoperaatio, minkä avulla muuttujalle asetetaan arvo, esimerkiksi <code>int luku = 5</code> luo kokonaislukumuuttujan nimeltä luku ja asettaa siihen arvon 5.</p>
+
+  <p>Muuttujan arvoa voi käyttää myös uuden muuttujan esittelyssä ja arvon asetuksessa. Alla olevassa koodissa luodaan ensin muuttuja nimeltä pituus, jonka jälkeen luodaan muuttuja paino. Muuttujaan paino asetetaan puolet muuttujan pituus arvosta.</p>
+
+
+<pre class="sh_java">
+int pituus = 180;
+int paino = pituus / 2;
+
+System.out.println(paino);
+</pre>
+
+<pre>
+90
+</pre>
 
   <p>Olemassaolevan muuttujan arvoa halutaan usein muuttaa. Tämä onnistuu tavallisen sijoituslausekkeen avulla. Seuraavassa muuttujan <code>ika</code> arvoa kasvatetaan yhdellä:</p>
 
@@ -3096,6 +3132,7 @@ System.out.println(ika);
 </pre>
 
   <p>Tarkastellaan rivin <code>ika = ika + 1;</code> suoritusta vielä tarkemmin. Komento <code>ika = ika + 1;</code> kasvattaa muuttujan <code>ika</code> arvoa yhdellä. Käytännössä komennon suoritus tapahtuu siten, että ensin suoritetaan yhtäsuuruusmerkin oikealla puolella oleva lause <code>ika + 1</code>. Tässä tietokone etsii ensin muuttujaa <code>ika</code>. Koska muuttuja on esitelty aiemmin koodissa, se löytyy (sen arvo on <code>1</code>). Lauseen <code>ika + 1</code> muuttujan <code>ika</code> paikalle asetetaan arvo <code>1</code>. Lause on nyt muotoa <code>1 + 1</code>, jonka tietokone osaa laskea: tulokseksi tulee <code>2</code>. Komento on tämän jälkeen kokonaisuudessaan <code>ika = 2</code>, mikä tarkoittaa "aseta muuttujan ika arvoksi 2".</p>
+
 
   <p>Muuttujan arvon kasvattaminen yhdellä onnistuu myös seuraavasti:</p>
 
@@ -3141,14 +3178,7 @@ System.out.println(pituus);
 </pre>
 
 
-
-  <div>
-
-      <p><strong>Selitystehtävät</strong></p>
-      <p>Materiaalissa on viikosta 2 lähtien ohjelmointitehtävien lisäksi selitystehtäviä, joihin vastataan suoraan kurssisivun kautta. Selitystehtäviä on viikoilla 2 ja 3 kolme, viikoilla 4, 5, 6 ja 7 kaksi. </p>
-      
-      <div class="self-explanation" data-key="q-lahjakortit"></div>
-  </div>
+  <div id="parqu-exercise1"></div>
 
 
   <h3>Syötteen lukeminen</h3>
@@ -3197,7 +3227,6 @@ Paljonko lisätään? <font color="red">1</font>
   </ol>
 
   <p>Lopulta lause on muotoa <code>pituus = 58</code>, eli muuttujan <code>pituus</code> arvoksi asetetaan <code>58</code>.</p>
-
 
   <div class="tehtavat">
     <div class="tehtava" id="viikko2">
@@ -3272,6 +3301,9 @@ Summa lopussa: 7
 </div>
 
 
+  <div id="parqu-exercise5"></div>
+
+
   <h3>Sijoitusoperaatiot</h3>
 
   <p>Koska olemassaolevan muuttujan arvon muuttaminen on hyvin yleinen operaatio, on sitä varten olemassa erityiset sijoitusoperaatiot. </p>
@@ -3321,9 +3353,70 @@ System.out.println(pituus);
 1
 </pre>
 
+
+  <h3>Muuttujien olemassaolo</h3>
+
+  <p>Kun muuttuja esitellään, se ei ole kaikkialla olemassa. Muuttujan olemassaoloon liittyy oleellisesti kaksi sääntöä:</p>
+
+  <ol>
+    <li><strong>Muuttujaa ei ole olemassa ennen sen esittelyä</strong>, eikä sitä voi käyttää ennen kuin se on esitelty.
+      
+<pre class="sh_java">
+if (luku > 10) { // ei toimi sillä muuttujaa luku ei vielä tunneta!
+    System.out.println("Jee!");
+}
+
+int luku = 12;
+</pre>
+
+<pre class="sh_java">
+int luku = 12;
+
+if (luku > 10) { // toimii!
+    System.out.println("Jee!");
+}
+</pre>
+
+
+    </li>
+
+    <li><strong>Muuttuja on näkyvissä vain niiden aaltosulkujen sisällä kuin missä se muuttuja on esitelty</strong>, eikä siihen pääse käsiksi aaltosulkujen ulkopuolelta. Esimerkiksi, jos if- tai while-komentoon liittyvässä lohkossa (aaltosuluilla rajattu alue) esitellään muuttuja, muuttuja on käytössä vain aaltosulkujen sisällä.
+
+<pre class="sh_java">
+int luku = 12;
+
+if (luku > 10) {
+    System.out.println("Jee!");
+    int tulostus = 52;
+}
+
+System.out.println(tulostus); // ei toimi sillä muuttuja tulostus on olemassa vain if-lauseen lohkojen sisällä.
+</pre>
+
+
+<pre class="sh_java">
+int luku = 12;
+int tulostus = 0;
+
+if (luku > 10) {
+    System.out.println("Jee!");
+    tulostus = 52;
+}
+
+System.out.println(tulostus); // toimii!
+</pre>
+    </li>
+
+  </ol>
+
+  <p>Toisen säännön yhteydessä myös ensimmäinen sääntö pätee. Muuttuja on olemassa vain sen esittelyhetkestä eteenpäin, ei koskaan ennen esittelyhetkeä.<p>
+
+
   <h2 id="lisaa_toistoa">Lisää toistoa</h2>
 
-  <p>Opimme edellisellä viikolla (kts. <a href="../viikko1/index.html#toiston_alkeet">Toiston alkeet</a>) toteuttamaan <code>while(true)</code>-komennon avulla ohjelman, joka toistaa tiettyä komentosarjaa komennon <code>break</code> suorittamiseen asti.</p>
+  <p>Opimme edellisellä viikolla (kts. <a href="../viikko1/index.html#toiston_alkeet">Toiston alkeet</a>) toteuttamaan <code>while(true)</code>-komennon avulla ohjelman, joka toistaa tiettyä komentosarjaa komennon <code>break</code> suorittamiseen asti. Kerrataanpa tätä hieman:</p>
+
+  <div id="parqu-exercise4"></div>
 
   <p>Komento <code>break</code> ei ole ainoa tapa lopettaa toistoa. Toistokomennon yleinen muoto on <code>while (ehto)</code>, jossa ehtona voi olla mikä tahansa totuusarvoinen lauseke, eli ehto voi olla täsmälleen samaa muotoa kuin <code>if</code>-komentojen ehdot.</p>
 
@@ -3510,6 +3603,7 @@ while (luku != 2) {
   <p>Toistolauseen ehto tarkistetaan vain kun toistolauseen toistaminen aloitetaan sekä silloin kun koodin suoritus on päässyt toistolauseen lopettavaan aaltosulkuun asti. Jos ehto on totta, suoritus suoritus hyppää takaisin toistolauseen alkuun, ja jos ehto on epätotta, suoritus jatkuu toistolausetta seuraavalta riviltä.</p>
 
   <p>Vaikka muuttujan <code>luku</code> arvo on ylläolevassa toistolauseessa välillä 2, ei se ole koskaan 2 toistolauseen lopussa. Lopussa ehto <code>luku != 2</code> on aina totta, ja suoritus hyppää takaisin koodin alkuun.</p>
+
 
 
   <h3>Toisto ja useampi muuttuja</h3>
@@ -4178,6 +4272,18 @@ tervehdi(kuka, terveiset + " ja Kumpulasta");
 Hei Matti, terveiset Kyröjoelta
 Hei Matti, terveiset Kyröjoelta ja Kumpulasta
 </pre>
+
+
+  <div id="parqu-exercise6"></div>
+
+<!--
+  <div id="parqu-exercise7"></div>
+  <div id="parqu-exercise8"></div>
+  <div id="parqu-exercise9"></div>
+  <div id="parqu-exercise10"></div>
+  <div id="parqu-exercise11"></div>
+-->
+
 
   <h3>Metodi kutsuu toista metodia</h3>
 <p>main ei ole suinkaan ainoa joka voi kutsua metodeita. Metodit voivat kutsua myös toisiaan. Tehdään metodi <code>tervehdiMontaKertaa</code>, joka tervehtii käyttäjää useasti metodin <code>tervehdi</code> avulla:</p>
