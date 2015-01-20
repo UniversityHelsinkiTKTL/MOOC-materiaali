@@ -4743,170 +4743,6 @@ b = c;</pre>
   </div>
 </div>
 
-  
-  <!-- viikko 3 -->
-
-<!--
-  <h2>Ohjeita koodin kirjoittamiseen ja ongelmanratkaisuun</h2>
-
-  <p>Kaksi maailman johtavista ohjelmistonkehittäjistä, <em>Martin Fowler</em> ja <em>Kent Beck</em>, ovat lausuneet kirjassa <em>Refactoring: Improving the Design of Existing Codeseuraavasti</em> seuraavasti:</p>
-
-  <ul>
-    <li>Fowler: <em>"Any fool can write code that a computer can understand.  Good programmers write code that humans can understand."</em> </li>
-    <li>Beck: <em>"I'm not a great programmer, I'm just a good programmer with great habits."</em> </li>
-  </ul>
-
-  <p>[Päivitys: aiemmin molemmat lainaukset olivat merkitty Kent Beckille. Kiitos Esko Luontolalle <a href="http://sourceforge.net/p/mooc-issues/tickets/451/">tämän virheen ilmoittamisesta</a>.]</p>
-  
-  <p>Otamme viimeistään nyt ensimmäisiä askelia Fowlerin ja Beckin viitoittamalla tiellä.</p>
-
-  <h3>Oikein sisennetty ja "hengittävä" koodi</h3>
-
-  <p>Tarkastellaan koodia joka ensin lisää listalle lukuja ja tulostaa listan sisällön. Tämän jälkeen listalta poistetaan kaikki tietyn luvun esiintymät ja tulostetaan lista uudelleen.</p>
-
-  <p>Kirjoitetaan koodi ensin huonosti ja jätetään se sisentämättä:</p>
-
-  <pre class="sh_java">
-public static void main(String[] args) {
-ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;Integer&gt;();
-luvut.add(4);
-luvut.add(3);
-luvut.add(7);
-luvut.add(3);
-System.out.println("luvut alussa:");
-
-for (int luku : luvut) {
-System.out.println(luku);
-}
-
-while (luvut.contains(Integer.valueOf(3))) {
-luvut.remove(Integer.valueOf(3));
-}
-
-System.out.println("luvut poiston jälkeen:");
-
-for (int luku : luvut) {
-System.out.println(luku);
-}
-}
- </pre>
-
-  <p>Vaikka sisentämätön koodi toimii, on sitä hyvin ikävä lukea. Sisennetään koodi oikein (NetBeansissa sisennyksen saa korjattua automaattisesti painamalla alt+shift+f), ja erotellaan loogiset kokonaisuudet rivinvaihdoin:</p>
-
-  <pre class="sh_java">
-public static void main(String[] args) {
-    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;Integer&gt;();
-    luvut.add(4);
-    luvut.add(3);
-    luvut.add(7);
-    luvut.add(3);
-
-    System.out.println("luvut alussa:");
-
-    // tässä tulostetaan luvut
-    for (int luku : luvut) {
-        System.out.println(luku);
-    }
-
-    // tarkastetaan onko listalla luku 3
-    while (luvut.contains(Integer.valueOf(3))) {
-        luvut.remove(Integer.valueOf(3));  // jos löytyi, niin poistetaan se
-    }
-    // tehdään tämä whilessä jotta saadaan kaikki kolmoset poistetua!
-
-    System.out.println("luvut poiston jälkeen:");
-
-    // tässä tulostetaan luvut
-    for (int luku : luvut) {
-        System.out.println(luku);
-    }
-}
-</pre>
-
-
-  <p>Nyt koodissa alkaa olla jo järkeä. Esimerkiksi tulostus ja kolmosten poisto ovat omia loogisia kokonaisuuksia, joten ne on erotettu rivinvaihdolla. Koodissa on <em>ilmavuutta</em> ja koodin lukeminen alkaa olla miellyttävämpää.</p>
-
-  <p>Koodiin on vieläpä kirjoitettu kommentteja selventämään muutaman kohdan toimintaa.</p>
-
-  <h3>Copy-pasten eliminointi metodeilla</h3>
-
-  <p>Ohjelmoijan lähes pahin mahdollinen perisynti on copy-paste -koodi, eli samanlaisen koodinpätkän toistaminen koodissa useaan kertaan. Esimerkissämme listan tulostus tapahtuu kahteen kertaan. Tulostuksen hoitava koodi on syytä erottaa omaksi metodikseen ja kutsua uutta metodia pääohjelmasta:</p>
-
-  <pre class="sh_java">
-public static void main(String[] args) {
-    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;Integer&gt;();
-    luvut.add(4);
-    luvut.add(3);
-    luvut.add(7);
-    luvut.add(3);
-
-    System.out.println("luvut alussa:");
-
-    // tässä tulostetaan luvut
-    tulosta(luvut);
-
-    while (luvut.contains(Integer.valueOf(3))) {
-      luvut.remove(Integer.valueOf(3));
-    }
-
-    System.out.println("luvut poiston jälkeen:");
-
-    // tässä tulostetaan luvut
-    tulosta(luvut);
-}
-
-public static void tulosta(ArrayList&lt;Integer&gt; luvut) {
-    for (int luku : luvut) {
-        System.out.println( luku );
-    }
-}
-</pre>
-
-  <h3>Erillisten tehtävien erottaminen omiksi, selkeästi nimetyiksi metodeiksi</h3>
-
-  <p>Koodi alkaa olla jo selkeämpää. Selvästi erillinen kokonaisuus, eli listan tulostus on oma helposti ymmärrettävä metodinsa. Uuden metodin esittelyn myötä myös pääohjelman luettavuus on kasvanut. Huomaa että uusi metodi on nimetty mahdollisimman kuvaavasti, eli siten että metodin nimi kertoo mitä metodi tekee. Ohjelmaan kirjoitetut kommentit <em>tässä tulostetaan luvut</em> ovatkin tarpeettomia, joten poistetaan ne.</p>
-
-  <p>Ohjelmassa on vielä hiukan siistimisen varaa. Pääohjelma on vielä sikäli ikävä, että siistien metodikutsujen seassa on vielä suoraan listaa käsittelevä "epäesteettinen" koodinpätkä. Erotetaan tämäkin omaksi metodikseen:</p>
-
-  <pre class="sh_java">
-public static void main(String[] args) {
-    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;Integer&gt;();
-    luvut.add(4);
-    luvut.add(3);
-    luvut.add(7);
-    luvut.add(3);
-
-    System.out.println("luvut alussa:");
-    tulosta(luvut);
-
-    poista(luvut, 3);
-
-    System.out.println("luvut poiston jälkeen:");
-    tulosta(luvut);
-}
-
-public static void tulosta(ArrayList&lt;Integer&gt; luvut) {
-    for (int luku : luvut) {
-        System.out.println( luku );
-    }
-}
-
-public static void poista(ArrayList&lt;Integer&gt; luvut, int poistettava) {
-    while (luvut.contains(Integer.valueOf(poistettava))) {
-        luvut.remove(Integer.valueOf(poistettava));
-    }
-}
-</pre>
-
-  <p>Loimme yllä loogiselle kokonaisuudelle -- tietyn luvun kaikkien esiintymien poistolle -- oman kuvaavasti nimetyn metodin. Lopputuloksena oleva pääohjelma on nyt erittäin ymmärrettävä, lähes suomen kieltä. Molemmat metodit ovat myös erittäin yksinkertaisia ja selkeitä ymmärtää.</p>
-
-  <p>Kent Beck olisi varmaan tyytyväinen aikaansaannokseemme, koodi on helposti ymmärrettävää, helposti muokattavaa eikä sisällä copy-pastea.</p>
-  
-  <div class="self-explanation" data-key="q-siistintaJaViittaustyyppisetMuuttujat"></div>
--->
-
-
-
 
   <div class="help"> <big><b>NetBeans-vihje</b></big>
     <ul>
@@ -4917,9 +4753,107 @@ public static void poista(ArrayList&lt;Integer&gt; luvut, int poistettava) {
       <li> <b>Uudelleennimentä</b>
         <p>Muuttujat, metodit ja ensi viikolla opittavat luokat kannattaa nimetä kuvaavasti. Usein käy, että valittu nimi on hieman epäkuvaava ja tulee tarve nimen muuttamiselle. NetBeans:issa tämä on todella helppoa. Maalaa huono nimi jostain kohtaa koodiasi hiirellä. Paina (yhtäaikaa) ctrl ja r ja kirjoita muuttujalle/metodille uusi nimi. </p>
       </li>
+
+      <li><strong>projektien sulkeminen</strong>
+
+	<p>TODO</p>
+      </li>
+      
+      <li><strong>projektien testaaminen ilman testejä</strong>
+
+	<p>TODO, case karkausvuosi</p>
+      </li>
+      
     </ul>
   </div>
 
+
+
+  <div class="tehtavat">
+    <div class="tehtava">
+      <h3 class="req">Desibelimittaukset</h3>
+
+      <p>Kertaa ennen tämän tehtävän tekemistä edellisten viikkojen materiaalista muuttujien ja toistolausekkeiden käyttö.</p>
+      
+      <hr/>
+
+      <p>Kumpulan kerrostalovahdit RY jakaa kerrostaloasukkaille desibelimittareita. Mittareista saadaan kokonaislukuarvona mittaushetken desibelimäärä, mikä kuvaa äänenvoimakkuutta.</p>
+
+      <p>Tehtävänäsi on toteuttaa ohjelma, mihin nämä äänenvoimmakkuuskirjaukset voidaan tehdä. Ohjelman tulee lukea käyttäjän antamasta syötteestä desibelilukuja kunnes käyttäjä syöttää luvun 9999. Desibeliluvuiksi kelpaavat nollat ja positiiviset luvut. Käyttäjän syöttämiä negatiivisia lukuja ei tule ottaa huomioon, ja voit olettaa, että syötteet ovat kokonaislukuja (<code>int</code>).</P>
+
+      <p>Kun käyttäjä syöttää luvun 9999, ohjelman tulee tulostaa käyttäjän syöttämien desibelilukujen keskiarvo tai ilmoitus siitä, ettei keskiarvoa voida laskea (koska ei syötetty yhtään lukua).</p>
+
+      <p>Käytä Javan Scanner-lukijaa käyttäjän syötteen lukemiseen.</p>
+
+      <p>Luku 9999 annetaan vain lopettamisen merkiksi, eikä sitä tule ottaa mukaan keskiarvoon.</p>
+
+      <p>Alla on annettu esimerkki siitä, miltä ohjelman käyttäminen voi näyttää. Käyttäjän antamat syötteet on merkitty punaisella värillä. Sinun EI ole pakko tuottaa pilkulleen samanlaista tulostetta, mutta ohjelman on laskettava oikea tulos syötteen perusteella tähän tapaan.</p>
+      
+<pre>
+Anna desibelilukuja, lopeta luvulla 9999.
+Anna desibeliluku:
+<font color="red">100</font>
+Anna desibeliluku:
+<font color="red">80</font>
+Anna desibeliluku:
+<font color="red">0</font>
+Anna desibeliluku:
+<font color="red">-30</font>
+Anna desibeliluku:
+<font color="red">50</font>
+Anna desibeliluku:
+<font color="red">9999</font>
+Desibelilukujen keskiarvo on 57.5.
+</pre>
+
+      <p>Tässä taas keskiarvoa ei saada määritettyä:</p>
+
+<pre>
+Anna desibelilukuja, lopeta luvulla 9999.
+Anna desibeliluku:
+<font color="red">-8</font>
+Anna desibeliluku:
+<font color="red">9999</font>
+Yhtään desibelilukua ei syötetty.
+</pre>
+
+    <p>Huom! Tehtävässä ei ole automaattisia testejä, vaan pääset itse miettimään milloin tehtävä oikeasti toimii. Varmista että ohjelmasi toimii erilaisilla syötteillä ennen tehtävän palautusta. Tehtävä vastaa kahta yksittäistä ohjelmointitehtävää.</p>
+
+    </div>
+
+    <div class="tehtava">
+      <h3>Robottiohjain</h3>
+
+      <p>Katsotaan uudestaan kurssin ensimmäisten tehtävien joukossa tehtyä tehtävää <code>Robottiohjain</code>, missä tavoitteena oli saada luotua robottia ohjaamalla seuraavanlainen kuvio:</p>
+
+      <img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/13-robotcontrol.png"/>
+
+      <p>Suuremman suorakulmion leveys on 7 askelta ja korkeus on 5 askelta, ja pienemmän suorakulmion leveys on 3 askelta, ja korkeus 2 askelta.</p>
+
+      <p>Tee sama uudestaan, mutta käytä kaikkea tähän asti kertynyttä tietoa. Olet tähän mennessä käyttänyt ainakin jo metodeja ja toistolauseita, joista on todennäköisesti tässä hyötyä. Pohdi ennen ohjelmoinnin aloitusta minkälaisia palasia tarvitset robotin liikuttamiseen, kirjoita ne esimerkiksi kommentteina koodiin, ja lähde vasta sitten ohjelmoimaan niitä.</p>
+
+      <p><em>Muistelua siitä, miten robottiohjain toimii</em>. Pääohjelma ottaa robottikomponentin käyttöönsä kun koodin yläosassa on rivi <code>import robotti.Ohjain;</code>. Komennolla <code>Ohjain.kaynnista();</code> robottiohjain käynnistää robotin, ja luo ikkunan, jossa robotin kulkemista voi seurata, ja komennolla <code>Ohjain.sammuta();</code> sammutetaan robotti. Robottia liikutetaan komennoilla <code>Ohjain.ylos();</code>, <code>Ohjain.oikealle();</code>, <code>Ohjain.alas();</code>, ja <code>Ohjain.vasemmalle();</code>. Seuraavassa on esimerkkiohjelma robottiohjaimen käytöstä siten, että robottia siirretään kaksi ruutua ylöspäin:</p>
+
+<pre class="sh_java">
+import robotti.Ohjain;
+
+public class Paaohjelma {
+    public static void main(String[] args) {
+
+        // käynnistetään robotti
+        Ohjain.kaynnista();
+
+        Ohjain.ylos();
+        Ohjain.ylos();
+
+        // sammutetaan robotti
+        Ohjain.sammuta();
+    }
+}
+</pre>
+
+    </div>
+  </div>
 
 
   <h2>Lisää metodeista</h2>
@@ -5124,7 +5058,44 @@ int monenLuvunSumma = summa(summa(1, 2), summa(eka, toka));
 
 
   <div class="self-explanation" data-key="q-summaSummarum"></div>
-  
+
+
+
+  <div class="tehtavat">
+    <div class="tehtava">
+      <h3 class="req">Robottiohjain</h3>
+
+      <p>Katsotaan uudestaan kurssin ensimmäisten tehtävien joukossa tehtyä tehtävää <code>Robottiohjain</code>, missä tavoitteena oli saada luotua robottia ohjaamalla seuraavanlainen kuvio:</p>
+
+      <img src="http://www.cs.helsinki.fi/group/java/mooc-matsku/img/exercises/13-robotcontrol.png"/>
+
+      <p>Suuremman suorakulmion leveys on 7 askelta ja korkeus on 5 askelta, ja pienemmän suorakulmion leveys on 3 askelta, ja korkeus 2 askelta.</p>
+
+      <p>Tee sama uudestaan, mutta käytä kaikkea tähän asti kertynyttä tietoa. Olet tähän mennessä käyttänyt ainakin jo metodeja ja toistolauseita, joista on todennäköisesti tässä hyötyä. Pohdi ennen ohjelmoinnin aloitusta minkälaisia palasia tarvitset robotin liikuttamiseen, kirjoita ne esimerkiksi kommentteina koodiin, ja lähde vasta sitten ohjelmoimaan niitä.</p>
+
+      <p><em>Muistelua siitä, miten robottiohjain toimii</em>. Pääohjelma ottaa robottikomponentin käyttöönsä kun koodin yläosassa on rivi <code>import robotti.Ohjain;</code>. Komennolla <code>Ohjain.kaynnista();</code> robottiohjain käynnistää robotin, ja luo ikkunan, jossa robotin kulkemista voi seurata, ja komennolla <code>Ohjain.sammuta();</code> sammutetaan robotti. Robottia liikutetaan komennoilla <code>Ohjain.ylos();</code>, <code>Ohjain.oikealle();</code>, <code>Ohjain.alas();</code>, ja <code>Ohjain.vasemmalle();</code>. Seuraavassa on esimerkkiohjelma robottiohjaimen käytöstä siten, että robottia siirretään kaksi ruutua ylöspäin:</p>
+
+<pre class="sh_java">
+import robotti.Ohjain;
+
+public class Paaohjelma {
+    public static void main(String[] args) {
+
+        // käynnistetään robotti
+        Ohjain.kaynnista();
+
+        Ohjain.ylos();
+        Ohjain.ylos();
+
+        // sammutetaan robotti
+        Ohjain.sammuta();
+    }
+}
+</pre>
+
+    </div>
+  </div>
+
   <h3>Metodin omat muuttujat</h3>
 
   <p>Muuttujien määrittely metodissa tapahtuu tutulla tavalla. Seuraava metodi laskee parametrina saamiensa lukujen keskiarvon. Keskiarvon laskemisessa käytetään apumuuttujia <code>summa</code> ja <code>ka</code>.</p>
@@ -5689,8 +5660,8 @@ merkkijonon Java pituus on 4
   <p>Olion metodia kutsutaan lisäämällä sen nimen perään piste ja metodin nimi. Näiden lisäksi tulee sulut sekä mahdolliset parametrit:</p>
 
 <pre class="sh_java">
-sana1.length()    // kutsutaan merkkijono-olion sana1 metodia length()
-sana2.length()    // kutsutaan merkkijono-olion sana2 metodia length()
+sana1.length();    // kutsutaan merkkijono-olion sana1 metodia length()
+sana2.length() ;   // kutsutaan merkkijono-olion sana2 metodia length()
 </pre>
 
   <p>Metodikutsu kohdistuu nimenomaan sihen olioon, mille metodia kutsutaan. Yllä kutsumme ensin <code>sana1</code>-nimisen merkkijonon <code>length()</code>-metodia, sitten merkkijonon <code>sana2</code> metodia <code>length()</code>.</p>
@@ -5712,10 +5683,10 @@ String porkkana = "porkkana";
 
   <p>Olion "tyypistä" puhuttaessa puhutaan usein <em>luokista</em>. Merkkijonojen luokka on <code>String</code>, lukijoiden luokka taas on <code>Scanner</code>. Opimme jatkossa luokista ja olioista paljon lisää.</p>
 
-<!-- TODO: jatka -->
+
   <h2>ArrayList eli "oliosäiliö"</h2>
 
-  <p>Ohjelmoidessa tulee usein vastaan tilanteita joissa haluaisimme pitää muistissa esimerkiksi useita erilaisia merkkijonoja. Todella huono tapa olisi määritellä jokaiselle oma muuttujansa:</p>
+  <p>Ohjelmoidessa tulee usein vastaan tilanteita, joissa haluaisimme pitää muistissa esimerkiksi useita erilaisia merkkijonoja. Todella huono tapa olisi määritellä jokaiselle oma muuttujansa:</p>
 
 <pre class="sh_java">
 String sana1;
@@ -5725,7 +5696,7 @@ String sana3;
 String sana10;
 </pre>
 
-  <p>Tämä olisi aivan kelvoton ratkaisu ja sen huonoutta ei kannata oikeastaan edes perustella -- ajattele ylläoleva esimerkki vaikkapa sadalla tai tuhannella sanalla.</p>
+  <p>Tämä on kelvoton ratkaisu -- ajattele ylläoleva esimerkki vaikkapa sadalla tai tuhannella sanalla.</p>
 
   <p>Ohjelmointikielet tarjoavat tyypillisesti ohjelmoijalle apuvälineitä, joiden avulla on helppo säilyttää ohjelmassa useita olioita. Tutustumme nyt Java-ohjelmointikielen ehkäpä eniten käytettyyn oliosäiliöön <em>ArrayList</em>:iin.</p>
 
@@ -5745,7 +5716,7 @@ public class ListaOhjelma {
 }
 </pre>
 
-  <p>Yllä olevan pääohjelman ensimmäinen rivi luo <code>sanaLista</code>-nimisen merkkijonoja tallettavan listan.  Listamuuttujan tyypin nimi on <code>ArrayList&lt;String&gt;</code>, eli merkkijonoja tallettava ArrayList. Itse lista luodaan sanomalla <code>new ArrayList&lt;&gt;();</code>.</p>
+  <p>Yllä olevan pääohjelman ensimmäinen rivi luo <code>sanaLista</code>-nimisen merkkijonoja tallettavan listan.  Listamuuttujan tyypin nimi on <code>ArrayList&lt;String&gt;</code>, eli ArrayList, joka sisältää <code>String</code>-tyyppisiä muuttujia. Itse lista luodaan sanomalla <code>new ArrayList&lt;&gt;();</code>.</p>
 
   <p><b>Huom:</b> Jotta ArrayList toimisi, on ohjelman ylälaitaan kirjoitettava <code>import java.util.ArrayList;</code> tai <code>import java.util.*;</code></p>
 
@@ -5757,48 +5728,51 @@ public class ListaOhjelma {
 
 <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;String&gt; opettajat = new ArrayList&lt;String&gt;();
+    ArrayList&lt;String&gt; opettajat = new ArrayList&lt;&gt;();
 
-    opettajat.add("Antti");
-    opettajat.add("Arto");
-    opettajat.add("Pekka");
-    opettajat.add("Juhana");
-    opettajat.add("Martin");
-    opettajat.add("Matti");
+    opettajat.add("Juha");
+    opettajat.add("Jyri");
+    opettajat.add("Markus");
+    opettajat.add("Mikko");
+    opettajat.add("Pihla");
+    opettajat.add("Sami");
 
-    System.out.println("opettajien lukumäärä " + opettajat.size() );
+    System.out.println("opettajien lukumäärä " + opettajat.size());
 
     System.out.println("listalla ensimmäisenä " + opettajat.get(0));
     System.out.println("listalla kolmantena " + opettajat.get(2));
 
-    opettajat.remove("Arto");
+    opettajat.remove("Juha");
 
-    if ( opettajat.contains("Arto") ) {
-        System.out.println("Arto on opettajien listalla");
+    if (opettajat.contains("Juha")) {
+        System.out.println("Juha on opettajien listalla");
     } else {
-        System.out.println("Arto ei ole opettajien listalla");
+        System.out.println("Juha ei ole opettajien listalla");
     }
 }
 </pre>
 
-  <p>Ensin luodaan merkkijonolista jolle lisätään 6 nimeä. <code>size</code> kertoo listalla olevien merkkijonojen lukumäärän. <b>Huom:</b> kun metodia kutsutaan, on kutsu muotoa <code>opettajat.size()</code>, eli metodin nimeä edeltää piste ja sen listan nimi kenen metodia kutsutaan.</p>
+
+  <p>Ensin luodaan merkkijonolista, jolle lisätään 6 nimeä. <code>size</code> kertoo listalla olevien merkkijonojen lukumäärän. <b>Huom:</b> kun metodia kutsutaan, on kutsu muotoa <code>opettajat.size()</code>, eli metodin nimeä edeltää piste ja sen listan nimi kenen metodia kutsutaan.</p>
 
   <p>Merkkijonot ovat listalla siinä järjestyksessä missä ne listalle laitettiin. Metodilla <code>get(i)</code> saadaan tietoon listan paikan <code>i</code> sisältö. Listan alkioiden paikkanumerointi alkaa nollasta, eli ensimmäisenä lisätty on paikassa numero 0, toisen a lisätty paikassa numero 1 jne.</p>
 
-  <p>Metodin <code>remove</code> avulla voidaan listalta poistaa merkkijonoja. Jos käytetään metodia muodossa <code>remove("merkkejä")</code>, poistetaan parametrina annettu merkkijono. Metodia voi käyttää myös siten, että annetaan parametriksi tietty luku. Esim. jos sanotaan <code>remove(3)</code> poistuu listalla neljäntenä oleva merkkijono.</p>
+  <p>Metodin <code>remove</code> avulla voidaan listalta poistaa merkkijonoja. Jos käytetään metodia muodossa <code>remove("merkkejä")</code>, poistetaan parametrina annettu merkkijono. Metodia voi käyttää myös siten, että sille annetaan parametrina luku. Tällöin listalta poistetaan luvun määrittelemässä indeksissä oleva merkkijono. Esimerkiksi, kutsu <code>remove(3)</code> poistaa listalla neljäntenä olevan merkkijonon.</p>
 
-  <p>Esimerkin lopussa kutsutaan metodia <code>contains</code> jonka avulla kysytään listalta sisältääkö se parametrina annettavan merkkijonon. Jos sisältää, palauttaa metodi arvon <code>true</code>. </p>
+  <p>Esimerkin lopussa kutsutaan ArrayList:in metodia <code>contains</code>, jonka avulla kysytään sisältääkö lista parametrina annetun merkkijonon. Jos lista sisältää parametrina annetun merkkijonon, palauttaa metodi <code>contains</code> arvon <code>true</code>. </p>
 
   <p>Ohjelman tulostus:</p>
 
 <pre>
 opettajien lukumäärä 6
-listalla ensimmäisena Antti
-listalla kolmantena Pekka
-Arto ei ole opettajien listalla
+listalla ensimmäisena Juha
+listalla kolmantena Markus
+Juha ei ole opettajien listalla
 </pre>
 
+<!--
   <p><strong>Huom!</strong> Metodit <code>remove</code> ja <code>contains</code> olettavat että listaan tallennetuilla olioilla on metodi <code>equals</code>. Palaamme tähän myöhemmin kurssilla.</p>
+-->
 
   <h3>ArrayList:in läpikäynti</h3>
 
@@ -5806,42 +5780,48 @@ Arto ei ole opettajien listalla
 
   <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;String&gt; opettajat = new ArrayList&lt;String&gt;();
+    ArrayList&lt;String&gt; opettajat = new ArrayList&lt;&gt;();
 
-    opettajat.add("Antti");
-    opettajat.add("Pekka");
-    opettajat.add("Juhana");
-    opettajat.add("Martin");
+    opettajat.add("Sami");
+    opettajat.add("Samu");
+    opettajat.add("Tuomo L");
+    opettajat.add("Tuomo K");
 
-    System.out.println( opettajat.get(0) );
-    System.out.println( opettajat.get(1) );
-    System.out.println( opettajat.get(2) );
-    System.out.println( opettajat.get(3) );
+    System.out.println(opettajat.get(0));
+    System.out.println(opettajat.get(1));
+    System.out.println(opettajat.get(2));
+    System.out.println(opettajat.get(3));
 }
 </pre>
 
-  <p>Ratkaisu on kuitenkin erittäin kömpelö. Entäs jos listalla olisi enemmän alkiota? Tai vähemmän? Entäs jos ei olisi edes tiedossa listalla olevien alkioiden määrää?</p>
+<pre>
+Sami
+Samu
+Tuomo L
+Tuomo K
+</pre>
 
-  <p>Tehdään ensin välivaiheen versio jossa pidetään:</p>
+  <p>Ratkaisu on kuitenkin erittäin kömpelö. Entä jos listalla olisi enemmän alkiota? Tai vähemmän? Entäs jos ei olisi edes tiedossa listalla olevien alkioiden määrää?</p>
+
+  <p>Tehdään ensin välivaiheen versio jossa pidetään kirjaa tulostettavasta indeksistä muuttujan <code>paikka</code> avulla:</p>
 
   <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;String&gt; opettajat = new ArrayList&lt;String&gt;();
+    ArrayList&lt;String&gt; opettajat = new ArrayList&lt;&gt;();
 
-    opettajat.add("Antti");
-    opettajat.add("Pekka");
-    opettajat.add("Juhana");
-    opettajat.add("Martin");
-    opettajat.add("Matti");
+    opettajat.add("Sami");
+    opettajat.add("Samu");
+    opettajat.add("Tuomo L");
+    opettajat.add("Tuomo K");
 
     int paikka = 0;
-    System.out.println( opettajat.get(paikka) );
+    System.out.println(opettajat.get(paikka));
     paikka++;
-    System.out.println( opettajat.get(paikka) );  // paikka = 1
+    System.out.println(opettajat.get(paikka));  // paikka = 1
     paikka++;
-    System.out.println( opettajat.get(paikka) );  // paikka = 2
+    System.out.println(opettajat.get(paikka));  // paikka = 2
     paikka++;
-    System.out.println( opettajat.get(paikka) );  // paikka = 3
+    System.out.println(opettajat.get(paikka));  // paikka = 3
 }
 </pre>
 
@@ -5849,17 +5829,16 @@ public static void main(String[] args) {
 
   <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;String&gt; opettajat = new ArrayList&lt;String&gt;();
+    ArrayList&lt;String&gt; opettajat = new ArrayList&lt;&gt;();
 
-    opettajat.add("Antti");
-    opettajat.add("Pekka");
-    opettajat.add("Juhana");
-    opettajat.add("Martin");
-    opettajat.add("Matti");
+    opettajat.add("Sami");
+    opettajat.add("Samu");
+    opettajat.add("Tuomo L");
+    opettajat.add("Tuomo K");
 
     int paikka = 0;
-    while ( paikka &lt; opettajat.size() )  // muistatko miksi paikka &lt;= opettajat.size() ei toimi?
-        System.out.println( opettajat.get(paikka) );
+    while (paikka &lt; opettajat.size()) {  // muistatko miksi paikka &lt;= opettajat.size() ei toimi?
+        System.out.println(opettajat.get(paikka));
         paikka++;
     }
 }
@@ -5867,16 +5846,17 @@ public static void main(String[] args) {
 
   <p>Nyt tulostus toimii riippumatta listalla olevien alkioiden määrästä.</p>
 
-  <p>While-toistolauseen käyttö ja listan paikkojen "indeksointi" ei kuitenkaan ole yleensä järkevin tapa listan läpikäyntiin. Suositeltavampi on seuraavassa esiteltävä for-each -toistolauseke.</p>
+  <p>Jos halutaan käydä kaikki listan alkiot läpi yksitellen, voi While-toistolauseen lisäksi käyttää seuraavassa esiteltävää for-each -toistolauseketta.</p>
 
   <h3>for-each</h3>
 
-  <p>Vaikka komennosta käytetään nimitystä for-each, komennon nimi on pelkästään <code>for</code>. for:ista on olemassa kaksi versiota, perinteinen (jonka nopea esittely oli jo viimeviikolla mutta mitä alame varsinaisesti käyttämään vasta viikolla 6) ja "for-each" jota käytämme nyt.</p>
+  <p>Vaikka komennosta käytetään nimitystä for-each, komennon nimi on pelkästään <code>for</code>. for:ista on olemassa kaksi versiota, perinteinen (jonka nopea esittely oli jo edellisellä viikolla mutta mitä alame varsinaisesti käyttämään vasta viikolla 6) ja "for-each" jota käytämme nyt.</p>
 
-  <p>ArrayList:in alkioiden läpikäynti for-each:illa on lasten leikkiä:</p>
+  <p>ArrayList:in alkioiden läpikäynti for-each:illa on helppoa:</p>
+
   <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;String&gt; opettajat = new ArrayList&lt;String&gt;();
+    ArrayList&lt;String&gt; opettajat = new ArrayList&lt;&gt;();
 
     opettajat.add("Antti");
     opettajat.add("Pekka");
@@ -5885,23 +5865,28 @@ public static void main(String[] args) {
     opettajat.add("Matti");
 
     for (String opettaja : opettajat) {
-        System.out.println( opettaja );
+        System.out.println(opettaja);
     }
 }
 </pre>
-  <p>Kuten huomaame, ei listalla olevien merkkijonojen paikkanumeroista tarvitse välittää, for käy listan sisällön läpi "automaattisesti".
-  <p>Komennon for aaltosulkujen sisällä olevassa koodissa käytetään muuttujaa <code>opettaja</code>, joka on määritelty for-rivillä kaksoispisteen vasemmalla puolella. Käy niin, että kukin listalla <code>opettajat</code> oleva merkkijono tulee vuorollaan muuttujan <code>opettaja</code> arvoksi. Eli kun for:iin mennään, on <code>opettaja</code> ensin <em>Antti</em>, forin toisella toistolla <code>opettaja</code> on <em>Pekka</em>, jne </p>
-  <p>Vaikka <code>for</code>-komento voi tuntua aluksi hieman oudolta sitä kannattaa ehdottomasti totutella käyttämään!</p>
+
+  <p>Kuten huomaame, ei listalla olevien merkkijonojen paikkanumeroista tarvitse välittää, vaan for käy listan sisällön läpi "automaattisesti".</p>
+
+  <p>Komennon for aaltosulkujen sisällä olevassa koodissa käytetään muuttujaa <code>opettaja</code>, joka on määritelty for-rivillä kaksoispisteen vasemmalla puolella. Käy niin, että kukin listalla <code>opettajat</code> oleva merkkijono asetetaan vuorollaan muuttujan <code>opettaja</code> arvoksi. Eli kun for:iin mennään, on <code>opettaja</code> ensin <em>Antti</em>, forin toisella toistolla <code>opettaja</code> on <em>Pekka</em>, jne </p>
+
+  <p>Vaikka <code>for</code>-komento voi tuntua aluksi hieman oudolta, kannattaa sen käyttöön ehdottomasti totutella!</p>
+
   <p>Screencast aiheesta:</p>
   <a href="http://www.youtube.com/watch?feature=player_embedded&v=-y67VJ68Izs" class="youtube" height="300" target="_blank"><img src="https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
 
   <div class="tehtavat">
     <div class="tehtava">
-    <h3 class="req">Sanat</h3>
-    <p>Tee ohjelma, joka kysyy käyttäjältä sanoja, kunnes käyttäjä antaa tyhjän merkkijonon. Sitten ohjelma tulostaa käyttäjän antamat
-      sanat uudestaan. <em>Kokeile tässä for-toistolauseketta</em>. Käytä ohjelmassa <code>ArrayList</code>-rakennetta, joka määritellään seuraavasti:</p>
+      <h3 class="req">Sanat</h3>
+
+      <p>Tee ohjelma, joka kysyy käyttäjältä sanoja, kunnes käyttäjä antaa tyhjän merkkijonon. Sitten ohjelma tulostaa käyttäjän antamat sanat uudestaan. <em>Kokeile tässä for-toistolauseketta</em>. Käytä ohjelmassa <code>ArrayList</code>-rakennetta, joka määritellään seuraavasti:</p>
+
 <pre class="sh_java">
-ArrayList&lt;String&gt; sanat = new ArrayList&lt;String&gt;();
+ArrayList&lt;String&gt; sanat = new ArrayList&lt;&gt;();
 </pre>
 <pre>
 Anna sana: <font color="red">Mozart</font>
@@ -5917,24 +5902,31 @@ Bach
 Sibelius
 Liszt
 </pre>
+
     <p><b>Vihje:</b> tyhjä merkkijono voidaan havaita seuraavasti
+
     <pre class="sh_java">
 String sana = lukija.nextLine();
 
-if ( sana.isEmpty() ) {  // myös tämä tomisi: sana.equals("")
+if (sana.isEmpty()) {  // myös tämä tomisi: sana.equals("")
     // sana oli tyhjä eli pelkkä enterin painallus
 }
 </pre>
     </p>
+
   </div>
+
   <div class="tehtava">
     <h3 class="req">Toistuva sana</h3>
-    <p>Tee ohjelma, joka kysyy käyttäjältä sanoja, kunnes käyttäjä antaa saman sanan uudestaan.
-      Käytä ohjelmassa <code>ArrayList</code>-rakennetta, joka määritellään seuraavasti:</p>
+
+    <p>Tee ohjelma, joka kysyy käyttäjältä sanoja, kunnes käyttäjä antaa saman sanan uudestaan. Käytä ohjelmassa <code>ArrayList</code>-rakennetta, joka määritellään seuraavasti:</p>
+
 <pre class="sh_java">
-ArrayList&lt;String&gt; sanat = new ArrayList&lt;String&gt;();
+ArrayList&lt;String&gt; sanat = new ArrayList&lt;&gt;();
 </pre>
+
     <p>Kun sama sana toistuu, ilmoittaa ohjelma asiasta seuraavasti:</p>
+
 <pre>
 Anna sana: <font color="red">porkkana</font>
 Anna sana: <font color="red">selleri</font>
@@ -5943,25 +5935,38 @@ Anna sana: <font color="red">lanttu</font>
 Anna sana: <font color="red">selleri</font>
 Annoit uudestaan sanan selleri
 </pre>
+
     <p><b>Vihje: </b> Muista arraylistin metodi <code>.contains()</code></p>
+
   </div>
 </div>
+
   <h3>Listan järjestäminen, kääntäminen ja sekoittaminen</h3>
+
   <p>ArrayList:n sisältö on helppo järjestää suuruusjärjestykseen. Suuruusjärjestys merkkijonojen yhteydessä tarkoittaa aakkosjärjestystä. Järjestäminen tapahtuu seuraavasti:</p>
+
 <pre class="sh_java">
-public static void main(String[] args) {
-    ArrayList&lt;String&gt; opettajat = new ArrayList&lt;String&gt;();
+import java.util.ArrayList;
+import java.util.Collections;
 
-    // ...
+public class Ohjelma {
 
-    Collections.sort(opettajat);
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; opettajat = new ArrayList&lt;&gt;();
 
-    for (String opettaja : opettajat) {
-        System.out.println( opettaja );
+        // ...
+
+        Collections.sort(opettajat);
+
+        for (String opettaja : opettajat) {
+            System.out.println(opettaja);
+        }
     }
 }
 </pre>
+
   <p>Tulostuu:</p>
+
 <pre>
 Antti
 Arto
@@ -5970,17 +5975,21 @@ Martin
 Matti
 Pekka
 </pre>
-  <p>Annetaan siis lista parametriksi metodille <code>Collections.sort</code>. Jotta Collections:in apuvälineet toimisivat, on ohjelman yläosassa oltava <code>import java.util.Collections;</code> tai <code>import java.util.*;</code></p>
+
+  <p>Annetaan siis lista parametriksi metodille <code>Collections.sort</code>. <strong>Huom!</strong> Jotta Collections:in apuvälineet toimisivat, on ohjelman yläosassa oltava <code>import java.util.Collections;</code> tai <code>import java.util.*;</code></p>
+
   <p>Collections:ista löytyy muutakin hyödyllistä:</p>
+
   <ul>
     <li> <code>shuffle</code> sekoittaa listan sisällön, metodista voi olla hyötyä esimerkiksi peleissä</li>
     <li> <code>reverse</code> kääntää listan sisällön</li>
   </ul>
+
   <div class="tehtavat">
-  <div class="tehtava">
-    <h3 class="req">Sanat käänteisesti</h3>
-    <p> Tee ohjelma, joka kysyy käyttäjältä sanoja, kunnes käyttäjä antaa tyhjän merkkijonon.
-      Sitten ohjelma tulostaa käyttäjän antamat sanat päinvastaisessa järjestyksessä, eli viimeinen syötetty sana ensin jne.</p>
+    <div class="tehtava">
+      <h3 class="req">Sanat käänteisesti</h3>
+      <p>Tee ohjelma, joka kysyy käyttäjältä sanoja, kunnes käyttäjä antaa tyhjän merkkijonon. Sitten ohjelma tulostaa käyttäjän antamat sanat päinvastaisessa järjestyksessä, eli viimeinen syötetty sana ensin jne.</p>
+
 <pre>
 Anna sana: <font color="red">Mozart</font>
 Anna sana: <font color="red">Schubert</font>
@@ -5995,11 +6004,13 @@ Bach
 Schubert
 Mozart
 </pre>
-</div>
-<div class="tehtava">
-    <h3 class="req">Sanat aakkosjärjestyksessä</h3>
-    <p>Tee edellistä tehtävää vastaava ohjelma,
-      jossa sanat tulostetaan aakkosjärjestyksessä.</p>
+    
+    </div>
+
+    <div class="tehtava">
+      <h3 class="req">Sanat aakkosjärjestyksessä</h3>
+      <p>Tee edellistä tehtävää vastaava ohjelma, jossa sanat tulostetaan aakkosjärjestyksessä.</p>
+
 <pre>
 Anna sana: <font color="red">Mozart</font>
 Anna sana: <font color="red">Schubert</font>
@@ -6014,19 +6025,22 @@ Mozart
 Schubert
 Sibelius
 </pre>
+    </div>
   </div>
-  </div>
+
   <h3>ArrayList metodin parametrina</h3>
+
   <p>ArrayList:in voi antaa metodille parametrina:</p>
+
   <pre class="sh_java">
 public static void tulosta(ArrayList&lt;String&gt; lista) {
     for (String sana : lista) {
-        System.out.println( sana );
+        System.out.println(sana);
     }
 }
 
 public static void main(String[] args) {
-    ArrayList&lt;String&gt; lista = new ArrayList&lt;String&gt;();
+    ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
     lista.add("Java");
     lista.add("Python");
     lista.add("Ruby");
@@ -6035,23 +6049,26 @@ public static void main(String[] args) {
     tulosta(lista);
 }
 </pre>
+
   <p>Parametrin tyyppi siis määritellään listaksi täsmälleen samalla tavalla eli <code>ArrayList&lt;String&gt;</code> kuin listamuuttujan määrittely tapahtuu.</p>
+
   <p>Huomaa, että parametrin nimellä ei ole merkitystä:</p>
+
 <pre class="sh_java">
 public static void tulosta(ArrayList&lt;String&gt; tulostettava) {
     for (String sana : tulostettava) {
-        System.out.println( sana );
+        System.out.println(sana);
     }
 }
 
 public static void main(String[] args) {
-    ArrayList&lt;String&gt; ohjelmointikielet = new ArrayList&lt;String&gt;();
+    ArrayList&lt;String&gt; ohjelmointikielet = new ArrayList&lt;&gt;();
     ohjelmointikielet.add("Java");
     ohjelmointikielet.add("Python");
     ohjelmointikielet.add("Ruby");
     ohjelmointikielet.add("C++");
 
-    ArrayList&lt;String&gt; maat = new ArrayList&lt;String&gt;();
+    ArrayList&lt;String&gt; maat = new ArrayList&lt;&gt;();
     maat.add("Suomi");
     maat.add("Ruotsi");
     maat.add("Norja");
@@ -6061,32 +6078,42 @@ public static void main(String[] args) {
     tulosta(maat);                 // annetaan metodille parametriksi lista maat
 }
 </pre>
+
   <p>Ohjelmassa on nyt kaksi listaa <em>ohjelmointikielet</em> ja <em>maat</em>. Metodille annetaan ensin tulostettavaksi lista <em>ohjelmointikielet</em>. Metodi <code>tulosta</code> käyttää parametriksi saamastaan listasta sisäisesti nimellä <em>tulostettava</em>! Seuraavaksi metodille annetaan tulostettavaksi lista <em>maat</em>. Jälleen metodi käyttää parametrinaan saamasta listasta sisäisesti nimeä <em>tulostettava</em>. </p>
-  <div class="tehtavat">
+
+  
+<div class="tehtavat">
   <div class="tehtava">
     <h3 class="req">Listan alkioiden lukumäärä</h3>
-    <p>Tee metodi <code>public static int
-      laskeAlkiot(ArrayList&lt;String&gt; lista)</code> joka palauttaa listan alkioiden määrän. Metodisi ei siis tulosta mitään vaan
-      palauttaa <code>return</code>:illa alkioiden lukumäärän seuraavan esimerkin mukaisesti</p>
+    <p>Tee metodi <code>public static int laskeAlkiot(ArrayList&lt;String&gt; lista)</code> joka palauttaa listan alkioiden määrän. Metodisi ei siis tulosta mitään vaan palauttaa <code>return</code>:illa alkioiden lukumäärän seuraavan esimerkin mukaisesti</p>
+
 <pre class="sh_java">
-ArrayList&lt;String&gt; lista = new ArrayList&lt;String&gt;();
+ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
 lista.add("Moi");
 lista.add("Ciao");
 lista.add("Hello");
 System.out.println("Listalla on alkioita:");
 System.out.println(laskeAlkiot(lista));
 </pre>
+
 <pre>
 Listalla on alkioita:
 3
 </pre>
+
+  </div>
 </div>
-</div>
+  
+  <h3>ArrayList:in kopioituminen metodin parametriksi</h3>
+
+  <p>TODO: arraylist kopioituu metodin parametriksi, mutta, mitä oikeastaan kopioituu on pääsy listaan. Palaamme tähän seuraavalla viikolla tarkemmin.</p>
+
   <p>Metodin sisällä on mahdollisuus vaikuttaa parametrina saadun listan sisältöön. Seuraavassa esimerkissä metodi <code>poistaEnsimmainen</code> nimensä mukaisesti poistaa listalla ensimmäisenä olevan merkkijonon (mitähän tapahtuu jos listalla ei ole mitään?).</p>
+
   <pre class="sh_java">
 public static void tulosta(ArrayList&lt;String&gt; tulostettava) {
     for (String sana : tulostettava) {
-        System.out.println( sana );
+        System.out.println(sana);
     }
 }
 
@@ -6095,13 +6122,12 @@ public static void poistaEnsimmainen(ArrayList&lt;String&gt; lista) {
 }
 
 public static void main(String[] args) {
-    ArrayList&lt;String&gt; ohjelmointikielet = new ArrayList&lt;String&gt;();
+    ArrayList&lt;String&gt; ohjelmointikielet = new ArrayList&lt;&gt;();
     ohjelmointikielet.add("Pascal");
     ohjelmointikielet.add("Java");
     ohjelmointikielet.add("Python");
     ohjelmointikielet.add("Ruby");
     ohjelmointikielet.add("C++");
-
 
     tulosta(ohjelmointikielet);
 
@@ -6112,7 +6138,9 @@ public static void main(String[] args) {
     tulosta(ohjelmointikielet);
 }
 </pre>
+
 <p>Tulostuu:</p>
+
 <pre>
 Pascal
 Java
@@ -6125,15 +6153,17 @@ Python
 Ruby
 C++
 </pre>
+
   <p>Vastaavalla tavalla metodi voisi esim. lisätä parametrina saamaansa listaan lisää merkkijonoja.</p>
+
   <div class="tehtavat">
     <div class="tehtava">
     <h3 class="req">Poista viimeinen</h3>
-    <p>Tee metodi <code>public static void poistaViimeinen(ArrayList&lt;String&gt;
-      lista)</code> joka poistaa listalla viimeisenä olevan alkion. Tällöin
-      esimerkiksi seuraava koodi:</p>
+
+    <p>Tee metodi <code>public static void poistaViimeinen(ArrayList&lt;String&gt; lista)</code> joka poistaa listalla viimeisenä olevan alkion. Tällöin esimerkiksi seuraava koodi:</p>
+
 <pre class="sh_java">
-ArrayList&lt;String&gt; tyypit = new ArrayList&lt;String&gt;();
+ArrayList&lt;String&gt; tyypit = new ArrayList&lt;&gt;();
 tyypit.add("Pekka");
 tyypit.add("Mauri");
 tyypit.add("Jore");
@@ -6150,42 +6180,56 @@ poistaViimeinen(tyypit);
 
 System.out.println(tyypit);
 </pre>
+
 <p>Tulostaa:</p>
+
 <pre>
 Tyypit:
 [Pekka, Mauri, Jore, Simppa]
 [Jore, Mauri, Pekka]
 </pre>
-</div>
-</div>
+    </div>
+  </div>
+
   <p>Kuten edellisen tehtävän esimerkkitulostuksesta näemme, voi ArrayList:in tulostaa sellaisenaan. Tulostusmuoto ei kuitenkaan yleensä ole halutun kaltainen ja tulostus joudutaan hoitamaan itse esim. <code>for</code>-komennon avulla.</p>
+
   <h3>Lukuja ArrayList:issä</h3>
-  <p>ArrayList:eihin voi tallettaa minkä tahansa tyyppisiä arvoja. Jos talletetaan kokonaislukuja eli <code>int</code>:ejä, tulee muistaa pari detaljia. int:ejä tallettava lista tulee määritellä <code>ArrayList&lt;Integer&gt;</code>, eli <code>int</code>:n sijaan tulee kirjoittaa <code>Integer</code>. </p>
-  <p>Kun listalle talletetaan <code>int</code>-lukuja, ei metodi <code>remove</code> toimi aivan odotetulla tavalla:
+
+  <p>ArrayList:eihin voi tallettaa minkä tahansa tyyppisiä arvoja. Jos talletetaan kokonaislukuja eli <code>int</code>:ejä, tulee muistaa pari yksityiskohtaa. Kokonaislukuja eli <code>int</conde>:ejä tallettava lista tulee määritellä muodossa <code>ArrayList&lt;Integer&gt;</code>, eli <code>int</code>:n sijaan tulee kirjoittaa <code>Integer</code>. </p>
+
+  <p>Kun listalle talletetaan <code>int</code>-lukuja, ei metodi <code>remove</code> toimi aivan odotetulla tavalla:</p>
+
   <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;Integer&gt;();
+    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
 
-    luvut.add(4);
+    luvut.add(2);
     luvut.add(8);
+    luvut.add(12);
 
-    // yrittää poistaa luvun listan kohdasta 4, eli ei toimi odotetulla tavalla!
-    luvut.remove(4);
+    // yrittää poistaa luvun listan indeksistä 2, eli ei toimi odotetulla tavalla!
+    luvut.remove(2);
 
-    // tämä poistaa listalta luvun 4
-    luvut.remove( Integer.valueOf(4) );
+    // tämä poistaa listalta luvun 2
+    luvut.remove(Integer.valueOf(2));
 }
 </pre>
-  <p>Eli <code>luvut.remove(4)</code> yrittää poistaa listalla kohdassa 4 olevan alkion. Listalla on vain 2 alkiota, joten komento aiheuttaa virheen. Jos halutaan poistaa luku 4, täytyy käyttää hieman monimutkaisempaa muotoa: <code>luvut.remove( Integer.valueOf(4) );</code></p>
-  <p>Listalle voi tallettaa myös liukulukuja eli <code>double</code>:ja ja merkkejä eli <code>char</code>:eja. Tällöin listat luodaan seuraavasti:</p>
-  <pre class="sh_java">
-ArrayList&lt;Double&gt; doublet = new ArrayList&lt;Double&gt;();
-ArrayList&lt;Character&gt; merkit = new ArrayList&lt;Character&gt;();
-    </pre>
+
+  <p>Eli <code>luvut.remove(2)</code> yrittää poistaa listalla indeksissä 2 olevan alkion ("listan kolmas alkio"). Komento toimii oikein, mutta poistaa luvun <code>12</code> listalta. Jos halutaan poistaa luku 2, täytyy käyttää hieman monimutkaisempaa muotoa: <code>luvut.remove(Integer.valueOf(2));</code></p>
+
+  <p>Listalle voi tallettaa myös liukulukuja eli <code>double</code>:ja ja merkkejä eli <code>char</code>:eja. Tällöin listat luodaan seuraavasti (huomaa kirjoitusmuoto):</p>
+
+<pre class="sh_java">
+ArrayList&lt;Double&gt; doublet = new ArrayList&lt;&gt;();
+ArrayList&lt;Character&gt; merkit = new ArrayList&lt;&gt;();
+</pre>
+
   <div class="tehtavat">
     <div class="tehtava">
     <h3 class="req">Lukujen summa</h3>
+
     <p>Tee metodi <code>summa</code>, joka laskee parametrinaan saamansa kokonaislukuja sisältävän, eli tyyppiä <code>ArrayList&lt;Integer&gt;</code> olevan listan summan.</p>
+
     <p>Tee metodi seuraavaan runkoon:</p>
 <pre class="sh_java">
 public static int summa(ArrayList&lt;Integer&gt; lista) {
@@ -6193,7 +6237,7 @@ public static int summa(ArrayList&lt;Integer&gt; lista) {
 }
 
 public static void main(String[] args) {
-    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;Integer&gt;();
+    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
     lista.add(3);
     lista.add(2);
     lista.add(7);
@@ -6205,24 +6249,30 @@ public static void main(String[] args) {
 
     System.out.println("Summa: " + summa(lista));
 }
-  </pre>
+</pre>
+
     <p>Ohjelman tulostus:</p>
+
 <pre>
 Summa: 14
 Summa: 24
 </pre>
-</div>
-<div class="tehtava">
-    <h3 class="req">Lukujen keskiarvo</h3>
-    <p>Tee metodi <code>keskiarvo</code>, joka laskee parametrinaan saamansa kokonaislukuja sisältävän listan lukujen keskiarvon. Metodin on laskettava parametriensa summa käyttäen apuna edellisen tehtävän metodia <code>summa</code>.</p>
-    <p>Tee metodi seuraavaan runkoon:</p>
-    <pre class="sh_java">
+
+    </div>
+    <div class="tehtava">
+      <h3 class="req">Lukujen keskiarvo</h3>
+
+      <p>Tee metodi <code>keskiarvo</code>, joka laskee parametrinaan saamansa kokonaislukuja sisältävän listan lukujen keskiarvon. Metodin on laskettava parametriensa summa käyttäen apuna edellisen tehtävän metodia <code>summa</code>.</p>
+
+      <p>Tee metodi seuraavaan runkoon:</p>
+
+<pre class="sh_java">
 public static double keskiarvo(ArrayList&lt;Integer&gt; lista) {
     // kirjoita koodia tähän
 }
 
 public static void main(String[] args) {
-    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;Integer&gt;();
+    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
     lista.add(3);
     lista.add(2);
     lista.add(7);
@@ -6231,21 +6281,27 @@ public static void main(String[] args) {
     System.out.println("Keskiarvo: " + keskiarvo(lista));
 }
 </pre>
-    <p>Ohjelman tulostus:</p>
-    <pre>
+ 
+   <p>Ohjelman tulostus:</p>
+
+<pre>
 Keskiarvo: 3.5
 </pre>
+
   </div>
+
   <div class="tehtava">
     <h3>Suurin</h3>
+
     <p>Tee metodi <code>suurin</code>, joka palauttaa parametrina saamansa kokonaislukuja sisältävän listan suurimman luvun.</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public static int suurin(ArrayList&lt;Integer&gt; lista) {
     // kirjoita koodia tähän
 }
 
 public static void main(String[] args) {
-    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;Integer&gt;();
+    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
     lista.add(3);
     lista.add(2);
     lista.add(7);
@@ -6254,23 +6310,28 @@ public static void main(String[] args) {
     System.out.println("Suurin: " + suurin(lista));
 }
 </pre>
+
     <p>Ohjelman tulostus:</p>
+
 <pre>
 Suurin: 7
 </pre>
-</div>
-<div class="tehtava">
+  </div>
+
+  <div class="tehtava">
     <h3>Varianssi</h3>
-    <p>Tee metodi <code>varianssi</code>, joka laskee palauttaa saamansa kokonaislukuja sisältävän listan otosvarianssin.
-      Ohjeen varianssin laskemiseksi voit katsoa esimerkiksi <a href="http://fi.wikipedia.org/wiki/Varianssi#Populaatio-_ja_otosvarianssi">Wikipediasta</a> kohdasta populaatio- ja otosvarianssi.</p>
-    <p> Tee metodi käytäen apuna tehtävän 64 metodia <code>keskiarvo</code>, kutsu metodia kuitenkin vain kertaalleen yhden varianssin laskemisen aikana. </p>
+
+    <p>Tee metodi <code>varianssi</code>, joka laskee palauttaa saamansa kokonaislukuja sisältävän listan otosvarianssin. Ohjeen varianssin laskemiseksi voit katsoa esimerkiksi <a href="http://fi.wikipedia.org/wiki/Varianssi#Populaatio-_ja_otosvarianssi">Wikipediasta</a> kohdasta populaatio- ja otosvarianssi. <span class="hidden-in-mooc">Jos sana varianssi kuulostaa pelottavalta, voit toki kysyä apua myös pajassa.</span></p>
+
+    <p>Tee metodi käyttäen apuna aiemmissa tehtävissä tehtyä metodia <code>keskiarvo</code>. Huom! Kutsu metodia kuitenkin vain kertaalleen yhden varianssin laskemisen aikana.</p>
+
     <pre class="sh_java">
 public static double varianssi(ArrayList&lt;Integer&gt; lista) {
     // kirjoita koodia tähän
 }
 
 public static void main(String[] args) {
-    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;Integer&gt;();
+    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
     lista.add(3);
     lista.add(2);
     lista.add(7);
@@ -6279,18 +6340,19 @@ public static void main(String[] args) {
     System.out.println("Varianssi: " + varianssi(lista));
 }
 </pre>
+
     <p>Ohjelman tulostus:</p>
-    <pre>
-  Varianssi: 5.666667
+
+<pre>
+Varianssi: 5.666667
 </pre>
-    <p>(Lukujen keskiarvo on 3.5, joten otosvarianssi on
-      ((3 - 3.5)² + (2 - 3.5)² + (7 - 3.5)² + (2 - 3.5)²)/(4 - 1) ˜ 5,666667.) </p>
-        <p>Kun listassa on N kappaletta lukuja voidaan otosvarianssi lasketaan seuraavasti:</p>
-        <pre><b>(</b>(luku<sub>1</sub> - keskiarvo)² + (luku<sub>2</sub> - keskiarvo)² + ... + (luku<sub>N</sub> - keskiarvo)²<b>)</b> / (N - 1)</pre>
-    <p><strong>Huom!</strong> Muistathan kokeillessasi ohjelmaa, että
-      yhden alkion kokoisen listan (otos)varianssia ei ole määritelty!
-      Kaavassa tapahtuu tällöin nollalla jakaminen. Java esittää
-      nollalla jakamisen tuloksen <em>epänumerona</em> <code>NaN</code></p>
+
+    <p>(Lukujen keskiarvo on 3.5, joten otosvarianssi on ((3 - 3.5)² + (2 - 3.5)² + (7 - 3.5)² + (2 - 3.5)²)/(4 - 1) ˜ 5,666667.) </p>
+
+    <p>Kun listassa on N kappaletta lukuja voidaan otosvarianssi lasketaan seuraavasti:</p>
+    <pre><b>(</b>(luku<sub>1</sub> - keskiarvo)² + (luku<sub>2</sub> - keskiarvo)² + ... + (luku<sub>N</sub> - keskiarvo)²<b>)</b> / (N - 1)</pre>
+    
+    <p><strong>Huom!</strong> Muistathan kokeillessasi ohjelmaa, että yhden alkion kokoisen listan (otos)varianssia ei ole määritelty! Kaavassa tapahtuu tällöin nollalla jakaminen. Java esittää nollalla jakamisen tuloksen <em>epänumerona</em> <code>NaN</code></p>
   </div>
 </div>
 
@@ -6317,7 +6379,7 @@ public static void main(String[] args) {
 
   <pre class="sh_java">
 public static void main(String[] args) {
-ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;Integer&gt;();
+ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
 luvut.add(4);
 luvut.add(3);
 luvut.add(7);
@@ -6344,7 +6406,7 @@ System.out.println(luku);
 
   <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;Integer&gt;();
+    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
     luvut.add(4);
     luvut.add(3);
     luvut.add(7);
@@ -6383,7 +6445,7 @@ public static void main(String[] args) {
 
   <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;Integer&gt;();
+    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
     luvut.add(4);
     luvut.add(3);
     luvut.add(7);
@@ -6627,6 +6689,7 @@ Merkkijono ei ole palindromi!
 </div>
   </div>
 
+<!--
   <h3>FizzBuzz</h3>
 
   <p>Tutustutaan klassiseen <em>FizzBuzz</em> ohjelmointitehtävään:</p>
@@ -6724,6 +6787,7 @@ public class Karkausvuosi {
 }
 </pre>
 
+-->
 
   <h3>Komento Continue: "Portsari"</h3>
 
@@ -6737,7 +6801,7 @@ public class SanojenLukija {
 
     public static void main(String[] args) {
         Scanner lukija = new Scanner(System.in);
-        ArrayList&lt;String&gt; sanat = new ArrayList&lt;String&gt;();
+        ArrayList&lt;String&gt; sanat = new ArrayList&lt;&gt;();
 
         while (true) {
             String sana = lukija.nextLine();
@@ -6767,7 +6831,7 @@ public class SanojenLukija {
 
     public static void main(String[] args) {
         Scanner lukija = new Scanner(System.in);
-        ArrayList&lt;String&gt; sanat = new ArrayList&lt;String&gt;();
+        ArrayList&lt;String&gt; sanat = new ArrayList&lt;&gt;();
 
         while (true) {
             String sana = lukija.nextLine();
@@ -6794,34 +6858,37 @@ public class SanojenLukija {
 
 
 
-
-
   <h3>ArrayListin kopioiminen</h3>
+
   <p>Joskus on tarpeen muodostaa ArrayLististä kopio, johon voi tehdä muutoksia vaikuttamatta alkuperäisen ArrayListin sisältöön. Kopion voi muodostaa luomalla uuden ArrayListin käyttäen vanhaa ArrayListiä parametrina:</p>
+
 <pre class="sh_java">
-ArrayList&lt;String&gt; nimet = new ArrayList&lt;String&gt;();
+ArrayList&lt;String&gt; nimet = new ArrayList&lt;&gt;();
 nimet.add("Kyösti");
 nimet.add("Risto");
 nimet.add("Carl");
 nimet.add("Urho");
 
 //luodaan kopio nimet-listasta
-ArrayList&lt;String&gt; kopio = new ArrayList&lt;String&gt;(nimet);
+ArrayList&lt;String&gt; kopio = new ArrayList&lt;&gt;(nimet);
 //järjestetään kopio
 Collections.sort(kopio);
 
 System.out.println(kopio);  //tulostuu [Carl, Kyösti, Risto, Urho]
 System.out.println(nimet);  //tulostuu [Kyösti, Risto, Carl, Urho]
 </pre>
+
   <div class="tehtavat">
     <div class="tehtava">
-    <h3>KaikkiEri</h3>
-    <p>Tee metodi <code>kaikkiEri</code>, joka palauttaa true jos sen parametrina saamassa kokonaislukuja sisältävässä listassa olevat luvut ovat kaikki erisuuruisia. Metodi ei saa muuttaa listan sisältöä.</p>
-    </pre>
-    <p>Seuraavassa kaksi esimerkkiä metodin toiminnasta:</p>
-    <pre class="sh_java">
+
+      <h3>KaikkiEri</h3>
+      <p>Tee metodi <code>kaikkiEri</code>, joka palauttaa true jos sen parametrina saamassa kokonaislukuja sisältävässä listassa olevat luvut ovat kaikki erisuuruisia. Metodi ei saa muuttaa listan sisältöä.</p>
+
+      <p>Seuraavassa kaksi esimerkkiä metodin toiminnasta:</p>
+
+<pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;Integer&gt; lista1 = new ArrayList&lt;Integer&gt;();
+    ArrayList&lt;Integer&gt; lista1 = new ArrayList&lt;&gt;();
     lista1.add(3);
     lista1.add(7);
     lista1.add(1);
@@ -6829,7 +6896,7 @@ public static void main(String[] args) {
     boolean eri = kaikkiEri(lista1);
     // muuttujan eri arvo true
 
-    ArrayList&lt;Integer&gt; lista2 = new ArrayList&lt;Integer&gt;();
+    ArrayList&lt;Integer&gt; lista2 = new ArrayList&lt;&gt;();
     lista2.add(2);
     lista2.add(3);
     lista2.add(7);
@@ -6841,11 +6908,16 @@ public static void main(String[] args) {
     // muuttujan eri arvo false sillä luku 3 on listalla kahteen kertaan
 }
 </pre>
-</div>
+    </div>
   </div>
+
+
   <h2>Metodit ja parametrien kopioituminen</h2>
+
   <p>Tarkastellaan muutamaa metodeihin liittyvää tärkeää yksityiskohtaa.</p>
-  <p>Luvussa 15 oli esimerkki, jossa yritettiin muuttaa pääohjelmassa olevan muuttujan arvoa metodin sisällä.</p>
+
+  <p>Edellisen viikon alussa oli esimerkki, jossa yritettiin muuttaa pääohjelmassa olevan muuttujan arvoa metodin sisällä.</p>
+
   <pre class="sh_java">
 public static void main(String[] args) {
     int luku = 1;
@@ -6857,9 +6929,13 @@ public static void kasvataKolmella() {
     luku = luku + 3;
 }
 </pre>
+
   <p>Ohjelma ei toimi, sillä metodi ei pääse käsiksi pääohjelman muuttujaan <code>luku</code>.</p>
+
   <p>Tämä johtuu siitä, että pääohjelman muuttujat eivät näy metodien sisään. Ja yleisemmin: minkään metodin muuttujat eivät näy muille metodeille. Koska pääohjelma <code>main</code> on myös metodi, pätee sääntö myös pääohjelmalle. Ainoa keino viedä metodille tietoa ulkopuolelta on parametrin avulla.</p>
+
   <p>Yritetään korjata edellinen esimerkki välittämällä pääohjelman muuttuja <code>luku</code> parametrina metodille.</p>
+
   <pre class="sh_java">
 public static void main(String[] args) {
     int luku = 1;
@@ -6871,13 +6947,20 @@ public static void kasvataKolmella(int luku) {
     luku = luku + 3;
 }
 </pre>
+
   <p>Ohjelma ei toimi toivotulla tavalla. Metodissa olevat parametrit ovat eri muuttujia kuin pääohjelmassa esitellyt muuttujat.  Edellä metodi siis kasvattaa samannimistä, mutta ei samaa parametria <code>luku</code>.</p>
+  
   <p>Kun metodille annetaan parametri, parametrin arvo <em>kopioidaan uuteen muuttujaan</em> metodissa käytettäväksi. Yllä olevassa esimerkissä metodille <code>kasvataKolmella</code> annetusta muuttujasta <code>luku</code> luodaan kopio, jota metodin sisällä lopulta käsitellään.  Metodi käsittelee siis pääohjelmassa olevan muuttujan kopiota, ei alkuperäistä muuttujaa -- pääohjelmametodissa olevalle muuttujalle <code>luku</code> ei tehdä mitään.</p>
+  
   <p>Voidaan ajatella, että pääohjelmametodi <code>main</code> ja metodi <code>kasvataKolmella</code> toimivat kumpikin omassa kohtaa tietokoneen muistia. Allaolevassa kuvassa on <code>main</code>:in muuttujaa <code>luku</code> varten oma "lokero". Kun metodia kutsutaan, tehdään tälle oma muuttuja <code>luku</code> jonka arvoksi kopioituu <code>main</code>:in <code>luku</code>-muuttujan arvo eli 1. Molemmat <code>luku</code>-nimiset muuttujat ovat kuitenkin täysin erillisiä, eli kun metodissa <code>kasvataKolmella</code> muutetaan sen <code>luku</code>-muuttujan arvoa, ei muutos vaikuta millään tavalla pääohjelman muuttujaan <code>luku</code>.</p>
+  
   <p>Allaoleva kuva antaa lisävalaisua tilanteeseen.</p>
+  
   <p> <img src="https://www.cs.helsinki.fi/group/java/k13/ohpe/img/metodi1.png"/> </p>
+  
   <p>Metodista saa toki välitettyä tietoa kutsujalle käyttäen paluuarvoa, eli palauttamalla arvon <code>return</code>-komennolla. Edellinen saadaan toimimaan muuttamalla koodia hiukan:</p>
-  <pre class="sh_java">
+  
+<pre class="sh_java">
 public static void main(String[] args) {
     int luku = 1;
     luku = kasvataKolmellaJaPalauta(luku);
@@ -6891,8 +6974,10 @@ public static int kasvataKolmellaJaPalauta(int luku) {
     return luku;
 }
 </pre>
+
   <p>Edelleen on niin, että metodi käsittelee pääohjelman <code>luku</code>-muuttujan arvon kopiota. Pääohjelmassa metodin palauttama arvo sijoitetaan muuttujaan <code>luku</code>, joten muutos tulee tämän takia voimaan myös pääohjelmassa. Huomaa, että edellisessä ei ole mitään merkitystä sillä, mikä nimi metodin parametrilla on. Koodi toimii täysin samoin oli nimi mikä tahansa, esim. </p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public static void main(String[] args) {
     int luku = 1;
     luku = kasvataKolmellaJaPalauta(luku);
@@ -6906,15 +6991,19 @@ public static int kasvataKolmellaJaPalauta(int kasvatettavaLuku) {
     return kasvatettavaLuku;
 }
 </pre>
+
   <p>Huomasimme että metodissa olevat parametrit ovat eri muuttujia kuin metodin kutsujassa esitellyt muuttujat. Ainoastaan parametrin arvo kopioituu kutsujasta metodiin.</p>
+
   <p>Asia ei kuitenkaan ole ihan näin yksinkertainen. Jos metodille annetaan parametrina <code>ArrayList</code>, käy niin että sama lista näkyy metodille ja kaikki metodin listalle tekemät muutokset tulevat kaikkialla voimaan.</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public static void poistaAlussaOleva(ArrayList&lt;Integer&gt; lista) {
     lista.remove(0); // poistaa paikassa 0 olevan luvun
 }
 </pre>
-  <pre class="sh_java">
-ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;Integer&gt;();
+
+<pre class="sh_java">
+ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
 luvut.add(4);
 luvut.add(3);
 luvut.add(7);
@@ -6926,11 +7015,17 @@ poistaAlussaOleva(luvut);
 
 System.out.println(luvut); // tulostuu [3,7,3]
 </pre>
+
   <p>Toisin kuin <code>int</code>-tyyppinen parametri, lista ei kopioidu vaan metodi käsittelee suoraan parametrina annettua listaa. </p>
+
   <p>Tilannetta valaisee allaoleva kuva. Toisin kuin <code>int</code>-tyyppinen muuttuja, <code>ArrayList</code> ei sijaitsekaan samalla tapaa "lokerossa", vaan muuttujan nimi, eli mainin tapauksessa <code>luvut</code> onkin ainoastaan <em>viite</em> paikkaan missä <code>ArrayList</code> sijaitsee. Yksi tapa ajatella asiaa, on että <code>ArrayList</code> on "langan päässä", eli listan nimi <code>luvut</code> on lanka jonka toisesta päästä lista löytyy. Kun metodikutsun parametrina on <code>ArrayList</code>, käykin niin että metodille annetaan "lanka" jonka päässä on sama lista jonka metodin kutsuja näkee. Eli main:illa ja metodilla on kyllä molemmilla oma lanka, mutta langan päässä on sama lista ja kaikki muutokset mitä metodi tekee listaan tapahtuvat täsmälleen samaan listaan jota pääohjelma käyttää. Tästä viikosta alkaen tulemme huomaamaan että Java:ssa hyvin moni asia on "langan päässä".</p>
+
   <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohpe/img/metodi-lanka.PNG" height="400"/></p>
+
   <p>Huomaa jälleen että parametrin nimi metodin sisällä voi olla aivan vapaasti valittu, nimen ei tarvitse missään tapauksessa olla sama kuin kutsuvassa metodissa oleva nimi. Edellä listaa kutsutaan metodin sisällä nimellä <code>lista</code>, metodin kutsuja taas näkee saman listan <code>luvut</code>-nimisenä.</p>
+
   <p>Miksi <code>int</code>-parametrista ainoastaan arvo kopioituu metodille mutta parametrin ollessa <code>ArrayList</code> metodi käsittelee suoraan listan sisältöä? Javassa ainoastaan <strong><em>alkeistietotyyppisten</em></strong> eli tyyppien <code>int</code>, <code>double</code>, <code>char</code>, <code>boolean</code> (ja muutamien muiden joita emme ole käsitelleet) arvot kopioidaan metodille. Muun tyyppisten parametrien tapauksessa metodille kopioidaan <em>viite</em>, ja metodista käsitellään viitteen takana olevaa parametria suoraan. Ei-alkeistyyppiset muuttujat -- eli <strong><em>viittaustyyppiset</em></strong> muuttujat ovat siis edellisen kuvan tapaan "langan päässä" -- metodille välitetään lanka parametriin, ja näin metodi käsittelee parametria suoraan.</p>
+
   <div class="tehtavat">
     <div class="tehtava">
       <h3>Yhdistelya</h3>
@@ -6942,8 +7037,8 @@ System.out.println(luvut); // tulostuu [3,7,3]
       <p>Toteuta metodi <code>public static void yhdista(ArrayList&lt;Integer&gt; eka, ArrayList&lt;Integer&gt; toka)</code>, joka lisää toisena parametrina <code>toka</code> olevassa ArrayListissa olevat luvut ensimmäisenä parametrina olevaan ArrayList:iin <code>eka</code>. Alkioiden talletusjärjestyksellä ei ole väliä, ja sama alkio voi päätyä listalle useamman kerran. Esimerkki metodin toiminnasta:</p>
 
     <pre class="sh_java">
-ArrayList&lt;Integer&gt; lista1= new ArrayList&lt;Integer&gt;();
-ArrayList&lt;Integer&gt; lista2= new ArrayList&lt;Integer&gt;();
+ArrayList&lt;Integer&gt; lista1= new ArrayList&lt;&gt;();
+ArrayList&lt;Integer&gt; lista2= new ArrayList&lt;&gt;();
 
 lista1.add(4);
 lista1.add(3);
