@@ -1656,7 +1656,7 @@ Orwell
 <pre class="sh_java">
 int luku = 4;
 
-if ( luku &gt; 5 ) {
+if (luku &gt; 5) {
     System.out.println("Lukusi on suurempi kuin viisi!");
 } else {
     System.out.println("Lukusi on viisi tai alle!");
@@ -1971,7 +1971,7 @@ Scanner lukija = new Scanner(System.in);
 int luku = Integer.parseInt(lukija.nextLine());
 int jakojaannos = luku % 400;
 
-if(jakojaannos == 0) {
+if (jakojaannos == 0) {
     System.out.println("Luku " + luku + " on jaollinen neljälläsadalla.");
 } else {
     System.out.println("Luku " + luku + " ei ole jaollinen neljälläsadalla.");
@@ -1985,7 +1985,7 @@ if(jakojaannos == 0) {
 Scanner lukija = new Scanner(System.in);
 int luku = Integer.parseInt(lukija.nextLine());
 
-if(luku % 400 == 0) {
+if (luku % 400 == 0) {
     System.out.println("Luku " + luku + " on jaollinen neljälläsadalla.");
 } else {
     System.out.println("Luku " + luku + " ei ole jaollinen neljälläsadalla.");
@@ -2297,7 +2297,7 @@ while (true) {
 }
 </pre>
 
-  <p>Komento <code>while(true)</code> saa sen aikaan, että siihen liittyvää lohkoa, eli <code>{}</code>:lla ympäröityjä komentoja suoritetaan äärettömän monta kertaa.</p>
+  <p>Komento <code>while (true)</code> saa sen aikaan, että siihen liittyvää lohkoa, eli <code>{}</code>:lla ympäröityjä komentoja suoritetaan äärettömän monta kertaa.</p>
 
   <p>Ikuinen toisto ei yleensä ole se mitä halutaan. Saat NetBeansista käynnissä olevan ohjelman sammutettua painamalla tulostusikkunan vasemmalla puolella olevaa punaista nappia. Ohjelmakoodissa toisto keskeytetään komennolla <code>break</code>.</p>
 
@@ -2405,7 +2405,7 @@ Väärin!
 
   <h4>Salasanan kysyminen kunnes käyttäjä vastaa oikein</h4>
 
-  <p>Muokkaa ohjelmaa siten, että se kysyy salasanaa kunnes käyttäjä syöttää oikean salasanan. Toteuta salasanan jatkuva kysyminen <code>while(true) { ... }</code> -toistolausekkeen avulla. Toistolausekkeesta pääsee pois, jos ja vain jos käyttäjän syöttämä salasana on sama kuin muuttujassa <code>salasana</code> oleva arvo.</p>
+  <p>Muokkaa ohjelmaa siten, että se kysyy salasanaa kunnes käyttäjä syöttää oikean salasanan. Toteuta salasanan jatkuva kysyminen <code>while (true) { ... }</code> -toistolausekkeen avulla. Toistolausekkeesta pääsee pois, jos ja vain jos käyttäjän syöttämä salasana on sama kuin muuttujassa <code>salasana</code> oleva arvo.</p>
 
 <pre>
 Anna salasana: <font color="red">nauris</font>
@@ -2447,9 +2447,9 @@ Kuvaaja.lisaaNumero(13.0);
 
   <h4>Kysely</h4>
 
-  <p>Tee ohjelma, joka kysyy käyttäjältä liukulukuja (<code>double</code>) ja lisää ne kuvaajaan. Käytä jälleen <code>while(true) { ... }</code>-rakennetta.</p>
+  <p>Tee ohjelma, joka kysyy käyttäjältä liukulukuja (<code>double</code>) ja lisää ne kuvaajaan. Käytä jälleen <code>while (true) { ... }</code>-rakennetta.</p>
 
-  <p><strong>Huom:</strong><code>double</code>-luku luetaan seuraavasti <code>double luku = Double.parseDouble( lukija.nextLine() );</code></p>
+  <p><strong>Huom:</strong><code>double</code>-luku luetaan seuraavasti <code>double luku = Double.parseDouble(lukija.nextLine());</code></p>
 
   <p><strong>Huom2:</strong> ohjelmasi toimii "ikuisessa" silmukassa eli on tarkoitus että sen suoritus ei pääty koskaan. Saat ohjelmasi pysähtymään painamalla NetBeansin konsoli-ikkunan oikeassa laidassa olevaa punaista neliöä.</p>
 
@@ -3429,7 +3429,7 @@ System.out.println(tulostus); // toimii!
 
   <h2 id="lisaa_toistoa">Lisää toistoa</h2>
 
-  <p>Opimme edellisellä viikolla (kts. <a href="../viikko1/index.html#toiston_alkeet">Toiston alkeet</a>) toteuttamaan <code>while(true)</code>-komennon avulla ohjelman, joka toistaa tiettyä komentosarjaa komennon <code>break</code> suorittamiseen asti. Kerrataanpa tätä hieman:</p>
+  <p>Opimme edellisellä viikolla (kts. <a href="../viikko1/index.html#toiston_alkeet">Toiston alkeet</a>) toteuttamaan <code>while (true)</code>-komennon avulla ohjelman, joka toistaa tiettyä komentosarjaa komennon <code>break</code> suorittamiseen asti. Kerrataanpa tätä hieman:</p>
 
   <div id="parqu-exercise4"></div>
 
@@ -3763,7 +3763,7 @@ Kertoma on 3628800
 <div class="tehtava">
     <h3>Potenssien summa</h3>
 
-    <p>Tee ohjelma, joka laskee summan 2<sup>0</sup>+2<sup>1</sup>+2<sup>2</sup>+...+2<sup>n</sup>, missä n on käyttäjän syöttämä luku. Merkintä 2<sup>i</sup> tarkoittaa luvun 2 korottamista potenssiin i, esimerkiksi 2<sup>4</sup> = 2*2*2*2 = 16. Javassa merkintä a<sup>b</sup> ei ole käytössä, mutta potenssin voi laskea komennolla <code>Math.pow(luku, potenssi)</code>. Huom. komento palauttaa <code>double</code>-tyyppisen eli liukulukutyyppisen luvun. Liukulukutyyppisen luvun voi muuttaa kokonaisluvuksi ( <code>int</code>-tyyppiseksi ) seuraavasti: <code>int tulos = (int) Math.pow(2, 3)</code>. Lasku asettaa muuttujaan tulos laskun 2 potenssiin 3 arvon.</p>
+    <p>Tee ohjelma, joka laskee summan 2<sup>0</sup>+2<sup>1</sup>+2<sup>2</sup>+...+2<sup>n</sup>, missä n on käyttäjän syöttämä luku. Merkintä 2<sup>i</sup> tarkoittaa luvun 2 korottamista potenssiin i, esimerkiksi 2<sup>4</sup> = 2*2*2*2 = 16. Javassa merkintä a<sup>b</sup> ei ole käytössä, mutta potenssin voi laskea komennolla <code>Math.pow(luku, potenssi)</code>. Huom. komento palauttaa <code>double</code>-tyyppisen eli liukulukutyyppisen luvun. Liukulukutyyppisen luvun voi muuttaa kokonaisluvuksi (<code>int</code>-tyyppiseksi) seuraavasti: <code>int tulos = (int) Math.pow(2, 3)</code>. Lasku asettaa muuttujaan tulos laskun 2 potenssiin 3 arvon.</p>
 
     <p>Esimerkkitulostuksia:</p>
 <pre>
@@ -3784,7 +3784,7 @@ Tulos on 255
 <pre class="sh_java">
 int i = 0;
 
-while(i &lt; 3) {
+while (i &lt; 3) {
     System.out.println("En enää ikinä ohjelmoi ikuista silmukkaa");
 }
 </pre>
@@ -3947,7 +3947,7 @@ System.out.println("ikäsi: ");
 
 int ika = Integer.parseInt(lukija.nextLine());
 
-while(ika &lt; 1 || ika  &gt; 120) {   // ikä pienempi kuin 1 TAI suurempi kuin 120
+while (ika &lt; 1 || ika  &gt; 120) {   // ikä pienempi kuin 1 TAI suurempi kuin 120
     System.out.println("Valehtelet");
     if (ika &lt; 1) {
         System.out.println("Olet niin nuori ettet osaa kirjoittaa");
@@ -3962,14 +3962,14 @@ while(ika &lt; 1 || ika  &gt; 120) {   // ikä pienempi kuin 1 TAI suurempi kuin
 System.out.println("Ikäsi on siis "+ ika);
 </pre>
 
-  <p>Ohjelman olisi voinut tehdä myös vanhaa tuttua <code>while(true)</code> -rakennetta käyttäen:</p>
+  <p>Ohjelman olisi voinut tehdä myös vanhaa tuttua <code>while (true)</code> -rakennetta käyttäen:</p>
 
 <pre class="sh_java">
 System.out.println("ikäsi: ");
 
 int ika = Integer.parseInt(lukija.nextLine());
 
-while(true) {
+while (true) {
 
     if (ika &gt;= 1 &amp;&amp; ika &lt;= 120) {   // ikä 1:n JA 120:n välillä
         break;                              // lopetetaan toisto
@@ -4200,7 +4200,7 @@ Alussa olivat suo, kuokka ja Java.
     <tr>
       <td>
         <pre class="sh_java">
-public static void Tama_metodi_sanoo_mur ( ){
+public static void Tama_metodi_sanoo_mur ( ) {
 System.out.println("mur");
 }
         </pre>
@@ -4249,7 +4249,7 @@ Hei Chang, terveiset metodimaailmasta!
 public static void main(String[] args) {
     String nimi1 = "Ilari";
     String nimi2 = "S";
-    tervehdi( nimi1 + " " + nimi2 );
+    tervehdi(nimi1 + " " + nimi2);
 
     int ika = 20;
     tervehdi("Jani " + ika + " vuotta");
@@ -4302,7 +4302,7 @@ public static void tervehdi(String nimi) {
 
 public static void tervehdiMontaKertaa(String nimi, int kerrat) {
     int i = 0;
-    while ( i &lt; kerrat ) {
+    while (i &lt; kerrat) {
         tervehdi(nimi);
         i++;
     }
@@ -5297,7 +5297,7 @@ public static int palautetaanAinaKymppi() {
 public static void main(String[] args) {
     int luku = palautetaanAinaKymppi();
 
-    System.out.println( "metodi palautti luvun " + luku );
+    System.out.println("metodi palautti luvun " + luku);
 }
 </pre>
 
@@ -5306,7 +5306,7 @@ public static void main(String[] args) {
 <pre class="sh_java">
 double luku = 4 * palautetaanAinaKymppi() + (palautetaanAinaKymppi() / 2) - 8;
 
-System.out.println( "laskutoimituksen tulos " + luku );
+System.out.println("laskutoimituksen tulos " + luku);
 </pre>
 
   <p>Kaikki muuttujatyypit, mitä olemme tähän mennessä nähneet, voidaan palauttaa metodista:</p>
@@ -5497,7 +5497,7 @@ public static void main(String[] args) {
     keskiarvo(eka, toka, kolmas);
 
     // yritetään käyttää metodin sisäistä muuttujaa, EI TOIMI!
-    System.out.print("Lukujen keskiarvo: " + ka );
+    System.out.print("Lukujen keskiarvo: " + ka);
 }
 </pre>
   <p>Myös seuraavanlaista virhettä näkee usein:</p>
@@ -5508,7 +5508,7 @@ public static void main(String[] args) {
     keskiarvo(eka, toka, kolmas);
 
     // yritetään käyttää pelkkää metodin nimeä, EI TOIMI!
-    System.out.print("Lukujen keskiarvo: " + keskiarvo );
+    System.out.print("Lukujen keskiarvo: " + keskiarvo);
 }
 </pre>
 
@@ -5521,7 +5521,7 @@ public static void main(String[] args) {
     int kolmas = 4;
 
     // kutsutaan metodia tulostuslauseessa, TOIMII!
-    System.out.print("Lukujen keskiarvo: " + keskiarvo(eka, toka, kolmas) );
+    System.out.print("Lukujen keskiarvo: " + keskiarvo(eka, toka, kolmas));
 }
 </pre>
 
@@ -5795,9 +5795,9 @@ main
 <pre class="sh_java">
 String elain = "Koira";
 
-if( elain.equals("Koira") ) {
+if (elain.equals("Koira")) {
     System.out.println(elain + " sanoo vuh vuh");
-} else if ( elain.equals("Kissa") ) {
+} else if (elain.equals("Kissa")) {
     System.out.println(elain + " sanoo miau miau");
 }
 </pre>
@@ -6993,7 +6993,7 @@ public static void main(String[] args) {
 
 public static void tulosta(ArrayList&lt;Integer&gt; luvut) {
     for (int luku : luvut) {
-        System.out.println( luku );
+        System.out.println(luku);
     }
 }
 </pre>
@@ -7023,7 +7023,7 @@ public static void main(String[] args) {
 
 public static void tulosta(ArrayList&lt;Integer&gt; luvut) {
     for (int luku : luvut) {
-        System.out.println( luku );
+        System.out.println(luku);
     }
 }
 
@@ -8195,8 +8195,8 @@ public static void main(String[] args) {
     kaupungit.add("Turku");
     kaupungit.add("Helsinki");
 
-    System.out.println("maita " + maat.size() );
-    System.out.println("kaupunkeja " + kaupungit.size() );
+    System.out.println("maita " + maat.size());
+    System.out.println("kaupunkeja " + kaupungit.size());
 }
 </pre>
   <p>Sekä <code>maat</code>-olio että <code>kaupungit</code>-olio elää omaa elämäänsä. Molempien "tila" on toisten olioiden tilasta riippumaton. Esim. olion <code>maat</code> tila koostuu listalla olevista merkkijonoista "Suomi", "Saksa" ja "Hollanti" ja todennäköisesti myös tiedosta kuinka monta maata listalla on.</p>
@@ -8470,12 +8470,12 @@ public class Main {
 
         antti.vanhene();
 
-        System.out.println( "Pekan ikä: "+pekka.palautaIka() );
-        System.out.println( "Antin ikä: "+antti.palautaIka() );
+        System.out.println("Pekan ikä: " + pekka.palautaIka());
+        System.out.println("Antin ikä: " + antti.palautaIka());
 
         int yht = pekka.palautaIka() + antti.palautaIka();
 
-        System.out.println( "Pekka ja Antti yhteensä "+yht+ " vuotta" );
+        System.out.println("Pekka ja Antti yhteensä " + yht + " vuotta");
     }
 }
 </pre>
@@ -8704,8 +8704,8 @@ public class Henkilo {
 public class Henkilo {
   // ...
 
-    public boolean taysiIkainen(){
-        if ( this.ika &lt; 18 ) {
+    public boolean taysiIkainen() {
+        if (this.ika &lt; 18) {
             return false;
         }
 
@@ -8715,7 +8715,7 @@ public class Henkilo {
     /*
     huom. metodin voisi kirjoittaa lyhyemmin seuraavasti:
 
-    public boolean taysiIkainen(){
+    public boolean taysiIkainen() {
         return this.ika >= 18;
     }
     */
@@ -8728,7 +8728,7 @@ public static void main(String[] args) {
     Henkilo antti = new Henkilo("Antti");
 
     int i = 0;
-    while ( i &lt; 30 ) {
+    while (i &lt; 30) {
         pekka.vanhene();
         i++;
     }
@@ -8737,7 +8737,7 @@ public static void main(String[] args) {
 
     System.out.println("");
 
-    if ( antti.taysiIkainen() ) {
+    if (antti.taysiIkainen()) {
         System.out.print("täysi-ikäinen: ");
         antti.tulostaHenkilo();
     } else {
@@ -8745,7 +8745,7 @@ public static void main(String[] args) {
         antti.tulostaHenkilo();
     }
 
-    if ( pekka.taysiIkainen() ) {
+    if (pekka.taysiIkainen()) {
         System.out.print("täysi-ikäinen: ");
         pekka.tulostaHenkilo();
     } else {
@@ -8776,7 +8776,7 @@ public static void main(String[] args) {
     Henkilo antti = new Henkilo("Antti");
 
     int i = 0;
-    while ( i &lt; 30 ) {
+    while (i &lt; 30) {
         pekka.vanhene();
         i++;
     }
@@ -8785,16 +8785,16 @@ public static void main(String[] args) {
 
     System.out.println("");
 
-    if ( antti.taysiIkainen() ) {
-        System.out.println( antti.getNimi() + " on täysi-ikäinen" );
+    if (antti.taysiIkainen()) {
+        System.out.println(antti.getNimi() + " on täysi-ikäinen");
     } else {
-        System.out.println( antti.getNimi() + " on alaikäinen" );
+        System.out.println(antti.getNimi() + " on alaikäinen");
     }
 
-    if ( pekka.taysiIkainen() ) {
-        System.out.println( pekka.getNimi() + " on täysi-ikäinen" );
+    if (pekka.taysiIkainen()) {
+        System.out.println(pekka.getNimi() + " on täysi-ikäinen");
     } else {
-        System.out.println( pekka.getNimi() + " on alaikäinen " );
+        System.out.println(pekka.getNimi() + " on alaikäinen ");
     }
 }
 </pre>
@@ -8830,17 +8830,17 @@ public static void main(String[] args) {
 
     antti.vanhene();
 
-    System.out.println(antti); // sama kun System.out.println( antti.toString() );
-    System.out.println(pekka); // sama kun System.out.println( pekka.toString() );
+    System.out.println(antti); // sama kun System.out.println(antti.toString());
+    System.out.println(pekka); // sama kun System.out.println(pekka.toString());
 }
 </pre>
   <p>Periaatteena on, että <code>System.out.println</code>-metodi pyytää olion merkkijonoesityksen ja tulostaa sen. Merkkijonoesityksen palauttavan <code>toString</code>-metodin kutsua ei tarvitse kirjoittaa itse, sillä Java lisää sen automaattisesti. Ohjelmoijan kirjoittaessa:</p>
 <pre class="sh_java">
-System.out.println( antti );
+System.out.println(antti);
 </pre>
   <p>Java täydentää suorituksen aikana kutsun muotoon:</p>
 <pre class="sh_java">
-System.out.println( antti.toString() );
+System.out.println(antti.toString());
 </pre>
   <p>Käy niin, että oliolta pyydetään sen merkkijonoesitys. Olion palauttama merkkijonoesitys tulostetaan normaaliin tapaan <code>System.out.println</code>-komennolla. </p>
   <p><b>Voimme nyt poistaa turhaksi käyneen <code>tulostaOlio</code>-metodin.</b></p>
@@ -9063,9 +9063,9 @@ public class Henkilo {
         this.paino = uusiPaino;
     }
 
-    public double painoIndeksi(){
+    public double painoIndeksi() {
         double pituusPerSata = this.pituus / 100.0;
-        return this.paino / ( pituusPerSata * pituusPerSata );
+        return this.paino / (pituusPerSata * pituusPerSata);
     }
 
     // ...
@@ -9083,8 +9083,8 @@ public static void main(String[] args) {
     juhana.setPituus(175);
     juhana.setPaino(64);
 
-    System.out.println( matti.getNimi() + ", painoindeksisi on " + matti.painoIndeksi() );
-    System.out.println( juhana.getNimi() + ", painoindeksisi on " + juhana.painoIndeksi() );
+    System.out.println(matti.getNimi() + ", painoindeksisi on " + matti.painoIndeksi());
+    System.out.println(juhana.getNimi() + ", painoindeksisi on " + juhana.painoIndeksi());
 }
 </pre>
 <p>Tulostus:</p>
@@ -9115,10 +9115,10 @@ public void setPituus(int pituus) {
   <h3>Liukuluvun "siisti" tulostaminen</h3>
   <p>Desimaalien määrä edellisessä tulostuksessa on hieman liioiteltu. Yksi tapa päästä määräämään tulostettavien desimaalien määrä on seuraava:</p>
   <pre class="sh_java">
-System.out.println( matti.getNimi() + ", painoindeksisi on " + String.format( "%.2f", matti.painoIndeksi() ) );
-System.out.println( juhana.getNimi() + ", painoindeksisi on " + String.format( "%.2f", juhana.painoIndeksi() ) );
+System.out.println(matti.getNimi() + ", painoindeksisi on " + String.format("%.2f", matti.painoIndeksi()));
+System.out.println(juhana.getNimi() + ", painoindeksisi on " + String.format("%.2f", juhana.painoIndeksi()));
 </pre>
-  <p>Eli jos <code>luku</code> on liukuluku, voi siitä tehdä komennolla <code>String.format( "%.2f", luku )</code> merkkijonon, jossa luku on otettu mukaan kahden desimaalin tarkkuudella. Pisteen ja f:n välissä oleva numero säätää mukaan tulevan desimaalien määrän. </p>
+  <p>Eli jos <code>luku</code> on liukuluku, voi siitä tehdä komennolla <code>String.format("%.2f", luku)</code> merkkijonon, jossa luku on otettu mukaan kahden desimaalin tarkkuudella. Pisteen ja f:n välissä oleva numero säätää mukaan tulevan desimaalien määrän. </p>
   <p>Nyt tulostus on siistimpi:</p>
 <pre>
 Matti, painoindeksisi on 26,54
@@ -9166,12 +9166,12 @@ public class YlhaaltaRajoitettuLaskuri {
 public class Paaohjelma {
     public static void main(String[] args) {
         YlhaaltaRajoitettuLaskuri laskuri = new YlhaaltaRajoitettuLaskuri(4);
-        System.out.println("arvo alussa: " + laskuri );
+        System.out.println("arvo alussa: " + laskuri);
 
         int i = 0;
-        while ( i &lt; 10) {
+        while (i &lt; 10) {
             laskuri.seuraava();
-            System.out.println("arvo: " + laskuri );
+            System.out.println("arvo: " + laskuri);
             i++;
         }
     }
@@ -9199,12 +9199,12 @@ arvo: 0
 public class Paaohjelma {
     public static void main(String[] args) {
         YlhaaltaRajoitettuLaskuri laskuri = new YlhaaltaRajoitettuLaskuri(14);
-        System.out.println("arvo alussa: " + laskuri );
+        System.out.println("arvo alussa: " + laskuri);
 
         int i = 0;
-        while ( i &lt; 16){
+        while (i &lt; 16) {
             laskuri.seuraava();
-            System.out.println("arvo: " + laskuri );
+            System.out.println("arvo: " + laskuri);
             i++;
         }
     }
@@ -9245,8 +9245,8 @@ public class Paaohjelma {
         YlhaaltaRajoitettuLaskuri tunnit = new YlhaaltaRajoitettuLaskuri(23);
 
         int i = 0;
-        while ( i &lt; 121 ) {
-            System.out.println( tunnit + ":" + minuutit);   // tulostetaan nykyinen aika
+        while (i &lt; 121) {
+            System.out.println(tunnit + ":" + minuutit);   // tulostetaan nykyinen aika
             // minuuttimäärä kasvaa
             // jos minuuttimäärä menee nollaan, tuntimäärä kasvaa
 
@@ -9296,7 +9296,7 @@ public class Paaohjelma {
         tunnit.asetaArvo(tun);
 
         int i = 0;
-        while ( i &lt; 121 ) {
+        while (i &lt; 121) {
             // lisää edelliseen myös sekuntiviisari
             i++;
         }
@@ -9319,8 +9319,8 @@ public class Paaohjelma {
         minuutit.asetaArvo(59);
         tunnit.asetaArvo(23);
 
-        while ( true ) {
-            System.out.println( tunnit + ":" + minuutit + ":" + sekunnit );
+        while (true) {
+            System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
             Thread.sleep(1000);
             // lisää kellon aikaa sekunnilla eteenpäin
         }
@@ -9511,21 +9511,21 @@ public static void main(String[] args) {
     henkilot.add(juhana);
 
     // tai voidaan myös luoda olio ja lisätä se heti:
-    henkilot.add( new Henkilo("Matti") );
-    henkilot.add( new Henkilo("Martin") );
+    henkilot.add(new Henkilo("Matti"));
+    henkilot.add(new Henkilo("Martin"));
 
     System.out.println("Henkilöt vastasyntyneenä: ");
-    for ( Henkilo henkilo : henkilot ) {
-        System.out.println( henkilo );
+    for (Henkilo henkilo : henkilot) {
+        System.out.println(henkilo);
     }
 
-    for ( Henkilo henkilo : henkilot ) {
+    for (Henkilo henkilo : henkilot) {
         henkilo.vanhene();
     }
 
     System.out.println("1 vuoden kuluttua: ");
-    for ( Henkilo henkilo : henkilot ) {
-        System.out.println( henkilo );
+    for (Henkilo henkilo : henkilot) {
+        System.out.println(henkilo);
     }
 }
 </pre>
@@ -9553,29 +9553,29 @@ public static void main(String[] args) {
     henkilot.add(juhana);
 
     // tai voidaan myös luoda olio ja lisätä se heti:
-    henkilot.add( new Henkilo("Matti") );
-    henkilot.add( new Henkilo("Martin") );
+    henkilot.add(new Henkilo("Matti"));
+    henkilot.add(new Henkilo("Martin"));
 
     System.out.println("Henkilöt vastasyntyneenä: ");
-    for ( Henkilo henkilo : henkilot ) {
-        System.out.println( henkilo );
+    for (Henkilo henkilo : henkilot) {
+        System.out.println(henkilo);
     }
 
-    for ( Henkilo henkilo : henkilot ) {
+    for (Henkilo henkilo : henkilot) {
         henkilo.vanhene();
     }
 
     System.out.println("1 vuoden kuluttua: ");
-    for ( Henkilo henkilo : henkilot ) {
-        System.out.println( henkilo );
+    for (Henkilo henkilo : henkilot) {
+        System.out.println(henkilo);
     }
 
     juhana.vanhene();
     juhana.vanhene();
 
     System.out.println("1 vuoden kuluttua -- mutta -- juhana vanheni: ");
-    for ( Henkilo henkilo : henkilot ) {
-        System.out.println( henkilo );
+    for (Henkilo henkilo : henkilot) {
+        System.out.println(henkilo);
     }
 }
 </pre>
@@ -9998,7 +9998,7 @@ public class Ohjelma {
         Noppa noppa = new Noppa(6);
 
         int i = 0;
-        while ( i &lt; 10 ) {
+        while (i &lt; 10) {
             System.out.println(noppa.heita());
             i++;
         }
@@ -10058,7 +10058,7 @@ public class SaaEnnustaja {
     }
 
     public int ennustaLampotila() {
-        return (int) ( 4 * this.random.nextGaussian() - 3 );
+        return (int) (4 * this.random.nextGaussian() - 3);
     }
 }
 </pre>
@@ -10067,7 +10067,7 @@ public class SaaEnnustaja {
 
   <pre class="sh_java">
 public int ennustaLampotila() {
-    return (int) ( 4 * this.random.nextGaussian() - 3 );
+    return (int) (4 * this.random.nextGaussian() - 3);
 }
 </pre>
 
@@ -10261,8 +10261,8 @@ public class Henkilo {
         this.ika++;
     }
 
-    public boolean taysiIkainen(){
-        if ( this.ika &lt; 18 ) {
+    public boolean taysiIkainen() {
+        if (this.ika &lt; 18) {
             return false;
         }
 
@@ -10275,15 +10275,15 @@ public class Henkilo {
         return this.paino / (pituusMetreina*pituusMetreina);
     }
 
-    public String toString(){
+    public String toString() {
         return this.nimi + " olen " + this.ika + " vuotta vanha, painoindeksini on " + this.painoindeksi();
     }
 
-    public void setPituus(int pituus){
+    public void setPituus(int pituus) {
         this.pituus = pituus;
     }
 
-    public int getPituus(){
+    public int getPituus() {
         return this.pituus;
     }
 
@@ -10295,7 +10295,7 @@ public class Henkilo {
         this.paino = paino;
     }
 
-    public String getNimi(){
+    public String getNimi() {
         return this.nimi;
     }
 }</pre>
@@ -10404,7 +10404,7 @@ public void vanhene(int vuodet) {
 <pre class="sh_java">
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka", 24);
-    System.out.println(pekka );
+    System.out.println(pekka);
 
     pekka.vanhene();
     System.out.println(pekka);
@@ -10505,15 +10505,15 @@ Pekka, ikä 49 vuotta
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka", 24);
 
-    System.out.println( pekka );
+    System.out.println(pekka);
 
     Henkilo henkilo = pekka;
     henkilo.vanhene(25);
 
-    System.out.println( pekka );
+    System.out.println(pekka);
 
     pekka = new Henkilo("Pekka Mikkola", 24);
-    System.out.println( pekka );
+    System.out.println(pekka);
 }
 </pre>
 <p>Tulostuu:</p>
@@ -10531,18 +10531,18 @@ Pekka Mikkola, ikä 24 vuotta
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka", 24);
 
-    System.out.println( pekka );
+    System.out.println(pekka);
 
     Henkilo henkilo = pekka;
     henkilo.vanhene(25);
 
-    System.out.println( pekka );
+    System.out.println(pekka);
 
     pekka = new Henkilo("Pekka Mikkola", 24);
-    System.out.println( pekka );
+    System.out.println(pekka);
 
     henkilo = null;
-    System.out.println( henkilo );
+    System.out.println(henkilo);
 }
 </pre>
 <p>Viimeisen koodirivin jälkeen näyttää seuraavalta:</p>
@@ -10560,10 +10560,10 @@ null
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka", 24);
 
-    System.out.println( pekka );
+    System.out.println(pekka);
 
     Henkilo henkilo = null;
-    System.out.println( henkilo.painoIndeksi() );
+    System.out.println(henkilo.painoIndeksi());
 }
 </pre>
 <p>Tulos:</p>
@@ -10601,7 +10601,7 @@ public class PainonvartijaYhdistys {
     }
 
     public boolean hyvaksytaanJaseneksi(Henkilo henkilo) {
-        if ( henkilo.painoIndeksi() &lt; this.alinPainoindeksi ) {
+        if (henkilo.painoIndeksi() &lt; this.alinPainoindeksi) {
             return false;
         }
 
@@ -10626,16 +10626,16 @@ public static void main(String[] args) {
 
     PainonvartijaYhdistys kumpulanPaino = new PainonvartijaYhdistys(25);
 
-    if ( kumpulanPaino.hyvaksytaanJaseneksi(matti) ) {
-        System.out.println( matti.getNimi() + " pääsee jäseneksi");
+    if (kumpulanPaino.hyvaksytaanJaseneksi(matti)) {
+        System.out.println(matti.getNimi() + " pääsee jäseneksi");
     } else {
-        System.out.println( matti.getNimi() + " ei pääse jäseneksi");
+        System.out.println(matti.getNimi() + " ei pääse jäseneksi");
     }
 
-    if ( kumpulanPaino.hyvaksytaanJaseneksi(juhana) ) {
-        System.out.println( juhana.getNimi() + " pääsee jäseneksi");
+    if (kumpulanPaino.hyvaksytaanJaseneksi(juhana)) {
+        System.out.println(juhana.getNimi() + " pääsee jäseneksi");
     } else {
-        System.out.println( juhana.getNimi() + " ei pääse jäseneksi");
+        System.out.println(juhana.getNimi() + " ei pääse jäseneksi");
     }
 }
 </pre>
@@ -10792,7 +10792,7 @@ public class Maksukortti {
         this.saldo += lisays;
     }
 
-    public boolean otaRahaa(double maara){
+    public boolean otaRahaa(double maara) {
         // toteuta metodi siten että se ottaa kortilta rahaa vain jos saldo on vähintään maara
         // onnistuessaan metodi palauttaa true ja muuten false
     }
@@ -10804,14 +10804,14 @@ public class Paaohjelma {
     public static void main(String[] args) {
         Maksukortti pekanKortti = new Maksukortti(10);
 
-        System.out.println("rahaa " + pekanKortti.saldo() );
+        System.out.println("rahaa " + pekanKortti.saldo());
         boolean onnistuiko = pekanKortti.otaRahaa(8);
-        System.out.println("onnistuiko otto: " + onnistuiko );
-        System.out.println("rahaa " + pekanKortti.saldo() );
+        System.out.println("onnistuiko otto: " + onnistuiko);
+        System.out.println("rahaa " + pekanKortti.saldo());
 
         onnistuiko = pekanKortti.otaRahaa(4);
-        System.out.println("onnistuiko otto: " + onnistuiko );
-        System.out.println("rahaa " + pekanKortti.saldo() );
+        System.out.println("onnistuiko otto: " + onnistuiko);
+        System.out.println("rahaa " + pekanKortti.saldo());
       }
 }
 </pre>
@@ -10862,15 +10862,15 @@ public class Paaohjelma {
         Kassapaate unicafeExactum = new Kassapaate();
 
         double vaihtorahaa = unicafeExactum.syoEdullisesti(10);
-        System.out.println("vaihtorahaa jäi " + vaihtorahaa );
+        System.out.println("vaihtorahaa jäi " + vaihtorahaa);
 
         vaihtorahaa = unicafeExactum.syoEdullisesti(5);
-        System.out.println("vaihtorahaa jäi " + vaihtorahaa );
+        System.out.println("vaihtorahaa jäi " + vaihtorahaa);
 
         vaihtorahaa = unicafeExactum.syoMaukkaasti(4.3);
-        System.out.println("vaihtorahaa jäi " + vaihtorahaa );
+        System.out.println("vaihtorahaa jäi " + vaihtorahaa);
 
-        System.out.println( unicafeExactum );
+        System.out.println(unicafeExactum);
     }
 }
 </pre>
@@ -10910,7 +10910,7 @@ public class Paaohjelma {
         Kassapaate unicafeExactum = new Kassapaate();
 
         double vaihtorahaa = unicafeExactum.syoEdullisesti(10);
-        System.out.println("vaihtorahaa jäi " + vaihtorahaa );
+        System.out.println("vaihtorahaa jäi " + vaihtorahaa);
 
         Maksukortti antinKortti = new Maksukortti(7);
 
@@ -10921,7 +10921,7 @@ public class Paaohjelma {
         onnistuiko = unicafeExactum.syoEdullisesti(antinKortti);
         System.out.println("riittikö raha: " + onnistuiko);
 
-        System.out.println( unicafeExactum );
+        System.out.println(unicafeExactum);
     }
 }
 </pre>
@@ -10944,7 +10944,7 @@ public void lataaRahaaKortille(Maksukortti kortti, double summa) {
 public class Paaohjelma {
     public static void main(String[] args) {
         Kassapaate unicafeExactum = new Kassapaate();
-        System.out.println( unicafeExactum );
+        System.out.println(unicafeExactum);
 
         Maksukortti antinKortti = new Maksukortti(2);
 
@@ -10960,7 +10960,7 @@ public class Paaohjelma {
 
         System.out.println("kortilla rahaa " + antinKortti.saldo() + " euroa");
 
-        System.out.println( unicafeExactum );
+        System.out.println(unicafeExactum);
     }
 }
 </pre>
@@ -11100,14 +11100,14 @@ public static void main(String[] args) {
     Paivays p3 = new Paivays(1, 3, 2011);
     Paivays p4 = new Paivays(31, 12, 2010);
 
-    System.out.println( p1 + " aiemmin kuin " + p2 + ": " + p1.aiemmin(p2));
-    System.out.println( p2 + " aiemmin kuin " + p1 + ": " + p2.aiemmin(p1));
+    System.out.println(p1 + " aiemmin kuin " + p2 + ": " + p1.aiemmin(p2));
+    System.out.println(p2 + " aiemmin kuin " + p1 + ": " + p2.aiemmin(p1));
 
-    System.out.println( p2 + " aiemmin kuin " + p3 + ": " + p2.aiemmin(p3));
-    System.out.println( p3 + " aiemmin kuin " + p2 + ": " + p3.aiemmin(p2));
+    System.out.println(p2 + " aiemmin kuin " + p3 + ": " + p2.aiemmin(p3));
+    System.out.println(p3 + " aiemmin kuin " + p2 + ": " + p3.aiemmin(p2));
 
-    System.out.println( p4 + " aiemmin kuin " + p1 + ": " + p4.aiemmin(p1));
-    System.out.println( p1 + " aiemmin kuin " + p4 + ": " + p1.aiemmin(p4));
+    System.out.println(p4 + " aiemmin kuin " + p1 + ": " + p4.aiemmin(p1));
+    System.out.println(p1 + " aiemmin kuin " + p4 + ": " + p1.aiemmin(p4));
 }
 </pre>
 
@@ -11134,7 +11134,7 @@ public class Asunto {
     private int nelioita;
     private int neliohinta;
 
-    public Asunto(int huoneita, int nelioita, int neliohinta){
+    public Asunto(int huoneita, int nelioita, int neliohinta) {
         this.huoneita = huoneita;
         this.nelioita = nelioita;
         this.neliohinta = neliohinta;
@@ -11198,14 +11198,14 @@ public static void main(String[] args) {
     Asunto suurin = null;
 
     for(Asunto asunto: asunnot) {
-        if(suurin == null) {
+        if (suurin == null) {
             suurin = asunto;
             continue; // jatketaan seuraavan asunnon tarkastelulla
         }
 
         // jos tarkasteltava asunto on suurempi kuin suurin, 
         // asetetaan tarkasteltava suurimmaksi
-        if(asunto.suurempi(suurin)) {
+        if (asunto.suurempi(suurin)) {
             suurin = asunto;
         }
     }
@@ -11354,8 +11354,8 @@ public static void main(String[] args) {
 
     Henkilo juhana = new Henkilo("Juhana", 17, 9, 1985);
 
-    System.out.println( martin );
-    System.out.println( juhana );
+    System.out.println(martin);
+    System.out.println(juhana);
   }
 </pre>
 <p>Tulostuu:</p>
@@ -11372,7 +11372,7 @@ Juhana, syntynyt 17.9.1985
 int paiva = Calendar.getInstance().get(Calendar.DATE);
 int kuukausi = Calendar.getInstance().get(Calendar.MONTH) + 1; // tammikuun numero 0 joten  lisätään 1
 int vuosi = Calendar.getInstance().get(Calendar.YEAR);
-System.out.println("tänään on " + paiva + "." + kuukausi + "." + vuosi );
+System.out.println("tänään on " + paiva + "." + kuukausi + "." + vuosi);
 </pre>
 <p>Kun ikä poistetaan, täytyy <code>vanhempiKuin</code>-metodi muuttaa toimimaan syntymäpäiviä
   vertaamalla. Jätämme vertailun toteutuksen omatoimiseksi harjoitustehtäväksi.</p>
@@ -11394,7 +11394,7 @@ public class Kello {
       // laskurien arvot tulee asettaa parametreina saatuun aikaan
     }
 
-    public void etene(){
+    public void etene() {
       // kello etenee sekunnilla
     }
 
@@ -11414,8 +11414,8 @@ public class Main {
         Kello kello = new Kello(23, 59, 50);
 
         int i = 0;
-        while( i &lt; 20) {
-            System.out.println( kello );
+        while (i &lt; 20) {
+            System.out.println(kello);
             kello.etene();
             i++;
         }
@@ -11938,7 +11938,7 @@ public class PainonvartijaYhdistys {
   // ...
 
     public boolean hyvaksytaanJaseneksi(Henkilo henkilo) {
-        if ( henkilo.painoIndeksi() &lt; this.alinPainoindeksi ) {
+        if (henkilo.painoIndeksi() &lt; this.alinPainoindeksi) {
             return false;
         }
 
@@ -11946,7 +11946,7 @@ public class PainonvartijaYhdistys {
     }
 
     public void lisaaJaseneksi(Henkilo henkilo) {
-        if ( !hyvaksytaanJaseneksi(henkilo) ) { // sama kuin hyvaksytaanJaseneksi(henkilo) == false
+        if (!hyvaksytaanJaseneksi(henkilo)) { // sama kuin hyvaksytaanJaseneksi(henkilo) == false
             return;
         }
 
@@ -11956,7 +11956,7 @@ public class PainonvartijaYhdistys {
     public String toString() {
         String jasenetMerkkijonona = "";
 
-        for ( Henkilo jasen : this.jasenet ) {
+        for (Henkilo jasen : this.jasenet) {
             jasenetMerkkijonona += "  " + jasen.getNimi() + "\n";
         }
 
@@ -11990,7 +11990,7 @@ public static void main(String[] args) {
     petri.setPituus(173);
     painonVartija.lisaaJaseneksi(petri);
 
-    System.out.println( painonVartija );
+    System.out.println(painonVartija);
 }
 </pre>
 <p>Tulostuksesta huomaamme, että Juhanaa ei kelpuutettu jäseneksi:</p>
@@ -12383,7 +12383,7 @@ if (a &gt; b) {
 <pre class="sh_java">
 int luku = 5;
 
-if(luku == 5){
+if (luku == 5) {
     String teksti = "Oho!";
 }
 
@@ -12395,7 +12395,7 @@ System.out.println(teksti); // ei toimi!
 <pre class="sh_java">
 int luku = 5;
 
-if(luku == 5) {
+if (luku == 5) {
     luku = 6;
 }
 
@@ -12407,7 +12407,7 @@ System.out.println(luku); // tulostaa luvun 6
 String teksti = "Jee!";
 int luku = 5;
 
-if(luku == 5) {
+if (luku == 5) {
     teksti = "Oho!";
 }
 
@@ -12424,7 +12424,7 @@ while (rivinumero &lt; 3) {
     System.out.print(rivinumero + ": ");
 
     int luku = 0;
-    while(luku &lt; 3) {
+    while (luku &lt; 3) {
         System.out.print(luku + " ");
         luku++;
     }
@@ -12479,7 +12479,7 @@ while (rivinumero &lt; 3) {
     System.out.print(rivinumero + ": ");
 
     int luku = 0;
-    while(luku &lt;= rivinumero) {
+    while (luku &lt;= rivinumero) {
         System.out.print(luku + " ");
         luku++;
     }
@@ -12542,7 +12542,7 @@ public class Kertotaulu {
     public void tulosta(int mihinAsti) {
         int rivinumero = 1;
 
-        while(rivinumero &lt;= mihinAsti) {
+        while (rivinumero &lt;= mihinAsti) {
             tulostaKertotaulunRivi(rivinumero, mihinAsti);
 
             System.out.println();
@@ -12554,7 +12554,7 @@ public class Kertotaulu {
     public void tulostaKertotaulunRivi(int rivi, int lukuja) {
         int sarake = 1;
 
-        while(sarake &lt;= lukuja) {
+        while (sarake &lt;= lukuja) {
             System.out.print(rivi * sarake + " ");
             sarake++;
         }
@@ -12874,11 +12874,11 @@ Ostoslista lista = new Ostoslista();
 lista.lisaa("porkkana");
 lista.lisaa("nauris");
 
-if(!lista.onkoListalla("kauris")) {
+if (!lista.onkoListalla("kauris")) {
     System.out.println("kauris ei ole listalla");
 }
 
-if(lista.onkoListalla("nauris")) {
+if (lista.onkoListalla("nauris")) {
     System.out.println("nauris on listalla");
 }
 </pre>
@@ -13013,8 +13013,8 @@ public static void main(String[] args) {
     // ..
 
     Henkilo painavin = painonVartija.suurinPainoindeksinen();
-    System.out.print("suurin painoindeksinen jäsen: " + painavin.getNimi() );
-    System.out.println(" painoindeksi " + String.format( "%.2f", painavin.painoIndeksi() ) );
+    System.out.print("suurin painoindeksinen jäsen: " + painavin.getNimi());
+    System.out.println(" painoindeksi " + String.format("%.2f", painavin.painoIndeksi()));
 }
 </pre>
 <p>Tulostuu:</p>
@@ -13031,23 +13031,23 @@ painoindeksi 37,42
 public Laskuri {
     private int arvo;
 
-    public Laskuri(){
+    public Laskuri() {
         this(0);
     }
 
-    public Laskuri(int alkuarvo){
+    public Laskuri(int alkuarvo) {
         this.arvo = alkuarvo;
     }
 
-    public void kasvata(){
+    public void kasvata() {
         this.arvo++;
     }
 
-    public String toString(){
+    public String toString() {
         return "arvo: " + arvo;
     }
 
-    public Laskuri kloonaa(){
+    public Laskuri kloonaa() {
         // luodaan uusi laskuriolio, joka saa alkuarvokseen kloonattavan laskurin arvon
         Laskuri klooni = new Laskuri(this.arvo);
 
@@ -13112,18 +13112,18 @@ public class Paivays {
 
     public boolean aiemmin(Paivays verrattava) {
         // ensin verrataan vuosia
-        if ( this.vuosi &lt; verrattava.vuosi ) {
+        if (this.vuosi &lt; verrattava.vuosi) {
             return true;
         }
 
         // jos vuodet ovat samat, verrataan kuukausia
-        if ( this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi &lt; verrattava.kuukausi ) {
+        if (this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi &lt; verrattava.kuukausi) {
             return true;
         }
 
         // vuodet ja kuukaudet samoja, verrataan päivää
-        if ( this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi == verrattava.kuukausi &amp;&amp;
-            this.paiva &lt; verrattava.paiva ) {
+        if (this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi == verrattava.kuukausi &amp;&amp;
+            this.paiva &lt; verrattava.paiva) {
             return true;
         }
 
@@ -13142,7 +13142,7 @@ public class Paivays {
   <p>Lisätään <code>Paivays</code>-olioon mahdollisuus edistää aikaa. Tee oliolle metodi <code>Paivays paivienPaasta(int paivia)</code>, joka luo <strong>uuden</strong> <code>Paivays</code>-olion, jonka päiväys on annetun päivien lukumäärän verran suurempi kuin oliolla, jolle sitä kutsuttiin. Voit edelleen olettaa, että jokaisessa kuukaudessa on 30 päivää. Huomaa, että vanhan päiväysolion on pysyttävä muuttumattomana! </p>
   <p>Koska metodissa on luotava <b>uusi olio</b>, tulee rungon olla suunnilleen seuraavanlainen:</p>
   <pre class="sh_java">
-public Paivays paivienPaasta(int paivia){
+public Paivays paivienPaasta(int paivia) {
     Paivays uusiPaivays = new Paivays( ... );
 
     // tehdään jotain...
@@ -13214,11 +13214,11 @@ public class Paaohjelma {
         Paivays toka = new Paivays(1, 1, 2011);
         Paivays kolmas = new Paivays(25, 12, 2010);
 
-        System.out.println( toka + " ja " + eka + " ero vuosissa: " + toka.erotusVuosissa(eka) );
+        System.out.println(toka + " ja " + eka + " ero vuosissa: " + toka.erotusVuosissa(eka));
 
-        System.out.println( kolmas + " ja " + eka + " ero vuosissa: " + kolmas.erotusVuosissa(eka) );
+        System.out.println(kolmas + " ja " + eka + " ero vuosissa: " + kolmas.erotusVuosissa(eka));
 
-        System.out.println( toka + " ja " + kolmas + " ero vuosissa: " + toka.erotusVuosissa(kolmas) );
+        System.out.println(toka + " ja " + kolmas + " ero vuosissa: " + toka.erotusVuosissa(kolmas));
     }
 }
 </pre>
@@ -13246,12 +13246,12 @@ public class Paaohjelma {
         Paivays toka = new Paivays(1, 1, 2011);
         Paivays kolmas = new Paivays(25, 12, 2010);
 
-        System.out.println( eka + " ja " + toka + " ero vuosissa: " + toka.erotusVuosissa(eka) );
-        System.out.println( toka + " ja " + eka + " ero vuosissa: " + eka.erotusVuosissa(toka) );
-        System.out.println( eka + " ja " + kolmas + " ero vuosissa: " + kolmas.erotusVuosissa(eka) );
-        System.out.println( kolmas + " ja " + eka + " ero vuosissa: " + eka.erotusVuosissa(kolmas) );
-        System.out.println( kolmas + " ja " + toka + " ero vuosissa: " + toka.erotusVuosissa(kolmas) );
-        System.out.println( toka + " ja " + kolmas + " ero vuosissa: " + kolmas.erotusVuosissa(toka) );
+        System.out.println(eka + " ja " + toka + " ero vuosissa: " + toka.erotusVuosissa(eka));
+        System.out.println(toka + " ja " + eka + " ero vuosissa: " + eka.erotusVuosissa(toka));
+        System.out.println(eka + " ja " + kolmas + " ero vuosissa: " + kolmas.erotusVuosissa(eka));
+        System.out.println(kolmas + " ja " + eka + " ero vuosissa: " + eka.erotusVuosissa(kolmas));
+        System.out.println(kolmas + " ja " + toka + " ero vuosissa: " + toka.erotusVuosissa(kolmas));
+        System.out.println(toka + " ja " + kolmas + " ero vuosissa: " + kolmas.erotusVuosissa(toka));
     }
 }
 </pre>
@@ -13306,8 +13306,8 @@ public class Main {
         Henkilo pekka = new Henkilo("Pekka", 15, 2, 1993);
         Henkilo antti = new Henkilo("Antti", 1, 3, 1955);
 
-        System.out.println( antti.getNimi() + " ikä " + antti.ika() + " vuotta");
-        System.out.println( pekka.getNimi() + " ikä " + pekka.ika() + " vuotta");
+        System.out.println(antti.getNimi() + " ikä " + antti.ika() + " vuotta");
+        System.out.println(pekka.getNimi() + " ikä " + pekka.ika() + " vuotta");
     }
 }
 </pre>
@@ -13334,8 +13334,8 @@ public class Main {
         Henkilo pekka = new Henkilo("Pekka", 15, 2, 1983);
         Henkilo martin = new Henkilo("Martin", 1, 3, 1983);
 
-        System.out.println( martin.getNimi() + " vanhempi kuin " +  pekka.getNimi() + ": "+ martin.vanhempiKuin(pekka) );
-        System.out.println( pekka.getNimi() + " vanhempi kuin " +  martin.getNimi() + ": "+ pekka.vanhempiKuin(martin) );
+        System.out.println(martin.getNimi() + " vanhempi kuin " + pekka.getNimi() + ": " + martin.vanhempiKuin(pekka));
+        System.out.println(pekka.getNimi() + " vanhempi kuin " + martin.getNimi() + ": " + pekka.vanhempiKuin(martin));
     }
 }
 </pre>
@@ -13455,10 +13455,10 @@ public static void main(String[] args) {
     muistio.lisaa("Juhana Laurinharju", "050-222333");
 
     String numero = muistio.haeNumero("Pekka Mikkola");
-    System.out.println( numero );
+    System.out.println(numero);
 
     numero = muistio.haeNumero("Martti Tienari");
-    System.out.println( numero );
+    System.out.println(numero);
 }
     </pre>
   <p>Tulostuu:</p>
@@ -13484,11 +13484,11 @@ public class Raha {
         this.senttia = senttia;
     }
 
-    public int eurot(){
+    public int eurot() {
       return euroa;
     }
 
-    public int sentit(){
+    public int sentit() {
         return senttia;
     }
 
@@ -13589,14 +13589,14 @@ System.out.println(c);  // 0.00e
 String jono = "koe";
 jono + "häntä";
 
-System.out.println( jono );  // koe
+System.out.println(jono);  // koe
 </pre>
 <p>Merkkijonoa ei siis voi muuttaa, mutta voimme ottaa katenoimalla syntyvän uuden merkkijonon talteen vanhaan muuttujaan:
 <pre class="sh_java">
 String jono = "koe";
 jono = jono + "häntä";   // tai jono += "häntä";
 
-System.out.println( jono );  // koehäntä
+System.out.println(jono);  // koehäntä
   </pre>
 <p>Nyt siis muuttuja <code>jono</code> viittaa <em>uuteen</em> merkkijono-olioon, joka luotiin yhdistämällä muuttujan aiemmin viittaama merkkijono "koe" ja merkkijono "häntä". Merkkijono-olioon "koe" ei enää viitata.</p>
 
@@ -13650,7 +13650,7 @@ luvut[1] = 101;  // asetetaan luku 101 indeksiin 1
 int[] luvut = {1, 8, 10, 3, 5};
 
 int i = 0;
-while (i &lt; luvut.length ) {
+while (i &lt; luvut.length) {
     System.out.println(luvut[i]);
     i++;
 }
@@ -13681,7 +13681,7 @@ String[] nimet = {"Juhana L.", "Matti P.", "Matti L.", "Pekka M."};
     <p>Olemme toistaiseksi käyttäneet toistolauseissa whileä tai for-lauseen ns. "for-each"-muotoa. Toistolauseesta for on olemassa myös toinen muoto, joka on kätevä erityisesti taulukoiden käsittelyn yhteydessä. Seuraavassa tulostetaan for-toistolauseen avulla luvut 0, 1 ja 2:</p>
 
 <pre class="sh_java">
-for (int i = 0; i &lt; 3; i++ ) {
+for (int i = 0; i &lt; 3; i++) {
     System.out.println(i);
 }
 </pre>
@@ -13690,13 +13690,13 @@ for (int i = 0; i &lt; 3; i++ ) {
 
 <pre class="sh_java">
 int i = 0;  // toistossa käytettävän muuttujan alustus
-while ( i &lt; 3 ) {  // toistoehto
+while (i &lt; 3) {  // toistoehto
     System.out.println(i);
     i++;   // toistossa käytettävän muuttujan päivitys
 }
 </pre>
 
-    <p>for-komento, kuten yllä esitelty <code>for (int i = 0; i &lt; 3; i++ )</code> sisältää kolme osaa: <em>looppimuuttujien alustus; toistoehto; looppimuuttujien päivitys</em>: </p>
+    <p>for-komento, kuten yllä esitelty <code>for (int i = 0; i &lt; 3; i++)</code> sisältää kolme osaa: <em>looppimuuttujien alustus; toistoehto; looppimuuttujien päivitys</em>: </p>
 
 <ul>
   <li>Ensimmäisessä osassa alustetaan toistolauseessa käytettävät muuttujat. Yllä olevassa esimerkissä alustimme muuttujan <code>i</code> lauseella <code>int i=0</code>. Ensimmäinen osa suoritetaan vain kerran, juuri for:in suorituksen alussa.</li>
@@ -13724,7 +13724,7 @@ for(int i = 6; i&gt;2 ; i--) {
 <pre class="sh_java">
 int[] luvut = {1, 8, 10, 3, 5};
 
-for (int i = 0; i &lt; luvut.length; i++ ) {
+for (int i = 0; i &lt; luvut.length; i++) {
     System.out.println(luvut[i]);
 }
 </pre>
@@ -13735,7 +13735,7 @@ for (int i = 0; i &lt; luvut.length; i++ ) {
 public static void listaaAlkiot(int[] kokonaislukuTaulukko) {
 
     System.out.println("taulukon alkiot ovat: ");
-    for( int luku : kokonaislukuTaulukko) {
+    for(int luku : kokonaislukuTaulukko) {
         System.out.print(luku + " ");
     }
 
@@ -13743,7 +13743,7 @@ public static void listaaAlkiot(int[] kokonaislukuTaulukko) {
 }
 
 public static void  main(String[] args) {
-    int[] luvut = { 1, 2, 3, 4, 5 };
+    int[] luvut = {1, 2, 3, 4, 5};
     listaaAlkiot(luvut);
 }
 </pre>
@@ -13820,7 +13820,7 @@ int[] taulukko = new int[alkioita];
 int alkioita = 99;
 int[] taulukko = new int[alkioita]; //luodaan muuttujan alkioita sisältämän arvon kokoinen taulukko
 
-if(taulukko.length == alkioita) {
+if (taulukko.length == alkioita) {
     System.out.println("Taulukon pituus on " + alkioita);
 } else {
     System.out.println("Jotain epätodellista tapahtui. Taulukon pituus on eri kuin " + alkioita);
@@ -13870,11 +13870,11 @@ public static String[] annaMerkkijonoTaulukko() {
     return opet;
 }
 
-public static void main(String[] args){
+public static void main(String[] args) {
     String[] opettajat = annaMerkkijonoTaulukko();
 
-    for ( String opettaja : opettajat){
-        System.out.println( opettaja );
+    for (String opettaja : opettajat) {
+        System.out.println(opettaja);
     }
 }
 </pre>
@@ -13893,8 +13893,8 @@ public static void main(String[] args) {
     kopio[0] = 99;
 
     // tulostetaan molemmat
-    System.out.println( "alkup: " + Arrays.toString(alkuperainen));
-    System.out.println( "kopio: " + Arrays.toString(kopio));
+    System.out.println("alkup: " + Arrays.toString(alkuperainen));
+    System.out.println("kopio: " + Arrays.toString(kopio));
   }
 </pre>
   <p>Kuten tulostuksesta huomaa, ei kopioon tehty muutos vaikuta alkuperäiseen:</p>
@@ -13912,8 +13912,8 @@ public static void main(String[] args) {
     int[] kaannetty = kaanna(alkuperainen);
 
     // tulostetaan molemmat
-    System.out.println( "alkup: " +Arrays.toString(alkuperainen));
-    System.out.println( "käännetty: " +Arrays.toString(kaannetty));
+    System.out.println("alkup: " +Arrays.toString(alkuperainen));
+    System.out.println("käännetty: " +Arrays.toString(kaannetty));
 }
 </pre>
   <p>Tulostuksesta pitäisi selvitä, että alkuperäinen taulukko on muuttumaton:</p>
@@ -14430,7 +14430,7 @@ public class Henkilo {
         this.nimi = nimi;
     }
 
-    public boolean taysiIkainen(){
+    public boolean taysiIkainen() {
         if (this.ika &lt; 18) {
             return false;
         }
@@ -14510,7 +14510,7 @@ public class Main {
         Henkilo antti = new Henkilo("Antti");
         Henkilo juhana = new Henkilo("Juhana");
 
-        for ( int i=0; i &lt; 30; i++ ) {
+        for (int i=0; i &lt; 30; i++) {
             pekka.vanhene();
             juhana.vanhene();
         }
@@ -14637,7 +14637,7 @@ Battle Axes, Tom A. Hawk, 1851
   <p><em>Vinkki!</em> <code>String</code>-luokan metodista <code>toUpperCase()</code> on hyötyä kun haluat verrata ovatko kaksi merkkijonoa samat -- riippumatta niiden alkuperäisestä merkkikoosta.</p>
   <p>Kun olet saanut metodin valmiiksi, käytä sitä <code>Kirjasto</code>-luokassa. Alla esimerkki:</p>
 <pre class="sh_java">
-if(StringUtils.sisaltaa(kirja.nimike(), haettuNimike)) {
+if (StringUtils.sisaltaa(kirja.nimike(), haettuNimike)) {
     // kirja löytyi!
 }
 </pre>
@@ -14713,7 +14713,7 @@ public static void main(String[] args) {
     while (true) {
         String sana = lukija.nextLine();
             
-        if ( onJoSyotetty( sana ) ) {
+        if (onJoSyotetty(sana)) {
             break;
         }
     }
@@ -14795,8 +14795,8 @@ public static void main(String[] args) {
     }
 
     // testitulostus joka varmistaa että kaikki toimii edelleen
-    for ( int i=0; i &lt; sanojaSyotetty; i++ ) {
-        System.out.println( aiemmatSanat[sanojaSyotetty] );
+    for (int i=0; i &lt; sanojaSyotetty; i++) {
+        System.out.println(aiemmatSanat[sanojaSyotetty]);
     }
 </pre>
 
@@ -14817,10 +14817,10 @@ public static void main(String[] args) {
     String[] aiemmatSanat = new String[1000];
     int sanojaSyotetty = 0;
 
-    while ( true ) {
+    while (true) {
         String sana = lukija.nextLine();
 
-        if (onJoSyotetty( sana, aiemmatSanat, sanojaSyotetty)) {
+        if (onJoSyotetty(sana, aiemmatSanat, sanojaSyotetty)) {
             break;
         }
 
@@ -14886,10 +14886,10 @@ public static void main(String[] args) {
     String[] aiemmatSanat = new String[1000];
     int sanojaSyotetty = 0;
 
-    while ( true ) {
+    while (true) {
         String sana = lukija.nextLine();
 
-        if (onJoSyotetty( sana, aiemmatSanat, sanojaSyotetty)) {
+        if (onJoSyotetty(sana, aiemmatSanat, sanojaSyotetty)) {
             break;
         }
 
@@ -15096,7 +15096,7 @@ public class Sanajoukko {
         return palindromit;
     }
 
-    private boolean onPalindromi(String sana){
+    private boolean onPalindromi(String sana) {
         int loppu = sana.length()-1;
 
         for (int i=0; i %lt; sana.length()/2; i++) {
@@ -15346,13 +15346,13 @@ public static void vaihda(int[] taulukko, int indeksi1, int indeksi2) {
 <pre class="sh_java">
 int[] luvut = {3, 2, 5, 4, 8};
 
-System.out.println( Arrays.toString(luvut) );
+System.out.println(Arrays.toString(luvut));
 
 vaihda(luvut, 1, 0);
-System.out.println( Arrays.toString(luvut) );
+System.out.println(Arrays.toString(luvut));
 
 vaihda(luvut, 0, 3);
-System.out.println( Arrays.toString(luvut) );
+System.out.println(Arrays.toString(luvut));
 </pre>
 <pre>
 [3, 2, 5, 4, 8]
@@ -15405,8 +15405,8 @@ jarjesta(luvut);
 <p>Järjestämisen lisäksi toinen hyvin tyypillinen ongelma johon ohjelmoija törmää, on tietyn arvon etsiminen taulukosta. Olemme aiemmin jo toteuttaneet metodeja, jotka etsivät arvoja listoista ja taulukoista. Taulukkojen tapauksessa lukuja ja merkkijonoja voi etsiä seuraavasti: </p>
 <pre class="sh_java">
 public static boolean onkoTaulukossa(int[] taulukko, int etsittava) {
-    for ( int luku : taulukko ) {
-        if ( luku == etsittava )  {
+    for (int luku : taulukko) {
+        if (luku == etsittava)  {
             return true;
         }
     }
@@ -15415,8 +15415,8 @@ public static boolean onkoTaulukossa(int[] taulukko, int etsittava) {
 }
 
 public static boolean onkoSanaTaulukossa(String[] taulukko, String etsittava) {
-    for ( String sana: taulukko ) {
-        if ( sana.equals(etsittava) )  {
+    for (String sana: taulukko) {
+        if (sana.equals(etsittava))  {
             return true;
         }
     }
@@ -15668,13 +15668,13 @@ public static void main(String[] args) {
     henkilot[1] = new Henkilo("Antti");
     henkilot[2] = new Henkilo("Juhana");
 
-    for ( int i=0; i &lt; 30; i++ ) {
+    for (int i = 0; i &lt; 30; i++) {
         henkilot[0].vanhene();
         henkilot[1].vanhene();
         henkilot[2].vanhene();
     }
 
-    for ( Henkilo henkilo : henkilot ) {
+    for (Henkilo henkilo : henkilot) {
         ilmoitaTaysiIkaisyys(henkilo);
     }
 }
@@ -15685,12 +15685,12 @@ public static void main(String[] args) {
 public static void main(String[] args) {
     ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;Henkilo&gt;();
 
-    henkilot.add( new Henkilo("Pekka") );
-    henkilot.add( new Henkilo("Antti") );
-    henkilot.add( new Henkilo("Juhana") );
+    henkilot.add(new Henkilo("Pekka"));
+    henkilot.add(new Henkilo("Antti"));
+    henkilot.add(new Henkilo("Juhana"));
 
-    for ( int i=0; i &lt; 30; i++ ) {
-        for ( Henkilo henkilo : henkilot ) {
+    for (int i = 0; i &lt; 30; i++) {
+        for (Henkilo henkilo : henkilot) {
             henkilo.vanhene();
         }
 
@@ -15699,7 +15699,7 @@ public static void main(String[] args) {
         //     ...
     }
 
-    for ( Henkilo henkilo : henkilot ) {
+    for (Henkilo henkilo : henkilot) {
         ilmoitaTaysiIkaisyys(henkilo);
     }
 }
@@ -15715,7 +15715,7 @@ public class Paiva {
 public class Viikko {
     private Paiva[] paivat;
 
-    public Viikko(){
+    public Viikko() {
         paivat = new Paiva[7];
         paivat[0] = new Paiva("Maanantai");
         paivat[1] = new Paiva("Tiistai");
@@ -15865,7 +15865,7 @@ System.out.println(tilanne);
 
         int oikeatArvaukset = 0;
         // kolme arvausta
-        for ( int i=0; i<3; i++ ) {
+        for (int i=0; i<3; i++) {
         // lue arvaus
         // tarkasta metodin onkoLukuTaulukossa avulla menikö arvaus oikein ja päivitä statistiikka
       }
@@ -16112,13 +16112,13 @@ System.out.println(tilanne);
             henkilot[1] = new Henkilo("Antti");
             henkilot[2] = new Henkilo("Juhana");
 
-            for ( int i=0; i &lt; 30; i++ ) {
+            for (int i=0; i &lt; 30; i++) {
             henkilot[0].vanhene();
             henkilot[1].vanhene();
             henkilot[2].vanhene();
           }
 
-          for ( Henkilo henkilo : henkilot )
+          for (Henkilo henkilo : henkilot)
           ilmoitaTaysiIkaisyys(henkilo);
         }
       </pre>
@@ -16128,12 +16128,12 @@ System.out.println(tilanne);
         public static void main(String[] args) {
         ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;Henkilo&gt;();
 
-        henkilot.add( new Henkilo("Pekka") );
-        henkilot.add( new Henkilo("Antti") );
-        henkilot.add( new Henkilo("Juhana") );
+        henkilot.add(new Henkilo("Pekka"));
+        henkilot.add(new Henkilo("Antti"));
+        henkilot.add(new Henkilo("Juhana"));
 
-        for ( int i=0; i &lt; 30; i++ ) {
-        for ( Henkilo henkilo : henkilot ) {
+        for (int i=0; i &lt; 30; i++) {
+        for (Henkilo henkilo : henkilot) {
         henkilo.vanhene();
       }
 
@@ -16142,7 +16142,7 @@ System.out.println(tilanne);
       //     ...
     }
 
-    for ( Henkilo henkilo : henkilot ) {
+    for (Henkilo henkilo : henkilot) {
     ilmoitaTaysiIkaisyys(henkilo);
   }
 }
@@ -16152,10 +16152,10 @@ System.out.println(tilanne);
   public class Sanajoukko {
   /* Muu luokan määrittely */
 
-  private static boolean onPalindromi(String sana){
+  private static boolean onPalindromi(String sana) {
   int loppu = sana.length()-1;
-  for ( int i=0; i &lt; sana.length()/2; i++ ){
-  if ( sana.charAt(i) != sana.charAt(loppu-i) )
+  for (int i=0; i &lt; sana.length()/2; i++) {
+  if (sana.charAt(i) != sana.charAt(loppu-i))
   return false;
 }
 
@@ -16312,7 +16312,7 @@ return true;
   <pre class="sh_java">
                     public class Main {
 
-                    public static ArrayList&lt;Integer&gt; laitaLuvutListalle(int luku1, int luku2, int luku3){
+                    public static ArrayList&lt;Integer&gt; laitaLuvutListalle(int luku1, int luku2, int luku3) {
                     ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
 
                     lista.add(luku1);
@@ -16326,7 +16326,7 @@ return true;
                   ArrayList&lt;Integer&gt; luvut = laitaLuvutListalle(3, 5, 2);
 
                   for (int luku : luvut) {
-                  System.out.println( luku );
+                  System.out.println(luku);
                 }
               }
             }
