@@ -4291,14 +4291,6 @@ Hei Matti, terveiset Kyröjoelta ja Kumpulasta
 
   <div id="parqu-exercise6"></div>
 
-<!--
-  <div id="parqu-exercise7"></div>
-  <div id="parqu-exercise8"></div>
-  <div id="parqu-exercise9"></div>
-  <div id="parqu-exercise10"></div>
-  <div id="parqu-exercise11"></div>
--->
-
 
   <h3>Metodi kutsuu toista metodia</h3>
 <p>main ei ole suinkaan ainoa joka voi kutsua metodeita. Metodit voivat kutsua myös toisiaan. Tehdään metodi <code>tervehdiMontaKertaa</code>, joka tervehtii käyttäjää useasti metodin <code>tervehdi</code> avulla:</p>
@@ -5279,6 +5271,7 @@ Pääohjelman muuttujan luku arvo: 1
 
   <p>Jotta saisimme <code>luku</code>-muuttujan uuden arvon pääohjelman käyttöön, tulee metodin palauttaa arvo.</p>
 
+  <div id="parqu-exercise10"></div>
 
   <h3>Metodin paluuarvot</h3>
 
@@ -5419,6 +5412,8 @@ int monenLuvunSumma = summa(summa(1, 2), summa(eka, toka));
 </pre>
 
 
+  <div id="parqu-exercise11"></div>
+
   <div class="self-explanation" data-key="q-summaSummarum"></div>
 
 
@@ -5516,8 +5511,10 @@ public static void main(String[] args) {
     System.out.print("Lukujen keskiarvo: " + keskiarvo );
 }
 </pre>
+
   <p>Eli tässä yritettiin käyttää pelkkää metodin nimeä muuttujamaisesti. Toimiva tapa metodin tuloksen sijoittamisen apumuuttujaan lisäksi on suorittaa metodikutsu suoraan tulostuslauseen sisällä:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public static void main(String[] args) {
     int eka = 3;
     int toka = 8;
@@ -5527,9 +5524,14 @@ public static void main(String[] args) {
     System.out.print("Lukujen keskiarvo: " + keskiarvo(eka, toka, kolmas) );
 }
 </pre>
+
   <p>Tässä siis ensin tapahtuu metodikutsu joka palauttaa arvon 5.0 joka sitten tulostetaan tulostuskomennon avulla.</p>
+
   <p>Screencast aiheesta:</p>
+
   <a href="http://www.youtube.com/watch?feature=player_embedded&v=zEHvycTo81c" height="300" class="youtube" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
+
+  <div id="parqu-exercise8"></div>
 
 
   <div class="tehtavat" id="viikko3">
@@ -5785,17 +5787,6 @@ main
 
   <p>Tämän jälkeen suoritetaan tulostuskomento, jonka jälkeen palataan <code>main</code>-metodiin. Kun suoritus on <code>main</code>-metodin lopussa, ohjelma sammuu.</p>
 
-
-  <div id="parqu-exercise8"></div>
-  <div id="parqu-exercise9"></div>
-  <div id="parqu-exercise10"></div>
-  <div id="parqu-exercise11"></div>
-  <div id="parqu-exercise12"></div>
-  <div id="parqu-exercise13"></div>
-  <div id="parqu-exercise14"></div>
-  <div id="parqu-exercise15"></div>
-
- 
   
   <h2 id="merkkijonot">Merkkijonot</h2>
 
@@ -5891,6 +5882,9 @@ Kissa-merkkijonon viimeinen kirjain: a
 <pre class="sh_java">
 char merkki = kirja.charAt(kirja.length()); // ei toimi :/
 </pre>
+
+  <div id="parqu-exercise12"></div>
+
 
 <div class="tehtavat">
   <div class="tehtava">
@@ -6299,6 +6293,8 @@ Juha ei ole opettajien listalla
 <!--
   <p><strong>Huom!</strong> Metodit <code>remove</code> ja <code>contains</code> olettavat että listaan tallennetuilla olioilla on metodi <code>equals</code>. Palaamme tähän myöhemmin kurssilla.</p>
 -->
+
+  <div id="parqu-exercise9"></div>
 
   <h3>ArrayList:in läpikäynti</h3>
 
@@ -6748,6 +6744,11 @@ ArrayList&lt;Double&gt; doublet = new ArrayList&lt;&gt;();
 ArrayList&lt;Character&gt; merkit = new ArrayList&lt;&gt;();
 </pre>
 
+  <div id="parqu-exercise13"></div>
+
+  <div id="parqu-exercise14"></div>
+
+
   <div class="tehtavat">
     <div class="tehtava">
     <h3 class="req">Lukujen summa</h3>
@@ -7005,7 +7006,7 @@ public static void tulosta(ArrayList&lt;Integer&gt; luvut) {
 
   <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;Integer&gt;();
+    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
     luvut.add(4);
     luvut.add(3);
     luvut.add(7);
@@ -7095,7 +7096,7 @@ public static boolean kaikkiPositiivisia(ArrayList&lt;Integer&gt; luvut) {
   <pre class="sh_java">
 public static void main(String[] args) {
 
-    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;Integer&gt;();
+    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
     luvut.add(3);
     luvut.add(1);
     luvut.add(-1);
@@ -7111,7 +7112,7 @@ public static void main(String[] args) {
 </pre>
   <p>Vastauksen tallettaminen ensin muuttujaan ei yleensä ole tarpeen, ja metodikutsu voidaan kirjottaa suoraan ehdoksi:</p>
   <pre class="sh_java">
-ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;Integer&gt;();
+ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
 luvut.add(4);
 luvut.add(7);
 luvut.add(12);
@@ -7156,7 +7157,7 @@ public static boolean onkoListallaUseasti(ArrayList&lt;Integer&gt; lista, int lu
 }
 
 public static void main(String[] args) {
-    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;Integer&gt;();
+    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
     lista.add(3);
     lista.add(2);
     lista.add(7);
@@ -10180,7 +10181,7 @@ public class LottoRivi {
 
     public LottoRivi() {
         // Alustetaan lista numeroille
-        this.numerot = new ArrayList&lt;Integer&gt;();
+        this.numerot = new ArrayList&lt;&gt;();
         // Arvo numerot heti LottoRivin luomisen yhteydessä
         this.arvoNumerot();
     }
@@ -16312,7 +16313,7 @@ return true;
                     public class Main {
 
                     public static ArrayList&lt;Integer&gt; laitaLuvutListalle(int luku1, int luku2, int luku3){
-                    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;Integer&gt;();
+                    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
 
                     lista.add(luku1);
                     lista.add(luku2);
