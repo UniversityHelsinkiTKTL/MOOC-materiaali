@@ -5154,7 +5154,7 @@ FizzBuzz
 
   <p>Yllä olevassa esimerkissä ratkaistiin klassinen FizzBuzz-ongelma askeleittain, ja näytettiin minkälaisia askeleita vastaavissa ongelmissa kannattaa käyttää. Askeleittainen eteneminen mahdollisti pienet, testattavat välikohdat ohjelmassa. Tämän lisäksi, aiemmin toimineet osat kuten syötteen lukeminen sai lopuksi vähemmän huomiota, ja pystyimme keskittymään FizzBuzz-ongelmaan.</p>
 
-  <p>Pyri simuloimaan tätä askeleittain tekemistä myös tulevissa tehtävässä.</p>
+  <p>Pyri simuloimaan tätä askeleittain tekemistä myös tulevissa tehtävässä. Kannattaa aina aloittaa pienestä ohjelman osasta, kuten lukemisesta, mitä laajentamalla voi edetä kohti ongelman ratkaisua.</p>
 
 
   <div class="tehtavat">
@@ -5620,21 +5620,163 @@ Keskiarvo: 3.5
 
   <h3>Mitä metodia kutsuvalle ohjelmaa tapahtuu metodikutsun yhteydessä?</h3>
 
-  <p>Kun ohjelma kutsuu metodia, kutsuva metodi jää odottamaan kutsutun metodin suorittamista. Tarkastellaan seuraavaa ohjelmaa:</p>
+  <p>Kun ohjelma kutsuu metodia, kutsuva <em>metodi jää odottamaan kutsutun metodin suorittamista</em>. Tätä odotusta voidaan visualisoida <em>kutsupinon</em> avulla. Tarkastellaan seuraavaa ohjelmaa:</p>
 
 <pre class="sh_java">
-TODO: jatka
 public static void main(String[] args) {
-
+    System.out.println("Hei maailma!");
+    tulostaLuku();
+    System.out.println("Hei hei maailma!");
 }
 
+public static void tulostaLuku() {
+    System.out.println("Luku");
+}
+</pre>
+
+  <p>Kun ohjelma käynnistetään, suoritus alkaa metodin <code>main</code> ensimmäiseltä riviltä. Tällä rivillä olevalla komennolla tulostetaan teksti <code>"Heippa maailma!"</code>. Metodissa main ohjelman kutsupino näyttää seuraavalta:</p>
+
+<pre>
+main
+</pre>
+
+  <p>Kun tulostuskomento on suoritettu, siirrytään seuraavaan komentoon, eli metodin <code>tulostaLuku</code> kutsumiseen. Metodin <code>tulostaLuku</code> kutsuminen siirtää suorituksen metodin <code>tulostaLuku</code> alkuun, ja metodi <code>main</code> jää odottamaan metodin <code>tulostaLuku</code> suorituksen loppumista. Metodin <code>tulostaLuku</code> sisällä ollessa kutsupino näyttää seuraavalta.</p>
+
+<pre>
+tulostaLuku
+main
+</pre>
+
+  <p>Kun metodi <code>tulostaLuku</code> on suoritettu, palataan kutsupinossa metodia <code>tulostaLuku</code> yhtä alempana olevaan metodiin, eli metodiin <code>main</code>. Kutsupinosta poistetaan <code>tulostaLuku</code>, ja jatketaan metodin suoritusta metodikutsua seuraavalta riviltä. Kutsupino on nyt seuraavanlainen:</p> 
+
+<pre>
+main
 </pre>
 
 
-  <p>Parametrien arvot kopioituvat: TODO; pakka, missä näkyy että muuttujat jää jemmaan</p>
+  <h3>Metodia kutsuva metodi ja sen muuttujat</h3>
 
-  <p>Metodista voi kutsua myös toista metodia, pakka</p>
+  <p>Tarkastellaan edellisessä aliluvussa nähtyä kutsupinoa hieman monimutkaisemman esimerkin kautta.</p>
 
+<pre class="sh_java">
+public static void main(String[] args) {
+    int alku = 1;
+    int loppu = 5;
+
+    tulostaTahtia(alku, loppu);
+}
+
+public static void tulostaTahtia(int alku, int loppu) {
+    while (alku &lt; loppu) {
+        System.out.print("*");
+        alku++;
+    }
+}
+</pre>
+
+
+  <p>Kun ohjelma käynnistetään, suoritus alkaa metodin <code>main</code> ensimmäiseltä riviltä. Seuraavilla riveillä luodaan muuttujat <code>alku</code> ja <code>loppu</code>, sekä asetetaan niihin arvot. Ohjelman tilanne ennen metodin <code>tulostaTahtia</code>-kutsumista:</p>
+
+<pre>
+main
+  alku = 1
+  loppu = 5
+</pre>
+
+  <p>Kun metodia <code>tulostaTahtia</code> kutsutaan, metodi <code>main</code> jää odottamaan. Metodikutsun yhteydessä metodille <code>tulostaTahtia</code> luodaan uudet muuttujat <code>alku</code> ja <code>loppu</code>, joihin asetetaan parametreina annetut arvot. Nämä kopioidaan <code>main</code>-metodin muuttujista <code>alku</code> ja <code>loppu</code>. Metodin <code>tulostaTahtia</code> suorituksen ensimmäisellä rivillä ohjelman tilanne on seuraavanlainen.</p>
+
+<pre>
+tulostaTahtia
+  alku = 1
+  loppu = 5
+main
+  alku = 1
+  loppu = 5
+</pre>
+
+  <p>Kun toistolauseessa suoritetaan komento <code>alku++</code>, muuttuu suoritettavaan metodiin liittyvän <code>alku</code>-muuttujan arvo.</p>
+
+<pre>
+tulostaTahtia
+  alku = 2
+  loppu = 5
+main
+  alku = 1
+  loppu = 5
+</pre>
+
+  <p>Metodin <code>main</code>-muuttujien arvot eivät siis muutu. Kun metodin <code>tulostaTahtia</code> suoritus loppuu, palataan takaisin <code>main</code>-metodin suoritukseen.</p>
+
+<pre>
+main
+  alku = 1
+  loppu = 5
+</pre>
+
+  <h3>Kutsupino ja muuttujan palauttaminen metodista</h3>
+
+  <p>Tarkastellaan vielä kolmatta kutsupinoesimerkkiä. Ohjelman <code>main</code>-metodi kutsuu erillistä <code>kaynnista</code>-metodia, jossa luodaan kaksi muuttujaa, kutsutaan <code>summa</code>-metodia, ja tulostetaan <code>summa</code>-metodin palauttama arvo.</p>
+
+<pre class="sh_java">
+public static void main(String[] args) {
+    kaynnista();
+}
+
+public static void kaynnista() {
+    int eka = 5;
+    int toka = 6;
+
+    int summa = summa(eka, toka);
+
+    System.out.println("Summa: " + summa);
+}
+
+public static int summa(int luku1, int luku2) {
+    return luku1 + luku2;
+}
+</pre>
+
+  <p>Metodin <code>kaynnista</code> suorituksen alussa kutsupino näyttää seuraavalta:</p>
+
+<pre>
+kaynnista
+main
+</pre>
+
+  <p>Kun kaynnista-metodissa on luotu muuttujat <code>eka</code> ja <code>toka</code>, tilanne on seuraava:</p>
+
+<pre>
+kaynnista
+  eka = 5
+  toka = 6
+main
+</pre>
+
+  <p>Komento <code>int summa = summa(eka, toka);</code> luo muuttujan <code>summa</code> ja kutsuu metodia <code>summa</code>. Metodi <code>summa</code> jättää metodin <code>kaynnista</code> odottamaan. Koska metodissa <code>summa</code> on määritelty parametrit <code>luku1</code> ja <code>luku2</code>, luodaan ne heti metodin suorituksen alussa, ja niihin kopioidaan parametrina annettujen muuttujien arvot. </p>
+
+<pre>
+summa
+  luku1 = 5
+  luku2 = 6
+kaynnista
+  eka = 5
+  toka = 6
+  summa // ei arvoa
+main
+</pre>
+
+  <p>Metodin suoritus laskee muuttujien <code>luku1</code> ja <code>luku2</code> yhteen, ja palauttaa summan kutsupinossa yhtä alemmalle metodille, eli metodille <code>kaynnista</code>, missä arvo asetetaan muuttujan <code>summa</code> arvoksi.</p>
+
+<pre>
+kaynnista
+  eka = 5
+  toka = 6
+  summa = 11
+main
+</pre>
+
+  <p>Tämän jälkeen suoritetaan tulostuskomento, jonka jälkeen palataan <code>main</code>-metodiin. Kun suoritus on <code>main</code>-metodin lopussa, ohjelma sammuu.</p>
+ 
   
   <h2 id="merkkijonot">Merkkijonot</h2>
 
@@ -6471,8 +6613,6 @@ Listalla on alkioita:
   
   <h3>ArrayList:in kopioituminen metodin parametriksi</h3>
 
-  <p>TODO: arraylist kopioituu metodin parametriksi, mutta, mitä oikeastaan kopioituu on pääsy listaan. Palaamme tähän seuraavalla viikolla tarkemmin.</p>
-
   <p>Metodin sisällä on mahdollisuus vaikuttaa parametrina saadun listan sisältöön. Seuraavassa esimerkissä metodi <code>poistaEnsimmainen</code> nimensä mukaisesti poistaa listalla ensimmäisenä olevan merkkijonon (mitähän tapahtuu jos listalla ei ole mitään?).</p>
 
   <pre class="sh_java">
@@ -6519,7 +6659,7 @@ Ruby
 C++
 </pre>
 
-  <p>Vastaavalla tavalla metodi voisi esim. lisätä parametrina saamaansa listaan lisää merkkijonoja.</p>
+  <p>Vastaavalla tavalla metodi voisi esim. lisätä parametrina saamaansa listaan lisää merkkijonoja. Palaamme tähän liittyviin taustatekijöihin hieman myöhemmin tällä viikolla.</p>
 
   <div class="tehtavat">
     <div class="tehtava">
