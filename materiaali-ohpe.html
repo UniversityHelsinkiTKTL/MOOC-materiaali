@@ -5625,9 +5625,9 @@ Keskiarvo: 3.5
   <div class="self-explanation" data-key="q-muuttujatParametritMetodit"></div>
 
 
-  <h3>Mitä metodia kutsuvalle ohjelmaa tapahtuu metodikutsun yhteydessä?</h3>
+  <h3>Mitä metodia kutsuttaessa tapahtuu?</h3>
 
-  <p>Kun ohjelma kutsuu metodia, kutsuva <em>metodi jää odottamaan kutsutun metodin suorittamista</em>. Tätä odotusta voidaan visualisoida <em>kutsupinon</em> avulla. Tarkastellaan seuraavaa ohjelmaa:</p>
+  <p>Kun metodia kutsutaan, <em>kutsuva metodi</em> jää odottamaan <em>kutsutun metodin</em> suorittamista. Tätä voidaan visualisoida <em>kutsupinon</em> avulla. Tarkastellaan seuraavaa ohjelmaa:</p>
 
 <pre class="sh_java">
 public static void main(String[] args) {
@@ -5641,27 +5641,27 @@ public static void tulostaLuku() {
 }
 </pre>
 
-  <p>Kun ohjelma käynnistetään, suoritus alkaa metodin <code>main</code> ensimmäiseltä riviltä. Tällä rivillä olevalla komennolla tulostetaan teksti <code>"Heippa maailma!"</code>. Metodissa main ohjelman kutsupino näyttää seuraavalta:</p>
+  <p>Kun ohjelma käynnistetään, suoritus alkaa <code>main</code>-metodin ensimmäiseltä riviltä. Tällä rivillä olevalla komennolla tulostetaan teksti <code>"Heippa maailma!"</code>. Ohjelman kutsupino näyttää seuraavalta:</p>
 
 <pre>
 main
 </pre>
 
-  <p>Kun tulostuskomento on suoritettu, siirrytään seuraavaan komentoon, eli metodin <code>tulostaLuku</code> kutsumiseen. Metodin <code>tulostaLuku</code> kutsuminen siirtää suorituksen metodin <code>tulostaLuku</code> alkuun, ja metodi <code>main</code> jää odottamaan metodin <code>tulostaLuku</code> suorituksen loppumista. Metodin <code>tulostaLuku</code> sisällä ollessa kutsupino näyttää seuraavalta.</p>
+  <p>Kun tulostuskomento on suoritettu, siirrytään seuraavaan komentoon, missä kutsutaan metodia<code>tulostaLuku</code>. Metodin <code>tulostaLuku</code> kutsuminen siirtää ohjelman suorituksen metodin <code>tulostaLuku</code> alkuun, jolloin <code>main</code>-metodi jää odottamaan metodin <code>tulostaLuku</code> suorituksen loppumista. Metodin <code>tulostaLuku</code> sisällä ollessa kutsupino näyttää seuraavalta.</p>
 
 <pre>
 tulostaLuku
 main
 </pre>
 
-  <p>Kun metodi <code>tulostaLuku</code> on suoritettu, palataan kutsupinossa metodia <code>tulostaLuku</code> yhtä alempana olevaan metodiin, eli metodiin <code>main</code>. Kutsupinosta poistetaan <code>tulostaLuku</code>, ja jatketaan metodin suoritusta metodikutsua seuraavalta riviltä. Kutsupino on nyt seuraavanlainen:</p> 
+  <p>Kun metodi <code>tulostaLuku</code> on suoritettu, palataan kutsupinossa metodia <code>tulostaLuku</code> yhtä alempana olevaan metodiin, eli metodiin <code>main</code>. Kutsupinosta poistetaan <code>tulostaLuku</code>, ja jatketaan <code>main</code>-metodin suoritusta <code>tulostaLuku</code>-metodikutsun jälkeiseltä riviltä. Kutsupino on nyt seuraavanlainen:</p> 
 
 <pre>
 main
 </pre>
 
 
-  <h3>Metodia kutsuva metodi ja sen muuttujat</h3>
+  <h3>Metodia kutsuvan metodin muuttujat</h3>
 
   <p>Tarkastellaan edellisessä aliluvussa nähtyä kutsupinoa hieman monimutkaisemman esimerkin kautta.</p>
 
@@ -5681,8 +5681,7 @@ public static void tulostaTahtia(int alku, int loppu) {
 }
 </pre>
 
-
-  <p>Kun ohjelma käynnistetään, suoritus alkaa metodin <code>main</code> ensimmäiseltä riviltä. Seuraavilla riveillä luodaan muuttujat <code>alku</code> ja <code>loppu</code>, sekä asetetaan niihin arvot. Ohjelman tilanne ennen metodin <code>tulostaTahtia</code>-kutsumista:</p>
+  <p>Ohjelman suoritus alkaa <code>main</code>-metodin ensimmäiseltä riviltä, jota seuraavilla riveillä luodaan muuttujat <code>alku</code> ja <code>loppu</code>, sekä asetetaan niihin arvot. Ohjelman tilanne ennen metodin <code>tulostaTahtia</code>-kutsumista:</p>
 
 <pre>
 main
@@ -5690,7 +5689,7 @@ main
   loppu = 5
 </pre>
 
-  <p>Kun metodia <code>tulostaTahtia</code> kutsutaan, metodi <code>main</code> jää odottamaan. Metodikutsun yhteydessä metodille <code>tulostaTahtia</code> luodaan uudet muuttujat <code>alku</code> ja <code>loppu</code>, joihin asetetaan parametreina annetut arvot. Nämä kopioidaan <code>main</code>-metodin muuttujista <code>alku</code> ja <code>loppu</code>. Metodin <code>tulostaTahtia</code> suorituksen ensimmäisellä rivillä ohjelman tilanne on seuraavanlainen.</p>
+  <p>Kun metodia <code>tulostaTahtia</code> kutsutaan, <code>main</code>-metodi jää odottamaan. Metodikutsun yhteydessä metodille <code>tulostaTahtia</code> luodaan uudet muuttujat <code>alku</code> ja <code>loppu</code>, joihin asetetaan parametreina annetut arvot. Nämä kopioidaan <code>main</code>-metodin muuttujista <code>alku</code> ja <code>loppu</code>. Metodin <code>tulostaTahtia</code> suorituksen ensimmäisellä rivillä ohjelman tilanne on seuraavanlainen.</p>
 
 <pre>
 tulostaTahtia
@@ -5701,7 +5700,7 @@ main
   loppu = 5
 </pre>
 
-  <p>Kun toistolauseessa suoritetaan komento <code>alku++</code>, muuttuu suoritettavaan metodiin liittyvän <code>alku</code>-muuttujan arvo.</p>
+  <p>Kun toistolauseessa suoritetaan komento <code>alku++</code>, muuttuu tällä hetkellä suoritettavaan metodiin liittyvän <code>alku</code>-muuttujan arvo.</p>
 
 <pre>
 tulostaTahtia
@@ -5712,7 +5711,7 @@ main
   loppu = 5
 </pre>
 
-  <p>Metodin <code>main</code>-muuttujien arvot eivät siis muutu. Kun metodin <code>tulostaTahtia</code> suoritus loppuu, palataan takaisin <code>main</code>-metodin suoritukseen.</p>
+  <p>Metodin <code>main</code> muuttujien arvot eivät siis muutu. Kun metodin <code>tulostaTahtia</code> suoritus loppuu, palataan takaisin <code>main</code>-metodin suoritukseen.</p>
 
 <pre>
 main
@@ -5720,7 +5719,9 @@ main
   loppu = 5
 </pre>
 
-  <h3>Kutsupino ja muuttujan palauttaminen metodista</h3>
+
+  <h3>Arvon palauttaminen metodista</h3>
+
 
   <p>Tarkastellaan vielä kolmatta kutsupinoesimerkkiä. Ohjelman <code>main</code>-metodi kutsuu erillistä <code>kaynnista</code>-metodia, jossa luodaan kaksi muuttujaa, kutsutaan <code>summa</code>-metodia, ja tulostetaan <code>summa</code>-metodin palauttama arvo.</p>
 
@@ -5743,14 +5744,14 @@ public static int summa(int luku1, int luku2) {
 }
 </pre>
 
-  <p>Metodin <code>kaynnista</code> suorituksen alussa kutsupino näyttää seuraavalta:</p>
+  <p>Metodin <code>kaynnista</code> suorituksen alussa kutsupino näyttää seuraavalta, sillä siihen päädyttiin <code>main</code>-metodista. Metodilla <code>main</code> ei tässä esimerkissä ole omia muuttujia:</p>
 
 <pre>
 kaynnista
 main
 </pre>
 
-  <p>Kun kaynnista-metodissa on luotu muuttujat <code>eka</code> ja <code>toka</code>, tilanne on seuraava:</p>
+  <p>Kun <code>kaynnista</code>-metodissa on luotu muuttujat <code>eka</code> ja <code>toka</code>, eli sen ensimmäiset kaksi riviä on suoritettu, on tilanne seuraava:</p>
 
 <pre>
 kaynnista
@@ -5759,7 +5760,7 @@ kaynnista
 main
 </pre>
 
-  <p>Komento <code>int summa = summa(eka, toka);</code> luo muuttujan <code>summa</code> ja kutsuu metodia <code>summa</code>. Metodi <code>summa</code> jättää metodin <code>kaynnista</code> odottamaan. Koska metodissa <code>summa</code> on määritelty parametrit <code>luku1</code> ja <code>luku2</code>, luodaan ne heti metodin suorituksen alussa, ja niihin kopioidaan parametrina annettujen muuttujien arvot. </p>
+  <p>Komento <code>int summa = summa(eka, toka);</code> luo metodiin <code>kaynnista</code> muuttujan <code>summa</code>, ja kutsuu metodia <code>summa</code>. Metodi <code>kaynnista</code> jää odottamaan. Koska metodissa <code>summa</code> on määritelty parametrit <code>luku1</code> ja <code>luku2</code>, luodaan ne heti metodin suorituksen alussa, ja niihin kopioidaan parametrina annettujen muuttujien arvot. </p>
 
 <pre>
 summa
@@ -5772,7 +5773,7 @@ kaynnista
 main
 </pre>
 
-  <p>Metodin suoritus laskee muuttujien <code>luku1</code> ja <code>luku2</code> yhteen, ja palauttaa summan kutsupinossa yhtä alemmalle metodille, eli metodille <code>kaynnista</code>, missä arvo asetetaan muuttujan <code>summa</code> arvoksi.</p>
+  <p>Metodin <code>summa</code> suoritus laskee muuttujien <code>luku1</code> ja <code>luku2</code> arvot yhteen. Komento <code>return</code> palauttaa lukujen summan kutsupinossa yhtä alemmalle metodille, eli metodille <code>kaynnista</code>. Palautettu arvo asetetaan muuttujan <code>summa</code> arvoksi.</p>
 
 <pre>
 kaynnista
