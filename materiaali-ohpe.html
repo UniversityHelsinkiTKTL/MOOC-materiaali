@@ -713,7 +713,7 @@ Hei maailma!
 
   <h4>Kommentit</h4>
 
-  <p>Lähdekoodin <code>kommentit</code> ovat kätevä tapa merkitä asioita muistiin.  Kommentti on mikä tahansa rivi, joka alkaa kahdella vinoviivalla <code>//</code>.  Kaikki kommenttimerkkiä seuraava samalla rivillä oleva teksti tulkitaan kommentiksi.</p>
+  <p>Lähdekoodin <em>kommentit</em> ovat kätevä tapa merkitä asioita muistiin.  Kommentti on mikä tahansa rivi, joka alkaa kahdella vinoviivalla <code>//</code>.  Kaikki kommenttimerkkiä seuraava samalla rivillä oleva teksti tulkitaan kommentiksi.</p>
 
 <pre class="sh_java">
 // Tulostamme tekstin "Hei maailma"
@@ -834,13 +834,13 @@ public class Paaohjelma {
 
   <h3>Muuttujat ja tietotyypit</h3>
 
-  <p>Keskeinen käsite ohjelmoinnissa on <em>muuttuja</em>.  Muuttujaa kannattaa ajatella lokerona, johon voi tallettaa annetun tyyppistä tietoa.  Tiedolla on aina tyyppi. Tyyppejä ovat esimerkiksi teksti eli merkkijono (<em>String</em>), kokonaisluku (<em>int</em>) ja liukuluku (<em>double</em>) eli desimaaliluku<!-- ja totuusarvo (<em>boolean</em>) -->.  Muuttujaan asetetaan <em>arvo</em> yhtäsuuruusmerkillä (<code>=</code>). </p>
+  <p>Keskeinen käsite ohjelmoinnissa on <em>muuttuja</em>.  Muuttujaa kannattaa ajatella lokerona, johon voi tallettaa annetun tyyppistä tietoa.  Tiedolla on aina tyyppi. Tyyppejä ovat esimerkiksi teksti eli merkkijono (<code>String</code>), kokonaisluku (<code>int</code>) ja liukuluku (<code>double</code>) eli desimaaliluku<!-- ja totuusarvo (<em>boolean</em>) -->.  Muuttujaan asetetaan <em>arvo</em> yhtäsuuruusmerkillä (<code>=</code>). </p>
 
 <pre class="sh_java">
 int kuukausia = 12;
 </pre>
 
-  <p>Yllä olevassa lauseessa asetetaan kokonaisluku-tyyppiä (<em>int</em>) olevaan muuttujaan nimeltä <em>kuukausia</em> arvo 12.  Asetuslause luetaan "muuttuja <em>kuukausia</em> saa <em>arvon</em> 12".</p>
+  <p>Yllä olevassa lauseessa asetetaan kokonaisluku-tyyppiä (<em>int</em>) olevaan muuttujaan nimeltä <em>kuukausia</em> arvo 12.  Lause luetaan "muuttuja <em>kuukausia</em> saa <em>arvon</em> 12".</p>
 
   <p>Muuttujan arvo voidaan yhdistää merkkijonoon <code>+</code>-merkillä seuraavan esimerkin mukaisesti.</p>
 
@@ -922,15 +922,22 @@ Kokonaislukumuuttujan arvo on 42
 String merkkijono = "tsuppadui!";
 merkkijono = 42; // Ei onnistu! :(
 </pre>
-  <p>Liukulukuun voi asettaa kokonaisluvun, sillä kokonaisluku on myös liukuluku</p>
+
+  <p>Liukulukuun voi asettaa kokonaisluvun, sillä Java muuttaa kokonaisluvut liukuluvuiksi tarvittaessa.</p>
+
 <pre class="sh_java">
 double liukuluku = 0.42;
 liukuluku = 1; // Onnistuu! :)
 </pre>
 
+  <p>Liukulukua ei kuitenkaan voi asettaa kokonaislukuun.</p>
 
+<pre class="sh_java">
+int luku = 4.2; // ei onnistu
+</pre>
 
   <h3>Sallittu ja kuvaava muuttujan nimi</h3>
+
   <p>Muuttujan nimeämistä rajoittavat tietyt ehdot.  Vaikka muuttujan nimessä voidaan käyttää ääkkösiä, on parempi olla <em>kayttamatta niita</em>, sillä <a href="http://en.wikipedia.org/wiki/Character_encoding" title="Character encoding - Wikipedia, the free encyclopedia">merkistökoodauksesta</a> saattaa tulla ongelmia.</p>
   <p>Muuttujan nimessä ei saa olla tiettyjä erikoismerkkejä, kuten huutomerkkejä (!).  Välilyönti ei ole sallittu, sillä se erottaa komentojen osat toisistaan.  Välilyönti kannattaa korvata <em><a href="http://fi.wikipedia.org/wiki/CamelCase" title="CamelCase – Wikipedia">camelCase</a></em>-tyylillä, jolloin nimi <code>muistuttaneeKamelia</code>. <b>Huom!</b> Muuttujien nimien ensimmäinen kirjain kirjoitetaan aina pienellä:</p>
 <pre class="sh_java">
@@ -5776,6 +5783,17 @@ main
 </pre>
 
   <p>Tämän jälkeen suoritetaan tulostuskomento, jonka jälkeen palataan <code>main</code>-metodiin. Kun suoritus on <code>main</code>-metodin lopussa, ohjelma sammuu.</p>
+
+
+  <div id="parqu-exercise8"></div>
+  <div id="parqu-exercise9"></div>
+  <div id="parqu-exercise10"></div>
+  <div id="parqu-exercise11"></div>
+  <div id="parqu-exercise12"></div>
+  <div id="parqu-exercise13"></div>
+  <div id="parqu-exercise14"></div>
+  <div id="parqu-exercise15"></div>
+
  
   
   <h2 id="merkkijonot">Merkkijonot</h2>
