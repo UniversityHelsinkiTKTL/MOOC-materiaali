@@ -8176,17 +8176,63 @@ komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, andywarhol)?
     </div>
 -->
 
+  <h2 id="kertaus">Kertaus</h2>
 
+  <p>while-toistolauseen rakenne; portsari</p>
+
+  <p>mitä while:n sisään, mitä sen jälkeen</p>
+
+  <p>continue</p>
+
+  <p>metodit</p>
+
+
+<div class="tehtavat">
+
+  <div class="tehtava">
+
+    <h3>TODO: Turtle roy</h3>
+
+    <p>piirto, toisto, sopivat piirrot</p>
+
+  </div>
+
+</div>
+
+
+  <p>arraylist</p>
+
+<div class="tehtavat">
+
+  <div class="tehtava">
+
+    <h3>TODO: Tehtava, missä käytetään arraylistiä</h3>
+
+    <p>piirto, toisto, sopivat piirrot</p>
+
+  </div>
+
+</div>
+
+  
   <h2 id="olio_ohjelmointi">Olio-ohjelmointi</h2>
+
   <p>Pieni johdanto olio-ohjelmointiin ennen aloitusta.</p>
+
   <p>Proseduraalisessa ohjelmoinnissa, eli tähän asti opiskelemassamme ohjelmointityylissä, ohjelma jäsennellään jakamalla se pienempiin osiin eli metodeihin.  Metodi toimii ohjelman erillisenä osana, ja sitä voi kutsua mistä tahansa ohjelmastan sisältä.  Metodia kutsuttaessa ohjelman suoritus siirtyy metodin alkuun, ja suorituksen päätyttyä palataan takaisin siihen kohtaan mistä metodia kutsuttiin.</p>
-  <p>Olio-ohjelmoinnissa, kuten proseduraalisessa ohjelmoinnissa, pyritään jakamaan ohjelma pieniin osiin.  Olio-ohjelmoinnissa pienet osat ovat olioita.  Jokaisella oliolla on oma yksittäinen vastuunsa eli se sisältää joukon yhteenkuuluvaa tietoa ja toiminnallisuutta.  Olio-ohjelmat koostuvat useista olioista, joiden yhteinen toiminta määrittelee järjestelmän toiminnan.</p>
+
+  <p>Olio-ohjelmoinnissa, kuten proseduraalisessa ohjelmoinnissa, ohjelma jaetaan pieniin osiin. Näitä pieniä osia kutsutaan olioiksi, ja jokaisella oliolla on oma yksittäinen vastuunsa. Olio sisältää joukon yhteenkuuluvaa tietoa ja toiminnallisuutta.  Olio-ohjelmat koostuvat useista olioista, joiden yhteinen toiminta määrittelee järjestelmän toiminnan.</p>
+
+
   <h3>Olio</h3>
-  <p>Olemme käyttäneet jo monia Javan valmiita olioita. Esimerkiksi <code>ArrayList</code>:it ovat olioita. Jokainen yksittäinen lista koostuu yhteenkuuluvasta tiedosta, eli <i>olion tilasta</i>. Listaolioihin liittyy toiminnallisuutta, eli metodt joilla olion tilaa voidaan muuttaa. Esimerkiksi seuraavassa ohjelmanpätkässä on kaksi <code>ArrayList</code>-olioa <code>kaupungit</code> ja <code>maat</code>:</p>
+
+  <p>Olemme käyttäneet jo Javan valmiita olioita. Esimerkiksi <code>ArrayList</code>:it ovat olioita. Jokainen yksittäinen lista koostuu yhteenkuuluvasta tiedosta, eli <em>olion tilasta</em>. Listaolioihin liittyy toiminnallisuutta, eli metodit joilla olion tilaa voidaan muuttaa. Esimerkiksi seuraavassa ohjelmanpätkässä on kaksi <code>ArrayList</code>-olioa <code>kaupungit</code> ja <code>maat</code>:</p>
+
+
   <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;String&gt; kaupungit = new ArrayList&lt;String&gt;();
-    ArrayList&lt;String&gt; maat = new ArrayList&lt;String&gt;();
+    ArrayList&lt;String&gt; kaupungit = new ArrayList&lt;&gt;();
+    ArrayList&lt;String&gt; maat = new ArrayList&lt;&gt;();
 
     maat.add("Suomi");
     maat.add("Saksa");
@@ -8201,43 +8247,76 @@ public static void main(String[] args) {
     System.out.println("kaupunkeja " + kaupungit.size());
 }
 </pre>
+
   <p>Sekä <code>maat</code>-olio että <code>kaupungit</code>-olio elää omaa elämäänsä. Molempien "tila" on toisten olioiden tilasta riippumaton. Esim. olion <code>maat</code> tila koostuu listalla olevista merkkijonoista "Suomi", "Saksa" ja "Hollanti" ja todennäköisesti myös tiedosta kuinka monta maata listalla on.</p>
+
   <p>Olioon liittyvää metodikutsua tehdessä (esimerkiksi <code>maat.add("Suomi");</code>) pisteen vasemmalle puolelle tulee sen olion nimi, jolle metodia kutsutaan, oikealle metodin nimi. Kun kysytään montako merkkijonoa listalla <code>maat</code> on, kutsu on muotoa <code>maat.size()</code> eli kutsutaan <code>maat</code> oliolle sen metodia <code>size</code>. Metodin palauttama tulos riippuu olion <code>maat</code> tilasta, eli muut oliot kuten <code>kaupungit</code> eivät vaikuta metodin suoritukseen millään tavalla.</p>
-  <p>Olemme jo useasti käyttämään komentoa <code>new</code>. Esimerkiksi listan (<code>ArrayList</code>) ja lukijan (<code>Scanner</code>) luominen on tapahtunut <code>new</code>-komennolla. Syy on se, että kumpikin näistä on <em>Luokkia</em>, joista olio luodaan. Java-kielessä oliot luodaan aina <code>new</code>-komennolla muutamaa poikkeusta lukuunottamatta.</p>
-  <p>Yksi näistä poikkeuksista ovat merkkijonot, joiden luomiseen ei aina tarvita <code>new</code>:iä. Tuttu tapa merkkijonon luomiseen on oikeastaan Javan lyhennysmerkintä <code>new</code>:in käytölle. Merkkijonon voi luoda myös new:illä kuten muutkin oliot:</p>
+
+  <h3>Uusi olio luodaan new-komennolla</h3>
+
+
+  <p>Olemme myös jo luoneet olioita koodissamme. Uuden olion luominen tapahtuu komennon <code>new</code> avulla. Esimerkiksi lukijan (<code>Scanner</code>) ja listan (<code>ArrayList</code>) luominen on tapahtunut <code>new</code>-komennolla seuraavasti.</p>
+
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
+</pre>
+
+  <p>Komentoa <code>new</code> käytetään kun halutaan luoda uusi olio valmiiksi määritellystä <em>Luokasta</em>. Java-kielessä oliot luodaan aina <code>new</code>-komennolla muutamaa poikkeusta lukuunottamatta.</p>
+
+  <p>Eräs näistä poikkeuksista ovat merkkijonot, joiden luomiseen ei aina tarvita <code>new</code>-komentoa. Tuttu tapa merkkijonon luomiseen on oikeastaan Javan lyhennysmerkintä <code>new</code>:in käytölle. Merkkijonon voi luoda myös new:illä kuten muutkin oliot:</p>
+
 <pre class="sh_java">
 String teksti = "tekstiä";       // lyhennysmerkintä merkkijono-olion luomiselle
 String toinenTeksti = new String("lisää tekstiä");
 </pre>
-  </p>
-  <p>On myös tilanteita, missä Javan valmis kalusto kutsuu <code>new</code>:iä piilossa ohjelmoijalta.</p>
+
+  <p>Se, minkälainen oliosta tulee, riippuu olion <em>luokasta</em>.</p>
+
+
   <h3>Luokka</h3>
-  <p>On selvää että kaikki oliot eivät ole keskenään samankaltaisia. Esim. <code>ArrayList</code>-oliot poikkeavat ratkaisevasti <code>String</code>-olioista. Kaikilla <code>ArrayList</code>:eillä on samat metodit (<code>add</code>, <code>contains</code>, <code>remove</code>, <code>size</code>, ...) ja vastaavasi kaikilla <code>String</code>-olioilla on samat metodit (<code>substring</code>, <code>length</code>, <code>charAt</code>, ...). <code>ArrayList</code>- ja <code>String</code>-olioiden metodit eivät ole samat sillä ne ovat eri <em>tyyppisiä</em> olioita.</p>
-  <p>Tietyn olioryhmän tyyppiä kutsutaan <b>luokaksi</b>. <code>ArrayList</code> on luokka, <code>String</code> on luokka, <code>Scanner</code> on luokka, jne... Oliot taas ovat luokasta tehtyjä <em>ilmentymiä</em>.</p>
-  <p>Luokan kaikilla olioilla on samat metodit, sekä samankaltainen tila. Esim. kaikkien <code>ArrayList</code>-olioiden tila koostuu listalle tallennetuista alkioista. <code>String</code>-olioiden tila taas koostuu merkkijonon muodostavista kirjaimista.</p>
+
+  <p>On selvää että kaikki oliot eivät ole keskenään samankaltaisia. Esimerkiksi <code>ArrayList</code>-oliot poikkeavat <code>String</code>-olioista. Kaikilla <code>ArrayList</code>-olioilla on samat metodit (<code>add</code>, <code>contains</code>, <code>remove</code>, <code>size</code>, ...) ja vastaavasti kaikilla <code>String</code>-olioilla on samat metodit (<code>substring</code>, <code>length</code>, <code>charAt</code>, ...). <code>ArrayList</code>- ja <code>String</code>-olioiden metodit eivät ole samat, sillä ne ovat eri <em>tyyppisiä</em>.</p>
+
+  <p>Olion tyyppiä <strong>luokaksi</strong>. <code>ArrayList</code> on luokka, <code>String</code> on luokka, <code>Scanner</code> on luokka, ja niin edelleen... Oliot taas ovat luokasta tehtyjä <em>ilmentymiä</em>.</p>
+
+  <p>Kaikista luokasta tehdyillä olioilla on samat metodit sekä samankaltainen tila. Esimerkiksi kaikkien <code>ArrayList</code>-olioiden tila koostuu listalle tallennetuista alkioista. <code>String</code>-olioiden tila taas koostuu merkkijonon muodostavista kirjaimista.</p>
+
   <h3>Luokka ja sen oliot</h3>
-  <p><b>Luokka määrittelee</b> minkälaisia luokan oliot ovat:</p>
+
+  <p><strong>Luokka määrittelee</strong> minkälaisia luokan oliot ovat:</p>
+
   <ul>
     <li><b>mitä metodeita olioilla on</b></li>
     <li><b>minkälainen olioiden tila on</b> tai toisinsanoen mitä ominaisuuksia olioilla on</li>
   </ul>
+
   <p>Luokka kuvaa siitä luotavien olioiden "rakennuspiirustukset".</p>
+
   <p>Otetaan analogia tietokoneiden ulkopuoleisesta maailmasta. Rintamamiestalot lienevät kaikille suomalaisille tuttuja. Voidaan ajatella, että jossain on olemassa piirustukset jotka määrittelevät minkälainen rintamamiestalo on. Piirrustukset ovat luokka, eli ne määrittelevät luokasta luotavien olioiden luonteen:</p>
+
   <p><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/luokka.jpg"/></p>
+
   <p>Yksittäiset oliot eli rintamamiestalot on tehty samojen piirustusten perusteella, eli ne ovat saman luokan ilmentymiä. Yksittäisten olioiden tila eli ominaisuudet (esim. seinien väri, katon rakennusmateriaali ja väri, kivijalan väri, ovien rakennusmateriaali ja väri, ...) vaihtelevat. Seuraavassa yksi "rintamamiestalo-luokan olio":</p>
-  <p><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/olio.jpg" height=250 /></p>
+
+  <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohpe/img/olio.jpg" height=250 /></p>
+
   <p>Luokasta luodaan olio aina kutsumalla olion luovaa metodia eli <em>konstruktoria</em> komennon <code>new</code> avulla. Esimerkiksi <code>Scanner</code>-luokasta luodaan uusi ilmentymä eli olio kun kutsutaan <code>new Scanner(..)</code>:</p>
-  <pre class="sh_java">
-  Scanner lukija = new Scanner(System.in);
+
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
 </pre>
+
   <p>Konstruktorit saavat parametreja kuten muutkin metodit.</p>
+
   <div class="tehtavat" id="viikko4">
     <div class="tehtava">
+
     <h3>Tilejä</h3>
-    <p>Tehtäväpohjan mukana tulee valmis luokka <code>Tili</code>.
-      Luokan <code>Tili</code> olio esittää pankkitiliä, jolla on saldo
-      (eli jossa on jokin määrä rahaa). Tilejä käytetään näin:</p>
-    <pre class="sh_java">
+
+    <p>Tehtäväpohjan mukana tulee valmis luokka <code>Tili</code>. Luokan <code>Tili</code> olio esittää pankkitiliä, jolla on saldo (eli jossa on jokin määrä rahaa). Tilejä käytetään näin:</p>
+
+<pre class="sh_java">
 Tili artonTili = new Tili("Arton tili",100.00);
 Tili artonSveitsilainenTili = new Tili("Arton tili Sveitsissä",1000000.00);
 
@@ -8254,18 +8333,28 @@ System.out.println("Lopputilanne");
 System.out.println(artonTili);
 System.out.println(artonSveitsilainenTili);
 </pre>
+
+<pre>
+TODO: mikä tulostus?
+</pre>
+
+
     <h4>Ensimmäinen tilisi</h4>
+
     <p>
       <large><b>Huom:</b> tämän tehtävän jokaista alikohtaa varten on oma tehtäväpohja, tee tämä tehtävä pohjaan 072.1</large>
     </p>
-    <p>Tee ohjelma, joka luo tilin jonka saldo on 100.0, panee tilille
-      20.0 ja tulostaa tilin. <strong>Huom!</strong> tee kaikki nämä
-      operaatiot täsmälleen tässä järjestyksessä.</p>
+
+    <p>Tee ohjelma, joka luo tilin jonka saldo on 100.0, panee tilille 20.0 ja tulostaa tilin. <strong>Huom!</strong> tee kaikki nämä operaatiot täsmälleen tässä järjestyksessä.</p>
+
     <h4>Ensimmäinen tilisiirtosi</h4>
+
     <p>
       <large><b>Huom:</b> tämän tehtävän jokaista alikohtaa varten on oma tehtäväpohja, tee tämä tehtävä pohjaan 072.2</large>
     </p>
+
     <p>Tee ohjelma joka:</p>
+
     <ol class="lista">
       <li>Luo tilin nimeltä <code>"Matin tili"</code> saldolla 1000</li>
       <li>Luo tilin nimeltä <code>"Oma tili"</code> saldolla 0</li>
@@ -8273,16 +8362,19 @@ System.out.println(artonSveitsilainenTili);
       <li>Panee omalle tilille 100.0</li>
       <li>Tulosta molemmat tilit</li>
     </ol>
+
     <h4>Tilisiirtoja</h4>
+
     <p>
       <large><b>Huom:</b> tämän tehtävän jokaista alikohtaa varten on oma tehtäväpohja, tee tämä tehtävä pohjaan 072.3</large>
     </p>
+
     <p>Yllä siirsit rahaa tililtä toiselle. Tehdään seuraavaksi metodi joka tekee saman!</p>
-    <p>Toteuta ohjelmapohjaan metodi <code>public static void tilisiirto(Tili
-      mista, Tili minne, double paljonko)</code> joka siirtää rahaa
-      tililtä toiselle. Sinun ei tarvitse tarkistaa
-      että <code>mista</code>-tilin saldo riittää.</p>
+
+    <p>Toteuta ohjelmapohjaan metodi <code>public static void tilisiirto(Tili mista, Tili minne, double paljonko)</code> joka siirtää rahaa tililtä toiselle. Sinun ei tarvitse tarkistaa että <code>mista</code>-tilin saldo riittää.</p>
+
     <p>Tämän jälkeen tee <code>main</code>-metodissasi seuraavaa:</p>
+
     <ol class="lista">
       <li>Luo tili <code>"tili A"</code> saldolla 100.0</li>
       <li>Luo tili <code>"tili B"</code> saldolla 0.0</li>
@@ -8290,11 +8382,16 @@ System.out.println(artonSveitsilainenTili);
       <li>Siirrä 50.0 tililtä A tilille B.</li>
       <li>Siirrä 25.0 tililtä B tilille C.</li>
     </ol>
+
   </div>
 </div>
+
   <h3>Oman luokan määritteleminen - oliomuuttujat</h3>
+
   <p>Luokka määritellään jotain mielekästä kokonaisuutta varten. Usein "mielekäs kokonaisuus" kuvaa jotain reaalimaailman asiaa. Jos tietokoneohjelman pitää käsitellä henkilötietoja, voisi olla mielekästä määritellä erillinen luokka <code>Henkilo</code> joka kokoaa yhteen henkilöön liittyvät metodit ja ominaisuudet.</p>
+
   <p>Aloitetaan. Oletetaan että meillä on projektirunko jossa on tyhjä pääohjelma:</p>
+
   <pre class="sh_java">
 public class Main {
 
@@ -8302,36 +8399,65 @@ public class Main {
 
     }
 }</pre>
+
   <div class="help">
-  <p>Luomme nyt projektiimme eli ohjelmaamme uuden luokan. Tämä tapahtuu valitsemalla NetBeansissa vasemmalta <em>projects</em>-kohdasta hiiren oikealla napilla <em>new</em> ja <em>java class</em>. Avautuvaan dialogiin annetaan luokalle nimi.</p>
-  <p>Kuten muuttujien ja metodien nimien, myös luokan nimen on aina oltava mahdollisimman kuvaava. Joskus ohjelmoinnin edetessä luokka elää ja muuttaa muotoaan. Tällaisissa tilanteissa luokan voi nimetä uudelleen (<a href="http://mooc.cs.helsinki.fi/ohjelmointi/ohjeita#netbeans" target="_blank">ks. MOOC.fi NetBeans ohje</a>.</p>
+
+    <p>Luomme nyt projektiimme eli ohjelmaamme uuden luokan. Tämä tapahtuu valitsemalla NetBeansissa vasemmalta <em>projects</em>-kohdasta hiiren oikealla napilla <em>new</em> ja <em>java class</em>. Avautuvaan dialogiin annetaan luokalle nimi.</p>
+
+    <p>Kuten muuttujien ja metodien nimien, myös luokan nimen on aina oltava mahdollisimman kuvaava. Joskus ohjelmoinnin edetessä luokka elää ja muuttaa muotoaan. Tällaisissa tilanteissa luokan voi nimetä uudelleen. Edellisellä viikon alussa löytyy tähän vihjeitä.</p>
+
   </div>
+
   <p>Luodaan luokka nimeltä <code>Henkilo</code>. Luokasta muodostuu oma tiedostonsa <code>Henkilo.java</code>. Eli ohjelma koostuu nyt kahdesta tiedostosta, sillä pääohjelma on omassa tiedostossaan. Aluksi luokka on tyhjä:</p>
+
   <pre class="sh_java">
 public class Henkilo {
 
 }
 </pre>
+
   <p>Luokan tulee määritellä mitä metodeja ja ominaisuuksia luokan olioilla on. Päätetään, että jokaisella henkilöllä on nimi ja ikä. Nimi on luonnollista esittää merkkijonona, eli Stringinä, ja ikä taas kokonaislukuna. Lisätään nämä rakennuspiirustuksiimme:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Henkilo {
     private String nimi;
     private int ika;
 }
 </pre>
+
   <p>Määrittelimme yllä että kaikilla <code>Henkilo</code>-luokan olioilla on <code>nimi</code> ja <code>ika</code>. Määritettely tapahtuu hiukan kuten normaalin muuttujan määrittely. Eteen on kuitenkin nyt laitettu avainsana <code>private</code>. Tämä tarkoittaa sitä, että nimi ja ikä eivät näy suoraan olion ulkopuolelle vaan ovat "piilossa" olion sisällä. Olion sisälle piilottamista kutsutaan <em>kapseloinniksi</em>.</p>
-  <p>Luokan sisälle määriteltyjä muuttujia kutsutaan <i>oliomuuttujiksi</i> tai <i>olion kentiksi</i> tai <i>olion attribuuteiksi</i>. Rakkaalla lapsella on monta nimeä.</p>
-  <p>Eli olemme määritelleet rakennuspiirustukset -- luokan -- henkilöoliolle. Kaikilla henkilöolioilla on muuttujat <code>nimi</code> ja <code>ika</code>. Henkilöiden "tila" koostuu niiden nimeen ja ikään asetetuista arvoista.</p>
+
+  <p>Luokan sisälle määriteltyjä muuttujia kutsutaan <em>oliomuuttujiksi</em> tai <em>olion kentiksi</em> tai <em>olion attribuuteiksi</em>. Rakkaalla lapsella on monta nimeä.</p>
+
+  <p>Olemme nyt määritelleet rakennuspiirustukset -- luokan -- henkilöoliolle. Jokaisella uudella henkilöolioilla on muuttujat <code>nimi</code> ja <code>ika</code>, joissa voi olla oliokohtainen arvo. Henkilöiden "tila" koostuu niiden nimeen ja ikään asetetuista arvoista.</p>
+
+  
+  <div class="tehtavat">
+    <div class="tehtava">
+      
+      <h3>Luokan luominen ja oliomuuttujien asetus -- TODO</h3>
+      
+      <p>Luo luokka nimelta FOO, ja aseta sille muuttujat BAR</p>
+      
+    </div>
+  </div>
+
+
+
   <h3>Oman luokan määritteleminen - konstruktori eli tilan alustus</h3>
-  <p>Luotavalle oliolle halutaan asettaa luontivaiheessa jokin alkutila. Itse määritellyn olion luominen tapahtuu hyvin samaan tapaan kuin Javan valmiiden olioiden kuten <code>ArrayList</code>:ien luominen. Oliot siis luodaan <code>new</code>-komennolla. Olion synnyttämisen yhteydessä olisikin kätevä pystyä antamaan arvo joillekin olioiden muuttujille. Esim. henkilön synnytyksessä olisi kätevää pystyä antamaan nimi jo syntymähetkellä: </p>
+
+  <p>Luotavalle oliolle halutaan asettaa alkutila. Itse määritellyn olion luominen tapahtuu hyvin samaan tapaan kuin Javan valmiiden olioiden kuten <code>ArrayList</code>:ien luominen. Oliot siis luodaan <code>new</code>-komennolla. Olion luomisen yhteydessä on kätevää pystyä antamaan arvot luotavan olion muuttujille. Esimerkiksi uutta henkilö-oliota luotaessa olisi kätevää pystyä antamaan nimi jo luomishetkellä: </p>
+
   <pre class="sh_java">
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka");
     // ...
 }
 </pre>
-  <p>Tämä onnistuu määrittelemällä olion synnyttävä metodi, eli <em>konstruktori</em>. Seuraavassa on määritelty <code>Henkilo</code>-luokalle konstruktori, joka luo uuden <code>Henkilo</code>-olion. Konstruktorissa luotavan henkilön iäksi asetetaan 0 ja nimeksi parametrina tuleva merkkijono:</p>
-  <pre class="sh_java">
+
+  <p>Tämä onnistuu määrittelemällä olion luova metodi, eli <em>konstruktori</em>. Seuraavassa on määritelty <code>Henkilo</code>-luokalle konstruktori, joka luo uuden <code>Henkilo</code>-olion. Alla olevassa esimerkissä olevassa Konstruktorissa henkilön iäksi asetetaan 0 ja nimeksi konstruktorin parametrina tuleva merkkijono:</p>
+
+<pre class="sh_java">
 public class Henkilo {
     private String nimi;
     private int ika;
@@ -8341,11 +8467,31 @@ public class Henkilo {
         this.nimi = nimiAlussa;
     }
 }</pre>
-  <p>Konstruktori on siis nimeltään sama kuin luokan nimi. Yllä luokka (<em>class</em>) on <code>Henkilo</code>, ja konstruktori <code>public Henkilo(String nimiAlussa)</code>. Konstruktorille parametrina tuleva arvo tulee sulkuihin konstruktorin nimen perään. Konstruktorin voi ajatella olevan metodi, jonka Java suorittaa kun olio luodaan sanomalla <code>new Henkilo("Pekka");</code> Aina kun jostain luokasta luodaan olio, kutsutaan kyseisen luokan konstruktoria. </p>
+
+  <p>Konstruktori on nimeltään sama kuin luokan nimi. Yllä luokka (<em>class</em>) on <code>Henkilo</code>, ja konstruktori <code>public Henkilo(String nimiAlussa)</code>. Konstruktorille parametrina tuleva arvo tulee sulkuihin konstruktorin nimen perään. Konstruktorin voi ajatella olevan metodi, jonka Java suorittaa kun olio luodaan komennolla <code>new Henkilo("Pekka");</code> Oliot luodaan aina konstruktorin avulla. </p>
+
   <p>Muutama huomio: konstruktorin sisällä on komento <code>this.ika = 0</code>. Tässä asetetaan arvo 0 <em>juuri tämän olion, eli "this"-olion</em> sisäiselle muuttujalle <code>ika</code>. Toinen komento <code>this.nimi = nimiAlussa;</code> taas asettaa juuri tämän olion sisäiselle muuttujalle <code>nimi</code> arvoksi parametrina annetun merkkijonon. Olion muuttujat <code>ika</code> ja <code>nimi</code> näkyvät konstruktorissa ja muuallakin olion sisällä automaattisesti. Niihin viitataan <code>this</code>-etuliitteellä. Koska niissä on private-määre, niin olion ulkopuolelle ne eivät näy.</p>
-  <p>Vielä yksi huomio: jos ohjelmoija ei tee luokalle konstruktoria, tekee Java automaattisesti luokalle oletuskonstruktorin. Oletuskonstruktori on konstruktori joka ei tee mitään. Eli jos konstruktoria ei jostain syystä tarvita, ei sellaista tarvitse ohjelmoida.</p>
+
+  <p>Vielä yksi huomio: jos ohjelmoija ei tee luokalle konstruktoria, tekee Java automaattisesti luokalle oletuskonstruktorin. Oletuskonstruktori on konstruktori joka ei tee mitään. Jos konstruktoria ei jostain syystä tarvita, ei sellaista tarvitse ohjelmoida.</p>
+
+  
+  <div class="tehtavat">
+    <div class="tehtava">
+      
+      <h3>Luokan luominen, oliomuuttujien asetus, konstruktorin käyttö -- TODO</h3>
+      
+      <p>Luo luokka nimelta FOO, ja aseta sille muuttujat BAR, luo sille konstruktori xxx</p>
+      
+    </div>
+  </div>
+
+
+
   <h3>Oman luokan määritteleminen - metodit</h3>
+
+
   <p>Alkaa olla korkea aika päästä käyttämään <code>Henkilo</code>-olioita. Osaamme luoda olion ja alustaa olion muuttujat. Järkevään toimintaan pystyäkseen olioilla on oltava myös metodeja. Tehdään <code>Henkilo</code>-luokalle metodi jonka avulla olio tulostaa itsensä ruudulle:</p>
+
   <pre class="sh_java">
 public class Henkilo {
     private String nimi;
@@ -8361,10 +8507,14 @@ public class Henkilo {
     }
 }
 </pre>
-  <p>Metodi siis kirjoitetaan luokan sisälle, metodin nimen eteen tulee <code>public void</code> sillä metodin on tarkoitus näkyä ulkomaailmalle ja metodi ei palauta mitään. Huomaa, että sana <code>static</code> ei nyt ilmene missään. Olioiden yhteydessä <code>static</code>-määrettä ei käytetä. Selitämme ensi viikolla hieman tarkemmin mistä tässä on kysymys.</p>
+
+  <p>Metodi kirjoitetaan luokan sisälle konstruktorin alapuolelle. Metodin nimen eteen tulee <code>public void</code> sillä metodin on tarkoitus näkyä ulkomaailmalle ja metodi ei palauta mitään. Huomaa, että sana <code>static</code> ei nyt ilmene missään. Olioiden yhteydessä <code>static</code>-määrettä ei käytetä. Selitämme ensi viikolla hieman tarkemmin mistä tässä on kysymys.</p>
+
   <p>Metodin <code>tulostaHenkilo</code> sisällä on yksi koodirivi joka käyttää hyvakseen oliomuuttujia <code>nimi</code> ja <code>ika</code>. Juuri tämän olion muuttujiin viitataan taas etuliitteellä <code>this</code>. Kaikki olion muuttujat ovat siis näkyvillä ja käytettävissä metodin sisällä.</p>
+
   <p>Luodaan pääohjelmassa kolme henkilöä ja pyydetään niitä tulostamaan itsensä:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Main {
 
     public static void main(String[] args) {
@@ -8377,38 +8527,46 @@ public class Main {
         martin.tulostaHenkilo();
     }
 }</pre>
+
   <p>Tulostuu:</p>
+
 <pre>
 Pekka, ikä 0 vuotta
 Antti, ikä 0 vuotta
 Martin, ikä 0 vuotta
 </pre>
-  <p>Sama screencastina: </p>
-  <a href="http://www.youtube.com/watch?feature=player_embedded&v=fWwXQ5n2gYo" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
 
+  <p>Sama screencastina: </p>
+
+  <a href="http://www.youtube.com/watch?feature=player_embedded&v=fWwXQ5n2gYo" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
 
   <div class="tehtavat">
     <div class="tehtava">
-    <h3>Tuote</h3>
-    <p>Luo luokka <code>Tuote</code> joka esittää kaupan tuotetta jolla on hinta, lukumäärä ja nimi.</p>
-    <p> Uuden luokan saa lisättyä seuraavasti: Ruudun vasemmalla reunalla on projektilistaus. Paina projektin nimen <em>073.Tuote</em> kohdalla hiiren oikeaa nappia. Valitse avautuvasta valikosta <em>New</em> ja <em>Java Class</em>. Anna luokan nimeksi (Class Name) <code>Tuote</code>. </p>
-    <p>Luokalla tulee olla:</p>
-    <ul>
-      <li>Konstruktori <code>public Tuote(String nimiAlussa, double hintaAlussa, int maaraAlussa)</code></li>
-      <li>Metodi <code>public void tulostaTuote()</code> joka tulostaa tuotteen tiedot tässä muodossa:
-        <pre>
+    
+      <h3>Tuote</h3>
+
+      <p>Luo luokka <code>Tuote</code> joka esittää kaupan tuotetta jolla on hinta, lukumäärä ja nimi.</p>
+
+      <p> Uuden luokan saa lisättyä seuraavasti: Ruudun vasemmalla reunalla on projektilistaus. Paina projektin nimen <em>073.Tuote</em> kohdalla hiiren oikeaa nappia. Valitse avautuvasta valikosta <em>New</em> ja <em>Java Class</em>. Anna luokan nimeksi (Class Name) <code>Tuote</code>. </p>
+
+      <p>Luokalla tulee olla:</p>
+      <ul>
+	<li>Konstruktori <code>public Tuote(String nimiAlussa, double hintaAlussa, int maaraAlussa)</code></li>
+	<li>Metodi <code>public void tulostaTuote()</code> joka tulostaa tuotteen tiedot tässä muodossa:
+          <pre>
 Banaani, hinta 1.1, 13 kpl</pre>
-      </li>
-    </ul>
+	</li>
+      </ul>
+    </div>
   </div>
-</div>
 
-    <div class="self-explanation" data-key="q-luokatJaOliot"></div>
-
+  <div class="self-explanation" data-key="q-luokatJaOliot"></div>
 
   <h3>lisää metodeja</h3>
+
   <p>Lisätään aiemmin rakentamallemme Henkilölle metodi, joka kasvattaa henkilön ikää vuodella:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Henkilo {
     // ...
 
@@ -8417,9 +8575,12 @@ public class Henkilo {
     }
 }
 </pre>
-  <p>Metodi siis kirjoitetaan <code>tulostaHenkilo</code>-metodin tapaan luokan <code>Henkilo</code> sisälle. Metodissa kasvatetaan oliomuuttujan <code>ika</code> arvoa yhdellä.</p>
+
+  <p>Metodi kirjoitetaan <code>tulostaHenkilo</code>-metodin tapaan luokan <code>Henkilo</code> sisälle. Metodissa kasvatetaan oliomuuttujan <code>ika</code> arvoa yhdellä.</p>
+
   <p>Kutsutaan metodia ja katsotaan mitä tapahtuu:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Main {
 
     public static void main(String[] args) {
@@ -8439,87 +8600,30 @@ public class Main {
     }
 }
 </pre>
+
   <p>Ohjelman tulostus on seuraava:</p>
-  <pre>
+
+<pre>
 Pekka, ikä 0 vuotta
 Antti, ikä 0 vuotta
 
 Pekka, ikä 2 vuotta
 Antti, ikä 0 vuotta
 </pre>
+
   <p>Eli "syntyessään" molemmat oliot ovat nollavuotiaita (konstruktorissa suoritetaan mm. rivi <code>this.ika = 0;</code>). Olion <code>pekka</code> metodia <code>vanhene</code> kutsutaan kaksi kertaa. Kuten tulostus näyttää, tämä saa aikaan sen että Pekan ikä on vanhenemisen jälkeen 2 vuotta. Kutsumalla metodia Pekkaa vastaavalle oliolle, toisen henkilöolion ikä ei muutu.</p>
+
   <p>Jokaisella oliolla on siis oma sisäinen tilansa.</p>
-  <p>Aivan kuiten edellisellä viikolla käsittelemämme olioihin liittymättömät metodit, myös olioihin liittyvät metodit voivat palauttaa arvon. Lisätään Henkilölle metodi joka palauttaa henkilön iän:</p>
-  <pre class="sh_java">
-public class Henkilo {
-    // ...
 
-    public int palautaIka() {
-        return this.ika;
-    }
-}
-</pre>
-  <p>Eli koska kyseessä olioon liittyvä metodi, ei määrittelyssä ole sanaa static. Olioiden arvon palauttavia metodeja käytetään kuten mitä tahansa arvon palauttavia metodeja:</p>
-  <pre class="sh_java">
-public class Main {
-
-    public static void main(String[] args) {
-        Henkilo pekka = new Henkilo("Pekka");
-        Henkilo antti = new Henkilo("Antti");
-
-        pekka.vanhene();
-        pekka.vanhene();
-
-        antti.vanhene();
-
-        System.out.println("Pekan ikä: " + pekka.palautaIka());
-        System.out.println("Antin ikä: " + antti.palautaIka());
-
-        int yht = pekka.palautaIka() + antti.palautaIka();
-
-        System.out.println("Pekka ja Antti yhteensä " + yht + " vuotta");
-    }
-}
-</pre>
-  <p>Ohjelman tulostus on seuraava:</p>
-  <pre>
-Pekan ikä 2
-Antin ikä 1
-
-Pekka ja Antti yhteensä 3 vuotta
-</pre>
 <div class="tehtavat">
+
   <div class="tehtava">
-    <h3>Kertoja</h3>
-    <p>Luo luokka <code>Kertoja</code> jolla on:</p>
-    <ul>
-      <li>Konstruktori <code>public Kertoja(int luku)</code>.</li>
-      <li>Metodi <code>public int kerro(int toinenLuku)</code> joka palauttaa sille annetun luvun <code>toinenLuku</code> kerrottuna konstruktorille annetulla luvulla <code>luku</code>.</li>
-    </ul>
-    <p>Esimerkki luokan käytöstä:</p>
-    <pre class="sh_java">
-Kertoja kolmellaKertoja = new Kertoja(3);
 
-System.out.println("kolmellaKertoja.kerro(2): " + kolmellaKertoja.kerro(2));
-
-Kertoja neljallaKertoja = new Kertoja(4);
-
-System.out.println("neljallaKertoja.kerro(2): " + neljallaKertoja.kerro(2));
-System.out.println("kolmellaKertoja.kerro(1): " + kolmellaKertoja.kerro(1));
-System.out.println("neljallaKertoja.kerro(1): " + neljallaKertoja.kerro(1));
-  </pre>
-    <p>Tulostus</p>
-<pre>
-kolmellaKertoja.kerro(2): 6
-neljallaKertoja.kerro(2): 8
-kolmellaKertoja.kerro(1): 3
-neljallaKertoja.kerro(1): 4
-</pre>
-</div>
-<div class="tehtava">
     <h3>Vähenevä laskuri</h3>
+
     <p>Tehtäväpohjan mukana tulee osittain valmiiksi toteutettu luokka <code>VahenevaLaskuri</code>:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class VahenevaLaskuri {
     private int arvo;   // oliomuuttuja joka muistaa laskurin arvon
 
@@ -8539,8 +8643,10 @@ public class VahenevaLaskuri {
     // ja tänne muut metodit
 }
 </pre>
+
     <p>Seuraavassa esimerkki miten pääohjelma käyttää vähenevää laskuria: </p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
         VahenevaLaskuri laskuri = new VahenevaLaskuri(10);
@@ -8555,18 +8661,26 @@ public class Paaohjelma {
     }
 }
 </pre>
+
     <p>Pitäisi tulostua:</p>
+
 <pre>
 arvo: 10
 arvo: 9
 arvo: 8
 </pre>
+
     <p><code>VahenevaLaskuri</code>-luokan konstruktorille annetaan parametrina alkuarvo. Esimerkin oliota <code>laskuri</code> luodessa laskurille välitetään parametrina arvo <code>10</code>. Esimerkin <code>laskuri</code>-olioon liittyvään oliomuuttujaan <code>arvo</code> asetetaan siis aluksi arvo <code>10</code>. Laskurin arvon voi tulostaa metodilla <code>tulostaArvo()</code>. Laskurilla tulee myös olla metodi <code>vahene()</code> joka vähentää laskurin arvoa yhdellä.</p>
+
     <h4>Metodin vahene() toteutus</h4>
+
     <p>Täydennä luokan runkoon metodin <code>vahene()</code> toteutus sellaiseksi, että se vähentää kutsuttavan olion oliomuuttujan <code>arvo</code> arvoa yhdellä. Kun olet toteuttanut metodin <code>vahene()</code>, edellisen esimerkin pääohjelman tulee toimia esimerkkitulosteen mukaan.</p>
+
     <h4>Laskurin arvo ei saa olla negatiivinen</h4>
+
     <p>Täydennä metodin <code>vahene()</code> toteutus sellaiseksi, ettei laskurin arvo mene koskaan negatiiviseksi. Eli jos laskurin arvo on jo 0, ei vähennys sitä enää vähennä:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
         VahenevaLaskuri laskuri = new VahenevaLaskuri(2);
@@ -8584,16 +8698,21 @@ public class Paaohjelma {
     }
 }
 </pre>
+
     <p>Tulostuu:</p>
+
 <pre>
 arvo: 2
 arvo: 1
 arvo: 0
 arvo: 0
 </pre>
+
     <h4>Laskurin arvon nollaus</h4>
+
     <p>Tee laskurille metodi <code>public void nollaa()</code> joka nollaa laskurin arvon, esim:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
         VahenevaLaskuri laskuri = new VahenevaLaskuri(100);
@@ -8608,15 +8727,20 @@ public class Paaohjelma {
     }
 }
 </pre>
+
     <p>Tulostuu:</p>
+
 <pre>
 arvo: 100
 arvo: 0
 arvo: 0
 </pre>
+
     <h4>Laskurin arvon palautus</h4>
+
     <p>Tee laskurille metodi <code>public void palautaAlkuarvo()</code>, joka palauttaa laskurille arvon joka sillä oli alussa:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
   public static void main(String[] args) {
       VahenevaLaskuri laskuri = new VahenevaLaskuri(100);
@@ -8637,7 +8761,9 @@ public class Paaohjelma {
     }
 }
 </pre>
+
 <p>Tulostuu:</p>
+
 <pre>
 arvo: 100
 arvo: 99
@@ -8645,12 +8771,20 @@ arvo: 98
 arvo: 0
 arvo: 100
 </pre>
+
     <p><strong>Vihje</strong> jotta alkuarvon voi palauttaa, se täytyy "muistaa" toisen oliomuuttujan avulla! Joudut siis lisäämään ohjelmaan oliomuuttujan johon talletetaan laskurin alussa saama arvo.</p>
+
   </div>
+
+
   <div class="tehtava">
+
     <h3>Ruokalista</h3>
+
     <p>Kumpulan kampuksella Helsingissä toimivaan Unicafe-nimiseen gourmet-ravintolaan tarvitaan uusi ruokalista. Keittiömestari tietää ohjelmoinnista, ja haluaa listan hallinnointiin tietokonejärjestelmän. Toteutetaan tässä tehtävässä järjestelmän sydän, luokka Ruokalista.</p>
+
     <p>Tehtäväpohjan mukana tulee <code>Main</code>-luokka, jossa voit testata ruokalistan toimintaa. Ruokalistan toteuttamista varten saat seuraavanlaisen tehtäväpohjan:</p>
+
     <pre class="sh_java">
 import java.util.ArrayList;
 
@@ -8659,30 +8793,129 @@ public class Ruokalista {
     private ArrayList&lt;String&gt; ateriat;
 
     public Ruokalista() {
-        this.ateriat = new ArrayList&lt;String&gt;();
+        this.ateriat = new ArrayList&lt;&gt;();
     }
 
     // toteuta tänne tarvittavat metodit
 }
 </pre>
-    <p>Ruokalistaoliolla on siis oliomuuttujana ArrayList, jonka on tarkoitus tallentaa ruokalistalla olevien ruokalajien nimet.</p>
+
+    <p>Ruokalistaoliolla on oliomuuttujana ArrayList, jonka on tarkoitus tallentaa ruokalistalla olevien ruokalajien nimet.</p>
+
     <p>Ruokalistan tulee tarjota metodit <code>public void lisaaAteria(String ateria)</code>, <code>public void tulostaAteriat()</code>, ja <code>public void tyhjennaRuokalista()</code>.</p>
+
     <h4>Aterian lisääminen</h4>
+
     <p>Toteuta metodi <code>public void lisaaAteria(String ateria)</code>, joka lisää uuden aterian ruokalistan <code>ateriat</code>-listaan. Jos lisättävä ateria on jo listassa, sitä ei lisätä uudelleen.</p>
+
     <h4>Aterioiden tulostaminen</h4>
+
     <p>Toteuta metodi <code>public void tulostaAteriat()</code>, joka tulostaa ateriat. Esimerkiksi kolmen aterian lisäyksen jälkeen tulostuksen tulee olla seuraavanlainen.</p>
+
 <pre>
 ensimmäisenä lisätty ateria
 toisena lisätty ateria
 kolmantena lisätty ateria
 </pre>
+
     <h4>Ruokalistan tyhjentäminen</h4>
+
     <p>Toteuta metodi <code>public void tyhjennaRuokalista()</code> joka tyhjentää ruokalistan. <code>ArrayList</code>-luokalla on metodi josta on tässä hyötyä. NetBeans osaa vihjata käytettävissä olevista metodeista kun kirjoitat olion nimen ja pisteen. Yritä kirjoittaa <code>ateriat.</code> metodirungon sisällä ja katso mitä käy.</p>
+
+  </div>
+
+</div>
+
+  <h3>Muuttujan arvon palauttaminen olion metodista</h3> 
+
+  <p>Aivan kuiten edellisellä viikolla käsittelemämme olioihin liittymättömät metodit, myös olioihin liittyvät metodit voivat palauttaa arvon. Lisätään Henkilölle metodi joka palauttaa henkilön iän:</p>
+
+  <pre class="sh_java">
+public class Henkilo {
+    // ...
+
+    public int palautaIka() {
+        return this.ika;
+    }
+}
+</pre>
+
+  <p>Eli koska kyseessä olioon liittyvä metodi, ei määrittelyssä ole sanaa static. Olioiden arvon palauttavia metodeja käytetään kuten mitä tahansa arvon palauttavia metodeja:</p>
+
+<pre class="sh_java">
+public class Main {
+
+    public static void main(String[] args) {
+        Henkilo pekka = new Henkilo("Pekka");
+        Henkilo antti = new Henkilo("Antti");
+
+        pekka.vanhene();
+        pekka.vanhene();
+
+        antti.vanhene();
+
+        System.out.println("Pekan ikä: " + pekka.palautaIka());
+        System.out.println("Antin ikä: " + antti.palautaIka());
+
+        int yht = pekka.palautaIka() + antti.palautaIka();
+
+        System.out.println("Pekka ja Antti yhteensä " + yht + " vuotta");
+    }
+}
+</pre>
+
+  <p>Ohjelman tulostus on seuraava:</p>
+
+<pre>
+Pekan ikä 2
+Antin ikä 1
+
+Pekka ja Antti yhteensä 3 vuotta
+</pre>
+
+<div class="tehtavat">
+  <div class="tehtava">
+
+    <h3>Kertoja</h3>
+
+    <p>Luo luokka <code>Kertoja</code> jolla on:</p>
+
+    <ul>
+      <li>Konstruktori <code>public Kertoja(int luku)</code>.</li>
+      <li>Metodi <code>public int kerro(int toinenLuku)</code> joka palauttaa sille annetun luvun <code>toinenLuku</code> kerrottuna konstruktorille annetulla luvulla <code>luku</code>.</li>
+    </ul>
+
+    <p>Esimerkki luokan käytöstä:</p>
+
+<pre class="sh_java">
+Kertoja kolmellaKertoja = new Kertoja(3);
+
+System.out.println("kolmellaKertoja.kerro(2): " + kolmellaKertoja.kerro(2));
+
+Kertoja neljallaKertoja = new Kertoja(4);
+
+System.out.println("neljallaKertoja.kerro(2): " + neljallaKertoja.kerro(2));
+System.out.println("kolmellaKertoja.kerro(1): " + kolmellaKertoja.kerro(1));
+System.out.println("neljallaKertoja.kerro(1): " + neljallaKertoja.kerro(1));
+</pre>
+
+    <p>Tulostus</p>
+
+<pre>
+kolmellaKertoja.kerro(2): 6
+neljallaKertoja.kerro(2): 8
+kolmellaKertoja.kerro(1): 3
+neljallaKertoja.kerro(1): 4
+</pre>
+
   </div>
 </div>
+
   <h3>Henkilo-luokka laajenee</h3>
+
   <p>Jatketaan taas <code>Henkilo</code>-luokan laajentamista. Luokan tämänhetkinen versio on seuraava:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Henkilo {
     private String nimi;
     private int ika;
@@ -8701,8 +8934,10 @@ public class Henkilo {
     }
 }
 </pre>
+
   <p>Tehdään henkilölle metodi, jonka avulla voidaan selvittää onko henkilö täysi-ikäinen. Metodi palauttaa totuusarvon -- joko <code>true</code> tai <code>false</code>:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Henkilo {
   // ...
 
@@ -8723,8 +8958,10 @@ public class Henkilo {
     */
 }
 </pre>
+
   <p>Ja testataan:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka");
     Henkilo antti = new Henkilo("Antti");
@@ -8756,12 +8993,15 @@ public static void main(String[] args) {
     }
 }
 </pre>
-  <pre>
+
+<pre>
 alaikäinen: Antti, ikä 1 vuotta
 täysi-ikäinen: Pekka, ikä 30 vuotta
 </pre>
+
   <p>Viritellään ratkaisua vielä hiukan. Nyt henkilön pystyy "tulostamaan" ainoastaan siten, että nimen lisäksi tulostuu ikä. On tilanteita, joissa haluamme tietoon pelkän olion nimen. Eli tehdään tarkoitusta varten oma metodi:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Henkilo {
     // ...
 
@@ -8770,9 +9010,12 @@ public class Henkilo {
     }
 }
 </pre>
+
   <p>Metodi <code>getNimi</code> palauttaa oliomuuttujan <code>nimi</code> kutsujalle. Metodin nimi on hieman erikoinen. Javassa on usein tapana nimetä oliomuuttujan palauttava metodi juuri näin, eli <code>getMuuttujanNimi</code>. Tälläisiä metodeja kutsutaan usein "gettereiksi".</p>
+
   <p>Muotoillaan pääohjelma käyttämään uutta "getteri"-metodia:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka");
     Henkilo antti = new Henkilo("Antti");
@@ -8800,15 +9043,19 @@ public static void main(String[] args) {
     }
 }
 </pre>
+
   <p>Tulostus alkaa olla jo aika siisti:</p>
-  <pre>
+
+<pre>
 Antti on alaikäinen
 Pekka on täysi-ikäinen
 </pre>
 
-  <h3>toString</h3>
+  <h3>Olion merkkijonoesitys ja toString-metodi</h3>
+
   <p>Olemme syyllistyneet edellä osittain huonoon ohjelmointityyliin tekemällä metodin jonka avulla olio tulostetaan, eli metodin <code>tulostaHenkilo</code>. Suositeltavampi tapa on määritellä oliolle metodi jonka palauttaa olion "merkkijonoesityksen". Merkkijonoesityksen palauttavan metodin nimi on Javassa aina <code>toString</code>. Määritellään seuraavassa henkilölle tämä metodi:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Henkilo {
     // ...
 
@@ -8817,9 +9064,12 @@ public class Henkilo {
     }
 }
 </pre>
+
   <p>Metodi <code>toString</code> toimii kuten <code>tulostaHenkilo</code>, mutta se ei itse tulosta mitään vaan palauttaa merkkijonoesityksen, jotta metodin kutsuja voi halutessaan suorittaa tulostamisen.</p>
+
   <p>Metodia käytetään hieman yllättävällä tavalla:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka");
     Henkilo antti = new Henkilo("Antti");
@@ -8836,17 +9086,25 @@ public static void main(String[] args) {
     System.out.println(pekka); // sama kun System.out.println(pekka.toString());
 }
 </pre>
+
   <p>Periaatteena on, että <code>System.out.println</code>-metodi pyytää olion merkkijonoesityksen ja tulostaa sen. Merkkijonoesityksen palauttavan <code>toString</code>-metodin kutsua ei tarvitse kirjoittaa itse, sillä Java lisää sen automaattisesti. Ohjelmoijan kirjoittaessa:</p>
+
 <pre class="sh_java">
 System.out.println(antti);
 </pre>
+
   <p>Java täydentää suorituksen aikana kutsun muotoon:</p>
+
 <pre class="sh_java">
 System.out.println(antti.toString());
 </pre>
+
   <p>Käy niin, että oliolta pyydetään sen merkkijonoesitys. Olion palauttama merkkijonoesitys tulostetaan normaaliin tapaan <code>System.out.println</code>-komennolla. </p>
+
   <p><b>Voimme nyt poistaa turhaksi käyneen <code>tulostaOlio</code>-metodin.</b></p>
+
   <p>Olioscreencastin toinen osa: </p>
+
   <a href="http://www.youtube.com/watch?feature=player_embedded&v=d-56AxspStE" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
 
   <!--
@@ -8855,17 +9113,26 @@ System.out.println(antti.toString());
 
   <div class="tehtavat">
     <div class="tehtava">
-    <h3>Maksukortti</h3>
-    <p>Helsingin Yliopiston opiskelijaruokaloissa eli Unicafeissa opiskelijat maksavat lounaansa käyttäen maksukorttia.</p>
-    <p>Tässä tehtäväsäsarjassa tehdään luokka <code>Maksukortti</code>, jonka tarkoituksena on jäljitellä Unicafeissa tapahtuvaa maksutoimintaa.</p>
 
+    <h3>Maksukortti</h3>
+    
+    <p>Helsingin Yliopiston opiskelijaruokaloissa eli Unicafeissa opiskelijat maksavat lounaansa käyttäen maksukorttia.</p>
+    
+    <p>Tässä tehtäväsäsarjassa tehdään luokka <code>Maksukortti</code>, jonka tarkoituksena on jäljitellä Unicafeissa tapahtuvaa maksutoimintaa.</p>
+    
     <h4 class="req">Luokan runko</h4>
+    
     <p>Projektiin tulee kuulumaan kaksi kooditiedostoa:</p>
+    
     <p>Tehtäväpohjan eli projektin <em>Viikko4_077.Maksukortti</em> mukana tulee kooditiedosto <code>Paaohjelma</code> jonka sisällä on <code>main</code>-metodi.</p>
+    
     <p>Lisää projektiin uusi luokka nimeltä <code>Maksukortti</code>. Uuden luokan saa lisättyä seuraavasti: Ruudun vasemmalla reunalla on projektilistaus. Paina projektin nimen <em>Viikko4_077.Maksukortti</em> kohdalla hiiren oikeaa nappia. Valitse avautuvasta valikosta <em>New</em> ja <em>Java Class</em>. Anna luokan nimeksi (Class Name) <code>Maksukortti</code>. </p>
+    
     <p>Tee ensin <code>Maksukortti</code>-olion konstruktori, jolle annetaan kortin alkusaldo ja joka tallentaa sen olion sisäiseen muuttujaan. Tee sitten <code>toString</code>-metodi, joka palauttaa kortin saldon muodossa "Kortilla on rahaa X euroa".</p>
+    
     <p>Seuraavassa on luokan <code>Maksukortti</code> runko:</p>
-    <pre class="sh_java">
+    
+<pre class="sh_java">
 public class Maksukortti {
     private double saldo;
 
@@ -8878,8 +9145,10 @@ public class Maksukortti {
     }
 }
 </pre>
+
     <p>Seuraava pääohjelma testaa luokkaa:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
         Maksukortti kortti = new Maksukortti(50);
@@ -8887,13 +9156,18 @@ public class Paaohjelma {
     }
 }
 </pre>
+
     <p>Ohjelman tulisi tuottaa seuraava tulostus:</p>
-    <pre>
+
+<pre>
 Kortilla on rahaa 50.0 euroa
 </pre>
+
     <h4 class="req">Kortilla maksaminen</h4>
+
     <p>Täydennä <code>Maksukortti</code>-luokkaa seuraavilla metodeilla:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public void syoEdullisesti() {
     // kirjoita koodia tähän
 }
@@ -8902,9 +9176,12 @@ public void syoMaukkaasti() {
       // kirjoita koodia tähän
 }
 </pre>
+
     <p>Metodin <code>syoEdullisesti</code> tulisi vähentää kortin saldoa 2.50 eurolla ja metodin <code>syoMaukkaasti</code> tulisi vähentää kortin saldoa 4.30 eurolla.</p>
+
     <p>Seuraava pääohjelma testaa luokkaa:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
         Maksukortti kortti = new Maksukortti(50);
@@ -8919,16 +9196,22 @@ public class Paaohjelma {
     }
 }
 </pre>
+
     <p>Ohjelman tulisi tuottaa kutakuinkin seuraava tulostus:</p>
-    <pre>
+
+<pre>
 Kortilla on rahaa 50.0 euroa
 Kortilla on rahaa 47.5 euroa
 Kortilla on rahaa 40.7 euroa
 </pre>
+
     <h4 class="req">Ei-negatiivinen saldo</h4>
+
     <p>Mitä tapahtuu, jos kortilta loppuu raha kesken? Ei ole järkevää, että saldo muuttuu negatiiviseksi. Muuta metodeita <code>syoEdullisesti</code> ja <code>syoMaukkaasti</code> niin, että ne eivät vähennä saldoa, jos saldo menisi negatiiviseksi.</p>
+
     <p>Seuraava pääohjelma testaa luokkaa:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
         Maksukortti kortti = new Maksukortti(5);
@@ -8942,23 +9225,32 @@ public class Paaohjelma {
     }
 }
 </pre>
+
     <p>Ohjelman tulisi tuottaa seuraava tulostus:</p>
+
 <pre>
 Kortilla on rahaa 5.0 euroa
 Kortilla on rahaa 0.7 euroa
 Kortilla on rahaa 0.7 euroa
 </pre>
+
     <p>Yllä toinen metodin <code>syoMaukkaasti</code> kutsu ei vaikuttanut saldoon, koska saldo olisi mennyt negatiiviseksi.</p>
+
     <h4 class="req">Kortin lataaminen</h4>
+
     <p>Lisää <code>Maksukortti</code>-luokkaan seuraava metodi:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public void lataaRahaa(double rahamaara) {
     // kirjoita koodia tähän
 }
 </pre>
+
     <p>Metodin tarkoituksena on kasvattaa kortin saldoa parametrina annetulla rahamäärällä. Kuitenkin kortin saldo saa olla korkeintaan 150 euroa, joten jos ladattava rahamäärä ylittäisi sen, saldoksi tulisi tulla silti tasan 150 euroa.</p>
+
     <p>Seuraava pääohjelma testaa luokkaa:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
         Maksukortti kortti = new Maksukortti(10);
@@ -8975,17 +9267,23 @@ public class Paaohjelma {
     }
 }
 </pre>
+
     <p>Ohjelman tulisi tuottaa seuraava tulostus:</p>
+
 <pre>
 Kortilla on rahaa 10.0 euroa
 Kortilla on rahaa 25.0 euroa
 Kortilla on rahaa 35.0 euroa
 Kortilla on rahaa 150.0 euroa
 </pre>
+
     <h4 class="req">Kortin lataus negatiivisella arvolla</h4>
+
     <p>Muuta metodia <code>lataaRahaa</code> vielä siten, että jos yritetään ladata negatiivinen rahamäärä, ei kortilla oleva arvo muutu.</p>
+
     <p>Seuraava pääohjelma testaa luokkaa:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
         Maksukortti kortti = new Maksukortti(10);
@@ -8995,13 +9293,18 @@ public class Paaohjelma {
     }
 }
 </pre>
+
     <p>Ohjelman tulisi tuottaa seuraava tulostus:</p>
+
 <pre>
 Pekka: Kortilla on rahaa 10.0 euroa
 Pekka: Kortilla on rahaa 10.0 euroa
 </pre>
+
     <h4 class="req">Monta korttia</h4>
+
     <p>Tee pääohjelma, joka sisältää seuraavan tapahtumasarjan:</p>
+
     <ul>
       <li> Luo Pekan kortti. Kortin alkusaldo on 20 euroa</li>
       <li> Luo Matin kortti. Kortin alkusaldo on 30 euroa</li>
@@ -9016,8 +9319,10 @@ Pekka: Kortilla on rahaa 10.0 euroa
       <li> Matti lataa rahaa 50 euroa</li>
       <li> Korttien arvot tulostetaan (molemmat omalle rivilleen, rivin alkuun kortin omistajan nimi)</li>
     </ul>
+
     <p>Pääohjelman runko on seuraava:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
         Maksukortti pekanKortti = new Maksukortti(20);
@@ -9027,7 +9332,9 @@ public class Main {
     }
 }
 </pre>
+
     <p>Ohjelman tulisi tuottaa seuraava tulostus:</p>
+
 <pre>
 Pekka: Kortilla on rahaa 15.7 euroa
 Matti: Kortilla on rahaa 27.5 euroa
@@ -9038,12 +9345,15 @@ Matti: Kortilla on rahaa 73.2 euroa
 </pre>
 
     <p><em>Saatat huomata, että osassa luvuista ilmenee pyöristysvirheitä. Esimerkiksi pekan saldo 30.7 saattaa tulostua muodossa <code>30.700000000000003</code>. Tämä liittyy siihen, että liukuluvut kuten <code>double</code> tallennetaan oikeasti binäärimuodossa, eli nollina ja ykkösinä vain rajattua määrää lukuja käyttäen. Koska liukulukuja on ääretön määrä (keksitkö miksi? kuinka monta liuku- tai desimaalilukua mahtuu vaikkapa lukujen 5 ja 6 väliin?), ei kaikkia voi esittää rajatulla määrällä nollia ja ykkösiä, ja tietokone joutuu rajoittamaan tallennustarkkuutta.</em></p>
+
   </div>
 </div>
 
   <h3>Lisää metodeja</h3>
+
   <p>Jatketaan taas <code>Henkilo</code>-luokan parissa. Päätetään että haluamme laskea henkilöiden painoindeksejä. Tätä varten teemme henkilölle metodit pituuden ja painon asettamista varten, sekä metodin joka laskee painoindeksin. Henkilön uudet ja muuttuneet osat seuraavassa:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Henkilo {
     private String nimi;
     private int ika;
@@ -9073,8 +9383,10 @@ public class Henkilo {
     // ...
 }
 </pre>
+
   <p>Eli henkilölle lisättiin oliomuuttujat <code>pituus</code> ja <code>paino</code>. Näille voi asettaa arvon metodeilla <code>setPituus</code> ja <code>setPaino</code>. Jälleen käytössä Javaan vakiintunut nimeämiskäytäntö, eli jos metodin tehtävänä on ainoastaan asettaa arvo oliomuuttujaan, on metodi tapana nimetä <code>setMuuttujanNimi</code>:ksi. Arvon asettavia metodeja kutsutaan usein "settereiksi". Seuraavassa käytämme uusia metodeja:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public static void main(String[] args) {
     Henkilo matti = new Henkilo("Matti");
     Henkilo juhana = new Henkilo("Juhana");
@@ -9089,62 +9401,93 @@ public static void main(String[] args) {
     System.out.println(juhana.getNimi() + ", painoindeksisi on " + juhana.painoIndeksi());
 }
 </pre>
+
 <p>Tulostus:</p>
+
 <pre>
 Matti, painoindeksisi on 26.54320987654321
 Juhana, painoindeksisi on 20.897959183673468
 </pre>
+
   <h3>Parametrilla ja oliomuuttujalla sama nimi!</h3>
+
   <p>Edellä metodissa <code>setPituus</code> asetetaan oliomuuttujaan <code>pituus</code> parametrin <code>uusiPituus</code> arvo:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public void setPituus(int uusiPituus) {
     this.pituus = uusiPituus;
 }
 </pre>
+
   <p>Parametrin nimi voisi olla myös sama kuin oliomuuttujan nimi, eli seuraava toimisi myös:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public void setPituus(int pituus) {
     this.pituus = pituus;
 }
 </pre>
+
   <p>Nyt metodissa <code>pituus</code> tarkottaa nimenomaan <em>pituus</em>-nimistä parametria ja <code>this.pituus</code> saman nimistä oliomuuttujaa. Esim. seuraava ei toimisi sillä koodi ei viittaa ollenkaan oliomuuttujaan <em>pituus</em> -- koodi käytännössä asettaa parametrina saadulle <code>pituus</code>-muuttujalle siinä jo olevan arvon:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public void setPituus(int pituus) {
     // ÄLÄ TEE NÄIN!!!
     pituus = pituus;
 }
 </pre>
+
+<pre class="sh_java">
+public void setPituus(int pituus) {
+    // VAAN NÄIN!!!
+    this.pituus = pituus;
+}
+</pre>
+
+
   <h3>Liukuluvun "siisti" tulostaminen</h3>
+
   <p>Desimaalien määrä edellisessä tulostuksessa on hieman liioiteltu. Yksi tapa päästä määräämään tulostettavien desimaalien määrä on seuraava:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 System.out.println(matti.getNimi() + ", painoindeksisi on " + String.format("%.2f", matti.painoIndeksi()));
 System.out.println(juhana.getNimi() + ", painoindeksisi on " + String.format("%.2f", juhana.painoIndeksi()));
 </pre>
+
   <p>Eli jos <code>luku</code> on liukuluku, voi siitä tehdä komennolla <code>String.format("%.2f", luku)</code> merkkijonon, jossa luku on otettu mukaan kahden desimaalin tarkkuudella. Pisteen ja f:n välissä oleva numero säätää mukaan tulevan desimaalien määrän. </p>
+
   <p>Nyt tulostus on siistimpi:</p>
+
 <pre>
 Matti, painoindeksisi on 26,54
 Juhana, painoindeksisi on 20,90
 </pre>
+
   <p><code>String.format</code> ei ehkä ole kaikkein monikäyttöisin tapa Javassa tulostuksen muotoiluun. Se kuitenkin lienee yksinkertaisin ja kelpaa meille hyvin nyt.</p>
+
   <div class="tehtavat">
     <div class="tehtava">
+
     <h3>Kello laskurin avulla</h3>
+
     <p>Tässä tehtävässä tehdään luokka <code>YlhaaltaRajoitettuLaskuri</code> ja sovelletaan sitä kellon tekemiseen.</p>
+
     <h4 class="req">Rajoitettu laskuri</h4>
+
     <p>Tehdään luokka <code>YlhaaltaRajoitettuLaskuri</code>. Luokan olioilla on seuraava toiminnallisuus:</p>
+
     <ul>
-      <li> Laskurilla on oliomuuttuja, joka muistaa laskurin arvon.
-        Laskurin arvo on luku väliltä 0...yläraja.</li>
-      <li> Aluksi laskurin arvo on 0.</li>
-      <li> Olion konstruktori määrittää laskurin ylärajan.</li>
-      <li> Metodi <code>seuraava</code> kasvattaa laskurin arvoa.
-        Mutta jos laskurin arvo ylittää ylärajan, sen arvoksi tulee 0.</li>
+      <li>Laskurilla on oliomuuttuja, joka muistaa laskurin arvon. Laskurin arvo on luku väliltä 0...yläraja.</li>
+      <li>Aluksi laskurin arvo on 0.</li>
+      <li>Olion konstruktori määrittää laskurin ylärajan.</li>
+      <li>Metodi <code>seuraava</code> kasvattaa laskurin arvoa. Mutta jos laskurin arvo ylittää ylärajan, sen arvoksi tulee 0.</li>
       <li> Metodi <code>toString</code> palauttaa laskurin arvon merkkijonona.</li>
     </ul>
+
     <p>Tehtäväpohjassa on valmiina pääohjelmaa varten tiedosto <code>Paaohjelma</code>. Aloita tekemällä luokka <code>YlhaaltaRajoitettuLaskuri</code> vastaavasti kuin Maksukortti-tehtävässä. Näin tehdään myös tulevissa tehtäväsarjoissa.</p>
+
     <p>Luokan rungoksi tulee seuraava:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class YlhaaltaRajoitettuLaskuri {
     private int arvo;
     private int ylaraja;
@@ -9162,9 +9505,12 @@ public class YlhaaltaRajoitettuLaskuri {
     }
 }
 </pre>
+
     <p><b>Vihje</b>: et voi palauttaa toStringissä suoraan kokonaislukutyyppisen oliomuuttujan <code>laskuri</code> arvoa. Kokonaislukumuuttujasta <code>arvo</code> saa merkkijonomuodon esim. lisäämällä sen eteen tyhjän merkkijonon eli kirjoittamalla <code>"" + arvo</code>.</p>
+
     <p>Seuraavassa on pääohjelma, joka käyttää laskuria:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
         YlhaaltaRajoitettuLaskuri laskuri = new YlhaaltaRajoitettuLaskuri(4);
@@ -9179,9 +9525,12 @@ public class Paaohjelma {
     }
 }
 </pre>
+
     <p>Laskurille asetetaan konstruktorissa ylärajaksi 4, joten laskurin arvo on luku 0:n ja 4:n väliltä. Huomaa, miten metodi <code>seuraava</code> vie laskurin arvoa eteenpäin, kunnes se pyörähtää 4:n jälkeen 0:aan:</p>
+
     <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
-    <pre>
+
+<pre>
 arvo alussa: 0
 arvo: 1
 arvo: 2
@@ -9194,10 +9543,14 @@ arvo: 3
 arvo: 4
 arvo: 0
 </pre>
+
     <h4 class="req">Etunolla tulostukseen</h4>
+
     <p>Tee <code>toString</code>-metodista sellainen, että se lisää arvon merkkijonoesitykseen etunollan, jos laskurin arvo on vähemmän kuin 10. Eli jos laskurin arvo on esim. 3, palautetaan merkkijono "03", jos arvo taas on esim. 12, palautetaan normaaliin tapaan merkkijono "12".</p>
+
     <p>Muuta pääohjelma seuraavaan muotoon ja varmista, että tulos on haluttu.</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
         YlhaaltaRajoitettuLaskuri laskuri = new YlhaaltaRajoitettuLaskuri(14);
@@ -9212,6 +9565,7 @@ public class Paaohjelma {
     }
 }
 </pre>
+
 <pre>
 arvo alussa: 00
 arvo: 01
@@ -9231,16 +9585,22 @@ arvo: 14
 arvo: 00
 arvo: 01
 </pre>
+
     <h4 class="req">Kello, ensimmäinen versio</h4>
+
     <p>Käyttämällä kahta laskuria voimme muodostaa kellon. Tuntimäärä on laskuri, jonka yläraja on 23, ja minuuttimäärä on laskuri jonka yläraja on 59. Kuten kaikki tietävät, kello toimii siten, että aina kun minuuttimäärä pyörähtää nollaan, tuntimäärä kasvaa yhdellä. </p>
+
     <p>Tee ensin laskurille metodi <code>arvo</code>, joka palauttaa laskurin arvon:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public int arvo() {
     // kirjoita koodia tähän
 }
 </pre>
+
     <p>Tee sitten kello täydentämällä seuraava pääohjelmarunko (kopioi tämä pääohjelmaksesi sekä täydennä tarvittavilta osin kommenttien ohjaamalla tavalla):</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
         YlhaaltaRajoitettuLaskuri minuutit = new YlhaaltaRajoitettuLaskuri(59);
@@ -9257,7 +9617,9 @@ public class Paaohjelma {
     }
 }
 </pre>
+
     <p>Jos kellosi toimii oikein, sen tulostus näyttää suunnilleen seuraavalta:</p>
+
 <pre>
 00:00
 00:01
@@ -9270,13 +9632,18 @@ public class Paaohjelma {
 01:59
 02:00
 </pre>
+
     <h4>Kello, toinen versio</h4>
+
     <p>Laajenna kelloasi myös sekuntiviisarilla. Tee lisäksi luokalle <code>YlhaaltaRajoitettuLaskuri</code> metodi <code>asetaArvo</code>, jolla laskurille pystyy asettamaan halutun arvon -- jos et ole ihan varma mitä tässä pitäisi tehdä, kertaa materiaalista kohta missä puhutaan "settereistä".</p>
 
     <p>Jos laskurille yritetään asettaa kelvoton arvo eli negatiivinen luku tai ylärajaa suurempi luku, ei laskurin arvo muutu.</p>
+
     <p>Tämän metodin avulla voit muuttaa kellon ajan heti ohjelman alussa haluamaksesi.</p>
+
     <p>Voit testata kellon toimintaa seuraavalla ohjelmalla</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 import java.util.Scanner;
 
 public class Paaohjelma {
@@ -9306,11 +9673,16 @@ public class Paaohjelma {
     }
 }
 </pre>
+
     <p>Kokeile laittaa kellosi alkamaan ajasta <i>23:59:50</i> ja varmista, että vuorokauden vaihteessa kello toimii odotetusti!</p>
+
     <p><strong>Bonus-tehtävä: ikuisesti käyvä kello (tehtävää ei palauteta!)</strong></p>
+
     <p>Ennen kuin alat tekemään tätä tehtävää, palauta jo tekemäsi kello!</p>
+
     <p>Muuta pääohjelmasi seuraavaan muotoon:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) throws Exception {
         YlhaaltaRajoitettuLaskuri sekunnit = new YlhaaltaRajoitettuLaskuri(59);
@@ -9328,33 +9700,49 @@ public class Paaohjelma {
         }
     }
 }
+
 </pre>
     <p>Nyt kello käy ikuisesti ja kasvattaa arvoaan sekunnin välein. Sekunnin odotus tapahtuu komennolla <code>Thread.sleep(1000);</code>, komennon parametri kertoo nukuttavan ajan millisekunteina. Jotta komento toimisi, pitää main:in esittelyriville tehdä pieni lisäys: <code>public static void main(String[] args) <b>throws Exception</b> {</code>, eli tummennettuna oleva <code>throws Exception</code>.</p>
+
     <p>Saat ohjelman lopetettua painamalla NetBeans-konsolin (eli sen osan johon kello tulostaa arvonsa) vasemmalla laidalla olevasta punaisesta laatikosta.</p>
+
   </div>
 </div>
 
-    <div class="self-explanation" data-key="q-olioTermistoa"></div>
+  <div class="self-explanation" data-key="q-olioTermistoa"></div>
 
-  <p><big><b>Tärkeitä kommentteja liittyen olioiden käyttöön. Lue nämä ehdottomasti.</b></big></p>
+  <h3>Mistä olio-ohjelmoinnissa oikein on kyse?</h3>
+
+  <p>Huom! Tässä on tärkeitä kommentteja liittyen olioiden käyttöön. Lue nämä ehdottomasti.</p>
+
   <p>Olio-ohjelmoinnissa on kyse pitkälti käsitteiden eristämisestä omiksi kokonaisuuksikseen tai toisin ajatellen abstraktioiden muodostamisesta. Voisi ajatella, että on turha luoda oliota jonka sisällä on ainoastaan luku, eli että saman voisi tehdä suoraan <code>int</code>-muuttujilla. Asia ei kuitenkaan ole näin. Jos kello koostuu pelkästään kolmesta int-muuttujasta joita kasvatellaan, muuttuu ohjelma lukijan kannalta epäselvemmäksi, koodista on vaikea "nähdä" mistä on kysymys. Aiemmin materiaalissa mainitsimme jo kokeneen ja kuuluisan ohjelmoijan Kent Beckin neuvon <em>"Any fool can write code that a computer can understand.  Good programmers write code that humans can understand"</em>, eli koska viisari on oikeastaan oma selkeä käsitteensä, on siitä ohjelman ymmärrettävyyden parantamiseksi hyvä tehdä oma luokka, eli <code>YlhaaltaRajoitettuLaskuri</code>.</p>
+
   <p>Käsitteen erottaminen omaksi luokaksi on monellakin tapaa hyvä idea. Ensinnäkin tiettyjä yksityiskohtia (esim. laskurin pyörähtäminen) saadaan piilotettua luokan sisään (eli <em>abstrahoitua</em>). Sen sijaan että kirjoitetaan if-lause ja sijoitusoperaatio, riittää, että laskurin käyttäjä kutsuu selkeästi nimettyä metodia <code>seuraava()</code>. Aikaansaatu laskuri sopii kellon lisäksi ehkä muidenkin ohjelmien rakennuspalikaksi, eli selkeästä käsitteestä tehty luokka voi olla monikäyttöinen. Suuri etu saavutetaan myös sillä, että koska laskurin toteutuksen yksityiskohdat eivät näy laskurin käyttäjille, voidaan yksityiskohtia tarvittaessa muuttaa.</p>
+
   <p>Totesimme että kello sisältää kolme viisaria, eli koostuu kolmesta käsitteestä. Oikeastaan kello on itsekin käsite ja teemme ensi viikolla luokan Kello, jotta voimme luoda selkeitä Kello-olioita. Kello tulee siis olemaan olio jonka toiminta perustuu "yksinkertaisimpiin" olioihin eli viisareihin. Tämä on juuri olio-ohjelmoinnin suuri idea: ohjelma rakennetaan pienistä selkeistä yhteistoiminnassa olevista olioista. </p>
+
   <p>Nyt otamme varovaisia ensiaskelia oliomaailmassa. Kurssin lopussa oliot alkavat kuitenkin olla jo selkärangassa ja nyt ehkä käsittämättömältä tuntuva lausahdus, <em>ohjelma rakennetaan pienistä selkeistä yhteistoiminnassa olevista olioista</em> alkaa tuntua meistä ehkä järkeenkäyvältä ja itsestäänselvältä.</p>
+
   <h3>Oman metodin kutsu</h3>
+
   <p>Olio voi kutsua myös omia metodeitaan. Jos esim. halutaan, että toString-metodin palauttama merkkijonoesitys kertoisi myös henkilön painoindeksin, kannattaa <code>toString</code>:istä kutsua olion omaa metodia <code>painoIndeksi</code>:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public String toString() {
     return this.nimi + ", ikä " + this.ika + " vuotta, painoindeksini on " + this.painoIndeksi();
 }
 </pre>
+
   <p>Eli kun olio kutsuu omaa metodiaan, riittää etuliite this ja pelkkä metodin nimi. Vaihtoehtoinen tapa on tehdä oman metodin kutsu muodossa <code>painoIndeksi()</code> jolloin ei korosteta, että kutsutaan "olion itsensä" metodia painoindeksi:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public String toString() {
     return this.nimi + ", ikä " + this.ika + " vuotta, painoindeksini on " + painoIndeksi();
 }
 </pre>
+
   <p>Olioscreencastin kolmas osa:</p>
+
   <a href="http://www.youtube.com/watch?feature=player_embedded&v=YKwzIGuCLn8" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
 
   <!--
@@ -9364,16 +9752,22 @@ public String toString() {
 
   <div class="tehtavat">
     <div class="tehtava">
+
     <h3>Lukutilasto</h3>
+
     <h4 class="req">Lukujen määrä</h4>
+
     <p>Tee luokka <code>Lukutilasto</code> (tiedosto luomaasi luokkaa varten on tehtäväpohjassa valmiina), joka tuntee seuraavat toiminnot :</p>
     <ul>
       <li> metodi <code>lisaaLuku</code> lisää uuden luvun tilastoon
       <li> metodi <code>haeLukujenMaara</code> kertoo lisättyjen lukujen määrän
     </ul>
+
     <p>Luokan ei tarvitse tallentaa mihinkään lisättyjä lukuja, vaan riittää muistaa niiden määrä. Metodin <code>lisaaLuku</code> ei tässä vaiheessa tarvitse edes ottaa huomioon, mikä luku lisätään tilastoon, koska ainoa tallennettava asia on lukujen määrä.</p>
+
     <p>Luokan runko on seuraava:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Lukutilasto {
     private int lukujenMaara;
 
@@ -9390,8 +9784,10 @@ public class Lukutilasto {
     }
 }
 </pre>
+
     <p>Seuraava ohjelma esittelee luokan käyttöä:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
         Lukutilasto tilasto = new Lukutilasto();
@@ -9403,18 +9799,24 @@ public class Paaohjelma {
     }
 }
 </pre>
+
     <p>Ohjelman tulostus on seuraava:</p>
+
 <pre>
 Määrä: 4
 </pre>
+
     <h4 class="req">Summa ja keskiarvo</h4>
+
     <p>Laajenna luokkaa seuraavilla toiminnoilla:</p>
+
     <ul>
       <li> metodi <code>summa</code> kertoo lisättyjen lukujen summan (tyhjän lukutilaston summa on 0)
       <li> metodi <code>keskiarvo</code> kertoo lisättyjen lukujen keskiarvon (tyhjän lukutilaston keskiarvo on 0)
     </ul>
+
     <p>Luokan runko on seuraava:</p>
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Lukutilasto {
     private int lukujenMaara;
     private int summa;
@@ -9440,7 +9842,9 @@ public class Lukutilasto {
     }
 }
 </pre>
+
     <p>Seuraava ohjelma esittelee luokan käyttöä:</p>
+
     <pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
@@ -9455,14 +9859,19 @@ public class Main {
     }
 }
 </pre>
+
     <p>Ohjelman tulostus on seuraava:</p>
+
 <pre>
 Määrä: 4
 Summa: 11
 Keskiarvo: 2.75
 </pre>
+
     <h4 class="req">Summa käyttäjältä</h4>
+
     <p>Tee ohjelma, joka kysyy lukuja käyttäjältä, kunnes käyttäjä antaa luvun -1. Sitten ohjelma ilmoittaa lukujen summan.</p>
+
     <p>Ohjelmassa tulee käyttää <code>Lukutilasto</code>-olioa summan laskemiseen.</p>
 
     <p><strong>HUOM: </strong> älä muuta Lukutilasto-luokaa millään tavalla!</p>
@@ -9476,14 +9885,19 @@ Anna lukuja:
 <font color="red">-1</font>
 Summa: 15
 </pre>
+
     <h4>Monta summaa</h4>
+
     <p>Muuta edellistä ohjelmaa niin, että ohjelma laskee myös parillisten ja parittomien lukujen summaa.</p>
+
     <p><b>HUOM</b>: Määrittele ohjelmassa <i>kolme</i> Lukutilasto-olioa ja laske ensimmäisen avulla kaikkien lukujen summa, toisen avulla parillisten lukujen summa ja kolmannen avulla parittomien lukujen summa.</p>
+
     <p><b>Jotta testi toimisi, on oliot luotava pääohjelmassa edellä mainitussa järjestyksessä (eli ensin kaikkien summan laskeva olio, toisena parillisten summan laskeva ja viimeisenä parittomien summan laskeva olio)!</b></p>
 
     <p><strong>HUOM: </strong> älä muuta Lukutilasto-luokaa millään tavalla!</p>
 
     <p>Ohjelman tulee toimia seuraavasti:</p>
+
 <pre>
 Anna lukuja:
 <font color="red">4</font>
@@ -9495,17 +9909,20 @@ Summa: 13
 Parillisten summa: 8
 Parittomien summa: 5
 </pre>
-</div>
-</div>
 
-<h3>Olioita listalla</h3>
+    </div>
+  </div>
 
-<p>Olemme käyttäneet <code>ArrayList</code>:ejä jo monessa esimerkissä ja tehtävässä. ArrayList-olioon pystyy lisäämään esimerkiksi merkkijonoja ja listalla olevien merkkijonojen läpikäynti, etsiminen, poistaminen, järjestäminen ym. ovat vaivattomia toimenpiteitä.</p>
 
-<p>ArrayList:eihin voidaan laittaa minkä tahansa tyyppisiä oliota. Luodaan seuraavassa henkilölista, eli tyyppiä <code>ArrayList&lt;Henkilo&gt;</code> oleva ArrayList ja laitetaan sinne muutama henkilöolio:</p>
+  <h3>Olioita listalla</h3>
+
+  <p>Olemme käyttäneet <code>ArrayList</code>:ejä jo monessa esimerkissä ja tehtävässä. ArrayList-olioon pystyy lisäämään esimerkiksi merkkijonoja ja listalla olevien merkkijonojen läpikäynti, etsiminen, poistaminen, järjestäminen ym. ovat vaivattomia toimenpiteitä.</p>
+
+  <p>ArrayList:eihin voidaan laittaa minkä tahansa tyyppisiä oliota. Luodaan seuraavassa henkilölista, eli tyyppiä <code>ArrayList&lt;Henkilo&gt;</code> oleva ArrayList ja laitetaan sinne muutama henkilöolio:</p>
+
 <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;Henkilo&gt;();
+    ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
 
     // voidaan ensin ottaa henkilö muuttujaan
     Henkilo juhana = new Henkilo("Juhana");
@@ -9531,7 +9948,9 @@ public static void main(String[] args) {
     }
 }
 </pre>
-<p>Ohjelman tulostus:</p>
+
+  <p>Ohjelman tulostus:</p>
+
 <pre>
 Henkilöt vastasyntyneenä:
 Juhana, ikä 0 vuotta
@@ -9543,11 +9962,11 @@ Matti, ikä 1 vuotta
 Martin, ikä 1 vuotta
 </pre>
 
-<p>Listalla olevat henkilöt ovat samoja henkilöitä kuin ohjelmassa luodut henkilöt. Olion <code>juhana</code> ikä muuttuu myös jos hän vanhenee listan ulkopuolella.</p>
+  <p>Listalla olevat henkilöt ovat samoja henkilöitä kuin ohjelmassa luodut henkilöt. Olion <code>juhana</code> ikä muuttuu myös jos hän vanhenee listan ulkopuolella.</p>
 
 <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;Henkilo&gt;();
+    ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
 
     // voidaan ensin ottaa henkilö muuttujaan
     Henkilo juhana = new Henkilo("Juhana");
@@ -9581,7 +10000,9 @@ public static void main(String[] args) {
     }
 }
 </pre>
-<p>Ohjelman tulostus:</p>
+
+  <p>Ohjelman tulostus:</p>
+
 <pre>
 Henkilöt vastasyntyneenä:
 Juhana, ikä 0 vuotta
@@ -9597,11 +10018,6 @@ Matti, ikä 1 vuotta
 Martin, ikä 1 vuotta
 </pre>
 
-
-
-
-
-
   <div class="tehtavat">
     <div class="tehtava">
 
@@ -9609,9 +10025,10 @@ Martin, ikä 1 vuotta
 
     <p>Huom! Älä huoli jos kaiuttimista kuuluu pientä "napsuvaa" ääntä -- ongelma liittyy äänen taajuuksista toiseen hyppäämiseen (tai käytettävään kirjastoon), jota ei ole vielä tässä versiossa korjattu. Käytetty äänikirjasto ei myöskään toimi kaikilla konekokoonpanoilla -- kirjaston pitäisi kuitenkin ilmaista jos näin on: voit tehdä tehtävän vaikka ääniä ei kuuluisi.</p>
 
-
     <h4 class="req">Aani</h4>
+
     <p>Tee luokka <code>Aani</code>, jolla on <code>double</code>-tyyppinen oliomuuttuja <code>taajuus</code> ja <code>double</code>-tyyppinen oliomuuttuja <code>kesto</code>. Tee luokalle konstruktori, joka saa ensimmäisenä parametrina taajuuden ja toisena parametrina keston. Lisää lisäksi luokalle seuraavat metodit:</p>
+
     <ul>
       <li> metodi <code>getTaajuus</code> palauttaa olioon liittyvän taajuus-muuttujan arvon</li>
       <li> metodi <code>getKesto</code> palauttaa olioon liittyvän kesto-muuttujan arvon</li>
@@ -9619,7 +10036,8 @@ Martin, ikä 1 vuotta
     </ul>
 
     <p>Luokan pitäisi toimia seuraavasti:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 Aani aani = new Aani(261.6, 2);
 System.out.println("Äänen taajuus on " + aani.getTaajuus() + " hertsiä.");
 System.out.println("Äänen kesto on " + aani.getKesto() + " sekuntia.");
@@ -9629,7 +10047,8 @@ System.out.println(aani);
 <pre>
 Äänen taajuus on 261.6 hertsiä.
 Äänen kesto on 2.0 sekuntia.
-261.6Hz (2.0s)</pre>
+261.6Hz (2.0s)
+</pre>
 
     <h4 class="req">Lista ääniä -- vai musiikkiako?</h4>
 
@@ -9638,13 +10057,14 @@ System.out.println(aani);
     <p>Toteuta luokan <code>Paaohjelma</code> <code>main</code>-metodiin toiminnallisuus, millä käyttäjältä kysytään soitettavat sävelet merkkijonona. Kun merkkijono on saatu, luodaan annetuista merkeistä ääni-olioita, joita lisätään listaan. Lopulta, kun lista on valmis, luo ohjelmassa valmiina tulevasta luokasta <code>Soitin</code> olio ja anna lista soitin-olion <code>soita</code>-metodille.</p>
 
 <pre class="sh_java">
-ArrayList&lt;Aani&gt; aanet = new ArrayList&lt;Aani&gt;();
+ArrayList&lt;Aani&gt; aanet = new ArrayList&lt;&gt;();
 
 // luetaan käyttäjältä äänet ja tehdään niistä ääni-olioita, joita
 // lisätään aanet-listalle
 
 Soitin soitin = new Soitin();
-soitin.soita(aanet);</pre>
+soitin.soita(aanet);
+</pre>
 
     <p>Käytä seuraavaa taulukkoa käyttäjän syötteen muunnokseen (muunnokset <a href="http://en.wikipedia.org/wiki/Piano_key_frequencies" target="_blank">Wikipediasta</a>):</p>
 
@@ -9669,7 +10089,6 @@ Soitetaan!</pre>
     <p>Yllä olevalla merkkijonolla soitetaan nuotit CDEFG, pidetään tauko, soitetaan nuotti G, pidetään tauko, ja soitetaan nuotit GFEDC.</p>
 
     <p>Kokeile myös soittaa merkkijono "E E F G G F E D C C D E E D D E E F G G F E D C C D E D C C"!</p>
-
 
     <h4 class="req">Piilotettu viesti</h4>
 
