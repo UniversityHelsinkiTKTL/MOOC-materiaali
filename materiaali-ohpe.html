@@ -7857,6 +7857,7 @@ komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, andywarhol)?
 </div>
 
 
+<!--
 <div class="panel-group" id="2emo">
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2emo" href="#2emo2">
@@ -8016,7 +8017,7 @@ komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, andywarhol)?
     </div>
   </div>
 </div>
-
+-->
 
 
 <!--
@@ -8176,6 +8177,9 @@ komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, andywarhol)?
     </div>
 -->
 
+
+
+
   <h2 id="kertaus">Kertaus</h2>
 
   <p>while-toistolauseen rakenne; portsari</p>
@@ -8191,12 +8195,63 @@ komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, andywarhol)?
 
   <div class="tehtava">
 
-    <h3>TODO: Turtle roy</h3>
+    <h3>Vapaa Robotti</h3>
 
-    <p>piirto, toisto, sopivat piirrot</p>
+    <p>Robotti kadotti silmänsä, ja siitä tuli pallo. Pallo osaa liikkua komennolla <code>Ohjain.liiku(<em>askeltenMaara</em>)</code>, missä muuttujalla <code>askeltenMaara</code> kerrotaan otettavien askelten määrä. Palloa voi kääntää vasemmalle komennolla <code>Ohjain.vasen(<em>asteet</em>)</code>, missä <code>asteet</code> on asteiden määrä (0-360). Vastaava kääntymismetodi löytyy myös oikealle kääntymistä varten.</p>
+
+    
+    <h4>Neliön piirtäminen</h4>
+    
+    <p>Toteuta ohjelmaan metodi <code>public static void piirraNelio(int sivunPituus)</code>, mikä ohjaa robottia piirtämään neliön. Neliön yhden sivun pituuden tulee olla <code>sivunPituus</code>.</p>
+
+    <p>Kun metodi on valmis, kutsun <code>piirraNelio(200)</code> tulee piirtää esimerkiksi seuraavanlainen neliö:</p>
+
+
+    <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/vapaarobotti-nelio.png" /></p>
+
+    <p>Huom! Kuten huomaat, niin viivat neliössä eivät ole täysin suorat. Tämä liittyy robotin ohjaukseen ja desimaalilukuihin, ja on tässä tapauksessa täysin ok.</p>
+    
+    <h4>Kolmion piirtäminen</h4>
+    
+    <p>Toteuta ohjelmaan metodi <code>public static void piirraKolmio(int sivunPituus)</code>, mikä ohjaa robottia piirtämään kolmion. Kolmion yhden sivun pituuden tulee olla <code>sivunPituus</code>.</p>
+
+    <p>Esimerkiksi kutsun <code>piirraKolmio(100)</code> tulee piirtää seuraavanlainen kolmio:</p>
+
+
+    <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/vapaarobotti-kolmio.png" /></p>
+
+
+    <h4>Ympyrän piirtäminen</h4>
+
+    <p>Ympyrässä on 360 astetta. Tämä tarkoittaa esimerkiksi sitä, että robotin tulee tehdä kolmesataakuusikymmentä yhden asteen käännöstä vasemmalle osoittaakseen samaan suuntaan kuin aluksi.</p>
+
+    <p>Aina tämä ei kuitenkaan ole mielekästä. Jos piirrettävä ympyrä on esimerkiksi hyvin pieni, jokaista yksittäistä käännöstä ei tarvitse tehdä. Alla olevassa kuvassa robotti on tehnyt kahdeksantoista käännöstä, ja liikkunut jokaisen käännöksen jälkeen kaksikymmentä askelta.</p> 
+
+    <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/vapaarobotti-kahdeksantoistakulmio.png" /></p>
+
+    <p>Ohjelmakoodina tämä toteutetaan esimerkiksi seuraavasti:</p>
+
+<pre class="sh_java">
+int kaannos = 360 / 18;
+
+for (int i = 0; i &lt; 18; i++) {
+    Ohjain.liiku(20);
+    Ohjain.vasen(kaannos);
+}
+</pre>
+
+
+    <p>Tässä osassa tehtävänäsi on toteuttaa ohjelmaan metodi <code>public static void piirraYmpyra(int sivunPituus, int kulmia)</code>, joka piirtää ympyrän parametrina annettujen arvojen perusteella.</p>
+
+    <p>Kutsun <code>piirraYmpyra(100, 6)</code> tulee muodostaa seuraavanlainen kuvio:</p>
+
+    <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/vapaarobotti-kuusikulmio.png" /></p>
+
+    <p>Kutsun <code>piirraYmpyra(20, 18)</code> tulee muodostaa seuraavanlainen kuvio:</p>
+
+    <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/vapaarobotti-kahdeksantoistakulmio.png" /></p>
 
   </div>
-
 </div>
 
 
@@ -8206,9 +8261,93 @@ komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, andywarhol)?
 
   <div class="tehtava">
 
-    <h3>TODO: Tehtava, missä käytetään arraylistiä</h3>
+    <h3>Vieraslista</h3>
 
-    <p>piirto, toisto, sopivat piirrot</p>
+    <p>Toteutetaan ohjelma, minkä avulla voidaan ensin syöttää nimiä vieraslistaan, minkä jälkeen tarkastellaan onko osallistujat vieraslistalla. Ohjelman toiminta kokonaisuudessaan on seuraavanlainen:</p>
+
+<pre>
+Syötä nimiä vieraslistalle, tyhjä rivi lopettaa.
+<font color="red">Jack Bauer</font>
+<font color="red">Jack Bower</font>
+<font color="red">Jack Baur</font>
+<font color="red">Jack Bowr</font>
+
+
+Syötä nimiä, tyhjä rivi lopettaa.
+<font color="red">Chuck Norris</font>
+Nimi ei ole listalla.
+<font color="red">Jack Baluer</font>
+Nimi ei ole listalla.
+<font color="red">Jack Bauer</font>
+Nimi on listalla.
+<font color="red">Jack Bower</font>
+Nimi on listalla.
+
+Kiitos!
+</pre>
+
+    <p>Tehdään ohjelma osissa samalla metodien käyttöä muistellen.</p>
+
+    <h4>Nimien lukeminen</h4>
+
+    <p>Toteuta metodi <code>public static void lueNimet(Scanner lukija, ArrayList&lt;String&gt; lista)</code>, joka käyttää parametrina saatavaa lukijaa nimien lukemiseen listalle.</p>
+
+    <p>Kun metodia kutsutaan pääohjelmasta, tulee tulostuksen olla esimerkiksi seuraavanlainen.</p>
+
+<pre>
+Syötä nimiä vieraslistalle, tyhjä rivi lopettaa.
+<font color="red">Jack Bauer</font>
+<font color="red">Jack Bower</font>
+
+</pre>
+
+    <p>Esimerkki kutsusta:</p>
+
+<pre class="sh_java">
+public static void main(String[] args) {
+    Scanner lukija = new Scanner(System.in);
+    ArrayList&lt;String&gt; lista = new ArrayList<>();
+
+    lueNimet(lukija, lista);
+}
+
+// metodi ja sen toteutus
+</pre>
+
+    <h4>Onko nimi listalla</h4>
+
+    <p>Toteuta metodi <code>public static boolean nimiListalla(ArrayList&lt;String&gt; lista, String nimi)</code>, joka tarkistaa onko parametrina annettu nimi parametrina annetulla listalla. Jos nimi löytyy, metodin tulee palauttaa <code>true</code>, muuten <code>false</code>.</p>
+
+    <h4>Tarkista nimiä</h4>
+
+
+    <p>Toteuta metodi <code>public static void tarkistaNimet(Scanner lukija, ArrayList&lt;String&gt; lista)</code>, joka käyttää parametrina saatavaa lukijaa nimien lukemiseen listalle. Kun käyttäjä syöttää tyhjän merkkijonon (eli painaa vain enteriä), nimien tarkastus lopetetaan ja metodista poistutaan.</p>
+
+    <p>Kun parametrina annetulla listalla on nimi <em>Coolness</em>, metodin kutsu toimii esimerkiksi seuraavasti:</p>
+
+<pre>
+Syötä nimiä, tyhjä rivi lopettaa.
+<font color="red">Chuck Norris</font>
+Nimi ei ole listalla.
+<font color="red">Jack Bauer</font>
+Nimi ei ole listalla.
+<font color="red">Coolness</font>
+Nimi on listalla.
+
+</pre>
+
+
+    <p>Kun olet toteuttanut kaikki metodit, kokeile ohjelman toimintaa siten, että <code>main</code>-metodisi sisältää seuraavat rivit:</p>
+
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
+
+lueNimet(lukija, lista);
+System.out.println("");
+tarkistaNimet(lukija, lista);
+System.out.println("Kiitos!");
+</pre>
 
   </div>
 
@@ -8535,6 +8674,8 @@ Pekka, ikä 0 vuotta
 Antti, ikä 0 vuotta
 Martin, ikä 0 vuotta
 </pre>
+
+  <div id="parqu-exercise16"></div>
 
   <p>Sama screencastina: </p>
 
@@ -8872,6 +9013,9 @@ Antin ikä 1
 
 Pekka ja Antti yhteensä 3 vuotta
 </pre>
+
+  <div id="parqu-exercise15"></div>
+
 
 <div class="tehtavat">
   <div class="tehtava">
@@ -9409,6 +9553,10 @@ Matti, painoindeksisi on 26.54320987654321
 Juhana, painoindeksisi on 20.897959183673468
 </pre>
 
+  <div id="parqu-exercise17"></div>
+
+  <div id="parqu-exercise18"></div>
+
   <h3>Parametrilla ja oliomuuttujalla sama nimi!</h3>
 
   <p>Edellä metodissa <code>setPituus</code> asetetaan oliomuuttujaan <code>pituus</code> parametrin <code>uusiPituus</code> arvo:</p>
@@ -9708,6 +9856,8 @@ public class Paaohjelma {
 
   </div>
 </div>
+
+  <div id="parqu-exercise19"></div>
 
   <div class="self-explanation" data-key="q-olioTermistoa"></div>
 
