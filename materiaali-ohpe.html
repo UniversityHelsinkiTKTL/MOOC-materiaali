@@ -8179,23 +8179,13 @@ komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, andywarhol)?
 
 
 
-
-  <h2 id="kertaus">Kertaus</h2>
-
-  <p>while-toistolauseen rakenne; portsari</p>
-
-  <p>mitä while:n sisään, mitä sen jälkeen</p>
-
-  <p>continue</p>
-
-  <p>metodit</p>
-
-
 <div class="tehtavat">
 
   <div class="tehtava">
 
     <h3>Vapaa Robotti</h3>
+
+    <p>Huom! Kertaa ennen tämän tehtävän tekemistä edellisten viikkojen materiaaleista toistolause ja metodit.</p>
 
     <p>Robotti kadotti silmänsä, ja siitä tuli pallo. Pallo osaa liikkua komennolla <code>Ohjain.liiku(<em>askeltenMaara</em>)</code>, missä muuttujalla <code>askeltenMaara</code> kerrotaan otettavien askelten määrä. Palloa voi kääntää vasemmalle komennolla <code>Ohjain.vasen(<em>asteet</em>)</code>, missä <code>asteet</code> on asteiden määrä (0-360). Vastaava kääntymismetodi löytyy myös oikealle kääntymistä varten.</p>
 
@@ -8252,16 +8242,12 @@ for (int i = 0; i &lt; 18; i++) {
     <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/vapaarobotti-kahdeksantoistakulmio.png" /></p>
 
   </div>
-</div>
-
-
-  <p>arraylist</p>
-
-<div class="tehtavat">
 
   <div class="tehtava">
 
     <h3>Vieraslista</h3>
+
+    <p>Huom! Kertaa ennen tämän tehtävän tekemistä edellisen viikon materiaalista ArrayList.</p>
 
     <p>Toteutetaan ohjelma, minkä avulla voidaan ensin syöttää nimiä vieraslistaan, minkä jälkeen tarkastellaan onko osallistujat vieraslistalla. Ohjelman toiminta kokonaisuudessaan on seuraavanlainen:</p>
 
@@ -8314,14 +8300,9 @@ public static void main(String[] args) {
 // metodi ja sen toteutus
 </pre>
 
-    <h4>Onko nimi listalla</h4>
+    <h4>Nimien tarkistaminen</h4>
 
-    <p>Toteuta metodi <code>public static boolean nimiListalla(ArrayList&lt;String&gt; lista, String nimi)</code>, joka tarkistaa onko parametrina annettu nimi parametrina annetulla listalla. Jos nimi löytyy, metodin tulee palauttaa <code>true</code>, muuten <code>false</code>.</p>
-
-    <h4>Tarkista nimiä</h4>
-
-
-    <p>Toteuta metodi <code>public static void tarkistaNimet(Scanner lukija, ArrayList&lt;String&gt; lista)</code>, joka käyttää parametrina saatavaa lukijaa nimien lukemiseen listalle. Kun käyttäjä syöttää tyhjän merkkijonon (eli painaa vain enteriä), nimien tarkastus lopetetaan ja metodista poistutaan.</p>
+    <p>Toteuta metodi <code>public static void tarkistaNimet(Scanner lukija, ArrayList&lt;String&gt; lista)</code>, joka käyttää parametrina saatavaa lukijaa käyttäjän syöttämien nimien lukemiseen. Jokaisen luetun nimen kohdalla tarkastetaan onko se listalla. Kun käyttäjä syöttää tyhjän merkkijonon (eli painaa vain enteriä), nimien tarkastus lopetetaan ja metodista poistutaan.</p>
 
     <p>Kun parametrina annetulla listalla on nimi <em>Coolness</em>, metodin kutsu toimii esimerkiksi seuraavasti:</p>
 
@@ -8333,6 +8314,8 @@ Nimi ei ole listalla.
 Nimi ei ole listalla.
 <font color="red">Coolness</font>
 Nimi on listalla.
+<font color="red">Testi</font>
+Nimi ei ole listalla.
 
 </pre>
 
@@ -8574,9 +8557,11 @@ public class Henkilo {
   <div class="tehtavat">
     <div class="tehtava">
       
-      <h3>Luokan luominen ja oliomuuttujien asetus -- TODO</h3>
-      
-      <p>Luo luokka nimelta FOO, ja aseta sille muuttujat BAR</p>
+      <h3>Luokan luominen ja oliomuuttujien asetus</h3>
+
+      <p>Luo tehtäväpohjaan luokka nimeltä <code>Koira</code> ja lisää sille oliomuuttujat <code>private String nimi</code>, <code>private String rotu</code> ja <code>private int ika</code>.</p>
+
+      <p>Luokalla ei vielä oikeastaan tee mitään, mutta tämän askeleen harjoittelusta on hyötyä myöhempää ajatellen.</p>
       
     </div>
   </div>
@@ -8617,9 +8602,12 @@ public class Henkilo {
   <div class="tehtavat">
     <div class="tehtava">
       
-      <h3>Luokan luominen, oliomuuttujien asetus, konstruktorin käyttö -- TODO</h3>
+      <h3>Luokan luominen, oliomuuttujien asetus ja konstruktorin käyttö</h3>
       
-      <p>Luo luokka nimelta FOO, ja aseta sille muuttujat BAR, luo sille konstruktori xxx</p>
+      <p>Luo luokka nimeltä <code>Luokka</code>. Luokalla on oliomuuttujina <code>private String koodi</code>, esimerkiksi "B221", ja <code>private int istumapaikat</code>. Luo tämän jälkeen konstruktori <code>public Luokka(String luokanKoodi, int istumapaikkojenMaara)</code>, minkä avulla oliomuuttujiin asetetaan arvot.</p>
+
+      <p>Tälläkään luokalla ei vielä oikeastaan tee mitään, mutta seuraavassa tehtävässä luokastamme tehdyllä oliolla voi jo tulostella :).</p>
+
       
     </div>
   </div>
