@@ -12488,7 +12488,7 @@ public class PainonvartijaYhdistys {
     public PainonvartijaYhdistys(String nimi, double alinPainoindeksi) {
         this.alinPainoindeksi = alinPainoindeksi;
         this.nimi = nimi;
-        this.jasenet = new ArrayList&lt;Henkilo&gt;();
+        this.jasenet = new ArrayList&lt;&gt;();
     }
 
 //..
@@ -12570,18 +12570,23 @@ Petri
 
 
 <div class="tehtavat">
+
   <div class="tehtava">
-  <h3>Joukkueet ja pelaajat</h3>
-  <h4 class="req"><code>Joukkue</code>-luokka</h4>
-  <p>Tee luokka <code>Joukkue</code>,
-    johon tallennetaan joukkueen nimi (<code>String</code>).
-    Tee luokkaan seuraavat metodit:</p>
-  <ul>
-    <li> konstruktori, jolle annetaan joukkueen nimi</li>
-    <li> <code>haeNimi</code>, joka palauttaa joukkueen nimen</li>
-  </ul>
-  <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
-  <pre class="sh_java">
+
+    <h3>Joukkueet ja pelaajat</h3>
+
+    <h4 class="req"><code>Joukkue</code>-luokka</h4>
+  
+    <p>Tee luokka <code>Joukkue</code>, johon tallennetaan joukkueen nimi (<code>String</code>). Tee luokkaan seuraavat metodit:</p>
+
+    <ul>
+      <li> konstruktori, jolle annetaan joukkueen nimi</li>
+      <li> <code>haeNimi</code>, joka palauttaa joukkueen nimen</li>
+    </ul>
+
+    <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
+
+<pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
         Joukkue tapiiri = new Joukkue("FC Tapiiri");
@@ -12589,18 +12594,24 @@ public class Main {
     }
 }
 </pre>
-  <p>Ohjelman tulostus on seuraava:</p>
-  <pre>
+
+    <p>Ohjelman tulostus on seuraava:</p>
+  
+<pre>
 Joukkue: FC Tapiiri
 </pre>
-  <h4 class="req">Pelaaja</h4>
-  <p>Luo luokka <code>Pelaaja</code>, johon tallennetaan pelaajan nimi ja tehtyjen maalien määrä. Tee luokkaan kaksi konstruktoria: yksi jolle annetaan vain pelaajan nimi, toinen jolle annetaan sekä pelaajan nimi että pelaajan tekemien maalien määrä. Lisää pelaajalle myös metodit:</p>
-  <ul>
-    <li> <code>haeNimi</code>, joka palauttaa pelaajan nimen</li>
-    <li> <code>maalit</code>, joka palauttaa tehtyjen maalien määrän</li>
-    <li> <code>toString</code>, joka palauttaa pelaajan merkkijonoesityksen</li>
-  </ul>
-  <pre class="sh_java">
+
+    <h4 class="req">Pelaaja</h4>
+
+    <p>Luo luokka <code>Pelaaja</code>, johon tallennetaan pelaajan nimi ja tehtyjen maalien määrä. Tee luokkaan kaksi konstruktoria: yksi jolle annetaan vain pelaajan nimi, toinen jolle annetaan sekä pelaajan nimi että pelaajan tekemien maalien määrä. Lisää pelaajalle myös metodit:</p>
+
+    <ul>
+      <li> <code>haeNimi</code>, joka palauttaa pelaajan nimen</li>
+      <li> <code>maalit</code>, joka palauttaa tehtyjen maalien määrän</li>
+      <li> <code>toString</code>, joka palauttaa pelaajan merkkijonoesityksen</li>
+    </ul>
+
+<pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
         Joukkue tapiiri = new Joukkue("FC Tapiiri");
@@ -12614,21 +12625,27 @@ public class Main {
     }
 }
 </pre>
+
 <pre>
 Joukkue: FC Tapiiri
 Pelaaja: Matti, maaleja 0
 Pelaaja: Pekka, maaleja 39
 </pre>
-  <h4 class="req">Pelaajat joukkueisiin</h4>
-  <p>Lisää luokkaan <code>Joukkue</code> seuraavat metodit:</p>
-  <ul>
-    <li> <code>lisaaPelaaja</code>, joka lisää pelaajan joukkueeseen</li>
-    <li> <code>tulostaPelaajat</code>, joka tulostaa joukkueessa olevat pelaajat</li>
-  </ul>
-  <p>Tallenna joukkueessa olevat pelaajat <code>Joukkue</code>-luokan
-    sisäiseen <code>ArrayList</code>-listaan.</p>
-  <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
-  <pre class="sh_java">
+
+    <h4 class="req">Pelaajat joukkueisiin</h4>
+
+    <p>Lisää luokkaan <code>Joukkue</code> seuraavat metodit:</p>
+
+    <ul>
+      <li> <code>lisaaPelaaja</code>, joka lisää pelaajan joukkueeseen</li>
+      <li> <code>tulostaPelaajat</code>, joka tulostaa joukkueessa olevat pelaajat</li>
+    </ul>
+    
+    <p>Tallenna joukkueessa olevat pelaajat <code>Joukkue</code>-luokan sisäiseen <code>ArrayList</code>-listaan.</p>
+    
+    <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
+
+<pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
         Joukkue tapiiri = new Joukkue("FC Tapiiri");
@@ -12644,22 +12661,31 @@ public class Main {
     }
 }
 </pre>
-  <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
+
+    <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
+
 <pre>
 Matti, maaleja 0
 Pekka, maaleja 39
 Mikael, maaleja 1
 </pre>
-  <h4 class="req">Joukkueen maksimikoko ja nykyinen koko</h4>
-  <p>Lisää luokkaan <code>Joukkue</code> seuraavat metodit:</p>
-  <ul>
-    <li> <code>asetaMaksimikoko(int maksimikoko)</code>, joka asettaa joukkueen maksimikoon (eli maksimimäärän pelaajia)</li>
-    <li> <code>koko</code>, joka palauttaa pelaajien määrän (<code>int</code>)</li>
-  </ul>
-  <p>Joukkueen suurin sallittu pelaajamäärä on oletusarvoisesti 16. Metodin <code>asetaMaksimikoko</code> avulla tätä rajaa voi muuttaa. Muuta metodia <code>lisaaPelaaja</code> niin, että se ei lisää pelaajaa joukkueeseen, jos sallittu pelaajamäärä ylittyisi.</p>
-  <p><strong>HUOM:</strong> muista lisätä oletusarvoinen maksimikoko koodiisi sillä muuten arvoksi tulee 0. Tämä aiheuttaa edellisen kohdan testien hajoamisen, sillä testit luovat oletusmaksimikokoisia joukkueita ja jos joukkueen maksimikoko on 0, ei joukkueeseen voi lisätä yhtään pelaajaa.</p>
-  <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
-  <pre class="sh_java">
+
+    <h4 class="req">Joukkueen maksimikoko ja nykyinen koko</h4>
+
+    <p>Lisää luokkaan <code>Joukkue</code> seuraavat metodit:</p>
+
+    <ul>
+      <li> <code>asetaMaksimikoko(int maksimikoko)</code>, joka asettaa joukkueen maksimikoon (eli maksimimäärän pelaajia)</li>
+      <li> <code>koko</code>, joka palauttaa pelaajien määrän (<code>int</code>)</li>
+    </ul>
+    
+    <p>Joukkueen suurin sallittu pelaajamäärä on oletusarvoisesti 16. Metodin <code>asetaMaksimikoko</code> avulla tätä rajaa voi muuttaa. Muuta metodia <code>lisaaPelaaja</code> niin, että se ei lisää pelaajaa joukkueeseen, jos sallittu pelaajamäärä ylittyisi.</p>
+    
+    <p><strong>HUOM:</strong> muista lisätä oletusarvoinen maksimikoko koodiisi sillä muuten arvoksi tulee 0. Tämä aiheuttaa edellisen kohdan testien hajoamisen, sillä testit luovat oletusmaksimikokoisia joukkueita ja jos joukkueen maksimikoko on 0, ei joukkueeseen voi lisätä yhtään pelaajaa.</p>
+
+    <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
+
+<pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
         Joukkue tapiiri = new Joukkue("FC Tapiiri");
@@ -12675,16 +12701,22 @@ public class Main {
     }
 }
 </pre>
+
 <pre>
 Pelaajia yhteensä: 1
 </pre>
-  <h4 class="req">Joukkueen maalit</h4>
-  <p>Lisää luokkaan <code>Joukkue</code> metodi:</p>
-  <ul>
-    <li> <code>maalit</code>, joka palauttaa joukkueen pelaajien tekemien maalien yhteismäärän.</li>
-  </ul>
-  <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
-  <pre class="sh_java">
+
+    <h4 class="req">Joukkueen maalit</h4>
+
+    <p>Lisää luokkaan <code>Joukkue</code> metodi:</p>
+    
+    <ul>
+      <li> <code>maalit</code>, joka palauttaa joukkueen pelaajien tekemien maalien yhteismäärän.</li>
+    </ul>
+    
+    <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
+
+<pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
         Joukkue tapiiri = new Joukkue("FC Tapiiri");
@@ -12699,14 +12731,42 @@ public class Main {
     }
 }
 </pre>
+
 <pre>
 Maaleja yhteensä: 40
 </pre>
+
+  </div>
+
+
+  <div class="tehtava">
+    <h3>Matkavalokuvat</h3>
+  
+    <p>Matkailijat tykkäävät ottaa valokuvia erilaisista kohteista. Usein kuvissa sattuu kuitenkin olemaan turisti kohteen edessä, jonka takia kuvia otetaan useita. Huonolla tuurilla jokaisessa kuvassa esiintyy samainen turisti, eikä hänestä tunnu oikein pääsevän eroon.</p>
+
+  <p>Alla on kaksi kuvaa eräästä reissusta.</p>
+
+  <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/103-turisti1.png"/></p>
+
+  <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/103-turisti2.png"/></p>
+
+  <p>Tehdään ohjelma, minkä tavoitteena on poistaa turisti kuvasta. Apunamme meillä on kolmannella viikolla tehtävässä <code>Fotari</code> nähdyn apukirjaston toinen versio, joka tarjoaa apuvälineet kuvien lukemiseen ja näyttämiseen.</p>
+ 
+  <p>Fotarin tarjoama toiminnallisuus on seuraavanlainen:</p>
+
+
+  <p>Tämän lisäksi, Kuva-olioilla on seuraavat metodit:</p>
+
+
+  <h4 class="req">Yhdistin ja kuvien lataaminen</h4>
+  <h4 class="req">Ladattujen kuvien yhdistäminen ja vaaleimman värin valinta</h4>
+  <h4 class="req">Tummimman värin valinta</h4>
+  <h4 class="req">Värien mediaani</h4>
+
+</div>
 </div>
 </div>
 
-
-</div>
 </section>
 
 
