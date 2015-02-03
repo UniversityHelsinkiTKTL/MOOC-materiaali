@@ -10531,7 +10531,8 @@ public class Arvontaa {
     <div class="tehtava">
     <h3 class="req">Nopan heittäminen</h3>
     <p> Tehtäväpohjassa on luokka <code>Noppa</code>, jonka runko on seuraava:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 import java.util.Random;
 
 public class Noppa {
@@ -10644,7 +10645,7 @@ public class Ohjelma {
         SaaEnnustaja ennustaja = new SaaEnnustaja();
 
         // käytetään listaa apuvälineenä
-        ArrayList&lt;String&gt; paivat = new ArrayList&lt;String&gt;();
+        ArrayList&lt;String&gt; paivat = new ArrayList&lt;&gt;();
         Collections.addAll(paivat, "Ma", "Ti", "Ke", "To", "Pe", "La", "Su");
 
         System.out.println("Seuraavan viikon sääennuste:");
@@ -10832,9 +10833,9 @@ public class Henkilo {
     }
 
     public double painoindeksi() {
-        double pituusMetreina = this.pituus/100.0;
+        double pituusMetreina = this.pituus / 100.0;
 
-        return this.paino / (pituusMetreina*pituusMetreina);
+        return this.paino / (pituusMetreina * pituusMetreina);
     }
 
     public String toString() {
