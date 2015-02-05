@@ -9259,9 +9259,9 @@ System.out.println(antti.toString());
     
     <p>Projektiin tulee kuulumaan kaksi kooditiedostoa:</p>
     
-    <p>Tehtäväpohjan eli projektin <em>Viikko4_077.Maksukortti</em> mukana tulee kooditiedosto <code>Paaohjelma</code> jonka sisällä on <code>main</code>-metodi.</p>
+    <p>Tehtäväpohjan eli projektin <em>Viikko4_088.Maksukortti</em> mukana tulee kooditiedosto <code>Paaohjelma</code> jonka sisällä on <code>main</code>-metodi.</p>
     
-    <p>Lisää projektiin uusi luokka nimeltä <code>Maksukortti</code>. Uuden luokan saa lisättyä seuraavasti: Ruudun vasemmalla reunalla on projektilistaus. Paina projektin nimen <em>Viikko4_077.Maksukortti</em> kohdalla hiiren oikeaa nappia. Valitse avautuvasta valikosta <em>New</em> ja <em>Java Class</em>. Anna luokan nimeksi (Class Name) <code>Maksukortti</code>. </p>
+    <p>Lisää projektiin uusi luokka nimeltä <code>Maksukortti</code>. Uuden luokan saa lisättyä seuraavasti: Ruudun vasemmalla reunalla on projektilistaus. Paina projektin nimen <em>Viikko4_088.Maksukortti</em> kohdalla hiiren oikeaa nappia. Valitse avautuvasta valikosta <em>New</em> ja <em>Java Class</em>. Anna luokan nimeksi (Class Name) <code>Maksukortti</code>. </p>
     
     <p>Tee ensin <code>Maksukortti</code>-olion konstruktori, jolle annetaan kortin alkusaldo ja joka tallentaa sen olion sisäiseen muuttujaan. Tee sitten <code>toString</code>-metodi, joka palauttaa kortin saldon muodossa "Kortilla on rahaa X euroa".</p>
     
@@ -11757,7 +11757,7 @@ System.out.println(jakomakiKolmio.kalliimpi(kallioKaksio));   // true
 
 <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;Asunto&gt; asunnot = new ArrayList&lt;Asunto&gt;();
+    ArrayList&lt;Asunto&gt; asunnot = new ArrayList&lt;&gt;();
 
     asunnot.add(new Asunto(1, 16, 5500));
     asunnot.add(new Asunto(2, 38, 4200));
@@ -11833,7 +11833,7 @@ Pekka Mikkola (013141590)
   <p>Tee edellisen tilalle uusi pääohjelma, joka kysyy alla olevan esimerkkitulostuksen tyyliin opiskelijoiden tietoja (ensin kysytään nimi ja sen jälkeen opiskelijanumero). Ohjelma luo jokaisesta opiskelijasta uuden olion ja tallentaa sen listaan. Kun käyttäjä antaa nimeksi tyhjän merkkijonon, ohjelma tulostaa listalla olevat opiskelijat.</p>
   <p>Listan määrittelyn tulisi olla seuraava:</p>
   <pre class="sh_java">
-  ArrayList&lt;Opiskelija&gt; lista = new ArrayList&lt;Opiskelija&gt;();
+  ArrayList&lt;Opiskelija&gt; lista = new ArrayList&lt;&gt;();
 </pre>
   <p>Seuraavassa on esimerkki ohjelman suorituksesta:</p>
   <pre>
