@@ -13326,7 +13326,8 @@ public class Kertotaulu {
 }
 </pre>
 
-<p>Nyt kutsu <code>new Kertotaulu().tulosta(5);</code> tulostaa allaolevan kertotaulun.</p>
+    <p>Nyt kutsu <code>new Kertotaulu().tulosta(5);</code> tulostaa allaolevan kertotaulun.</p>
+
 <pre>
 1 2 3 4 5
 2 4 6 8 10
@@ -13490,10 +13491,6 @@ tulostin.kertokolmio(3);
 2 4
 3 6 9
 </pre>
-
-
-
-
   </div>
 
   <div class="tehtava">
@@ -13615,8 +13612,7 @@ p
 </div>
 
 
-<h2>Olioharjoittelua</h2>
-
+    <h2>Olioharjoittelua</h2>
 
     <p>Kertaa edellisen viikon materiaali ennen jatkamista!</p>
 
@@ -13655,7 +13651,8 @@ nauris on listalla
 
     <h4>Kappalemäärä</h4>
 
-<p>Lisää luokalle <code>Ostoslista</code> metodi <code>public int kappalemaara(String tuote)</code>, joka palauttaa listalla olevien tuotteiden lukumäärän haetulle tuotteelle. Metodin tulee toimia seuraavasti.</p>
+
+    <p>Lisää luokalle <code>Ostoslista</code> metodi <code>public int kappalemaara(String tuote)</code>, joka palauttaa listalla olevien tuotteiden lukumäärän haetulle tuotteelle. Metodin tulee toimia seuraavasti.</p>
 
 <pre class="sh_java">
 Ostoslista lista = new Ostoslista();
@@ -13675,7 +13672,7 @@ Tomaatteja: 0 kpl
 
     <h4>Listalta poistaminen</h4>
 
-<p>Lisää luokalle <code>Ostoslista</code> metodi <code>public void poista(String tuote)</code>, joka poistaa <em>yhden</code> kappaleen annettua tuotetta. Metodin tulee toimia seuraavasti.</p>
+    <p>Lisää luokalle <code>Ostoslista</code> metodi <code>public void poista(String tuote)</code>, joka poistaa <em>yhden</code> kappaleen annettua tuotetta. Metodin tulee toimia seuraavasti.</p>
 
 <pre class="sh_java">
 Ostoslista lista = new Ostoslista();
@@ -13766,7 +13763,7 @@ public class PainonvartijaYhdistys {
 }
 </pre>
 
-    <p>Logiikaltaan metodi toimii samaan tapaan kuin suurimman luvun etsiminen taulukosta. Käytössä on apumuuttuja <code>painavinTahanAsti</code> joka laitetaan aluksi viittaamaan listan ensimmäiseen henkilöön. Sen jälkeen käydään lista läpi ja katsotaan tuleeko vastaan suuremman painoindeksin omaavia henkilöitä, jos tulee, niin otetaan viite talteen muuttujaan <code>painavinTahanAsti</code>. Lopuksi palautetaan muuttujan arvo eli <i>viite henkilöolioon</i>.</p>
+    <p>Logiikaltaan edeltävä metodi toimii samaan tapaan kuin suurimman luvun etsiminen taulukosta. Käytössä on apumuuttuja <code>painavinTahanAsti</code> joka laitetaan aluksi viittaamaan listan ensimmäiseen henkilöön. Sen jälkeen käydään lista läpi ja katsotaan tuleeko vastaan suuremman painoindeksin omaavia henkilöitä, jos tulee, niin otetaan viite talteen muuttujaan <code>painavinTahanAsti</code>. Lopuksi palautetaan muuttujan arvo eli <em>viite henkilöolioon</em>.</p>
 
     <p>Tehdään lisäys edelliseen pääohjelmaan. Pääohjelma ottaa vastaan metodin palauttaman viitteen muuttujaan <code>painavin</code>.</p>
 
@@ -13781,13 +13778,17 @@ public static void main(String[] args) {
     System.out.println(" painoindeksi " + String.format("%.2f", painavin.painoIndeksi()));
 }
 </pre>
-<p>Tulostuu:</p>
+
+    <p>Tulostuu:</p>
+
 <pre>
 suurin painoindeksinen jäsen: Petri
 painoindeksi 37,42
 </pre>
 
-<h3>Metodi palauttaa luomansa olion</h3>
+
+    <h3>Metodi palauttaa luomansa olion</h3>
+
 
     <p>Edellisessä esimerkissä metodi palautti yhden painonVartija-olion sisältämistä Henkilo-olioista. On myös mahdollista, että metodi palauttaa kokonaan uuden olion. Seuraavassa yksinkertainen laskuri, jolla on metodi <code>kloonaa</code>, jonka avulla laskurista voidaan tehdä klooni, eli uusi laskurio-olio, jolla on luomishetkellä sama arvo kuin kloonattavalla laskurilla:</p>
 
@@ -13849,7 +13850,24 @@ System.out.println(laskuri);         // tulostuu 6
 System.out.println(klooni);          // tulostuu 3
 </pre>
 
-<p>Kloonattavan ja kloonin arvo on siis kloonauksen tapahduttua sama. Kyseessä on kuitenkin kaksi erillistä olioa, eli jatkossa kun toista laskureista kasvatetaan, ei kasvatus vaikuta toisen arvoon millään tavalla.</p>
+    <p>Kloonattavan ja kloonin arvo on siis kloonauksen tapahduttua sama. Kyseessä on kuitenkin kaksi erillistä olioa, eli jatkossa kun toista laskureista kasvatetaan, ei kasvatus vaikuta toisen arvoon millään tavalla.</p>
+
+    <p>Vastaavasti myös <code>Tehdas</code>-olio voisi luoda ja palauttaa uusia <code>Auto</code>-olioita. Alla on hahmoteltu tehtaan runkoa -- tehdas tietää myös luotavien autojen merkin.</p>
+
+<pre class="sh_java">
+public class Tehdas {
+    private String merkki;
+
+    public Tehdas(String merkki) {
+        this.merkki = merkki;
+    }
+
+    public Auto tuotaAuto() {
+        return new Auto(this.merkki);
+    }
+}
+</pre>
+
 
     <div class="self-explanation" data-key="q-olioParametrinaJaMetodinPaluuarvona"></div>
     
@@ -13857,8 +13875,10 @@ System.out.println(klooni);          // tulostuu 3
 <div class="tehtavat">
   <div class="tehtava">
   <h3>Päiväys</h3>
-  <p>Tehtäväpohjan mukana tulee luvussa 24.7 esitelty luokka <code>Paivays</code>, jossa päivämäärä talletetaan oliomuuttujien <code>vuosi</code>, <code>kuukausi</code>, ja <code>paiva</code> avulla:</p>
-  <pre class="sh_java">
+
+  <p>Tehtäväpohjan mukana tulee aiemmin esitelty luokka <code>Paivays</code>, jossa päivämäärä talletetaan oliomuuttujien <code>vuosi</code>, <code>kuukausi</code>, ja <code>paiva</code> avulla:</p>
+
+<pre class="sh_java">
 public class Paivays {
     private int paiva;
     private int kuukausi;
@@ -13899,13 +13919,20 @@ public class Paivays {
   <p>Tässä tehtäväsarjassa laajennetaan luokkaa.</p>
 
   <h4 class="req">Seuraava päivä</h4>
+
   <p>Toteuta metodi <code>public void etene()</code>, joka siirtää päiväystä yhdellä päivällä. Tässä tehtävässä oletetaan, että jokaisessa kuukaudessa on 30 päivää. Huom! Sinun tulee <em>tietyissä</em> tilanteissa muuttaa kuukauden ja vuoden arvoa.</p>
+
   <h4 class="req">Tietty määrä päiviä eteenpäin</h4>
+
   <p>Toteuta metodi <code>public void etene(int montakoPaivaa)</code>, joka siirtää päiväystä annetun päivien määrän verran. Käytä apuna edellisessä tehtävässä toteutettua metodia <code>etene()</code>.</p>
+
   <h4 class="req">Ajan kuluminen</h4>
+
   <p>Lisätään <code>Paivays</code>-olioon mahdollisuus edistää aikaa. Tee oliolle metodi <code>Paivays paivienPaasta(int paivia)</code>, joka luo <strong>uuden</strong> <code>Paivays</code>-olion, jonka päiväys on annetun päivien lukumäärän verran suurempi kuin oliolla, jolle sitä kutsuttiin. Voit edelleen olettaa, että jokaisessa kuukaudessa on 30 päivää. Huomaa, että vanhan päiväysolion on pysyttävä muuttumattomana! </p>
+
   <p>Koska metodissa on luotava <b>uusi olio</b>, tulee rungon olla suunnilleen seuraavanlainen:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public Paivays paivienPaasta(int paivia) {
     Paivays uusiPaivays = new Paivays( ... );
 
@@ -13915,50 +13942,63 @@ public Paivays paivienPaasta(int paivia) {
 }
 
 </pre>
+
   <p>Ohessa on esimerkki metodin toiminnasta. </p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public static void main(String[] args) {
-    Paivays pvm = new Paivays(25, 2, 2011);
-    Paivays uusi_pvm = pvm.paivienPaasta(7);
+    Paivays pvm = new Paivays(13, 2, 2015);
+    System.out.println("Tarkistellun viikon perjantai on " + pvm);
+
+    Paivays uusiPvm = pvm.paivienPaasta(7);
     for (int i = 1; i &lt;= 7; ++i) {
-        System.out.println("Perjantai " + i + " viikon kuluttua on " + uusi_pvm);
-        uusi_pvm = uusi_pvm.paivienPaasta(7);
+        System.out.println("Perjantai " + i + " viikon kuluttua on " + uusiPvm);
+        uusiPvm = uusiPvm.paivienPaasta(7);
     }
-    System.out.println("Tämän viikon perjantai on " + pvm);
-    System.out.println("Päivämäärä 790:n päivän päästä tämän viikon perjantaista on  " + pvm.paivienPaasta(790));
+
+
+    System.out.println("Päivämäärä 790:n päivän päästä tarkistellusta perjantaista on ... kokeile itse!"); 
+//    System.out.println("Kokeile " + pvm.paivienPaasta(790));
 }
 </pre>
+
   <p>Ohjelma tulostaa:</p>
+
 <pre>
-Perjantai 1 viikon kuluttua on 2.3.2011
-Perjantai 2 viikon kuluttua on 9.3.2011
-Perjantai 3 viikon kuluttua on 16.3.2011
-Perjantai 4 viikon kuluttua on 23.3.2011
-Perjantai 5 viikon kuluttua on 30.3.2011
-Perjantai 6 viikon kuluttua on 7.4.2011
-Perjantai 7 viikon kuluttua on 14.4.2011
-Tämän viikon perjantai on 25.2.2011
-Päivämäärä 790:n päivän päästä tämän viikon perjantaista on  5.5.2013
+Tarkistellun viikon perjantai on 13.2.2015
+Perjantai 1 viikon kuluttua on 20.2.2015
+Perjantai 2 viikon kuluttua on 27.2.2015
+Perjantai 3 viikon kuluttua on 6.3.2015
+Perjantai 4 viikon kuluttua on 13.3.2015
+Perjantai 5 viikon kuluttua on 20.3.2015
+Perjantai 6 viikon kuluttua on 27.3.2015
+Perjantai 7 viikon kuluttua on 3.4.2015
+Päivämäärä 790:n päivän päästä tarkistellusta perjantaista on ... kokeile itse!
 </pre>
+
   <p> <strong>Huom!</strong> Sen sijaan, että muuttaisimme vanhan olion tilaa
     palautamme uuden olion. Kuvitellaan, että <code>Paivays</code>-luokalle on
     olemassa metodi <code>edista</code>, joka toimii vastaavasti kuin ohjelmoimamme
     metodi, mutta se muuttaa vanhan olion tilaa.
     Tällöin seuraava koodin pätkä tuottaisi ongelmia. </p>
+
   <pre class="sh_java">
-Paivays nyt = new Paivays(20,2,2011);
+Paivays nyt = new Paivays(13, 2, 2015);
 Paivays viikonPaasta = nyt;
 viikonPaasta.edista(7);
+
 System.out.println("Nyt: " + nyt);
 System.out.println("Viikon päästä: " + viikonPaasta);
 </pre>
+
   <p>Ohjelman tulostus olisi seuraavanlainen:</p>
+
 <pre>
-Nyt 27.2.2011
-Viikon päästä 27.2.2011
+Nyt 20.2.2015
+Viikon päästä 20.2.2015
 </pre>
-  <p>Tämä johtuu siitä, että tavallinen sijoitus kopioi ainoastaan viitteen olioon. Siis
-    itse asiassa ohjelman oliot <code>nyt</code> ja <code>viikonPaasta</code> viittavaat <strong>yhteen ja samaan</strong> <code>Paivays</code>-olioon. </p>
+
+  <p>Tämä johtuu siitä, että tavallinen sijoitus kopioi ainoastaan viitteen olioon. Siis itse asiassa ohjelman oliot <code>nyt</code> ja <code>viikonPaasta</code> viittavaat <strong>yhteen ja samaan</strong> <code>Paivays</code>-olioon. </p>
 </div>
 
   <div class="tehtava">
@@ -13986,23 +14026,33 @@ public class Paaohjelma {
     }
 }
 </pre>
+
   <p>Tulos näyttää seuraavalta:</p>
+
 <pre>
 1.1.2011 ja 24.12.2009 ero vuosissa: 2
 25.12.2010 ja 24.12.2009 ero vuosissa: 1
 1.1.2011 ja 25.12.2010 ero vuosissa: 1
 </pre>
+
   <h4 class="req">Tarkennettu versio</h4>
+
   <p>Vuosien laskenta ei edellisessä versiossa ollut vielä kovin tarkkaa. Esim. 1.1.2011 ja 25.12.2010 välillä ilmoitettiin olevan vuoden ero. <b>Tarkennetaan metodin toiminta sellaiseksi, että se osaa laskea vuodet kunnolla. Laske erotukseen mukaan vain täydet vuodet.</b> Eli vaikka päiväysten ero olisi 1 vuosi ja 364 päivää, ilmoittaa metodi eroksi vuoden.</p>
+
   <p> Metodin tämänkin version tarvitsee toimia ainoastaan siten, että parametriksi annettava päivämäärä on aiempi kuin se päivämäärä jolle metodia kutsutaan. </p>
+
   <p>Edellisen esimerkin tulos on nyt:</p>
+
 <pre>
 1.1.2011 ja 24.12.2009 ero vuosissa: 1
 25.12.2010 ja 24.12.2009 ero vuosissa: 1
 1.1.2011 ja 25.12.2010 ero vuosissa: 0
 </pre>
+
   <h4>Ja lopullinen versio</h4>
+
   <p>Laitetaan metodi toimimaan samoin riippumatta onko parametrina annettava päiväys myöhempi vai aiempi kuin päiväys mille metodia kutsutaan. Esimerkkipääohjelma:</p>
+
   <pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
@@ -14019,7 +14069,8 @@ public class Paaohjelma {
     }
 }
 </pre>
-  <pre>
+
+ <pre>
 24.12.2009 ja 1.1.2011 ero vuosissa: 1
 1.1.2011 ja 24.12.2009 ero vuosissa: 1
 24.12.2009 ja 25.12.2010 ero vuosissa: 1
@@ -14029,12 +14080,18 @@ public class Paaohjelma {
 </pre>
 </div>
 <div class="tehtava">
-<h3>Luokan Henkilö muokkaaminen</h3>
+
+  <h3>Luokan Henkilö muokkaaminen</h3>
+  
   <h4 class="req">Iän laskeminen syntymäpäivän perusteella</h4>
-  <p>Luvussa 24.9. lisättiin henkilölle oliomuuttujaksi syntymäpäivän kertova Paivays-olio. Samalla todettiin, että oliomuuttuja <code>ika</code> kannattaa poistaa sillä iän pystyy laskemaan päiväyksen ja syntymäpäivän avulla. </p>
+  
+  <p>Lisäsimme aiemmin henkilölle oliomuuttujaksi syntymäpäivän kertova Paivays-olio. Samalla huomattiin, että oliomuuttuja <code>ika</code> kannattaa poistaa sillä iän pystyy laskemaan päiväyksen ja syntymäpäivän avulla. </p>
+
   <p>Toteuta metodi <code>ika</code> joka palauttaa henkilön iän.</p>
+
   <p><b>Huom:</b> edellisessä tehtävässä lisättiin luokalle <code>Paivays</code> metodi <code>public int erotusVuosissa(Paivays verrattava)</code>. Kannattaa kopioida metodi tässä tehtävässä olevaan luokkaan, se helpottaa tehtävän tekemistä oleellisesti!</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 import java.util.Calendar;
 
 public class Henkilo {
@@ -14052,6 +14109,7 @@ public class Henkilo {
         // Calendar.getInstance().get(Calendar.DATE);
         // Calendar.getInstance().get(Calendar.MONTH) + 1; // tammikuun numero on 0 joten lisätään 1
         // Calendar.getInstance().get(Calendar.YEAR);
+        return -1;
     }
 
     public String getNimi() {
@@ -14063,23 +14121,28 @@ public class Henkilo {
     }
 }
 </pre>
+
   <p>Voit testata Henkilöä seuraavalla pääohjelmalla. Lisää myös itsesi ohjelmaan ja varmista että ikäsi tulostuu oikein.</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
-        Henkilo pekka = new Henkilo("Pekka", 15, 2, 1993);
-        Henkilo antti = new Henkilo("Antti", 1, 3, 1955);
+        Henkilo joni = new Henkilo("Joni", 15, 1, 1993);
+        Henkilo leo = new Henkilo("Leo", 1, 1, 1990);
 
-        System.out.println(antti.getNimi() + " ikä " + antti.ika() + " vuotta");
-        System.out.println(pekka.getNimi() + " ikä " + pekka.ika() + " vuotta");
+        System.out.println(joni.getNimi() + " ikä " + joni.ika() + " vuotta");
+        System.out.println(leo.getNimi() + " ikä " + leo.ika() + " vuotta");
     }
 }
 </pre>
+
   <p>Tulostus:</p>
-  <pre>
-Antti ikä 59 vuotta
-Pekka ikä 21 vuotta
+
+<pre>
+Joni ikä 22 vuotta
+Leo ikä 25 vuotta
 </pre>
+
 <h4 class="req">Iän vertailu syntymäpäivien perusteella</h4>
   <p>Tee henkilölle metodi jonka avulla se vertaa ikäänsä parametrina annettuun henkilöön. Jos henkilö on vanhempi eli syntynyt aiemmin, palauttaa metodi true ja muuten false.</p>
   <pre class="sh_java">
@@ -14103,13 +14166,18 @@ public class Main {
     }
 }
 </pre>
+
   <p>Tulostus:</p>
+
 <pre>
 Martin vanhempi kuin Pekka: false
 Pekka vanhempi kuin Martin: true
 </pre>
+
   <h4>Uusia konstruktoreja</h4>
+
   <p>Tee Henkilo-luokalle kaksi uutta konstruktoria:</p>
+
   <ul>
     <li><code>public Henkilo(String nimi, Paivays syntymapaiva)</code> - jossa konstruktori käyttää annettua Paivays-oliota syntymäpäivänä</li>
     <li><code>public Henkilo(String nimi)</code> - jossa konstruktori määrittää syntymäpäiväksi tämänhetkisen päivän</li>
@@ -14126,10 +14194,12 @@ public class Main {
     }
 }
 </pre>
+
   <p>Esimerkkitulostus:</p>
-  <pre>
+
+<pre>
 Pekka, syntynyt 15.2.1983
-Sepe, syntynyt 9.2.2012
+Sepe, syntynyt 13.2.2015
 </pre>
   <p><b>Huom:</b> jälkimmäinen rivi riippuu päivämäärästä, jolloin koodi ajetaan!</p>
 </div>
@@ -14224,9 +14294,11 @@ public static void main(String[] args) {
     numero = muistio.haeNumero("Martti Tienari");
     System.out.println(numero);
 }
-    </pre>
+</pre>
+
   <p>Tulostuu:</p>
-  <pre>
+
+<pre>
 040-123123
 numero ei tiedossa
 </pre>
@@ -14237,7 +14309,8 @@ numero ei tiedossa
   <h3>Raha</h3>
 
   <p>Maksukortti-tehtävässä käytimme rahamäärän tallettamiseen double-tyyppistä oliomuuttujaa. Todellisissa sovelluksissa näin ei kannata tehdä, sillä kuten jo olemme nähneet, doubleilla laskenta ei ole tarkkaa. Onkin järkevämpää toteuttaa rahamäärän käsittely oman luokkansa avulla. Seuraavassa on luokan runko:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Raha {
 
     private final int euroa;
@@ -14307,9 +14380,9 @@ System.out.println(c);  // 15.00e
 
   <p>Tee metodi <code>public boolean vahemman(Raha verrattava)</code>, joka palauttaa true jos raha-olio jolle metodia kutsutaan on arvoltaan pienempi kuin raha-olio, joka on metodin parametrina.</p>
   <pre class="sh_java">
-Raha a = new Raha(10,0);
-Raha b = new Raha(3,0);
-Raha c = new Raha(5,0);
+Raha a = new Raha(10, 0);
+Raha b = new Raha(3, 0);
+Raha c = new Raha(5, 0);
 
 System.out.println(a.vahemman(b));  // false
 System.out.println(b.vahemman(c));  // true
@@ -14323,8 +14396,8 @@ System.out.println(b.vahemman(c));  // true
   <p>Seuraavassa esimerkkejä metodin toiminnasta</p>
 
 <pre class="sh_java">
-Raha a = new Raha(10,0);
-Raha b = new Raha(3,50);
+Raha a = new Raha(10, 0);
+Raha b = new Raha(3, 50);
 
 Raha c = a.miinus(b);
 
@@ -14345,9 +14418,9 @@ System.out.println(c);  // 0.00e
 <div class="self-explanation" data-key="q-alkeisJaViittausTyyppisetMuuttujat"></div>
 
 
-<h3>Merkkijonot ovat immutaabeleja</h3>
+<h3>Merkkijonot ovat muuttumattomia</h3>
 
-<p>Javan String-oliot ovat Raha-luokan olioiden tyyliin muuttumattomia, eli immutaabelena. Jos esim. merkkijonon perään katenoidaan eli liitetään +-operaatiolla uusi merkkijono, ei alkuperäistä merkkijonoa pidennetä vaan syntyy uusi merkkijono-olio:</p>
+  <p>Javan String-oliot ovat Raha-luokan olioiden tyyliin muuttumattomia, eli immutaabelena. Jos esim. merkkijonon perään katenoidaan eli liitetään +-operaatiolla uusi merkkijono, ei alkuperäistä merkkijonoa pidennetä vaan syntyy uusi merkkijono-olio:</p>
 
 <pre class="sh_java">
 String jono = "koe";
@@ -14355,33 +14428,45 @@ jono + "häntä";
 
 System.out.println(jono);  // koe
 </pre>
-<p>Merkkijonoa ei siis voi muuttaa, mutta voimme ottaa katenoimalla syntyvän uuden merkkijonon talteen vanhaan muuttujaan:
+
+<p>Merkkijonoa ei siis voi muuttaa, mutta voimme ottaa katenoimalla syntyvän uuden merkkijonon talteen vanhaan muuttujaan:</p>
+
 <pre class="sh_java">
 String jono = "koe";
 jono = jono + "häntä";   // tai jono += "häntä";
 
 System.out.println(jono);  // koehäntä
-  </pre>
+</pre>
+
 <p>Nyt siis muuttuja <code>jono</code> viittaa <em>uuteen</em> merkkijono-olioon, joka luotiin yhdistämällä muuttujan aiemmin viittaama merkkijono "koe" ja merkkijono "häntä". Merkkijono-olioon "koe" ei enää viitata.</p>
 
-
+<!-- TODO: jatka, viite;  -->
 
 <h2 id="taulukko">Taulukko</h2>
 
-<p>Olemme käyttäneet kurssin aikana lukemattomia kertoja ArrayList:ejä erilaisten olioiden säilömiseen. ArrayList on helppokäyttöinen sillä se tarjoaa paljon valmiita työvälineitä jotka helpottavat ohjelmoijan elämää: muun muassa automaattisen listan kasvatuksen, jonka ansioista listalta ei lopu tila kesken (ellei lista kasva niin suureksi että se käyttää loppuun ohjelmalle varatun muistimäärän).</p>
-<p>ArrayListin helppokäyttöisyydesta huolimatta  ohjelmissa on joskus tarvetta ArrayListin esi-isälle eli <em>taulukolle</em>.</p>
-<p><em>Taulukko</em> on olio, joka voidaan käsittää eräänlaisena järjestettynä <em>lokerikkona</em> arvoille. Taulukon <em>pituus</em> tai <em>koko</em> on lokerikon paikkojen lukumäärä, eli kuinka monta arvoa taulukkoon voi laittaa. Taulukon arvoja kutsutaan taulukon <em>alkioiksi</em>. ArrayLististä poiketen taulukon kokoa (eli sen alkioiden määrää) ei voi muuttaa, taulukon kasvattaminen vaatii siis aina uuden taulukon luomista ja vanhassa olevien alkioiden kopiointia uuteen.</p>
-<p>Taulukon voi luoda kahdella eri tavalla. Tutustutaan ensin tapaan jossa taulukolle annetaan sisältö luomisen yhteydessä. Kolmen alkion kokonaislukutyyppinen taulukko määritellään seuraavasti:
+  <p>Olemme käyttäneet kurssin aikana lukemattomia kertoja ArrayList:ejä erilaisten olioiden säilömiseen. ArrayList on helppokäyttöinen sillä se tarjoaa paljon valmiita työvälineitä jotka helpottavat ohjelmoijan elämää: muun muassa automaattisen listan kasvatuksen, jonka ansioista listalta ei lopu tila kesken (ellei lista kasva niin suureksi että se käyttää loppuun ohjelmalle varatun muistimäärän).</p>
+
+  <p>ArrayListin helppokäyttöisyydesta huolimatta  ohjelmissa on joskus tarvetta ArrayListin esi-isälle eli <em>taulukolle</em>.</p>
+
+  <p><em>Taulukko</em> on olio, joka voidaan käsittää eräänlaisena järjestettynä <em>lokerikkona</em> arvoille. Taulukon <em>pituus</em> tai <em>koko</em> on lokerikon paikkojen lukumäärä, eli kuinka monta arvoa taulukkoon voi laittaa. Taulukon arvoja kutsutaan taulukon <em>alkioiksi</em>. ArrayLististä poiketen taulukon kokoa (eli sen alkioiden määrää) ei voi muuttaa, taulukon kasvattaminen vaatii siis aina uuden taulukon luomista ja vanhassa olevien alkioiden kopiointia uuteen.</p>
+
+  <p>Taulukon voi luoda kahdella eri tavalla. Tutustutaan ensin tapaan jossa taulukolle annetaan sisältö luomisen yhteydessä. Kolmen alkion kokonaislukutyyppinen taulukko määritellään seuraavasti:</p>
+
 <pre class="sh_java">
 int[] luvut = {100, 1, 42};
 </pre>
-<p>Taulukko-olion tyyppi merkitään <code>int[]</code>, joka tarkoittaa taulukkoa, jonka alkiot ovat tyyppiä <code>int</code>. Taulukko-olion nimi on esimerkissä <code>luvut</code> ja se sisältää kolme lukua <code>{100, 1, 42}</code>.  Taulukko alustetaan lohkolla, jossa taulukkoon asetettavat arvot on esitelty pilkulla eriteltyinä. </p>
-<p>Taulukon arvot voivat olla mitä tahansa aikaisemmin nähtyjä muuttujatyyppejä. Alla on esitelty ensin merkkijonoja sisältävä taulukko, jonka jälkeen esitellään liukulukuja sisältävä taulukko.</p>
+
+  <p>Taulukko-olion tyyppi merkitään <code>int[]</code>, joka tarkoittaa taulukkoa, jonka alkiot ovat tyyppiä <code>int</code>. Taulukko-olion nimi on esimerkissä <code>luvut</code> ja se sisältää kolme lukua <code>{100, 1, 42}</code>.  Taulukko alustetaan lohkolla, jossa taulukkoon asetettavat arvot on esitelty pilkulla eriteltyinä. </p>
+
+  <p>Taulukon arvot voivat olla mitä tahansa aikaisemmin nähtyjä muuttujatyyppejä. Alla on esitelty ensin merkkijonoja sisältävä taulukko, jonka jälkeen esitellään liukulukuja sisältävä taulukko.</p>
+
 <pre class="sh_java">
 String[] merkkijonotaulukko = {"Matti P.", "Matti V."};
 double[] liukulukutaulukko = {1.20, 3.14, 100.0, 0.6666666667};
 </pre>
-<p>Taulukon alkioihin viitataan <em>indeksillä</em>, joka on kokonaisluku. Indeksi kertoo alkion paikan taulukossa. Taulukon ensimmäinen alkio on paikassa nolla, seuraava kohdassa yksi ja niin edelleen. Taulukon tietyssä indeksissä olevaa arvoa tutkittaessa indeksi annetaan taulukko-olion nimen perään hakasulkeiden sisällä.</p>
+
+  <p>Taulukon alkioihin viitataan <em>indeksillä</em>, joka on kokonaisluku. Indeksi kertoo alkion paikan taulukossa. Taulukon ensimmäinen alkio on paikassa nolla, seuraava kohdassa yksi ja niin edelleen. Taulukon tietyssä indeksissä olevaa arvoa tutkittaessa indeksi annetaan taulukko-olion nimen perään hakasulkeiden sisällä.</p>
+
 <pre class="sh_java">
 // indeksi       0   1    2    3   4   5     6     7
 int[] luvut = {100,  1,  42,  23,  1,  1, 3200, 3201};
@@ -14389,9 +14474,13 @@ int[] luvut = {100,  1,  42,  23,  1,  1, 3200, 3201};
 System.out.println(luvut[0]);  // tulostaa luvun taulukon indeksistä 0, eli luvun 100
 System.out.println(luvut[2]);  // tulostaa luvun taulukon indeksistä 2, eli luvun 42
 </pre>
-<p>Yllä olevan taulukon koko (eli pituus) on 8.</p>
-<p><em>Huomaat todennäköisesti että ArrayListin metodi <code>get</code> käyttäytyy hyvin samalla tavalla kuin taulukon tietystä indeksistä haku. Taulukon kohdalla vain syntaksi, eli merkintätapa, on erilainen</em>.</p>
-<p>Yksittäisen arvon asettaminen taulukon tiettyyn paikkaan tapahtuu kuten arvon asetus tavalliseen muuttujaan, mutta taulukkoon asetettaessa paikka eli indeksi tulee kertoa. Indeksi kerrotaan hakasulkeiden sisällä.</p>
+
+  <p>Yllä olevan taulukon koko (eli pituus) on 8.</p>
+
+  <p><em>Huomaat todennäköisesti että ArrayListin metodi <code>get</code> käyttäytyy hyvin samalla tavalla kuin taulukon tietystä indeksistä haku. Taulukon kohdalla vain syntaksi, eli merkintätapa, on erilainen</em>.</p>
+
+  <p>Yksittäisen arvon asettaminen taulukon tiettyyn paikkaan tapahtuu kuten arvon asetus tavalliseen muuttujaan, mutta taulukkoon asetettaessa paikka eli indeksi tulee kertoa. Indeksi kerrotaan hakasulkeiden sisällä.</p>
+
 <pre class="sh_java">
 int[] luvut = {100,1,42};
 
@@ -14402,6 +14491,7 @@ luvut[1] = 101;  // asetetaan luku 101 indeksiin 1
 </pre>
 
     <p>Jos indeksillä osoitetaan taulukon ohi, eli alkioon jota ei ole olemassa, niin saadaan virheilmoitus <em>ArrayIndexOutOfBoundsException</em>, joka kertoo että indeksiä johon osoitimme ei ole olemassa.  Taulukon ohi, eli indeksiin joka on pienempi kuin 0 tai suurempi tai yhtäsuuri kuin taulukon koko ei siis saa viitata.</p>
+
     <p>Huomaamme, että taulukko on selvästi sukua ArrayList:ille. Aivan kuten listoilla, myös taulukossa alkiot ovat tietyssä paikassa!</p>
 
     <h3>Taulukon läpikäynti</h3>
@@ -14418,17 +14508,18 @@ while (i &lt; luvut.length) {
     System.out.println(luvut[i]);
     i++;
 }
-  </pre>
+</pre>
 
-<p>Esimerkissä käydään muuttujan <code>i</code> avulla läpi indeksit 0, 1, 2, 3, ja 4, ja tulostetaan taulukon kussakin indeksissä olevan muuttujan arvo. Ensin siis tulostuu <code>luvut[0]</code>, sitten <code>luvut[1]</code> jne. Muuttujan <code>i</code> kasvatus loppuu kun koko taulukko on käyty läpi, eli kun sen arvo on yhtäsuuri kuin taulukon pituus.</p>
-<p>Taulukon läpikäynnissä ei ole aina todellista tarvetta taulukon indeksien luetteluun, vaan ainoa kiinnostava asia ovat taulukon arvot. Tällöin voidaan käyttää aiemmin tutuksi tullutta for-each-rakennetta arvojen läpikäyntiin. Nyt toistolauseen rungossa annetaan vain muuttujan nimi, johon kukin taulukon arvo asetetaan vuorollaan, ja taulukon nimi kaksoispisteellä erotettuna.</p>
+  <p>Esimerkissä käydään muuttujan <code>i</code> avulla läpi indeksit 0, 1, 2, 3, ja 4, ja tulostetaan taulukon kussakin indeksissä olevan muuttujan arvo. Ensin siis tulostuu <code>luvut[0]</code>, sitten <code>luvut[1]</code> jne. Muuttujan <code>i</code> kasvatus loppuu kun koko taulukko on käyty läpi, eli kun sen arvo on yhtäsuuri kuin taulukon pituus.</p>
+
+  <p>Taulukon läpikäynnissä ei ole aina todellista tarvetta taulukon indeksien luetteluun, vaan ainoa kiinnostava asia ovat taulukon arvot. Tällöin voidaan käyttää aiemmin tutuksi tullutta for-each-rakennetta arvojen läpikäyntiin. Nyt toistolauseen rungossa annetaan vain muuttujan nimi, johon kukin taulukon arvo asetetaan vuorollaan, ja taulukon nimi kaksoispisteellä erotettuna.</p>
 
 <pre class="sh_java">
-    int[] luvut = {1,8,10,3,5};
+int[] luvut = {1,8,10,3,5};
 
 for (int luku : luvut) {
     System.out.println(luku);
-  }
+}
 </pre>
 <pre class="sh_java">
 String[] nimet = {"Juhana L.", "Matti P.", "Matti L.", "Pekka M."};
@@ -14438,7 +14529,8 @@ String[] nimet = {"Juhana L.", "Matti P.", "Matti L.", "Pekka M."};
     }
 }
 </pre>
-<p><strong>Huom:</strong> for-each-tyylisellä läpikäynnillä taulukon alkioihin ei voi asettaa arvoja! Seuraavaksi nähtävällä for-lauseen toisella muodolla sekin onnistuu.</p>
+
+  <p><strong>Huom:</strong> for-each-tyylisellä läpikäynnillä taulukon alkioihin ei voi asettaa arvoja! Seuraavaksi nähtävällä for-lauseen toisella muodolla sekin onnistuu.</p>
 
 <h3>for-komennon toinen muoto</h3>
     
@@ -14463,11 +14555,17 @@ while (i &lt; 3) {  // toistoehto
     <p>for-komento, kuten yllä esitelty <code>for (int i = 0; i &lt; 3; i++)</code> sisältää kolme osaa: <em>looppimuuttujien alustus; toistoehto; looppimuuttujien päivitys</em>: </p>
 
 <ul>
+
   <li>Ensimmäisessä osassa alustetaan toistolauseessa käytettävät muuttujat. Yllä olevassa esimerkissä alustimme muuttujan <code>i</code> lauseella <code>int i=0</code>. Ensimmäinen osa suoritetaan vain kerran, juuri for:in suorituksen alussa.</li>
+
   <li>Toisessa osassa määritellään toistoehto, joka määrittelee miten kauan for:in yhteydessä olevassa koodilohkossa olevaa koodia suoritetaan. Esimerkissämme toistoehto oli <code>i &lt; 3</code>. Toistoehdon voimassaolo tarkastetaan <em>ennen jokaista for:in toistokertaa</em>. Toistoehto toimii täsmälleen samoin kuin while:n toistoehto.</li>
+
   <li>Kolmas osa, joka esimerkissämme on <code>i++</code> suoritetaan aina kertaalleen forin koodilohkon suorituksen jälkeen.</li>
+
 </ul>
-<p><em>for</em> on hieman <em>while</em>:ä selkeämpi tapa toteuttaa toistoja joissa toistojen määrä perustuu esim. laskurin kasvatukseen. Taulukkojen läpikäynnissä tilanne on yleensä juuri tämä. Seuraavassa tulostetaan taulukon <code>luvut</code> sisältö for:illa</p>
+
+  <p><em>for</em> on hieman <em>while</em>:ä selkeämpi tapa toteuttaa toistoja joissa toistojen määrä perustuu esim. laskurin kasvatukseen. Taulukkojen läpikäynnissä tilanne on yleensä juuri tämä. Seuraavassa tulostetaan taulukon <code>luvut</code> sisältö for:illa</p>
+
 <pre class="sh_java">
 int[] luvut = {1, 3, 5, 9, 17, 31, 57, 105};
 
@@ -14475,7 +14573,9 @@ for(int i = 3; i &lt; 7; i++) {
     System.out.println(luvut[i]);
 }
 </pre>
-<p>Forilla voidaan aloittaa läpikäynti luonnollisesti muualtakin kuin nollasta ja läpikäynti voi edetä "ylhäältä alas". Esimerkiksi taulukon paikoissa  6, 5, 4, ja 3 olevat alkiot voidaan tulostaa seuraavasti:</p>
+
+  <p>Forilla voidaan aloittaa läpikäynti luonnollisesti muualtakin kuin nollasta ja läpikäynti voi edetä "ylhäältä alas". Esimerkiksi taulukon paikoissa  6, 5, 4, ja 3 olevat alkiot voidaan tulostaa seuraavasti:</p>
+
 <pre class="sh_java">
 int[] luvut = {1, 3, 5, 9, 17, 31, 57, 105};
 
@@ -14483,8 +14583,11 @@ for(int i = 6; i&gt;2 ; i--) {
     System.out.println(luvut[i]);
 }
 </pre>
-<h3>for ja taulukon pituus</h3>
-<p>Kaikkien taulukon alkioiden läpikäynti for:in avulla onnistuu seuraavasti:</p>
+
+  <h3>for ja taulukon pituus</h3>
+
+  <p>Kaikkien taulukon alkioiden läpikäynti for:in avulla onnistuu seuraavasti:</p>
+
 <pre class="sh_java">
 int[] luvut = {1, 8, 10, 3, 5};
 
@@ -14492,9 +14595,13 @@ for (int i = 0; i &lt; luvut.length; i++) {
     System.out.println(luvut[i]);
 }
 </pre>
-<p>Huomaa, että toistoehdossa <code>i &lt; luvut.length</code> verrataan looppimuuttujan arvoa taulukolta kysyttyyn pituuteen. Ehtoa ei kannata missään tapauksessa "kovakoodata" tyyliin <code>i &lt; 5</code> sillä yleensä taulukon pituudesta ei ole etukäteen varmuutta.</p>
-<h3>Taulukko parametrina</h3>
-<p>Taulukkoja voidaan käyttää metodin parametrina aivan kuten muitakin olioita. Huomaa, että kuten kaikkien olioiden tapauksessa, metodi saa parametrina viitteen taulukkoon, eli kaikki metodissa tapahtuvat taulukon sisältöön vaikuttavat muutokset näkyvät myös pääohjelmassa.</p>
+
+  <p>Huomaa, että toistoehdossa <code>i &lt; luvut.length</code> verrataan looppimuuttujan arvoa taulukolta kysyttyyn pituuteen. Ehtoa ei kannata missään tapauksessa "kovakoodata" tyyliin <code>i &lt; 5</code> sillä yleensä taulukon pituudesta ei ole etukäteen varmuutta.</p>
+
+  <h3>Taulukko parametrina</h3>
+
+  <p>Taulukkoja voidaan käyttää metodin parametrina aivan kuten muitakin olioita. Huomaa, että kuten kaikkien olioiden tapauksessa, metodi saa parametrina viitteen taulukkoon, eli kaikki metodissa tapahtuvat taulukon sisältöön vaikuttavat muutokset näkyvät myös pääohjelmassa.</p>
+
 <pre class="sh_java">
 public static void listaaAlkiot(int[] kokonaislukuTaulukko) {
 
@@ -14511,7 +14618,8 @@ public static void  main(String[] args) {
     listaaAlkiot(luvut);
 }
 </pre>
-<p>Kuten jo tiedämme, parametrin nimi metodin sisällä voi olla aivan vapaasti valittu, nimen ei tarvitse missään tapauksessa olla sama kuin kutsuvassa. Edellä taulukkoa kutsutaan metodin sisällä nimellä <code>kokonaislukuTaulukko</code>, metodin kutsuja taas näkee saman taulukon <code>luvut</code>-nimisenä.</p>
+
+  <p>Kuten jo tiedämme, parametrin nimi metodin sisällä voi olla aivan vapaasti valittu, nimen ei tarvitse missään tapauksessa olla sama kuin kutsuvassa. Edellä taulukkoa kutsutaan metodin sisällä nimellä <code>kokonaislukuTaulukko</code>, metodin kutsuja taas näkee saman taulukon <code>luvut</code>-nimisenä.</p>
 
 <!-- CAST61-->
 
