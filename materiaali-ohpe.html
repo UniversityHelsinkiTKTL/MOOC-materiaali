@@ -15223,15 +15223,16 @@ Yhtään sademäärää ei syötetty.
 
 <h2>Ollako static vaiko eikö olla?</h2>
 
-<p>Viikkoon 3 asti kaikissa metodeissa esiintyi määre <code>static</code>, mutta aloittaessamme olioiden käytön, tuon määreen käyttö jopa kiellettiin. Mistä on kysymys?</p>
 
-<p>Seuraavassa esimerkissä on metodi <code>nollaaTaulukko</code> joka toimii nimensä mukaisesti eli asettaa nollan parametrina saamansa taulukon kaikkien lokeroiden arvoksi.</p>
+    <p>Kurssin alussa kaikissa metodeissa esiintyi määre <code>static</code>, mutta aloittaessamme olioiden käytön, tuon määreen käyttö jopa kiellettiin. Mistä on kysymys?</p>
+
+    <p>Seuraavassa esimerkissä on metodi <code>nollaaTaulukko</code> joka toimii nimensä mukaisesti eli asettaa nollan parametrina saamansa taulukon kaikkien lokeroiden arvoksi.</p>
 
 <pre class="sh_java">
 public class Ohjelma {
 
     public static void nollaaTaulukko(int[] taulukko) {
-        for (int i = 0; i &lt; taulukko.length; i++)
+        for (int i = 0; i &lt; taulukko.length; i++) {
             taulukko[i] = 0;
         }
     }
@@ -15240,7 +15241,7 @@ public class Ohjelma {
         int[] luvut = {1, 2, 3, 4, 5};
 
         for (int luku : luvut) {
-            System.out.print(luku + " ");  // tulostuu 1, 2, 3, 4, 5
+            System.out.print(luku + " ");  // tulostuu 1 2 3 4 5
         }
 
         System.out.println();
@@ -15248,23 +15249,23 @@ public class Ohjelma {
         nollaaTaulukko(luvut);
 
         for (int luku : luvut) {
-            System.out.print(luku + " ");  // tulostuu 0, 0, 0, 0, 0
+            System.out.print(luku + " ");  // tulostuu 0 0 0 0 0
         }
     }
 }
 </pre>
 
-<p>Yllä olevassa esimerkissä metodilla <code>nollaaTaulukko</code> on määre <code>static</code> ja sen kutsuminen tapahtuu ilman alussa olevaa olioviitettä.</p>
+    <p>Yllä olevassa esimerkissä metodilla <code>nollaaTaulukko</code> on määre <code>static</code> ja sen kutsuminen tapahtuu ilman alussa olevaa olioviitettä.</p>
 
-<p><em>Staattiset metodit</em> eivät liity olioon vaan luokkaan. Staattisia metodeja kutsutaankin usein myös <em>luokkametodeiksi</em>. Toisin kuin olioiden metodit (joilla ei ole määrettä static), staattiseen metodiin ei liity olioa, eikä niillä voi muokata oliomuuttujia.</p>
+    <p><em>Staattiset metodit</em> eivät liity olioon vaan luokkaan. Staattisia metodeja kutsutaan usein myös <em>luokkametodeiksi</em>. Toisin kuin olioiden metodit (joilla ei ole määrettä static), staattiseen metodiin ei liity olioa, eikä niillä voi muokata oliomuuttujia.</p>
 
-<p>Staattiselle metodille voi toki antaa olion parametrina. Staattinen metodi ei kuitenkaan voi käsitellä mitään muita lukuja, merkkijonoja, taulukoita tai oliota kuin niitä, jotka on sille annettu sille parametrina, tai jotka se luo itse.</p>
+    <p>Staattiselle metodille voi toki antaa olion parametrina. Staattinen metodi ei kuitenkaan voi käsitellä mitään muita lukuja, merkkijonoja, taulukoita tai olioita kuin niitä, jotka annetaan sille parametrina, tai jotka se luo itse.</p>
 
-<p>Toisin sanoen, staattista metodia käyttävän koodin tulee antaa staattiselle metodille ne arvot ja oliot, joita staattisessa metodissa käsitellään.</p>
+   <p>Toisin sanoen, staattista metodia käyttävän koodin tulee antaa staattiselle metodille ne arvot ja oliot, joita staattisessa metodissa käsitellään.</p>
 
-<p>Koska staattinen metodi ei liity mihinkään olioon, ei sitä kutsuta oliometodien tapaan <code>olionNimi.metodinNimi()</code>, vaan ylläolevan esimerkin tapaan käytetään pelkkää staattisen metodin nimeä.</p>
+   <p>Koska staattinen metodi ei liity mihinkään olioon, ei sitä kutsuta oliometodien tapaan <code>olionNimi.metodinNimi()</code>, vaan ylläolevan esimerkin tapaan käytetään pelkkää staattisen metodin nimeä.</p>
 
-<p>Jos staattisen metodin koodi on eri luokan sisällä kuin sitä kutsuva metodi, tapahtuu kutsu muodossa <code>LuokanNimi.staattisenMetodinNimi()</code>. Edellinen esimerkki alla muutettuna siten, että pääohjelma ja metodi ovat omissa luokissaan (eli eri tiedostoissa):</p>
+   <p>Jos staattisen metodin koodi on eri luokan sisällä kuin sitä kutsuva metodi, voi staattista metodia kutsua muodossa <code>LuokanNimi.staattisenMetodinNimi()</code>. Edellinen esimerkki alla muutettuna siten, että pääohjelma ja metodi ovat omissa luokissaan (eli eri tiedostoissa):</p>
 
 <pre class="sh_java">
 public class Ohjelma {
@@ -15272,7 +15273,7 @@ public class Ohjelma {
         int[] luvut = {1, 2, 3, 4, 5};
 
         for (int luku : luvut) {
-            System.out.print(luku + " ");  // tulostuu 1, 2, 3, 4, 5
+            System.out.print(luku + " ");  // tulostuu 1 2 3 4 5
         }
 
         System.out.println();
@@ -15280,11 +15281,12 @@ public class Ohjelma {
         TaulukonKasittely.nollaaTaulukko(luvut);
 
         for (int luku : luvut) {
-            System.out.print(luku + " ");  // tulostuu 0, 0, 0, 0, 0
+            System.out.print(luku + " ");  // tulostuu 0 0 0 0 0
         }
     }
 }
 </pre>
+
 <pre class="sh_java">
 public class TaulukonKasittely {
     public static void nollaaTaulukko(int[] taulukko) {
@@ -15295,13 +15297,14 @@ public class TaulukonKasittely {
 }
 </pre>
 
-<p>Toisen luokan sisällä -- tässä tämän toisen luokan nimi on <code>TaulukonKasittely</code> -- määriteltyä staattista metodia kutsutaan nyt muodossa <code>TaulukonKasittely.nollaaTaulukko(<em>parametri</em>);</code>.</p>
+    <p>Toisen luokan sisällä -- tässä tämän toisen luokan nimi on <code>TaulukonKasittely</code> -- määriteltyä staattista metodia kutsutaan yllä muodossa <code>TaulukonKasittely.nollaaTaulukko(<em>parametri</em>);</code>.</p>
 
-<h3>Milloin staattisia metodeja tulisi käyttää</h3>
 
-<p>Kaikki olion tilaa käsittelevät metodit tulee määritellä oliometodeina, joilla ei ole static-määrettä. Esimerkiksi edellisillä viikoilla määrittelemiemme luokkien <code>Henkilo, Paivays, Kello, Joukkue, ...</code> kaikki metodit tulee määritellä oliometodeina ilman static-määrettä.</p>
+  <h3>Milloin staattisia metodeja tulisi käyttää</h3>
 
-<p>Palataan vielä luokkaan <code>Henkilo</code>. Seuraavassa on osa luokan määritelmästä. Kaikkiin oliomuuttujiin viitataan <code>this</code>-määreen avulla sillä korostamme, että metodeissa käsitellään olion "sisällä" olevia oliomuuttujia.</p>
+    <p>Kaikki olion tilaa käsittelevät metodit tulee määritellä oliometodeina, joilla ei ole static-määrettä. Esimerkiksi edellisillä viikoilla määrittelemiemme luokkien <code>Henkilo, Paivays, Kello, Joukkue, ...</code> kaikki metodit tulee määritellä ilman static-määrettä.</p>
+
+    <p>Palataan vielä luokkaan <code>Henkilo</code>. Seuraavassa on osa luokan määritelmästä. Kaikkiin oliomuuttujiin viitataan <code>this</code>-määreen avulla sillä korostamme, että metodeissa käsitellään olion "sisällä" olevia oliomuuttujia.</p>
 
 <pre class="sh_java">
 public class Henkilo {
@@ -15330,7 +15333,7 @@ public class Henkilo {
     }
 }</pre>
 
-<p>Koska metodit käsittelevät oliota, ei niitä voi määrittää static:eiksi eli "olioon kuulumattomiksi". Jos näin yritetään tehdä, ei metodi toimi. Esimerkiksi allaoleva Henkilo-olion iän muokkausta yrittävä metodi <code>vanhene</code> ei toimi:</p>
+    <p>Koska metodit käsittelevät oliota, ei niitä voi määrittää static:eiksi eli "olioista riippumattomiksi". Jos näin yritetään tehdä, ei metodi toimi. Esimerkiksi allaoleva <code>Henkilo</code>-olion iän muokkausta yrittävä metodi <code>vanhene</code> ei toimi:</p>
 
 <pre class="sh_java">
 public class Henkilo {
@@ -15339,13 +15342,11 @@ public class Henkilo {
     public static void vanhene() {
         this.ika++;
     }
-}
+}</pre>
 
-</pre>
+    <p>Seurauksena on virheilmoitus <em>non static variable ika can not be referenced from static context</em>, joka tarkoittaa että <em>oliomuuttujaan ei voida viitata luokkametodista</em>; staattinen metodi ei siis pysty käsittelemään oliomuuttujaa.</p>
 
-<p>Seurauksena on virheilmoitus <i>non static variable ika can not be referenced from static context</i>, joka tarkoittaa että <em>oliomuuttujaan ei voida viitata luokkametodista</em>; staattinen metodi ei siis pysty käsittelemään oliomuuttujaa.</p>
-
-<p>Eli milloin staattista metodia sitten kannattaa käyttää? Tarkastellaan aiemmin materiaalissa nähtyä henkilöolioita käsittelevää esimerkkiä:</p>
+    <p>Eli milloin staattista metodia sitten kannattaa käyttää? Tarkastellaan aiemmin materiaalissa nähtyä henkilöolioita käsittelevää esimerkkiä:</p>
 
 <pre class="sh_java">
 public class Main {
@@ -15381,9 +15382,11 @@ public class Main {
     }
 }</pre>
 
-<p>Huomaamme, että henkilöiden täysi-ikäisyyden ilmottamiseen liittyy koodinpätkä joka on copy-pastettu peräkkäin kolme kertaa. Todella rumaa!</p>
+    <p>TODO: jatka</p>
 
-<p>Henkilön täysi-ikäisyyden ilmoittaminen on mainio kohde staattiselle metodille. Kirjoitetaan ohjelma uudelleen metodia hyödyntäen:</p>
+    <p>Huomaamme, että henkilöiden täysi-ikäisyyden ilmottamiseen liittyy koodinpätkä joka on copy-pastettu peräkkäin kolme kertaa. Todella rumaa!</p>
+
+    <p>Henkilön täysi-ikäisyyden ilmoittaminen on mainio kohde staattiselle metodille. Kirjoitetaan ohjelma uudelleen metodia hyödyntäen:</p>
 
 <pre class="sh_java">
 public class Main {
