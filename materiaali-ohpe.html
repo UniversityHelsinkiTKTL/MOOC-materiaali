@@ -15355,7 +15355,7 @@ public class Main {
         Henkilo antti = new Henkilo("Antti");
         Henkilo juhana = new Henkilo("Juhana");
 
-        for (int i=0; i &lt; 30; i++) {
+        for (int i = 0; i &lt; 30; i++) {
             pekka.vanhene();
             juhana.vanhene();
         }
@@ -15382,9 +15382,7 @@ public class Main {
     }
 }</pre>
 
-    <p>TODO: jatka</p>
-
-    <p>Huomaamme, että henkilöiden täysi-ikäisyyden ilmottamiseen liittyy koodinpätkä joka on copy-pastettu peräkkäin kolme kertaa. Todella rumaa!</p>
+    <p>Huomaamme, että henkilöiden täysi-ikäisyyden ilmottamiseen liittyvä koodinpätkä on copy-pastettu kolme kertaa peräkkäin. Todella rumaa!</p>
 
     <p>Henkilön täysi-ikäisyyden ilmoittaminen on mainio kohde staattiselle metodille. Kirjoitetaan ohjelma uudelleen metodia hyödyntäen:</p>
 
@@ -15396,7 +15394,7 @@ public class Main {
         Henkilo antti = new Henkilo("Antti");
         Henkilo juhana = new Henkilo("Juhana");
 
-        for (int i=0; i &lt; 30; i++) {
+        for (int i = 0; i &lt; 30; i++) {
             pekka.vanhene();
             juhana.vanhene();
         }
@@ -15420,19 +15418,26 @@ public class Main {
 }
 </pre>
 
-<p>Metodi <code>ilmoitaTaysiIkaisyys</code> on määritelty staattiseksi, eli se ei liity mihinkään olioon, <strong>mutta</strong> metodi saa parametrikseen henkilöolion. Metodia ei ole määritelty Henkilö-luokan sisälle sillä vaikka se käsittelee parametrinaan saamaan henkilöolioa, se on juuri kirjoitetun pääohjelman apumetodi, jonka avulla pääohjelma on saatu kirjoitettua selkeämmin.</p>
-
+    <p>Metodi <code>ilmoitaTaysiIkaisyys</code> on määritelty staattiseksi, eli se ei liity mihinkään olioon, <strong>mutta</strong> metodi saa parametrikseen henkilöolion. Metodia ei ole määritelty Henkilö-luokan sisälle sillä vaikka se käsittelee parametrinaan saamaan henkilöolioa, se on juuri kirjoitetun pääohjelman apumetodi, jonka avulla pääohjelma on saatu kirjoitettua selkeämmin.</p>
 
 <div class="tehtavat">
   <div class="tehtava">
+
   <h3>Kirjaston tietojärjestelmä</h3>
+
   <p>Kumpulan tiedekirjasto tarvitsee uuden järjestelmän kirjojen hallintaan. Tässä tehtävässä toteutetaan <em>prototyyppi</em>, jossa toteutetaan kirjan haku nimen, julkaisijan tai julkaisuvuoden perusteella.</p>
+
   <p>Rakennetaan järjestelmä osista, ensin toteutetaan oleelliset luokat eli <code>Kirja</code> ja <code>Kirjasto</code>. Luokka <code>Kirja</code> sisältää kirjaan liittyvät tiedot, luokka <code>Kirjasto</code> tarjoaa erilaisia hakutoiminnallisuuksia kirjoihin liittyen.</p>
+
   <h4>Kirja</h4>
+
   <p>Luodaan ensiksi luokka Kirja. Kirjalla on oliomuuttujina <code>nimike</code>, eli kirjan nimi, <code>julkaisija</code>, eli kirjan julkaisija, ja <code>julkaisuvuosi</code> eli vuosi jolloin kirja on julkaistu. Kaksi ensimmäistä muuttujaa on merkkijonotyyppisiä, viimeisin on kokonaisluku. Oletamme tässä että kirjalla on aina vain yksi kirjoittaja.</p>
+
   <p>Toteuta luokka <code>Kirja</code>. Kirjalla tulee olla myös konstruktori <code>public Kirja(String nimike, String julkaisija, int julkaisuvuosi)</code> sekä metodit <code>public String nimike()</code>, <code>public String julkaisija()</code>, <code>public int julkaisuvuosi()</code> ja <code>public String toString()</code>. Arvannet mitä metodien tulee tehdä, alla esimerkki.</p>
+
   <p>Testaa luokan toimintaa:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 Kirja cheese = new Kirja("Cheese Problems Solved", "Woodhead Publishing", 2007);
 System.out.println(cheese.nimike());
 System.out.println(cheese.julkaisija());
@@ -15440,15 +15445,20 @@ System.out.println(cheese.julkaisuvuosi());
 
 System.out.println(cheese);
 </pre>
-  <pre>
+
+<pre>
 Cheese Problems Solved
 Woodhead Publishing
 2007
 Cheese Problems Solved, Woodhead Publishing, 2007
-  </pre>
+
+</pre>
+
   <h4>Kirjasto</h4>
+
   <p>Kirjaston tehtävä on antaa käyttäjälle mahdollisuus kirjojen lisäämiseen ja niiden hakemiseen. Luo luokka <code>Kirjasto</code>, jolla on konstruktori <code>public Kirjasto()</code> ja metodit <code>public void lisaaKirja(Kirja uusiKirja)</code> ja <code>public void tulostaKirjat()</code></p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 Kirjasto kirjasto = new Kirjasto();
 
 Kirja cheese = new Kirja("Cheese Problems Solved", "Woodhead Publishing", 2007);
@@ -15461,22 +15471,26 @@ kirjasto.lisaaKirja(new Kirja("Battle Axes", "Tom A. Hawk", 1851));
 
 kirjasto.tulostaKirjat();
 </pre>
+
 <pre>
 Cheese Problems Solved, Woodhead Publishing, 2007
 NHL Hockey, Stanley Kupp, 1952
 Battle Axes, Tom A. Hawk, 1851
 </pre>
 
+
   <h4>Hakutoiminnallisuus</h4>
 
   <p>Kirjastosta tulee pystyä etsimään kirjoja nimikkeiden ja julkaisijoiden perusteella. Lisää kirjastolle metodit <code>public ArrayList&lt;Kirja&gt; haeKirjaNimikkeella(String nimike)</code>, <code>public ArrayList&lt;Kirja&gt; haeKirjaJulkaisijalla(String julkaisija)</code> ja <code>public ArrayList&lt;Kirja&gt; haeKirjaJulkaisuvuodella(int julkaisuvuosi)</code>. Metodit palauttavat listan kirjoista, joissa on haluttu nimike, julkaisija tai julkaisuvuosi.</p>
+
   <p><b>Huom:</b> joudut siis tehdä metodin jonka paluuarvona on ArrayList. Tämä onnustuu seuraavaa metodirunkoa hyödyntäen:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Kirjasto {
     // ...
 
     public ArrayList&lt;Kirja&gt; haeKirjaNimikkeella(String nimike) {
-        ArrayList&lt;Kirja&gt; loydetyt = new ArrayList&lt;Kirja&gt;();
+        ArrayList&lt;Kirja&gt; loydetyt = new ArrayList&lt;&gt;();
 
         // käy läpi kaikki kirjat ja lisää ne joilla haetun kaltainen nimike listalle loydetyt
 
@@ -15484,7 +15498,9 @@ public class Kirjasto {
     }
 }
 </pre>
+
   <p>Huom! Kun haet teet hakua merkkijonon avulla, älä tee tarkkaa hakua (metodi <code>equals</code>) vaan käytä <code>String</code>-luokan metodia <code>contains</code>. Huomaat todennäköisesti myös että sinulla on ns. copy-paste -koodia <code>Kirjasto</code>-luokan koodissa. Keksitkö tavan päästä siitä eroon?</p>
+
 <pre class="sh_java">
 Kirjasto kirjasto = new Kirjasto();
 
@@ -15508,6 +15524,7 @@ for (Kirja kirja: kirjasto.haeKirjaJulkaisuvuodella(1851)) {
     System.out.println(kirja);
 }
 </pre>
+
 <pre>
 Cheese Problems Solved, Woodhead Publishing, 2007
 The Stinky Cheese Man and Other Fairly Stupid Tales, Penguin Group, 1992
@@ -15515,19 +15532,26 @@ The Stinky Cheese Man and Other Fairly Stupid Tales, Penguin Group, 1992
 ---
 Battle Axes, Tom A. Hawk, 1851
 </pre>
+
   <h4>Paranneltu hakutoiminnallisuus</h4>
+
   <p>Hakutoiminnallisuutemme on jo hyvä, mutta se ei ymmärrä isojen ja pienten kirjainten eroa. Yllä olleessa esimerkissä haku nimikkeellä <code>"cheese"</code> ei olisi tuottanut yhtäkään tulosta. Myös toinen esimerkki, jossa oli ylimääräisiä välilyöntejä, ei näyttänyt haluttua tulosta. Haluamme että nimikkeiden ja julkaisijoiden nimillä haettaessa ei välitetä merkkien koosta, ja että käyttäjä voi syöttää ylimääräisiä välilyöntejä kirjan nimen alkuun tai loppuun (meidän ei tarvitse välittää sanojen välillä olevista tyhjistä!). Toteutetaan pieni apukirjasto <code>StringUtils</code> merkkijonojen vertailuun.</p>
 
   <p>Luo luokka <code>StringUtils</code>, ja lisää sille staattinen metodi <code>public static boolean sisaltaa(String sana, String haettava)</code>, joka tarkistaa sisältääkö merkkijono <code>sana</code> merkkijonon <code>haettava</code>. Jos jommankumman merkkijonon arvo on <em>null</em>, metodin tulee palauttaa arvo <code>false</code>. Metodin tarjoaman vertailun tulee olla välittämättä merkin koosta.
+
   <p>Lisää metodille <code>sisaltaa</code> myös toiminnallisuus, joka poistaa merkkijonojen <code>sana</code> ja <code>haettava</code> alusta ja lopusta ylimääräiset välilyönnit. Käytä tähän <code>String</code>-luokan metodia <code>trim</code>, esim. <code>trimmattu = trimmattava.trim()</code></p>
+
   <p><em>Vinkki!</em> <code>String</code>-luokan metodista <code>toUpperCase()</code> on hyötyä kun haluat verrata ovatko kaksi merkkijonoa samat -- riippumatta niiden alkuperäisestä merkkikoosta.</p>
+
   <p>Kun olet saanut metodin valmiiksi, käytä sitä <code>Kirjasto</code>-luokassa. Alla esimerkki:</p>
+
 <pre class="sh_java">
 if (StringUtils.sisaltaa(kirja.nimike(), haettuNimike)) {
     // kirja löytyi!
 }
 </pre>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 Kirjasto kirjasto = new Kirjasto();
 
 kirjasto.lisaaKirja(new Kirja("Cheese Problems Solved", "Woodhead Publishing", 2007));
@@ -15544,37 +15568,40 @@ for (Kirja kirja: kirjasto.haeKirjaJulkaisijalla("PENGUIN  ")) {
     System.out.println(kirja);
 }
 </pre>
+
 <pre>
 Cheese Problems Solved, Woodhead Publishing, 2007
 The Stinky Cheese Man and Other Fairly Stupid Tales, Penguin Group, 1992
 ---
 The Stinky Cheese Man and Other Fairly Stupid Tales, Penguin Group, 1992
 </pre>
+
 </div>
 </div>
 
-<div class="self-explanation" data-key="q-staattisetJaEiStaattisetMetodit"></div>
-
-
+  <div class="self-explanation" data-key="q-staattisetJaEiStaattisetMetodit"></div>
 
 
   <h2>Ongelman ratkaiseminen paloittain</h2>
 
-  <p>Käydään läpi esimerkki jossa tehdään ohjelma tilanteeseen jossa käyttäjältä kysellään sanoja, kunnes käyttäjä antaa saman sanan uudestaan. Tehdään oletus, että käyttäjä voi antaa korkeintaan 1000 sanaa.</p>
+  <p>Muistellaan taas ongelmien ratkaisemista paloittain. Käydään läpi esimerkki, jossa tehdään ohjelma, joka kyselee käyttäjältä sanoja, kunnes käyttäjä antaa saman sanan uudestaan. Tehdään oletus, että käyttäjä voi antaa korkeintaan 1000 sanaa.</p>
 
-  <pre>
-      Anna sana: <span class="red">porkkana</span>
-      Anna sana: <span class="red">selleri</span>
-      Anna sana: <span class="red">nauris</span>
-      Anna sana: <span class="red">lanttu</span>
-      Anna sana: <span class="red">selleri</span>
-      Annoit saman sanan uudestaan!</pre>
+<pre>
+Anna sana: <span class="red">porkkana</span>
+Anna sana: <span class="red">selleri</span>
+Anna sana: <span class="red">nauris</span>
+Anna sana: <span class="red">lanttu</span>
+Anna sana: <span class="red">selleri</span>
+Annoit saman sanan uudestaan!
+</pre>
 
   <p>Yksi ohjelmoinnin haasteista on se, että on vaikea päättää miten lähestyä tehtävää, eli miten jäsentää ongelmaa ja mistä aloittaa.</p>
 
   <p>Ongelmat koostuvat oikeastaan aina useammasta aliongelmasta. Esimerkiksi ylläolevassa osassa on (ainakin) kaksi "aliongelmaa". Ensimmäinen on sanojen toistuva lukeminen käyttäjältä kunnes tietty ehto toteutuu. Tämä voitaisiin hahmotella seuraavaan tapaan ohjelmarungoksi:</p>
 
-  <pre class="sh_java">
+  <h3>Toisto ja lopetus</h3>
+
+<pre class="sh_java">
 public static void main(String[] args) {
     Scanner lukija = new Scanner(System.in);
     
@@ -15590,9 +15617,9 @@ public static void main(String[] args) {
     System.out.println("Piti lopettaa!");
 }</pre>
 
-<p>Sanojen kysely pitää kun käyttäjä syöttää jo aiemmin syötetyn sanan. Tehdään metodi, joka tarkistaa onko sana jo syötetty. Vielä ei tiedetä miten metodi kannattaisi tehdä, joten tehdään siitä vasta runko: </p>
+  <p>Sanojen kysely pitää kun käyttäjä syöttää jo aiemmin syötetyn sanan. Tehdään metodi, joka tarkistaa onko sana jo syötetty. Vielä ei tiedetä miten metodi kannattaisi tehdä, joten tehdään siitä vasta runko:</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 public static void main(String[] args) {
     Scanner lukija = new Scanner(System.in);
     
@@ -15616,7 +15643,7 @@ public static boolean onJoSyotetty(String sana) {
 
   <p>Ohjelmaa on hyvä testata koko ajan, joten tehdään metodista kokeiluversio:</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 public static boolean onJoSyotetty(String sana) {
     if (sana.equals("loppu")) {
         return true;
@@ -15627,6 +15654,7 @@ public static boolean onJoSyotetty(String sana) {
 </pre>
 
   <p>Nyt toisto jatkuu niin kauan kunnes syötteenä on sana loppu:</p>
+
   <pre>
   Anna sana: <span class="red">porkkana</span>
   Anna sana: <span class="red">selleri</span>
@@ -15638,9 +15666,12 @@ public static boolean onJoSyotetty(String sana) {
 
   <p>Ohjelma ei toimi vielä kokonaisuudessaan, mutta ensimmäinen osaongelma eli ohjelman pysäyttäminen kunnes tietty ehto toteutuu on saatu toimimaan.</p>
 
+
+  <h3>Oleellisten tietojen tallentaminen</h3>
+
   <p>Toinen osaongelma on aiemmin syötettyjen sanojen muistaminen. Taulukko sopii tietysti mainiosti tähän tarkoitukseen -- myös ArrayList kävisi mainiosti, mutta harjoitellaan tässä tarkoituksella taulukkojen käyttöä. Tarvitaan myös muuttuja joka muistaa kuinka monta sanaa on syötetty:</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 public static void main(String[] args) {
     String[] aiemmatSanat = new String[1000];
     int sanojaSyotetty = 0;
@@ -15651,44 +15682,46 @@ public static void main(String[] args) {
 
   <p>Kun uusi sana syötetään, on se lisättävä syötettyjen sanojen joukkoon. Tämä tapahtuu lisäämällä main:in while-silmukkaan taulukkoa ja sanojen laskuria päivittävät rivit:</p>
 
-  <pre class="sh_java">
-    while (true) {
-        String sana = lukija.nextLine();
+<pre class="sh_java">
+while (true) {
+    String sana = lukija.nextLine();
 
-        if (onJoSyotetty(sana, aiemmatSanat, sanojaSyotetty)) {
-            break;
-        }
-
-        // lisätään uusi sana aiempien sanojen taulukkoon
-        aiemmatSanat[sanojaSyotetty] = sana;
-        sanojaSyotetty++;
+    if (onJoSyotetty(sana, aiemmatSanat, sanojaSyotetty)) {
+        break;
     }
+
+    // lisätään uusi sana aiempien sanojen taulukkoon
+    aiemmatSanat[sanojaSyotetty] = sana;
+    sanojaSyotetty++;
+}
 </pre>
 
   <p>Jälleen kannattaa testata, että ohjelma toimii edelleen. Voi olla hyödyksi esim. lisätä ohjelman loppuun testitulostus, joka varmistaa että syötetyt sanat todella menivät taulukkoon:</p>
 
-  <pre class="sh_java">
-    while (true) {
-        String sana = lukija.nextLine();
+<pre class="sh_java">
+while (true) {
+    String sana = lukija.nextLine();
 
-        if (onJoSyotetty(sana, aiemmatSanat, sanojaSyotetty)) {
-            break;
-        }
-
-        // lisätään uusi sana aiempien sanojen taulukkoon
-        aiemmatSanat[sanojaSyotetty] = sana;
-        sanojaSyotetty++;
+    if (onJoSyotetty(sana, aiemmatSanat, sanojaSyotetty)) {
+        break;
     }
 
-    // testitulostus joka varmistaa että kaikki toimii edelleen
-    for (int i=0; i &lt; sanojaSyotetty; i++) {
-        System.out.println(aiemmatSanat[sanojaSyotetty]);
-    }
+    // lisätään uusi sana aiempien sanojen taulukkoon
+    aiemmatSanat[sanojaSyotetty] = sana;
+    sanojaSyotetty++;
+}
+
+// testitulostus joka varmistaa että kaikki toimii edelleen
+for (int i=0; i &lt; sanojaSyotetty; i++) {
+    System.out.println(aiemmatSanat[sanojaSyotetty]);
+}
 </pre>
+
+  <h3>Osaongelmien ratkaisujen yhdistäminen</h3>
 
   <p>Muokataan vielä äsken tekemämme metodi <code>onJoSyotetty</code> tutkimaan onko kysytty sana jo syötettyjen joukossa, eli taulukon käytössä olevassa alkuosassa:</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 public static boolean onJoSyotetty(String sana, String[] aiemmatSanat, int sanojaSyotetty) {
     for (int i = 0; i &lt; sanojaSyotetty; i++) {
         if (sana.equals(aiemmatSanat[i])) {
@@ -15720,6 +15753,7 @@ public static void main(String[] args) {
 
   <p>Nyt koodi on valmis ja alkaa olla kohtuullisen luettava.</p>
 
+
   <big><strong>Eli ohjelmoidessasi, seuraa aina näitä neuvoja:</strong></big>
   <ul>
     <li> Etene pieni askel kerrallaan
@@ -15746,18 +15780,19 @@ public static void main(String[] args) {
   <h3>Oliot luonnollisena osana ongelmanratkaisua</h3>
 
   <p>Rakensimme äsken askel askeleelta ratkaisun ongelmaan, missä luetaan käyttäjältä sanoja, kunnes käyttäjä antaa saman sanan uudestaan. Syöte ohjelmalle oli esimerkiksi seuraavanlainen:</p>
-  <pre>
-          Anna sana: <span class="red">porkkana</span>
-          Anna sana: <span class="red">selleri</span>
-          Anna sana: <span class="red">nauris</span>
-          Anna sana: <span class="red">lanttu</span>
-          Anna sana: <span class="red">selleri</span>
-          Annoit saman sanan uudestaan!
-        </pre>
+
+<pre>
+Anna sana: <span class="red">porkkana</span>
+Anna sana: <span class="red">selleri</span>
+Anna sana: <span class="red">nauris</span>
+Anna sana: <span class="red">lanttu</span>
+Anna sana: <span class="red">selleri</span>
+Annoit saman sanan uudestaan!
+</pre>
 
   <p>Päädyimme ratkaisuun</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 public static boolean onJoSyotetty(String sana, String[] aiemmatSanat, int sanojaSyotetty) {
     for (int i = 0; i &lt; sanojaSyotetty; i++) {
         if (sana.equals(aiemmatSanat[i])) {
@@ -15787,11 +15822,15 @@ public static void main(String[] args) {
 }
 </pre>
 
-  <p>Pääohjelman käyttämät apumuuttujat, eli taulukko <code>aiemmatSanat</code> ja kokonaisluku <code>sanojaSyotetty</code> ovat todella ikäviä "matalan tason" yksityiskohtia pääohjelman kannalta. Pääohjelman kannaltahan on oleellista, että muistetaan niiden <i>sanojen joukko</i> jotka on nähty jo aiemmin. Sanojen joukko on selkeä erillinen "käsite", tai abstraktio. Tälläiset selkeät käsitteet ovat potentiaalisia olioita; kun koodissa huomataan "käsite" voi sen eristämistä erilliseksi luokaksi harkita.</p>
+  <h3>Eristetään käsitteet luokiksi</h3>
+  
+  <p>Pääohjelman käyttämät apumuuttujat, eli taulukko <code>aiemmatSanat</code> ja kokonaisluku <code>sanojaSyotetty</code> ovat todella ikäviä "matalan tason" yksityiskohtia pääohjelman kannalta. Pääohjelman kannaltahan on oleellista, että muistetaan niiden <em>sanojen joukko</em> jotka on nähty jo aiemmin. Sanojen joukko on selkeä erillinen "käsite", tai abstraktio. Tälläiset selkeät käsitteet ovat potentiaalisia olioita; kun koodissa huomataan "käsite" voi sen eristämistä erilliseksi luokaksi harkita.</p>
+
+  <h4>Sanajoukko</h4>
 
   <p>Tehdään luokka <code>Sanajoukko</code>, jonka käyttöönoton jälkeen pääohjelma näyttää seuraavalta:</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 public static void main(String[] args) {
     Scanner lukija = new Scanner(System.in);
     Sanajoukko aiemmatSanat = new Sanajoukko();
@@ -15834,6 +15873,8 @@ public class Sanajoukko {
     }
 }
 </pre>
+
+  <h4>Sanajoukon alustava toteutus kopioidaan aiemmasta ratkaisusta</h4>
 
   <p>Voimme toteuttaa sanajoukon siirtämällä aiemman ratkaisumme taulukon sanajoukon oliomuuttujaksi:</p>
 
@@ -15905,7 +15946,10 @@ public class Sanajoukko {
 
   <p>Ratkaisu on nyt varsin elegantti. Erillinen käsite on saatu erotettua ja pääohjelma näyttää siistiltä. Kaikki "likaiset yksityiskohdat" (taulukko ja lukumäärä sanoista) on saatu siivottua eli kapseloitua olion sisälle.</p>
 
+  <h4>Valmiiden välineiden käyttäminen</h4>
+
   <p>Sanojen muistaminenhan voidaan toteuttaa helposti myös ArrayListia käyttämällä. Korvataan luokan <code>Sanajoukko</code> sisällä oleva taulukko listalla:</p>
+
   <pre class="sh_java">
 import java.util.ArrayList;
 
@@ -15913,7 +15957,7 @@ public class Sanajoukko {
     private ArrayList&lt;String&gt; joukonSanat;
 
     public Sanajoukko() {
-        this.joukonSanat = new ArrayList&lt;String&gt;();
+        this.joukonSanat = new ArrayList&lt;&gt;();
     }
 
     public boolean sisaltaa(String sana) {
@@ -15927,6 +15971,8 @@ public class Sanajoukko {
 </pre>
 
   <p>Näin päädytään ratkaisuun jossa <code>Sanajoukko</code> on ainoastaan ArrayList:in "wräpperi". Onko tässä järkeä? Kenties. Voimme nimittäin halutessamme tehdä Sanajoukolle muitakin muutoksia. Ennen pitkään saatamme esim. huomata, että sanajoukko pitää tallentaa tiedostoon. Jos tekisimme nämä muutokset Sanajoukon koodiin, ei pääohjelmaa tarvitsisi muuttaa mitenkään.</p>
+
+  <h4>Uusien toiminnallisuuksien toteuttaminen: palindromit</h4>
 
   <p>Voi olla, että jatkossa ohjelmaa halutaan laajentaa siten, että <code>Sanajoukko</code>-luokan olisi osattava uusia asiota. Jos esim. pääohjelmassa haluttaisiin tietää kuinka moni syötetyistä sanoista oli palindromi, voidaan sanajoukkoa laajentaa metodilla <code>palindromeja</code>: </p>
 
@@ -15946,20 +15992,20 @@ public static void main(String[] args) {
     }
 
     System.out.println("Annoit saman sanan uudestaan");
-    System.out.println("Sanoistasi " + aiemmatSanat.palindromeja() + "oli palindromeja");
+    System.out.println("Sanoistasi " + aiemmatSanat.palindromeja() + " oli palindromeja");
 }
 </pre>
 
   <p>Pääohjelma säilyy siistinä, viimeisellä rivillä kutsutaan uutta hyvin nimettyä metodia, palindromien laskeminen jää <code>Sanajoukko</code>-olion huoleksi. Metodin toteutus voisi olla seuraavanlainen:</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 import java.util.ArrayList;
 
 public class Sanajoukko {
     private ArrayList&lt;String&gt; joukonSanat;
 
     public Sanajoukko() {
-        this.joukonSanat = new ArrayList&lt;String&gt;();
+        this.joukonSanat = new ArrayList&lt;&gt;();
     }
 
     public boolean sisaltaa(String sana) {
@@ -15998,6 +16044,11 @@ public class Sanajoukko {
 
   <p>Metodi <code>palindromeja</code> käy läpi kaikki joukon sanat ja käyttää apumetodia <code>onPalindromi</code> avukseen palindromien määrän laskemisessa. Koska apumetodi <code>onPalindromi</code> on tarkoitettu ainoastaan olion sisäiseen käyttöön, on sen <i>näkyvyysmääreeksi</i> määritelty <code>private</code>. Olion käyttäjän siis ei ole mahdollista kutsua metodia, metodia voi kutsua ainoastaan olion sisältä. Palaamme näkyvyysmääreisiin tarkemmin ohjelmoinnin jatkokurssilla.</p>
 
+  <h4>Uusiokäyttö</h4>
+
+  <p>Kun ohjelmakoodin käsitteet on eriytetty omiksi luokikseen, voi niitä uusiokäyttää helposti myös muissa projekteissa. Esimerkiksi luokkaa <code>SanaJoukko</code> voisi käyttää yhtä hyvin graafisesta käyttöliittymästä, ja se voisi myös olla osa kännykässä olevaa sovellusta. Tämän lisäksi ohjelman toiminnan testaaminen on huomattavasti helpompaa silloin kun ohjelma on jaettu erillisiin käsitteisiin, joita kutakin voi käyttää myös omana itsenäisenä yksikkönään.</p>
+
+
 <!--
   <p>Jos sanojen talletukseen olisi käytetty suoraan ArrayList:iä, olisi palindromien laskeminen vaatinut pääohjelman koodiin suurempia muutoksia kuin Sanajoukko-luokan käyttö. Joskus on toki tilanteita, joissa kannattaa käyttää suoraan valmista kalustoa eikä oman luokan määrittelylle ole tarvetta. Kuitenkin jos koodin luettavuus alkaa kärsimään, on selkeistä käsitteistä syytä tehdä omat luokkansa. Kuten näimme tämä parhaassa tapauksessa mahdollistaa ohjelman laajennettavuutta ja muokattavuutta.</p>
 -->
@@ -16005,16 +16056,19 @@ public class Sanajoukko {
 
 
 
-<h3>Tehtäviä joissa saat itse keksiä ohjelmalle sopivan rakenteen</h3>
+  <h3>Tehtäviä joissa saat itse keksiä ohjelmalle sopivan rakenteen</h3>
 
 
 <div class="tehtavat">
   <p class="mooc-pakollinen"></p>
   <div class="tehtava pakollinen-hakuun">
-  <h3>Arvosanajakauma</h3>
-  <p><b>Tehtävä vastaa kolmea yksiosaista tehtävää. </b></p>
-  <p><b>HUOM:</b> Ohjelmassa saa käyttää vain yhtä Scanner-olioa, eli vain kertaalleen saa sanoa <code>new Scanner</code>. Jos tarvitset Scanneria monessa kohtaa, voit välittää sen muualle parametrina seuraavaan tyyliin:</p>
-  <pre class="sh_java">
+    <h3>Arvosanajakauma</h3>
+
+    <p><b>Tehtävä vastaa kolmea yksiosaista tehtävää. </b></p>
+  
+    <p><b>HUOM:</b> Ohjelmassa saa käyttää vain yhtä Scanner-olioa, eli vain kertaalleen saa sanoa <code>new Scanner</code>. Jos tarvitset Scanneria monessa kohtaa, voit välittää sen muualle parametrina seuraavaan tyyliin:</p>
+  
+<pre class="sh_java">
 public static void main(String[] args) {
     Scanner lukija = new Scanner(System.in);
 
@@ -16028,10 +16082,13 @@ public static void teeJotain(Scanner lukija) {
     // ...
 }
 </pre>
+
   <p>Tai jos toinen olio tarvitsee Scanneria, voi sen välittää konstruktoriparametrina ja tallettaa oliomuuttujaan jolloin Scanner on olion kaikkien metodien käytössä.</p>
-  <p>Ohjelman syöte on joukko kokonaislukuja, jotka kuvaavat opiskelijoiden kokeesta saamia pistemääriä.
-    Käyttäjä syöttää yhden pistemäärän per rivi. Kun syöte on -1, lopettaa ohjelma pistemäärien kyselyn. </p>
+
+  <p>Ohjelman syöte on joukko kokonaislukuja, jotka kuvaavat opiskelijoiden kokeesta saamia pistemääriä. Käyttäjä syöttää yhden pistemäärän per rivi. Kun syöte on -1, lopettaa ohjelma pistemäärien kyselyn.</p>
+
   <p>Pisteiden syöttö toimii seuraavasti:</p>
+
 <pre>
 Syötä koepisteet, -1 lopettaa:
 <font color="red">34</font>
@@ -16044,7 +16101,9 @@ Syötä koepisteet, -1 lopettaa:
 <font color="red">40</font>
 <font color="red">-1</font>
 </pre>
+
   <p>Pisteiden syöttämisen jälkeen ohjelma tulostaa kurssin arvosanajakauman ja hyväksymisprosentin seuraavassa muodossa:</p>
+
 <pre>
 Arvosanajakauma:
 5: **
@@ -16055,7 +16114,9 @@ Arvosanajakauma:
 0: *
 Hyväksymisprosentti: 87.5
 </pre>
+
   <p>Arvosananajakauma muodostetaan seuraavasti:</p>
+
   <ul>
 
   <!--TODO: kaavio plz tänne-->
@@ -16119,94 +16180,131 @@ Haukka (Dorkus Dorkus): 2 havaintoa
   <p><strong>Huom!</strong> Ohjelmasi rakenne on täysin vapaa. Testaamme vain että <code>Paaohjelma</code> luokan <code>main</code>-metodi toimii kuten tässä on kuvailtu. Yritä miettiä millaisista luokista ja olioista olisi hyötyä ohjelman toteuttamisessa!</p>
 </div>
 </div>
-<h2>Debuggeri ja muuta hyödyllistä</h2>
+
+
+  <h2>Debuggeri ja muuta hyödyllistä</h2>
 
 <!-- CAST63-->
 
-<p>Ohjelmien muuttuessa monimutkaisemmiksi, tulee virheiden löytämisestäkin koko ajan haastavampaa. NetBeansiin integroitu debuggeri voi olla avuksi virheiden löytämisessä. Seuraavalla screencastilla esitellään debuggerin käyttöä. Screencast esittelee myös miten projekteja voidaan luoda, avata ja sulkea sekä miten ohjelmia voidaan suorittaa NetBeansin ulkopuolella. </p>
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=2QlbAvDPmk8" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
+  <p>Ohjelmien muuttuessa monimutkaisemmiksi, tulee virheiden löytämisestäkin koko ajan haastavampaa. NetBeansiin integroitu debuggeri voi olla avuksi virheiden löytämisessä. Seuraavalla screencastilla esitellään debuggerin käyttöä. Screencast esittelee myös miten projekteja voidaan luoda, avata ja sulkea sekä miten ohjelmia voidaan suorittaa NetBeansin ulkopuolella. </p>
+
+  <a href="http://www.youtube.com/watch?feature=player_embedded&v=2QlbAvDPmk8" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
 
 <!--
 <p><iframe allowfullscreen="" frameborder="0"  height="450" width="700" src="http://www.youtube.com/embed/2QlbAvDPmk8"></iframe></p>
 -->
 
-<h2>Taulukon järjestäminen ja etsintä</h2>
+  <h2>Taulukon järjestäminen ja etsintä</h2>
 
-<p>Palaamme jälleen taulukkojen pariin.</p>
+  <p>Palaamme jälleen taulukkojen pariin.</p>
 
-<h3>Taulukon järjestäminen Javan valmiilla työkaluilla.</h3>
-<p>Kuten olemme nähneet, Javassa on valmiina paljon kaikenlaista hyödyllistä. Esimerkiksi ArrayListin käsittelyyn löytyi useita hyödyllisiä apumetodeja luokasta Collections. Taulukoille löytyy vastaavia apuvälineitä luokasta <code>Arrays</code>. Taulukon saa järjestettyä komennolla <code>Arrays.sort(taulukko)</code>.</p>
-<p>Huom: Komennon käyttäminen vaatii, että ohjelmatiedoston yläosassa lukee seuraava määrittely:</p>
+  <h3>Taulukon järjestäminen Javan valmiilla työkaluilla.</h3>
+
+  <p>Kuten olemme nähneet, Javassa on valmiina paljon kaikenlaista hyödyllistä. Esimerkiksi ArrayListin käsittelyyn löytyi useita hyödyllisiä apumetodeja luokasta Collections. Taulukoille löytyy vastaavia apuvälineitä luokasta <code>Arrays</code>. Taulukon saa järjestettyä komennolla <code>Arrays.sort(taulukko)</code>.</p>
+
+  <p>Huom: Komennon käyttäminen vaatii, että ohjelmatiedoston yläosassa lukee seuraava määrittely:</p>
+
 <pre>
-  import java.util.Arrays;
+import java.util.Arrays;
 </pre>
-<p class="help"><em>Jos unohdat <code>import</code>-rivin, NetBeans tarjoaa apua sen kirjoittamiseen. Kokeile klikata punaisella alleviivatun koodirivin vasempaan laitaan ilmestyvää lampun kuvaa.</em></p>
-<p>Seuraava ohjelma luo taulukon ja järjestää taulukossa olevat luvut Arrays.sort -komennon avulla.</p>
+
+  <p class="help"><em>Jos unohdat <code>import</code>-rivin, NetBeans tarjoaa apua sen kirjoittamiseen. Kokeile klikata punaisella alleviivatun koodirivin vasempaan laitaan ilmestyvää lampun kuvaa.</em></p>
+
+  <p>Seuraava ohjelma luo taulukon ja järjestää taulukossa olevat luvut Arrays.sort -komennon avulla.</p>
+
 <pre class="sh_java">
 int[] luvut = {-3, -111, 7, 42};
 Arrays.sort(luvut);
+
 for(int luku: luvut) {
     System.out.println(luku);
 }
 </pre>
+
 <pre>
 -111
 -3
 7
 42
 </pre>
-<h3>Järjestämisalgoritmin toteuttaminen</h3>
-<p>Taulukon järjestäminen on helppoa Javan valmiin kaluston avulla. Ohjelmoijan yleissivistykseen kuuluu kuitenkin ainakin yhden järjestämisalgoritmin (eli tavan järjestää taulukko) tuntemus. Tutustutaan yhteen "klassiseen" järjestämisalgoritmiin, valintajärjestämiseen. Tutustuminen tapahtuu harjoitustehtävien avulla.</p>
+
+  <h3>Järjestämisalgoritmin toteuttaminen</h3>
+
+  <p>Taulukon järjestäminen on helppoa Javan valmiin kaluston avulla. Ohjelmoijan yleissivistykseen kuuluu kuitenkin ainakin yhden järjestämisalgoritmin (eli tavan järjestää taulukko) tuntemus. Tutustutaan yhteen "klassiseen" järjestämisalgoritmiin, valintajärjestämiseen. Tutustuminen tapahtuu harjoitustehtävien avulla.</p>
+
 <div class="tehtavat">
   <div class="tehtava">
   <h3>Järjestäminen</h3>
   <p><b>Huom:</b> tässä tehtävässä on tarkoitus järjestää taulukko itse. Et saa käyttää Arrays.sort()-metodia tai ArrayListejä apunasi!</p>
   <h4 class="req">Pienin</h4>
+
   <p>Tee metodi <code>pienin</code>, joka palauttaa taulukon pienimmän luvun.</p>
+
   <p>Metodin runko on seuraava:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public static int pienin(int[] taulukko) {
     // kirjoita koodia tähän
 }
 </pre>
+
   <p><b>HUOM:</b> parametrina olevaa taulukkoa ei saa muuttaa!</p>
+
   <p>Seuraava koodi esittelee metodin toimintaa:</p>
+
 <pre class="sh_java">
 int[] luvut = {6, 5, 8, 7, 11};
 System.out.println("Pienin: " + pienin(luvut));
 </pre>
+
 <pre>
 Pienin: 5
 </pre>
+
   <h4 class="req">Pienimmän indeksi</h4>
+
   <p>Tee metodi <code>pienimmanIndeksi</code>, joka palauttaa taulukon pienimmän luvun indeksin (eli luvun kohdan taulukossa).</p>
+
   <p>Metodin runko on seuraava:</p>
+
 <pre class="sh_java">
 public static int pienimmanIndeksi(int[] taulukko) {
     // kirjoita koodia tähän
 }
 </pre>
+
   <p><b>HUOM:</b> parametrina olevaa taulukkoa ei saa muuttaa!</p>
+
   <p>Seuraava koodi esittelee metodin toimintaa:</p>
+
 <pre class="sh_java">
 // indeksit:   0  1  2  3  4
 int[] luvut = {6, 5, 8, 7, 11};
 System.out.println("Pienimmän indeksi: " + pienimmanIndeksi(luvut));
 </pre>
+
 <pre>
 Pienimmän indeksi: 1
 </pre>
+
   <p>Taulukon pienin luku on 5, ja sen indeksi eli sijaintipaikka taulukossa on 1. Muistathan, että taulukon numerointi alkaa 0:sta.</p>
+
   <h4 class="req">Pienimmän indeksi taulukon loppuosassa</h4>
+
   <p>Tee metodi <code>pienimmanIndeksiAlkaen</code>, joka toimii samalla tavalla kuin edellisen tehtävän metodi mutta ottaa huomioon vain taulukon loppuosan jostain indeksistä alkaen. Metodille annetaan taulukon lisäksi aloitusindeksi, josta lähtien pienintä lukua etsitään.</p>
+
   <p>Metodin runko on seuraava:</p>
+
 <pre class="sh_java">
 public static int pienimmanIndeksiAlkaen(int[] taulukko, int aloitusIndeksi) {
     // kirjoita koodia tähän
 }
 </pre>
+
   <p><b>HUOM:</b> parametrina olevaa taulukkoa ei saa muuttaa!</p>
+
   <p>Seuraava koodi esittelee metodin toimintaa:</p>
+
 <pre class="sh_java">
 // indeksit:    0  1  2  3   4
 int[] luvut = {-1, 6, 9, 8, 12};
@@ -16214,21 +16312,29 @@ System.out.println(pienimmanIndeksiAlkaen(luvut, 1));
 System.out.println(pienimmanIndeksiAlkaen(luvut, 2));
 System.out.println(pienimmanIndeksiAlkaen(luvut, 4));
 </pre>
+
 <pre>
 1
 3
 4
 </pre>
+
   <p>Esimerkissä ensimmäinen metodikutsu etsii pienimmän luvun indeksin aloittaen indeksistä 1. Indeksistä 1 alkaen pienin luku on 6, ja sen indeksi on 1. Vastaavasti toinen metodikutsu etsii pienimmän luvun indeksiä indeksistä 2 aloittaen. Tällöin pienin luku on 8, ja sen indeksi on 3. Viimeinen kutsu etsii pienimmän luvun indeksiä taulukon viimeisestä indeksistä eli kohdasta 4 aloittaen. Tällöinen muita paikkoja ei ole, joten pienin on paikassa 4.</p>
+
   <h4 class="req">Lukujen vaihtaminen</h4>
+
   <p>Tee metodi <code>vaihda</code>, jolle annetaan taulukko ja kaksi sen indeksiä. Metodi vaihtaa indekseissä olevat luvut keskenään.</p>
+
   <p>Metodin runko on seuraava:</p>
+
 <pre class="sh_java">
 public static void vaihda(int[] taulukko, int indeksi1, int indeksi2) {
     // kirjoita koodia tähän
 }
 </pre>
+
   <p>Seuraavassa estellään metodin toimintaa. Taulukon tulostamisessa käytetään apuna taulukon merkkijonoksi muotoilevaa Arrays.toString-metodia:</p>
+
 <pre class="sh_java">
 int[] luvut = {3, 2, 5, 4, 8};
 
@@ -16240,39 +16346,52 @@ System.out.println(Arrays.toString(luvut));
 vaihda(luvut, 0, 3);
 System.out.println(Arrays.toString(luvut));
 </pre>
+
 <pre>
 [3, 2, 5, 4, 8]
 [2, 3, 5, 4, 8]
 [4, 3, 5, 2, 8]
 </pre>
+
   <h4 class="req">Järjestäminen</h4>
+
   <p>Nyt koossa on joukko hyödyllisiä metodeja, joiden avulla voimme toteuttaa järjestämisalgoritmin nimeltä vaihtojärjestäminen.</p>
+
   <p>Vaihtojärjestämisen idea on seuraava:</p>
+
   <ul>
-    <li> Siirretään taulukon pienin luku indeksiin 0.
-    <li> Siirretään taulukon toiseksi pienin luku indeksiin 1.
-    <li> Siirretään taulukon kolmanneksi pienin luku indeksiin 2.
-    <li> Jne.
+    <li> Siirretään taulukon pienin luku indeksiin 0.</li>
+    <li> Siirretään taulukon toiseksi pienin luku indeksiin 1.</li>
+    <li> Siirretään taulukon kolmanneksi pienin luku indeksiin 2.</li>
+    <li> Jne.</li>
   </ul>
+
   <p>Toisin sanoen:</p>
   <ul>
-    <li> Tarkastellaan taulukkoa indeksistä 0 alkaen. Vaihdetaan keskenään indeksissä 0 oleva luku sekä taulukon pienin luku indeksistä 0 alkaen.
-    <li> Tarkastellaan taulukkoa indeksistä 1 alkaen. Vaihdetaan keskenään indeksissä 1 oleva luku sekä taulukon pienin luku indeksistä 1 alkaen.
-    <li> Tarkastellaan taulukkoa indeksistä 2 alkaen. Vaihdetaan keskenään indeksissä 2 oleva luku sekä taulukon pienin luku indeksistä 2 alkaen.
-    <li> Jne.
+    <li> Tarkastellaan taulukkoa indeksistä 0 alkaen. Vaihdetaan keskenään indeksissä 0 oleva luku sekä taulukon pienin luku indeksistä 0 alkaen.</li>
+    <li> Tarkastellaan taulukkoa indeksistä 1 alkaen. Vaihdetaan keskenään indeksissä 1 oleva luku sekä taulukon pienin luku indeksistä 1 alkaen.</li>
+    <li> Tarkastellaan taulukkoa indeksistä 2 alkaen. Vaihdetaan keskenään indeksissä 2 oleva luku sekä taulukon pienin luku indeksistä 2 alkaen.</li>
+    <li> Jne.</li>
   </ul>
+
   <p>Toteuta metodi <code>jarjesta</code>, joka perustuu yllä olevaan ideaan. Metodissa on syytä olla silmukka, joka käy läpi taulukon indeksejä. Metodeista <code>pieninIndeksiAlkaen</code> ja <code>vaihda</code> on varmasti hyötyä. Tulosta myös taulukon sisältö ennen järjestämistä ja jokaisen kierroksen jälkeen, jotta voit varmistaa algoritmin toimivan oikein.</p>
+
   <p>Metodin runko on seuraava:</p>
+
 <pre class="sh_java">
 public static void jarjesta(int[] taulukko) {
 }
 </pre>
+
 <p>Testaa metodin toimintaa ainakin seuraavalla esimerkillä:</p>
+
 <pre class="sh_java">
 int[] luvut = {8, 3, 7, 9, 1, 2, 4};
 jarjesta(luvut);
 </pre>
+
 <p>Ohjelman tulosteen tulisi olla seuraavanlainen. Huomaa että sinun tulee tulostaa taulukon sisältö jokaisen vaihtamisen jälkeen!</p>
+
 <pre>
 [8, 3, 7, 9, 1, 2, 4]
 [1, 3, 7, 9, 8, 2, 4]
@@ -16282,13 +16401,16 @@ jarjesta(luvut);
 [1, 2, 3, 4, 7, 8, 9]
 [1, 2, 3, 4, 7, 8, 9]
 </pre>
+
 <p>Huomaat, miten taulukko tulee pikkuhiljaa järjestykseen alkaen alusta ja edeten loppua kohti.</p>
+
 </div>
 </div>
 
 <h3>Etsintä</h3>
 
-<p>Järjestämisen lisäksi toinen hyvin tyypillinen ongelma johon ohjelmoija törmää, on tietyn arvon etsiminen taulukosta. Olemme aiemmin jo toteuttaneet metodeja, jotka etsivät arvoja listoista ja taulukoista. Taulukkojen tapauksessa lukuja ja merkkijonoja voi etsiä seuraavasti: </p>
+  <p>Järjestämisen lisäksi toinen hyvin tyypillinen ongelma johon ohjelmoija törmää, on tietyn arvon etsiminen taulukosta. Olemme aiemmin jo toteuttaneet metodeja, jotka etsivät arvoja listoista ja taulukoista. Taulukkojen tapauksessa lukuja ja merkkijonoja voi etsiä seuraavasti: </p>
+
 <pre class="sh_java">
 public static boolean onkoTaulukossa(int[] taulukko, int etsittava) {
     for (int luku : taulukko) {
@@ -16310,54 +16432,75 @@ public static boolean onkoSanaTaulukossa(String[] taulukko, String etsittava) {
     return false;
 }
 </pre>
-<p>Tämänkaltainen toteutus on paras mihin olemme tähän asti pystyneet. Metodin huono puoli on se, että jos taulukossa on hyvin suuri määrä lukuja, kuluu etsintään paljon aikaa. Metodi käy läpi pahimmassa tapauksessa jokaisen taulukossa olevan alkion. Tämä tarkoittaa sitä, että taulukon, jossa on esimerkiksi 16777216 alkiota, läpikäynti vaatii 16777216 alkion tutkiskelua.</p>
-<p>Toisaalta, jos taulukossa olevat luvut ovat <i>suuruusjärjestyksessä</i>, voidaan etsiminen tehdä huomattavasti tehokkaammin soveltamalla tekniikkaa nimeltään <i>binäärihaku</i>. Tutkitaan binäärihaun ideaa seuraavan taulukon kautta:</p>
+
+  <p>Tämänkaltainen toteutus on paras mihin olemme tähän asti pystyneet. Metodin huono puoli on se, että jos taulukossa on hyvin suuri määrä lukuja, kuluu etsintään paljon aikaa. Metodi käy läpi pahimmassa tapauksessa jokaisen taulukossa olevan alkion. Tämä tarkoittaa sitä, että taulukon, jossa on esimerkiksi 16777216 alkiota, läpikäynti vaatii 16777216 alkion tutkiskelua.</p>
+
+  <p>Toisaalta, jos taulukossa olevat luvut ovat <em>suuruusjärjestyksessä</em>, voidaan etsiminen tehdä huomattavasti tehokkaammin soveltamalla tekniikkaa nimeltään <em>binäärihaku</em>. Tutkitaan binäärihaun ideaa seuraavan taulukon kautta:</p>
+
 <pre>
 // indeksit   0   1   2   3    4   5    6   7   8   9  10
 // luvut     -7  -3   3   7   11  15   17  21  24  28  30
 </pre>
-<p>Oletetaan että haluamme löytää luvun 17. Hyödynnetään tietoa siitä että taulukon arvot ovat järjestyksessä sen sijaan, että kävisimme taulukon lukuja läpi taulukon alusta lähtien. Tutkitaan taulukon keskimmäistä alkiota. Taulukon puolessa välissä olevan alkion indeksi on isoin indeksi 10 jaettuna kahdella eli 5. Keskimmäinen alkio on merkattu seuraavaan tähdellä:</p>
+
+  <p>Oletetaan että haluamme löytää luvun 17. Hyödynnetään tietoa siitä että taulukon arvot ovat järjestyksessä sen sijaan, että kävisimme taulukon lukuja läpi taulukon alusta lähtien. Tutkitaan taulukon keskimmäistä alkiota. Taulukon puolessa välissä olevan alkion indeksi on isoin indeksi 10 jaettuna kahdella eli 5. Keskimmäinen alkio on merkattu seuraavaan tähdellä:</p>
+
 <pre>
                                    *
 // indeksit   0   1   2   3    4   5    6   7   8   9  10
 // luvut     -7  -3   3   7   11  15   17  21  24  28  30
 </pre>
-<p>Puolessa välissä on luku 15, joka ei ollut hakemamme luku. Etsimme lukua 17, joten koska taulukon alkiot ovat suuruusjärjestyksessä, ei etsitty luku voi missään tapauksessa olla luvun 15 vasemmalla puolella. Voimme siis päätellä että kaikki indeksit, jotka ovat pienempiä tai yhtäsuuria kuin 5, eivät missään nimessä sisällä hakemaamme arvoa.</p>
-<p>Alue, jolta etsimme haettavaa lukua voidaan nyt rajata lukuihin, jotka sijaitsevat indeksin 5 oikealla puolella, eli indekseihin välillä [6, 10] (6, 7, 8, 9, 10). Seuraavassa on merkitty harmaalla se osa taulukkoa jossa etsitty ei voi olla:</p>
+
+  <p>Puolessa välissä on luku 15, joka ei ollut hakemamme luku. Etsimme lukua 17, joten koska taulukon alkiot ovat suuruusjärjestyksessä, ei etsitty luku voi missään tapauksessa olla luvun 15 vasemmalla puolella. Voimme siis päätellä että kaikki indeksit, jotka ovat pienempiä tai yhtäsuuria kuin 5, eivät missään nimessä sisällä hakemaamme arvoa.</p>
+
+  <p>Alue, jolta etsimme haettavaa lukua voidaan nyt rajata lukuihin, jotka sijaitsevat indeksin 5 oikealla puolella, eli indekseihin välillä [6, 10] (6, 7, 8, 9, 10). Seuraavassa on merkitty harmaalla se osa taulukkoa jossa etsitty ei voi olla:</p>
+
 <pre>
 // indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    6   7   8   9  10
 // luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   17  21  24  28  30
 </pre>
-<p>Tutkitaan seuraavaksi jäljellä olevan etsintäalueen, eli indeksien 6-10 keskimmäistä indeksiä. Keskimmäinen indeksi löytyy ottamalla etsintäalueen pienimmän ja suurimman indeksin summa ja jakamalla se kahdella, eli (6+10)/2 = 16/2 = 8. Indeksi 8 on merkitty alle tähdellä.</p>
+
+  <p>Tutkitaan seuraavaksi jäljellä olevan etsintäalueen, eli indeksien 6-10 keskimmäistä indeksiä. Keskimmäinen indeksi löytyy ottamalla etsintäalueen pienimmän ja suurimman indeksin summa ja jakamalla se kahdella, eli (6+10)/2 = 16/2 = 8. Indeksi 8 on merkitty alle tähdellä.</p>
+
 <pre>
                                                  *
 // indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    6   7   8   9  10
 // luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   17  21  24  28  30
 </pre>
-<p>Indeksissä 8 oleva luku on 24, joka ei ollut hakemamme luku. Koska luvut taulukossa ovat suuruusjärjestyksessä, ei etsittävä luku voi missään nimessä olla luvun 24 oikealla puolella. Voimme siis päätellä että kaikki indeksit, jotka ovat suurempia tai yhtäsuuria kuin 8, eivät missään nimessä sisällä hakemaamme arvoa. Etsintäalue rajautuu taas, harmaat alueet on käsitelty:</p>
+
+  <p>Indeksissä 8 oleva luku on 24, joka ei ollut hakemamme luku. Koska luvut taulukossa ovat suuruusjärjestyksessä, ei etsittävä luku voi missään nimessä olla luvun 24 oikealla puolella. Voimme siis päätellä että kaikki indeksit, jotka ovat suurempia tai yhtäsuuria kuin 8, eivät missään nimessä sisällä hakemaamme arvoa. Etsintäalue rajautuu taas, harmaat alueet on käsitelty:</p>
+
 <pre>
 // indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    6   7  <font color="lightgrey"> 8   9  10</font>
 // luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   17  21  <font color="lightgrey">24  28  30</font>
 </pre>
-<p>Etsintä jatkuu. Tutkitaan jäljellä olevan etsintäalueen, eli indeksien 6-7, keskimmäistä indeksiä. Keskimmäinen indeksi löytyy taas ottamalla etsintäalueen pienimmän ja suurimman indeksin summa ja jakamalla se kahdella, eli (6+7)/2 = 6,5, joka pyöristyy alaspäin luvuksi 6. Kohta on merkitty alle tähdellä.</p>
+
+  <p>Etsintä jatkuu. Tutkitaan jäljellä olevan etsintäalueen, eli indeksien 6-7, keskimmäistä indeksiä. Keskimmäinen indeksi löytyy taas ottamalla etsintäalueen pienimmän ja suurimman indeksin summa ja jakamalla se kahdella, eli (6+7)/2 = 6,5, joka pyöristyy alaspäin luvuksi 6. Kohta on merkitty alle tähdellä.</p>
+
 <pre>
                                          *
 // indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    6   7  <font color="lightgrey"> 8   9  10</font>
 // luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   17  21  <font color="lightgrey">24  28  30</font>
 </pre>
-<p>Indeksissä 6 on luku 17, joka on sama kuin hakemamme luku. Voimme lopettaa haun ja ilmoittaa että etsitty luku on taulukossa. Jos luku ei olisi ollut taulukossa -- esimerkiksi jos haettava luku olisi ollut 16, etsintäalue olisi jäänyt lopulta tyhjäksi.</p>
+  
+  <p>Indeksissä 6 on luku 17, joka on sama kuin hakemamme luku. Voimme lopettaa haun ja ilmoittaa että etsitty luku on taulukossa. Jos luku ei olisi ollut taulukossa -- esimerkiksi jos haettava luku olisi ollut 16, etsintäalue olisi jäänyt lopulta tyhjäksi.</p>
+
 <pre>
                                          *
 // indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    <font color="red">6</font>   7  <font color="lightgrey"> 8   9  10</font>
 // luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   <font color="red">17</font>  21  <font color="lightgrey">24  28  30</font>
 </pre>
-<p>Jotta binäärihaun idea tulee sinulle tutuksi, simuloi kynällä ja paperilla miten binäärihaku toimii kun taulukkona on alla oleva taulukko ja haet ensin lukua 33, sitten lukua 1.</p>
+
+  <p>Jotta binäärihaun idea tulee sinulle tutuksi, simuloi kynällä ja paperilla miten binäärihaku toimii kun taulukkona on alla oleva taulukko ja haet ensin lukua 33, sitten lukua 1.</p>
+
 <pre>
 // indeksit   0   1   2   3   4   5   6   7   8   9  10  11  12  13
 // luvut     -5  -2   3   5   8  11  14  20  22  26  29  33  38  41
 </pre>
-<p>Binäärihaun avulla haemme alkiota puolittamalla aina tutkittavan alueen kahteen osaan. Tämä mahdollistaa hyvin tehokkaan hakemisen. Esimerkiksi taulukko, jossa on 16 alkiota, voidaan jakaa kahteen osaan korkeintaan 4 kertaa, eli 16 -> 8 -> 4 -> 2 -> 1. Toisaalta, taulukko, jossa on 16777216 alkiota, voidaan jakaa kahteen osaan korkeintaan 24 kertaa. Tämä tarkoittaa sitä, että binäärihaun avulla 16777216-alkioisessa taulukossa tarvitsee tarkastella korkeintaan 24 alkiota haetun alkion löytymiseksi.</p>
-<p><em>Binäärihaun tehokkuutta voi tutkia logaritmien avulla. Kaksikantainen logaritmi (<code>log<sub>2</sub></code>) luvusta 16777216 on 24 -- voimme siis laskea kaksikantaisen logaritmin avulla kuinka monta kertaa jonkun luvun voi puolittaa. Vastaavasti luvun 4294967296 kaksikantainen logaritmi, (<code>log<sub>2</sub> 4294967296</code>) on 32. Tämä tarkoittaa että 4294967296 eri arvoa sisältävästä järjestyksessä olevasta taulukosta hakeminen vaatisi korkeintaan 32 eri alkion tarkastamista. Tehokkuus on oleellinen osa tietojenkäsittelytiedettä. Esimerkiksi tietojenkäsittelytieteen ensimmäisen vuoden kurssi Tietorakenteet keskittyy tehokkaiden tietorakenteiden toteuttamiseen.</em></p>
+
+  <p>Binäärihaun avulla haemme alkiota puolittamalla aina tutkittavan alueen kahteen osaan. Tämä mahdollistaa hyvin tehokkaan hakemisen. Esimerkiksi taulukko, jossa on 16 alkiota, voidaan jakaa kahteen osaan korkeintaan 4 kertaa, eli 16 -> 8 -> 4 -> 2 -> 1. Toisaalta, taulukko, jossa on 16777216 alkiota, voidaan jakaa kahteen osaan korkeintaan 24 kertaa. Tämä tarkoittaa sitä, että binäärihaun avulla 16777216-alkioisessa taulukossa tarvitsee tarkastella korkeintaan 24 alkiota haetun alkion löytymiseksi.</p>
+
+  <p><em>Binäärihaun tehokkuutta voi tutkia logaritmien avulla. Kaksikantainen logaritmi (<code>log<sub>2</sub></code>) luvusta 16777216 on 24 -- voimme siis laskea kaksikantaisen logaritmin avulla kuinka monta kertaa jonkun luvun voi puolittaa. Vastaavasti luvun 4294967296 kaksikantainen logaritmi, (<code>log<sub>2</sub> 4294967296</code>) on 32. Tämä tarkoittaa että 4294967296 eri arvoa sisältävästä järjestyksessä olevasta taulukosta hakeminen vaatisi korkeintaan 32 eri alkion tarkastamista. Tehokkuus on oleellinen osa tietojenkäsittelytiedettä. Esimerkiksi tietojenkäsittelytieteen ensimmäisen vuoden kurssi Tietorakenteet keskittyy tehokkaiden tietorakenteiden toteuttamiseen.</em></p>
+
 <div class="tehtavat">
   <div class="tehtava">
   <h3 class="req">Arvauspeli</h3>
@@ -16384,23 +16527,20 @@ Onko lukusi suurempi kuin 43? (k/e)
 <font color="red">k</font>
 Ajattelemasi luku on 44.
 </pre>
-<p>Yllä olevassa esimerkissä mahdollinen lukualue
-on aluksi 1...100.
-Kun käyttäjä kertoo, että luku ei ole yli 50,
-mahdollinen lukualue on 1...50.
-    Kun käyttäjä kertoo, että luku on yli 25,
-    mahdollinen lukualue on 26...50.
-    Samanlainen päättely jatkuu,
-    kunnes saavutaan lukuun 44.</p>
+
+  <p>Yllä olevassa esimerkissä mahdollinen lukualue on aluksi 1...100. Kun käyttäjä kertoo, että luku ei ole yli 50, mahdollinen lukualue on 1...50. Kun käyttäjä kertoo, että luku on yli 25, mahdollinen lukualue on 26...50. Samanlainen päättely jatkuu, kunnes saavutaan lukuun 44.</p>
+
   <p>Puolitus- eli binäärihaun mukaisesti tässä puolitetaan mahdollinen hakualue jokaisella kysymyksellä, jolloin kysymyksiä tarvitaan vähän. Jopa lukuvälillä 1..1000000 pitäisi kulua korkeintaan 20 kysymystä.</p>
+
   <p>Pelin toteuttavan luokan <code>Arvauspeli</code> runko on seuraavanlainen:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Arvauspeli {
 
     private Scanner lukija;
 
     public Arvauspeli() {
-    this.lukija = new Scanner(System.in);
+        this.lukija = new Scanner(System.in);
     }
 
     public void pelaa(int alaraja, int ylaraja) {
@@ -16434,7 +16574,9 @@ public class Arvauspeli {
     }
 }
 </pre>
+
 <p>Peli käynnistetään seuraavasti:</p>
+
 <pre class="sh_java">
 // luodaan peli-olio
 Arvauspeli peli = new Arvauspeli();
@@ -16443,21 +16585,30 @@ Arvauspeli peli = new Arvauspeli();
 peli.pelaa(1,10);  // arvattava luku nyt välillä 1-10
 peli.pelaa(10,99);  // arvattava luku nyt välillä 10-99
 </pre>
+
   <p>Toteutetaan tämä tehtävä askeleittain.</p>
+
   <h4>Onko suurempi kuin</h4>
+
   <p>Toteuta luokalle <code>Arvauspeli</code> metodi <code>public boolean onkoSuurempiKuin(int luku)</code>, joka esittää käyttäjälle kysymyksen:</p>
+
 <pre>
 "Onko lukusi suurempi kuin <em>annettu luku</em>? (k/e)"
 </pre>
+
   <p>Metodi palauttaa arvon <code>true</code> jos käyttäjä vastaa "k", muulloin <code>false</code>.</p>
+
   <p><b>Huom:</b> metodin tulee lukea käyttäjän syöte luokan Arvauspeli oliomuuttujassa <code>this.lukija</code> olevaa lukijaa hyväksikäyttäen. Metodissa ei saa luoda uutta lukijaa!</p>
+
   <p>Testaa metodisi toimintaa</p>
+
 <pre class="sh_java">
 Arvauspeli peli = new Arvauspeli();
 
 System.out.println(peli.onkoSuurempiKuin(32));
 System.out.println(peli.onkoSuurempiKuin(99));
 </pre>
+
 <pre>
 Onko lukusi suurempi kuin 32? (k/e)
 <font color="red">k</font>
@@ -16466,23 +16617,29 @@ Onko lukusi suurempi kuin 99? (k/e)
 <font color="red">e</font>
 false
 </pre>
+
   <h4>Keskiarvo</h4>
+
   <p>Toteuta luokalle <code>Arvauspeli</code> metodi <code>public int keskiarvo(int ekaLuku, int tokaLuku)</code>, joka laskee annettujen lukujen keskiarvon. Huomaa että Java pyöristää liukuluvut luvut automaattisesti alaspäin, tämä on meidän tapauksessamme täysin toivottavaa.</p>
+
 <pre class="sh_java">
 Arvauspeli peli = new Arvauspeli();
 
 System.out.println(peli.keskiarvo(3, 4));
 System.out.println(peli.keskiarvo(6, 12));
 </pre>
-  <pre>
+
+<pre>
   3
   9
 </pre>
+
   <h4>Arvauslogiikka</h4>
-  <p>Kirjoita varsinainen arvauslogiikka luokan <code>Arvauspeli</code> metodin <code>public void pelaa(int alaraja, int ylaraja)</code> runkoon. Tarvitset ainakin toistolauseen, sekä kyselyn jossa kysyt onko käyttäjän ajattelema luku suurempi kuin ala- ja ylärajan keskiarvo.
-    Käytä edellisten kohtien metodeja kyselyyn ja keskiarvon selvittämiseen.
-    Muokkaa toistolauseessa ala- tai ylärajaa käyttäjän vastauksesta riippuen.</p>
+
+  <p>Kirjoita varsinainen arvauslogiikka luokan <code>Arvauspeli</code> metodin <code>public void pelaa(int alaraja, int ylaraja)</code> runkoon. Tarvitset ainakin toistolauseen, sekä kyselyn jossa kysyt onko käyttäjän ajattelema luku suurempi kuin ala- ja ylärajan keskiarvo. Käytä edellisten kohtien metodeja kyselyyn ja keskiarvon selvittämiseen. Muokkaa toistolauseessa ala- tai ylärajaa käyttäjän vastauksesta riippuen.</p>
+
   <p>Jatka toistolausekkeen toistoa kunnes alaraja ja yläraja ovat samat! Voit testata peliä myös pienemmillä ala- ja ylärajan arvoilla:</p>
+
 <pre>
 Ajattele jotain lukua väliltä 1...4.
 Lupaan pystyä arvaamaan ajattelemasi luvun 2 kysymyksellä.
@@ -16496,13 +16653,18 @@ Onko lukusi suurempi kuin 3? (k/e)
 Ajattelemasi luku on 4.
 </pre>
 </div>
-<div class="tehtava">
-  <h3>Binäärihaun toteutus</h3>
-  <p>Testiautomaatista tulevassa rungossa on pohja binäärihaun toteutukselle. Luokka <code>BinaariHaku</code> sisältää metodin <code>public static boolean hae(int[] taulukko, int etsittavaLuku)</code>, jonka tehtävänä on selvittää binäärihakua käyttäen, onko parametrina annettu luku parametrina annetussa järjestyksessä olevassa taulukossa.</p>
-  <p>Kuten huomaat, metodi <code>hae</code> ei toimi. Toteuta tehtäväpohjaan binäärihaku<em>algoritmi</em> -- tämä tehtävä on kolmen tehtäväpisteen arvoinen.</p>
-  <p>Ohjelman testausta varten on erillinen pääohjelma luokassa <code>Main</code>, jonka runko on seuraava:</p>
-<pre class="sh_java">
 
+<div class="tehtava">
+
+  <h3>Binäärihaun toteutus</h3>
+
+  <p>Testiautomaatista tulevassa rungossa on pohja binäärihaun toteutukselle. Luokka <code>BinaariHaku</code> sisältää metodin <code>public static boolean hae(int[] taulukko, int etsittavaLuku)</code>, jonka tehtävänä on selvittää binäärihakua käyttäen, onko parametrina annettu luku parametrina annetussa järjestyksessä olevassa taulukossa.</p>
+
+  <p>Kuten huomaat, metodi <code>hae</code> ei toimi. Toteuta tehtäväpohjaan binäärihaku<em>algoritmi</em> -- tämä tehtävä on kolmen tehtäväpisteen arvoinen.</p>
+
+  <p>Ohjelman testausta varten on erillinen pääohjelma luokassa <code>Main</code>, jonka runko on seuraava:</p>
+
+<pre class="sh_java">
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -16525,14 +16687,17 @@ public class Main {
     }
 }
 </pre>
+
   <p>Ohjelman suoritus näyttää seuraavalta:</p>
-  <pre>
+
+<pre>
 Taulukon luvut: [-3, 2, 3, 4, 7, 8, 12]
 
 Anna haettava luku: <font color="red">8</font>
 
 Luku 8 on taulukossa
 </pre>
+
 <pre>
 Taulukon luvut: [-3, 2, 3, 4, 7, 8, 12]
 
@@ -16540,12 +16705,13 @@ Anna haettava luku: <font color="red">99</font>
 
 Luku 99 ei ole taulukossa
 </pre>
+
 </div>
 </div>
 
-<h2>Taulukoista ja olioista</h2>
-<p>Jos tarvetta on, taulukkoon voi luonnollisesti laittaa minkä tahansa tyyppisen olion.
-  Seuraavassa esimerkki taulukosta johon talletetaan <em>Henkilo</em>-olioita:</p>
+  <h2>Taulukoista ja olioista</h2>
+  <p>Jos tarvetta on, taulukkoon voi luonnollisesti laittaa minkä tahansa tyyppisen olion. Seuraavassa esimerkki taulukosta johon talletetaan <em>Henkilo</em>-olioita:</p>
+
 <pre class="sh_java">
 public static void main(String[] args) {
     Henkilo[] henkilot = new Henkilo[3];
@@ -16565,8 +16731,11 @@ public static void main(String[] args) {
     }
 }
 </pre>
-<p>Alussa luodaan taulukko johon mahtuu 3 henkilöolioa. Laitetaan Pekka lokeroon 0, Antti lokeroon 1 ja Juhana lokeroon 2. Vanhennetaan kaikkia 30 vuotta ja tarkastetaan kaikkien täysi-ikäisyys edellisen luvun metodia hyödyntäen.</p>
+
+  <p>Alussa luodaan taulukko johon mahtuu 3 henkilöolioa. Laitetaan Pekka lokeroon 0, Antti lokeroon 1 ja Juhana lokeroon 2. Vanhennetaan kaikkia 30 vuotta ja tarkastetaan kaikkien täysi-ikäisyys edellisen luvun metodia hyödyntäen.</p>
+
 <p>Sama esimerkki ArrayListien avulla:</p>
+
 <pre class="sh_java">
 public static void main(String[] args) {
     ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;Henkilo&gt;();
@@ -16590,8 +16759,11 @@ public static void main(String[] args) {
     }
 }
 </pre>
-<p>Useimmissa sovellustilanteissa taulukon sijaan kannattaa käyttää ArrayListiä. Voi kuitenkin olla joitain tilanteita joissa taulukko riittää ja on hieman yksinkertaisempi käyttää.</p>
-<p>Viikko koostuu aina seitsemästä päivästä. Viikko-olio olisikin mielekästä koostaa tasan seitsemästä päiväoliosta. Koska päiva-olioita on aina täsmälleen 7, sopii taulukko tilanteeseen hyvin:</p>
+
+  <p>Useimmissa sovellustilanteissa taulukon sijaan kannattaa käyttää ArrayListiä. Voi kuitenkin olla joitain tilanteita joissa taulukko riittää ja on hieman yksinkertaisempi käyttää; taulukko on myös hieman ArrayListiä <em>tehokkaampi</em> -- tämä tehokkuus tosin näkyy lähinnä vain tietorakenteiden ja algoritmien suunnittelussa, ja niissäkin harvemmin.</p>
+
+  <p>Viikko koostuu aina seitsemästä päivästä. Viikko-olio olisikin mielekästä koostaa tasan seitsemästä päiväoliosta. Koska päiva-olioita on aina täsmälleen 7, sopii taulukko tilanteeseen hyvin:</p>
+
 <pre class="sh_java">
 public class Paiva {
       private String nimi;
@@ -16615,11 +16787,13 @@ public class Viikko {
   <div class="tehtavat">
     <div class="tehtava">
       <h3>Kurssipalaute</h3>
+
       <p>Vaikka olemme saaneet paljon arvokasta palautetta eri tehtävistä TMC:n kautta, toivomme että annat palautetta kattavammin kaikista tähänastisita tehtävistä, materiaalista ja kurssin toiminnasta. Kaikki parannusehdotukset ovat myös erittäin arvokkaita!</p>
 
       <p>Voit myös halutessasi antaa palautteen vasta kurssikokeen jälkeen, palautteen antaminen onnistuu tästä linkistä: <a href="https://ilmo.cs.helsinki.fi/kurssit/servlet/Valinta" target="_blank">https://ilmo.cs.helsinki.fi/kurssit/servlet/Valinta</a>.</p>
 
       <p>Jotta saat tehtävästä pisteet, aja tehtävän TMC-testit ja lähetä tehtävä palvelimelle. </p>
+
       </div>
     </div>
   </div>
