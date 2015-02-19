@@ -15933,7 +15933,7 @@ public class Sanajoukko {
     }
 
     public boolean sisaltaa(String sana) {
-        for (int i=0; i &lt; sanojaSyotetty; i++) {
+        for (int i = 0; i &lt; sanojaSyotetty; i++) {
             if (joukonSanat[i].equals(sana)) {
                 return true;
             }
@@ -16029,9 +16029,9 @@ public class Sanajoukko {
     }
 
     private boolean onPalindromi(String sana) {
-        int loppu = sana.length()-1;
+        int loppu = sana.length() - 1;
 
-        for (int i=0; i %lt; sana.length()/2; i++) {
+        for (int i = 0; i &lt; sana.length() / 2; i++) {
             if (sana.charAt(i) != sana.charAt(loppu - i)) {
                 return false;
             }
