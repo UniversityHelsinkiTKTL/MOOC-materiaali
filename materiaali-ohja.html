@@ -571,27 +571,24 @@ jQuery(document).ready(function() {
 
     <p>Tietokoneohjelma koostuu joukosta käskyjä, joita tietokone suorittaa yksi kerrallaan, ylhäältä alaspäin. Käskyillä on aina määrätty rakenne ja semantiikka. Javassa, eli kurssilla käyttämässämme ohjelmointikielessä, käskyjä luetaan ylhäältä alas vasemmalta oikealle. Ohjelmointikurssit aloitetaan usein esittelemällä ohjelma, joka tulostaa merkkijonon <code>Hei maailma!</code>. Alla on Java-kielellä kirjoitettu käsky <code>Hei maailma!</code> -merkkijonon tulostamiseksi.</p>
 
-    <pre class="sh_java">
-        System.out.println("Hei maailma!");
-    </pre>
+<pre class="sh_java">
+System.out.println("Hei maailma!");</pre>
 
     <p>Käskyssä kutsutaan <code>System</code>-luokkaan liittyvän muuttujan <code>println</code>-metodia, joka tulostaa ensin parametrina annetun merkkijonon ja sen jälkeen rivinvaihdon. Metodille annetaan parametrina merkkijono <code>Hei maailma!</code>, jolloin tulostus on <code>Hei maailma!</code> jota seuraa rivinvaihto.</p>
 
     <p>Ohjelmaan voi liittyä muuttujia joita voi käyttää osana ohjelman toimintaa. Alla on ohjelma, joka ensin esittelee kokonaislukutyyppisen muuttujan <code>pituus</code> johon asetetaan seuraavalla rivillä arvo 179. Tämän jälkeen tulostetaan muuttujan <code>pituus</code> arvo eli <code>179</code>.</p>
 
-    <pre class="sh_java">
-        int pituus;
-        pituus = 179;
-        System.out.println(pituus);
-    </pre>
+<pre class="sh_java">
+int pituus;
+pituus = 179;
+System.out.println(pituus);</pre>
 
     <p>Yllä ohjelman suoritus tapahtuisi rivi kerrallaan. Ensin suoritetaan rivi <code>int pituus;</code>, jossa esitellään muuttuja nimeltä <code>pituus</code>. Seuraavaksi suoritetaan rivi <code>pituus = 179;</code>, jossa asetetaan edellisellä rivillä esiteltyyn muuttujaan arvo <code>179</code>. Tämän jälkeen suoritetaan rivi <code>System.out.println(pituus);</code>, jossa kutsutaan aiemmin näkemäämme tulostusmetodia, jolle annetaan parametrina muuttuja pituus. Metodi tulostaa muuttujan <code>pituus</code> sisällön eli arvon <code>179</code>.</p>
 
     <p>Yllä olevassa ohjelmassa ei oikeastaan ole tarvetta esitellä muuttujaa <code>pituus</code> ja asettaa siihen arvoa erillisillä riveillä. Muuttujan esittelyn ja siihen liittyvän arvon asetuksen voi tehdä myös samalla rivillä.</p>
 
-    <pre class="sh_java">
-        int pituus = 179;
-    </pre>
+<pre class="sh_java">
+int pituus = 179;</pre>
 
     <p>Yllä olevaa riviä suoritettaessa esitellään ensin muuttuja <code>pituus</code>, johon asetetaan esittelyn yhteydessä arvo <code>179</code>.</p>
 
@@ -602,168 +599,159 @@ jQuery(document).ready(function() {
 
     <p>Ohjelmien toiminnallisuus rakennetaan kontrollirakenteiden avulla. Kontrollirakenteet mahdollistavat erilaiset toiminnot ohjelman muuttujien arvoista riippuen. Alla esimerkki <code>if-else if-else</code> -kontrollirakenteesta, jossa tehdään erilainen toiminto vertailun tuloksesta riippuen. Esimerkissä tulostetaan merkkijono <code>Kaasua</code> jos muuttujan <code>nopeus</code> arvo on pienempi kuin 110, merkkijono <code>Jarrua</code> jos muuttujan <code>nopeus</code> arvo on suurempi kuin 120 ja merkkijono <code>Kruisaillaan</code> muissa tapauksissa.</p>
 
-    <pre class="sh_java">
-        int nopeus = 105;
+<pre class="sh_java">
+int nopeus = 105;
 
-        if(nopeus &lt; 110) {
-            System.out.println("Kaasua");
-        } else if (nopeus &gt; 120) {
-            System.out.println("Jarrua");
-        } else {
-            System.out.println("Kruisaillaan");
-        }
-    </pre>
+if(nopeus &lt; 110) {
+    System.out.println("Kaasua");
+} else if (nopeus &gt; 120) {
+    System.out.println("Jarrua");
+} else {
+    System.out.println("Kruisaillaan");
+}
+</pre>
 
     <p>Koska yllä olevassa esimerkissä muuttujan <code>nopeus</code> arvo on 105, tulostaa ohjelma aina merkkijonon <code>Kaasua</code>. Muistathan että merkkijonojen yhtäsuuruusvertailu tapahtuu merkkijonoon liittyvällä <code>equals</code>-metodilla. Alla on esimerkki jossa käytetään Javan <a href="http://docs.oracle.com/javase/6/docs/api/java/util/Scanner.html" target="_blank">Scanner</a>-luokasta luotua olioita käyttäjän kirjoittaman syötteen lukemiseen. Ohjelma tarkistaa ovatko käyttäjän syöttämät merkkijonot samat.</p>
 
-    <pre class="sh_java">
-        Scanner lukija = new Scanner(System.in);
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
 
-        System.out.print("Syötä ensimmäinen merkkijono: ");
-        String ensimmainen = lukija.nextLine();
+System.out.print("Syötä ensimmäinen merkkijono: ");
+String ensimmainen = lukija.nextLine();
 
-        System.out.print("Syötä toinen merkkijono: ");
-        String toinen = lukija.nextLine();
+System.out.print("Syötä toinen merkkijono: ");
+String toinen = lukija.nextLine();
 
-        System.out.println();
+System.out.println();
 
-        if (ensimmainen.equals(toinen)) {
-            System.out.println("Kirjoittamasi merkkijonot ovat samat!");
-        } else {
-            System.out.println("Kirjoittamasi merkkijonot eivät olleet samat!");
-        }
-    </pre>
+if (ensimmainen.equals(toinen)) {
+    System.out.println("Kirjoittamasi merkkijonot ovat samat!");
+} else {
+    System.out.println("Kirjoittamasi merkkijonot eivät olleet samat!");
+}
+</pre>
 
     <p>Ohjelman toiminta riippuu käyttäjän syötteestä. Alla esimerkki, punaisella värillä tarkoitetaan käyttäjän kirjoittamaa syötettä.</p>
 
-    <pre>
+<pre>
 Syötä ensimmäinen merkkijono: <font color="red">porkkana</font>
 Syötä toinen merkkijono: <font color="red">salaatti</font>
 
-Kirjoittamasi merkkijonot eivät olleet samat!
-    </pre>
+Kirjoittamasi merkkijonot eivät olleet samat!</pre>
 
     <h3>Toistolausekkeet</h3>
 
     <p>Ohjelmissa tarvitaan usein toistoa. Tehdään ensin ns. while-true-break -toistolause, jota jatketaan niin pitkään kunnes käyttäjä syöttää merkkijonon <code>salasana</code>. Lause <code>while(true)</code> aloittaa toistolauseen, jota jatketaan kunnes kohdataan avainsana <code>break</code>.</p>
 
-    <pre class="sh_java">
-        Scanner lukija = new Scanner(System.in);
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
 
-        while(true) {
-            System.out.print("Syötä salasana: ");
-            String salasana = lukija.nextLine();
+while(true) {
+    System.out.print("Syötä salasana: ");
+    String salasana = lukija.nextLine();
 
-            if(salasana.equals("salasana")) {
-                break;
-            }
-        }
+    if(salasana.equals("salasana")) {
+        break;
+    }
+}
 
-        System.out.println("Kiitos!");
-    </pre>
+System.out.println("Kiitos!");
+</pre>
 
 
-    <pre>
+<pre>
 Syötä salasana: <font color="red">porkkana</font>
 Syötä salasana: <font color="red">salasana</font>
-Kiitos
-    </pre>
+Kiitos</pre>
 
 
     <p>While-toistolausekkeeseen voi asettaa totuusarvon <code>true</code> sijaan myös vertailun. Alla tulostetaan käyttäjän syöttämä merkkijono siten, että sillä on ylä- ja alapuolella tähtiä.</p>
 
-    <pre class="sh_java">
-        Scanner lukija = new Scanner(System.in);
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
 
-        System.out.print("Syötä merkkijono: ");
-        String merkkijono = lukija.nextLine();
+System.out.print("Syötä merkkijono: ");
+String merkkijono = lukija.nextLine();
 
-        int tahdenNumero = 0;
-        while(tahdenNumero &lt; merkkijono.length()) {
-            System.out.print("*");
-            tahdenNumero = tahdenNumero + 1;
-        }
-        System.out.println();
+int tahdenNumero = 0;
+while(tahdenNumero &lt; merkkijono.length()) {
+    System.out.print("*");
+    tahdenNumero = tahdenNumero + 1;
+}
+System.out.println();
 
-        System.out.println(merkkijono);
+System.out.println(merkkijono);
 
-        tahdenNumero = 0;
-        while(tahdenNumero &lt; merkkijono.length()) {
-            System.out.print("*");
-            tahdenNumero = tahdenNumero + 1;
-        }
-        System.out.println();
-    </pre>
+tahdenNumero = 0;
+while(tahdenNumero &lt; merkkijono.length()) {
+    System.out.print("*");
+    tahdenNumero = tahdenNumero + 1;
+}
+System.out.println();</pre>
 
 
-    <pre>
+<pre>
 Syötä merkkijono: <font color="red">porkkana</font>
 ********
 porkkana
-********
-    </pre>
+********</pre>
 
     <p>Yllä olevan esimerkin pitäisi nostattaa kylmiä väreitä selkäpiissäsi. Kylmät väreet toivottavasti johtuvat siitä, että huomaat esimerkin rikkovan ohjelmoinnin perusteissa opittuja käytänteitä. Esimerkissä on turhaa toistoa joka tulee poistaa metodien avulla.</p>
 
     <p>While-toistolauseen lisäksi käytössämme on myös for-toistolauseen kaksi versiota. Uudempaa for-lauseketta käytetään listojen läpikäyntiin.</p>
 
-    <pre class="sh_java">
-        ArrayList&lt;String&gt; tervehdykset = new ArrayList&lt;String&gt;();
-        tervehdykset.add("Hei");
-        tervehdykset.add("Hallo");
-        tervehdykset.add("Hi");
+<pre class="sh_java">
+ArrayList&lt;String&gt; tervehdykset = new ArrayList&lt;&gt;();
+tervehdykset.add("Hei");
+tervehdykset.add("Hallo");
+tervehdykset.add("Hi");
 
-        for(String tervehdys: tervehdykset) {
-            System.out.println(tervehdys);
-        }
-    </pre>
+for(String tervehdys: tervehdykset) {
+    System.out.println(tervehdys);
+}</pre>
 
-    <pre>
+<pre>
 Hei
 Hallo
-Hi
-    </pre>
+Hi</pre>
 
     <p>Perinteisempää for-lausetta käytetään samankaltaisissa tilanteissa kuin <code>while</code>-toistolausetta. Sitä voidaan käyttää esimerkiksi taulukoiden läpikäyntiin. Seuraavassa esimerkissä kerrotaan jokaisen taulukon <code>luvut</code> alkion sisältö kahdella ja lopuksi tulostetaan luvut uudempaa for-lausetta käyttäen.</p>
 
-    <pre class="sh_java">
-        int[] luvut = new int[] {1, 2, 3, 4, 5, 6};
+<pre class="sh_java">
+int[] luvut = new int[] {1, 2, 3, 4, 5, 6};
 
-        for (int i = 0; i &lt; luvut.length; i++) {
-            luvut[i] = luvut[i] * 2;
-        }
+for (int i = 0; i &lt; luvut.length; i++) {
+    luvut[i] = luvut[i] * 2;
+}
 
-        for (int luku : luvut) {
-            System.out.println(luku);
-        }
-    </pre>
+for (int luku : luvut) {
+    System.out.println(luku);
+}</pre>
 
-    <pre>
+<pre>
 2
 4
 6
 8
 10
-12
-    </pre>
+12</pre>
 
     <p>Perinteinen for-lauseke on erittäin hyödyllinen tapauksissa joissa käymme indeksejä yksitellen läpi. Alla oleva toistolauseke käy merkkijonon merkit yksitellen läpi, ja tulostaa merkkijono <code>Hip!</code> aina kun törmäämme merkkiin <code>a</code>.</p>
 
-    <pre class="sh_java">
-        String merkkijono = "saippuakauppias";
-        for (int i = 0; i &lt; merkkijono.length(); i++) {
-            if (merkkijono.charAt(i) == 'a') {
-                System.out.println("Hip!");
-            }
-        }
-    </pre>
+<pre class="sh_java">
+String merkkijono = "saippuakauppias";
+for (int i = 0; i &lt; merkkijono.length(); i++) {
+    if (merkkijono.charAt(i) == 'a') {
+        System.out.println("Hip!");
+    }
+}</pre>
 
-    <pre>
+<pre>
 Hip!
 Hip!
 Hip!
-Hip!
-    </pre>
+Hip!</pre>
+
 
     <h3>Metodit</h3>
 
@@ -775,58 +763,54 @@ Hip!
 
     <p>Metodilla on aina näkyvyysmääre (public, näkyy kaikille, private, näkyy vain luokan sisällä), paluutyyppi (void, ei palauta arvoa) sekä metodin nimi. Seuraavassa luodaan luokkaan liittyvä metodi <code>public static void tulosta(String merkkijono, int kertaa)</code>, joka tulostaa merkkijonon halutun määrän kertoja. Käytetään tällä kertaa metodia <code>System.out.print</code>, joka toimii muuten samoin kuin <code>System.out.println</code>, mutta ei tulosta rivinvaihtoa.</p>
 
-    <pre class="sh_java">
-    public static void tulosta(String merkkijono, int kertaa) {
-        for (int i = 0; i &lt; kertaa; i++) {
-            System.out.print(merkkijono);
-        }
+<pre class="sh_java">
+public static void tulosta(String merkkijono, int kertaa) {
+    for (int i = 0; i &lt; kertaa; i++) {
+        System.out.print(merkkijono);
     }
-    </pre>
+}</pre>
 
     <p>Yllä oleva metodi tulostaa parametrina annetun merkkijonon niin monta kertaa kuin parametrina annettu kokonaisluku kertoo.</p>
 
     <p>Toistolausekkeisiin liittyvässä luvussa huomasimme että koodi sisälsi tähtien tulostamisen osalta ikävästi "copypastea". Metodien avulla voimme siirtää tähtien tulostamisen erillisen metodiin. Luodaan metodi <code>public static void tulostaTahtia(int kertaa)</code>, joka tulostaa parametrina annetun määrän tähtiä. Metodi käyttää <code>for</code>-toistolausetta <code>while</code>:n sijaan.</p>
 
-    <pre class="sh_java">
-    public static void tulostaTahtia(int kertaa) {
-        for(int i = 0; i &lt; kertaa; i++) {
-            System.out.print("*");
-        }
-        System.out.println();
+<pre class="sh_java">
+public static void tulostaTahtia(int kertaa) {
+    for(int i = 0; i &lt; kertaa; i++) {
+        System.out.print("*");
     }
-    </pre>
+    System.out.println();
+}</pre>
 
     <p>Metodia hyödyntäessä aiemmin kauhistusta aihettanut esimerkkimme näyttää seuraavalta.</p>
 
-    <pre class="sh_java">
-        Scanner lukija = new Scanner(System.in);
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
 
-        System.out.print("Syötä merkkijono: ");
-        String merkkijono = lukija.nextLine();
+System.out.print("Syötä merkkijono: ");
+String merkkijono = lukija.nextLine();
 
-        tulostaTahtia(merkkijono.length());
-        System.out.println(merkkijono);
-        tulostaTahtia(merkkijono.length());
-    </pre>
+tulostaTahtia(merkkijono.length());
+System.out.println(merkkijono);
+tulostaTahtia(merkkijono.length());</pre>
 
 
     <h3>Luokka</h3>
 
     <p>Metodit toimivat ohjelman abstrahoimisessa tiettyyn pisteeseen asti, mutta ohjelmien kasvaessa suuremmiksi, ohjelmia halutaan pilkkoa vielä pienempiin ja loogisempiin kokonaisuuksiin. Luokkien avulla voimme määritellä ohjelmaan korkeamman tason käsitteitä ja käsitteisiin liittyviä toiminnallisuuksia. Jokainen Java-ohjelma vaatii toimiakseen luokan, eli yllä rakennettu <code>Hei maailma!</code> -esimerkki ei toimisi ilman luokkamäärittelyä. Luokka määritellään avainsanoilla <code>public class LuokanNimi</code>.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class HeiMaailma {
     public static void main(String[] args) {
         System.out.println("Hei maailma!");
     }
-}
-    </pre>
+}</pre>
 
     <p>Luokkia siis käytetään ohjelmassa esiintyvien käsitteiden ja niihin liittyvien toiminnallisuuksien määrittelyyn. Luokista voidaan luoda olioita, jotka ovat luokan ilmentymiä. Jokaisella tiettyyn luokkaan liittyvällä oliolla on sama rakenne, mutta oliohin liittyvien muuttujien arvot voivat olla erilaiset. Olioiden metodit käsittelevät olioiden tilaa, eli sisäisiä muuttujia.</p>
 
     <p>Tutkitaan alla olevaa luokkaa <code>Kirja</code>, jolla on oliomuuttujat nimi (merkkijono) ja julkaisuvuosi (kokonaisluku).</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Kirja {
     private String nimi;
     private int julkaisuvuosi;
@@ -843,8 +827,7 @@ public class Kirja {
     public int getJulkaisuvuosi() {
         return this.julkaisuvuosi;
     }
-}
-    </pre>
+}</pre>
 
     <p>Alussa oleva määritelmä <code>public class Kirja</code> kertoo luokan nimen. Tätä seuraa oliomuuttujien määrittely. Oliomuuttujat ovat muuttujia, joista jokaisella luokan oliolla on oma toisista riippumaton kopionsa. On yleensä tarkoituksenmukaista piilottaa oliomuuttujat luokan käyttäjiltä, eli määritellä niille näkyvyysmääre <em>private</em>. Jos näkyvyysmääreeksi asetetaan <em>public</em> pääsee olion käyttäjä suoraan käsiksi oliomuuttujiin.</p>
 
@@ -856,22 +839,20 @@ public class Kirja {
 
     <p>Olioita luodaan luokkaan määritellyn konstruktorin avulla. Ohjelmakoodissa konstruktoria kutsutaan <code>new</code>-käskyllä, joka palauttaa viitteen uuteen olioon. Oliot ovat luokista tehtyjä ilmentymiä. Tutkitaan ohjelmaa, joka luo kaksi eri kirjaa, jonka jälkeen tulostetaan olioihin liittyvien metodien <code>getNimi</code> palauttamat arvot.</p>
 
-    <pre class="sh_java">
-        Kirja jarkiJaTunteet = new Kirja("Järki ja tunteet", 1811);
-        Kirja ylpeysJaEnnakkoluulo = new Kirja("Ylpeys ja ennakkoluulo", 1813);
+<pre class="sh_java">
+Kirja jarkiJaTunteet = new Kirja("Järki ja tunteet", 1811);
+Kirja ylpeysJaEnnakkoluulo = new Kirja("Ylpeys ja ennakkoluulo", 1813);
 
-        System.out.println(jarkiJaTunteet.getNimi());
-        System.out.println(ylpeysJaEnnakkoluulo.getNimi());
-    </pre>
+System.out.println(jarkiJaTunteet.getNimi());
+System.out.println(ylpeysJaEnnakkoluulo.getNimi());</pre>
 
-    <pre>
+<pre>
 Järki ja tunteet
-Ylpeys ja ennakkoluulo
-    </pre>
+Ylpeys ja ennakkoluulo</pre>
 
     <p>Jokaisella oliolla on siis oma sisäinen tila. Tila muodostuu olioon liittyvistä oliomuuttujista. Oliomuuttujat voivat olla sekä alkeistyyppisiä muuttujia että viitetyyppisiä muuttujia. Jos olioon liittyy viitetyyppisiä muuttujia, voi olla että muutkin oliot viittaavat samoihin olioihin! Visualisoidaan tämä pankkiesimerkillä, jossa on tilejä ja henkilöitä.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Tili {
     private String tilitunnus;
     private int saldoSentteina;
@@ -890,10 +871,9 @@ public class Tili {
     }
 
     // .. muita tiliin liittyviä metodeja
-}
-    </pre>
+}</pre>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 import java.util.ArrayList;
 
 public class Henkilo {
@@ -902,7 +882,7 @@ public class Henkilo {
 
     public Henkilo(String nimi) {
         this.nimi = nimi;
-        this.tilit = new ArrayList&lt;Tili&gt;();
+        this.tilit = new ArrayList&lt;&gt;();
     }
 
     public void lisaaTili(Tili tili) {
@@ -919,40 +899,38 @@ public class Henkilo {
     }
 
     // ... muita henkilöön liittyviä metodeja
-}
-    </pre>
+}</pre>
 
     <p>Jokaisella <code>Henkilo</code>-luokasta tehdyllä oliolla on oma nimi sekä oma lista tileistä. Luodaan seuraavaksi kaksi henkilöä ja kaksi tiliä. Toinen tileistä on vain yhden henkilön oma, toinen yhteinen.</p>
 
-    <pre class="sh_java">
-        Henkilo matti = new Henkilo("Matti");
-        Henkilo maija = new Henkilo("Maija");
+<pre class="sh_java">
+Henkilo matti = new Henkilo("Matti");
+Henkilo maija = new Henkilo("Maija");
 
-        Tili palkkatili = new Tili("NORD-LOL");
-        Tili kotitaloustili = new Tili("SAM-LOL");
+Tili palkkatili = new Tili("NORD-LOL");
+Tili kotitaloustili = new Tili("SAM-LOL");
 
-        matti.lisaaTili(palkkatili);
-        matti.lisaaTili(kotitaloustili);
-        maija.lisaaTili(kotitaloustili);
+matti.lisaaTili(palkkatili);
+matti.lisaaTili(kotitaloustili);
+maija.lisaaTili(kotitaloustili);
 
-        System.out.println("Matin tileillä rahaa: " + matti.rahaaYhteensa());
-        System.out.println("Maijan tileillä rahaa: " + maija.rahaaYhteensa());
-        System.out.println();
+System.out.println("Matin tileillä rahaa: " + matti.rahaaYhteensa());
+System.out.println("Maijan tileillä rahaa: " + maija.rahaaYhteensa());
+System.out.println();
 
-        palkkatili.pane(150000);
+palkkatili.pane(150000);
 
-        System.out.println("Matin tileillä rahaa: " + matti.rahaaYhteensa());
-        System.out.println("Maijan tileillä rahaa: " + maija.rahaaYhteensa());
-        System.out.println();
+System.out.println("Matin tileillä rahaa: " + matti.rahaaYhteensa());
+System.out.println("Maijan tileillä rahaa: " + maija.rahaaYhteensa());
+System.out.println();
 
-        kotitaloustili.pane(10000);
+kotitaloustili.pane(10000);
 
-        System.out.println("Matin tileillä rahaa: " + matti.rahaaYhteensa());
-        System.out.println("Maijan tileillä rahaa: " + maija.rahaaYhteensa());
-        System.out.println();
-    </pre>
+System.out.println("Matin tileillä rahaa: " + matti.rahaaYhteensa());
+System.out.println("Maijan tileillä rahaa: " + maija.rahaaYhteensa());
+System.out.println();</pre>
 
-    <pre>
+<pre>
 Matin tileillä rahaa: 0
 Maijan tileillä rahaa: 0
 
@@ -960,8 +938,7 @@ Matin tileillä rahaa: 150000
 Maijan tileillä rahaa: 0
 
 Matin tileillä rahaa: 160000
-Maijan tileillä rahaa: 10000
-    </pre>
+Maijan tileillä rahaa: 10000</pre>
 
     <p>Ensin kummankin henkilön tilit ovat tyhjiä. Kun palkkatilille, johon oliolla <code>matti</code> on viite, lisätään rahaa, kasvaa Matin tileillä oleva rahamäärä. Kun kotitaloustilille lisätään rahaa, <em>kasvaa kummankin henkilön rahamäärä</em>. Tämä johtuu siitä että sekä Matilla että Maijalla on "oikeus" kotitaloustilille, eli kummakin omassa oliomuuttujassa <code>tilit</code> on viite kotitaloustiliin. Palaamme alkeis- ja viitetyyppisten muuttujien eroon tarkemmin myöhemmin.</p>
 
@@ -972,7 +949,7 @@ Maijan tileillä rahaa: 10000
 
     <p>Ymmärrettävään koodiin liittyy niin kuvaava muuttujien, metodien ja luokkien nimeäminen kuin ohjelmakoodin ilmavuus ja johdonmukainen sisentäminen. Tutkitaan seuraavaa esimerkkiä käyttöliittymästä, jossa käyttäjä voi ostaa ja myydä esineitä. Vaikka esimerkissä ainoat ostettavat ja myytävät asiat ovat porkkanoita, eikä niistä pidetä kirjaa, voisi käyttöliittymää laajentaa esimerkiksi siten että sille annettaisiin myytävien tavaroiden varasto konstruktorin parametrina.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Kayttoliittyma {
     private Scanner lukija;
 
@@ -1015,12 +992,11 @@ public class Kayttoliittyma {
             }
         }
     }
-}
-    </pre>
+}</pre>
 
     <p>Huomaamme esimerkissä heti monta ongelmakohtaa. Ensimmäinen pulma liittyy <code>kaynnista</code>-metodin sisällön suuruuteen. Huomaamme että metodia voi pienentää siirtämällä muiden komentojen kuin <code>lopeta</code>-komennon käsittelyn erilliseen metodiin.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Kayttoliittyma {
     private Scanner lukija;
 
@@ -1069,13 +1045,12 @@ public class Kayttoliittyma {
             System.out.println("Myyty!");
         }
     }
-}
-    </pre>
+}</pre>
 
     <p>Metodissa <code>hoidaKomento</code> on vielä toisteisuutta syötteen lukemiseen liittyen. Huomaamme että lukemisessa toistuu aina muutama merkkijono. Kun ostetaan kysytään "Mitä ostetaan: ", kun myydään kysytään "Mitä myydään: ". Molemmat lukemiskohdat odottavat merkkijonoa "porkkana" ja tulostavat "Ei löydy!" jos käyttäjä ei syötä merkkijonoa "Porkkana". Luodaan tätä varten erillinen metodi <code>public String lueKayttajalta(String kysymys)</code>, joka kysyy käyttäjältä haluttua merkkijonoa. Huomaa että jos käyttöliittymässämme olisi käytössä jonkinlainen varastonhallintaolio, vertaisimme sen sisältämiä esineitä käyttäjän syötteeseen porkkanan sijasta. </p>
 
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Kayttoliittyma {
     private Scanner lukija;
 
@@ -1117,12 +1092,11 @@ public class Kayttoliittyma {
             }
         }
     }
-}
-    </pre>
+}</pre>
 
     <p>Ohjelma on nyt pilkottu sopiviksi osiksi. Huomaamme kuitenkin että <code>kaynnista</code>-metodin yhteydessä on turha <code>else</code>-haara. Jos ohjelman suoritus päätyy <code>if</code>-haaraan, suoritetaan komento <code>break</code> ja poistutaan toistolauseesta. Voimme siis poistaa <code>else</code>-haaran jolloin <code>hoidaKomento</code>-metodin suorittaminen on omalla rivillään. Samanlainen tilanne on myös metodissa <code>lueKayttajalta</code>. Siistitään se myös samalla.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Kayttoliittyma {
     private Scanner lukija;
 
@@ -1164,13 +1138,12 @@ public class Kayttoliittyma {
             System.out.println("Ei löydy!");
         }
     }
-}
-    </pre>
+}</pre>
 
 
     <p>Yllä kuvaavaamme ohjelman pilkkomista pienempiin osiin kutsutaan <em>refaktoroinniksi</em>. Refaktoroinnissa ohjelman toiminta pysyy samana, mutta sisäinen rakenne muuttuu selkeämmäksi ja ylläpidettävämmäksi. Nykyinen versiomme on huomattavasti selkeämpi alkuperäiseen ohjelmaan verrattuna. Ohjelmassa on toki vieläkin parannettavaa. Esimerkiksi metodin <code>hoidaKomento</code> voi pilkkoa ostamis- ja myymistoiminnallisuutta hoitaviin metodeihin.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Kayttoliittyma {
     private Scanner lukija;
 
@@ -1220,10 +1193,11 @@ public class Kayttoliittyma {
             System.out.println("Ei löydy!");
         }
     }
-}
-    </pre>
+}</pre>
+
 
     <p> Nyt ohjelma on rakenteeltaan riittävän selkeä, metodit ovat kuvaavasti nimettyjä ja jokaisella metodilla on oma pieni tehtävä, josta metodi huolehtii. Huomaa että emme lisänneet refaktoroidessa ohjelmaan uutta toiminnallisuutta, muokkasimme vain rakennetta selkeämmäksi.</p>
+
 
     <h3>Ohjelmoinnista ja ennenkaikkea harjoittelun tärkeydestä</h3>
 
@@ -1258,7 +1232,7 @@ public class Kayttoliittyma {
 
     <p>Avainsana <code>private</code> taas piilottaa metodit ja muuttujat luokan sisälle. Metodia, jolla on määre <code>private</code>, ei pysty kutsumaan luokan ulkopuolelta.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Kirja {
     private String nimi;
     private String sisalto;
@@ -1277,8 +1251,7 @@ public class Kirja {
     }
 
     // ...
-}
-    </pre>
+}</pre>
 
     <p>Yllä olevasta Kirja-luokasta luotujen olioiden tietoihin pääsee käsiksi vain kirjan julkisten metodien kautta. Private-määreellä merkityt oliomuuttujat ovat näkyvillä ja käsiteltävissä vain luokan sisäisessä koodissa. Jos kirjalla olisi private-määreellinen metodi, ei sitäkään voisi käyttää muualta kuin Kirja-luokan sisältä.</p>
 
@@ -1291,37 +1264,34 @@ public class Kirja {
 
         <p>Laadi tehtavapohjan mukana tulevalle luokalle <code>Hymiot</code> apumetodi <code>private static void tulostaHymioityna(String merkkijono)</code>. Metodin tulee tulostaa annettu merkkijono hymiöillä ympyröitynä. Käytä hymiönä merkkijonoa <code>:)</code>.</p>
 
-        <pre class="sh_java">
-tulostaHymioityna("\\:D/");
-        </pre>
+<pre class="sh_java">
+tulostaHymioityna("\\:D/");</pre>
 
-        <pre>
+<pre>
 :):):):):)
 :) \:D/ :)
-:):):):):)
-        </pre>
+:):):):):)</pre>
 
         <p>Huomaa, että merkkijonoon on kirjoitettava \\ jotta saadaan tulostumaan merkki \.</p>
 
         <p><em>Huom!</em> Jos merkkijonon pituus on pariton, tulee ylimääräinen välilyönti lisätä annetun merkkijonon oikealle puolelle.</p>
 
-        <pre class="sh_java">
+<pre class="sh_java">
 tulostaHymioityna("\\:D/");
-tulostaHymioityna("87.");
-        </pre>
+tulostaHymioityna("87.");</pre>
 
-        <pre>
+<pre>
 :):):):):)
 :) \:D/ :)
 :):):):):)
 :):):):):)
 :) 87.  :)
-:):):):):)
-        </pre>
+:):):):):)</pre>
 
         <p>Kannattaa ensin miettiä montako hymiötä minkäkin pituiselle merkkijonolle tulee tulostaa. Merkkijonon pituuden saa selville siihen liittyvällä <code>length</code>-metodilla. Ala- ja ylärivin hymiöiden tulostamiseen auttaa toistolause, keskimmäisellä rivillä selviät normaalilla tulostuskomennolla. Pituuden parittomuuden voit tarkistaa jakojäännöksen avulla <code>merkkijono.length() % 2 == 1</code>.</p>
 
       </div>
+
       <div class="tehtava">
         <h3>Merkkijonomuuntaja</h3>
 
@@ -1338,46 +1308,43 @@ tulostaHymioityna("87.");
 
         <p>Luokkaa käytetään seuraavalla tavalla:</p>
 
-        <pre class="sh_java">
-  String sana = "porkkana";
-  Muunnos muunnos1 = new Muunnos('a', 'b');
-  sana = muunnos1.muunna(sana);
+<pre class="sh_java">
+String sana = "porkkana";
+Muunnos muunnos1 = new Muunnos('a', 'b');
+sana = muunnos1.muunna(sana);
 
-  System.out.println(sana);
+System.out.println(sana);
 
-  Muunnos muunnos2 = new Muunnos('k', 'x');
-  sana = muunnos2.muunna(sana);
+Muunnos muunnos2 = new Muunnos('k', 'x');
+sana = muunnos2.muunna(sana);
 
-  System.out.println(sana);
-        </pre>
+System.out.println(sana);</pre>
 
         <p>Yllä oleva esimerkki tulostaisi:</p>
 
-        <pre>
-  porkkbnb
-  porxxbnb
-        </pre>
+<pre>
+porkkbnb
+porxxbnb</pre>
 
         <p><strong>Vihje:</strong> voit tehdä merkkien korvaamisen kahdella tavalla, joko suoraan hyödyntäen luokan <code>String</code> metodia (etsi metodi itse!) tai käymällä merkkijonon läpi merkki merkiltä ja samalla muodostaen muunnetun merkkijonon.</p>
 
         <p>Jos et käytä Stringin valmista metodia, niin kannattaa muistaa, että vaikka merkkijonoja vertaillaankin komennolla <code>equals</code> yksittäisiä merkkejä vertaillaan operaattorin == avulla:
         </p>
 
-        <pre class="sh_java">
-  String sana = "porkkana";
+<pre class="sh_java">
+String sana = "porkkana";
 
-  String korvattuAat = "";
-  for ( int i=0; i &lt; sana.length(); i++) {
-     char merkki = sana.charAt(i);
-     if ( merkki == 'a' ) {
-        korvattuAat += '*'
-     }  else {
-        korvattuAat += merkki;
-     }
-  }
+String korvattuAat = "";
+for (int i = 0; i &lt; sana.length(); i++) {
+    char merkki = sana.charAt(i);
+    if ( merkki == 'a' ) {
+       korvattuAat += '*'
+    }  else {
+       korvattuAat += merkki;
+    }
+}
 
-  System.out.println(korvattuAat);  // tulostu porkk*n*
-        </pre>
+System.out.println(korvattuAat);  // tulostu porkk*n*</pre>
 
         <h4>Muuntaja-luokka</h4>
 
@@ -1391,57 +1358,55 @@ tulostaHymioityna("87.");
 
         <p>Luokkaa käytetään seuraavalla tavalla:</p>
 
-        <pre class="sh_java">
-  Muuntaja skanditPois = new Muuntaja();
-  skanditPois.lisaaMuunnos(new Muunnos('ä', 'a'));
-  skanditPois.lisaaMuunnos(new Muunnos('ö', 'o'));
-  System.out.println(skanditPois.muunna("ääliö älä lyö, ööliä läikkyy"));
-        </pre>
+<pre class="sh_java">
+Muuntaja skanditPois = new Muuntaja();
+skanditPois.lisaaMuunnos(new Muunnos('ä', 'a'));
+skanditPois.lisaaMuunnos(new Muunnos('ö', 'o'));
+System.out.println(skanditPois.muunna("ääliö älä lyö, ööliä läikkyy"));</pre>
 
         <p>Yllä oleva esimerkki tulostaisi:</p>
 
-        <pre>
-  aalio ala lyo, oolia laikkyy
-        </pre>
+<pre>
+aalio ala lyo, oolia laikkyy</pre>
 
         <p><strong>Vihje:</strong> Muunnokset kannattaa tallettaa Muuntajan oliomuuttujana olevalle listalle (samaan tyyliin kuin peruskurssilla talletettiin esim. pelaajat joukkueeseen, puhelinnumerot puhelinluetteloon tai kirjat kirjastoon). Muunnos suoritetaan siten, että muunnettavalle merkkijonolle suoritetaan muunnokset yksi kerrallaan seuraavan esimerkin tapaan:</p>
 
-        <pre class="sh_java">
-    ArrayList&lt;Muunnos&gt; muunnokset = new ArrayList&lt;Muunnos&gt;();
+<pre class="sh_java">
+ArrayList&lt;Muunnos&gt; muunnokset = new ArrayList&lt;&gt;();
 
-    muunnokset.add( new Muunnos('a', 'b') );
-    muunnokset.add( new Muunnos('k', 'x') );
-    muunnokset.add( new Muunnos('o', 'å') );
+muunnokset.add(new Muunnos('a', 'b'));
+muunnokset.add(new Muunnos('k', 'x'));
+muunnokset.add(new Muunnos('o', 'å'));
 
-    String sana = "porkkana";
+String sana = "porkkana";
 
-    for (Muunnos muunnos : muunnokset) {
-        sana = muunnos.muunna(sana);
-    }
+for (Muunnos muunnos : muunnokset) {
+    sana = muunnos.muunna(sana);
+}
 
-    System.out.println(sana);  // tulostuu pårxxbnb
-        </pre>
+System.out.println(sana);  // tulostuu pårxxbnb</pre>
 
         <p><strong>MUISTUTUS</strong> kun lisäät ohjelmaasi ArrayList:in, Scanner:in tai Random:in ei Java tunnista luokkaa ellet "importoi" sitä lisäämällä ohjelmatiedoston alkuun:</p>
 
-        <pre class="sh_java">
+<pre class="sh_java">
 import java.util.ArrayList;    // importoi ArrayListin
-import java.util.*;            // importoi kaikki java.util:sissa olevat työkalut, mm. ArrayListin, Scannerin ja Randomin
-        </pre>
+import java.util.*;            // importoi kaikki java.util:sissa olevat työkalut, mm. ArrayListin, Scannerin ja Randomin</pre>
+
       </div>
+
+
       <div class="tehtava">
         <h3>Laskin</h3>
 
         <p>Teemme tässä tehtävässä samantyylisen yksinkertaisen laskimen, joka oli jo ohjelmoinnin perusteiden viikon 1 materiaalissa. Tällä kertaa kiinnitämme kuitenkin huomiota ohjelman rakenteeseen. Erityisesti teemme <em>main</em>-metodista eli pääohjelmasta hyvin kevyen. Pääohjelmametodi ei tee oikeastaan mitään muuta kun käynistää ohjelman:</p>
 
-        <pre class="sh_java">
+<pre class="sh_java">
 public class Paaohjelma {
     public static void main(String[] args) {
         Laskin laskin = new Laskin();
         laskin.kaynnista();
     }
-}
-        </pre>
+}</pre>
 
         <p>Pääohjelma siis ainoastaan luo varsinaisen sovelluslogiikan toteuttavan olion ja käynnistää sen. Tämä on oikea tyyli tehdä ohjelmia ja tulemme jatkossa usein pyrkimään tähän rakenteeseen.</p>
 
@@ -1462,7 +1427,7 @@ public class Paaohjelma {
 
         <p>Laskin toimii seuraavan esimerkin mukaan:</p>
 
-        <pre>
+<pre>
 komento: <font color="red">summa</font>
 luku1: <font color="red">4</font>
 luku2: <font color="red">6</font>
@@ -1473,32 +1438,30 @@ luku1: <font color="red">3</font>
 luku2: <font color="red">2</font>
 lukujen tulo 6
 
-komento: <font color="red">lopetus</font>
-        </pre>
+komento: <font color="red">lopetus</font></pre>
 
         <p>Tee ohjelmaasi sovelluslogiikasta huolehtiva luokka <code>Laskin</code> ja sille metodi <code>public void kaynnista()</code> jonka sisältö on <strong>täsmälleen</strong> seuraava:</p>
 
-        <pre class="sh_java">
-    public void kaynnista() {
-        while (true) {
-            System.out.print("komento: ");
-            String komento = lukija.lueMerkkijono();
-            if (komento.equals("lopetus")) {
-                break;
-            }
-
-            if (komento.equals("summa")) {
-                summa();
-            } else if (komento.equals("erotus")) {
-                erotus();
-            } else if (komento.equals("tulo")) {
-                tulo();
-            }
+<pre class="sh_java">
+public void kaynnista() {
+    while (true) {
+        System.out.print("komento: ");
+        String komento = lukija.lueMerkkijono();
+        if (komento.equals("lopetus")) {
+            break;
         }
 
-        statistiikka();
+        if (komento.equals("summa")) {
+            summa();
+        } else if (komento.equals("erotus")) {
+            erotus();
+        } else if (komento.equals("tulo")) {
+            tulo();
+        }
     }
-        </pre>
+
+    statistiikka();
+}</pre>
 
         <p>Laskimellamme on operaatiot <code>summa, erotus, tulo</code>.</p>
 
@@ -1510,21 +1473,20 @@ komento: <font color="red">lopetus</font>
 
         <p>Toteuta nyt metodit <code>summa</code>, <code>erotus</code> ja <code>tulo</code> siten, että ne toimivat yllä olevan esimerkin mukaan. Esimerkissä kysytään aina ensin komento, jonka jälkeen kysytään 2 lukua käyttäjältä, suoritetaan haluttu operaatio, ja tulostetaan operaation arvo. Huomaa, että lukujen kysyminen tapahtuu metodien<code>summa</code>, <code>erotus</code> ja <code>tulo</code> sisällä! Metodit käyttävät lukujen kysymiseen lukija-olioa. Metodien runko on siis seuraavanlainen:</p>
 
-        <pre class="sh_java">
-    private void summa() {
-       System.out.print("luku1: ");
-       int luku1 = // luetaan luku käyttäen lukija-olioa
-       System.out.print("luku2: ");
-       int luku2 = // luetaan luku käyttäen lukija-olioa
-       // tulostetaan tulos ylläolevan esimerkin tapaan
-    }
-        </pre>
+<pre class="sh_java">
+private void summa() {
+   System.out.print("luku1: ");
+   int luku1 = // luetaan luku käyttäen lukija-olioa
+   System.out.print("luku2: ");
+   int luku2 = // luetaan luku käyttäen lukija-olioa
+   // tulostetaan tulos ylläolevan esimerkin tapaan
+}</pre>
 
         <h4>Statistiikka</h4>
 
         <p>Metodissa <code>kaynnista</code> olevan <code>while</code>-silmukan jälkeen kutsutaan metodia <code>statistiikka</code>. Metodin on tarkoitus tulostaa kuinka montaa kertaa laskin-oliolla suoritettiin joku laskutoimenpide. Esim:</p>
 
-        <pre>
+<pre>
 komento: <font color="red">summa</font>
 luku1: <font color="red">4</font>
 luku2: <font color="red">6</font>
@@ -1536,14 +1498,13 @@ luku2: <font color="red">2</font>
 lukujen tulo 6
 
 komento: <font color="red">lopetus</font>
-Laskuja laskettiin 2
-        </pre>
+Laskuja laskettiin 2</pre>
 
         <p>Toteuta metodi <code>private void statistiikka()</code>, ja tee statistiikan keräämiseen tarvittavat muutokset muualle Laskin-luokan koodiin. </p>
 
         <p>Huom: jos ohjelmalle annetaan virheellinen komento (eli joku muu kuin summa, erotus, tulo, tai lopetus), ei laskin reagoi komentoon millään tavalla vaan jatkaa kysymällä seuraavaa komentoa. Statistiikka ei saa laskea virheellistä komentoa laskutoimenpiteeksi.</p>
 
-        <pre>
+<pre>
 komento: <font color="red">integraali</font>
 komento: <font color="red">erotus</font>
 luku1: <font color="red">3</font>
@@ -1551,8 +1512,7 @@ luku2: <font color="red">2</font>
 lukujen erotus 1
 
 komento: <font color="red">lopetus</font>
-Laskuja laskettiin 1
-        </pre>
+Laskuja laskettiin 1</pre>
 
         <p><strong>Bonustehtävä (ei testata):</strong> Syötteen lukeminen toistuu samanlaisena kaikissa kolmessa laskuoperaation suorittavassa metodissa. Posta koodistasi toisteisuus sopivan apumetodin avulla. Metodi voi palauttaa käyttäjältä luetut 2 lukua esim. taulukossa. </p>
 
@@ -1568,18 +1528,16 @@ Laskuja laskettiin 1
 
     <p>Alkeistyyppisen muuttujan arvo tallennetaan muuttujaa varten luotuun lokeroon. Jokaisella alkeistyyppisellä muuttujalla on oma lokero ja oma arvo. Muuttujalle luodaan uusi lokero silloin kun se esitellään (esim. <code>int numero;</code>). Lokeroon asetetaan arvo sijoitusoperaatiolla <code>=</code>. Alla on esimerkki alkeistyyppisen int (kokonaisluku) -muuttujan esittelemisestä ja arvon asettamisesta samassa lausekkeessa.</p>
 
-    <pre class="sh_java">
-int numero = 42;
-    </pre>
+<pre class="sh_java">
+int numero = 42;</pre>
 
     <p>Alkeistyyppisiä muuttujia ovat muun muassa <code>int</code>, <code>double</code>, <code>char</code>, <code>boolean</code> sekä harvemmin käyttämämme <code>short</code>, <code>float</code>, <code>byte</code> ja <code>long</code>. Myös <code>void</code> on alkeistyyppi, mutta sillä ei ole omaa lokeroa tai arvoa. Void-tyyppiä käytetään silloin kun halutaan ilmaista että metodi ei palauta mitään arvoa.</p>
 
     <p>Esitellään seuraavaksi kaksi alkeistyyppistä muuttujaa ja asetetaan niihin arvot.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 int vitonen = 5;
-int kutonen = 6;
-    </pre>
+int kutonen = 6;</pre>
 
     <p>Yllä esiteltyjen alkeistyyppisten muuttujien nimet ovat <code>vitonen</code> ja <code>kutonen</code>. Muuttujaa <code>vitonen</code> luodessa sitä varten luotuun <em>lokeroon</em> asetetaan arvo 5 (<code>int vitonen = 5;</code>). Muuttujaa <code>kutonen</code> luodessa sitä varten luotuun lokeroon asetetaan arvo 6 (<code>int kutonen = 6;</code>). Muuttujat <code>vitonen</code> ja <code>kutonen</code> ovat kumpikin <code>int</code>-tyyppisiä, eli kokonaislukuja.</p>
 
@@ -1589,15 +1547,14 @@ int kutonen = 6;
 
     <p>Tarkastellaan seuraavaksi alkeistyyppisten muuttujien arvojen kopioitumista.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 int vitonen = 5;
 int kutonen = 6;
 
 vitonen = kutonen; // muuttuja vitonen sisältää nyt arvon 6, eli arvon joka oli muuttujassa kutonen
 kutonen = 64; // muuttuja kutonen sisältää nyt arvon 64
 
-// muuttuja vitonen sisältää vieläkin arvon 6
-    </pre>
+// muuttuja vitonen sisältää vieläkin arvon 6</pre>
 
     <p>Yllä esitellään muuttujat <code>vitonen</code> ja <code>kutonen</code> ja asetetaan niihin arvot. Tämän jälkeen muuttujan <code>vitonen</code> lokeroon kopioidaan muuttujan <code>kutonen</code> lokeron sisältämä arvo (<code>vitonen = kutonen;</code>). Tässä vaiheessa muuttujan <code>vitonen</code> lokeroon kopioituu muuttujan <code>kutonen</code> sisältämä arvo. Jos muuttujan <code>kutonen</code> arvoa muutetaan tämän jälkeen, ei muuttujan <code>vitonen</code> sisältämä arvo muutu: muuttujan <code>vitonen</code> arvo on sen omassa lokerossa eikä liity muuttujan <code>kutonen</code> lokerossa olevaan arvoon millään tavalla. Lopputilanne kuvana.</p>
 
@@ -1607,29 +1564,26 @@ kutonen = 64; // muuttuja kutonen sisältää nyt arvon 64
 
     <p>Kun alkeistyyppinen muuttuja annetaan metodille parametrina, asetetaan metodin parametrille kopio annetun muuttujan lokerossa olevasta. Käytännössä myös metodin parametreillä on omat lokerot, joihin arvo kopioidaan kuten asetuslauseessa. Katsotaan seuraavaa metodia <code>lisaaLukuun(int luku, int paljonko)</code>.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public int lisaaLukuun(int luku, int paljonko) {
     return luku + paljonko;
-}
-    </pre>
+}</pre>
 
     <p>Metodi <code>lisaaLukuun</code> saa kaksi parametria, kokonaisluvut <code>luku</code> ja <code>paljonko</code>. Metodi palauttaa uuden luvun, joka on annettujen parametrien summa. Tutkitaan vielä metodin kutsumista.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 int omaLuku = 10;
 omaLuku = lisaaLukuun(omaLuku, 15);
-// muuttuja omaLuku sisältää nyt arvon 25
-    </pre>
+// muuttuja omaLuku sisältää nyt arvon 25</pre>
 
     <p>Esimerkissä kutsutaan <code>lisaaLukuun</code>-metodia muuttujalla <code>omaLuku</code> ja arvolla <code>15</code>. Metodin muuttujiin <code>luku</code> ja <code>paljonko</code> kopioituvat arvot 10, eli muuttujan <code>omaLuku</code> sisältö, ja 15. Metodi palauttaa muuttujien <code>luku</code> ja <code>paljonko</code> summan, eli <code>10 + 15 = 25</code>.</p>
 
     <p>Huom! Edellisessä esimerkissä muuttujan <code>omaLuku</code> arvo muuttuu ainoastaan koska metodin <code>lisaaLukuun</code> palauttama arvo asetetaan siihen sijoituslausekkeella (<code>omaLuku = lisaaLukuun(omaLuku, 15);</code>). Jos metodin <code>lisaaLukuun</code> kutsu olisi seuraavanlainen, ei muuttujan <code>omaLuku</code> arvo muutu.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 int omaLuku = 10;
 lisaaLukuun(omaLuku, 15);
-// muuttuja omaLuku sisältää vieläkin arvon 10
-    </pre>
+// muuttuja omaLuku sisältää vieläkin arvon 10</pre>
 
     <h4>Minimi- ja maksimiarvot</h4>
 
@@ -1651,17 +1605,16 @@ lisaaLukuun(omaLuku, 15);
 
     <p>Liukulukuja käyttäessä kannattaa muistaa että liukuluvun arvo on aina <em>arvio</em> oikeasta arvosta. Koska liukuluvun, kuten kaikkien muidenkin alkeistyyppien sisältämä tietomäärä on rajoitettu, voidaan huomata yllättäviäkin pyöristysvirheitä. Esimerkiksi seuraava tilanne.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 double eka = 0.39;
 double toka = 0.35;
-System.out.println(eka - toka);
-    </pre>
+System.out.println(eka - toka);</pre>
 
     <p>Esimerkki tulostaa arvon <code>0.040000000000000036</code>. Ohjelmointikielet tarjoavat usein työkalut liukulukujen tarkempaa käsittelyä varten. Esimerkiksi Javassa on luokka <em>BigDecimal</em>, johon voi asettaa äärettömän pitkiä liukulukuja.</p>
 
     <p>Liukulukuja vertaillessa pyöristysvirheisiin varaudutaan usein vertaamalla arvojen etäisyyttä toisistaan. Esimerkiksi edellisen esimerkin muuttujia käytettäessä vertailu <code>eka - toka == 0.04</code> ei tuota toivottua tulosta pyöristysvirheen takia.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 double eka = 0.39;
 double toka = 0.35;
 
@@ -1669,16 +1622,14 @@ if((eka - toka) == 0.04) {
     System.out.println("Vertailu onnistui!");
 } else {
     System.out.println("Vertailu epäonnistui!");
-}
-    </pre>
+}</pre>
 
-    <pre>
-Vertailu epäonnistui!
-    </pre>
+<pre>
+Vertailu epäonnistui!</pre>
 
     <p>Arvon etäisyyttä jostain luvusta voi tarkastella esimerkiksi seuraavasti. Apufunktio <code>Math.abs</code> palauttaa sille annetun luvun itseisarvon.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 double eka = 0.39;
 double toka = 0.35;
 
@@ -1688,8 +1639,7 @@ if(Math.abs(etaisyys) &lt; 0.0001) {
     System.out.println("Vertailu onnistui!");
 } else {
     System.out.println("Vertailu epäonnistui!");
-}
-    </pre>
+}</pre>
 
     <h3>Viitetyyppi</h3>
 
@@ -1701,7 +1651,7 @@ if(Math.abs(etaisyys) &lt; 0.0001) {
 
     <p>Tutkitaan kahden viitetyyppisen muuttujan luontia. Esimerkeissä käytetään seuraavaa luokkaa <em>Laskuri</em>:</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Laskuri {
     private int arvo;
 
@@ -1716,15 +1666,13 @@ public class Laskuri {
     public int annaArvo() {
         return arvo;
    }
-}
-    </pre>
+}</pre>
 
     <p>Pääohjelma:</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 Laskuri bonusLaskuri = new Laskuri(5);
-Laskuri axeLaskuri = new Laskuri(6);
-    </pre>
+Laskuri axeLaskuri = new Laskuri(6);</pre>
 
     <p>Esimerkissä luodaan ensin viitetyyppinen muuttuja <code>bonusLaskuri</code>. Komentoa <code>new</code> kutsuessa varataan tila muuttujan tietoa varten, suoritetaan <code>new</code>-kutsua seuraavan konstruktorin koodi, ja palautetaan viite juuri luotuun olioon. . Palautettu viite asetetaan sijoitusoperaattorilla <code>=</code> muuttujaan <code>bonusLaskuri</code>. Sama tapahtuu muuttujalle nimeltä <code>axeLaskuri</code>. Kuvana viitetyyppi kannattaa ajatella siten, että muuttuja sisältää "langan" tai "nuolen", jonka päässä on olio itse. Muuttuja ei siis sisällä oliota, vaan viitteen olioon liittyviin tietoihin.</p>
 
@@ -1732,13 +1680,12 @@ Laskuri axeLaskuri = new Laskuri(6);
 
     <p>Tutkitaan seuraavaksi viitetyyppisen muuttujan kopioitumista.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 Laskuri bonusLaskuri = new Laskuri(5);
 Laskuri axeLaskuri = new Laskuri(6);
 
 bonusLaskuri = axeLaskuri; // muuttujaan bonusLaskuri kopioidaan muuttujan axeLaskuri sisältämä viite,
-                           // eli viite Laskuri-tyyppiseen olioon joka on saanut konstruktorissaan arvon 6
-    </pre>
+                           // eli viite Laskuri-tyyppiseen olioon joka on saanut konstruktorissaan arvon 6</pre>
 
     <p>Viitetyyppistä muuttujaa kopioitaessa (yllä <code>bonusLaskuri = axeLaskuri;</code>) muuttujan viite kopioituu. Yllä muuttujan <code>bonusLaskuri</code> lokeroon kopioituu muuttujan <code>axeLaskuri</code> lokerossa oleva viite. Nyt kummatkin oliot viittaavat samaan paikkaan!</p>
 
@@ -1746,7 +1693,7 @@ bonusLaskuri = axeLaskuri; // muuttujaan bonusLaskuri kopioidaan muuttujan axeLa
 
     <p>Jatketaan yllä olevaa esimerkkiä ja asetetaan muuttujaan <code>axeLaskuri</code> uusi viite, joka osoittaa kutsulla <code>new Laskuri(10)</code> luotuun olioon.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 Laskuri bonusLaskuri = new Laskuri(5);
 Laskuri axeLaskuri = new Laskuri(6);
 
@@ -1756,19 +1703,17 @@ bonusLaskuri = axeLaskuri; // muuttujaan bonusLaskuri kopioidaan muuttujan axeLa
 axeLaskuri = new Laskuri(10); // muuttujaan axeLaskuri asetetaan uusi viite, joka osoittaa
                               // new Laskuri(10) - kutsulla luotuun Laskuri-olioon
 
-// muuttuja bonusLaskuri sisältää vieläkin viitteen Laskuri-olioon, joka sai konstruktorissaan arvon 6
-    </pre>
+// muuttuja bonusLaskuri sisältää vieläkin viitteen Laskuri-olioon, joka sai konstruktorissaan arvon 6</pre>
 
     <p>Esimerkissä tehdään käytännössä samat operaatiot kuin alkeistyyppi-kappaleessa olevassa asetusesimerkissä. Äskeisessä esimerkissä kopioimme viitetyyppisten muuttujien viitteitä, kun taas alkeistyyppisiin muuttujiin liittyvässä esimerkissä kopioimme alkeistyyppien arvoja. Kummassakin tapauksessa siis lokeron sisältö kopioidaan, alkeistyyppisten muuttujien lokero sisältää arvon, viitetyyppisten muuttujien lokero sisältää viitteen.</p>
 
     <p>Edellisen esimerkin lopussa kukaan ei viittaa Laskuriolioon, joka sai arvokseen 5 sen konstruktorissa. Javassa oleva roskienkeruumekanismi käy ajallaan poistamassa tällaiset turhat oliot. Lopputilanne kuvana:</p>
 
-
     <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/vis/viittaustyyppiset-muuttujat-laskurit-2.png" /></p>
 
     <p>Tarkastellaan vielä kolmatta esimerkkiä, joka näyttää viite- ja alkeistyyppisten muuttujien oleellisen eron.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 Laskuri bonusLaskuri = new Laskuri(5);
 Laskuri axeLaskuri = new Laskuri(6);
 
@@ -1778,13 +1723,11 @@ bonusLaskuri = axeLaskuri; // muuttujaan bonusLaskuri kopioidaan muuttujan axeLa
 axeLaskuri.kasvataArvoa(); // kasvatetaan axeLaskuri-viitteen takana olevan olion arvoa yhdellä
 
 System.out.println(bonusLaskuri.annaArvo());
-System.out.println(axeLaskuri.annaArvo());
-    </pre>
+System.out.println(axeLaskuri.annaArvo());</pre>
 
-    <pre>
+<pre>
 7
-7
-    </pre>
+7</pre>
 
     <p>Koska asetuksen <code>bonusLaskuri = axeLaskuri;</code> jälkeen <code>bonusLaskuri</code>-muuttuja viittaa samaan olioon kuin <code>axeLaskuri</code>-muuttuja, on kummankin laskurin arvo 7 vaikka kasvatuksia on tehty vain yksi. Tämä johtuu siitä että kummatkin laskurit viittaavat samaan olioon.</p>
 
@@ -1792,13 +1735,12 @@ System.out.println(axeLaskuri.annaArvo());
 
     <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/vis/viittaustyyppiset-muuttujat-laskurit-4.png" /></p>
 
-    <p> Seuraavassa esimerkissä on kolme viitetyyppistä muuttujaa, jotka kaikki osoittavat samaan <code>Laskuri</code>-olioon.</p>
+    <p>Seuraavassa esimerkissä on kolme viitetyyppistä muuttujaa, jotka kaikki osoittavat samaan <code>Laskuri</code>-olioon.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 Laskuri bonus = new Laskuri(5);
 Laskuri ihq = bonus;
-Laskuri lennon = bonus;
-    </pre>
+Laskuri lennon = bonus;</pre>
 
     <p>Esimerkissä luodaan vain yksi <code>Laskuri</code>-olio, mutta kaikki kolme <code>Laskuri</code>-tyyppistä muuttujaa osoittavat lopussa siihen. Tällöin kaikki metodikutsut viitteille <code>bonus</code>, <code>ihq</code> ja <code>lennon</code> muokkaavat samaa oliota. Vielä kerran: viitetyyppisiä muuttujia kopioitaessa viitteet kopioituvat. Kuvana:</p>
 
@@ -1807,13 +1749,12 @@ Laskuri lennon = bonus;
 
     <p>Katsotaan kopioitumista vielä esimerkillä.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 Laskuri bonus = new Laskuri(5);
 Laskuri ihq = bonus;
 Laskuri lennon = bonus;
 
-lennon = new Laskuri(3);
-    </pre>
+lennon = new Laskuri(3);</pre>
 
     <p>Kun muuttujan <code>lennon</code> sisältö, eli viite muuttuu, se ei vaikuta muuttujien <code>bonus</code> tai <code>ihq</code> sisältämiin viitteisiin. Muuttujan arvoa asetettaessa muutetaan aina vain muuttujan oman lokeron sisältöä. Kuvana:</p>
 
@@ -1823,26 +1764,23 @@ lennon = new Laskuri(3);
 
     <p>Kun viitetyyppinen muuttuja annetaan parametrina metodille, luodaan metodin parametrille kopio annetusta muuttujan viitteestä. Parametrilla on siis oma lokero, johon viite kopioidaan. Alkeistyyppisistä muuttujista poiketen kopioimme viitteen, emmekä arvoa, eli voimme muokata viitteen takana olevaa oliota myös metodin sisällä. Oletetaan että metodimme on alla esitelty <code>public void lisaaLaskuriin(Laskuri laskuri, int paljonko)</code>.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public void lisaaLaskuriin(Laskuri laskuri, int paljonko) {
     for (int i = 0; i &lt; paljonko; i++) {
         laskuri.kasvataArvoa();
     }
-}
-    </pre>
+}</pre>
 
     <p>Metodille <code>lisaaLaskuriin</code> annetaan kaksi parametria, viitetyyppinen muuttuja ja alkeistyyppinen muuttuja. Kumpaankin muuttujaan liittyvän lokeron sisältö kopioidaan metodin parametrien omiin lokeroihin. Viitetyyppiselle parametrille <code>laskuri</code> kopioituu viite ja alkeistyyppiselle parametrille <code>paljonko</code> kopioituu arvo. Metodi kutsuu <code>Laskuri</code>-tyyppisen parametrin metodia <code>kasvataArvoa()</code> <code>paljonko</code>-muuttujan sisältämän arvon määrän. Tutkitaan vielä metodin kutsumista.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 int kertoja = 10;
 
 Laskuri bonus = new Laskuri(10);
 lisaaLaskuriin(bonus, kertoja);
-// muuttujan bonus sisäinen arvo on nyt 20
-    </pre>
+// muuttujan bonus sisäinen arvo on nyt 20</pre>
 
     <p>Esimerkissä kutsutaan <code>lisaaLaskuriin()</code>-metodia muuttujilla <code>bonus</code> ja <code>kertoja</code>. Metodin parametriin <code>laskuri</code> ja <code>paljonko</code> kopioituvat siis viitetyyppisen muuttujan <code>bonus</code> viite, ja alkeistyyppisen muuttujan <code>kertoja</code> arvo <code>10</code>. Metodi suorittaa metodissa olevalle muuttujalle <code>laskuri</code> <code>paljonko</code> muuttujan määrittelemän määrän <code>kasvataArvoa()</code>-metodikutsuja. Tämä kuvana:</p>
-
 
     <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/vis/viittaustyyppiset-muuttujat-laskurit-7.png" /></p>
 
@@ -1856,18 +1794,16 @@ lisaaLaskuriin(bonus, kertoja);
 
     <p>Kun metodi palauttaa viitetyyppisen muuttujan, palauttaa se viitteen muualla sijaitsevaan olioon. Metodin palauttaman viitetyyppisen muuttujan voi asettaa muuttujalle samalla tavalla kuin normaalikin asetus tapahtuu, eli yhtäsuuruusmerkin avulla. Katsotaan metodia <code>public Laskuri luoLaskuri(int alkuarvo)</code>, joka luo uuden viitetyyppisen muuttujan.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public Laskuri luoLaskuri(int alkuarvo) {
     return new Laskuri(alkuarvo);
-}
-    </pre>
+}</pre>
 
     <p>Metodi luoLaskuri palauttaa metodissa luotuun olioon viittaavan viitteen <code>uusiLaskuri</code>. Uusi olio luodaan aina metodia kutsuttaessa, seuraavassa esimerkissä luomme kaksi erillistä <code>Laskuri</code>-tyyppistä oliota.</p>
 
-    <pre class="sh_java">
-Laskuri bonus  = luoLaskuri(10);
-Laskuri lennon = luoLaskuri(10);
-    </pre>
+<pre class="sh_java">
+Laskuri bonus = luoLaskuri(10);
+Laskuri lennon = luoLaskuri(10);</pre>
 
     <p>Metodi <code>luoLaskuri</code> luo aina uuden <code>Laskuri</code>-tyyppisen olion. Ensimmäisessä kutsussa, eli kutsussa <code>Laskuri bonus = luoLaskuri(10);</code> asetetaan metodin palauttama viite viitetyyppiseen muuttujaan <code>bonus</code>. Toisessa metodikutsussa luodaan uusi viite, joka asetetaan muuttujaan <code>lennon</code>. Muuttujat <code>bonus</code> ja <code>lennon</code> eivät sisällä samaa viitettä, sillä metodi luo aina uuden olion ja palauttaa viitteen luotuun olioon.</p>
 
@@ -1883,18 +1819,17 @@ Laskuri lennon = luoLaskuri(10);
 
     <p>Luokkakirjastoksi kutsutaan luokkaa, jossa on yleiskäyttöisiä metodeja ja muuttujia. Esimerkiksi Javan <code>Math</code>-luokka on luokkakirjasto. Se tarjoaa muun muassa <code>Math.PI</code>-muuttujan. Omien luokkakirjastojen toteuttaminen on usein hyödyllistä. Esimerkiksi Helsingin Seudun Liikenne (HSL) voisi pitää lippujensa hintoja luokkakirjastossa, josta ne löytyisi tarvittaessa.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class HslHinnasto {
     public static final double KERTALIPPU_AIKUINEN = 2.50;
     public static final double RAITIOVAUNULIPPU_AIKUINEN = 2.50;
-}
-    </pre>
+}</pre>
 
     <p>Avainsana <code>final</code> muuttujan määrittelyssä kertoo ettei muuttujaan voi asettaa uutta arvoa kun se on kerran asetettu. Final-tyyppiset muuttujat ovat vakioita, ja niiden tulee sisältää aina arvo. Esimerkiksi suurimman kokonaisluvun kertova luokkamuuttuja <code>Integer.MAX_VALUE</code> on vakiotyyppinen luokkamuuttuja.</p>
 
     <p>Jos käytössämme on yllä esitelty luokka <code>HslHinnasto</code>, voivat kaikki ohjelmat, jotka tarvitsevat kerta- tai raitiovaunulipun hintaa, päästä niihin käsiksi <code>HslHinnasto</code>-luokan kautta. Seuraavassa esimerkissä esitellään luokka <code>Ihminen</code>, jolla on metodi <code>onkoRahaaKertalippuun()</code>, joka käyttää <code>HslHinnasto</code>-luokasta löytyvää lipun hintaa.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Ihminen {
     private String nimi;
     private double rahat;
@@ -1911,26 +1846,24 @@ public class Ihminen {
     }
 
     // muut luokkaan Ihminen liittyvät metodit
-}
-    </pre>
+}</pre>
 
     <p>Metodi <code>public boolean onkoRahaaKertalippuun()</code> vertaa luokan <code>Ihminen</code> oliomuuttujaa <code>rahat</code> <code>HslHinnasto</code>-luokan staattiseen muuttujaan <code>KERTALIPPU_AIKUINEN</code>. Metodia <code>onkoRahaaKertalippuun()</code> voi kutsua vain olioviitteen kautta. Esimerkiksi:</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 Ihminen matti = new Ihminen();
 
 if (matti.onkoRahaaKertalippuun()) {
     System.out.println("Ostetaan kertalippu.");
 } else {
     System.out.println("Mennään pummilla.");
-}
-    </pre>
+}</pre>
 
     <p>Huomaa nimeämiskäytäntö! Kaikki <em>vakiot</em> eli final-määreellä varustetut muuttujat kirjoitetaan ISOLLA_JA_ALAVIIVOILLA.</p>
 
     <p>Staattiset metodit toimivat vastaavasti. Esimerkiksi Luokka <code>HslHinnasto</code> saattaisi <em>kapseloida</em> muuttujat ja antaa vain <em>aksessorit</em> niihin. Aksessoriksi kutsutaan metodia, jolla voi joko lukea muuttujan arvon tai sijoittaa muuttujalle uuden arvon.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class HslHinnasto {
   private static final double KERTALIPPU_AIKUINEN = 2.50;
   private static final double RAITIOVAUNULIPPU_AIKUINEN = 2.50;
@@ -1942,12 +1875,11 @@ public class HslHinnasto {
   public static double annaRaitiovaunulipunHinta() {   // Aksessori
     return RAITIOVAUNULIPPU_AIKUINEN;
   }
-}
-    </pre>
+}</pre>
 
     <p>Tällöin <code>Ihminen</code>-luokan toteutuksessa tulee kutsua metodia <code>annaKertalipunHinta()</code> sen sijaan että kutsuttaisiin muuttujaa suoraan.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Ihminen {
     private String nimi;
     private double rahat;
@@ -1964,8 +1896,7 @@ public class Ihminen {
     }
 
     // muut luokkaan Ihminen liittyvät metodit
-}
-    </pre>
+}</pre>
 
 
     <p>Vaikka Java periaatteessa mahdollistaa staattisten muuttujien käytön, ei niille useinkaan ole tarvetta. Usein staattisten muuttujien käyttö aiheuttaa ongelmia ohjelman rakenteelle, sillä staattiset muuttujat toimivat pahamaineisten <a href="http://c2.com/cgi/wiki?GlobalVariablesAreBad">globaalien muuttujien</a> tapaan. <b>Tällä kurssilla käytämme ainoastaan vakioarvoisia eli final määreen omaavia staattisia muuttujia!</b></p>
@@ -1974,18 +1905,17 @@ public class Ihminen {
 
     <p>Ei-staattiset metodit ja muuttujat liittyvät olioihin. Oliomuuttujat, eli attribuutit määritellään luokan alussa. Kun olio luodaan <code>new</code>-kutsulla, kaikille oliomuuttujille varataan tila olioon liittyvän viitteen päähän. Muuttujien arvot ovat oliokohtaisia, eli jokaisella oliolla on omat muuttujien arvot. Tutkitaan taas luokkaa <code>Ihminen</code>, jolla on oliomuuttujat <code>nimi</code> ja <code>rahat</code>.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Ihminen {
   private String nimi;
   private double rahat;
 
   // muut tiedot
-}
-    </pre>
+}</pre>
 
     <p>Kun luokasta <em>Ihminen</em> luodaan uusi ilmentymä, alustetaan myös siihen liittyvät muuttujat. Jos viitetyyppistä muuttujaa <code>nimi</code> ei alusteta, saa se arvokseen <em>null</em>-viitteen. Lisätään luokan <em>Ihminen</em> toteutukseen vielä <em>konstruktori</em> ja muutama metodi.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Ihminen {
     private String nimi;
     private double rahat;
@@ -2017,14 +1947,13 @@ public class Ihminen {
 
         return false;
     }
-}
-    </pre>
+}</pre>
 
     <p>Konstruktori <code>Ihminen(String nimi, double rahat)</code> luo uuden ihmisolion ja palauttaa viitteen siihen. Metodi <code>getNimi()</code> palauttaa viitteen <code>nimi</code>-olioon, ja <code>getRahat()</code>-metodi palauttaa alkeistyyppisen muuttujan <code>rahat</code>. Metodi <code>lisaaRahaa(double summa)</code> lisää oliomuuttujaan <code>rahat</code> parametrina annetun summan jos parametrin arvo on suurempi kuin 0.</p>
 
     <p>Oliometodeja kutsutaan olion viitteen kautta. Seuraava koodiesimerkki luo uuden Ihmis-olion, lisää sille rahaa, ja lopuksi tulostaa sen nimen. Huomaa että metodikutsut ovat muotoa <code>olionNimi.metodinNimi()</code></p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 Ihminen matti = new Ihminen("Matti", 5.0);
 matti.lisaaRahaa(5);
 
@@ -2032,8 +1961,7 @@ if (matti.onkoRahaaKertalippuun()) {
     System.out.println("Ostetaan kertalippu.");
 } else {
     System.out.println("Mennään pummilla.");
-}
-    </pre>
+}</pre>
 
     <p>Esimerkki tulostaa "<code>Ostetaan kertalippu</code>".</p>
 
@@ -2041,15 +1969,14 @@ if (matti.onkoRahaaKertalippuun()) {
 
     <p>Luokan sisäisiä ei-staattisia metodeja voi kutsua myös ilman olio-etuliitettä metodiin liittyvissä luokissa. Esimerkiksi seuraava <code>toString()</code>-metodi <code>Ihminen</code> luokalle, joka kutsuu olioon liittyvää metodia <code>getNimi()</code>.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Ihminen {
     // aiemmin toteutetun luokan sisältö
 
     public String toString() {
         return this.getNimi();
     }
-}
-    </pre>
+}</pre>
 
     <p>Metodi <code>toString()</code> kutsuu siis luokan sisäistä juuri käsiteltävään olioon liittyvää <code>getNimi()</code>-metodia. Etuliite <code>this</code> korostaa kutsun liittyvän juuri tähän olioon.</p>
 
@@ -2060,7 +1987,7 @@ public class Ihminen {
 
     <p>Metodien sisällä määriteltävät muuttujat ovat metodien suorituksessa käytettäviä apumuuttujia, eikä niitä tule sekoittaa oliomuuttujiin. Alla esimerkki metodista, jossa luodaan metodiin paikallinen muuttuja. Muuttuja <code>indeksi</code> on olemassa ja käytössä vain metodin suorituksen ajan.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class ... {
     ...
 
@@ -2072,8 +1999,7 @@ public class ... {
             indeksi++;
         }
     }
-}
-    </pre>
+}</pre>
 
     <p>Metodissa <code>tulostaTaulukko()</code> luodaan apumuuttuja <code>indeksi</code> jota käytetään taulukon läpikäynnissä. Muuttuja <code>indeksi</code> on olemassa vain metodin suorituksen ajan.</p>
 
@@ -2084,7 +2010,7 @@ public class ... {
 
         <p>Tässä tehtäväsarjassa tehdään luokat <code>Tavara</code>, <code>Matkalaukku</code> ja <code>Lastiruuma</code>, joiden avulla harjoitellaan olioita, jotka sisältävät toisia olioita.</p>
 
-        <h4  >Tavara-luokka</h4>
+        <h4>Tavara-luokka</h4>
 
         <p>Tee luokka <code>Tavara</code>, josta muodostetut oliot vastaavat erilaisia tavaroita. Tallennettavat tiedot ovat tavaran nimi ja paino (kg).</p>
 
@@ -2099,7 +2025,7 @@ public class ... {
 
         <p>Seuraavassa on luokan käyttöesimerkki:</p>
 
-        <pre class="sh_java">
+<pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
         Tavara kirja = new Tavara("Aapiskukko", 2);
@@ -2111,19 +2037,17 @@ public class Main {
         System.out.println("Kirja: " + kirja);
         System.out.println("Puhelin: " + puhelin);
     }
-}
-        </pre>
+}</pre>
 
         <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
 
-        <pre>
+<pre>
 Kirjan nimi: Aapiskukko
 Kirjan paino: 2
 Kirja: Aapiskukko (2 kg)
-Puhelin: Nokia 3210 (1 kg)
-        </pre>
+Puhelin: Nokia 3210 (1 kg)</pre>
 
-        <h4  >Matkalaukku-luokka</h4>
+        <h4>Matkalaukku-luokka</h4>
 
         <p>Tee luokka <code>Matkalaukku</code>. Matkalaukkuun liittyy tavaroita ja maksimipaino, joka määrittelee tavaroiden suurimman mahdollisen yhteispainon.</p>
 
@@ -2137,15 +2061,14 @@ Puhelin: Nokia 3210 (1 kg)
 
         <p>Tavarat kannattaa tallentaa <code>ArrayList</code>-olioon:</p>
 
-        <pre class="sh_java">
-ArrayList&lt;Tavara&gt; tavarat = new ArrayList&lt;Tavara&gt;();
-        </pre>
+<pre class="sh_java">
+ArrayList&lt;Tavara&gt; tavarat = new ArrayList&lt;&gt;();</pre>
 
         <p>Luokan <code>Matkalaukku</code> tulee valvoa, että sen sisältämien tavaroiden yhteispaino ei ylitä maksimipainoa. Jos maksimipaino ylittyisi lisättävän tavaran vuoksi, metodi <code>lisaaTavara</code> ei saa lisätä uutta tavaraa laukkuun.</p>
 
         <p>Seuraavassa on luokan käyttöesimerkki:</p>
 
-        <pre class="sh_java">
+<pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
         Tavara kirja = new Tavara("Aapiskukko", 2);
@@ -2164,17 +2087,15 @@ public class Main {
         matkalaukku.lisaaTavara(tiiliskivi);
         System.out.println(matkalaukku);
     }
-}
-        </pre>
+}</pre>
 
         <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
 
-        <pre>
+<pre>
 0 tavaraa (0 kg)
 1 tavaraa (2 kg)
 2 tavaraa (3 kg)
-2 tavaraa (3 kg)
-        </pre>
+2 tavaraa (3 kg)</pre>
 
         <h4>Kielenhuoltoa</h4>
 
@@ -2182,12 +2103,11 @@ public class Main {
 
         <p>Nyt edellisen ohjelman tulostuksen tulisi olla seuraava:</p>
 
-        <pre>
+<pre>
 ei tavaroita (0 kg)
 1 tavara (2 kg)
 2 tavaraa (3 kg)
-2 tavaraa (3 kg)
-        </pre>
+2 tavaraa (3 kg)</pre>
 
         <h4>Kaikki tavarat</h4>
 
@@ -2200,7 +2120,7 @@ ei tavaroita (0 kg)
 
         <p>Seuraavassa on luokan käyttöesimerkki:</p>
 
-        <pre class="sh_java">
+<pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
         Tavara kirja = new Tavara("Aapiskukko", 2);
@@ -2216,18 +2136,16 @@ public class Main {
         matkalaukku.tulostaTavarat();
         System.out.println("Yhteispaino: " + matkalaukku.yhteispaino() + " kg");
     }
-}
-        </pre>
+}</pre>
 
         <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
 
-        <pre>
+<pre>
 Matkalaukussa on seuraavat tavarat:
 Aapiskukko (2 kg)
 Nokia 3210 (1 kg)
 Tiiliskivi (4 kg)
-Yhteispaino: 7 kg
-        </pre>
+Yhteispaino: 7 kg</pre>
 
 
         <p>Muokkaa myös luokkaasi siten, että käytät vain kahta oliomuuttujaa. Toinen sisältää maksimipainon, toinen on lista laukussa olevista tavaroista.</p>
@@ -2238,7 +2156,7 @@ Yhteispaino: 7 kg
 
         <p>Seuraavassa on luokan käyttöesimerkki:</p>
 
-        <pre class="sh_java">
+<pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
         Tavara kirja = new Tavara("Aapiskukko", 2);
@@ -2253,14 +2171,12 @@ public class Main {
         Tavara raskain = matkalaukku.raskainTavara();
         System.out.println("Raskain tavara: " + raskain);
     }
-}
-        </pre>
+}</pre>
 
         <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
 
-        <pre>
-Raskain tavara: Tiiliskivi (4 kg)
-        </pre>
+<pre>
+Raskain tavara: Tiiliskivi (4 kg)</pre>
 
         <h4>Lastiruuma-luokka</h4>
 
@@ -2278,7 +2194,7 @@ Raskain tavara: Tiiliskivi (4 kg)
 
         <p>Seuraavassa on luokan käyttöesimerkki:</p>
 
-        <pre class="sh_java">
+<pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
         Tavara kirja = new Tavara("Aapiskukko", 2);
@@ -2298,22 +2214,20 @@ public class Main {
 
         System.out.println(lastiruuma);
     }
-}
-        </pre>
+}</pre>
 
         <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
 
-        <pre>
-2 matkalaukkua (7 kg)
-        </pre>
+<pre>
+2 matkalaukkua (7 kg)</pre>
 
-        <h4  >Lastiruuman sisältö</h4>
+        <h4>Lastiruuman sisältö</h4>
 
         <p>Lisää luokkaan <code>Lastiruuma</code> metodi <code>public void tulostaTavarat()</code>, joka tulostaa kaikki lastiruuman matkalaukuissa olevat tavarat.</p>
 
         <p>Seuraavassa on luokan käyttöesimerkki:</p>
 
-        <pre class="sh_java">
+<pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
         Tavara kirja = new Tavara("Aapiskukko", 2);
@@ -2334,17 +2248,15 @@ public class Main {
         System.out.println("Ruuman matkalaukuissa on seuraavat tavarat:");
         lastiruuma.tulostaTavarat();
     }
-}
-        </pre>
+}</pre>
 
         <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
 
-        <pre>
+<pre>
 Ruuman matkalaukuissa on seuraavat tavarat:
 Aapiskukko (2 kg)
 Nokia 3210 (1 kg)
-tiiliskivi (4 kg)
-        </pre>
+tiiliskivi (4 kg)</pre>
 
         <h4>Paljon tiiliskiviä</h4>
 
@@ -2352,7 +2264,7 @@ tiiliskivi (4 kg)
 
         <p>Ohjelman runko on seuraava:</p>
 
-        <pre class="sh_java">
+<pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
         Lastiruuma lastiruuma = new Lastiruuma(1000);
@@ -2363,14 +2275,12 @@ public class Main {
     public static void lisaaMatkalaukutTiiliskivilla(Lastiruuma lastiruuma) {
         // 100 matkalaukun lisääminen, jokaiseen tulee tiiliskivi
     }
-}
-        </pre>
+}</pre>
 
         <p>Ohjelman tulostus on seuraava:</p>
 
-        <pre>
-44 matkalaukkua (990 kg)
-        </pre>
+<pre>
+44 matkalaukkua (990 kg)</pre>
 
       </div>
     </div>
@@ -2383,14 +2293,12 @@ public class Main {
 
     <p>Hajautustaulu käyttää avaimen arvon laskemiseen <code>Object</code>-luokassa määriteltyä <code>hashCode()</code>-metodia, jonka jokainen toteutettu luokka <em>perii</em>. Emme kuitenkaan tutustu hajautustaulun toteutukseen tarkemmin tällä kurssilla. Perintään tutustumme muutaman viikon kuluttua.</p>
 
-
     <p>Javan luokka <code>HashMap</code> kapseloi eli piilottaa hajautustaulun toteutuksen, ja tarjoaa valmiit metodit sen käyttöön.</p>
 
     <p>Hajautustaulua luodessa tarvitaan kaksi <em>tyyppiparametria</em>, avainmuuttujan tyyppi ja tallennettavan olion tyyppi. Seuraava esimerkki käyttää avaimena <code>String</code>-tyyppistä oliota, ja tallennettavana oliona <code>String</code>-tyyppistä oliota. </p>
 
-
-    <pre class="sh_java">
-HashMap&lt;String, String&gt; numerot = new HashMap&lt;String, String&gt;();
+<pre class="sh_java">
+HashMap&lt;String, String&gt; numerot = new HashMap&lt;&gt;();
 numerot.put("Yksi", "Uno");
 numerot.put("Kaksi", "Dos");
 
@@ -2399,23 +2307,21 @@ System.out.println(kaannos);
 
 System.out.println(numerot.get("Kaksi"));
 System.out.println(numerot.get("Kolme"));
-System.out.println(numerot.get("Uno"));
-    </pre>
+System.out.println(numerot.get("Uno"));</pre>
 
-    <pre>
+<pre>
 Uno
 Dos
 null
-null
-    </pre>
+null</pre>
 
 
     <p>Esimerkissä luodaan hajatustaulu, jonka avaimena ja tallennettavana oliona merkkijono. Hajautustauluun lisätään tietoa <code>put()</code>-metodilla, joka saa parametreikseen viitteet avaimeen ja tallennettavaan olioon. Metodi <code>get()</code>-palauttaa parametrina annettuun avaimeen liittyvän viitteen tai arvon <code>null</code> jos avaimella ei löydy viitettä.</p>
 
     <p>Hajautustaulussa tiettyä avainta vastaa aina yksi arvo. Jos jo olemassaolevalla avaimella tallennetaan uusi arvo, katoaa vanha arvo hajautustaulusta.</p>
 
-    <pre class="sh_java">
-HashMap&lt;String, String&gt; numerot = new HashMap&lt;String, String&gt;();
+<pre class="sh_java">
+HashMap&lt;String, String&gt; numerot = new HashMap&lt;&gt;();
 numerot.put("Yksi", "Uno");
 numerot.put("Kaksi", "Dos");
 numerot.put("Yksi", "Ein");
@@ -2425,26 +2331,21 @@ System.out.println(kaannos);
 
 System.out.println(numerot.get("Kaksi"));
 System.out.println(numerot.get("Kolme"));
-System.out.println(numerot.get("Uno"));
-    </pre>
+System.out.println(numerot.get("Uno"));</pre>
 
     <p>Koska avain "<code>Yksi</code>" asetetaan uudestaan, on esimerkin tulostus nyt seuraavanlainen.</p>
 
-    <pre>
+<pre>
 Ein
 Dos
 null
-null
-    </pre>
+null</pre>
 
     <div class="tehtavat">
       <div class="tehtava">
         <h3>Lempinimet</h3>
 
-        <p>Luo <code>main</code>-metodissa
-        uusi <code>HashMap&lt;String,String&gt;</code>-olio. Tallenna tähän
-        HashMappiin seuraavien henkilöiden nimet ja lempinimet niin, että
-        nimi on avain ja lempinimi on arvo. Käytä pelkkiä pieniä kirjaimia.</p>
+        <p>Luo <code>main</code>-metodissa uusi <code>HashMap&lt;String,String&gt;</code>-olio. Tallenna tähän HashMappiin seuraavien henkilöiden nimet ja lempinimet niin, että nimi on avain ja lempinimi on arvo. Käytä pelkkiä pieniä kirjaimia.</p>
 
         <ul>
           <li>matin lempinimi on mage</li>
@@ -2458,11 +2359,12 @@ null
 
       </div>
     </div>
+
     <h3 id="kirjastotietokanta">Kirjojen haku hajautustaulun avulla</h3>
 
     <p>Tutkitaan hajautustaulun toimintaa seuraavaksi kirjastoesimerkin avulla. Kirjastosta voi hakea kirjoja kirjan nimen perusteella, nimi toimii siis kirjan avaimena. Jos annetulle nimelle löytyy kirja, saadaan siihen liittyvä viite ja samalla kirjan tiedot. Luodaan ensin esimerkkiluokka <code>Kirja</code>, jolla on oliomuuttujina nimi ja kirjaan liittyvä sisältö.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Kirja {
     private String nimi;
     private String sisalto;
@@ -2502,65 +2404,57 @@ public class Kirja {
         return "Nimi: " + this.nimi + " (" + this.julkaisuvuosi + ")\n"
                 + "Sisältö: " + this.sisalto;
     }
-}
-    </pre>
+}</pre>
 
     <p>Luodaan seuraavaksi hajautustaulu, joka käyttää avaimena kirjan nimeä eli String-tyyppistä oliota, ja tallentaa viitteitä <code>Kirja</code>-olioihin.</p>
 
-    <pre class="sh_java">
-HashMap&lt;String, Kirja&gt; kirjahakemisto = new HashMap&lt;String, Kirja&gt;();
-    </pre>
+<pre class="sh_java">
+HashMap&lt;String, Kirja&gt; kirjahakemisto = new HashMap&lt;&gt;();</pre>
 
     <p>Yllä oleva hajautustaulu käyttää avaimena <code>String</code>-oliota. Laajennetaan esimerkkiä siten, että kirjahakemistoon lisätään kaksi kirjaa, <code>"Järki ja tunteet"</code> ja <code>"Ylpeys ja ennakkoluulo"</code>.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 Kirja jarkiJaTunteet = new Kirja("Järki ja tunteet", 1811, "...");
 Kirja ylpeysJaEnnakkoluulo = new Kirja("Ylpeys ja ennakkoluulo", 1813, "....");
 
-HashMap&lt;String, Kirja&gt; kirjahakemisto = new HashMap&lt;String, Kirja&gt;();
+HashMap&lt;String, Kirja&gt; kirjahakemisto = new HashMap&lt;&gt;();
 kirjahakemisto.put(jarkiJaTunteet.getNimi(), jarkiJaTunteet);
-kirjahakemisto.put(ylpeysJaEnnakkoluulo.getNimi(), ylpeysJaEnnakkoluulo);
-    </pre>
+kirjahakemisto.put(ylpeysJaEnnakkoluulo.getNimi(), ylpeysJaEnnakkoluulo);</pre>
 
     <p>Kirjahakemistosta voi hakea kirjoja kirjan nimellä. Haku kirjalla <code>"Viisasteleva sydän"</code> ei tuota osumaa, jolloin hajautustaulu palauttaa <code>null</code>-viitteen. Kirja "Ylpeys ja ennakkoluulo" kuitenkin löytyy.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 Kirja kirja = kirjahakemisto.get("Viisasteleva sydän");
 System.out.println(kirja);
 System.out.println();
 kirja = kirjahakemisto.get("Ylpeys ja ennakkoluulo");
-System.out.println(kirja);
-    </pre>
+System.out.println(kirja);</pre>
 
-    <pre>
+<pre>
 null
 
 Nimi: Ylpeys ja ennakkoluulo (1813)
-Sisältö: ...
-    </pre>
+Sisältö: ...</pre>
 
     <p>Hajautustaulu on hyödyllinen silloin kun tiedetään avain minkä perusteella halutaan hakea. Avaimet ovat aina yksilöllisiä, joten saman avaimen taakse ei voi tallettaa montaa eri oliota. Tallennettava olio voi toki olla lista tai toinen hajautustaulukko!</p>
 
     <h3 id="kapseloitu_kirjasto">Kirjasto</h3>
 
-    <p>
-    Yllä olevan kirjahakemiston ongelmana on se, että kirjoja haettaessa täytyy muistaa kirjan nimi merkki merkiltä oikein. Javan valmis <code>String</code>-luokka tarjoaa meille välineet tähänkin. Metodi <code>toLowerCase()</code> muuttaa merkkijonon kirjaimet pieniksi, ja metodi <code>trim()</code> poistaa merkkijonon alusta ja lopusta tyhjät merkit (esimerkiksi välilyönnit). Tietokoneen käyttäjät usein kirjoittavat tekstin alkuun tai loppuun vahingossa välilyöntejä.
-    </p>
+    <p>Yllä olevan kirjahakemiston ongelmana on se, että kirjoja haettaessa täytyy muistaa kirjan nimi merkki merkiltä oikein. Javan valmis <code>String</code>-luokka tarjoaa meille välineet tähänkin. Metodi <code>toLowerCase()</code> muuttaa merkkijonon kirjaimet pieniksi, ja metodi <code>trim()</code> poistaa merkkijonon alusta ja lopusta tyhjät merkit (esimerkiksi välilyönnit). Tietokoneen käyttäjät usein kirjoittavat tekstin alkuun tai loppuun vahingossa välilyöntejä.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 String teksti = "Ylpeys ja ennakkoluulo ";
 teksti = teksti.toLowerCase(); // teksti nyt "ylpeys ja ennakkoluulo "
-teksti = teksti.trim() // teksti nyt "ylpeys ja ennakkoluulo"
-    </pre>
+teksti = teksti.trim() // teksti nyt "ylpeys ja ennakkoluulo"</pre>
 
     <p>Luodaan luokka <code>Kirjasto</code>, joka kapseloi kirjat sisältävän hajautustaulun ja mahdollistaa kirjoitusasusta riippumattoman kirjojen haun. Lisätään <code>Kirjasto</code>-luokalle metodit <code>lisaaKirja(Kirja kirja)</code> ja <code>poistaKirja(String kirjanNimi)</code>. Huomaamme jo nyt että merkkijonon siistimistä tarvitsisi useammassa metodissa, joten tehdään siitä erillinen metodi <code>private String siistiMerkkijono(String merkkijono)</code>.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Kirjasto {
     private HashMap&lt;String, Kirja&gt; hakemisto;
 
     public Kirjasto() {
-        this.hakemisto = new HashMap&lt;String, Kirja&gt;();
+        this.hakemisto = new HashMap&lt;&gt;();
     }
 
     public void lisaaKirja(Kirja kirja) {
@@ -2591,41 +2485,39 @@ public class Kirjasto {
         merkkijono = merkkijono.toLowerCase();
         return merkkijono.trim();
     }
-}
-    </pre>
+}</pre>
+
     <p>Toteutetaan kirjan hakutoiminnallisuus siten, että kirjaa haetaan hajautusrakenteesta sen nimellä.</p>
 
-    <pre class="sh_java">
-    public Kirja haeKirja(String kirjanNimi) {
-        kirjanNimi = siistiMerkkijono(kirjanNimi);
-        return this.hakemisto.get(kirjanNimi);
-    }
-    </pre>
+<pre class="sh_java">
+public Kirja haeKirja(String kirjanNimi) {
+    kirjanNimi = siistiMerkkijono(kirjanNimi);
+    return this.hakemisto.get(kirjanNimi);
+}</pre>
 
     <p>Yllä oleva metodi palauttaa haetun kirjan jos sellainen löytyy, muulloin <code>null</code>-arvon. Voimme myös käydä kaikki hakemiston avaimet läpi  yksitellen, etsien esimerkiksi alkuosaa kirjan nimestä. Tällä tavalla etsiessä menetämme kuitenkin hajautustaulun nopeusedun, sillä huonoimmassa tapauksessa joudumme käymään kaikkien kirjojen nimet läpi. Hakeminen alkuosan perusteella onnistuisi hajautustaulun <code>keySet()</code>-metodin avulla. Metodi <code>keySet()</code> palauttaa avaimet joukossa, jonka voi käydä läpi <code>for-each</code> -toistolauseella.</p>
 
-    <pre class="sh_java">
-    public Kirja haeKirjaNimenAlkuosalla(String kirjanAlkuosa) {
-        kirjanAlkuosa = siistiMerkkijono(kirjanAlkuosa);
+<pre class="sh_java">
+public Kirja haeKirjaNimenAlkuosalla(String kirjanAlkuosa) {
+    kirjanAlkuosa = siistiMerkkijono(kirjanAlkuosa);
 
-        for (String avain: this.hakemisto.keySet()) {
-            if (avain.startsWith(kirjanAlkuosa)) {
-                return this.hakemisto.get(avain);
-            }
+    for (String avain: this.hakemisto.keySet()) {
+        if (avain.startsWith(kirjanAlkuosa)) {
+            return this.hakemisto.get(avain);
         }
-
-        return null;
     }
-    </pre>
+
+    return null;
+}</pre>
 
     <p>Jätämme yllä olevan metodin kuitenkin pois kirjastostamme. Kirjastosta puuttuu oleellisista toiminnoista vielä kirjojen listaaminen. Luodaan metodi <code>public ArrayList&lt;Kirja&gt; kirjalista()</code>, joka palauttaa listan kirjaston kirjoista. Metodi <code>kirjalista</code> hyödyntää hajautustaulun tarjoamaa <code>values()</code>-metodia. Metodi <code>values()</code> palauttaa kokoelman kirjaston kirjoista, jonka voi antaa parametrina <code>ArrayList</code>-luokan konstruktorille.</p>
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Kirjasto {
     private HashMap&lt;String, Kirja&gt; hakemisto;
 
     public Kirjasto() {
-        this.hakemisto = new HashMap&lt;String, Kirja&gt;();
+        this.hakemisto = new HashMap&lt;&gt;();
     }
 
     public Kirja haeKirja(String kirjanNimi) {
@@ -2654,7 +2546,7 @@ public class Kirjasto {
     }
 
     public ArrayList&lt;Kirja&gt; kirjalista() {
-        return new ArrayList&lt;Kirja&gt;(this.hakemisto.values());
+        return new ArrayList&lt;&gt;(this.hakemisto.values());
     }
 
     private String siistiMerkkijono(String merkkijono) {
@@ -2665,11 +2557,9 @@ public class Kirjasto {
         merkkijono = merkkijono.toLowerCase();
         return merkkijono.trim();
     }
-}
-    </pre>
+}</pre>
 
     <p>Yksi ohjelmoinnin periaatteista on ns. <em>DRY</em>-periaate (Don't Repeat Yourself), jolla pyritään välttämään saman koodin olemista useassa paikassa. Merkkijonon pieneksi muuttaminen ja <em>trimmaus</em>, eli tyhjien merkkien poisto alusta ja lopusta, olisi toistunut useasti kirjastoluokassamme ilman metodia <code>siistiMerkkijono</code>. Toistuvaa koodia ei usein huomaa ennen kuin sitä on jo kirjoittanut, jolloin sitä päätyy koodiin lähes pakosti. Tässä ei kuitenkaan ole mitään pahaa. Tärkeintä on että siistit koodiasi sitä mukaa kun huomaat siistimistä vaativia tilanteita.</p>
-
 
     <h3>Alkeistyyppiset muuttujat hajautustaulussa</h3>
 
@@ -2684,22 +2574,21 @@ public class Kirjasto {
     </table>
     </p>
 
-    <p>Java oikeastaan kapseloi alkeistyyppiset muuttujat automaattisesti viitetyyppisiksi muuttujiksi tarvittaessa. Vaikka numero <code>1</code> on alkeistyyppinen muuttuja, voit käyttää sitä suoraan <code>Integer</code>-tyyppisenä avaimena seuraavasti.</p>
+    <p>Java kapseloi alkeistyyppiset muuttujat viitetyyppisiksi muuttujiksi esimerkiksi ArrayList ja HashMap-tietorakennetta käytettäessä. Vaikka numero <code>1</code> on alkeistyyppinen muuttuja (tyyppiä <code>int</code>), tulee sitä käyttää <code>Integer</code>-tyyppisenä seuraavasti.</p>
 
-    <pre class="sh_java">
-HashMap&lt;Integer, String&gt; taulu = new HashMap&lt;Integer, String&gt;();
-taulu.put(1, "Ole!");
-    </pre>
+<pre class="sh_java">
+HashMap&lt;Integer, String&gt; taulu = new HashMap&lt;&gt;();
+taulu.put(1, "Ole!");</pre>
 
     <p>Alkeistyyppisten muuttujien automaattista muunnosta viitetyyppisiksi kutsutaan Javassa <em>auto-boxingiksi</em>, eli automaattiseksi "laatikkoon" asettamiseksi. Vastaava onnistuu myös toisinpäin. Voimme luoda metodin, joka palauttaa hajautustaulun sisältämän kokonaisluvun. Seuraavassa esimerkissä olevassa metodissa <code>lisaaBongaus</code> tapahtuu automaattinen tyyppimuunnos.</p>
 
 
-    <pre class="sh_java">
+<pre class="sh_java">
 public class Rekisteribongaus {
     private HashMap&lt;String, Integer&gt; bongatut;
 
     public Rekisteribongaus() {
-        this.bongatut = new HashMap&lt;String, Integer&gt;();
+        this.bongatut = new HashMap&lt;&gt;();
     }
 
     public void lisaaBongaus(String nimi, int numero) {
@@ -2709,20 +2598,18 @@ public class Rekisteribongaus {
     public int viimeisinBongaus(String nimi) {
         this.bongatut.get(nimi);
     }
-}
-    </pre>
+}</pre>
 
-    <p>Vaikka hajautustaulu sisältää Integer-tyyppisiä olioita, osaa Java myös muuntaa tietyt viitetyyppiset muuttujat myös niiden alkeistyyppisiksi vastineiksi. Esimerkiksi <code>Integer</code>-oliot muuttuvat tarpeen vaatiessa <code>int</code>-tyyppisiksi muuttujiksi. Tässä piilee kuitenkin vaara!  Jos yritämme muuttaa null-viitettä numeroksi, näemme virheen <em>java.lang.reflect.InvocationTargetException</em>. Kun teemme automaattista muunnosta, tulee varmistaa että muunnettava arvo ei ole null. Yllä olevassa ohjelmassa oleva <code>viimeisinBongaus</code>-metodi tulee korjata esimerkiksi seuraavasti.</p>
+    <p>Vaikka hajautustaulu sisältää Integer-tyyppisiä olioita, osaa Java muuntaa tietyt viitetyyppiset muuttujat niiden alkeistyyppisiksi vastineiksi. Esimerkiksi <code>Integer</code>-oliot muuttuvat tarpeen vaatiessa <code>int</code>-tyyppisiksi muuttujiksi. Tässä piilee kuitenkin vaara!  Jos yritämme muuttaa null-viitettä numeroksi, näemme virheen <em>java.lang.reflect.InvocationTargetException</em>. Kun teemme automaattista muunnosta, tulee varmistaa että muunnettava arvo ei ole null. Yllä olevassa ohjelmassa oleva <code>viimeisinBongaus</code>-metodi tulee korjata esimerkiksi seuraavasti.</p>
 
-    <pre class="sh_java">
-    public int viimeisinBongaus(String nimi) {
-        if(this.bongatut.containsKey(nimi) {
-            return this.bongatut.get(nimi);
-        }
-
-        return 0;
+<pre class="sh_java">
+public int viimeisinBongaus(String nimi) {
+    if(this.bongatut.containsKey(nimi) {
+        return this.bongatut.get(nimi);
     }
-    </pre>
+
+    return 0;
+}</pre>
 
 
 
@@ -2740,44 +2627,41 @@ public class Rekisteribongaus {
 
         <p>Luokkaa käytetään seuraavalla tavalla:</p>
 
-        <pre class="sh_java">
-  Velkakirja matinVelkakirja = new Velkakirja();
-  matinVelkakirja.asetaLaina("Arto", 51.5);
-  matinVelkakirja.asetaLaina("Mikael", 30);
+<pre class="sh_java">
+Velkakirja matinVelkakirja = new Velkakirja();
+matinVelkakirja.asetaLaina("Arto", 51.5);
+matinVelkakirja.asetaLaina("Mikael", 30);
 
-  System.out.println(matinVelkakirja.paljonkoVelkaa("Arto"));
-  System.out.println(matinVelkakirja.paljonkoVelkaa("Joel"));
-        </pre>
+System.out.println(matinVelkakirja.paljonkoVelkaa("Arto"));
+System.out.println(matinVelkakirja.paljonkoVelkaa("Joel"));</pre>
 
         <p>Yllä oleva esimerkki tulostaisi:</p>
 
-        <pre>
+<pre>
 51.5
-0
-        </pre>
+0</pre>
 
         <p>Ole tarkkana tilanteessa, jossa kysytään velattoman ihmisen velkaa. Kertaa luvun 4.3 lopun esimerkki!</p>
 
         <p>Huom! Velkakirjan ei tarvitse huomioida vanhoja lainoja. Kun asetat uuden velan henkilölle jolla on vanha velka, vanha velka unohtuu.</p>
 
-        <pre class="sh_java">
-  Velkakirja matinVelkakirja = new Velkakirja();
-  matinVelkakirja.asetaLaina("Arto", 51.5);
-  matinVelkakirja.asetaLaina("Arto", 10.5);
+<pre class="sh_java">
+Velkakirja matinVelkakirja = new Velkakirja();
+matinVelkakirja.asetaLaina("Arto", 51.5);
+matinVelkakirja.asetaLaina("Arto", 10.5);
 
-  System.out.println(matinVelkakirja.paljonkoVelkaa("Arto"));
-        </pre>
+System.out.println(matinVelkakirja.paljonkoVelkaa("Arto"));</pre>
 
-        <pre>
-10.5
-        </pre>
+<pre>
+10.5</pre>
+
       </div>
       <div class="tehtava">
         <h3>Sanakirja</h3>
 
         <p>Tässä tehtäväsarjassa toteutetaan sanakirja, josta voi hakea suomen kielen sanoille englanninkielisiä käännöksiä. Sanakirjan tekemisessä käytetään <code>HashMap</code>-tietorakennetta.</p>
 
-        <h4  >Luokka Sanakirja</h4>
+        <h4>Luokka Sanakirja</h4>
 
         <p>Toteuta luokka nimeltä <code>Sanakirja</code>. Luokalla on aluksi seuraavat metodit:</p>
 
@@ -2790,82 +2674,82 @@ public class Rekisteribongaus {
 
         <p>Testaa sanakirjasi toimintaa:</p>
 
-        <pre class="sh_java">
-    Sanakirja sanakirja = new Sanakirja();
-    sanakirja.lisaa("apina", "monkey");
-    sanakirja.lisaa("banaani", "banana");
-    sanakirja.lisaa("cembalo", "harpsichord");
+<pre class="sh_java">
+Sanakirja sanakirja = new Sanakirja();
+sanakirja.lisaa("apina", "monkey");
+sanakirja.lisaa("banaani", "banana");
+sanakirja.lisaa("cembalo", "harpsichord");
 
-    System.out.println(sanakirja.kaanna("apina"));
-    System.out.println(sanakirja.kaanna("porkkana"));
-        </pre>
+System.out.println(sanakirja.kaanna("apina"));
+System.out.println(sanakirja.kaanna("porkkana"));</pre>
 
-        <pre>
+<pre>
 monkey
-null
-        </pre>
+null</pre>
 
         <h4>Sanojen lukumäärä</h4>
 
         <p>Lisää sanakirjaan metodi <code>public int sanojenLukumaara()</code>, joka palauttaa sanakirjassa olevien sanojen lukumäärän.</p>
 
-        <pre class="sh_java">
-    Sanakirja sanakirja = new Sanakirja();
-    sanakirja.lisaa("apina", "monkey");
-    sanakirja.lisaa("banaani", "banana");
-    System.out.println(sanakirja.sanojenLukumaara());
+<pre class="sh_java">
+Sanakirja sanakirja = new Sanakirja();
+sanakirja.lisaa("apina", "monkey");
+sanakirja.lisaa("banaani", "banana");
+System.out.println(sanakirja.sanojenLukumaara());
 
-    sanakirja.lisaa("cembalo", "harpsichord");
-    System.out.println(sanakirja.sanojenLukumaara());
-        </pre>
+sanakirja.lisaa("cembalo", "harpsichord");
+System.out.println(sanakirja.sanojenLukumaara());
+</pre>
 
 
-        <pre>
+<pre>
 2
-3
-        </pre>
+3</pre>
 
         <h4>Kaikkien sanojen listaaminen</h4>
 
         <p>Lisää sanakirjaan metodi <code>public ArrayList&lt;String&gt; kaannoksetListana()</code> joka palauttaa sanakirjan sisällön listana <i>avain = arvo</i> muotoisia merkkijonoja.</p>
 
-        <pre class="sh_java">
-    Sanakirja sanakirja = new Sanakirja();
-    sanakirja.lisaa("apina", "monkey");
-    sanakirja.lisaa("banaani", "banana");
-    sanakirja.lisaa("cembalo", "harpsichord");
+<pre class="sh_java">
+Sanakirja sanakirja = new Sanakirja();
+sanakirja.lisaa("apina", "monkey");
+sanakirja.lisaa("banaani", "banana");
+sanakirja.lisaa("cembalo", "harpsichord");
 
-    ArrayList&lt;String&gt; kaannokset = sanakirja.kaannoksetListana();
-    for(String kaannos: kaannokset) {
-        System.out.println(kaannos);
-    }
-        </pre>
+ArrayList&lt;String&gt; kaannokset = sanakirja.kaannoksetListana();
+for(String kaannos: kaannokset) {
+    System.out.println(kaannos);
+}</pre>
 
-        <pre>
+<pre>
 banaani = banana
 apina = monkey
-cembalo = harpsichord
-        </pre>
+cembalo = harpsichord</pre>
 
         <p><strong>Vihje:</strong> saat käytyä kaikki HashMapissa olevat avaimet läpi metodin <code>keySet</code> avulla seuraavasti:</p>
 
-        <pre class="sh_java">
-    HashMap&lt;String, String&gt; sanaparit = new HashMap&lt;String, String&gt;();
+<pre class="sh_java">
+HashMap&lt;String, String&gt; sanaparit = new HashMap&lt;&gt;();
 
-    sanaparit.put("apina", "eläin");
-    sanaparit.put("etelä", "ilmansuunta");
-    sanaparit.put("sauerkraut", "ruoka");
+sanaparit.put("apina", "eläin");
+sanaparit.put("etelä", "ilmansuunta");
+sanaparit.put("sauerkraut", "ruoka");
 
-    for ( String avain : sanaparit.keySet() ) {
-        System.out.print( avain + " " );
-    }
+for (String avain : sanaparit.keySet()) {
+    System.out.print( avain + " " );
+}
 
-    // tulostuu apina etelä sauerkraut
-        </pre>
+// tulostuu apina etelä sauerkraut
 
+// vastaavasti avaimia vastaavat arvot saadaan tulostettua seuraavasti
+for (String avain : sanaparit.keySet()) {
+    System.out.print( sanaparit.get(avain) + " ");
+}
 
+// tulostuu eläin ilmansuunta ruoka
+</pre>
 
-        <h4  >Tekstikäyttöliittymän alku</h4>
+        <h4>Tekstikäyttöliittymän alku</h4>
 
         <p>Harjoitellaan tässäkin tehtävässä erillisen tekstikäyttöliittymän tekemistä. Luo luokka <code>Tekstikayttoliittyma</code>, jolla on seuraavat metodit
         <ul>
@@ -2875,24 +2759,21 @@ cembalo = harpsichord
         </p>
 
         <p>Tekstikäyttöliittymä tallettaa konstruktorin parametrina saamansa lukijan ja sanakirjan oliomuuttujiin. Muita oliomuuttujia ei tarvita.
-        <strong>
-          Käyttäjän syötteen lukeminen tulee hoitaa konstruktorin parametrina saatua lukija-olioa käyttäen! Myös kaikki käännökset on talletettava  konstruktorin parametrina saatuun sanakirja-olioon. Tekstikäyttöliittymä ei saa luoda olioita itse!
-        </strong>
+        <strong>Käyttäjän syötteen lukeminen tulee hoitaa konstruktorin parametrina saatua lukija-olioa käyttäen! Myös kaikki käännökset on talletettava  konstruktorin parametrina saatuun sanakirja-olioon. Tekstikäyttöliittymä ei saa luoda olioita itse!</strong>
         </p>
 
         <p><strong>HUOM:</strong> vielä uudelleen edellinen, eli <strong>Tekstikäyttöliittymä ei saa luoda itse skanneria</strong> vaan sen on käytettävä parametrina saamaansa skanneria syötteiden lukemiseen!</p>
 
         <p>Tekstikäyttöliittymässä tulee aluksi olla vain komento <code>lopeta</code>, joka poistuu tekstikäyttöliittymästä. Jos käyttäjä syöttää jotain muuta, käyttäjälle sanotaan "Tuntematon komento".</p>
 
-        <pre class="sh_java">
-    Scanner lukija = new Scanner(System.in);
-    Sanakirja sanakirja = new Sanakirja();
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+Sanakirja sanakirja = new Sanakirja();
 
-    Tekstikayttoliittyma kayttoliittyma = new Tekstikayttoliittyma(lukija, sanakirja);
-    kayttoliittyma.kaynnista();
-        </pre>
+Tekstikayttoliittyma kayttoliittyma = new Tekstikayttoliittyma(lukija, sanakirja);
+kayttoliittyma.kaynnista();</pre>
 
-        <pre>
+<pre>
 Komennot:
   lopeta - poistuu käyttöliittymästä
 
@@ -2900,22 +2781,21 @@ Komento: <font color="red">apua</font>
 Tuntematon komento.
 
 Komento: <font color="red">lopeta</font>
-Hei hei!
-        </pre>
+Hei hei!</pre>
 
-        <h4  >Sanojen lisääminen ja kääntäminen</h4>
+        <h4>Sanojen lisääminen ja kääntäminen</h4>
 
         <p>Lisää tekstikäyttöliittymälle komennot <code>lisaa</code> ja <code>kaanna</code>. Komento <code>lisaa</code> lisää kysyy käyttäjältä sanaparin ja lisää sen sanakirjaan. Komento <code>kaanna</code> kysyy käyttäjältä sanaa ja tulostaa sen käännöksen.</p>
 
-        <pre class="sh_java">
-    Scanner lukija = new Scanner(System.in);
-    Sanakirja sanakirja = new Sanakirja();
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+Sanakirja sanakirja = new Sanakirja();
 
-    Tekstikayttoliittyma kayttoliittyma = new Tekstikayttoliittyma(lukija, sanakirja);
-    kayttoliittyma.kaynnista();
-        </pre>
+Tekstikayttoliittyma kayttoliittyma = new Tekstikayttoliittyma(lukija, sanakirja);
+kayttoliittyma.kaynnista();
+</pre>
 
-        <pre>
+<pre>
 Komennot:
   lisaa - lisää sanaparin sanakirjaan
   kaanna - kysyy sanan ja tulostaa sen käännöksen
@@ -2930,8 +2810,7 @@ Anna sana: <font color="red">porkkana</font>
 Käännös: carrot
 
 Komento: <font color="red">lopeta</font>
-Hei hei!
-        </pre>
+Hei hei!</pre>
 
       </div>
     </div>
@@ -2941,23 +2820,22 @@ Hei hei!
 
     <p>Ohjelman testaaminen käsin on toivottoman työlästä. Syötteen antaminen on kuitenkin mahdollista automatisoida esimerkiksi syöttämällä Scanner-oliolle luettava merkkijono. Alla on annettu esimerkki siitä, miten yllä olevassa tehtävässä luotua ohjelmaa voi testata automaattisesti.</p>
 
-    <pre class="sh_java">
-    String syote = "kaanna\n" + "apina\n"  +
-                   "kaanna\n" + "juusto\n" +
-                   "lisaa\n"  + "juusto\n" + "cheese\n" +
-                   "kaanna\n" + "juusto\n" +
-                   "lopeta\n";
+<pre class="sh_java">
+String syote = "kaanna\n" + "apina\n"  +
+               "kaanna\n" + "juusto\n" +
+               "lisaa\n"  + "juusto\n" + "cheese\n" +
+               "kaanna\n" + "juusto\n" +
+               "lopeta\n";
 
-    Scanner lukija = new Scanner(syote);
-    Sanakirja sanakirja = new Sanakirja();
+Scanner lukija = new Scanner(syote);
+Sanakirja sanakirja = new Sanakirja();
 
-    Tekstikayttoliittyma kayttoliittyma = new Tekstikayttoliittyma(lukija, sanakirja);
-    kayttoliittyma.kaynnista();
-    </pre>
+Tekstikayttoliittyma kayttoliittyma = new Tekstikayttoliittyma(lukija, sanakirja);
+kayttoliittyma.kaynnista();</pre>
 
     <p>Ohjelma tulostus näyttää vain ohjelman antaman tulostuksen, ei käyttäjän tekemiä komentoja.</p>
 
-    <pre>
+<pre>
 Komennot:
   lisaa - lisää sanaparin sanakirjaan
   kaanna - kysyy sanan ja tulostaa sen käännöksen
@@ -2970,29 +2848,25 @@ Komento: Anna sana: Tuntematon sana!
 Komento: Suomeksi: Käännös:
 Komento: Anna sana: Käännös: cheese
 
-Komento: Hei hei!
-    </pre>
+Komento: Hei hei!</pre>
 
     <p>Merkkijonon antaminen Scanner-luokalle korvaa näppäimistöltä luettavan syötteen merkkijonolla. Merkkijonomuuttujan <code>syote</code> sisältö siis "simuloi" käyttäjän antamaa syötettä. Rivinvaihto syötteeseen merkitään <code>\n</code>:llä. Jokainen yksittäinen rivinvaihtomerkkiin loppuva osa <code>syote</code>-merkkijonossa siis vastaa käyttäjän yhteen nextLine()-komentoon antamaa syötettä.</p>
 
     <p>Testityötettä on helppo muuttaa, esim. seuraavassa syötetään lisää uusia sanoja sanakirjaan:</p>
 
-    <pre class="sh_java">
-    String syote = "lisaa\n"  + "juusto\n" +     "cheese\n" +
+<pre class="sh_java">
+String syote = "lisaa\n"  + "juusto\n" +     "cheese\n" +
                    "lisaa\n"  + "olut\n"   +     "beer\n" +
                    "lisaa\n"  + "kirja\n"  +     "book\n" +
                    "lisaa\n"  + "tietokone\n" +  "computer\n" +
                    "lisaa\n"  + "auto\n"   +     "car\n" +
-                   "lopeta\n";
-    </pre>
+                   "lopeta\n";</pre>
 
     <p>Kun haluat testata ohjelmasi toimintaa jälleen käsin, vaihda Scanner-olion konstruktorin parametriksi <code>System.in</code>, eli järjestelmän syötevirta.</p>
 
     <p>Ohjelman toiminnan oikeellisuus pitää edelleen tarkastaa itse ruudulta. Tulostus voi olla aluksi hieman hämmentävää, sillä automatisoitu syöte ei näy ruudulla ollenkaan.</p>
 
     <p>Lopullinen tavoite on automatisoida myös ohjelman tulostuksen oikeellisuden tarkastaminen niin hyvin, että ohjelman testaus ja testituloksen analysointi onnistuu "nappia painamalla". Palaamme aiheeseen myöhemmin kurssin aikana.</p>
-
-
 
 
     <h2>Java API</h2>
@@ -3019,7 +2893,7 @@ Komento: Hei hei!
         <p>Kun käyttäjä poistuu hallintakäyttöliittymässä, avautuu käyttäjälle mahdollisuus lentopalvelun käyttöön. Lentopalvelussa on kolme toimintoa; lentokoneiden tulostaminen, lentojen tulostaminen, ja lentokoneen tietojen tulostaminen. Tämän lisäksi käyttäjä voi poistua ohjelmasta valitsemalla vaihtoehdon <code>x</code>. Jos käyttäjä syöttää epäkelvon komennon, kysytään komentoa uudestaan.</p>
 
 
-        <pre>
+<pre>
 Lentokentän hallinta
 --------------------
 
@@ -3102,8 +2976,7 @@ Valitse toiminto:
 [2] Tulosta lennot
 [3] Tulosta lentokoneen tiedot
 [x] Lopeta
-> <font color="red">x</font>
-        </pre>
+> <font color="red">x</font></pre>
 
         <p><strong>Huom1:</strong> Testien kannalta on oleellista että <em>käyttöliittymä</em> toimii <b>täsmälleen</b> kuten yllä kuvattu. Ohjelman tulostamat menut kannattaneekin copypasteta tästä ohjelmakoodiin. Testit eivät oleta, että ohjelmasi on varautunut epäkelpoihin syötteisiin. Tämä tehtävä on kolmen yksittäisen tehtäväpisteen arvoinen.</p>
 
