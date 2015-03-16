@@ -5491,7 +5491,81 @@ Sija    Nimi
 
   <div class="self-explanation" data-key="q-toistoa"></div>
 
-  <h2>Rajapinta jossa valmis metodi</h2>
+<!--
+  <h2>Lisää rajapinnoista</h2>
+
+  <p>Viime viikolla tutustuimme rajapintoihin, joiden avulla määritellään sovittua toiminnallisuutta. Rajapintoja käytettäessä metodeille voidaan määritellä myös oletustoteutus, jolloin rajapinnan toteuttavan luokan ei tarvitse toteuttaa metodia ellei sitä erikseen haluta. Edellisellä viikolla olevissa esimerkeissä näimme rajapinnan <code>Luettava</code>.</p>
+
+<pre class="sh_java">
+public interface Luettava {
+    String lue();
+}
+</pre>
+
+  <p>Jokaisen rajapinnan toteuttavan luokan tulee myös toteuttaa oma <code>public String lue()</code>-metodi. Luokka toteuttaa rajapinnan avainsanalla <code>implements</code>. Alla on kaksi erilaista rajapinnan <code>Luettava</code> toteuttavaa luokkaa.</p>
+
+<pre class="sh_java">
+public class Tekstiviesti implements Luettava {
+    private String lahettaja;
+    private String sisalto;
+
+    public Tekstiviesti(String lahettaja, String sisalto) {
+        this.lahettaja = lahettaja;
+        this.sisalto = sisalto;
+    }
+
+    public String getLahettaja() {
+        return this.lahettaja;
+    }
+
+    public String lue() {
+        return this.sisalto;
+    }
+}</pre>
+
+
+<pre class="sh_java">
+public class Sahkoposti implements Luettava {
+    private String lahettaja;
+    private String sisalto;
+    private boolean luettu;
+
+    public Sahkoposti(String lahettaja, String sisalto) {
+        this.lahettaja = lahettaja;
+        this.sisalto = sisalto;
+        this.luettu = false;
+    }
+
+    public String getLahettaja() {
+        return this.lahettaja;
+    }
+
+    public boolean onLuettu() {
+        return this.luettu;
+    }
+
+    public String lue() {
+        this.luettu = true;
+        return this.sisalto;
+    }
+}</pre>
+
+  <p>Luokka <code>Tekstiviesti</code> on tuttu edelliseltä viikolta, ja edellä esitelty luokka <code>Sahkoposti</code> poikkeaa tekstiviestistä siten, että se tietää onko viesti jo luettu.</p>
+
+  <p>Rajapintojen käyttö mahdollistaa yleisen lukuohjelman toteuttamisen, alla oleva lukuohjelma lukee kaikkia <code>Luettava</code>-rajapinnan toteuttamia viestejä.</p>
+
+<pre class="sh_java">
+public class Lukijalaite {
+    public void lue(Luettava luettava) {
+        System.out.println(luettava.lue());
+    }
+}
+</pre>
+
+  <p>Ylläoleva lukijalaitteen toteutus pystyy lukemaan mitä tahansa viestejä, kunhan viesti toteuttaa rajapinnan <code>Luettava</code>.</p>
+
+-->
+
 
   <h2>Single responsibility principle</h2>
 
@@ -6419,6 +6493,48 @@ lisaaPienia(List esineet, Muuttolaatikko laatikko):
 -->
     </div>
   </div>
+
+ 
+  <h3>Oletusmetodit rajapinnoissa</h3>
+
+  <p>Rajapintoihin voi määritellä oletusmetodeja, joiden mukana annetaan myös toteutus. Oletusmetodien määrittely alkaa avainsanalla <code>default</code>, jota seuraa metodin määrittely. Kuten aiemmissa rajapintojen metodeissa, myös tässäkään näkyvyyttä ei tarvitse määritellä. Rajapinnoissa määriteltyjen metodien näkyvyys on aina <code>public</code>.</p>
+
+  <p>Alla olevassa esimerkissä <code>Luettava</code>-rajapintaan on lisätty oletusmetodi <code>lueTulostaen</code>, joka tulostaa <code>lue</code>-metodin palauttaman arvon.</p>
+
+<pre class="sh_java">
+public interface Luettava {
+    String lue();
+
+    default void lueTulostaen() {
+        System.out.println(lue());
+    }
+}
+</pre>
+
+  <p>Tekstiviestin ja sähköpostin toiminta muuttuu myös:</p>
+
+<pre class="sh_java">
+
+Tekstiviesti viesti = new Tekstiviesti("G. Hopper", "COBOL kicks ass");
+viesti.lueTulostaen();
+
+Sahkoposti posti = new Sahkoposti ("D. Knuth", "If you optimize everything, you will always be unhappy.");
+System.out.println(posti.onLuettu());
+posti.lueTulostaen();
+System.out.println(posti.onLuettu());
+</pre>
+
+<pre>
+COBOL kicks ass
+false
+If you optimize everything, you will always be unhappy.
+true
+</pre>
+
+  <p>Oletusmetodien suurin hyöty ilmenee tilanteissa, missä rajapinta on määritelty aiemmin, ja useampi luokka toteuttaa sen. Jos rajapintaan lisätään uusi metodi, tulee sille ohjelmoida toteutus kaikkiin rajapinnan toteuttamiin luokkiin, jos uusi metodi ei tarjoa oletustoteutusta.</p>
+
+  <p>Palaamme rajapintojen oletusmetodien hyödyllisyyteen noin viikolla 14 keskustellessamme funktionaalisesta ohjelmoinnista.</p>
+
 
   <h2>Poikkeustilanteet</h2>
 
