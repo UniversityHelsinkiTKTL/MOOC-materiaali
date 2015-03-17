@@ -5575,7 +5575,7 @@ public class Lukijalaite {
 
   <p>Tutkitaan seuraavaa luokkaa <code>Tyontekija</code>, jolla on metodit palkan laskemiseen ja tuntien raportointiin.</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 public class Tyontekija {
     // oliomuuttujat
 
@@ -5588,8 +5588,7 @@ public class Tyontekija {
     public String raportoiTunnit() {
         // työtuntien raportointiin liittyvä logiikka
     }
-}
-  </pre>
+}</pre>
 
   <p>Vaikka yllä olevasta esimerkistä puuttuvat konkreettiset toteutukset, tulisi hälytyskellojen soida. Luokalla <code>Tyontekija</code> on ainakin kolme eri vastuualuetta. Se kuvaa sovelluksessa työntekijää, se toteuttaa palkanlaskennan tehtävää palkan laskemisesta, ja tuntiraportointijärjestelmän tehtävää työtuntien raportoinnista. Yllä oleva luokka tulee pilkkoa kolmeen osaan: yksi osa kuvaa työntekijää, toinen osa palkanlaskentaa ja kolmas osa tuntikirjanpitoa.</p>
 
@@ -5598,8 +5597,7 @@ public class Tyontekija {
     // oliomuuttujat
 
     // työntekijään liittyvät konstruktorit ja metodit
-}
-  </pre>
+}</pre>
 
   <pre class="sh_java">
 public class Palkanlaskenta {
@@ -5610,8 +5608,7 @@ public class Palkanlaskenta {
     public double laskePalkka(Henkilo henkilo) {
         // palkan laskemiseen liittyvä logiikka
     }
-}
-  </pre>
+}</pre>
 
 
   <pre class="sh_java">
@@ -5623,8 +5620,7 @@ public class Tuntikirjanpito {
     public String luoTuntiraportti(Henkilo henkilo) {
         // työtuntien raportointiin liittyvä logiikka
     }
-}
-  </pre>
+}</pre>
 
   <p><em>Jokainen muuttuja, jokainen koodirivi, jokainen metodi, jokainen luokka, ja jokainen ohjelma pitäisi olla vain yhtä tarkoitusta varten. Usein ohjelman "parempi" rakenne on ohjelmoijalle selkeää vasta kun ohjelma on toteutettu jo kertaalleen. Tämä on täysin hyväksyttävää: vielä tärkeämpää on se, että ohjelmaa pyritään muuttamaan aina selkeämpään suuntaan. <strong>Refaktoroi eli muokkaa ohjelmaasi aina tarpeen tullen!</strong></em></p>
 
@@ -5637,7 +5633,7 @@ public class Tuntikirjanpito {
 
   <p>Pakkaus, jossa luokka sijaitsee, näkyy lähdekooditiedoston alussa ennen muita komentoja olevasta lauseesta <code>package <em>pakkaus</em></code>. Esimerkiksi alla oleva luokka <code>Sovellus</code> sijaitsee pakkauksessa <code>kirjasto</code>.</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 package kirjasto;
 
 public class Sovellus {
@@ -5645,12 +5641,11 @@ public class Sovellus {
     public static void main(String[] args) {
         System.out.println("Hello packageworld!");
     }
-}
-  </pre>
+}</pre>
 
-  <p>Pakkaukset voivat sisältää pakkauksia. Esimerkiksi pakkausmäärittelyssä <code>package kirjasto.domain</code> pakkaus <code>domain</code> on pakkauksen <code>kirjasto</code> sisällä. Asettamalla pakkauksia pakkausten sisään rakennetaan sovelluksen luokille ja rajapinnoille hierarkiaa. Esimerkiksi kaikki Javan luokat sijaitsevat pakkauksen <code>java</code> alla olevissa pakkauksissa. Pakkausnimeä <code>domain</code> käytetään usein kuvaamaan sovellusalueen käsitteisiin liittyvien luokkien säilytyspaikkaa. Esimerkiksi luokka <code>Kirja</code> voisi hyvin olla pakkauksen <code>kirjasto.domain</code> sisällä sillä se kuvaa kirjastosovellukseen liittyvää käsitettä.</p>
+  <p>Pakkaukset voivat sisältää pakkauksia. Esimerkiksi pakkausmäärittelyssä <code>package kirjasto.domain</code> pakkaus <code>domain</code> on pakkauksen <code>kirjasto</code> sisällä. Asettamalla pakkauksia pakkausten sisään rakennetaan sovelluksen luokille ja rajapinnoille hierarkiaa. Esimerkiksi kaikki Javan luokat sijaitsevat pakkauksen <code>java</code> alla olevissa pakkauksissa. Pakkausnimeä <code>domain</code> käytetään usein kuvaamaan sovellusalueen käsitteisiin liittyvien luokkien säilytyspaikkaa. Esimerkiksi luokka <code>Kirja</code> voisi hyvin olla pakkauksen <code>kirjasto.domain</code> sisällä, sillä se kuvaa kirjastosovellukseen liittyvää käsitettä.</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 package kirjasto.domain;
 
 public class Kirja {
@@ -5663,13 +5658,12 @@ public class Kirja {
     public String getNimi() {
         return this.nimi;
     }
-}
-  </pre>
+}</pre>
 
   <p>Pakkauksissa olevia luokkia tuodaan luokan käyttöön <code>import</code>-lauseen avulla. Esimerkiksi <code>kirjasto</code>-pakkauksessa oleva luokka <code>Sovellus</code> saisi käyttöönsä pakkauksessa <code>kirjasto.domain</code> olevan luokan määrittelyllä <code>import kirjasto.domain.Kirja</code>.</p>
 
 
-  <pre class="sh_java">
+<pre class="sh_java">
 package kirjasto;
 
 import kirjasto.domain.Kirja;
@@ -5680,12 +5674,10 @@ public class Sovellus {
         Kirja kirja = new Kirja("pakkausten ABC!");
         System.out.println("Hello packageworld: " + kirja.getNimi());
     }
-}
-  </pre>
+}</pre>
 
-  <pre>
-Hello packageworld: pakkausten ABC!
-  </pre>
+<pre>
+Hello packageworld: pakkausten ABC!</pre>
 
   <p>Import-lauseet asetetaan lähdekooditiedostossa pakkausmäärittelyn jälkeen mutta ennen luokkamäärittelyä. Niitä voi olla myös useita -- esimerkiksi kun haluamme käyttää useita luokkia. Javan valmiit luokat sijaitsevat yleensä ottaen pakkauksen <code>java</code> alipakkauksissa. Luokkiemme alussa usein esiintyvät lauseet <code>import java.util.ArrayList</code> ja <code>import java.util.Scanner;</code> alkavat nyt toivottavasti vaikuttaa merkityksellisimmiltä.</p>
 
@@ -5719,7 +5711,7 @@ Hello packageworld: pakkausten ABC!
 
       <p>Voit testata sovelluksen toimintaa seuraavalla pääohjelmaluokalla.</p>
 
-      <pre class="sh_java">
+<pre class="sh_java">
 import mooc.logiikka.Sovelluslogiikka;
 import mooc.ui.Kayttoliittyma;
 import mooc.ui.Tekstikayttoliittyma;
@@ -5730,19 +5722,17 @@ public class Main {
         Kayttoliittyma kayttoliittyma = new Tekstikayttoliittyma();
         new Sovelluslogiikka(kayttoliittyma).suorita(3);
     }
-}
-      </pre>
+}</pre>
 
       <p>Ohjelman tulostuksen tulee olla seuraava:</p>
 
-      <pre>
+<pre>
 Sovelluslogiikka toimii
 Päivitetään käyttöliittymää
 Sovelluslogiikka toimii
 Päivitetään käyttöliittymää
 Sovelluslogiikka toimii
-Päivitetään käyttöliittymää
-      </pre>
+Päivitetään käyttöliittymää</pre>
 
     </div>
   </div>
@@ -5759,7 +5749,7 @@ Päivitetään käyttöliittymää
 
   <p>Olemme aiemmin tutustuneet kahteen näkyvyysmääreeseen. Näkyvyysmääreellä <code>private</code> varustetut metodit ja muuttujat ovat näkyvissä vain sen luokan sisällä joka määrittelee ne. Niitä ei voi käyttää luokan ulkopuolelta. Näkyvyysmääreellä <code>public</code> varustetut metodit ja muuttujat ovat taas kaikkien käytettävissä.</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 package kirjasto.ui;
 
 public class Kayttoliittyma {
@@ -5780,14 +5770,13 @@ public class Kayttoliittyma {
         System.out.println("* KIRJASTO *");
         System.out.println("************");
     }
-}
-  </pre>
+}</pre>
 
   <p>Yllä olevasta <code>Kayttoliittyma</code>-luokasta tehdyn olion konstruktori ja <code>kaynnista</code>-metodi on kutsuttavissa mistä tahansa ohjelmasta. Metodi <code>tulostaOtsikko</code> ja <code>lukija</code>-muuttuja on käytössä vain luokan sisällä.</p>
 
   <p>Pakkausnäkyvyyttä käytettäessä muuttujille tai metodeille ei aseteta mitään näkyvyyteen liittyvää etuliitettä. Muutetaan yllä olevaa esimerkkiä siten, että metodilla <code>tulostaOtsikko</code> on pakkausnäkyvyys.</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 package kirjasto.ui;
 
 public class Kayttoliittyma {
@@ -5808,12 +5797,11 @@ public class Kayttoliittyma {
         System.out.println("* KIRJASTO *");
         System.out.println("************");
     }
-}
-  </pre>
+}</pre>
 
   <p>Nyt <em>saman pakkauksen sisällä</em> olevat luokat voivat käyttää metodia <code>tulostaOtsikko</code>.
 
-  <pre class="sh_java">
+<pre class="sh_java">
 package kirjasto.ui;
 
 import java.util.Scanner;
@@ -5826,12 +5814,11 @@ public class Main {
 
         kayttoliittyma.tulostaOtsikko(); // onnistuu!
     }
-}
-  </pre>
+}</pre>
 
   <p>Jos luokka on eri pakkauksessa, ei metodia <code>tulostaOtsikko</code> pysty käyttämään.</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 package kirjasto;
 
 import java.util.Scanner;
@@ -5845,8 +5832,7 @@ public class Main {
 
         kayttoliittyma.tulostaOtsikko(); // ei onnistu!
     }
-}
-  </pre>
+}</pre>
 
 
   <div class="self-explanation" data-key="q-srpJaRefaktorointi"></div>
@@ -5855,17 +5841,16 @@ public class Main {
 
   <p>Viime viikolla tutustuimme rajapintoihin. Rajapinta siis määrittelee yhden tai useamman metodin, jotka sen toteuttavan luokan on pakko toteuttaa. Rajapintoja, kuten kaikkia luokkia voi asettaa pakkauksiin. Esimerkiksi seuraava <code>Tunnistettava</code>-rajapinta sijaitsee pakkauksessa <code>sovellus.domain</code>, ja määrittelee että <code>Tunnistettava</code>-rajapinnan toteuttavien luokkien tulee toteuttaa metodi <code>public String getTunnus()</code>.</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 package sovellus.domain;
 
 public interface Tunnistettava {
     String getTunnus();
-}
-  </pre>
+}</pre>
 
   <p>Luokka toteuttaa rajapinnan <code>implements</code>-avainsanalla. Toteutetaan luokka <code>Henkilo</code>, joka toteuttaa rajapinnan tunnistettava. Henkilo-luokan metodi <code>getTunnus</code> palauttaa aina henkilön henkilötunnuksen.</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 package sovellus.domain;
 
 public class Henkilo implements Tunnistettava {
@@ -5891,23 +5876,22 @@ public class Henkilo implements Tunnistettava {
     }
 
     @Override
-    public toString(){
+    public toString() {
         return this.nimi + " hetu: " +this.henkilotunnus;
     }
-}
-  </pre>
+}</pre>
 
 
-  <p>Rajapintojen vahvuus on se, että rajapinta on myös <em>tyyppi</em>. Kaikki rajapinnan toteuttavista luokista tehdyt oliot ovat myös rajapinnan tyyppisiä. Tämä helpottaa sovellusten rakentamista huomattavasti.</p>
+  <p>Rajapintojen vahvuus on se, että rajapinnan toteuttava luokka voi käyttää rajapintaa muuttujatyyppinä. Tämä helpottaa sovellusten rakentamista huomattavasti.</p>
 
   <p>Tehdään luokka <code>Rekisteri</code>, josta voimme hakea henkilöitä tunnisteen perusteella. Yksittäisten henkilöiden hakemisen lisäksi <code>Rekisteri</code> tarjoaa metodin kaikkien henkilöiden hakemiseen listana.</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 public class Rekisteri {
     private HashMap&lt;String, Tunnistettava&gt; rekisteroidyt;
 
     public Rekisteri() {
-        this.rekisteroidyt = new HashMap&lt;String, Tunnistettava&gt;();
+        this.rekisteroidyt = new HashMap&lt;&gt;();
     }
 
     public void lisaa(Tunnistettava lisattava) {
@@ -5921,21 +5905,19 @@ public class Rekisteri {
     public List&lt;Tunnistettava&gt; haeKaikki() {
         return new ArrayList&lt;Tunnistettava&gt;(rekisteroidyt.values());
     }
-}
-  </pre>
+}</pre>
 
   <p>Rekisterin käyttö on helppoa</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 Rekisteri henkilokunta = new Rekisteri();
-henkilokunta.lisaa( new Henkilo("Pekka", "221078-123X") );
-henkilokunta.lisaa( new Henkilo("Jukka", "110956-326B") );
+henkilokunta.lisaa(new Henkilo("Pekka", "221078-123X"));
+henkilokunta.lisaa(new Henkilo("Jukka", "110956-326B"));
 
-System.out.println( henkilokunta.hae("280283-111A") );
+System.out.println(henkilokunta.hae("280283-111A"));
 
-Henkilo loydetty = (Henkilo)henkilokunta.hae("110956-326B");
-System.out.println( loydetty.getNimi() );
-  </pre>
+Henkilo loydetty = (Henkilo) henkilokunta.hae("110956-326B");
+System.out.println(loydetty.getNimi());</pre>
 
   <p>Koska henkilöt on talletettu rekisteriin <code>Tunnistettava</code>-tyyppisinä, joudumme muuntanaan ne takaisin oikeaan tyyppiin jos haluamme käsitellä henkilöitä sellaisten metodien kautta, joita ei rajapinnassa ole määritelty. Näin tapahtuu yllä olevan esimerkin kahdella viimeisellä rivillä.</p>
 
@@ -5943,7 +5925,7 @@ System.out.println( loydetty.getNimi() );
 
   <p>Yksi luokka voi toteuttaa useamman rajapinnan, eli voimme toteuttaa <code>Henkilo</code>-luokalla rajapinnan <code>Tunnistettava</code> lisäksi viime viikolta tutun rajapinnan <code>Comparable</code>. Useamman rajapinnan toteuttaminen tapahtuu erottamalla toteutettavat rajapinnat toisistaan pilkuilla (<code>public class ... implements <em>RajapintaEka</em>, <em>RajapintaToka</em> ...</code>). Toteuttaessamme useampaa rajapintaa, tulee meidän toteuttaa kaikki rajapintojen vaatimat metodit. Toteutetaan seuraavaksi luokalla <code>Henkilo</code> rajapinta <code>Comparable</code>.</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 package sovellus.domain;
 
 public class Henkilo implements Tunnistettava, Comparable&lt;Henkilo&gt; {
@@ -5972,22 +5954,20 @@ public class Henkilo implements Tunnistettava, Comparable&lt;Henkilo&gt; {
     public int compareTo(Henkilo toinen) {
         return this.getTunnus().compareTo(toinen.getTunnus());
     }
-}
-  </pre>
+}</pre>
 
   <p>Nyt voimme lisätä rekisterille metodin haeKaikkiJarjestyksessa:</p>
 
-  <pre class="sh_java">
-    public List&lt;Tunnistettava&gt; haeKaikkiJarjestyksessa() {
-        ArrayList&lt;Tunnistettava&gt; kaikki = new ArrayList&lt;Tunnistettava&gt;(rekisteroidyt.values());
-        Collections.sort(kaikki);
-        return kaikki;
-    }
-  </pre>
+<pre class="sh_java">
+public List&lt;Tunnistettava&gt; haeKaikkiJarjestyksessa() {
+    ArrayList&lt;Tunnistettava&gt; kaikki = new ArrayList&lt;&gt;(rekisteroidyt.values());
+    Collections.sort(kaikki);
+    return kaikki;
+}</pre>
 
-  <p>Huomaamme kuitenkin, että ratkaisumme ei toimi. Koska henkilöt on talletettu rekisteriin <code>Tunnitettava</code>-tyyppisinä, onkin Henkilön toteutettava rajapinta <code>Comparable&lt;Tunnistettava&gt;</code> jotta rekisteri osaisi järjestää henkilöt metodin <code>Collections.sort()</code> avulla. Eli muutamme henkilön toteuttamaa rajapintaa:</p>
+  <p>Huomaamme kuitenkin, että ratkaisumme ei toimi. Koska henkilöt on talletettu rekisteriin <code>Tunnistettava</code>-tyyppisinä, on Henkilön toteutettava rajapinta <code>Comparable&lt;Tunnistettava&gt;</code>, jotta rekisteri osaisi järjestää henkilöt metodin <code>Collections.sort()</code> avulla. Eli muutamme henkilön toteuttamaa rajapintaa:</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 public class Henkilo implements Tunnistettava, Comparable&lt;Tunnistettava&gt; {
     // ...
 
@@ -5995,14 +5975,13 @@ public class Henkilo implements Tunnistettava, Comparable&lt;Tunnistettava&gt; {
     public int compareTo(Tunnistettava toinen) {
         return this.getTunnus().compareTo(toinen.getTunnus());
     }
-}
-  </pre>
+}</pre>
 
   <p>Nyt ratkaisu toimii!</p>
 
   <p>Rekisteri on täysin tietämätön sinne talletettavien olioiden todellisesta tyypistä. Voimmekin käyttää luokkaa rekisteri myös muuntyyppisten olioiden kuin henkilöiden rekisteröintiin, kunhan olioiden luokka vaan toteuttaa rajapinnan <code>Tunnistettava</code>. Esim. seuraavassa käytetään rekisteriä kaupassa myytävien tuotteiden hallintaan:</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 public class Tuote implements Tunnistettava {
     private String nimi;
     private String viivakoodi;
@@ -6019,21 +5998,22 @@ public class Tuote implements Tunnistettava {
     }
 
     // ...
-}
+}</pre>
 
+
+<pre class="sh_java">
 Rekisteri tuotteet = new Rekisteri();
-tuotteet.lisaa( new Tuote("maito", "11111111") );
-tuotteet.lisaa( new Tuote("piimä", "11111112") );
-tuotteet.lisaa( new Tuote("juusto", "11111113") );
+tuotteet.lisaa(new Tuote("maito", "11111111"));
+tuotteet.lisaa(new Tuote("piimä", "11111112"));
+tuotteet.lisaa(new Tuote("juusto", "11111113"));
 
-System.out.println( tuotteet.hae("99999999") );
+System.out.println(tuotteet.hae("99999999"));
 
-Tuote tuote = (Tuote)tuotteet.hae("11111112");
+Tuote tuote = (Tuote) tuotteet.hae("11111112");
 tuote.kasvataSaldoa(100);
-tuote.muutaHinta(23);
-  </pre>
+tuote.muutaHinta(23);</pre>
 
-  <p>Eli olemme tehneet luokasta <code>Rekisteri</code> melko yleiskäyttöisen pitämällä sen riippumattomana konkreettisista luokista. Mikä tähänsa luokka, joka toteuttaa rajapinnan <code>Tunnistettava</code> on rekisterin kanssa käyttökelpoinen. Metodin <code>haeKaikkiJarjestyksessä</code> toimiminen tosin edellyttää luokalta myös vertailtavuuden eli Comparable&lt;Tunnistettava&gt;-rajapinnan toteuttamisen.</p>
+  <p>Eli teimme luokasta <code>Rekisteri</code> melko yleiskäyttöisen pitämällä sen riippumattomana konkreettisista luokista. Mikä tähänsa luokka, joka toteuttaa rajapinnan <code>Tunnistettava</code>, on rekisterin kanssa käyttökelpoinen. Metodin <code>haeKaikkiJarjestyksessä</code> toimiminen tosin edellyttää luokalta myös vertailtavuuden eli Comparable&lt;Tunnistettava&gt;-rajapinnan toteuttamisen.</p>
 
   <!--
 
@@ -6267,7 +6247,6 @@ public class Kassa {
   <div>
     <big><big><b>Muutama NetBeans-vihje</b></big></big>
     <ul>
-      <!-- TODO -->
       <li> Kaikki NetBeans-vihjeet löytyvät <a href="../../nb-vihjeet">täältä</a> </li>
       <p></p>
 
@@ -6316,33 +6295,29 @@ public class Luokka implements Rajapinta {
 
       <p>Lisää luokalle <code>Esine</code> myös metodit <code>public String getNimi()</code> ja korvaa metodi <code>public String toString()</code> siten että se tuotta merkkijonoja muotoa "<code>nimi (tilavuus dm^3)</code>". Esineen pitäisi toimia nyt jotakuinkin seuraavasti</p>
 
-      <pre class="sh_java">
-    Tavara esine = new Esine("hammasharja", 2);
-    System.out.println(esine);
-      </pre>
+<pre class="sh_java">
+Tavara esine = new Esine("hammasharja", 2);
+System.out.println(esine);</pre>
 
-      <pre>
-hammasharja (2 dm^3)
-      </pre>
+<pre>
+hammasharja (2 dm^3)</pre>
 
       <h4>Esine vertailtavaksi</h4>
 
       <p>Pakatessamme esineitä muuttolaatikkoon haluamme aloittaa pakkaamisen järjestyksessä olevista esineistä. Toteuta <code>Esine</code>-luokalla rajapinta <code>Comparable</code> siten, että esineiden <em>luonnollinen järjestys</em> on tilavuuden mukaan nouseva. Kun olet toteuttanut esineellä rajapinnan <code>Comparable</code>, tulee niiden toimia <code>Collections</code>-luokan <code>sort</code>-metodin kanssa seuraavasti.</p>
 
 
-      <pre class="sh_java">
-    List&lt;Esine&gt; esineet = new ArrayList&lt;Esine&gt;();
-    esineet.add(new Esine("passi", 2));
-    esineet.add(new Esine("hammasharja", 1));
-    esineet.add(new Esine("sirkkeli", 100));
+<pre class="sh_java">
+List&lt;Esine&gt; esineet = new ArrayList&lt;&gt;();
+esineet.add(new Esine("passi", 2));
+esineet.add(new Esine("hammasharja", 1));
+esineet.add(new Esine("sirkkeli", 100));
 
-    Collections.sort(esineet);
-    System.out.println(esineet);
-      </pre>
+Collections.sort(esineet);
+System.out.println(esineet);</pre>
 
-      <pre>
-[hammasharja (1 dm^3), passi (2 dm^3), sirkkeli (100 dm^3)]
-      </pre>
+<pre>
+[hammasharja (1 dm^3), passi (2 dm^3), sirkkeli (100 dm^3)]</pre>
 
       <h4>Muuttolaatikko</h4>
 
@@ -6367,46 +6342,43 @@ hammasharja (2 dm^3)
 
       <p>Seuraavassa pakkaajan toimintaa demonstroiva esimerkki:</p>
 
-      <pre class="sh_java">
-    // tavarat jotka haluamme pakata
-    List&lt;Tavara&gt; tavarat = new ArrayList&lt;Tavara&gt;();
-    tavarat.add(new Esine("passi", 2));
-    tavarat.add(new Esine("hammasharja", 1));
-    tavarat.add(new Esine("kirja", 4));
-    tavarat.add(new Esine("sirkkeli", 8));
+<pre class="sh_java">
+// tavarat jotka haluamme pakata
+List&lt;Tavara&gt; tavarat = new ArrayList&lt;&gt;();
+tavarat.add(new Esine("passi", 2));
+tavarat.add(new Esine("hammasharja", 1));
+tavarat.add(new Esine("kirja", 4));
+tavarat.add(new Esine("sirkkeli", 8));
 
-    // luodaan pakkaaja, joka käyttää tilavuudeltaan 10:n kokoisia muuttolaatikoita
-    Pakkaaja pakkaaja = new Pakkaaja(10);
+// luodaan pakkaaja, joka käyttää tilavuudeltaan 10:n kokoisia muuttolaatikoita
+Pakkaaja pakkaaja = new Pakkaaja(10);
 
-    // pyydetään pakkaajaa pakkaamaan tavarat laatikoihin
-    List&lt;Muuttolaatikko&gt; laatikot = pakkaaja.pakkaaTavarat( tavarat );
+// pyydetään pakkaajaa pakkaamaan tavarat laatikoihin
+List&lt;Muuttolaatikko&gt; laatikot = pakkaaja.pakkaaTavarat(tavarat);
 
-    System.out.println("laatikoita: "+laatikot.size());
+System.out.println("laatikoita: " + laatikot.size());
 
-    for (Muuttolaatikko laatikko : laatikot) {
-        System.out.println("  laatikossa tavaraa: "+laatikko.getTilavuus()+" dm^3");
-    }
-      </pre>
+for (Muuttolaatikko laatikko : laatikot) {
+    System.out.println("  laatikossa tavaraa: " + laatikko.getTilavuus() + " dm^3");
+}</pre>
 
       <p>Tulostuu:</p>
 
-      <pre>
+<pre>
 laatikoita: 2
   laatikossa tavaraa: 7 dm^3
-  laatikossa tavaraa: 8 dm^3
-      </pre>
+  laatikossa tavaraa: 8 dm^3</pre>
 
       <p>Pakkaaja on siis pakannut tavarat kahteen laatikkoon, ensimmäiseen laatikkoon on mennyt 3 ensimmäistä tavaraa, yhteistilavuudeltaan 7, ja listan viimeinen tavara eli sirkkeli jonka tilavuus on 8 on mennyt toiseen laatikkoon. Testit eivät aseta rajoitusta pakkaajan käyttävien muuttolaatioiden määrälle, tavarat olisi siis voitu pakata vaikka jokainen eri laatikkoon, eli tuloste olisi ollut:</p>
 
       <p>Tulostuu:</p>
 
-      <pre>
+<pre>
 laatikoita: 4
   laatikossa tavaraa: 2 dm^3
   laatikossa tavaraa: 1 dm^3
   laatikossa tavaraa: 7 dm^3
-  laatikossa tavaraa: 8 dm^3
-      </pre>
+  laatikossa tavaraa: 8 dm^3</pre>
 
       <p><strong>Huom:</strong> tehtävän testaamista helpottamaan kannatanee tehdä luokalle <code>Muuttolaatikko</code> esim. toString-metodi, jonka avulla voi printata laatikon sisällön.</p>
 
@@ -6508,28 +6480,24 @@ public interface Luettava {
     default void lueTulostaen() {
         System.out.println(lue());
     }
-}
-</pre>
+}</pre>
 
   <p>Tekstiviestin ja sähköpostin toiminta muuttuu myös:</p>
 
 <pre class="sh_java">
-
 Tekstiviesti viesti = new Tekstiviesti("G. Hopper", "COBOL kicks ass");
 viesti.lueTulostaen();
 
 Sahkoposti posti = new Sahkoposti ("D. Knuth", "If you optimize everything, you will always be unhappy.");
 System.out.println(posti.onLuettu());
 posti.lueTulostaen();
-System.out.println(posti.onLuettu());
-</pre>
+System.out.println(posti.onLuettu());</pre>
 
 <pre>
 COBOL kicks ass
 false
 If you optimize everything, you will always be unhappy.
-true
-</pre>
+true</pre>
 
   <p>Oletusmetodien suurin hyöty ilmenee tilanteissa, missä rajapinta on määritelty aiemmin, ja useampi luokka toteuttaa sen. Jos rajapintaan lisätään uusi metodi, tulee sille ohjelmoida toteutus kaikkiin rajapinnan toteuttamiin luokkiin, jos uusi metodi ei tarjoa oletustoteutusta.</p>
 
@@ -6538,86 +6506,78 @@ true
 
   <h2>Poikkeustilanteet</h2>
 
-  <p>Poikkeustilanteet ovat tilanteita joissa ohjelman suoritus ei ole edennyt toivotusti. Ohjelma on saattanut esimerkiksi kutsua <em>null</em>-viitteeseen liittyvää metodia, jolloin käyttäjälle <em>heitetään</em> poikkeus <code>NullPointerException</code>. Jos yritämme hakea taulukon ulkopuolella olevaa indeksiä, käyttäjälle heitetään poikkeus <code>IndexOutOfBoundsException</code>. Kaikki poikkeukset ovat tyyppiä <code>Exception</code>.</p>
+  <p>Poikkeustilanteet ovat tilanteita joissa ohjelman suoritus ei edennyt toivotusti. Ohjelma on saattanut esimerkiksi kutsua <em>null</em>-viitteeseen liittyvää metodia, jolloin käyttäjälle <em>heitetään</em> poikkeus <code>NullPointerException</code>. Jos yritämme hakea taulukon ulkopuolella olevaa indeksiä, käyttäjälle heitetään poikkeus <code>IndexOutOfBoundsException</code>. Kaikki poikkeukset ovat tyyppiä <code>Exception</code>.</p>
 
   <p>Poikkeukset käsitellään <code>try { } catch (Exception e) { }</code> -lohkorakenteella. Avainsanan <code>try</code> aloittaman lohkon sisällä on <em>mahdollisesti</em> poikkeuksen heittävä ohjelmakoodi. Avainsanan <code>catch</code> aloittaman lohkon sisällä taas määritellään mitä tehdään jos try-lohkossa suoritettavassa koodissa tapahtuu poikkeus. Catch-lauseelle määritellään kiinniotettavan poikkeuksen tyyppi (<code>catch (Exception e)</code>).</p>
 
-  <pre class="sh_java">
-    try {
-        // poikkeuksen mahdollisesti heittävä ohjelmakoodi
-    } catch (Exception e) {
-        // lohko johon päädytään poikkeustilanteessa
-    }
-  </pre>
+<pre class="sh_java">
+try {
+    // poikkeuksen mahdollisesti heittävä ohjelmakoodi
+} catch (Exception e) {
+    // lohko johon päädytään poikkeustilanteessa
+}</pre>
 
-  <p>Merkkijonon numeroksi muuttava <code>Integer</code>-luokan <code><a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Integer.html#parseInt(java.lang.String)" target="_blank">parseInt</a></code>-metodi heittää poikkeuksen <code>NumberFormatException</code> jos sille parametrina annettu merkkijono ei ole muunnettavissa numeroksi. Toteutetaan ohjelma, joka yrittää muuntaa käyttäjän syöttämän merkkijonon numeroksi.</p>
+  <p>Merkkijonon numeroksi muuttava <code>Integer</code>-luokan <code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#parseInt-java.lang.String-" target="_blank">parseInt</a></code>-metodi heittää poikkeuksen <code>NumberFormatException</code> jos sille parametrina annettu merkkijono ei ole muunnettavissa numeroksi. Toteutetaan ohjelma, joka yrittää muuntaa käyttäjän syöttämän merkkijonon numeroksi.</p>
 
-  <pre class="sh_java">
-    Scanner lukija = new Scanner(System.in);
-    System.out.print("Syötä numero: ");
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+System.out.print("Syötä numero: ");
 
-    int numero = Integer.parseInt(lukija.nextLine());
-  </pre>
+int numero = Integer.parseInt(lukija.nextLine());</pre>
 
-  <pre>
+<pre>
 Syötä numero: <font color="red">tatti</font>
-<font color="red">Exception in thread "..." java.lang.NumberFormatException: For input string: "tatti"</font>
-  </pre>
+<font color="red">Exception in thread "..." java.lang.NumberFormatException: For input string: "tatti"</font></pre>
 
   <p>Yllä oleva ohjelma heittää poikkeuksen kun käyttäjä syöttää virheellisen numeron. Ohjelman suoritus päättyy virhetilanteeseen, eikä suoritusta voi enää jatkaa. Lisätään ohjelmaan poikkeuskäsittely. Kutsu, joka saattaa heittää poikkeuksen asetetaan <code>try</code>-lohkon sisään, ja virhetilanteessa tapahtuva toiminta <code>catch</code>-lohkon sisään. </p>
 
-  <pre class="sh_java">
-    Scanner lukija = new Scanner(System.in);
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
 
-    System.out.print("Syötä numero: ");
+System.out.print("Syötä numero: ");
+int numero = -1;
 
-    try {
-        int numero = Integer.parseInt(lukija.nextLine());
-    } catch (Exception e) {
-        System.out.println("Et syöttänyt kunnollista numeroa.");
-    }
-  </pre>
+try {
+    numero = Integer.parseInt(lukija.nextLine());
+} catch (Exception e) {
+    System.out.println("Et syöttänyt kunnollista numeroa.");
+}</pre>
 
-  <pre>
-Syötä numero: <font color="red">5</font>
-  </pre>
+<pre>
+Syötä numero: <font color="red">5</font></pre>
 
-  <pre>
+<pre>
 Syötä numero: <font color="red">enpäs!</font>
-Et syöttänyt kunnollista numeroa.
-  </pre>
+Et syöttänyt kunnollista numeroa.</pre>
 
   <p>Avainsanan <code>try</code> määrittelemän lohkon sisältä siirrytään <code>catch</code>-lohkoon heti poikkeuksen tapahtuessa.  Visualisoidaan tätä lisäämällä tulostuslause <code>try</code>-lohkossa metodia <code>Integer.parseInt</code> kutsuvan rivin jälkeen.</p>
 
-  <pre class="sh_java">
-    Scanner lukija = new Scanner(System.in);
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
 
-    System.out.print("Syötä numero: ");
+System.out.print("Syötä numero: ");
+int numero = -1;
 
-    try {
-        int numero = Integer.parseInt(lukija.nextLine());
-        System.out.println("Hienosti syötetty!");
-    } catch (Exception e) {
-        System.out.println("Et syöttänyt kunnollista numeroa.");
-    }
-  </pre>
+try {
+    numero = Integer.parseInt(lukija.nextLine());
+    System.out.println("Hienosti syötetty!");
+} catch (Exception e) {
+    System.out.println("Et syöttänyt kunnollista numeroa.");
+}</pre>
 
-
-  <pre>
+<pre>
 Syötä numero: <font color="red">5</font>
-Hienosti syötetty!
-  </pre>
+Hienosti syötetty!</pre>
 
-  <pre>
+<pre>
 Syötä numero: <font color="red">enpäs!</font>
-Et syöttänyt kunnollista numeroa.
-  </pre>
+Et syöttänyt kunnollista numeroa.</pre>
 
   <p>Ohjelmalle syötetty merkkijono <code>enpäs!</code> annetaan parametrina <code>Integer.parseInt</code>-metodille, joka heittää poikkeuksen jos parametrina saadun merkkijonon muuntaminen luvuksi epäonnistuu. Huomaa että <code>catch</code>-lohkossa oleva koodi suoritetaan <em>vain</em> poikkeustapauksissa -- muulloin ohjelma ei pääse sinne.</p>
 
   <p>Tehdään luvun muuntajasta hieman hyödyllisempi: Tehdään siitä metodi, joka kysyy numeroa yhä uudestaan kunnes käyttäjä syöttää oikean numeron. Metodista pääsee pois <em>vain</em> jos käyttäjä syöttää oikean luvun.</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 public int lueLuku(Scanner lukija) {
     while (true) {
         System.out.print("Syötä numero: ");
@@ -6629,63 +6589,65 @@ public int lueLuku(Scanner lukija) {
             System.out.println("Et syöttänyt kunnollista numeroa.");
         }
     }
-}
-  </pre>
+}</pre>
 
   <p>Metodin <code>lueLuku</code> kutsuminen voisi toimia esimerkiksi seuraavasti</p>
 
-  <pre>
+<pre>
 Syötä numero: <font color="red">enpäs!</font>
 Et syöttänyt kunnollista numeroa.
 Syötä numero: <font color="red">Matilla on ovessa tatti.</font>
 Et syöttänyt kunnollista numeroa.
-Syötä numero: <font color="red">43</font>
-
-  </pre>
+Syötä numero: <font color="red">43</font></pre>
 
 
   <h3>Poikkeusten heittäminen</h3>
 
   <p>Metodit ja konstruktorit voivat <em>heittää</em> poikkeuksia. Heitettäviä poikkeuksia on karkeasti ottaen kahdenlaisia. On poikkeuksia jotka on pakko käsitellä, ja on poikkeuksia joita ei ole pakko käsitellä. Pakosti käsiteltävät poikkeukset käsitellään joko <code>try-catch</code> -lohkossa, tai <em>heittämällä ne ulos metodista</em>. </p>
 
-  <p>
-  Ohjelmoinnin perusteiden tehtävän <em>kellosta olio</em> bonusversiossa kerrottiin, että ohjelma saadaan viivyttämään itseään sekunnin verran kutsumalla komentoa <code>Thread.sleep(1000)</code>. Komento saattaa heittää poikkeuksen, joka on <em>pakko</em> käsitellä. Poikkeuksen käsittely siis tapahtuu  <code>try-catch</code> -lauseella, seuraavassa esimerkissä olemme välittämättä mahdollisista poikkeustilanteista ja jätimme <code>catch</code>-lohkon tyhjäksi:</p>
+  <p>Aiemmin nähdyn tehtävän <em>kellosta olio</em> bonusversiossa kerrottiin, että ohjelma saadaan viivyttämään itseään sekunnin verran kutsumalla komentoa <code>Thread.sleep(1000)</code>. Komento saattaa heittää poikkeuksen, joka on <em>pakko</em> käsitellä. Poikkeuksen käsittely siis tapahtuu  <code>try-catch</code> -lauseella, seuraavassa esimerkissä olemme välittämättä mahdollisista poikkeustilanteista ja jätimme <code>catch</code>-lohkon tyhjäksi:</p>
 
-  <pre class="sh_java">
-    try {
-        // nukutaan 1000 millisekuntia
-        Thread.sleep(1000);
-    } catch (Exception e) {
-        // ei tehdä mitään poikkeustilanteessa
-    }
-  </pre>
+<pre class="sh_java">
+try {
+    // nukutaan 1000 millisekuntia
+    Thread.sleep(1000);
+} catch (Exception e) {
+    // ei tehdä mitään poikkeustilanteessa
+}</pre>
 
   <p>Metodeissa on myös mahdollista jättää poikkeus itse käsittelemättä ja <em>siirtää vastuu</em> poikkeuksen käsittelystä metodin kutsujalle. Vastuun siirto tapahtuu heittämällä poikkeus metodista eteenpäin sanomalla <code>throws Exception</code>.</p>
 
-  <pre class="sh_java">
-    public void nuku(int sekuntia) <strong>throws Exception</strong> {
-        Thread.sleep(sekuntia * 1000);   // nyt try-catchia ei tarvita!
-    }
-  </pre>
+<pre class="sh_java">
+public void nuku(int sekuntia) <strong>throws Exception</strong> {
+    Thread.sleep(sekuntia * 1000);   // nyt try-catchia ei tarvita!
+}</pre>
 
   <p>Nyt metodia <code>nuku</code>-kutsuvan metodin tulee joko käsitellä poikkeus <code>try-catch</code> -lohkossa, tai siirtää poikkeuksen käsittelyn vastuuta eteenpäin heittää poikkeus eteenpäin. Joskus poikkeuksen käsittelyä pakoillaan viimeiseen asti, ja <code>main</code>-metodikin heittää poikkeuksen käsiteltäväksi eteenpäin:</p>
-  <pre class="sh_java">
+
+<pre class="sh_java">
 public class Paaohjelma {
    public static void main(String[] args) throws Exception {
        // ...
    }
-}
-  </pre>
+}</pre>
 
   <p>Tällöin poikkeus päätyy Javan virtuaalikoneelle, joka keskeyttää ohjelman suorituksen poikkeukseen johtavan virheen tapahtuessa.</p>
 
-  <p>Osa poikkeuksista, kuten <code>Integer.parseInt</code>-metodin heittämä <code>NumberFormatException</code>, on sellaisia joihin ohjelmoijan ei ole pakko varautua. Poikkeukset, joihin käyttäjän ei tarvitse varautua ovat aina myös tyyppiä <code>RuntimeException</code>, palaamme siihen <em>miksi</em> muuttujilla voi olla useita eri tyyppejä tarkemmin ensi viikolla.</p>
+  <p>Osa poikkeuksista, kuten <code>Integer.parseInt</code>-metodin heittämä <code>NumberFormatException</code> tai <code>NullPointerException</code>, on sellaisia joihin ohjelmoijan ei ole pakko varautua. Poikkeukset, joihin käyttäjän ei tarvitse varautua ovat aina myös tyyppiä <code>RuntimeException</code>, palaamme siihen <em>miksi</em> poikkeuksilla ja muuttujilla voi olla useita eri tyyppejä tarkemmin ensi viikolla.</p>
 
-  <p>Voimme itse heittää poikkeuksen lähdekoodista <code>throw</code>-komennolla. Esimerkiksi <code>NumberFormatException</code>-luokasta luodun poikkeuksen heittäminen tapahtuisi komennolla <code>throw new NumberFormatException()</code>.</p>
+  <p>Voimme itse heittää poikkeuksen lähdekoodista <code>throw</code>-komennolla. Esimerkiksi <code>NumberFormatException</code>-luokasta luodun poikkeuksen heittäminen tapahtuisi komennolla <code>throw new NumberFormatException()</code>. Seuraava ohjelma siis päätyy aina poikkeustilaan.</p>
+
+<pre class="sh_java">
+public class Ohjelma {
+
+    public static void main(String[] args) throws Exception {
+        throw new NumberFormatException(); // Koodin suoritus tyssää tähän
+    }
+}</pre>
 
   <p>Eräs poikkeus johon käyttäjän ei ole pakko varautua on <code>IllegalArgumentException</code>. Poikkeuksella <code>IllegalArgumentException</code> kerrotaan että metodille tai konstruktorille annettujen parametrien arvot ovat <em>vääränlaiset</em>. IllegalArgumentException-poikkeusta käytetään esimerkiksi silloin kun halutaan varmistaa että parametreilla on tietyt arvot. Luodaan luokka <code>Arvosana</code>, joka saa konstruktorin parametrina kokonaislukutyyppisen arvosanan.</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 public class Arvosana {
     private int arvosana;
 
@@ -6696,12 +6658,11 @@ public class Arvosana {
     public int getArvosana() {
         return this.arvosana;
     }
-}
-  </pre>
+}</pre>
 
-  <p>Haluamme seuraavaksi <em>validoida</em> Arvosana-luokan konstruktorin parametrina saadun arvon. Arvosanan tulee olla aina välillä 0-5. Jos arvosana on jotain muuta, haluamme <em>heittää poikkeuksen</em>. Lisätään <code>Arvosana</code>-luokan konstruktoriin ehtolause, joka tarkistaa onko arvosana arvovälin 0-5 ulkopuolella. Jos on, heitetään poikkeus <code>IllegalArgumentException</code> sanomalla <code>throw new IllegalArgumentException("Arvosanan tulee olla välillä 0-5");</code>.</p>
+  <p>Haluamme seuraavaksi <em>validoida</em> Arvosana-luokan konstruktorin parametrina saadun arvon, eli varmistaa että se täyttää tietyt kriteerit. Arvosanan tulee olla aina välillä 0-5. Jos arvosana on jotain muuta, haluamme <em>heittää poikkeuksen</em>. Lisätään <code>Arvosana</code>-luokan konstruktoriin ehtolause, joka tarkistaa onko arvosana arvovälin 0-5 ulkopuolella. Jos on, heitetään poikkeus <code>IllegalArgumentException</code> sanomalla <code>throw new IllegalArgumentException("Arvosanan tulee olla välillä 0-5");</code>.</p>
 
-  <pre class="sh_java">
+<pre class="sh_java">
 public class Arvosana {
     private int arvosana;
 
@@ -6709,27 +6670,25 @@ public class Arvosana {
         if (arvosana &lt; 0 || arvosana &gt; 5) {
             throw new IllegalArgumentException("Arvosanan tulee olla välillä 0-5");
         }
+
         this.arvosana = arvosana;
     }
 
     public int getArvosana() {
         return this.arvosana;
     }
-}
-  </pre>
+}</pre>
 
-  <pre class="sh_java">
-    Arvosana arvosana = new Arvosana(3);
-    System.out.println(arvosana.getArvosana());
+<pre class="sh_java">
+Arvosana arvosana = new Arvosana(3);
+System.out.println(arvosana.getArvosana());
 
-    Arvosana virheellinenArvo = new Arvosana(22);
-    // tapahtuu poikkeus, tästä ei jatketa eteenpäin
-  </pre>
+Arvosana virheellinenArvo = new Arvosana(22);
+// tapahtuu poikkeus, tästä ei jatketa eteenpäin</pre>
 
-  <pre>
+<pre>
 3
-Exception in thread "..." java.lang.IllegalArgumentException: Arvosanan tulee olla välillä 0-5
-  </pre>
+Exception in thread "..." java.lang.IllegalArgumentException: Arvosanan tulee olla välillä 0-5</pre>
 
 
   <div class="tehtavat">
@@ -6746,88 +6705,75 @@ Exception in thread "..." java.lang.IllegalArgumentException: Arvosanan tulee ol
 
       <p>Luokan <code>Laskin</code> metodeja tulee muuttaa seuraavasti: Metodin <code>kertoma</code> tulee toimia vain jos parametrina annetaan ei-negatiivinen luku (0 tai suurempi). Metodin <code>binomikerroin</code> tulee toimia vain jos parametrit ovat ei-negatiivisia ja osajoukon koko on pienempi kuin joukon koko. Jos jompikumpi metodeista saa epäkelpoja arvoja metodikutsujen yhteydessä, tulee metodien heittää poikkeus <code>IllegalArgumentException</code>.</p>
     </div>
-    <div class="tehtava">
 
+    <div class="tehtava">
       <h3>Sensorit ja lämpötilan mittausta</h3>
 
       <p>Kaikki sovelluksessa oleva koodi tulee sijoittaa pakkaukseen <code>sovellus</code>.</p>
 
       <p>Käytössämme on seuraava rajapinta:</p>
 
-      <pre class="sh_java">
+<pre class="sh_java">
 public interface Sensori {
     boolean onPaalla();  // palauttaa true jos sensori on päällä
     void paalle();       // käynnistä sensorin
     void poisPaalta();   // sulkee sensorin
     int mittaa();        // palauttaa sensorin lukeman jos sensori on päällä
                          // jos sensori ei päällä heittää poikkeuksen IllegalStateException
-}
-      </pre>
+}</pre>
 
       <h4>Vakiosensori</h4>
 
       <p>Tee luokka <code>Vakiosensori</code> joka toteuttaa rajapinnan <code>Sensori</code>.</p>
 
-      <p>Vakiosensori on koko ajan päällä. Metodien paalle ja poisPaalta kutsuminen ei tee mitään. Vakiosensorilla tulee olla konstruktori, jonka parametrina on kokonaisluku. Metodikutsu <code>mittaa</code> palauttaa aina konstruktorille parametrina annetun luvun.
-      </p>
+      <p>Vakiosensori on koko ajan päällä. Metodien paalle ja poisPaalta kutsuminen ei tee mitään. Vakiosensorilla tulee olla konstruktori, jonka parametrina on kokonaisluku. Metodikutsu <code>mittaa</code> palauttaa aina konstruktorille parametrina annetun luvun.</p>
 
       <p>Esimerkki:</p>
 
-      <pre class="sh_java">
+<pre class="sh_java">
 public static void main(String[] args) {
   Vakiosensori kymppi = new Vakiosensori(10);
   Vakiosensori miinusViis = new Vakiosensori(-5);
 
-  System.out.println( kymppi.mittaa() );
-  System.out.println( miinusViis.mittaa() );
+  System.out.println(kymppi.mittaa());
+  System.out.println(miinusViis.mittaa());
 
-  System.out.println( kymppi.onPaalla() );
+  System.out.println(kymppi.onPaalla());
   kymppi.poisPaalta();
-  System.out.println( kymppi.onPaalla() );
-}
-      </pre>
+  System.out.println(kymppi.onPaalla());
+}</pre>
 
       <p>Tulostuu:</p>
 
-      <pre>
+<pre>
 10
 -5
 true
-true
-      </pre>
+true</pre>
 
       <h4>Lampomittari</h4>
 
       <p>Tee luokka <code>Lampomittari</code> joka toteuttaa rajapinnan <code>Sensori</code>.</p>
 
-      <p>
-      Aluksi lämpömittari on poissa päältä. Kutsuttaessa metodia <code>mittaa</code> kun mittari on päällä mittari arpoo luvun väliltä -30...30 ja palauttaa sen kutsujalle. Jos mittari ei ole päällä, heitetään poikkeus </code>IllegalStateException</code>.
-  </p>
+      <p>Aluksi lämpömittari on poissa päältä. Kutsuttaessa metodia <code>mittaa</code> kun mittari on päällä mittari arpoo luvun väliltä -30...30 ja palauttaa sen kutsujalle. Jos mittari ei ole päällä, heitetään poikkeus <code>IllegalStateException</code>.</p>
 
-  <h4>Keskiarvosensori</h4>
+      <h4>Keskiarvosensori</h4>
 
-  <p>Tee luokka <code>Keskiarvosensori</code> joka toteuttaa rajapinnan </code>Sensori</code>.</p>
+      <p>Tee luokka <code>Keskiarvosensori</code> joka toteuttaa rajapinnan <code>Sensori</code>.</p>
 
-<p>
-Keskiarvosensori sisältää useita sensoreita. Rajapinnan <code>Sensori</code> määrittelemien metodien lisäksi keskiarvosensorilla on metodi
-<code>public void lisaaSensori(Sensori lisattava)</code> jonka avulla keskiarvosensorin hallintaan lisätään uusi sensori.
-</p>
+      <p>Keskiarvosensori sisältää useita sensoreita. Rajapinnan <code>Sensori</code> määrittelemien metodien lisäksi keskiarvosensorilla on metodi <code>public void lisaaSensori(Sensori lisattava)</code> jonka avulla keskiarvosensorin hallintaan lisätään uusi sensori.</p>
 
-<p>
-Keskiarvosensori on päällä silloin kuin <em>kaikki</em> sen sisältävät sensorit ovat päällä. Kun keskiarvosensori käynnistetään, täytyy kaikkien sen sisältävien sensorien käynnistyä jos ne eivät ole käynnissä. Kun keskiarvosensori suljetaan, täytyy ainakin yhden sen sisältävän sensorin mennä pois päältä. Saa myös käydä niin että kaikki sen sisältävät sensorit menevät pois päältä.
-</p>
+      <p>Keskiarvosensori on päällä silloin kuin <em>kaikki</em> sen sisältävät sensorit ovat päällä. Kun keskiarvosensori käynnistetään, täytyy kaikkien sen sisältävien sensorien käynnistyä jos ne eivät ole käynnissä. Kun keskiarvosensori suljetaan, täytyy ainakin yhden sen sisältävän sensorin mennä pois päältä. Saa myös käydä niin että kaikki sen sisältävät sensorit menevät pois päältä.</p>
 
-<p>
-Keskiarvosensorin metodi <code>mittaa</code> palauttaa sen sisältämien sensoreiden lukemien keskiarvon (koska paluuarvo on <code>int</code>, pyöristyy lukema alaspäin kuten kokonaisluvuilla tehdyissä jakolaskuissa). Jos keskiarvosensorin metodia <code>mittaa</code> kutsutaan sensorin ollessa poissa päältä, tai jos keskiarvosensorille ei vielä ole lisätty yhtään sensoria heitetään poikkeus <code>IllegalStateException</code>.
-</p>
+      <p>Keskiarvosensorin metodi <code>mittaa</code> palauttaa sen sisältämien sensoreiden lukemien keskiarvon (koska paluuarvo on <code>int</code>, pyöristyy lukema alaspäin kuten kokonaisluvuilla tehdyissä jakolaskuissa). Jos keskiarvosensorin metodia <code>mittaa</code> kutsutaan sensorin ollessa poissa päältä, tai jos keskiarvosensorille ei vielä ole lisätty yhtään sensoria heitetään poikkeus <code>IllegalStateException</code>.</p>
 
-<p>Seuraavassa sensoreja käyttävä esimerkkiohjelma (huomaa, että sekä Lämpömittarin että Keskiarvosensorin konstruktorit ovat parametrittomia):</p>
+      <p>Seuraavassa sensoreja käyttävä esimerkkiohjelma (huomaa, että sekä Lämpömittarin että Keskiarvosensorin konstruktorit ovat parametrittomia):</p>
 
 <pre class="sh_java">
 public static void main(String[] args) {
     Sensori kumpula = new Lampomittari();
     kumpula.paalle();
-    System.out.println("lämpötila Kumpulassa "+kumpula.mittaa() + " astetta");
+    System.out.println("lämpötila Kumpulassa " + kumpula.mittaa() + " astetta");
 
     Sensori kaisaniemi = new Lampomittari();
     Sensori helsinkiVantaa = new Lampomittari();
@@ -6839,21 +6785,19 @@ public static void main(String[] args) {
 
     paakaupunki.paalle();
     System.out.println("lämpötila Pääkaupunkiseudulla "+paakaupunki.mittaa() + " astetta");
-}
-</pre>
+}</pre>
 
-<p>tulostuu (tulostetut lukuarvot riippuvat tietenkin arvotuista lämpötiloista):</p>
+      <p>tulostuu (tulostetut lukuarvot riippuvat tietenkin arvotuista lämpötiloista):</p>
 
 <pre class="sh_java">
-lämpötila Kumpulassa -7 astetta
-lämpötila Pääkaupunkiseudulla -10 astetta
-</pre>
+lämpötila Kumpulassa 11 astetta
+lämpötila Pääkaupunkiseudulla 8 astetta</pre>
 
-<p><b>Huom:</b> kannatata käyttää Vakiosensori-oliota keskiarvosensorin testaamiseen!</p>
+      <p><b>Huom:</b> kannattaa käyttää Vakiosensori-oliota keskiarvosensorin testaamiseen!</p>
 
-<h4>Kaikki mittaukset</h4>
+      <h4>Kaikki mittaukset</h4>
 
-<p>Lisää luokalle Keskiarvosensori metodi <code>public List&lt;Integer&gt; mittaukset()</code>, joka palauttaa listana kaikkien keskiarvosensorin avulla suoritettujen mittausten tulokset. Seuraavassa esimerkki metodin toiminnasta: </p>
+      <p>Lisää luokalle Keskiarvosensori metodi <code>public List&lt;Integer&gt; mittaukset()</code>, joka palauttaa listana kaikkien keskiarvosensorin avulla suoritettujen mittausten tulokset. Seuraavassa esimerkki metodin toiminnasta: </p>
 
 <pre class="sh_java">
 public static void main(String[] args) {
@@ -6872,32 +6816,29 @@ public static void main(String[] args) {
     System.out.println("lämpötila Pääkaupunkiseudulla "+paakaupunki.mittaa() + " astetta");
 
     System.out.println("mittaukset: "+paakaupunki.mittaukset());
-}
-</pre>
+}</pre>
 
-<p>tulostuu (tulostetut lukuarvot riippuvat jälleen arvotuista lämpötiloista):</p>
+      <p>tulostuu (tulostetut lukuarvot riippuvat jälleen arvotuista lämpötiloista):</p>
 
 <pre class="sh_java">
 lämpötila Pääkaupunkiseudulla -10 astetta
 lämpötila Pääkaupunkiseudulla -4 astetta
 lämpötila Pääkaupunkiseudulla 5 astetta
 
-mittaukset: [-10, -4, 5]
-</pre>
+mittaukset: [-10, -4, 5]</pre>
 
 </div>
 </div>
 
-<h3>Poikkeukset ja rajapinnat</h3>
+  <h3>Poikkeukset ja rajapinnat</h3>
 
-    <p>Rajapintaluokilla ei ole metodirunkoa, mutta metodimäärittely on vapaasti rajapinnan suunnittelijan toteutettavissa. Rajapintaluokat voivat määritellä myös poikkeusten heiton. Esimerkiksi seuraavan rajapinnan <code>Tiedostopalvelin</code> toteuttavat luokat heittävät <em>mahdollisesti</em> poikkeuksen <code>lataa</code>- ja <code>tallenna</code>-metodissa.</p>
+  <p>Rajapintaluokilla ei ole metodirunkoa, mutta metodimäärittely on vapaasti rajapinnan suunnittelijan toteutettavissa. Rajapintaluokat voivat määritellä myös poikkeusten heiton. Esimerkiksi seuraavan rajapinnan <code>Tiedostopalvelin</code> toteuttavat luokat heittävät <em>mahdollisesti</em> poikkeuksen <code>lataa</code>- ja <code>tallenna</code>-metodissa.</p>
 
 <pre class="sh_java">
 public interface Tiedostopalvelin {
     String lataa(String tiedosto) throws Exception;
     void tallenna(String tiedosto, String merkkijono) throws Exception;
-}
-</pre>
+}</pre>
 
     <p>Jos rajapinta määrittelee metodeille <code>throws Exception</code>-määreet, eli että metodit heittävät mahdollisesti poikkeuksen, tulee samat määreet olla myös rajapinnan toteuttavassa luokassa. Luokan ei kuitenkaan ole pakko heittää poikkeusta kuten alla olevasta esimerkistä näkee.</p>
 
@@ -6907,7 +6848,7 @@ public class Tekstipalvelin implements Tiedostopalvelin {
     private Map&lt;String, String&gt; data;
 
     public Tekstipalvelin() {
-        this.data = new HashMap&lt;String, String&gt;();
+        this.data = new HashMap&lt;&gt;();
     }
 
     @Override
@@ -6919,156 +6860,145 @@ public class Tekstipalvelin implements Tiedostopalvelin {
     public void tallenna(String tiedosto, String merkkijono) throws Exception {
         this.data.put(tiedosto, merkkijono);
     }
-}
-</pre>
+}</pre>
 
-<h3>Poikkeuksen tiedot</h3>
+    <h3>Poikkeuksen tiedot</h3>
 
     <p>Poikkeusten käsittelytoiminnallisuuden sisältämä <code>catch</code>-lohko määrittelee catch-osion sisällä poikkeuksen johon varaudutaan <code>catch (<em>Exception e</em>)</code>. Poikkeuksen tiedot tallennetaan <code>e</code>-muuttujaan.</p>
 
 <pre class="sh_java">
-    try {
-        // ohjelmakoodi, joka saattaa heittää poikkeuksen
-    } catch (Exception e) {
-        // poikkeuksen tiedot ovat tallessa muuttujassa e
-    }
-</pre>
+try {
+    // ohjelmakoodi, joka saattaa heittää poikkeuksen
+} catch (Exception e) {
+    // poikkeuksen tiedot ovat tallessa muuttujassa e
+}</pre>
 
     <p>Luokka <code>Exception</code> tarjoaa hyödyllisiä metodeja. Esimerkiksi metodi <code>printStackTrace()</code> tulostaa <em>polun</em>, joka kertoo mistä päädyttiin poikkeukseen. Tutkitaan seuraavaa metodin <code>printStackTrace()</code> tulostamaa virhettä.</p>
 
 <pre>
 Exception in thread "main" java.lang.NullPointerException
   at pakkaus.Luokka.tulosta(Luokka.java:43)
-  at pakkaus.Luokka.main(Luokka.java:29)
-</pre>
+  at pakkaus.Luokka.main(Luokka.java:29)</pre>
 
     <p>Poikkeuspolun lukeminen tapahtuu alhaalta ylöspäin. Alimpana on ensimmäinen kutsu, eli ohjelman suoritus on alkanut luokan <code>Luokka</code> metodista <code>main()</code>. Luokan <code>Luokka</code> main-metodin rivillä 29 on kutsuttu metodia <code>tulosta()</code>. Metodin <code>tulosta</code> rivillä 43 on tapahtunut poikkeus <code>NullPointerException</code>. Poikkeuksen tiedot ovatkin hyvin hyödyllisiä virhekohdan selvittämisessä.</p>
 
+    <h2>Tiedoston lukeminen</h2>
 
-<h2>Tiedoston lukeminen</h2>
+    <p>Huomattava osa ohjelmista käsittelee jollain tavalla tallennettua tietoa. Otetaan ensiaskeleet tiedostojen käsittelyyn Javassa. Javan API tarjoaa luokan <a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html" target="_blank">File</a>, jonka sisältö voidaan lukea kurssilla jo tutuksi tulleen <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html" target="_blank">Scanner</a>-luokan avulla.</p>
 
-    <p>Huomattava osa ohjelmista käsittelee jollain tavalla tallennettua tietoa. Otetaan ensiaskeleet tiedostojen käsittelyyn Javassa. Javan API tarjoaa luokan <a href="http://docs.oracle.com/javase/6/docs/api/java/io/File.html" target="_blank">File</a>, jonka sisältö voidaan lukea kurssilla jo tutuksi tulleen <a href="http://docs.oracle.com/javase/6/docs/api/java/util/Scanner.html" target="_blank">Scanner</a>-luokan avulla.</p>
-
-    <p>Luokan <code>File</code> <a href="http://docs.oracle.com/javase/6/docs/api/java/io/File.html" target="_blank">API-kuvausta</a> lukiessamme huomaamme <code>File</code>-luokalla on konstruktori <code>File(String pathname)</code> (<em>Creates a new File instance by converting the given pathname string into an abstract pathname</em>). Voimme siis antaa avattavan tiedoston polun <code>File</code>-luokan konstruktorille.</p>
+    <p>Luokan <code>File</code> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html" target="_blank">API-kuvausta</a> lukiessamme huomaamme <code>File</code>-luokalla on konstruktori <code>File(String pathname)</code> (<em>Creates a new File instance by converting the given pathname string into an abstract pathname</em>). Voimme siis antaa avattavan tiedoston polun <code>File</code>-luokan konstruktorille.</p>
 
     <p><em>NetBeans-ohjelmointiympäristössä tiedostoille on oma välilehti nimeltä <em>Files</em>. Files-välilehdellä on määritelty kaikki projektiin liittyvät tiedostot. Jos projektin <em>juureen</em>, eli ei yhdenkään hakemiston sisälle, lisätään tiedosto, voidaan siihen viitata projektin sisältä suoraan tiedoston nimellä. Tiedosto-olion luominen tapahtuu antamalla sille parametrina polku tiedostoon, esimerkiksi seuraavasti</em></p>
 
 <pre class="sh_java">
-    File tiedosto = new File("tiedoston-nimi.txt");
-</pre>
+File tiedosto = new File("tiedoston-nimi.txt");</pre>
 
     <p>Scanner-luokan konstruktorille voi antaa myös muita lukemislähteitä kuin <code>System.in</code>-syöttövirran. Lukemislähteenä voi olla näppäimistön lisäksi muun muassa tiedosto. Scanner tarjoaa tiedoston lukemiseen samat metodit kuin näppäimistöltä syötetyn syötteen lukemiseen. Seuraavassa esimerkissä avataan tiedosto ja tulostetaan kaikki tiedoston sisältämän tekstit <code>System.out.println</code>-komennolla Lopuksi tiedosto suljetaan komennolla <code>close</code>.</p>
 
 <pre class="sh_java">
-        // tiedosto mistä luetaan
-        File tiedosto = new File("tiedosto.txt");
+// tiedosto mistä luetaan
+File tiedosto = new File("tiedosto.txt");
 
-        Scanner lukija = new Scanner(tiedosto);
-        while (lukija.hasNextLine()) {
-            String rivi = lukija.nextLine();
-            System.out.println(rivi);
-        }
+Scanner lukija = new Scanner(tiedosto);
+while (lukija.hasNextLine()) {
+    String rivi = lukija.nextLine();
+    System.out.println(rivi);
+}
 
-        lukija.close();
+lukija.close();
 </pre>
 
-    <p>Scanner-luokan konstruktori <code><a href="http://docs.oracle.com/javase/6/docs/api/java/util/Scanner.html#Scanner(java.io.File)" target="_blank">public Scanner(File source)</a></code> (<em>Constructs a new Scanner that produces values scanned from the specified file.</em>) heittää <code><a href="http://docs.oracle.com/javase/6/docs/api/java/io/FileNotFoundException.html" target="_blank">FileNotFoundException</a></code>-poikkeuksen jos luettavaa tiedostoa ei löydy. Poikkeus <code>FileNotFoundException</code> ei ole tyyppiä <code>RuntimeException</code>, joten se tulee joko käsitellä tai heittää eteenpäin. Tässä vaiheessa riittää tietää että ohjelmointiympäristö kertoo jos sinun tulee käsitellä poikkeus erikseen. Luodaan ensin vaihtoehto, jossa poikkeus käsitellään tiedostoa avattaessa.</p>
+    <p>Scanner-luokan konstruktori <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html#Scanner-java.io.File-" target="_blank">public Scanner(File source)</a></code> (<em>Constructs a new Scanner that produces values scanned from the specified file.</em>) heittää <code><a href="https://docs.oracle.com/javase/8/docs/api/java/io/FileNotFoundException.html" target="_blank">FileNotFoundException</a></code>-poikkeuksen jos luettavaa tiedostoa ei löydy. Poikkeus <code>FileNotFoundException</code> ei ole tyyppiä <code>RuntimeException</code>, joten se tulee joko käsitellä tai heittää eteenpäin. Tässä vaiheessa riittää tietää että ohjelmointiympäristö kertoo jos sinun tulee käsitellä poikkeus erikseen. Luodaan ensin vaihtoehto, jossa poikkeus käsitellään tiedostoa avattaessa.</p>
 
 <pre class="sh_java">
-    public void lueTiedosto(File tiedosto) {
-        // tiedosto mistä luetaan
-        Scanner lukija = null;
+public void lueTiedosto(File tiedosto) {
+    // tiedosto mistä luetaan
+    Scanner lukija = null;
 
-        try {
-            lukija = new Scanner(tiedosto);
-        } catch (Exception e) {
-            System.out.println("Tiedoston lukeminen epäonnistui. Virhe: " + e.getMessage());
-            return; // poistutaan metodista
-        }
-
-        while (lukija.hasNextLine()) {
-            String rivi = lukija.nextLine();
-            System.out.println(rivi);
-        }
-
-        lukija.close();
+    try {
+        lukija = new Scanner(tiedosto);
+    } catch (Exception e) {
+        System.out.println("Tiedoston lukeminen epäonnistui. Virhe: " + e.getMessage());
+        return; // poistutaan metodista
     }
-</pre>
+
+    while (lukija.hasNextLine()) {
+        String rivi = lukija.nextLine();
+        System.out.println(rivi);
+    }
+
+    lukija.close();
+}</pre>
 
     <p>Toinen vaihtoehto poikkeuksen käsittelyyn on poikkeuksen käsittelyvastuun siirtäminen metodin kutsujalle. Poikkeuksen käsittelyvastuu siirretään metodin kutsujalle lisäämällä metodiin määre <code>throws <em>PoikkeuksenTyyppi</em></code>, eli esimerkiksi <code>throws Exception</code> sillä kaikki poikkeukset ovat tyyppiä <code>Exception</code>. Kun metodilla on määre <code>throws Exception</code>, tietävät kaikki sitä kutsuvat että se saattaa heittää poikkeuksen johon tulee varautua.</p>
 
 <pre class="sh_java">
-    public void lueTiedosto(File tiedosto) throws Exception {
-        // tiedosto mistä luetaan
-        Scanner lukija = new Scanner(tiedosto);
+public void lueTiedosto(File tiedosto) throws Exception {
+    // tiedosto mistä luetaan
+    Scanner lukija = new Scanner(tiedosto);
 
-        while (lukija.hasNextLine()) {
-            String rivi = lukija.nextLine();
-            System.out.println(rivi);
-        }
-
-        lukija.close();
+    while (lukija.hasNextLine()) {
+        String rivi = lukija.nextLine();
+        System.out.println(rivi);
     }
-</pre>
+
+    lukija.close();
+}</pre>
 
     <p>Esimerkki avaa tiedoston <code>tiedosto.txt</code> projektin juuripolusta ja tulostaa sen rivi riviltä käyttäjälle näkyville. Lopuksi lukija suljetaan, jolloin tiedosto myös suljetaan. Määre <code>throws Exception</code> kertoo että metodi saattaa heittää poikkeuksen. Samanlaisen määreen voi laittaa kaikkiin metodeihin jotka käsittelevät tiedostoja.</p>
 
     <p>Huomaa että <code>Scanner</code>-olio ei liitä rivinvaihtomerkkejä osaksi <code>nextLine</code>-metodin palauttamaa merkkijonoa. Yksi vaihtoehto tiedoston lukemiseen siten, että rivinvaihdot säilyvät, on lisätä jokaisen rivin jälkeen rivinvaihtomerkki:</p>
 
 <pre class="sh_java">
-    public String lueTiedostoMerkkijonoon(File tiedosto) throws Exception {
-        // tiedosto mistä luetaan
-        Scanner lukija = new Scanner(tiedosto);
+public String lueTiedostoMerkkijonoon(File tiedosto) throws Exception {
+    // tiedosto mistä luetaan
+    Scanner lukija = new Scanner(tiedosto);
 
-        String merkkijono = "";
+    String merkkijono = "";
 
-        while (lukija.hasNextLine()) {
-            String rivi = lukija.nextLine();
-            merkkijono += rivi;
-            merkkijono += "\n";
-        }
-
-        lukija.close();
-        return merkkijono;
+    while (lukija.hasNextLine()) {
+        String rivi = lukija.nextLine();
+        merkkijono += rivi;
+        merkkijono += "\n";
     }
-</pre>
+
+    lukija.close();
+    return merkkijono;
+}</pre>
 
     <p>Koska käytämme tiedoston lukemiseen <code>Scanner</code>-luokkaa, käytössämme on kaikki Scanner-luokan tarjoamat metodit. Esimerkiksi metodi <code>hasNext()</code> palauttaa totuusarvon <code>true</code>, jos luettavassa tiedostossa on vielä luettavaa jäljellä, ja metodi <code>next()</code> lukee seuraavan sanan metodin palauttamaan <code>String</code>-olioon. </p>
 
     <p>Seuraava ohjelma luo <code>Scanner</code>-olion, joka avaa tiedoston <code>tiedosto.txt</code>. Sen jälkeen se tulostaa joka viidennen sanan tiedostosta.</p>
 
 <pre class="sh_java">
-        File tiedosto = new File("tiedosto.txt");
-        Scanner lukija = new Scanner(tiedosto);
+File tiedosto = new File("tiedosto.txt");
+Scanner lukija = new Scanner(tiedosto);
 
-        int monesko = 0;
-        while (lukija.hasNext()) {
-            monesko++;
-            String sana = lukija.next();
+int monesko = 0;
+while (lukija.hasNext()) {
+    monesko++;
+    String sana = lukija.next();
 
-            if (monesko % 5 == 0) {
-                System.out.println(sana);
-            }
-        }
-</pre>
+    if (monesko % 5 == 0) {
+        System.out.println(sana);
+    }
+}</pre>
 
     <p>Alla on ensin luetun tiedoston sisältämä teksti ja sitten ohjelman tulostus</p>
 
 <pre>
 Poikkeukset (exceptions) ovat &quot;poikkeuksellisia tilanteita&quot; kesken normaalin ohjelmansuorituksen:
 tiedosto loppuu, merkkijono ei kelpaa kokonaisluvuksi, odotetun olion tilalla onkin null-arvo,
-taulukon indeksi menee ohjelmointivirheen takia sopimattomaksi, ...
-</pre>
+taulukon indeksi menee ohjelmointivirheen takia sopimattomaksi, ...</pre>
 
 <pre>
 tilanteita&quot;
 loppuu,
 odotetun
 taulukon
-sopimattomaksi,
-</pre>
+sopimattomaksi,</pre>
 
-<h3>Merkistöongelmista</h3>
+    <h3>Merkistöongelmista</h3>
 
     <p>Tekstiä tiedostosta luettaessa (tai tiedostoon tallennettaessa) Java joutuu päättelemään käyttöjärjestelmän käyttämän merkistön. Merkistön tuntemusta tarvitaan sekä tekstin tallentamiseen tietokoneen kovalevylle binäärimuotoiseksi että binäärimuotoisen datan tekstiksi kääntämiseksi.</p>
 
@@ -7079,9 +7009,8 @@ sopimattomaksi,
     <p>UTF-8 -merkistöä käyttävän tiedostoa lukevan Scanner-olion voi luoda seuraavasti:</p>
 
 <pre class="sh_java">
-    File tiedosto = new File("esimerkkitiedosto.txt");
-    Scanner lukija = new Scanner(tiedosto, "UTF-8");
-</pre>
+File tiedosto = new File("esimerkkitiedosto.txt");
+Scanner lukija = new Scanner(tiedosto, "UTF-8");</pre>
 
     <p>Toinen vaihtoehto merkistön asettamiseksi on ympäristömuuttujan käyttäminen. Macintosh ja Windows-käyttäjät voivat asettaa ympäristömuuttujan <code>JAVA_TOOL_OPTIONS</code> arvoksi merkkijonon <code>-Dfile.encoding=UTF8</code>. Tällöin Java käyttää oletuksena aina UTF-8-merkistöä.</p>
 
@@ -7089,11 +7018,11 @@ sopimattomaksi,
 <div class="tehtava">
   <h3>Rivit joilla sana</h3>
 
-<p>Tee luokka <code>Tulostaja</code> ja sille konstruktori <code>public Tulostaja(String tiedostonNimi)</code>, joka saa parametrinaan tiedoston nimeä vastaavan merkkijonon sekä metodi <code>public void tulostaRivitJoilla(String sana)</code> tulostaa tiedostosta ne rivit, joilla esiintyy parametrina oleva sana (<em>pienet ja isot kirjaimet erotellaan tehtävässä, eli esim. "koe" ja "Koe" eivät ole sama sana</em>), rivit tulostetaan samassa järjestyksessä missä ne ovat tiedostossa. </p>
+  <p>Tee luokka <code>Tulostaja</code> ja sille konstruktori <code>public Tulostaja(String tiedostonNimi)</code>, joka saa parametrinaan tiedoston nimeä vastaavan merkkijonon sekä metodi <code>public void tulostaRivitJoilla(String sana)</code> tulostaa tiedostosta ne rivit, joilla esiintyy parametrina oleva sana (<em>pienet ja isot kirjaimet erotellaan tehtävässä, eli esim. "koe" ja "Koe" eivät ole sama sana</em>), rivit tulostetaan samassa järjestyksessä missä ne ovat tiedostossa. </p>
 
-<p>Jos parametri on tyhjä merkkijono, tulostuu koko tiedosto.</p>
+  <p>Jos parametri on tyhjä merkkijono, tulostuu koko tiedosto.</p>
 
-<p>Jos tiedostoa ei ole olemassa, heittää konstruktori aiheutuvan poikkeuksen eteenpäin, eli try-catch-komentoa ei tarvita, riittää määritellä konstruktori seuraavasti:</p>
+  <p>Jos tiedostoa ei ole olemassa, heittää konstruktori aiheutuvan poikkeuksen eteenpäin, eli try-catch-komentoa ei tarvita, riittää määritellä konstruktori seuraavasti:</p>
 
 <pre class="sh_java">
 public Tulostaja {
@@ -7103,10 +7032,9 @@ public Tulostaja {
    }
 
    // ...
-}
-</pre>
+}</pre>
 
-<p>Projektisi default-pakkauksessa on testausta varten tiedosto <em>testitiedosto.txt</em>. Ohjelmasta avatessa tiedoston nimeksi tulee antaa <code>src/testitiedosto.txt</code>. Tiedoston sisältö on seuraava:</p>
+  <p>Projektisi default-pakkauksessa on testausta varten tiedosto <em>testitiedosto.txt</em>. Ohjelmasta avatessa tiedoston nimeksi tulee antaa <code>src/testitiedosto.txt</code>. Tiedoston sisältö on seuraava:</p>
 
 <pre>
 Siinä vanha Väinämöinen
@@ -7115,23 +7043,21 @@ Niin tuli kevätkäkönen
 näki koivun kasvavaksi
 Miksipä on tuo jätetty
 koivahainen kaatamatta
-Sanoi vanha Väinämöinen
-</pre>
+Sanoi vanha Väinämöinen</pre>
 
-<p>Seuraavassa esimerkki ohjelman toiminnasta testitiedostolla:</p>
+  <p>Seuraavassa esimerkki ohjelman toiminnasta testitiedostolla:</p>
 
 <pre class="sh_java">
-    Tulostaja tulostaja = new Tulostaja("src/testitiedosto.txt");
+Tulostaja tulostaja = new Tulostaja("src/testitiedosto.txt");
 
-    tulostaja.tulostaRivitJoilla("Väinämöinen");
-    System.out.println("-----");
-    tulostaja.tulostaRivitJoilla("Frank Zappa");
-    System.out.println("-----");
-    tulostaja.tulostaRivitJoilla("");
-    System.out.println("-----");
-</pre>
+tulostaja.tulostaRivitJoilla("Väinämöinen");
+System.out.println("-----");
+tulostaja.tulostaRivitJoilla("Frank Zappa");
+System.out.println("-----");
+tulostaja.tulostaRivitJoilla("");
+System.out.println("-----");</pre>
 
-<p>Tulostuu:</p>
+  <p>Tulostuu:</p>
 
 <pre>
 Siinä vanha Väinämöinen
@@ -7144,11 +7070,12 @@ Niin tuli kevätkäkönen
 näki koivun kasvavaksi
 Miksipä on tuo jätetty
 koivahainen kaatamatta
-Sanoi vanha Väinämöinen
-</pre>
+Sanoi vanha Väinämöinen</pre>
 
 <p>Projektipohjasta löytyy myös koko Kalevala, tiedoston nimi on <code>src/kalevala.txt</code></p>
+
 </div>
+
 <div class="tehtava">
   <h3>Tiedoston analyysi</h3>
 
@@ -7156,43 +7083,41 @@ Sanoi vanha Väinämöinen
 
   <h4>Rivien laskeminen</h4>
 
-
   <p>Tee pakkaukseen <code>tiedosto</code> luokka <code>Analyysi</code>, jolla on konstruktori <code>public Analyysi(File tiedosto)</code>. Toteuta luokalle metodi <code>public int rivimaara()</code>, joka palauttaa konstruktorille annetun tiedoston rivimäärän.</p>
 
-<p>Metodi ei saa olla "kertakäyttöinen", eli sen pitää tuottaa oikea tulos myös usealla peräkkäisellä kutsulla. Huomaa, että kun teet tiedostoa vastaavan Scanner-olion, ja luet tiedoston koko sisällön <code>nextLine</code>-komennoilla, et voi käyttää enää <em>samaa</em> skanneria tiedoston uudelleenlukemiseen!</p>
+  <p>Metodi ei saa olla "kertakäyttöinen", eli sen pitää tuottaa oikea tulos myös usealla peräkkäisellä kutsulla. Huomaa, että kun teet tiedostoa vastaavan Scanner-olion, ja luet tiedoston koko sisällön <code>nextLine</code>-komennoilla, et voi käyttää enää <em>samaa</em> skanneria tiedoston uudelleenlukemiseen!</p>
 
-<p><strong>Huom:</strong> jos testit sanovat <em>timeout</em>, et todennäköisesti muista lukea tiedostoa ollenkaan, eli <code>nextLine</code>-kutsut puuttuvat!</p>
+  <p><strong>Huom:</strong> jos testit sanovat <em>timeout</em>, et todennäköisesti muista lukea tiedostoa ollenkaan, eli <code>nextLine</code>-kutsut puuttuvat!</p>
 
   <h4>Merkkien laskeminen</h4>
 
   <p>Toteuta luokkaan <code>Analyysi</code> metodi <code>public int merkkeja()</code>, joka palauttaa luokan konstruktorille annetun tiedoston merkkien määrän.</p>
 
-<p>Metodi ei saa olla "kertakäyttöinen", eli sen pitää tuottaa oikea tulos myös usealla peräkkäisellä kutsulla.</p>
+  <p>Metodi ei saa olla "kertakäyttöinen", eli sen pitää tuottaa oikea tulos myös usealla peräkkäisellä kutsulla.</p>
 
   <p>Voit itse päättää miten reagoidaan jos konstruktorin parametrina saatua tiedostoa ei ole olemassa.</p>
 
-<p>Projektisi testipakkauksessa on testausta varten tiedosto <em>testitiedosto.txt</em>. Ohjelmasta avatessa tiedoston nimeksi tulee antaa <code>test/testitiedosto.txt</code>. Tiedoston sisältö on seuraava:</p>
+  <p>Projektisi testipakkauksessa on testausta varten tiedosto <em>testitiedosto.txt</em>. Ohjelmasta avatessa tiedoston nimeksi tulee antaa <code>test/testitiedosto.txt</code>. Tiedoston sisältö on seuraava:</p>
 
 <pre>
 rivejä tässä on 3 ja merkkejä
 koska rivinvaihdotkin ovat
-merkkejä
-</pre>
+merkkejä</pre>
 
 <p>Ohjelman toiminta testaustiedostolla:</p>
 
 <pre class="sh_java">
-    File tiedosto = new File("src/testitiedosto.txt");
-    Analyysi analyysi = new Analyysi(tiedosto);
-    System.out.println("Rivejä: " + analyysi.rivimaara());
-    System.out.println("Merkkejä: " + analyysi.merkkeja());
-</pre>
+File tiedosto = new File("src/testitiedosto.txt");
+Analyysi analyysi = new Analyysi(tiedosto);
+System.out.println("Rivejä: " + analyysi.rivimaara());
+System.out.println("Merkkejä: " + analyysi.merkkeja());</pre>
 
 <pre>
 Rivejä: 3
-Merkkejä: 67
-</pre>
+Merkkejä: 67</pre>
+
 </div>
+
 <div class="tehtava">
   <h3>Sanatutkimus</h3>
 
@@ -7204,7 +7129,7 @@ Koska sanalista on varsin pitkä, on projektissa testausta varten myös <code>pi
 
   <p><strong>Mikäli sinulla on ongelmia ääkkösellisten sanojen kanssa</strong> (mac ja windows käyttäjät) luo <code>Scanner</code>-olio antaen sille parametrina merkistö "UTF-8" seuraavasti: <code> Scanner lukija = new Scanner(tiedosto, "UTF-8");</code> Ongelmat liittyvät erityisesti testien suoritukseen.</p>
 
-  <h4  >Sanojen määrä</h4>
+  <h4>Sanojen määrä</h4>
 
   <p>Luo Sanatutkimus-luokalle konstruktori <code>public Sanatutkimus(File tiedosto)</code> joka luo uuden Sanatutkimus-olion, joka tutkii parametrina annettavaa tiedostoa.</p>
 
@@ -7215,7 +7140,7 @@ Koska sanalista on varsin pitkä, on projektissa testausta varten myös <code>pi
 
   <p>Tee luokkaan metodi <code>public List&lt;String&gt; kirjaimenZSisaltavatSanat()</code>, joka palauttaa tiedoston kaikki sanat, joissa on z-kirjain. Tällaisia sanoja ovat esimerkiksi jazz ja zombi.</p>
 
-  <h4  >l-pääte</h4>
+  <h4>l-pääte</h4>
 
   <p>Tee luokkaan metodi <code>public List&lt;String&gt; kirjaimeenLPaattyvatSanat()</code>, joka palauttaa tiedoston kaikki sanat, jotka päättyvät l-kirjaimeen. Tällaisia sanoja ovat esimerkiksi kannel ja sammal.</p>
 
@@ -7225,105 +7150,91 @@ Koska sanalista on varsin pitkä, on projektissa testausta varten myös <code>pi
 
   <p>Tee luokkaan metodi <code>public List&lt;String&gt; palindromit()</code>, joka palauttaa tiedoston kaikki sanat, jotka ovat palindromeja. Tällaisia sanoja ovat esimerkiksi ala ja enne.</p>
 
-  <h4  >Kaikki vokaalit</h4>
+  <h4>Kaikki vokaalit</h4>
 
   <p>Tee luokkaan metodi <code>public List&lt;String&gt; kaikkiVokaalitSisaltavatSanat()</code>, joka palauttaa tiedoston kaikki sanat, jotka sisältävät kaikki suomen kielen vokaalit (aeiouyäö). Tällaisia sanoja ovat esimerkiksi myöhäiselokuva ja ympäristönsuojelija.</p>
+
 </div>
 </div>
-
-
-
-
 
 
 <h2>Hajautustauluista ja joukoista</h2>
 
-<h3>Monta arvoa yhtä avainta kohti</h3>
+  <h3>Monta arvoa yhtä avainta kohti</h3>
 
-<p>Kuten muistamme, voi HashMapiin tallettaa tiettyä avainta kohti vaan yhden arvon. Seuraavassa esimerkissä tallennamme henkilöiden puhelinnumeroita HashMap:iin.</p>
+  <p>HashMapiin voi asettaa tiettyä avainta kohti vaan yhden arvon. Seuraavassa esimerkissä tallennamme henkilöiden puhelinnumeroita HashMap:iin.</p>
 
 <pre class="sh_java">
-  Map&lt;String, String&gt; puhelinnumerot = new HashMap&lt;String, String&gt;();
+Map&lt;String, String&gt; puhelinnumerot = new HashMap&lt;&gt;();
+puhelinnumerot.put("Pekka", "040-12348765");
 
-  puhelinnumerot.put("Pekka", "040-12348765");
+System.out.println("Pekan numero: "+ puhelinnumerot.get("Pekka"));
 
-  System.out.println( "Pekan numero: "+ puhelinnumerot.get("Pekka") );
+puhelinnumerot.put("Pekka", "09-111333");
 
-  puhelinnumerot.put("Pekka", "09-111333");
+System.out.println("Pekan numero: "+ puhelinnumerot.get("Pekka"));</pre>
 
-  System.out.println( "Pekan numero: "+ puhelinnumerot.get("Pekka") );
-</pre>
-
-<p>Kuten odotettua, tulostus kertoo, että</p>
+  <p>Kuten odotettua, tulostus kertoo, että</p>
 
 <pre>
 Pekan numero: 040-12348765
-Pekan numero: 09-111333
-</pre>
+Pekan numero: 09-111333</pre>
 
-<p>Entä jos haluaisimmekin tallettaa yhtä avainta kohti useita arvoja, eli esim yhtä henkilöä kohti monta puhelinnumeroa? Onnistuuko se HashMap:in avulla? Kyllä, esim. tallettamalla HashMap:iin Stringien sijaan esim. ArrayList:eja arvoiksi, voidaan yhteen avaimeen "liittää" useampia oliota. Muutetaan puhelinnumeroiden talletustapaa seuraavasti:</p>
-
-<pre class="sh_java">
-  Map&lt;String, ArrayList&lt;String&gt;&gt; puhelinnumerot = new HashMap&lt;String, ArrayList&lt;String&gt;&gt;();
-</pre>
-
-<p>Nyt siis HashMapissa jokaiseen avaimeen littyy lista. Vaikka new-komento luokin HashMapin, on mapin sisälle talletettavat listat luotava erikseen. Seuraavassa lisätään HashMapiin Pekalle kaksi numeroa ja tulostetaan ne:</p>
+  <p>Entä jos haluaisimmekin tallettaa yhtä avainta kohti useita arvoja, eli esim yhtä henkilöä kohti monta puhelinnumeroa? Onnistuuko se HashMap:in avulla? <span class="ignore-in-mooc only-in-hy">Pariohjelmointitehtäviä tehneille tämä saattaa olla jo tuttua:</span> Tallettamalla HashMap:in arvoiksi Stringien sijaan esim. ArrayListejä, voidaan yhteen avaimeen "liittää" useampia oliota. Muutetaan puhelinnumeroiden talletustapaa seuraavasti:</p>
 
 <pre class="sh_java">
-  Map&lt;String, ArrayList&lt;String&gt;&gt; puhelinnumerot = new HashMap&lt;String, ArrayList&lt;String&gt;&gt;();
-
-  // liitetään Pekka-nimeen ensin tyhjä ArrayList
-  puhelinnumerot.put( "Pekka", new  ArrayList&lt;String&gt;() );
-
-  // ja lisätään Pekkaa vastaavalle listalle puhelinnumero
-  puhelinnumerot.get("Pekka").add("040-12348765");
-
-  // ja lisätään toinenkin puhelinnumero
-  puhelinnumerot.get("Pekka").add("09-111333");
-
-  System.out.println( "Pekan numerot: "+ puhelinnumerot.get("Pekka") );
+Map&lt;String, List&lt;String&gt;&gt; puhelinnumerot = new HashMap&lt;&gt;();
 </pre>
+
+  <p>Nyt ylläolevassa HashMapissa on jokaiseen avaimeen liitettynä lista. Vaikka new-komento luokin HashMapin, on mapin sisälle talletettavat listat luotava erikseen. Seuraavassa lisätään HashMapiin Pekalle kaksi numeroa ja tulostetaan ne:</p>
+
+<pre class="sh_java">
+Map&lt;String, List&lt;String&gt;&gt; puhelinnumerot = new HashMap&lt;&gt;();
+
+// liitetään Pekka-nimeen ensin tyhjä ArrayList
+puhelinnumerot.put("Pekka", new ArrayList&lt;&gt;());
+
+// ja lisätään Pekkaa vastaavalle listalle puhelinnumero
+puhelinnumerot.get("Pekka").add("040-12348765");
+// ja lisätään toinenkin puhelinnumero
+puhelinnumerot.get("Pekka").add("09-111333");
+
+System.out.println("Pekan numerot: " + puhelinnumerot.get("Pekka"));</pre>
 
 <p>Tulostuu</p>
 
 <pre>
-Pekan numero: [040-12348765, 09-111333]
-</pre>
+Pekan numero: [040-12348765, 09-111333]</pre>
 
-<p>Määrittelimme muuttujan puhelinnumero tyypiksi <code>Map&lt;String, ArrayList&lt;String&gt;&gt;</code> eli Map jonka avaimena on merkkijono ja arvona merkkijonoja sisältävä lista. Konkreettinen toteutus, eli luotu olio oli HasMap. Olisimme voineet määritellä muuttujan myös seuraavasti:
-</p>
+  <p>Määrittelimme muuttujan puhelinnumero tyypiksi <code>Map&lt;String, List&lt;String&gt;&gt;</code> eli Map jonka avaimena on merkkijono ja arvona merkkijonoja sisältävä lista. Konkreettinen toteutus, eli luotu olio oli HasMap. Olisimme voineet määritellä muuttujan myös seuraavasti:</p>
 
 <pre class="sh_java">
-Map&lt;String, List&lt;String&gt;&gt; puhelinnumero = new HashMap&lt;String, List&lt;String&gt;&gt;();
-</pre>
+Map&lt;String, List&lt;String&gt;&gt; puhelinnumero = new HashMap&lt;&gt;();</pre>
 
-<p>
-Eli nyt muuttujan tyyppi on Map, jonka avaimena on merkkijono ja arvona merkkijonoja sisältävä <code>List</code>, joka siis on rajapinta joka määrittelee listatoiminnallisuuden, esim. ArrayList toteuttaa tämän rajapinnan. Konkreettinen olio on HashMap.
-</p>
+  <p>Eli nyt muuttujan tyyppi on Map, jonka avaimena on merkkijono ja arvona merkkijonoja sisältävä <code>List</code>, joka siis on rajapinta joka määrittelee listatoiminnallisuuden, esim. ArrayList toteuttaa tämän rajapinnan. Konkreettinen olio on HashMap.</p>
 
-<p>HashMap:iin talletettavat arvot siis ovat <code>List&lt;String&gt;</code>-rajapinnan toteuttavia konkreettisia olioita, esim. ArrayListeja. Eli lisäys HashMapiin tapahtuu edelleen seuraavasti:</p>
+  <p>HashMap:iin talletettavat arvot siis ovat <code>List&lt;String&gt;</code>-rajapinnan toteuttavia konkreettisia olioita, esim. ArrayListeja. Eli lisäys HashMapiin tapahtuu edelleen seuraavasti:</p>
 
 <pre class="sh_java">
-  // liitetään Pekka-nimeen ensin tyhjä ArrayList
-  puhelinnumerot.put( "Pekka", new  ArrayList&lt;String&gt;() );
+// liitetään Pekka-nimeen ensin tyhjä ArrayList
+puhelinnumerot.put("Pekka", new  ArrayList&lt;&gt;());
 
-  // ...
-</pre>
+// ...</pre>
 
-<p>Jatkossa pyrkimyksemme on käyttää tyyppimäärittelyissä konkreettisten luokkien, esim. <code>HashMap</code> ja <code>ArrayList</code> sijaan niitä vastaavia rajapintoja <code>Map</code> ja <code>List</code>.</p>
+  <p>Jatkossa pyrkimyksemme on käyttää tyyppimäärittelyissä konkreettisten luokkien, esim. <code>HashMap</code> ja <code>ArrayList</code> sijaan niitä vastaavia rajapintoja <code>Map</code> ja <code>List</code>.</p>
 
-<h3>Joukoista</h3>
+  <h3>Joukoista</h3>
 
-    <p>Rajapinta <code><a href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html" target="_blank">Set</a></code> kuvaa joukon toiminnallisuutta. Toisin kuin listalla, on joukossa kutakin alkioita korkeintaan yksi kappale, eli yhtään samanlaista oliota ei ole kahdesti. Olioiden samankaltaisuuden tarkistaminen toteutetaan <code>equals</code> ja <code>hashCode</code> -metodeja käyttämällä. </p>
+  <p>Rajapinta <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html" target="_blank">Set</a></code> kuvaa joukon toiminnallisuutta. Toisin kuin listalla, on joukossa kutakin alkioita korkeintaan yksi kappale, eli yhtään samanlaista oliota ei ole kahdesti. Olioiden samankaltaisuuden tarkistaminen toteutetaan <code>equals</code> ja <code>hashCode</code> -metodeja käyttämällä. </p>
 
-<p>Yksi rajapinnan <code>Set</code> toteuttava luokka on  <code><a href="http://docs.oracle.com/javase/6/docs/api/java/util/HashSet.html" target="_blank">HashSet</a></code>. Toteutetaan sen avulla luokka <code>Tehtavakirjanpito</code>, joka tarjoaa mahdollisuuden tehtävien kirjanpitoon ja tehtyjen tehtävien tulostamiseen. Oletetaan että tehtävät ovat aina kokonaislukuja.</p>
+  <p>Yksi rajapinnan <code>Set</code> toteuttava luokka on  <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html" target="_blank">HashSet</a></code>. Toteutetaan sen avulla luokka <code>Tehtavakirjanpito</code>, joka tarjoaa mahdollisuuden tehtävien kirjanpitoon ja tehtyjen tehtävien tulostamiseen. Oletetaan että tehtävät ovat aina kokonaislukuja.</p>
 
 <pre class="sh_java">
 public class Tehtavakirjanpito {
     private Set&lt;Integer&gt; tehdytTehtavat;
 
     public Tehtavakirjanpito() {
-        this.tehdytTehtavat = new HashSet&lt;Integer&gt;();
+        this.tehdytTehtavat = new HashSet&lt;&gt;();
     }
 
     public void lisaa(int tehtava) {
@@ -7335,18 +7246,16 @@ public class Tehtavakirjanpito {
             System.out.println(tehtava);
         }
     }
-}
-</pre>
+}</pre>
 
 <pre class="sh_java">
-        Tehtavakirjanpito kirjanpito = new Tehtavakirjanpito();
-        kirjanpito.lisaa(1);
-        kirjanpito.lisaa(1);
-        kirjanpito.lisaa(2);
-        kirjanpito.lisaa(3);
+Tehtavakirjanpito kirjanpito = new Tehtavakirjanpito();
+kirjanpito.lisaa(1);
+kirjanpito.lisaa(1);
+kirjanpito.lisaa(2);
+kirjanpito.lisaa(3);
 
-        kirjanpito.tulosta();
-</pre>
+kirjanpito.tulosta();</pre>
 
 <pre>
 1
@@ -7361,13 +7270,13 @@ public class Tehtavakirjanpito {
     private Map&lt;String, Set&lt;Integer&gt;&gt; tehdytTehtavat;
 
     public Tehtavakirjanpito() {
-        this.tehdytTehtavat = new HashMap&lt;String, Set&lt;Integer&gt;&gt;();
+        this.tehdytTehtavat = new HashMap&lt;&gt;();
     }
 
     public void lisaa(String kayttaja, int tehtava) {
         // huomaa miten uudelle käyttäjälle on lisättävä HashMapiin ensin tyhjä tehtäväjoukko
         if (!this.tehdytTehtavat.containsKey(kayttaja)) {
-            this.tehdytTehtavat.put(kayttaja, new HashSet&lt;Integer&gt;());
+            this.tehdytTehtavat.put(kayttaja, new HashSet&lt;&gt;());
         }
 
         // haetaan ensin käyttäjän tehtävät sisältävä joukko ja tehdään siihen lisäys
@@ -7383,49 +7292,44 @@ public class Tehtavakirjanpito {
             System.out.println(kayttaja + ": " + this.tehdytTehtavat.get(kayttaja));
         }
     }
-}
-</pre>
+}</pre>
 
 <pre class="sh_java">
-        Tehtavakirjanpito kirjanpito = new Tehtavakirjanpito();
-        kirjanpito.lisaa("Mikael", 3);
-        kirjanpito.lisaa("Mikael", 4);
-        kirjanpito.lisaa("Mikael", 3);
-        kirjanpito.lisaa("Mikael", 3);
+Tehtavakirjanpito kirjanpito = new Tehtavakirjanpito();
+kirjanpito.lisaa("Mikael", 3);
+kirjanpito.lisaa("Mikael", 4);
+kirjanpito.lisaa("Mikael", 3);
+kirjanpito.lisaa("Mikael", 3);
 
-        kirjanpito.lisaa("Pekka", 4);
-        kirjanpito.lisaa("Pekka", 4);
+kirjanpito.lisaa("Pekka", 4);
+kirjanpito.lisaa("Pekka", 4);
 
-        kirjanpito.lisaa("Matti", 1);
-        kirjanpito.lisaa("Matti", 2);
+kirjanpito.lisaa("Matti", 1);
+kirjanpito.lisaa("Matti", 2);
 
-        kirjanpito.tulosta();
-</pre>
+kirjanpito.tulosta();</pre>
 
 <pre>
 Matti: [1, 2]
 Pekka: [4]
-Mikael: [3, 4]
-</pre>
+Mikael: [3, 4]</pre>
 
 
-    <p>Huomaamme että käyttäjien nimet eivät tulostu esimerkissä	 järjestyksessä. Tämä selittyy sillä että <code>HashMap</code>-tyyppisessä hajautustaulussa alkioiden tallennus tapahtuu <code>hashCode</code>-metodin palauttaman hajautusarvon perusteella, eikä se liity millään tavalla alkioiden järjestykseen.</p>
+    <p>Huomaamme että käyttäjien nimet eivät tulostu esimerkissä järjestyksessä. Tämä selittyy sillä että <code>HashMap</code>-tyyppisessä hajautustaulussa alkioiden tallennus tapahtuu <code>hashCode</code>-metodin palauttaman hajautusarvon perusteella, eikä se liity millään tavalla alkioiden järjestykseen.</p>
 
 <div class="tehtavat">
 <div class="tehtava">
 <h3>Sanakirja usealle käännökselle</h3>
 
-<p>Tehdään hieman laajennettu versio aiemmin kurssilla tehdystä sanakirjasta. Tehtävänäsi on toteuttaa pakkaukseen <code>sanakirja</code> luokka <code>OmaUseanKaannoksenSanakirja</code>, joka voi tallettaa yhden tai useamman käännöksen jokaiselle sanalle. Luokan tulee toteuttaa tehtäväpohjassa annettu rajapinta <code>UseanKaannoksenSanakirja</code>, jossa on seuraavat toiminnot:</p>
+  <p>Tehdään hieman laajennettu versio aiemmin kurssilla tehdystä sanakirjasta. Tehtävänäsi on toteuttaa pakkaukseen <code>sanakirja</code> luokka <code>OmaUseanKaannoksenSanakirja</code>, joka voi tallettaa yhden tai useamman käännöksen jokaiselle sanalle. Luokan tulee toteuttaa tehtäväpohjassa annettu rajapinta <code>UseanKaannoksenSanakirja</code>, jossa on seuraavat toiminnot:</p>
 
-<p>
   <ul>
-<li><code>public void lisaa(String sana, String kaannos)</code></li>lisää käännöksen sanalle säilyttäen vanhat käännökset<br/>
-<li><code>public Set&lt;String&gt; kaanna(String sana)</code></li>palauttaa <code>Set</code>-olion, jossa on kaikki käännökset sanalle, tai <code>null</code>-viitteen, jos sanaa ei ole sanakirjassa<br/>
-<li><code>public void poista(String sana)</code></li>poistaa sanan ja sen kaikki käännökset sanakirjasta<br/>
+    <li><code>public void lisaa(String sana, String kaannos)</code></li>lisää käännöksen sanalle säilyttäen vanhat käännökset<br/>
+    <li><code>public Set&lt;String&gt; kaanna(String sana)</code></li>palauttaa <code>Set</code>-olion, jossa on kaikki käännökset sanalle, tai <code>null</code>-viitteen, jos sanaa ei ole sanakirjassa<br/>
+    <li><code>public void poista(String sana)</code></li>poistaa sanan ja sen kaikki käännökset sanakirjasta<br/>
   </ul>
-</p>
 
-<p>Käännökset kannattanee tallentaa yllä olevan esimerkin Tehtavakirjanpito tapaan <code>Map&lt;String, Set&lt;String&gt;&gt;</code>-tyyppiseen oliomuuttujaan.</p>
+  <p>Käännökset kannattanee tallentaa yllä olevan esimerkin Tehtavakirjanpito tapaan <code>Map&lt;String, Set&lt;String&gt;&gt;</code>-tyyppiseen oliomuuttujaan.</p>
 
 <p>Rajapinnan koodi:</p>
 
@@ -7438,48 +7342,41 @@ public interface UseanKaannoksenSanakirja {
     void lisaa(String sana, String kaannos);
     Set&lt;String&gt; kaanna(String sana);
     void poista(String sana);
-}
-</pre>
+}</pre>
 
 <p>Esimerkkiohjelma:</p>
 
 <pre class="sh_java">
-    UseanKaannoksenSanakirja sanakirja = new OmaUseanKaannoksenSanakirja();
-    sanakirja.lisaa("kuusi", "six");
-    sanakirja.lisaa("kuusi", "spruce");
+UseanKaannoksenSanakirja sanakirja = new OmaUseanKaannoksenSanakirja();
+sanakirja.lisaa("kuusi", "six");
+sanakirja.lisaa("kuusi", "spruce");
 
-    sanakirja.lisaa("pii", "silicon");
-    sanakirja.lisaa("pii", "pi");
+sanakirja.lisaa("pii", "silicon");
+sanakirja.lisaa("pii", "pi");
 
-    System.out.println(sanakirja.kaanna("kuusi"));
-    sanakirja.poista("pii");
-    System.out.println(sanakirja.kaanna("pii"));
-</pre>
+System.out.println(sanakirja.kaanna("kuusi"));
+sanakirja.poista("pii");
+System.out.println(sanakirja.kaanna("pii"));</pre>
 
 <p>Tulostuu:</p>
 
 <pre>
 [six, spruce]
-null
-</pre>
+null</pre>
 
 </div>
-
-
 
 <div class="tehtava">
   <h3>Duplikaattien poistaja</h3>
 
   <p>Tehtävänäsi on toteuttaa pakkaukseen <code>tyokalut</code> luokka <code>OmaDuplikaattienPoistaja</code>, joka tallettaa annetut merkkijonot siten, että annetuista merkkijonoista poistetaan samanlaiset merkkijonot (eli duplikaatit). Lisäksi luokka pitää kirjaa duplikaattien määrästä. Luokan tulee toteuttaa tehtäväpohjassa annettu rajapinta <code>DuplikaattienPoistaja</code>, jossa on seuraavat toiminnot:</p>
 
-  <p>
-    <ul>
-<li><code>public void lisaa(String merkkijono)</code></li> tallettaa merkkijonon, jos se ei ole duplikaatti<br/>
-<li><code>public int getHavaittujenDuplikaattienMaara()</code></li> palauttaa tähän mennessä havaittujen duplikaattien määrän<br/>
-<li><code>public Set&lt;String&gt; getUniikitMerkkijonot()</code></li> palauttaa <code>Set&lt;String&gt;</code>-rajapinnan toteuttavan olion, jossa on kaikki uniikit lisätyt merkkijonot (ei siis duplikaatteja!). Jos merkkijonoja ei ole, palautetaan tyhjä joukko-olio.<br/>
-<li><code>public void tyhjenna()</code></li> poistaa talletetut merkkijonot ja nollaa havaittujen duplikaattien määrän<br/>
-    </ul>
-  </p>
+  <ul>
+    <li><code>public void lisaa(String merkkijono)</code></li> tallettaa merkkijonon, jos se ei ole duplikaatti<br/>
+    <li><code>public int getHavaittujenDuplikaattienMaara()</code></li> palauttaa tähän mennessä havaittujen duplikaattien määrän<br/>
+    <li><code>public Set&lt;String&gt; getUniikitMerkkijonot()</code></li> palauttaa <code>Set&lt;String&gt;</code>-rajapinnan toteuttavan olion, jossa on kaikki uniikit lisätyt merkkijonot (ei siis duplikaatteja!). Jos merkkijonoja ei ole, palautetaan tyhjä joukko-olio.<br/>
+    <li><code>public void tyhjenna()</code></li> poistaa talletetut merkkijonot ja nollaa havaittujen duplikaattien määrän<br/>
+  </ul>
 
   <p>Rajapinnan koodi:</p>
 
@@ -7493,40 +7390,38 @@ public interface DuplikaattienPoistaja {
     int getHavaittujenDuplikaattienMaara();
     Set&lt;String&gt; getUniikitMerkkijonot();
     void tyhjenna();
-}
-</pre>
+}</pre>
 
   <p>Rajapintaa voi käyttää esimerkiksi näin:</p>
 
 <pre class="sh_java">
-    public static void main(String[] args) {
-        DuplikaattienPoistaja poistaja = new OmaDuplikaattienPoistaja();
-        poistaja.lisaa("eka");
-        poistaja.lisaa("toka");
-        poistaja.lisaa("eka");
+public static void main(String[] args) {
+    DuplikaattienPoistaja poistaja = new OmaDuplikaattienPoistaja();
+    poistaja.lisaa("eka");
+    poistaja.lisaa("toka");
+    poistaja.lisaa("eka");
 
-        System.out.println("Duplikaattien määrä nyt: " +
-            poistaja.getHavaittujenDuplikaattienMaara());
+    System.out.println("Duplikaattien määrä nyt: " +
+        poistaja.getHavaittujenDuplikaattienMaara());
 
-        poistaja.lisaa("vika");
-        poistaja.lisaa("vika");
-        poistaja.lisaa("uusi");
+    poistaja.lisaa("vika");
+    poistaja.lisaa("vika");
+    poistaja.lisaa("uusi");
 
-        System.out.println("Duplikaattien määrä nyt: " +
-            poistaja.getHavaittujenDuplikaattienMaara());
+    System.out.println("Duplikaattien määrä nyt: " +
+        poistaja.getHavaittujenDuplikaattienMaara());
 
-        System.out.println("Uniikit merkkijonot: " +
-            poistaja.getUniikitMerkkijonot());
+    System.out.println("Uniikit merkkijonot: " +
+        poistaja.getUniikitMerkkijonot());
 
-        poistaja.tyhjenna();
+    poistaja.tyhjenna();
 
-        System.out.println("Duplikaattien määrä nyt: " +
-            poistaja.getHavaittujenDuplikaattienMaara());
+    System.out.println("Duplikaattien määrä nyt: " +
+        poistaja.getHavaittujenDuplikaattienMaara());
 
-        System.out.println("Uniikit merkkijonot: " +
-            poistaja.getUniikitMerkkijonot());
-    }
-</pre>
+    System.out.println("Uniikit merkkijonot: " +
+        poistaja.getUniikitMerkkijonot());
+}</pre>
 
   <p>Yllä oleva ohjelma tulostaisi: (merkkijonojen järjestys saa vaihdella, sillä ei ole merkitystä)</p>
 
@@ -7535,17 +7430,17 @@ Duplikaattien määrä nyt: 1
 Duplikaattien määrä nyt: 2
 Uniikit merkkijonot: [eka, toka, vika, uusi]
 Duplikaattien määrä nyt: 0
-Uniikit merkkijonot: []
-</pre>
+Uniikit merkkijonot: []</pre>
 
 </div>
 </div>
 
-<h3>Yksi olio useammassa eri listassa, Map-rakenteessa tai joukossa</h3>
 
-<p>Kuten muistamme, oliomuuttujat ovat viitetyyppisiä, eli muuttuja ei tallenna olioa itseään vaan viitteen olioon. Vastaavasti jos olio laitetaan esim. ArrayListiin, ei listalle talleteta olioa itseään vaan <em>viite</em> olioon. Mikään ei estäkään tallentamasta samaan olioon viitettä esim. useaan listaan tai HashMapiin. </p>
+  <h3>Yksi olio useammassa eri listassa, Map-rakenteessa tai joukossa</h3>
 
-<p>Tarkastellaan esimerkkinä kirjastoa joka tallettaa kirjat hashMapeihin sekä kirjailijan että kirjan isbn-numeron perusteella. Tämän lisäksi kirjasto pitää kaikkia lainassa olevia sekä hyllyssä olevia kirjoja omalla listallaan.</p>
+  <p>Kuten muistamme, oliomuuttujat ovat viitetyyppisiä, eli muuttuja ei tallenna olioa itseään vaan viitteen olioon. Vastaavasti jos olio laitetaan esim. ArrayListiin, ei listalle talleteta olioa itseään vaan <em>viite</em> olioon. Mikään ei estäkään tallentamasta samaan olioon viitettä esim. useaan listaan tai HashMapiin.</p>
+
+  <p>Tarkastellaan esimerkkinä kirjastoa joka tallettaa kirjat hashMapeihin sekä kirjailijan että kirjan isbn-numeron perusteella. Tämän lisäksi kirjasto pitää kaikkia lainassa olevia sekä hyllyssä olevia kirjoja omalla listallaan.</p>
 
 <pre class="sh_java">
 public class Kirja {
@@ -7555,15 +7450,29 @@ public class Kirja {
     private int vuosi;
     // ...
 }
+</pre>
 
+<pre class="sh_java">
 public class Kirjasto {
-    private Map&lt; String, Kirja&gt; kirjaIsbnNumeronPerusteella;
-    private Map&lt; String, List&lt;String&gt;&gt; kirjatKirjailijanPerusteella;
+    private Map&lt;String, Kirja&gt; kirjaIsbnNumeronPerusteella;
+    private Map&lt;String, List&lt;String&gt;&gt; kirjatKirjailijanPerusteella;
     private List&lt;Kirja&gt; lainassaOlevatKirjat;
     private List&lt;Kirja&gt; hyllyssaOlevatKirjat;
 
-    public void lisaaKirjaKokoelmaan(Kirja uusiKirja){
+    public Kirjasto() {
+        this.kirjaIsbnNumeronPerusteella = new HashMap&lt;&gt;();
+        this.kirjatKirjailijanPerusteella = new HashMap&lt;&gt;();
+        this.lainassaOlevatKirjat = new ArrayList&lt;&gt;();
+        this.hyllyssaOlevatKirjat = new ArrayList&lt;&gt;();
+    }
+
+    public void lisaaKirjaKokoelmaan(Kirja uusiKirja) {
         kirjaIsbnNumeronPerusteella.put(uusiKirja.getIsbn(), uusiKirja);
+
+        if(!kirjatKirjailijanPerusteella.containsKey(uusikirja.getKirjailija()) {
+            this.kirjatKirjailijanPerusteella.put(uusikirja.getKirjailija(), new ArrayList&lt;&gt;());
+        }
+
         kirjatKirjailijanPerusteella.get(uusikirja.getKirjailija()).add(uusiKirja);
         hyllyssaOlevatKirjat.add(uusiKirja);
     }
@@ -7576,54 +7485,54 @@ public class Kirjasto {
 }
 </pre>
 
-<p>Jos olio on yhtäaikaa useassa kokoelmassa (listalla, joukossa tai map-rakenteessa), on kiinnitettävä erityistä huomiota, että kokoelmien tila on konsistentti. Jos esim. kirja päätetään poistaa, on se poistettava molemmista mapeista sekä lainassa/hyllyssä olevia kuvaavalta listalta.</p>
+    <p>Jos olio on yhtäaikaa useassa kokoelmassa (listalla, joukossa tai map-rakenteessa), on kiinnitettävä erityistä huomiota, että kokoelmien tila on konsistentti. Jos esim. kirja päätetään poistaa, on se poistettava molemmista mapeista sekä lainassa/hyllyssä olevia kuvaavalta listalta.</p>
 
 <div class="tehtavat">
 <div class="tehtava">
   <h3>Numerotiedustelu</h3>
 
-<p><b>Huom: jotta testit toimisivat, ohjelmasi saa luoda vain yhden Scanner-olion. Älä myöskään käytä staattisia muuttujia, testit suorittavat ohjelman useita kertoja joten staattisiin muuttujiin edellisillä suorituskerroilla jääneet arvot todennäköisesti häiritsevät testien toimintaa!</b></p>
+  <p><b>Huom: jotta testit toimisivat, ohjelmasi saa luoda vain yhden Scanner-olion. Älä myöskään käytä staattisia muuttujia, testit suorittavat ohjelman useita kertoja joten staattisiin muuttujiin edellisillä suorituskerroilla jääneet arvot todennäköisesti häiritsevät testien toimintaa!</b></p>
 
 
-<p>Tehdään sovellus jonka avulla on mahdollista hallinnoida ihmisten puhelinnumeroita ja osoitteita.</p>
+  <p>Tehdään sovellus jonka avulla on mahdollista hallinnoida ihmisten puhelinnumeroita ja osoitteita.</p>
 
-<p>Tehtävän voi suorittaa 1-5 pisteen laajuisena. Yhden pisteen laajuuteen on toteutettava seuraavat toiminnot:</p>
+  <p>Tehtävän voi suorittaa 1-5 pisteen laajuisena. Yhden pisteen laajuuteen on toteutettava seuraavat toiminnot:</p>
 
-<ul>
-<li>1 puhelinnumeron lisäys henkilölle</li>
-<li>2 henkilön puhelinnumeroiden haku</li>
+  <ul>
+    <li>1 puhelinnumeron lisäys henkilölle</li>
+    <li>2 henkilön puhelinnumeroiden haku</li>
 </ul>
-
-<p>kahteen pisteeseen vaaditaan edellisten lisäksi</p>
-
-<ul>
-<li>3 numeroa vastaavan henkilön nimen haku</li>
-</ul>
-
-<p>kolmeen pisteeseen vaaditaan edellisten lisäksi</p>
-
-<ul>
-<li>4 osoitteen lisäys henkilölle</li>
-<li>5 henkilön tietojen (osoite ja puhelinnumero) haku</li>
-</ul>
-
-<p>neljään pisteeseen vaaditaan toiminto</p>
-
-<ul>
-<li>6 henkilön tietojen poisto</li>
-</ul>
-
-<p>ja täysiin pisteeseen vaaditaan vielä</p>
-
-<ul>
-<li>7 hakusanalla filtteröity listaus (nimen mukaan aakkostettuna), hakusana voi esiintyä henkilön nimessä tai osoitteessa</li>
-</ul>
-
-<p>Esimerkki ohjelman toiminnasta:</p>
-
+  
+  <p>kahteen pisteeseen vaaditaan edellisten lisäksi</p>
+  
+  <ul>
+    <li>3 numeroa vastaavan henkilön nimen haku</li>
+  </ul>
+  
+  <p>kolmeen pisteeseen vaaditaan edellisten lisäksi</p>
+  
+  <ul>
+    <li>4 osoitteen lisäys henkilölle</li>
+    <li>5 henkilön tietojen (osoite ja puhelinnumero) haku</li>
+  </ul>
+  
+  <p>neljään pisteeseen vaaditaan toiminto</p>
+  
+  <ul>
+    <li>6 henkilön tietojen poisto</li>
+  </ul>
+  
+  <p>ja täysiin pisteeseen vaaditaan vielä</p>
+  
+  <ul>
+    <li>7 hakusanalla filtteröity listaus (nimen mukaan aakkostettuna), hakusana voi esiintyä henkilön nimessä tai osoitteessa</li>
+  </ul>
+  
+  <p>Esimerkki ohjelman toiminnasta:</p>
+  
 <pre>
-numerotiedustelu
-käytettävissä olevat komennot:
+ numerotiedustelu
+ käytettävissä olevat komennot:
  1 lisää numero
  2 hae numerot
  3 hae puhelinnumeroa vastaava henkilö
@@ -7722,19 +7631,19 @@ komento: <font color="red">5</font>
 kenen: <font color="red">jukka</font>
   ei löytynyt
 
-komento: <font color="red">x</font>
-</pre>
+komento: <font color="red">x</font></pre>
 
-<p>Huomioita:</p>
-<ul>
-<li> Testien kannalta on oleellista että <em>käyttöliittymä</em> toimii kuten yllä olevassa esimerkissä. Sovellus voi itse päättää kuinka epäkelvot syötteet käsitellään. Testit sisältävät vaan kelvollisia syötteitä.</li>
-<li><em><strong>Ohjelman tulee käynnistyä kun tehtäväpohjassa oleva main-metodi suoritetaan, tehtävässä saa luoda vain yhden Scanner-olion.</strong></em></li>
-<li> Älä käytä staattisia muuttujia, testit suorittavat ohjelman useita kertoja joten staattisiin muuttujiin edellisillä suorituskerroilla jääneet arvot todennäköisesti häiritsevät testien toimintaa!</li>
-<li>Älä käytä luokkein nimissä skandeja, ne saattavat aiheuttaa ongelmia testeihin!</li>
-<li>Yksinkertaisuuden vuoksi oletetaan että nimi on yksittäinen merkkijono, eli jos halutaan sukunimen mukaan järjestetyn tulostus viimeiseen toimintoon, nimi on annettava muodossa <em>mikkola pekka</em>.</li>
-<li>Henkilöllä voi olla useita puhelinnumeroja sekä osoite. Henkilöllä ei kuitenkaan ole välttämättä yhtään puhelinnumeroa tai osoite ei ole tiedossa.</li>
-<li>Jos henkilö poistetaan, ei mikään haku saa enää palauttaa henkilön tietoja.</li>
-</ul>
+
+  <p>Huomioita:</p>
+  <ul>
+    <li> Testien kannalta on oleellista että <em>käyttöliittymä</em> toimii kuten yllä olevassa esimerkissä. Sovellus voi itse päättää kuinka epäkelvot syötteet käsitellään. Testit sisältävät vaan kelvollisia syötteitä.</li>
+    <li><em><strong>Ohjelman tulee käynnistyä kun tehtäväpohjassa oleva main-metodi suoritetaan, tehtävässä saa luoda vain yhden Scanner-olion.</strong></em></li>
+    <li> Älä käytä staattisia muuttujia, testit suorittavat ohjelman useita kertoja joten staattisiin muuttujiin edellisillä suorituskerroilla jääneet arvot todennäköisesti häiritsevät testien toimintaa!</li>
+    <li>Älä käytä luokkein nimissä skandeja, ne saattavat aiheuttaa ongelmia testeihin!</li>
+    <li>Yksinkertaisuuden vuoksi oletetaan että nimi on yksittäinen merkkijono, eli jos halutaan sukunimen mukaan järjestetyn tulostus viimeiseen toimintoon, nimi on annettava muodossa <em>mikkola pekka</em>.</li>
+    <li>Henkilöllä voi olla useita puhelinnumeroja sekä osoite. Henkilöllä ei kuitenkaan ole välttämättä yhtään puhelinnumeroa tai osoite ei ole tiedossa.</li>
+    <li>Jos henkilö poistetaan, ei mikään haku saa enää palauttaa henkilön tietoja.</li>
+  </ul>
 </div>
 </div>
 </div>
