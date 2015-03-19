@@ -6277,6 +6277,8 @@ public class Luokka implements Rajapinta {
     </ul>
   </div>
 
+  <div class="parqu-exercise" data-id="33" data-name="CompareTo"></div>          
+
   <div class="tehtavat">
     <div class="tehtava">
 
@@ -7331,7 +7333,7 @@ Mikael: [3, 4]</pre>
 
   <p>Käännökset kannattanee tallentaa yllä olevan esimerkin Tehtavakirjanpito tapaan <code>Map&lt;String, Set&lt;String&gt;&gt;</code>-tyyppiseen oliomuuttujaan.</p>
 
-<p>Rajapinnan koodi:</p>
+  <p>Rajapinnan koodi:</p>
 
 <pre class="sh_java">
 package sanakirja;
@@ -7455,7 +7457,7 @@ public class Kirja {
 <pre class="sh_java">
 public class Kirjasto {
     private Map&lt;String, Kirja&gt; kirjaIsbnNumeronPerusteella;
-    private Map&lt;String, List&lt;String&gt;&gt; kirjatKirjailijanPerusteella;
+    private Map&lt;String, List&lt;Kirja&gt;&gt; kirjatKirjailijanPerusteella;
     private List&lt;Kirja&gt; lainassaOlevatKirjat;
     private List&lt;Kirja&gt; hyllyssaOlevatKirjat;
 
@@ -7469,8 +7471,8 @@ public class Kirjasto {
     public void lisaaKirjaKokoelmaan(Kirja uusiKirja) {
         kirjaIsbnNumeronPerusteella.put(uusiKirja.getIsbn(), uusiKirja);
 
-        if(!kirjatKirjailijanPerusteella.containsKey(uusikirja.getKirjailija()) {
-            this.kirjatKirjailijanPerusteella.put(uusikirja.getKirjailija(), new ArrayList&lt;&gt;());
+        if(!kirjatKirjailijanPerusteella.containsKey(uusiKirja.getKirjailija()) {
+            this.kirjatKirjailijanPerusteella.put(uusiKirja.getKirjailija(), new ArrayList&lt;&gt;());
         }
 
         kirjatKirjailijanPerusteella.get(uusikirja.getKirjailija()).add(uusiKirja);
@@ -7486,6 +7488,9 @@ public class Kirjasto {
 </pre>
 
     <p>Jos olio on yhtäaikaa useassa kokoelmassa (listalla, joukossa tai map-rakenteessa), on kiinnitettävä erityistä huomiota, että kokoelmien tila on konsistentti. Jos esim. kirja päätetään poistaa, on se poistettava molemmista mapeista sekä lainassa/hyllyssä olevia kuvaavalta listalta.</p>
+
+  <div class="parqu-exercise" data-id="34" data-name="Olioita useassa tietorakenteessa"></div>
+
 
 <div class="tehtavat">
 <div class="tehtava">
