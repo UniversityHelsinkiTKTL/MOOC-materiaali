@@ -7937,7 +7937,7 @@ public class Tulostin {
 
     public void tulostaMerkit(CharSequence charSequence) {
         for (int i = 0; i &lt; charSequence.length(); i++) {
-            System.out.println(charSequence.charAt(i);
+            System.out.println(charSequence.charAt(i));
         }
     }
     ...
@@ -8162,7 +8162,7 @@ Esko Ukkonen
 <pre class="sh_java">
 public static void main(String[] args) {
     Opiskelija olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
-    System.out.println(olli );
+    System.out.println(olli);
     System.out.println("opintopisteitä " + olli.opintopisteita());
     olli.opiskele();
     System.out.println("opintopisteitä "+ olli.opintopisteita());
@@ -8184,9 +8184,9 @@ opintopisteitä 1
 <pre class="sh_java">
 public static void main(String[] args) {
     Opiskelija olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
-    System.out.println( olli );
+    System.out.println(olli);
     olli.opiskele();
-    System.out.println( olli );
+    System.out.println(olli);
 }</pre>
 
   <p>Tulostuu:</p>
@@ -9317,7 +9317,7 @@ public class Kayttoliittyma {
 
     public Kayttoliittyma(Scanner lukija) {
         this.lukija = lukija;
-        this.toiminnot = new ArrayList&lt;Toiminto&gt;();
+        this.toiminnot = new ArrayList&lt;&gt;();
     }
 
     public void lisaaToiminto(Toiminto toiminto) {
