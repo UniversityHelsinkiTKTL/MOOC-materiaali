@@ -9511,7 +9511,9 @@ lista.removeAll(poistettavat);</pre>
 
     <p><em>Tämä tehtävä on neljän tehtäväpisteen arvoinen.</em> Huom! Toteuta kaikki toiminnallisuus pakkaukseen <code>luola</code>.</p>
 
-    <p><b>Huom: jotta testit toimisivat, ohjelmasi saa luoda vain yhden Scanner-olion. Älä käytä luokkien nimissä skandeja. Älä myöskään käytä staattisia muuttujia, testit suorittavat ohjelman useita kertoja joten staattisiin muuttujiin edellisillä suorituskerroilla jääneet arvot todennäköisesti häiritsevät testien toimintaa!</b></p>
+    <p><b>Huom: jotta testit toimisivat, ohjelmasi saa luoda vain yhden Scanner-olion. Älä käytä luokkien nimissä skandeja. Älä myöskään käytä staattisia muuttujia, testit suorittavat ohjelman useita kertoja joten staattisiin muuttujiin edellisillä suorituskerroilla jääneet arvot todennäköisesti häiritsevät testien toimintaa!</b> -- ohjelmassa on vain muutamia testejä, varmistathan itse myös ohjelmasi toiminnan.</p>
+
+    
 
 
     <p>Tässä tehtävässä pääset toteuttamaan luolapelin. Pelissä pelaaja on luolassa hirviöitten kanssa. Pelaajan tehtävänä on ehtiä tallata kaikki hirviöt ennen kuin hänen lampustaan loppuu virta ja hirviöt pääsevät pimeän turvin syömään hänet. Pelaaja voi nähdä hirviöiden sijainnit välkäyttämällä lamppua, jonka jälkeen hänen on liikuttava sokkona ennen seuraavaa välkäytystä. Pelaaja voi kulkea monta askelta yhden siirron aikana.</p>
@@ -9559,7 +9561,7 @@ Z................
       <ul>
 	<li>konstruktori <strong><code>public Luola(int leveys, int korkeus, int hirvioita, int siirtoja, boolean hirviotLiikkuvat)</code></strong>
 	  <p>Luvut <code>leveys</code> ja <code>korkeus</code> antavat luolan koon (se on aina neliskulmainen), <code>hirvioita</code> antaa hirviöiden lukumäärän alussa (hirviöiden sijainnin voi arpoa), <code>siirtoja</code> antaa siirtojen lukumäärän alussa ja jos <code>hirviotLiikkuvat</code> on <code>false</code>, hirviöt eivät liiku.</p></li>
-	<li>metodi <strong><code>public void run()</code></strong> joka käynnistää pelin</li>
+	<li>metodi <strong><code>public void run(Scanner lukija)</code></strong> joka käynnistää pelin, ja jolle annetaan uusi Scanner-olio parametriksi</li>
       </ul>
     </p>
 
