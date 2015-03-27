@@ -7738,17 +7738,17 @@ komento: <font color="red">x</font></pre>
 
 <div class="tehtavat">
     <div class="tehtava">
-<h3>Rengastustoimisto</h3>
+      <h3>Rengastustoimisto</h3>
 
-<p>Ohjelmoinnin perusteissa teimme lintubongaria varten havaintotietokannan. Jatkamme hieman samasta teemasta, tällä kertaa teemme rengastustoimistolle ohjelman, jonka avulla pidetään kirjaa tiettynä vuotena rengastettujen lintujen havaintopaikoista.</p>
+      <p>Ohjelmoinnin perusteissa teimme lintubongaria varten havaintotietokannan. Jatkamme hieman samasta teemasta, tällä kertaa teemme rengastustoimistolle ohjelman, jonka avulla pidetään kirjaa tiettynä vuotena rengastettujen lintujen havaintopaikoista.</p>
+      
+      <big>
+	<p><strong>HUOM:</strong> saatat törmätä tehtävässä kummalliseen virheilmoitukseen <code>NoSuchMethodError: Lintu.equals(LLintu;)Z</code>, jos näin käy suorita <strong>clean and build</strong> eli paina harja ja vasara -kuvakkeesta.</p>
+      </big>
 
-<big>
-<p><strong>HUOM:</strong> saatat törmätä tehtävässä kummalliseen virheilmoitukseen <code>NoSuchMethodError: Lintu.equals(LLintu;)Z</code>, jos näin käy suorita <strong>clean and build</strong> eli paina harja ja vasara -kuvakkeesta.</p>
-</big>
+      <h4>Linnun equals ja toString</h4>
 
-<h4>Linnun equals ja toString</h4>
-
-<p>Rengastustoimisto tallettaa tiettynä vuotena rengastettettujen lintujen tiedot <code>Lintu</code>-olioihin:</p>
+      <p>Rengastustoimisto tallettaa tiettynä vuotena rengastettettujen lintujen tiedot <code>Lintu</code>-olioihin:</p>
 
 <pre class="sh_java">
 public class Lintu {
@@ -7767,27 +7767,24 @@ public class Lintu {
     public String toString() {
         return this.latinankielinenNimi + "(" + this.rengastusvuosi + ")";
     }
-}
+}</pre>
 
-</pre>
+      <p>Ideana on toteuttaa rengastustoimistoon toiminnallisuus jonka avulla voidaan pitää kirjaa tiettynä vuotena rengastettujen lintujen havaintojen lukumääristä ja havaintopaikoista. Havaintomääriä ja -paikkoja ei kuitenkaan talleteta Lintu-olioihin, vaan erilliseen HashMap:iin jonka avaimena käytetään Lintu-olioita. Kuten muistamme viikolta 8, on tälläisessä tapauksessa toteutettava luokalle <code>Lintu</code> metodit <code>equals(Object t)</code> ja <code>hashCode()</code>.</p>
 
-<p>Ideana on toteuttaa rengastustoimistoon toiminnallisuus jonka avulla voidaan pitää kirjaa tiettynä vuotena rengastettujen lintujen havaintojen lukumääristä ja havaintopaikoista. Havaintomääriä ja -paikkoja ei kuitenkaan talleteta Lintu-olioihin, vaan erilliseen HashMap:iin jonka avaimena käytetään Lintu-olioita. Kuten muistamme viikolta 8, on tälläisessä tapauksessa toteutettava luokalle <code>Lintu</code> metodit <code>equals(Object t)</code> ja <code>hashCode()</code>.</p>
+      <p>Joillain linnuilla on useita suomenkielisä nimiä (esim. punakottaraisesta käytetään edelleen joskus sen vanhaa nimitystä rusokottarainen), latinankielinen nimi on kuitenkin aina yksikäsitteinen. Tee luokalle <code>Lintu</code> <code>equals-</code> ja <code>hashCode-</code>metodit jotka toimivat siten, että lintu-oliot tulkitaan samoiksi jos niiden latinankielinen nimi ja rengastusvuosi ovat samat.</p>
 
-<p>Joillain linnuilla on useita suomenkielisä nimiä (esim. punakottaraisesta käytetään edelleen joskus sen vanhaa nimitystä rusokottarainen), latinankielinen nimi on kuitenkin aina yksikäsitteinen. Tee luokalle <code>Lintu</code> <code>equals-</code> ja <code>hashCode-</code>metodit jotka toimivat siten, että lintu-oliot tulkitaan samoiksi jos niiden latinankielinen nimi ja rengastusvuosi ovat samat.</p>
-
-<p>Esimerkki:</code>
+      <p>Esimerkki:</p>
 
 <pre>
-    Lintu lintu1 = new Lintu("punakottarainen", "Sturnus roseus", 2012);
-    Lintu lintu2 = new Lintu("rusokottarainen", "Sturnus roseus", 2012);
-    Lintu lintu3 = new Lintu("varis", "Corvus corone cornix", 2012);
-    Lintu lintu4 = new Lintu("punakottarainen", "Sturnus roseus", 2000);
+Lintu lintu1 = new Lintu("punakottarainen", "Sturnus roseus", 2012);
+Lintu lintu2 = new Lintu("rusokottarainen", "Sturnus roseus", 2012);
+Lintu lintu3 = new Lintu("varis", "Corvus corone cornix", 2012);
+Lintu lintu4 = new Lintu("punakottarainen", "Sturnus roseus", 2000);
 
-    System.out.println( lintu1.equals(lintu2));   // ovat sama koska sama latinankielinen nimi ja rengastusvuosi
-    System.out.println( lintu1.equals(lintu3));   // eivät ole sama koska latinankielinen nimi eri
-    System.out.println( lintu1.equals(lintu4));   // eivät ole sama koska eri rengastusvuosi
-    System.out.println( lintu1.hashCode()==lintu2.hashCode() );
-</pre>
+System.out.println(lintu1.equals(lintu2));   // ovat sama koska sama latinankielinen nimi ja rengastusvuosi
+System.out.println(lintu1.equals(lintu3));   // eivät ole sama koska latinankielinen nimi eri
+System.out.println(lintu1.equals(lintu4));   // eivät ole sama koska eri rengastusvuosi
+System.out.println(lintu1.hashCode() == lintu2.hashCode());</pre>
 
 <p>tulostuu:</p>
 
@@ -7795,33 +7792,31 @@ public class Lintu {
 true
 false
 false
-true
-</pre>
+true</pre>
 
-<h4>Rengastustoimisto</h4>
+    <h4>Rengastustoimisto</h4>
 
-<p>Rengastustoimistolla on kaksi metodia: <code>public void havaitse(Lintu lintu, String paikka)</code> lisää linnulle havainnon ja havaintopaikan ja metodi <code>public void havainnot(Lintu lintu)</code> tulostaa alla olevan esimerkin mukaisesti parametrina olevan linnun havaintojen määrän ja havaintopaikat. Havaintopaikkojen tulostusjärjestyksellä ei ole testien läpimenon kannalta merkitystä.</p>
+      <p>Rengastustoimistolla on kaksi metodia: <code>public void havaitse(Lintu lintu, String paikka)</code> lisää linnulle havainnon ja havaintopaikan ja metodi <code>public void havainnot(Lintu lintu)</code> tulostaa alla olevan esimerkin mukaisesti parametrina olevan linnun havaintojen määrän ja havaintopaikat. Havaintopaikkojen tulostusjärjestyksellä ei ole testien läpimenon kannalta merkitystä.</p>
 
-<p>Rengastustoimisto tallettaa havaintopaikat <code>Map&lt;Lintu, List&lt;String&gt;&gt;</code>-tyyppiseen oliomuuttujaan. Havaintojen lukumäärä selviää havaintopaikkojen listan pituudesta. Tarvittaessa voit ottaa tehtävään mallia luvusta 50.</p>
+      <p>Rengastustoimisto tallettaa havaintopaikat <code>Map&lt;Lintu, List&lt;String&gt;&gt;</code>-tyyppiseen oliomuuttujaan. Havaintojen lukumäärä selviää havaintopaikkojen listan pituudesta. Tarvittaessa voit ottaa tehtävään mallia luvusta 50.</p>
 
-<p>Esimerkki rengastustoimiston käytöstä:</p>
+      <p>Esimerkki rengastustoimiston käytöstä:</p>
 
 <pre class="sh_java">
-    Rengastustoimisto kumpulanRengas = new Rengastustoimisto();
+Rengastustoimisto kumpulanRengas = new Rengastustoimisto();
 
-    kumpulanRengas.havaitse( new Lintu("punakottarainen", "Sturnus roseus", 2012), "Arabia" );
-    kumpulanRengas.havaitse( new Lintu("rusokottarainen", "Sturnus roseus", 2012), "Vallila" );
-    kumpulanRengas.havaitse( new Lintu("harmaalokki", "Larus argentatus", 2008), "Kumpulanmäki" );
-    kumpulanRengas.havaitse( new Lintu("punakottarainen", "Sturnus roseus", 2008), "Mannerheimintie" );
+kumpulanRengas.havaitse(new Lintu("punakottarainen", "Sturnus roseus", 2012), "Arabia");
+kumpulanRengas.havaitse(new Lintu("rusokottarainen", "Sturnus roseus", 2012), "Vallila");
+kumpulanRengas.havaitse(new Lintu("harmaalokki", "Larus argentatus", 2008), "Kumpulanmäki");
+kumpulanRengas.havaitse(new Lintu("punakottarainen", "Sturnus roseus", 2008), "Mannerheimintie");
 
-    kumpulanRengas.havainnot( new Lintu("rusokottarainen", "Sturnus roseus", 2012 ) );
-    System.out.println("--");
-    kumpulanRengas.havainnot( new Lintu("harmaalokki", "Larus argentatus", 2008 ) );
-    System.out.println("--");
-    kumpulanRengas.havainnot( new Lintu("harmaalokki", "Larus argentatus", 1980 ) );
-</pre>
+kumpulanRengas.havainnot(new Lintu("rusokottarainen", "Sturnus roseus", 2012));
+System.out.println("--");
+kumpulanRengas.havainnot(new Lintu("harmaalokki", "Larus argentatus", 2008));
+System.out.println("--");
+kumpulanRengas.havainnot(new Lintu("harmaalokki", "Larus argentatus", 1980));</pre>
 
-<p>tulostuu:</p>
+      <p>tulostuu:</p>
 
 <pre>
 Sturnus roseus (2012) havaintoja: 2
@@ -7831,34 +7826,30 @@ Vallila
 Larus argentatus (2008) havaintoja: 1
 Kumpulanmäki
 --
-Larus argentatus (1980) havaintoja: 0
-</pre>
+Larus argentatus (1980) havaintoja: 0</pre>
 
+    </div>
 </div>
-</div>
 
-<h2>Olioiden monimuotoisuus</h2>
+    <h2>Olioiden monimuotoisuus</h2>
 
-    <p>Olemme aiemmissa kappaleissa törmänneet tilanteisiin, joissa muuttujilla on oman tyyppinsä lisäksi muita tyyppejä. Esimerkiksi kappaleessa <a href="#45">45</a> huomasimme että <em>kaikki</em> oliot ovat tyyppiä <code>Object</code>. Jos olio on jotain tiettyä tyyppiä, voidaan se myös esittää <code>Object</code>-tyyppisenä muuttujana. Esimerkiksi <code><a href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html" target="_blank">String</a></code> on myös tyyppiä <code>Object</code>, joten kaikki <code>String</code>-tyyppiset muuttujat voidaan esitellä <code>Object</code> tyypin avulla.</p>
+    <p>Olemme aiemmissa kappaleissa törmänneet tilanteisiin, joissa muuttujilla on oman tyyppinsä lisäksi muita tyyppejä. Esimerkiksi huomasimme aiemmin että <em>kaikki</em> oliot ovat tyyppiä <code>Object</code>. Jos olio on jotain tiettyä tyyppiä, voidaan se myös esittää <code>Object</code>-tyyppisenä muuttujana. Esimerkiksi <code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html" target="_blank">String</a></code> on myös tyyppiä <code>Object</code>, joten kaikki <code>String</code>-tyyppiset muuttujat voidaan esitellä <code>Object</code> tyypin avulla.</p>
 
 <pre class="sh_java">
-    String merkkijono = "merkkijono";
-    Object merkkijonoString = "toinen merkkijono";
-</pre>
+String merkkijono = "merkkijono";
+Object merkkijonoString = "toinen merkkijono";</pre>
 
     <p>Merkkijono-olion asettaminen <code>Object</code>-tyyppiseen viitteeseen onnistuu.</p>
 
 <pre class="sh_java">
-    String merkkijono = "merkkijono";
-    Object merkkijonoString = merkkijono;
-</pre>
+String merkkijono = "merkkijono";
+Object merkkijonoString = merkkijono;</pre>
 
     <p>Toiseen suuntaan asettaminen ei onnistu. Koska <code>Object</code>-tyyppiset muuttujat eivät ole tyyppiä <code>String</code>, ei object-tyyppistä muuttujaa voi asettaa <code>String</code>-tyyppiseen muuttujaan.</p>
 
 <pre class="sh_java">
-    Object merkkijonoString = "toinen merkkijono";
-    String merkkijono = merkkijonoString; // EI ONNISTU!
-</pre>
+Object merkkijonoString = "toinen merkkijono";
+String merkkijono = merkkijonoString; // EI ONNISTU!</pre>
 
     <p>Mistä tässä oikein on kyse?</p>
 
@@ -7869,11 +7860,12 @@ Larus argentatus (1980) havaintoja: 0
     <p>String-luokan API-dokumentaatio alkaa yleisellä otsakkeella jota seuraa luokan pakkaus (<code>java.lang</code>). Pakkauksen jälkeen tulee luokan nimi (<code>Class String</code>), jota seuraa luokan <em>perintähierarkia</em>.</p>
 
 <pre>
-<a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html">java.lang.Object</a>
+  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html">java.lang.Object</a>
   <img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/perinta/perinta.gif"/><strong>java.lang.String</strong>
 </pre>
 
     <p>Perintähierarkia listaa luokat, jotka luokka on perinyt. Perityt luokat listataan perimisjärjestyksessä, tarkasteltava luokka aina alimpana. String-luokan perintähierarkiasta näemme, että <code>String</code>-luokka perii luokan <code>Object</code>. <em>Javassa jokainen luokka voi periä korkeintaan yhden luokan</em>, mutta välillisesti niitä voi periä useampia.</p>
+
     <p>Perintähierarkiaa voi ajatella myös listana tyypeistä, joita olio toteuttaa.</p>
 
     <p>Se, että kaikki oliot ovat tyyppiä <code>Object</code> helpottaa ohjelmointia. Jos tarvitsemme metodissa vain <code>Object</code>-luokassa määriteltyjä toimintoja, voimme käyttää metodin parametrina tyyppiä <code>Object</code>. Koska kaikki oliot ovat myös tyyppiä object, voi metodille antaa <em>minkä tahansa</em> olion parametrina. Luodaan metodi <code>tulostaMonesti</code>, joka saa parametrinaan <code>Object</code>-tyyppisen muuttujan ja tulostusten lukumäärän.</p>
@@ -7884,6 +7876,7 @@ public class Tulostin {
     public void tulostaMonesti(Object object, int kertaa) {
         for (int i = 0; i &lt; kertaa; i++) {
             System.out.println(object.toString());
+            // tai System.out.println(object);
         }
     }
     ...
@@ -7893,17 +7886,17 @@ public class Tulostin {
     <p>Metodille <code>tulostaMonesti</code> voi antaa parametrina minkä tahansa olion. Metodin <code>tulostaMonesti</code> sisässä oliolla on käytössään vain <code>Object</code>-luokassa määritellyt metodit koska olio <em>esitellään</em> metodissa <code>Object</code>-tyyppisenä.</p>
 
 <pre class="sh_java">
-    Tulostin tulostin = new Tulostin();
+Tulostin tulostin = new Tulostin();
 
-    String merkkijono = " o ";
-    List&lt;String&gt; sanat = new ArrayList&lt;String&gt;();
-    sanat.add("polymorfismi");
-    sanat.add("perintä");
-    sanat.add("kapselointi");
-    sanat.add("abstrahointi");
+String merkkijono = " o ";
+List&lt;String&gt; sanat = new ArrayList&lt;&gt;();
+sanat.add("polymorfismi");
+sanat.add("perintä");
+sanat.add("kapselointi");
+sanat.add("abstrahointi");
 
-    tulostin.tulostaMonesti(merkkijono, 2);
-    tulostin.tulostaMonesti(sanat, 3);
+tulostin.tulostaMonesti(merkkijono, 2);
+tulostin.tulostaMonesti(sanat, 3);
 </pre>
 
 <pre>
@@ -7917,18 +7910,17 @@ public class Tulostin {
 
     <p>Jatketaan <code>String</code>-luokan API-kuvauksen tarkastelua. Kuvauksessa olevaa perintähierarkiaa seuraa listaus luokan toteuttamista rajapinnoista.</p>
 
-<pre>
-<strong>All Implemented Interfaces:</strong>
-  <A HREF="http://docs.oracle.com/javase/6/docs/api/java/io/Serializable.html" title="interface in java.io">Serializable</A>, <A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/CharSequence.html" title="interface in java.lang">CharSequence</A>, <A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Comparable.html" title="interface in java.lang">Comparable</A>&lt;<A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html" title="class in java.lang">String</A>&gt;
+    <pre>
+      <strong>All Implemented Interfaces:</strong>
+      <A HREF="https://docs.oracle.com/javase/8/6/docs/api/java/io/Serializable.html" title="interface in java.io">Serializable</A>, <A HREF="https://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html" title="interface in java.lang">CharSequence</A>, <A HREF="https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html" title="interface in java.lang">Comparable</A>&lt;<A HREF="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="class in java.lang">String</A>&gt;
 </pre>
 
     <p>Luokka <code>String</code> toteuttaa rajapinnat <code>Serializable</code>, <code>CharSequence</code>, ja <code>Comparable&lt;String&gt;</code>. Myös rajapinta on tyyppi. Luokan String API-kuvauksen mukaan String-olion tyypiksi voi asettaa seuraavat rajapinnat.</p>
 
 <pre class="sh_java">
-    Serializable serializableString = "merkkijono";
-    CharSequence charSequenceString = "merkkijono";
-    Comparable&lt;String&gt; comparableString = "merkkijono";
-</pre>
+Serializable serializableString = "merkkijono";
+CharSequence charSequenceString = "merkkijono";
+Comparable&lt;String&gt; comparableString = "merkkijono";</pre>
 
     <p>Koska metodeille voidaan määritellä metodin parametrin tyyppi, voimme määritellä metodeja jotka vastaanottavat <em>tietyn rajapinnan toteuttavan</em> olion. Kun metodille määritellään parametrina rajapinta, sille voidaan antaa parametrina mikä tahansa olio joka toteuttaa kyseisen rajapinnan, metodi ei välitä olion oikeasta tyypistä.</p>
 
@@ -7949,18 +7941,16 @@ public class Tulostin {
         }
     }
     ...
-}
-</pre>
+}</pre>
 
     <p>Metodille <code>tulostaMerkit</code> voi antaa minkä tahansa <code>CharSequence</code>-rajapinnan toteuttavan olion. Näitä on muunmuassa <code>String</code> ja merkkijonojen rakentamisessa usein Stringiä tehokkaampi <code>StringBuilder</code>. Metodi <code>tulostaMerkit</code> tulostaa annetun olion jokaisen merkin omalle rivilleen.</p>
 
 <pre class="sh_java">
-    Tulostin tulostin = new Tulostin();
+Tulostin tulostin = new Tulostin();
 
-    String mjono = "toimii";
+String mjono = "toimii";
 
-    tulostin.tulostaMerkit(mjono);
-</pre>
+tulostin.tulostaMerkit(mjono);</pre>
 
 <pre>
 t
@@ -7968,76 +7958,71 @@ o
 i
 m
 i
-i
-</pre>
+i</pre>
 
 <div class="tehtavat">
-<div class="tehtava">
-<h3>Joukkoja</h3>
+  <div class="tehtava">
+    <h3>Joukkoja</h3>
+    
+    <p>Tässä tehtävässä teemme eliöita ja eliöistä koostuvia laumoja jotka liikkuvat ympäriinsä. Eliöiden sijaintien ilmoittamiseen käytetään  <em>kaksiulotteista koordinaatistoa</em>. Jokaiseen sijaintiin liittyy kaksi lukua, <code>x</code>- ja <code>y</code>-koordinaatti. Koordinaatti <code>x</code> kertoo, kuinka pitkällä "nollapisteestä" mitattuna sijainti on vaakasuunnassa, ja koordinaatti <code>y</code> vastaavasti kuinka pitkällä sijainti on pystysuunnassa. Jos koordinaatiston käsite ei ole tuttu, voit lukea siitä lisää esimerkiksi <a href="http://fi.wikipedia.org/wiki/Koordinaatisto">wikipediasta</a>.</p>
 
-<p>Tässä tehtävässä teemme eliöita ja eliöistä koostuvia laumoja jotka liikkuvat ympäriinsä. Eliöiden sijaintien ilmoittamiseen käytetään  <em>kaksiulotteista koordinaatistoa</em>. Jokaiseen sijaintiin liittyy kaksi lukua, <code>x</code>- ja <code>y</code>-koordinaatti. Koordinaatti <code>x</code> kertoo, kuinka pitkällä "nollapisteestä" mitattuna sijainti on vaakasuunnassa, ja koordinaatti <code>y</code> vastaavasti kuinka pitkällä sijainti on pystysuunnassa. Jos koordinaatiston käsite ei ole tuttu, voit lukea siitä lisää esimerkiksi <a href="http://fi.wikipedia.org/wiki/Koordinaatisto">wikipediasta</a>.</p>
+    <p>Tehtävän mukana tulee rajapinta <code>Siirrettava</code>, joka kuvaa asiaa jota voidaan siirtää paikasta toiseen. Rajapinta sisältää metodin <code>void siirra(int dx, int dy)</code>. Parametri <code>dx</code> kertoo, paljonko asia siirtyy x-akselilla ja <code>dy</code> y-akselilla.</p>
 
-<p>Tehtävän mukana tulee rajapinta <code>Siirrettava</code>, joka kuvaa asiaa jota voidaan siirtää paikasta toiseen. Rajapinta sisältää metodin <code>void siirra(int dx, int dy)</code>. Parametri <code>dx</code> kertoo, paljonko asia siirtyy x-akselilla ja <code>dy</code> y-akselilla.</p>
+    <p>Tehtävässä toteutat luokat <code>Elio</code> ja <code>Lauma</code>, jotka molemmat ovat siirrettäviä. Toteuta kaikki toiminnallisuus pakkaukseen <code>siirrettava</code>.</p>
 
-<p>Tehtävässä toteutat luokat <code>Elio</code> ja <code>Lauma</code>, jotka molemmat ovat siirrettäviä. Toteuta kaikki toiminnallisuus pakkaukseen <code>siirrettava</code>.</p>
+    <h4>Elio-luokan toteuttaminen</h4>
 
-<h4>Elio-luokan toteuttaminen</h4>
+    <p>Luo pakkaukseen <code>siirrettava</code> luokka <code>Elio</code>, joka toteuttaa rajapinnan <code>Siirrettava</code>. Eliön tulee tietää oma sijaintinsa (x, y -koordinaatteina). Luokan <code>Elio</code> APIn tulee olla seuraava:</p>
 
-<p>Luo pakkaukseen <code>siirrettava</code> luokka <code>Elio</code>, joka toteuttaa rajapinnan <code>Siirrettava</code>. Eliön tulee tietää oma sijaintinsa (x, y -koordinaatteina). Luokan <code>Elio</code> APIn tulee olla seuraava:</p>
-
-  <ul>
-    <li><strong>public Elio(int x, int y)</strong><br/>Luokan konstruktori, joka saa olion aloitussijainnin x- ja y-koordinaatit parametrina</li>
-    <li><strong>public String toString()</strong><br/> Luo ja palauttaa oliosta merkkijonoesityksen. Eliön merkkijonoesityksen tulee olla seuraavanlainen <code>"x: 3; y: 6"</code>. Huomaa että koordinaatit on erotettu puolipisteellä (<code>;</code>)</li>
-    <li><strong>public void siirra(int dx, int dy)</strong><br/> Siirtää oliota parametrina saatujen arvojen verran. Muuttuja <code>dx</code> sisältää muutoksen koordinaattiin <code>x</code>, muuttuja <code>dy</code> sisältää muutoksen koordinaattiin <code>y</code>. Esimerkiksi jos muuttujan <code>dx</code> arvo on 5, tulee oliomuuttujan <code>x</code> arvoa kasvattaa viidellä</li>
-  </ul>
-
-<p>Kokeile luokan <code>Elio</code> toimintaa seuraavalla esimerkkikoodilla. </p>
+    <ul>
+      <li><strong>public Elio(int x, int y)</strong><br/>Luokan konstruktori, joka saa olion aloitussijainnin x- ja y-koordinaatit parametrina</li>
+      <li><strong>public String toString()</strong><br/> Luo ja palauttaa oliosta merkkijonoesityksen. Eliön merkkijonoesityksen tulee olla seuraavanlainen <code>"x: 3; y: 6"</code>. Huomaa että koordinaatit on erotettu puolipisteellä (<code>;</code>)</li>
+      <li><strong>public void siirra(int dx, int dy)</strong><br/> Siirtää oliota parametrina saatujen arvojen verran. Muuttuja <code>dx</code> sisältää muutoksen koordinaattiin <code>x</code>, muuttuja <code>dy</code> sisältää muutoksen koordinaattiin <code>y</code>. Esimerkiksi jos muuttujan <code>dx</code> arvo on 5, tulee oliomuuttujan <code>x</code> arvoa kasvattaa viidellä</li>
+    </ul>
+    
+    <p>Kokeile luokan <code>Elio</code> toimintaa seuraavalla esimerkkikoodilla. </p>
 
 <pre class="sh_java">
-     Elio elio = new Elio(20, 30);
-     System.out.println(elio);
-     elio.siirra(-10, 5);
-     System.out.println(elio);
-     elio.siirra(50, 20);
-     System.out.println(elio);
-</pre>
+Elio elio = new Elio(20, 30);
+System.out.println(elio);
+elio.siirra(-10, 5);
+System.out.println(elio);
+elio.siirra(50, 20);
+System.out.println(elio);</pre>
 
 <pre>
 x: 20; y: 30
 x: 10; y: 35
-x: 60; y: 55
-</pre>
+x: 60; y: 55</pre>
 
 <h4>Lauman toteutus</h4>
 
-<p>Luo seuraavaksi pakkaukseen <code>siirrettava</code> luokka <code>Lauma</code>, joka toteuttaa rajapinnan <code>Siirrettava</code>. Lauma koostuu useasta <code>Siirrettava</code>-rajapinnan toteutavasta oliosta, jotka tulee tallettaa esimerkiksi listarakenteeseen.</p>
+    <p>Luo seuraavaksi pakkaukseen <code>siirrettava</code> luokka <code>Lauma</code>, joka toteuttaa rajapinnan <code>Siirrettava</code>. Lauma koostuu useasta <code>Siirrettava</code>-rajapinnan toteutavasta oliosta, jotka tulee tallettaa esimerkiksi listarakenteeseen.</p>
 
-<p>Luokalla <code>Lauma</code> tulee olla seuraavanlainen API.</p>
+    <p>Luokalla <code>Lauma</code> tulee olla seuraavanlainen API.</p>
+    
+    <ul>
+      <li><strong>public String toString()</strong><br/> Palauttaa merkkijonoesityksen lauman jäsenten sijainnista rivin vaihdolla erotettuna.</li>
+      <li><strong>public void lisaaLaumaan(Siirrettava siirrettava)</strong><br/> Lisää laumaan uuden <code>Siirrettava</code>-rajapinnan toteuttavan olion</li>
+      <li><strong>public void siirra(int dx, int dy)</strong><br/> Siirtää laumaa parametrina saatujen arvojen verran. Huomaa että tässä sinun tulee siirtää jokaista lauman jäsentä.</li>
+    </ul>
 
-  <ul>
-    <li><strong>public String toString()</strong><br/> Palauttaa merkkijonoesityksen lauman jäsenten sijainnista rivin vaihdolla erotettuna.</li>
-    <li><strong>public void lisaaLaumaan(Siirrettava siirrettava)</strong><br/> Lisää laumaan uuden <code>Siirrettava</code>-rajapinnan toteuttavan olion</li>
-    <li><strong>public void siirra(int dx, int dy)</strong><br/> Siirtää laumaa parametrina saatujen arvojen verran. Huomaa että tässä sinun tulee siirtää jokaista lauman jäsentä.</li>
-  </ul>
-
-<p>Kokeile ohjelmasi toimintaa alla olevalla esimerkkikoodilla.</p>
+    <p>Kokeile ohjelmasi toimintaa alla olevalla esimerkkikoodilla.</p>
 
 <pre class="sh_java">
-    Lauma lauma = new Lauma();
-    lauma.lisaaLaumaan(new Elio(73, 56));
-    lauma.lisaaLaumaan(new Elio(57, 66));
-    lauma.lisaaLaumaan(new Elio(46, 52));
-    lauma.lisaaLaumaan(new Elio(19, 107));
-    System.out.println(lauma);
-</pre>
+Lauma lauma = new Lauma();
+lauma.lisaaLaumaan(new Elio(73, 56));
+lauma.lisaaLaumaan(new Elio(57, 66));
+lauma.lisaaLaumaan(new Elio(46, 52));
+lauma.lisaaLaumaan(new Elio(19, 107));
+System.out.println(lauma);</pre>
 
 <pre>
 x: 73; y: 56
 x: 57; y: 66
 x: 46; y: 52
-x: 19; y: 107
-</pre>
-</div>
+x: 19; y: 107</pre>
+  </div>
 </div>
 
 <h2>Luokan ominaisuuksien periminen</h2>
@@ -8046,12 +8031,12 @@ x: 19; y: 107
 
     <p>Jokainen Javan luokka perii luokan <code>Object</code>, eli jokainen luomamme luokka saa käyttöönsä kaikki <code>Object</code>-luokassa määritellyt metodit. Jos haluamme muuttaa <code>Object</code>-luokassa määriteltyjen metodien toiminnallisuutta tulee ne korvata (<code>Override</code>) määrittelemällä niille uusi toteutus luodussa luokassa.</p>
 
-<p>Luokan <code>Object</code> perimisen lisäksi myös muiden luokkien periminen on mahdollista. Javan <code><a href="http://docs.oracle.com/javase/6/docs/api/java/util/ArrayList.html" target="_blank">ArrayList</a></code>-luokan APIa tarkasteltaessa huomaamme että <code>ArrayList</code> perii luokan <code>AbstractList</code>. Luokka <code>AbstractList</code> perii luokan <code>AbstractCollection</code>, joka perii luokan <code>Object</code>.</p>
+<p>Luokan <code>Object</code> perimisen lisäksi myös muiden luokkien periminen on mahdollista. Javan <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html" target="_blank">ArrayList</a></code>-luokan APIa tarkasteltaessa huomaamme että <code>ArrayList</code> perii luokan <code>AbstractList</code>. Luokka <code>AbstractList</code> perii luokan <code>AbstractCollection</code>, joka perii luokan <code>Object</code>.</p>
 
 <pre>
-<a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html" target="_blank">java.lang.Object</a>
-  <img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/perinta/perinta.gif" /><a href="http://docs.oracle.com/javase/6/docs/api/java/util/AbstractCollection.html" target="_blank">java.util.AbstractCollection</a>&lt;E&gt;
-      <img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/perinta/perinta.gif" /><a href="http://docs.oracle.com/javase/6/docs/api/java/AbstractList.html" target="_blank">java.util.AbstractList</a>&lt;E&gt;
+<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html" target="_blank">java.lang.Object</a>
+  <img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/perinta/perinta.gif" /><a href="https://docs.oracle.com/javase/8/docs/api/java/util/AbstractCollection.html" target="_blank">java.util.AbstractCollection</a>&lt;E&gt;
+      <img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/perinta/perinta.gif" /><a href="https://docs.oracle.com/javase/8/docs/api/java/AbstractList.html" target="_blank">java.util.AbstractList</a>&lt;E&gt;
           <img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/perinta/perinta.gif" /><strong>java.util.ArrayList&lt;E&gt;</strong>
 </pre>
 
@@ -8083,10 +8068,9 @@ public class Osa {
     public String getValmistaja() {
         return valmistaja;
     }
-}
-</pre>
+}</pre>
 
-        <p>Yksi osa autoa on moottori. Kuten kaikilla osilla, myös moottorilla on valmistaja, tunnus ja kuvaus. Näiden lisäksi moottoriin liittyy moottorityyppi: esimerkiksi polttomoottori, sähkömoottori tai hybridi. Luodaan luokan <code>Osa</code> perivä luokka <code>Moottori</code>: moottori on osan erikoistapaus.</p>
+    <p>Yksi osa autoa on moottori. Kuten kaikilla osilla, myös moottorilla on valmistaja, tunnus ja kuvaus. Näiden lisäksi moottoriin liittyy moottorityyppi: esimerkiksi polttomoottori, sähkömoottori tai hybridi. Luodaan luokan <code>Osa</code> perivä luokka <code>Moottori</code>: moottori on osan erikoistapaus.</p>
 
 <pre class="sh_java">
 public class Moottori extends Osa {
@@ -8101,8 +8085,7 @@ public class Moottori extends Osa {
     public String getMoottorityyppi() {
         return moottorityyppi;
     }
-}
-</pre>
+}</pre>
 
         <p>Luokkamäärittely <code>public class Moottori extends Osa</code> kertoo että luokka <code>Moottori</code> perii luokan <code>Osa</code> toiminnallisuuden. Luokassa <code>Moottori</code> määritellään oliomuuttuja <code>moottorityyppi</code>.</p>
 
@@ -8111,15 +8094,14 @@ public class Moottori extends Osa {
         <p>Kun luokka <code>Moottori</code> perii luokan <code>Osa</code>, saa se käyttöönsä kaikki luokan <code>Osa</code> tarjoamat metodit. Luokasta <code>Moottori</code> voi tehdä ilmentymän aivan kuten mistä tahansa muustakin luokasta.</p>
 
 <pre class="sh_java">
-        Moottori moottori = new Moottori("polttomoottori", "hz", "volkswagen", "VW GOLF 1L 86-91");
-        System.out.println(moottori.getMoottorityyppi());
-        System.out.println(moottori.getValmistaja());
+Moottori moottori = new Moottori("polttomoottori", "hz", "volkswagen", "VW GOLF 1L 86-91");
+System.out.println(moottori.getMoottorityyppi());
+System.out.println(moottori.getValmistaja());
 </pre>
 
 <pre>
 polttomoottori
-volkswagen
-</pre>
+volkswagen</pre>
 
         <p>Kuten huomaat, luokalla <code>Moottori</code> on käytössä luokassa <code>Osa</code> määritellyt metodit.</p>
 
@@ -8135,32 +8117,31 @@ volkswagen
 
         <p>Huom! Kutsun <code>super</code> tulee olla aina konstruktorin ensimmäisellä rivillä!</p>
 
-<h3>Yliluokan metodin kutsuminen</h3>
+	<h3>Yliluokan metodin kutsuminen</h3>
 
         <p>Yliluokassa määriteltyjä metodeja voi kutsua <code>super</code>-etuliitteen avulla, aivan kuten tässä luokassa määriteltyjä metodeja voi kutsua <code>this</code>-etuliitteellä. Esimerkiksi yliluokassa määriteltyä <code>toString</code>-metodia voi hyödyntää sen korvaavassa metodissa seuraavasti:</p>
 
 <pre class="sh_java">
-    @Override
-    public String toString() {
-        return super.toString() + "\n  Ja oma viestini vielä!";
-    }
-</pre>
+@Override
+public String toString() {
+    return super.toString() + "\n  Ja oma viestini vielä!";
+}</pre>
 
 <div class="tehtavat">
     <div class="tehtava">
-  <h3>Henkilö ja sen perilliset</h3>
+      <h3>Henkilö ja sen perilliset</h3>
 
-  <h4>Henkilo</h4>
+      <h4>Henkilo</h4>
 
-  <p>Tee pakkaus <code>henkilot</code> ja sinne luokka <code>Henkilo</code>, joka toimii seuraavan pääohjelman yhteydessä</p>
+      <p>Tee pakkaus <code>henkilot</code> ja sinne luokka <code>Henkilo</code>, joka toimii seuraavan pääohjelman yhteydessä</p>
 
 <pre class="sh_java">
-    public static void main(String[] args) {
-        Henkilo pekka = new Henkilo("Pekka Mikkola", "Korsontie 1 03100 Vantaa");
-        Henkilo esko = new Henkilo("Esko Ukkonen", "Mannerheimintie 15 00100 Helsinki");
-        System.out.println(pekka);
-        System.out.println(esko);
-    }
+public static void main(String[] args) {
+    Henkilo pekka = new Henkilo("Pekka Mikkola", "Korsontie 1 03100 Vantaa");
+    Henkilo esko = new Henkilo("Esko Ukkonen", "Mannerheimintie 15 00100 Helsinki");
+    System.out.println(pekka);
+    System.out.println(esko);
+}
 </pre>
 
   <p>siten että tulostuu</p>
@@ -8172,21 +8153,20 @@ Esko Ukkonen
   Mannerheimintie 15 00100 Helsinki
 </pre>
 
-<h4  >Opiskelija</h4>
+<h4>Opiskelija</h4>
 
   <p>Tee pakkaukseen luokka <code>Opiskelija</code> joka <i>perii</i> luokan <code>Henkilo</code>.
 
   <p>Opiskelijalla on aluksi 0 opintopistettä. Aina kun opiskelija opiskelee, kasvaa opintopistemäärä. Toteuta luokka siten, että seuraava pääohjelma:</p>
 
 <pre class="sh_java">
-    public static void main(String[] args) {
-        Opiskelija olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
-        System.out.println(olli );
-        System.out.println("opintopisteitä " + olli.opintopisteita());
-        olli.opiskele();
-        System.out.println("opintopisteitä "+ olli.opintopisteita());
-    }
-</pre>
+public static void main(String[] args) {
+    Opiskelija olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
+    System.out.println(olli );
+    System.out.println("opintopisteitä " + olli.opintopisteita());
+    olli.opiskele();
+    System.out.println("opintopisteitä "+ olli.opintopisteita());
+}</pre>
 
   <p>tuottaa tulostuksen:</p>
 
@@ -8197,18 +8177,17 @@ opintopisteitä 0
 opintopisteitä 1
 </pre>
 
-<h4  >Opiskelijalle toString</h4>
+<h4>Opiskelijalle toString</h4>
 
   <p>Edellisessä tehtävässä <code>Opiskelija</code> perii toString-metodin luokalta <code>Henkilo</code>. Perityn metodin voi myös ylikirjoittaa, eli korvata omalla versiolla. Tee nyt <code>Opiskelija</code>:lle oma versio toString:istä joka toimii seuraavan esimerkin mukaan:</p>
 
 <pre class="sh_java">
-    public static void main(String[] args) {
-        Opiskelija olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
-        System.out.println( olli );
-        olli.opiskele();
-        System.out.println( olli );
-    }
-</pre>
+public static void main(String[] args) {
+    Opiskelija olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
+    System.out.println( olli );
+    olli.opiskele();
+    System.out.println( olli );
+}</pre>
 
   <p>Tulostuu:</p>
 
@@ -8221,25 +8200,25 @@ Olli
   opintopisteitä 1
 </pre>
 
-  <h4  >Opettaja</h4>
+  <h4>Opettaja</h4>
 
   <p>Tee pakkaukseen luokka <code>Henkilo</code>:n perivä luokka <code>Opettaja</code>. Opettajalla on palkka joka tulostuu opettajan merkkijonoesityksessä. </p>
 
   <p>Testaa, että seuraava pääohjelma</p>
 
 <pre class="sh_java">
-    public static void main(String[] args) {
-        Opettaja pekka = new Opettaja("Pekka Mikkola", "Korsontie 1 03100 Vantaa", 1200);
-        Opettaja esko = new Opettaja("Esko Ukkonen", "Mannerheimintie 15 00100 Helsinki", 5400);
-        System.out.println( pekka );
-        System.out.println( esko );
+public static void main(String[] args) {
+    Opettaja pekka = new Opettaja("Pekka Mikkola", "Korsontie 1 03100 Vantaa", 1200);
+    Opettaja esko = new Opettaja("Esko Ukkonen", "Mannerheimintie 15 00100 Helsinki", 5400);
+    System.out.println(pekka);
+    System.out.println(esko);
 
-        Opiskelija olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
-        for ( int i=0; i &lt; 25; i++ ) {
-            olli.opiskele();
-        }
-        System.out.println( olli );
+    Opiskelija olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
+    for (int i = 0; i &lt; 25; i++) {
+        olli.opiskele();
     }
+    System.out.println(olli);
+}
 </pre>
 
   <p>Aikaansaa tulostuksen</p>
@@ -8256,23 +8235,22 @@ Olli
   opintopisteitä 25
 </pre>
 
-<h4  >Kaikki Henkilot listalle</h4>
+  <h4>Kaikki Henkilot listalle</h4>
 
   <p>Toteuta oletuspakkauksessa olevaan <code>Main</code>-luokkaan luokkametodi <code>public static void tulostaLaitoksenHenkilot(List&lt;Henkilo&gt; henkilot)</code>, joka tulostaa kaikki metodille parametrina annetussa listassa olevat henkilöt. Metodin tulee toimia seuraavasti <code>main</code>-metodista kutsuttaessa.</p>
 
 <pre class="sh_java">
-    public static void tulostaLaitoksenHenkilot(List&lt;Henkilo&gt; henkilot) {
-       // tulostetaan kaikki listan henkilöt
-    }
+public static void tulostaLaitoksenHenkilot(List&lt;Henkilo&gt; henkilot) {
+   // tulostetaan kaikki listan henkilöt
+}
 
-    public static void main(String[] args) {
-        List&lt;Henkilo&gt; henkilot = new ArrayList&lt;Henkilo&gt;();
-        henkilot.add( new Opettaja("Pekka Mikkola", "Korsontie 1 03100 Vantaa", 1200) );
-        henkilot.add( new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki") );
+public static void main(String[] args) {
+    List&lt;Henkilo&gt; henkilot = new ArrayList&lt;Henkilo&gt;();
+    henkilot.add(new Opettaja("Pekka Mikkola", "Korsontie 1 03100 Vantaa", 1200));
+    henkilot.add(new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki"));
 
-        tulostaLaitoksenHenkilot(henkilot);
-    }
-</pre>
+    tulostaLaitoksenHenkilot(henkilot);
+}</pre>
 
 <pre>
 Pekka Mikkola
@@ -8280,10 +8258,9 @@ Pekka Mikkola
   palkka 1200 euroa/kk
 Olli
   Ida Albergintie 1 00400 Helsinki
-  opintopisteitä 0
-</pre>
+  opintopisteitä 0</pre>
 
-</div>
+    </div>
 </div>
 
    <h3>Olion tyyppi määrää kutsutun metodin: Polymorfismi</h3>
@@ -8291,25 +8268,24 @@ Olli
     <p>Olion kutsuttavissa olevat metodit määrittyvät muuttujan tyypin kautta. Esimerkiksi jos <code>Opiskelija</code>-tyyppisen olion viite on talletettu  <code>Henkilo</code>-tyyppiseen muuttujaan, on oliosta käytössä vain <code>Henkilo</code>-luokassa määritellyt metodit:</p>
 
 <pre class="sh_java">
-   Henkilo olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
-   olli.opintopisteita();        // EI TOIMI!
-   olli.opiskele();              // EI TOIMI!
-   String.out.println( olli );   // olli.toString() TOIMII
-</pre>
+Henkilo olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
+olli.opintopisteita();        // EI TOIMI!
+olli.opiskele();              // EI TOIMI!
+String.out.println(olli);   // olli.toString() TOIMII</pre>
 
-<p>Jos oliolla on monta eri tyyppiä, on sillä käytössä <em>jokaisen</em> tyypin määrittelemät metodit. Esimerkiksi <code>Opiskelija</code>-tyyppisellä oliolla on käytössä <code>Henkilo</code>-luokassa määritellyt metodit sekä <code>Object</code>-luokassa määritellyt metodit.</p>
+    <p>Jos oliolla on monta eri tyyppiä, on sillä käytössä <em>jokaisen</em> tyypin määrittelemät metodit. Esimerkiksi <code>Opiskelija</code>-tyyppisellä oliolla on käytössä <code>Henkilo</code>-luokassa määritellyt metodit sekä <code>Object</code>-luokassa määritellyt metodit.</p>
 
-<p>Edellisessä tehtävässä korvasimme Opiskelijan luokalta Henkilö perimän <code>toString</code> uudella versiolla. Myös luokka Henkilö oli jo korvannut Object-luokalta perimänsä toStringin. Jos käsittelemme olioa jonkin muun kuin sen todellisen tyypin omaavan muuttujan kautta, mitä versiota olion metodista kutsutaan? Esim. seuraavassa on kaksi opiskelijaa joiden viitteet on talletettu Henkilo- ja Object-tyyppisiin muuttujiin. Molemmille kutsutaan metodia <code>toString</code>. Mikä versio metodista suoritetaan, luokassa Object, Henkilo vai Opiskelija määritelty?</p>
+    <p>Edellisessä tehtävässä korvasimme Opiskelijan luokalta Henkilö perimän <code>toString</code> uudella versiolla. Myös luokka Henkilö oli jo korvannut Object-luokalta perimänsä toStringin. Jos käsittelemme olioa jonkin muun kuin sen todellisen tyypin omaavan muuttujan kautta, mitä versiota olion metodista kutsutaan? Esim. seuraavassa on kaksi opiskelijaa joiden viitteet on talletettu Henkilo- ja Object-tyyppisiin muuttujiin. Molemmille kutsutaan metodia <code>toString</code>. Mikä versio metodista suoritetaan, luokassa Object, Henkilo vai Opiskelija määritelty?</p>
 
 <pre class="sh_java">
-   Henkilo olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
-   String.out.println( olli );
+Henkilo olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
+String.out.println(olli);
 
-   Object liisa = new Opiskelija("Liisa", "Väinö Auerin katu 20 00500 Helsinki");
-   String.out.println( liisa );
+Object liisa = new Opiskelija("Liisa", "Väinö Auerin katu 20 00500 Helsinki");
+String.out.println(liisa);
 </pre>
 
-<p>Tulostuu:</p>
+    <p>Tulostuu:</p>
 
 <pre>
 Olli
@@ -8320,7 +8296,7 @@ Liisa
   opintopisteitä 0
 </pre>
 
-<p>Eli suoritettava metodi valitaan olion todellisen tyypin perusteella, ei viitteen tallettavan muuttujan tyypin perusteella!</p>
+    <p>Eli suoritettava metodi valitaan olion todellisen tyypin perusteella, ei viitteen tallettavan muuttujan tyypin perusteella!</p>
 
     <p>Hieman yleisemmin: <b>Suoritettava metodi valitaan aina olion todellisen tyypin perusteella riippumatta käytetyn muuttujan tyypistä. Oliot ovat monimuotoisia, eli olioita voi käyttää usean eri muuttujatyypin kautta. Suoritettava metodi liittyy aina olion todelliseen tyyppiin.</b> Tätä monimuotoisuutta kutsutaan polymorfismiksi.</p>
 
@@ -8339,24 +8315,23 @@ public class Piste {
         this.y = y;
     }
 
-    public int manhattanEtaisyysOrigosta(){
-        return Math.abs(x)+Math.abs(y);
+    public int manhattanEtaisyysOrigosta() {
+        return Math.abs(x) + Math.abs(y);
     }
 
     protected String sijainti(){
-        return x+", "+y;
+        return x + ", " + y;
     }
 
     @Override
     public String toString() {
-        return "("+this.sijainti()+") etäisyys "+this.manhattanEtaisyysOrigosta();
+        return "(" + this.sijainti() + ") etäisyys " + this.manhattanEtaisyysOrigosta();
     }
-}
-</pre>
+}</pre>
 
-<p>Metodi <code>sijainti</code> ei ole tarkoitettu ulkoiseen käyttöön, joten se on näkyvyysmääreeltään protected, eli aliluokat pääsevät siihen käsiksi. Esim. <a href="http://wiki.gamegardens.com/Path_Finding_Tutorial">reitinhakualgoritmien</a> hyödyntämässä <a href="http://en.wiktionary.org/wiki/Manhattan_distance">Manhattan-etäisyydellä</a> tarkoitetaan pisteiden etäisyyttä, jos niiden välin voi kulkea ainoastaan koordinaattiakselien suuntaisesti. </p>
+    <p>Metodi <code>sijainti</code> ei ole tarkoitettu ulkoiseen käyttöön, joten se on näkyvyysmääreeltään protected, eli aliluokat pääsevät siihen käsiksi. Esim. <a href="http://wiki.gamegardens.com/Path_Finding_Tutorial">reitinhakualgoritmien</a> hyödyntämässä <a href="http://en.wiktionary.org/wiki/Manhattan_distance">Manhattan-etäisyydellä</a> tarkoitetaan pisteiden etäisyyttä, jos niiden välin voi kulkea ainoastaan koordinaattiakselien suuntaisesti. </p>
 
-<p>Värillinen piste on muuten samanlainen kuin piste, mutta se sisältää merkkijonona ilmaistavan värin. Luokka voidaan siis tehdä perimällä Piste:</p>
+    <p>Värillinen piste on muuten samanlainen kuin piste, mutta se sisältää merkkijonona ilmaistavan värin. Luokka voidaan siis tehdä perimällä Piste:</p>
 
 <pre class="sh_java">
 public class VariPiste extends Piste {
@@ -8370,19 +8345,18 @@ public class VariPiste extends Piste {
 
     @Override
     public String toString() {
-        return super.toString()+" väri: "+vari;
+        return super.toString() + " väri: " + vari;
     }
-}
-</pre>
+}</pre>
 
-<p>Luokka määrittelee oliomuuttujan värin talletusta varten. Koordinaatit talletetaan yliluokkaan. Merkkijonoesityksestä halutaan muuten samanlainen kuin pisteellä, mutta väri tulee myös ilmaista. Ylikirjoitettu metodi <code>toString</code> kutsuukin yliluokan toStringiä ja lisää sen tulokseen pisteen värin.</p>
+    <p>Luokka määrittelee oliomuuttujan värin talletusta varten. Koordinaatit talletetaan yliluokkaan. Merkkijonoesityksestä halutaan muuten samanlainen kuin pisteellä, mutta väri tulee myös ilmaista. Ylikirjoitettu metodi <code>toString</code> kutsuukin yliluokan toStringiä ja lisää sen tulokseen pisteen värin.</p>
 
-<p>Seuraavassa esimerkki, jossa listalle laitetaan muutama piste, osa normaaleja ja osa väripisteitä ja tulostetaan listalla olevat pisteet. Polymorfismin ansioista kaikille tulee kutsutuksi olion todellisen tyypin toString-metodi vaikka lista tuntee kaikki pisteet <code>Piste</code>-tyyppisinä:</p>
+    <p>Seuraavassa esimerkki, jossa listalle laitetaan muutama piste, osa normaaleja ja osa väripisteitä ja tulostetaan listalla olevat pisteet. Polymorfismin ansioista kaikille tulee kutsutuksi olion todellisen tyypin toString-metodi vaikka lista tuntee kaikki pisteet <code>Piste</code>-tyyppisinä:</p>
 
 <pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
-        List&lt;Piste&gt; pisteet = new ArrayList&lt;Piste&gt;();
+        List&lt;Piste&gt; pisteet = new ArrayList&lt;&gt;();
         pisteet.add(new Piste(4, 8));
         pisteet.add(new VariPiste(1, 1, "vihreä"));
         pisteet.add(new VariPiste(2, 5, "sininen"));
@@ -8392,19 +8366,17 @@ public class Main {
             System.out.println(piste);
         }
     }
-}
-</pre>
+}</pre>
 
-<p>Tulostuu:</p>
+    <p>Tulostuu:</p>
 
 <pre>
 (4, 8) etäisyys 12
 (1, 1) etäisyys 2 väri: vihreä
 (2, 5) etäisyys 7 väri: sininen
-(0, 0) etäisyys 0
-</pre>
+(0, 0) etäisyys 0</pre>
 
-<p>Haluamme ohjelmaamme myös kolmiulotteisen pisteen. Koska kyseessä ei ole värillinen versio, periytetään se pisteestä:</p>
+    <p>Haluamme ohjelmaamme myös kolmiulotteisen pisteen. Koska kyseessä ei ole värillinen versio, periytetään se pisteestä:</p>
 
 <pre class="sh_java">
 public class Piste3D extends Piste {
@@ -8418,31 +8390,30 @@ public class Piste3D extends Piste {
 
     @Override
     protected String sijainti() {
-        return super.sijainti()+", "+z;    // tulos merkkijono muotoa "x, y, z"
+        return super.sijainti() + ", " + z;    // tulos merkkijono muotoa "x, y, z"
     }
 
     @Override
     public int manhattanEtaisyysOrigosta() {
         // kysytään ensin yliluokalta x:n ja y:n perusteella laskettua etäisyyttä
         // ja lisätään tulokseen z-koordinaatin vaikutus
-        return super.manhattanEtaisyysOrigosta()+Math.abs(z);
+        return super.manhattanEtaisyysOrigosta() + Math.abs(z);
     }
 
     @Override
     public String toString() {
-        return "("+this.sijainti()+") etäisyys "+this.manhattanEtaisyysOrigosta();
+        return "(" + this.sijainti() + ") etäisyys " + this.manhattanEtaisyysOrigosta();
     }
 }
 </pre>
 
-<p>Kolmiulotteinen piste siis määrittelee kolmatta koordinaattia vastaavan oliomuuttujan ja ylikirjoittaa metodit <code>sijainti</code>,
-  <code>manhattanEtaisyysOrigosta</code> ja <code>toString</code> siten, että ne huomioivat kolmannen ulottuvuuden. Voimme nyt laajentaa edellistä esimerkkiä ja lisätä listalle myös kolmiulotteisia pisteitä:</p>
+  <p>Kolmiulotteinen piste siis määrittelee kolmatta koordinaattia vastaavan oliomuuttujan ja ylikirjoittaa metodit <code>sijainti</code>, <code>manhattanEtaisyysOrigosta</code> ja <code>toString</code> siten, että ne huomioivat kolmannen ulottuvuuden. Voimme nyt laajentaa edellistä esimerkkiä ja lisätä listalle myös kolmiulotteisia pisteitä:</p>
 
 <pre class="sh_java">
 public class Main {
 
     public static void main(String[] args) {
-        List<Piste> pisteet = new ArrayList<Piste>();
+        List&lt;Piste&gt; pisteet = new ArrayList&lt;&gt;();
         pisteet.add(new Piste(4, 8));
         pisteet.add(new VariPiste(1, 1, "vihreä"));
         pisteet.add(new VariPiste(2, 5, "sininen"));
@@ -8453,20 +8424,18 @@ public class Main {
             System.out.println(piste);
         }
     }
-}
-</pre>
+}</pre>
 
-<p>Tulostus on odotusten mukainen</p>
+  <p>Tulostus on odotusten mukainen</p>
 
 <pre>
 (4, 8) etäisyys 12
 (1, 1) etäisyys 2 väri: vihreä
 (2, 5) etäisyys 7 väri: sininen
 (5, 2, 8) etäisyys 15
-(0, 0) etäisyys 0
-</pre>
+(0, 0) etäisyys 0</pre>
 
-<p>Huomamme, että kolmiulotteisen pisteen metodi <code>toString</code> on täsmälleen sama kuin pisteen toString. Voisimmeko jättää toStringin ylikirjoittamatta? Vastaus on kyllä! Kolmiulotteinen piste pelkistyy seuraavanlaiseksi:</p>
+  <p>Huomamme, että kolmiulotteisen pisteen metodi <code>toString</code> on täsmälleen sama kuin pisteen toString. Voisimmeko jättää toStringin ylikirjoittamatta? Vastaus on kyllä! Kolmiulotteinen piste pelkistyy seuraavanlaiseksi:</p>
 
 <pre class="sh_java">
 public class Piste3D extends Piste {
@@ -8480,52 +8449,52 @@ public class Piste3D extends Piste {
 
     @Override
     protected String sijainti() {
-        return super.sijainti()+", "+z;
+        return super.sijainti() + ", " + z;
     }
 
     @Override
     public int manhattanEtaisyysOrigosta() {
-        return super.manhattanEtaisyysOrigosta()+Math.abs(z);
+        return super.manhattanEtaisyysOrigosta() + Math.abs(z);
     }
-}
-</pre>
+}</pre>
 
-<p>Mitä tarkalleenottaen tapahtuu kuin kolmiulotteiselle pisteelle kutsutaan toString-metodia? Suoritus etenee seuraavasti:</p>
-<ol>
-<li>etsitään toString:in määrittelyä luokasta Piste3D, sitä ei löydy joten mennään yliluokkaan</li>
-<li>etsitään toString:in määrittelyä yliluokasta Piste, metodi löytyy, joten suoritetaan sen koodi</li>
-<ul>
-<li>suoritettava koodi siis on <code>return "("+this.sijainti()+") etäisyys "+this.manhattanEtaisyysOrigosta();</code></li>
-<li>esimmäisenä suoritetaan metodi sijainti</li>
-<li>etsitään metodin sijainti määrittelyä luokasta Piste3D, metodi löytyy ja suoritetaan sen koodi</li>
-<li>metodin sijainti laskee oman tuloksensa kutsumalla yliluokassa olevaa metodia sijainti</li>
-<li>seuraavaksi etsitään metodin manhattanEtaisyysOrigosta määrittelyä luokasta Piste3D, metodi löytyy ja suoritetaan sen koodi</li>
-<li>jälleen metodi laskee tuloksensa kutsuen ensin yliluokassa olevaa samannimistä metodia</li>
-</ul>
-</ol>
+  <p>Mitä tarkalleenottaen tapahtuu kuin kolmiulotteiselle pisteelle kutsutaan toString-metodia? Suoritus etenee seuraavasti:</p>
 
-<p>Metodikutsun aikaansaama toimintoketju siis on varsin monivaiheinen. Periaate on kuitenkin selkeä: suoritettavan metodin määrittelyä etsitään ensin olion todellisen tyypin määrittelystä ja jos sitä ei löydy edetään yliluokkaan. Ja jos yliluokastakaan ei löydy metodin toteutusta siirrytään etsimään yliluokan yliluokasta jne...</p>
+  <ol>
+    <li>etsitään toString:in määrittelyä luokasta Piste3D, sitä ei löydy joten mennään yliluokkaan</li>
+    <li>etsitään toString:in määrittelyä yliluokasta Piste, metodi löytyy, joten suoritetaan sen koodi</li>
+    <ul>
+      <li>suoritettava koodi siis on <code>return "("+this.sijainti()+") etäisyys "+this.manhattanEtaisyysOrigosta();</code></li>
+      <li>esimmäisenä suoritetaan metodi sijainti</li>
+      <li>etsitään metodin sijainti määrittelyä luokasta Piste3D, metodi löytyy ja suoritetaan sen koodi</li>
+      <li>metodin sijainti laskee oman tuloksensa kutsumalla yliluokassa olevaa metodia sijainti</li>
+      <li>seuraavaksi etsitään metodin manhattanEtaisyysOrigosta määrittelyä luokasta Piste3D, metodi löytyy ja suoritetaan sen koodi</li>
+      <li>jälleen metodi laskee tuloksensa kutsuen ensin yliluokassa olevaa samannimistä metodia</li>
+    </ul>
+  </ol>
 
-          <div class="parqu-exercise" data-id="37" data-name="Override"></div>
+  <p>Metodikutsun aikaansaama toimintoketju siis on varsin monivaiheinen. Periaate on kuitenkin selkeä: suoritettavan metodin määrittelyä etsitään ensin olion todellisen tyypin määrittelystä ja jos sitä ei löydy edetään yliluokkaan. Ja jos yliluokastakaan ei löydy metodin toteutusta siirrytään etsimään yliluokan yliluokasta jne...</p>
 
-          <div class="parqu-exercise" data-id="35" data-name="Polymorfismi"></div>
+  <div class="parqu-exercise" data-id="37" data-name="Override"></div>
+  
+  <div class="parqu-exercise" data-id="35" data-name="Polymorfismi"></div>
+  
+  <div class="self-explanation" data-key="q-polymorfismi"></div>
+  
+  
+  <h3>Milloin perintää tulee käyttää?</h3>
+  
+  <p>Perintä on väline käsitehierarkioiden rakentamiseen ja erikoistamiseen; aliluokka on aina yliluokan erikoistapaus. Jos luotava luokka on olemassaolevan luokan erikoistapaus, voidaan uusi luokka luoda perimällä olemassaoleva luokka. Esimerkiksi auton osiin liittyvässä esimerkissä moottori <em>on</em> osa, mutta moottoriin liittyy lisätoiminnallisuutta mitä jokaisella osalla ei ole.</p>
 
-          <div class="self-explanation" data-key="q-polymorfismi"></div>
+  <p>Perittäessä aliluokka saa käyttöönsä yliluokan toiminnallisuudet. Jos aliluokka ei tarvitse tai käytä perittyä toiminnallisuutta, ei perintä ole perusteltua. Perityt luokat perivät yliluokkiensa metodit ja rajapinnat, eli aliluokkia voidaan käyttää missä tahansa missä yliluokkaa on käytetty. Perintähierarkia kannattaa pitää matalana, sillä hierarkian ylläpito ja jatkokehitys vaikeutuu perintöhierarkian kasvaessa. Yleisesti ottaen, jos perintähierarkian korkeus on yli 2 tai 3, ohjelman rakenteessa on todennäköisesti parannettavaa.</p>
 
+  <p>Perinnän käyttöä tulee miettiä. Esimerkiksi luokan <code>Auto</code> periminen luokasta <code>Osa</code> (tai <code>Moottori</code>) on väärin. Auto <em>sisältää</em> moottorin ja osia, mutta auto ei ole moottori tai osa. Voimme yleisemmin ajatella että jos olio omistaa tai koostuu toisista olioista, ei perintää tule käyttää.</p>
 
-          <h3>Milloin perintää tulee käyttää?</h3>
+  <p>Perintää käytettäessä tulee varmistaa että Single Responsibility Principle pätee myös perittäessä. Jokaisella luokalla tulee olla vain yksi syy muuttua. Jos huomaat että perintä lisää luokan vastuita, tulee luokka pilkkoa useammaksi luokaksi.</p>
 
-          <p>Perintä on väline käsitehierarkioiden rakentamiseen ja erikoistamiseen; aliluokka on aina yliluokan erikoistapaus. Jos luotava luokka on olemassaolevan luokan erikoistapaus, voidaan uusi luokka luoda perimällä olemassaoleva luokka. Esimerkiksi auton osiin liittyvässä esimerkissä moottori <em>on</em> osa, mutta moottoriin liittyy lisätoiminnallisuutta mitä jokaisella osalla ei ole.</p>
+  <h4>Esimerkki: perinnän väärinkäyttö</h4>
 
-          <p>Perittäessä aliluokka saa käyttöönsä yliluokan toiminnallisuudet. Jos aliluokka ei tarvitse tai käytä perittyä toiminnallisuutta, ei perintä ole perusteltua. Perityt luokat perivät yliluokkiensa metodit ja rajapinnat, eli aliluokkia voidaan käyttää missä tahansa missä yliluokkaa on käytetty. Perintähierarkia kannattaa pitää matalana, sillä hierarkian ylläpito ja jatkokehitys vaikeutuu perintöhierarkian kasvaessa. Yleisesti ottaen, jos perintähierarkian korkeus on yli 2 tai 3, ohjelman rakenteessa on todennäköisesti parannettavaa.</p>
-
-          <p>Perinnän käyttöä tulee miettiä. Esimerkiksi luokan <code>Auto</code> periminen luokasta <code>Osa</code> (tai <code>Moottori</code>) on väärin. Auto <em>sisältää</em> moottorin ja osia, mutta auto ei ole moottori tai osa. Voimme yleisemmin ajatella että jos olio omistaa tai koostuu toisista olioista, ei perintää tule käyttää.</p>
-
-          <p>Perintää käytettäessä tulee varmistaa että Single Responsibility Principle pätee myös perittäessä. Jokaisella luokalla tulee olla vain yksi syy muuttua. Jos huomaat että perintä lisää luokan vastuita, tulee luokka pilkkoa useammaksi luokaksi.</p>
-
-          <h4>Esimerkki: perinnän väärinkäyttö</h4>
-
-          <p>Pohditaan postituspalveluun liittyviä luokkia <code>Asiakas</code>, joka sisältää asiakkaan tiedot, ja <code>Tilaus</code>, joka perii asiakkaan tiedot ja sisältää tilattavan tavaran tiedot. Luokassa <code>Tilaus</code> on myös metodi <code>postitusOsoite</code>, joka kertoo tilauksen postitusosoitteen.</p>
+  <p>Pohditaan postituspalveluun liittyviä luokkia <code>Asiakas</code>, joka sisältää asiakkaan tiedot, ja <code>Tilaus</code>, joka perii asiakkaan tiedot ja sisältää tilattavan tavaran tiedot. Luokassa <code>Tilaus</code> on myös metodi <code>postitusOsoite</code>, joka kertoo tilauksen postitusosoitteen.</p>
 
 <pre class="sh_java">
 public class Asiakas {
@@ -8549,8 +8518,7 @@ public class Asiakas {
     public void setOsoite(String osoite) {
         this.osoite = osoite;
     }
-}
-</pre>
+}</pre>
 
 <pre class="sh_java">
 public class Tilaus extends Asiakas {
@@ -8575,8 +8543,7 @@ public class Tilaus extends Asiakas {
     public String postitusOsoite() {
         return this.getNimi() + "\n" + this.getOsoite();
     }
-}
-</pre>
+}</pre>
 
   <p>Yllä perintää on käytetty väärin. Luokkaa perittäessä aliluokan tulee olla yliluokan erikoistapaus; tilaus ei ole asiakkaan erikoistapaus. Väärinkäyttö ilmenee single responsibility principlen rikkomisena: luokalla <code>Tilaus</code> on vastuu sekä asiakkaan tietojen ylläpidosta, että tilauksen tietojen ylläpidosta.</p>
 
@@ -8608,8 +8575,7 @@ public class Tilaus {
     public String postitusOsoite() {
         return this.asiakas.getNimi() + "\n" + this.asiakas.getOsoite();
     }
-}
-</pre>
+}</pre>
 
     <p>Yllä oleva luokka <code>Tilaus</code> on nyt parempi. Metodi <code>postitusosoite</code> käyttää <em>asiakas</em>-viitettä postitusosoitteen saamiseen sen sijaan että luokka perisi luokan <code>Asiakas</code>. Tämä helpottaa sekä ohjelman ylläpitoa, että sen konkreettista toiminnallisuutta. </p>
 
@@ -8618,71 +8584,70 @@ public class Tilaus {
     <div class="self-explanation" data-key="q-perinnasta"></div>
 
 
-<div class="tehtavat">
-<div class="tehtava">
-<h3>Varastointia</h3>
+    <div class="tehtavat">
+      <div class="tehtava">
+	<h3>Varastointia</h3>
 
-<p>Tehtäväpohjassa tulee mukana luokka <code>Varasto</code>, jonka tarjoamat konstruktorit ja metodit ovat seuraavat:</p>
+	<p>Tehtäväpohjassa tulee mukana luokka <code>Varasto</code>, jonka tarjoamat konstruktorit ja metodit ovat seuraavat:</p>
 
-<ul>
-
-<li><b>public Varasto(double tilavuus)</b><br/>
-     Luo tyhjän varaston, jonka vetoisuus eli tilavuus annetaan parametrina;
-     sopimaton tilavuus (&lt;=0) luo käyttökelvottoman varaston,
-     jonka tilavuus on 0.</li>
-
-<li><b>public double getSaldo()</b><br/>
-     Palauttaa arvonaan varaston saldon, eli varastossa olevan tilavuuden.</li>
-
-
-<li><b>public double getTilavuus()</b><br/>
-     Palauttaa arvonaan varaston tilavuuden (eli sen, joka annettiin konstruktorille).</li>
-
-<li><b>public double paljonkoMahtuu()</b><br/>
-     Palauttaa arvonaan tiedon, paljonko varastoon vielä mahtuu.</li>
-
-<li><b>public void lisaaVarastoon(double maara)</b><br/>
-     Lisää varastoon pyydetyn määrän; jos määrä on negatiivinen, mikään ei muutu,
-     jos kaikki pyydetty ei enää mahdu, varasto laitetaan
-     täydeksi ja loput määräsätä "heitetään menemään", "vuotaa yli".</li>
-
-<li><b>public double otaVarastosta(double maara)</b><br/>
-    Otetaan varastosta pyydetty määrä, metodi palauttaa paljonko <b>saadaan</b>.
-    Jos pyydetty määrä on negatiivinen, mikään ei muutu ja palautetaan nolla.
-    Jos pyydetään enemmän kuin varastossa on, annetaan mitä voidaan ja varasto
-    tyhjenee.</li>
-
-<li><b>public String toString()</b><br/>
-    Palauttaa olion tilan merkkijonoesityksenä tyyliin <tt>saldo = 64.5, tilaa 123.5</tt></li>
-</ul>
-
+	<ul>
+	  <li><b>public Varasto(double tilavuus)</b><br/>
+	    Luo tyhjän varaston, jonka vetoisuus eli tilavuus annetaan parametrina;
+	    sopimaton tilavuus (&lt;=0) luo käyttökelvottoman varaston,
+	    jonka tilavuus on 0.</li>
+	  
+	  <li><b>public double getSaldo()</b><br/>
+	    Palauttaa arvonaan varaston saldon, eli varastossa olevan tilavuuden.</li>
+	  
+	  
+	  <li><b>public double getTilavuus()</b><br/>
+	    Palauttaa arvonaan varaston tilavuuden (eli sen, joka annettiin konstruktorille).</li>
+	  
+	  <li><b>public double paljonkoMahtuu()</b><br/>
+	    Palauttaa arvonaan tiedon, paljonko varastoon vielä mahtuu.</li>
+	  
+	  <li><b>public void lisaaVarastoon(double maara)</b><br/>
+	    Lisää varastoon pyydetyn määrän; jos määrä on negatiivinen, mikään ei muutu,
+	    jos kaikki pyydetty ei enää mahdu, varasto laitetaan
+	    täydeksi ja loput määräsätä "heitetään menemään", "vuotaa yli".</li>
+	  
+	  <li><b>public double otaVarastosta(double maara)</b><br/>
+	    Otetaan varastosta pyydetty määrä, metodi palauttaa paljonko <b>saadaan</b>.
+	    Jos pyydetty määrä on negatiivinen, mikään ei muutu ja palautetaan nolla.
+	    Jos pyydetään enemmän kuin varastossa on, annetaan mitä voidaan ja varasto
+	    tyhjenee.</li>
+	  
+	  <li><b>public String toString()</b><br/>
+	    Palauttaa olion tilan merkkijonoesityksenä tyyliin <tt>saldo = 64.5, tilaa 123.5</tt></li>
+	</ul>
+	
         <p>Tehtävässä rakennetaan <code>Varasto</code>-luokasta useampia erilaisia varastoja. Huom! Toteuta kaikki luokat pakkaukseen <code>varastot</code>.</p>
 
-        <h4  >Tuotevarasto, vaihe 1</h4>
-
+        <h4>Tuotevarasto, vaihe 1</h4>
+	
         <p>Luokka <code>Varasto</code> hallitsee tuotteen määrään liittyvät toiminnot. Nyt tuotteelle halutaan lisäksi tuotenimi ja nimen käsittelyvälineet. <i>  <b>Ohjelmoidaan Tuotevarasto Varaston aliluokaksi!</b></i> Toteutetaan ensin pelkkä yksityinen oliomuuttuja tuotenimelle, konstruktori ja getteri nimikentälle:</p>
-
-
-<ul>
-<li><b>public Tuotevarasto(String tuotenimi, double tilavuus)</b><br/>
-     Luo tyhjän tuotevaraston. Tuotenimi ja vetoisuus annetaan parametrina.</li>
-
-
-<li><b>public String getNimi()</b><br/>
-     Palauttaa arvonaan tuotteen nimen.</li>
-</ul>
-
-
+	
+	
+	<ul>
+	  <li><b>public Tuotevarasto(String tuotenimi, double tilavuus)</b><br/>
+	    Luo tyhjän tuotevaraston. Tuotenimi ja vetoisuus annetaan parametrina.</li>
+	  
+	  
+	  <li><b>public String getNimi()</b><br/>
+	    Palauttaa arvonaan tuotteen nimen.</li>
+	</ul>
+	
+	
         <p><i>Muista millä tavoin konstruktori voi ensi toimenaan suorittaa yliluokan konstruktorin!</i></p>
-
+	
         <p>Käyttöesimerkki:</p>
-
+	
 <pre class="sh_java">
-        Tuotevarasto mehu = new Tuotevarasto("Juice", 1000.0);
-        mehu.lisaaVarastoon(1000.0);
-        mehu.otaVarastosta(11.3);
-        System.out.println(mehu.getNimi()); // Juice
-        System.out.println(mehu);           // saldo = 988.7, tilaa 11.3
+Tuotevarasto mehu = new Tuotevarasto("Juice", 1000.0);
+mehu.lisaaVarastoon(1000.0);
+mehu.otaVarastosta(11.3);
+System.out.println(mehu.getNimi()); // Juice
+System.out.println(mehu);           // saldo = 988.7, tilaa 11.3
 </pre>
 
 <pre>
@@ -8691,33 +8656,32 @@ saldo = 988.7, vielä tilaa 11.3
 </pre>
 
 
-<h4  >Tuotevarasto, vaihe 2</h4>
+       <h4>Tuotevarasto, vaihe 2</h4>
 
 
-<p>Kuten edellisestä esimerkistä näkee, Tuotevarasto-olion perimä <code>toString()</code> ei tiedä (tietenkään!) mitään tuotteen nimestä. <i>Asialle on tehtävä jotain!</i> Lisätään samalla myös setteri tuotenimelle:</p>
-
-<ul>
-<li><b>public void setNimi(String uusiNimi)</b> asettaa tuotteelle
-       uuden nimen.</li>
-
-<li><b>public String toString()</b> palauttaa olion tilan merkkijonoesityksenä
-       tyyliin <tt>Juice: saldo = 64.5, tilaa 123.5</tt></li>
-</ul>
-
+	<p>Kuten edellisestä esimerkistä näkee, Tuotevarasto-olion perimä <code>toString()</code> ei tiedä (tietenkään!) mitään tuotteen nimestä. <i>Asialle on tehtävä jotain!</i> Lisätään samalla myös setteri tuotenimelle:</p>
+	
+	<ul>
+	  <li><b>public void setNimi(String uusiNimi)</b> asettaa tuotteelle
+	    uuden nimen.</li>
+	  
+	  <li><b>public String toString()</b> palauttaa olion tilan merkkijonoesityksenä
+	    tyyliin <tt>Juice: saldo = 64.5, tilaa 123.5</tt></li>
+	</ul>
+	
         <p>Uuden <code>toString()</code>-metodin voisi toki ohjelmoida käyttäen yliluokalta perittyjä gettereitä, joilla perittyjen, mutta piilossa pidettyjen kenttien arvoja saa käyttöönsä. Koska yliluokkaan on kuitenkin jo ohjelmoitu tarvittava taito varastotilanteen merkkiesityksen tuottamiseen, miksi nähdä vaivaa sen uudelleen ohjelmointiin. Käytä siis hyväksesi perittyä <code>toString</code>iä.</p>
 
         <p><i>Muista miten korvattua metodia voi kutsua aliluokassa!</i></p>
-
+	
         <p>Käyttöesimerkki:</p>
 
 <pre class="sh_java">
-        Tuotevarasto mehu = new Tuotevarasto("Juice", 1000.0);
-        mehu.lisaaVarastoon(1000.0);
-        mehu.otaVarastosta(11.3);
-        System.out.println(mehu.getNimi()); // Juice
-        mehu.lisaaVarastoon(1.0);
-        System.out.println(mehu);           // Juice: saldo = 989.7, tilaa 10.299999999999955
-</pre>
+Tuotevarasto mehu = new Tuotevarasto("Juice", 1000.0);
+mehu.lisaaVarastoon(1000.0);
+mehu.otaVarastosta(11.3);
+System.out.println(mehu.getNimi()); // Juice
+mehu.lisaaVarastoon(1.0);
+System.out.println(mehu);           // Juice: saldo = 989.7, tilaa 10.299999999999955</pre>
 
 <pre>
 Juice
@@ -8725,7 +8689,7 @@ Juice: saldo = 989.7, tilaa 10.299999999999955
 </pre>
 
 
-<h4>Muutoshistoria</h4>
+        <h4>Muutoshistoria</h4>
 
         <p>Toisinaan saattaa olla kiinnostavaa tietää, millä tavoin jonkin tuotteen varastotilanne muuttuu: onko varasto usein hyvin vajaa, ollaanko usein ylärajalla, onko vaihelu suurta vai pientä, jne. Varustetaan siksi <code>Tuotevarasto</code>-luokka taidolla muistaa tuotteen määrän muutoshistoriaa.</p>
 
@@ -8735,82 +8699,78 @@ Juice: saldo = 989.7, tilaa 10.299999999999955
 
         <p><code>Muutoshistoria</code>-luokan julkiset konstruktorit ja metodit:</p>
 
-<ul>
-<li><b>public Muutoshistoria()</b> luo tyhjän <code>Muutoshistoria</code>-olion.</li>
+	<ul>
+	  <li><b>public Muutoshistoria()</b> luo tyhjän <code>Muutoshistoria</code>-olion.</li>
+	  
+	  <li><b>public void lisaa(double tilanne)</b> lisää muutoshistorian viimeisimmäksi muistettavaksi määräksi parametrina annetun tilanteen. </li>
+	  
+	  <li><b>public void nollaa()</b> tyhjää muistin.</li>
+	  
+	  <li><b>public String toString()</b> palauttaa muutoshistorian
+	    merkkijonoesityksen. <i>ArrayList-luokan antama merkkijonoesitys kelpaa sellaisenaan.</i> </li>
+	  
+	</ul>
+	
 
-<li><b>public void lisaa(double tilanne)</b> lisää muutoshistorian viimeisimmäksi muistettavaksi määräksi parametrina annetun tilanteen. </li>
+    <h4>Muutoshistoria.java, vaihe 2</h4>
 
-<li><b>public void nollaa()</b> tyhjää muistin.</li>
+	<p>Täydennä <code>Muutoshistoria</code>-luokkaa analyysimetodein:</p>
 
-<li><b>public String toString()</b> palauttaa muutoshistorian
-    merkkijonoesityksen. <i>ArrayList-luokan antama merkkijonoesitys kelpaa sellaisenaan.</i> </li>
+	<ul>
 
-</ul>
+	  <li><b>public double maxArvo()</b> palauttaa muutoshistorian
+	    suurimman arvon. Jos historia on tyhjä, metodi palauttaa nollan.</li>
+	  
+	  
+	  <li><b>public double minArvo()</b> palauttaa muutoshistorian
+	    pienimmän arvon. Jos historia on tyhjä, metodi palauttaa nollan.</li>
+	  
+	  <li><b>public double keskiarvo()</b> palauttaa muutoshistorian
+	    arvojen keskiarvon. Jos historia on tyhjä, metodi palauttaa nollan.</li>
+	  
+	</ul>
 
+    <h4>Muutoshistoria.java, vaihe 3</h4>
 
-<h4  >Muutoshistoria.java, vaihe 2</h4>
+	<p>Täydennä <code>Muutoshistoria</code>-luokkaa analyysimetodein:</p>
 
-<p>
-Täydennä <code>Muutoshistoria</code>-luokkaa analyysimetodein:</p>
-
-<ul>
-
-<li><b>public double maxArvo()</b> palauttaa muutoshistorian
-   suurimman arvon. Jos historia on tyhjä, metodi palauttaa nollan.</li>
-
-
-<li><b>public double minArvo()</b> palauttaa muutoshistorian
-   pienimmän arvon. Jos historia on tyhjä, metodi palauttaa nollan.</li>
-
-<li><b>public double keskiarvo()</b> palauttaa muutoshistorian
-    arvojen keskiarvon. Jos historia on tyhjä, metodi palauttaa nollan.</li>
-
-</ul>
-
-<h4>Muutoshistoria.java, vaihe 3</h4>
-
-<p>
-Täydennä <code>Muutoshistoria</code>-luokkaa analyysimetodein:</p>
-
-<ul>
-<li><b>public double suurinMuutos()</b> palauttaa muutoshistorian isoimman (huom: -5:n kokoinen muutos on isompi kuin 4:n kokoinen muutos) yksittäisen muutoksen itseisarvon. Jos historia on tyhjä tai yhden arvon mittainen, metodi palauttaa nollan. Itseisarvo on luvun etäisyys nollasta. Esimerkiksi luvun -5.5 itseisarvo on 5.5, luvun 3.2 itseisarvo on 3.2. </li>
-
-<li><b>public double varianssi()</b> palauttaa muutoshistorian arvojen varianssin (käytetään otosvarianssin kaavaa). Jos historia on tyhjä tai yhden arvon mittainen, metodi palauttaa nollan.</li>
-</ul>
-
-<p>Ohjeen varianssin laskemiseksi voit katsoa esimerkiksi <a href="http://fi.wikipedia.org/wiki/Varianssi#Populaatio-_ja_otosvarianssi">Wikipediasta</a> kohdasta populaatio- ja otosvarianssi. Esimerkiksi lukujen 3, 2, 7, 2 keskiarvo on 3.5, joten otosvarianssi on ((3 - 3.5)² + (2 - 3.5)² + (7 - 3.5)² + (2 - 3.5)²)/(4 - 1) ≈ 5,666667.)</p>
+	<ul>
+	  <li><b>public double suurinMuutos()</b> palauttaa muutoshistorian isoimman (huom: -5:n kokoinen muutos on isompi kuin 4:n kokoinen muutos) yksittäisen muutoksen itseisarvon. Jos historia on tyhjä tai yhden arvon mittainen, metodi palauttaa nollan. Itseisarvo on luvun etäisyys nollasta. Esimerkiksi luvun -5.5 itseisarvo on 5.5, luvun 3.2 itseisarvo on 3.2. </li>
+	  
+	  <li><b>public double varianssi()</b> palauttaa muutoshistorian arvojen varianssin (käytetään otosvarianssin kaavaa). Jos historia on tyhjä tai yhden arvon mittainen, metodi palauttaa nollan.</li>
+	</ul>
+	
+	<p>Ohjeen varianssin laskemiseksi voit katsoa esimerkiksi <a href="http://fi.wikipedia.org/wiki/Varianssi#Populaatio-_ja_otosvarianssi">Wikipediasta</a> kohdasta populaatio- ja otosvarianssi. Esimerkiksi lukujen 3, 2, 7, 2 keskiarvo on 3.5, joten otosvarianssi on ((3 - 3.5)² + (2 - 3.5)² + (7 - 3.5)² + (2 - 3.5)²)/(4 - 1) ≈ 5,666667.)</p>
 
 
+	<h4>MuistavaTuotevarasto, vaihe 1</h4>
 
-
-<h4  >MuistavaTuotevarasto, vaihe 1</h4>
-
-<p>
-Toteuta luokan <code>Tuotevarasto</code> aliluokkana <code>MuistavaTuotevarasto</code>.
-Uusi versio tarjoaa vanhojen lisäksi varastotilanteen muutoshistoriaan liittyviä
-palveluita. Historiaa hallitaan <code>Muutoshistoria</code>-oliolla.
-</p>
-
-<p>
-Julkiset konstruktorit ja metodit:</p>
-
-<ul>
-
-<li><b>public MuistavaTuotevarasto(String tuotenimi, double tilavuus, double alkuSaldo)</b>
-     luo tuotevaraston. Tuotenimi, vetoisuus ja alkusaldo annetaan parametrina.
-     <i>Aseta alkusaldo sekä varaston alkusaldoksi että muutoshistorian ensimmäiseksi arvoksi.</i>
-
-<li><b>public String historia()</b> palauttaa tuotehistorian tyyliin
-       <tt>[0.0, 119.2, 21.2]</tt>.  <i>Käytä Muutoshistoria-olion merkkiesitystä sellaisenaan.</i>
-
-</ul>
-<p>
-<b>Huomaa</b> että tässä esiversiossa historia ei vielä toimi kunnolla; nyt vasta vain aloitussaldo muistetaan.
-</p>
-
-<p>
-Käyttöesimerkki:
-</p>
+	<p>
+	  Toteuta luokan <code>Tuotevarasto</code> aliluokkana <code>MuistavaTuotevarasto</code>.
+	  Uusi versio tarjoaa vanhojen lisäksi varastotilanteen muutoshistoriaan liittyviä
+	  palveluita. Historiaa hallitaan <code>Muutoshistoria</code>-oliolla.
+	</p>
+	
+	<p>
+	  Julkiset konstruktorit ja metodit:</p>
+	
+	<ul>
+	  
+	  <li><b>public MuistavaTuotevarasto(String tuotenimi, double tilavuus, double alkuSaldo)</b>
+	    luo tuotevaraston. Tuotenimi, vetoisuus ja alkusaldo annetaan parametrina.
+	    <i>Aseta alkusaldo sekä varaston alkusaldoksi että muutoshistorian ensimmäiseksi arvoksi.</i>
+	    
+	  <li><b>public String historia()</b> palauttaa tuotehistorian tyyliin
+	    <tt>[0.0, 119.2, 21.2]</tt>.  <i>Käytä Muutoshistoria-olion merkkiesitystä sellaisenaan.</i>
+	    
+	</ul>
+	<p>
+	  <b>Huomaa</b> että tässä esiversiossa historia ei vielä toimi kunnolla; nyt vasta vain aloitussaldo muistetaan.
+	</p>
+	
+	<p>
+	  Käyttöesimerkki:
+	</p>
 
 <pre class="sh_java">
 // tuttuun tapaan:
@@ -8836,28 +8796,28 @@ Juice: saldo = 989.7, vielä tilaa 10.299999999999955
 [1000.0]
 </pre>
 
-<h4  >MuistavaTuotevarasto, vaihe 2</h4>
+    <h4>MuistavaTuotevarasto, vaihe 2</h4>
 
-<p>
-<i>On aika aloittaa historia!</i> Ensimmäinen versio ei historiasta tiennyt kuin alkupisteen. Täydennä luokkaa metodein
-</p>
-<ul>
-
-<li><b>public void lisaaVarastoon(double maara)</b>
-
-    toimii kuin <i>Varasto</i>-luokan metodi, mutta muuttunut tilanne kirjataan historiaan.
-<b>Huom: </b> historiaan tulee kirjata lisäyksen jälkeinen varastosaldo, ei lisättävää määrää!
-</li>
-
-
-
-<li><b>public double otaVarastosta(double maara)</b> toimii kuin <code>Varasto</code>-luokan metodi, mutta muuttunut tilanne kirjataan historiaan. <b>Huom: </b> historiaan tulee kirjata poiston jälkeinen varastosaldo, ei poistettavaa määrää!</li>
-
-</ul>
-
-<p>
-Käyttöesimerkki:
-</p>
+	<p>
+	  <i>On aika aloittaa historia!</i> Ensimmäinen versio ei historiasta tiennyt kuin alkupisteen. Täydennä luokkaa metodein
+	</p>
+	<ul>
+	  
+	  <li><b>public void lisaaVarastoon(double maara)</b>
+	    
+	    toimii kuin <i>Varasto</i>-luokan metodi, mutta muuttunut tilanne kirjataan historiaan.
+	    <b>Huom: </b> historiaan tulee kirjata lisäyksen jälkeinen varastosaldo, ei lisättävää määrää!
+	  </li>
+	  
+	  
+	  
+	  <li><b>public double otaVarastosta(double maara)</b> toimii kuin <code>Varasto</code>-luokan metodi, mutta muuttunut tilanne kirjataan historiaan. <b>Huom: </b> historiaan tulee kirjata poiston jälkeinen varastosaldo, ei poistettavaa määrää!</li>
+	  
+	</ul>
+	
+	<p>
+	  Käyttöesimerkki:
+	</p>
 
 <pre class="sh_java">
 // tuttuun tapaan:
@@ -8871,9 +8831,11 @@ System.out.println(mehu);           // Juice: saldo = 989.7, vielä tilaa 10.3
 System.out.println(mehu.historia()); // [1000.0, 988.7, 989.7]
 ...
 </pre>
+
 <p>
 Tulostus siis:
 </p>
+
 <pre>
 Juice
 Juice: saldo = 989.7, vielä tilaa 10.299999999999955
@@ -8882,11 +8844,11 @@ Juice: saldo = 989.7, vielä tilaa 10.299999999999955
 <p>
 
 <p>
-<i>Muista miten korvaava metodi voi käyttää hyväkseen korvattua metodia!</i>
+  <i>Muista miten korvaava metodi voi käyttää hyväkseen korvattua metodia!</i>
 </p>
 
 
-<h4  >MuistavaTuotevarasto, vaihe 3</h4>
+<h4>MuistavaTuotevarasto, vaihe 3</h4>
 <p>
 Täydennä luokkaa metodilla
 </p>
@@ -8930,18 +8892,18 @@ Täydennä analyysin tulostus sellaiseksi, että mukana ovat myös muutoshistori
 </div>
 
 
-<h3>Perintä, rajapinnat, kumpikin, vai eikö kumpaakaan?</h3>
+    <h3>Perintä, rajapinnat, kumpikin, vai eikö kumpaakaan?</h3>
 
-<p>Perintä ei sulje pois rajapintojen käyttöä, eikä rajapintojen käyttö sulje pois perinnän käyttöä. Rajapinnat toimivat sopimuksena luokan tarjoamasta toteutuksesta, ja mahdollistavat konkreettisen toteutuksen abstrahoinnin. Rajapinnan toteuttavan luokan vaihto on hyvin helppoa.</p>
+    <p>Perintä ei sulje pois rajapintojen käyttöä, eikä rajapintojen käyttö sulje pois perinnän käyttöä. Rajapinnat toimivat sopimuksena luokan tarjoamasta toteutuksesta, ja mahdollistavat konkreettisen toteutuksen abstrahoinnin. Rajapinnan toteuttavan luokan vaihto on hyvin helppoa.</p>
 
-        <p>Aivan kuten rajapintaa toteuttaessa, sitoudumme perittäessä siihen, että aliluokkamme tarjoaa kaikki yliluokan metodit. Monimuotoisuuden ja polymorfismin takia perintäkin toimii kuin rajapinnat. Voimme antaa yliluokkaa käyttävälle metodille sen aliluokan ilmentymän.</p>
+    <p>Aivan kuten rajapintaa toteuttaessa, sitoudumme perittäessä siihen, että aliluokkamme tarjoaa kaikki yliluokan metodit. Monimuotoisuuden ja polymorfismin takia perintäkin toimii kuin rajapinnat. Voimme antaa yliluokkaa käyttävälle metodille sen aliluokan ilmentymän.</p>
 
-        <p>Tehdään seuraavaksi maatilasimulaattori, jossa simuloidaan maatilan elämää. Huomaa että ohjelmassa ei käytetä perintää, ja rajapintojenkin käyttö on melko vähäistä. Usein ohjelmat tehdäänkin niin että ensin toteutetaan yksi versio, jota lähdetään parantamaan myöhemmin. Tyypillistä on että ensimmäistä versiota toteutettaessa ongelma-aluetta ei vielä ymmärretä kunnolla, jolloin rajapintojen ja käsitehierarkioiden suunnittelu ennalta on hyvin vaikeaa ja saattaa jopa hidastaa työskentelyä.</p>
+    <p>Tehdään seuraavaksi maatilasimulaattori, jossa simuloidaan maatilan elämää. Huomaa että ohjelmassa ei käytetä perintää, ja rajapintojenkin käyttö on melko vähäistä. Usein ohjelmat tehdäänkin niin että ensin toteutetaan yksi versio, jota lähdetään parantamaan myöhemmin. Tyypillistä on että ensimmäistä versiota toteutettaessa ongelma-aluetta ei vielä ymmärretä kunnolla, jolloin rajapintojen ja käsitehierarkioiden suunnittelu ennalta on hyvin vaikeaa ja saattaa jopa hidastaa työskentelyä.</p>
 
 
 <div class="tehtavat">
     <div class="tehtava">
-<h3>Maatilasimulaattori</h3>
+      <h3>Maatilasimulaattori</h3>
 
 <p>
 Maatiloilla on lypsäviä eläimiä, jotka tuottavat maitoa.  Maatilat
@@ -8989,15 +8951,15 @@ ylöspäin käyttäen <code>Math</code>-luokan tarjoamaa <code>ceil()</code>-met
 <p>Testaa maitosailiötä seuraavalla ohjelmapätkällä:</p>
 
 <pre class="sh_java">
-        Maitosailio sailio = new Maitosailio();
-        sailio.otaSailiosta(100);
-        sailio.lisaaSailioon(25);
-        sailio.otaSailiosta(5);
-        System.out.println(sailio);
+Maitosailio sailio = new Maitosailio();
+sailio.otaSailiosta(100);
+sailio.lisaaSailioon(25);
+sailio.otaSailiosta(5);
+System.out.println(sailio);
 
-        sailio = new Maitosailio(50);
-        sailio.lisaaSailioon(100);
-        System.out.println(sailio);
+sailio = new Maitosailio(50);
+sailio.lisaaSailioon(100);
+System.out.println(sailio);
 </pre>
 
 
@@ -9038,66 +9000,52 @@ public interface Lypsava {
 
 public interface Eleleva {
     public void eleleTunti();
-}
-</pre>
+}</pre>
 
-<p>
-Lehmää lypsettäessä sen koko maitovarasto tyhjennetään jatkokäsittelyä
-varten.  Lehmän elellessä sen maitovarasto täyttyy hiljalleen.
-Suomessa maidontuotannossa käytetyt lehmät tuottavat keskimäärin
-noin 25-30 litraa maitoa päivässä.  Simuloidaan tätä tuotantoa
-tuottamalla noin 0.7 - 2 litraa tunnissa.
-</p>
 
-<p>
-Jos lehmälle ei anneta nimeä, valitse sille nimi satunnaisesti seuraavasta listasta.
-</p>
+      <p>Lehmää lypsettäessä sen koko maitovarasto tyhjennetään jatkokäsittelyä varten.  Lehmän elellessä sen maitovarasto täyttyy hiljalleen. Suomessa maidontuotannossa käytetyt lehmät tuottavat keskimäärin noin 25-30 litraa maitoa päivässä.  Simuloidaan tätä tuotantoa tuottamalla noin 0.7 - 2 litraa tunnissa.</p>
+
+      <p>Jos lehmälle ei anneta nimeä, valitse sille nimi satunnaisesti seuraavasta taulukosta.</p>
 
 <pre class="sh_java">
-    private static final String[] NIMIA = new String[]{
-        "Anu", "Arpa", "Essi", "Heluna", "Hely",
-        "Hento", "Hilke", "Hilsu", "Hymy", "Ihq", "Ilme", "Ilo",
-        "Jaana", "Jami", "Jatta", "Laku", "Liekki",
-        "Mainikki", "Mella", "Mimmi", "Naatti",
-        "Nina", "Nyytti", "Papu", "Pullukka", "Pulu",
-        "Rima", "Soma", "Sylkki", "Valpu", "Virpi"};
-</pre>
+private static final String[] NIMIA = new String[]{
+    "Anu", "Arpa", "Essi", "Heluna", "Hely",
+    "Hento", "Hilke", "Hilsu", "Hymy", "Matti", "Ilme", "Ilo",
+    "Jaana", "Jami", "Jatta", "Laku", "Liekki",
+    "Mainikki", "Mella", "Mimmi", "Naatti",
+    "Nina", "Nyytti", "Papu", "Pullukka", "Pulu",
+    "Rima", "Soma", "Sylkki", "Valpu", "Virpi"};</pre>
 
-<p>Toteuta luokka Lehma ja testaa sen toimintaa seuraavan ohjelmapätkän avulla.</p>
+      <p>Toteuta luokka Lehma ja testaa sen toimintaa seuraavan ohjelmapätkän avulla.</p>
 
 <pre class="sh_java">
-        Lehma lehma = new Lehma();
-        System.out.println(lehma);
+Lehma lehma = new Lehma();
+System.out.println(lehma);
 
 
-        Eleleva elelevaLehma = lehma;
-        elelevaLehma.eleleTunti();
-        elelevaLehma.eleleTunti();
-        elelevaLehma.eleleTunti();
-        elelevaLehma.eleleTunti();
+Eleleva elelevaLehma = lehma;
+elelevaLehma.eleleTunti();
+elelevaLehma.eleleTunti();
+elelevaLehma.eleleTunti();
+elelevaLehma.eleleTunti();
 
-        System.out.println(lehma);
+System.out.println(lehma);
 
-        Lypsava lypsavaLehma = lehma;
-        lypsavaLehma.lypsa();
+Lypsava lypsavaLehma = lehma;
+lypsavaLehma.lypsa();
 
-        System.out.println(lehma);
-        System.out.println("");
+System.out.println(lehma);
+System.out.println("");
 
-        lehma = new Lehma("Ammu");
-        System.out.println(lehma);
-        lehma.eleleTunti();
-        lehma.eleleTunti();
-        System.out.println(lehma);
-        lehma.lypsa();
-        System.out.println(lehma);
+lehma = new Lehma("Ammu");
+System.out.println(lehma);
+lehma.eleleTunti();
+lehma.eleleTunti();
+System.out.println(lehma);
+lehma.lypsa();
+System.out.println(lehma);</pre>
 
-</pre>
-
-<p>
-Ohjelman tulostus on erimerkiksi seuraavanlainen.</p>
-
-</p>
+      <p>Ohjelman tulostus on erimerkiksi seuraavanlainen.</p>
 
 <pre>
 Liekki 0.0/23.0
@@ -9105,31 +9053,26 @@ Liekki 7.0/23.0
 Liekki 0.0/23.0
 Ammu 0.0/35.0
 Ammu 9.0/35.0
-Ammu 0.0/35.0
-</pre>
+Ammu 0.0/35.0</pre>
 
 
-<h4>Lypsyrobotti</h4>
-<p>
-Nykyaikaisilla maatiloilla lypsyrobotit hoitavat lypsämisen.
-Jotta lypsyrobotti voi lypsää lypsävää otusta, tulee lypsyrobotin
-olla kiinnitetty maitosäiliöön:
-</p>
+    <h4>Lypsyrobotti</h4>
 
-  <ul>
-    <li><strong>public Lypsyrobotti()</strong> luo uuden lypsyrobotin</li>
-    <li><strong>public Maitosailio getMaitosailio()</strong> palauttaa kiinnitetyn maitosäiliö tai <code>null</code>-viitteen, jos säiliötä ei ole vielä kiinnitetty</li>
-    <li><strong>public void setMaitosailio(Maitosailio maitosailio)</strong> kiinnittää annetun säiliön lypsyrobottiin</li>
-    <li><strong>public void lypsa(Lypsava lypsava)</strong> lypsää lehmän robottiin kiinnitettyyn maitosäiliöön, metodi heittää poikkeuksen <code>IllegalStateException</code>, jos säiliötä ei ole kiinnitetty </li>
-  </ul>
+      <p>Nykyaikaisilla maatiloilla lypsyrobotit hoitavat lypsämisen. Jotta lypsyrobotti voi lypsää lypsävää otusta, tulee lypsyrobotin olla kiinnitetty maitosäiliöön:</p>
 
-<p>Toteuta luokka Lypsyrobotti ja testaa sitä seuraavien ohjelmanpätkien avulla. Varmista että lypsyrobotti voi lypsää kaikkia Lypsava-rajapinnan toteuttavia olioita!</p>
+      <ul>
+	<li><strong>public Lypsyrobotti()</strong> luo uuden lypsyrobotin</li>
+	<li><strong>public Maitosailio getMaitosailio()</strong> palauttaa kiinnitetyn maitosäiliö tai <code>null</code>-viitteen, jos säiliötä ei ole vielä kiinnitetty</li>
+	<li><strong>public void setMaitosailio(Maitosailio maitosailio)</strong> kiinnittää annetun säiliön lypsyrobottiin</li>
+	<li><strong>public void lypsa(Lypsava lypsava)</strong> lypsää lehmän robottiin kiinnitettyyn maitosäiliöön, metodi heittää poikkeuksen <code>IllegalStateException</code>, jos säiliötä ei ole kiinnitetty </li>
+      </ul>
+      
+      <p>Toteuta luokka Lypsyrobotti ja testaa sitä seuraavien ohjelmanpätkien avulla. Varmista että lypsyrobotti voi lypsää kaikkia Lypsava-rajapinnan toteuttavia olioita!</p>
 
 <pre class="sh_java">
-        Lypsyrobotti lypsyrobotti = new Lypsyrobotti();
-        Lehma lehma = new Lehma();
-        lypsyrobotti.lypsa(lehma);
-</pre>
+Lypsyrobotti lypsyrobotti = new Lypsyrobotti();
+Lehma lehma = new Lehma();
+lypsyrobotti.lypsa(lehma);</pre>
 
 <pre>
 Exception in thread "main" java.lang.IllegalStateException: Maitosäiliötä ei ole asennettu
@@ -9139,28 +9082,27 @@ Java Result: 1
 </pre>
 
 <pre class="sh_java">
-        Lypsyrobotti lypsyrobotti = new Lypsyrobotti();
-        Lehma lehma = new Lehma();
-        System.out.println("");
+Lypsyrobotti lypsyrobotti = new Lypsyrobotti();
+Lehma lehma = new Lehma();
+System.out.println("");
 
-        Maitosailio sailio = new Maitosailio();
-        lypsyrobotti.setMaitosailio(sailio);
-        System.out.println("Säiliö: " + sailio);
+Maitosailio sailio = new Maitosailio();
+lypsyrobotti.setMaitosailio(sailio);
+System.out.println("Säiliö: " + sailio);
 
-        for(int i = 0; i &lt; 2; i++) {
-            System.out.println(lehma);
-            System.out.println("Elellään..");
-            for(int j = 0; j &lt; 5; j++) {
-                lehma.eleleTunti();
-            }
-            System.out.println(lehma);
+for(int i = 0; i &lt; 2; i++) {
+    System.out.println(lehma);
+    System.out.println("Elellään..");
+    for(int j = 0; j &lt; 5; j++) {
+        lehma.eleleTunti();
+    }
+    System.out.println(lehma);
 
-            System.out.println("Lypsetään...");
-            lypsyrobotti.lypsa(lehma);
-            System.out.println("Säiliö: " + sailio);
-            System.out.println("");
-        }
-</pre>
+    System.out.println("Lypsetään...");
+    lypsyrobotti.lypsa(lehma);
+    System.out.println("Säiliö: " + sailio);
+    System.out.println("");
+}</pre>
 
 <p>Ohjelman tulostus on esimerkiksi seuraavanlainen.</p>
 
@@ -9176,68 +9118,52 @@ Mella 0.0/23.0
 Elellään..
 Mella 7.8/23.0
 Lypsetään...
-Säiliö: 14.0/2000.0
-</pre>
+Säiliö: 14.0/2000.0</pre>
 
-<h4>Navetta</h4>
+    <h4>Navetta</h4>
 
-<p>
-Lehmät hoidetaan (eli tässä tapauksessa lypsetään) navetassa.
-Alkukantaisissa navetoissa on maitosäiliö ja tilaa yhdelle
-lypsyrobotille. Huomaa että lypsyrobottia asennettaessa se kytketään
-juuri kyseisen navetan maitosäiliöön.  Jos navetassa ei ole
-lypsyrobottia, ei siellä voida myöskään hoitaa lehmiä.
-Toteuta luokka <code>Navetta</code> jolla on seuraavat konstruktorit ja metodit:
-</p>
+      <p>Lehmät hoidetaan (eli tässä tapauksessa lypsetään) navetassa. Alkukantaisissa navetoissa on maitosäiliö ja tilaa yhdelle lypsyrobotille. Huomaa että lypsyrobottia asennettaessa se kytketään juuri kyseisen navetan maitosäiliöön.  Jos navetassa ei ole lypsyrobottia, ei siellä voida myöskään hoitaa lehmiä. Toteuta luokka <code>Navetta</code> jolla on seuraavat konstruktorit ja metodit: </p>
 
-  <ul>
-    <li><strong>public Navetta(Maitosailio maitosailio)</strong></li>
-    <li><strong>public Maitosailio getMaitosailio()</strong> palauttaa navetan maitosailion</li>
-    <li><strong>public void asennaLypsyrobotti(Lypsyrobotti lypsyrobotti)</strong> asentaa lypsyrobotin ja kiinnittää sen navetan maitosäiliöön</li>
-    <li><strong>public void hoida(Lehma lehma)</strong> lypsää parametrina annetun lehmän lypsyrobotin avulla, metodi heittää poikkeuksen <code>IllegalStateException</code>, jos lypsyrobottia ei ole asennettu</li>
-    <li><strong>public void hoida(Collection&lt;Lehma&gt; lehmat)</strong> lypsää parametrina annetut lehmät lypsyrobotin avulla, metodi heittää poikkeuksen <code>IllegalStateException</code>, jos lypsyrobottia ei ole asennettu</li>
-    <li><strong>public String toString()</strong> palauttaa navetan sisältämän maitosäiliön tilan</li>
-  </ul>
-
-<p><code>Collection</code> on Javan oma rajapinta joka kuvaa kokoelmien käyttäytymistä.  Esimerkiksi luokat <code>ArrayList</code> ja <code>LinkedList</code> toteuttavat rajapinnan <code>Collection</code>. Jokaista <code>Collection</code>-rajapinnan toteuttavaa ilmentymää voi myös iteroida for-each-tyyppisesti.</p>
-
-<p>
-Testaa luokkaa <code>Navetta</code> seuraavan ohjelmapätkän avulla.
-Älä hermoile luokasta <code>LinkedList</code>, se toimii ulkoapäin katsottuna
-kuin <code>ArrayList</code>, mutta sen kapseloima toteutus on hieman erilainen.
-Tästä lisää tietorakenteet-kurssilla!
-</p>
+      <ul>
+	<li><strong>public Navetta(Maitosailio maitosailio)</strong></li>
+	<li><strong>public Maitosailio getMaitosailio()</strong> palauttaa navetan maitosailion</li>
+	<li><strong>public void asennaLypsyrobotti(Lypsyrobotti lypsyrobotti)</strong> asentaa lypsyrobotin ja kiinnittää sen navetan maitosäiliöön</li>
+	<li><strong>public void hoida(Lehma lehma)</strong> lypsää parametrina annetun lehmän lypsyrobotin avulla, metodi heittää poikkeuksen <code>IllegalStateException</code>, jos lypsyrobottia ei ole asennettu</li>
+	<li><strong>public void hoida(Collection&lt;Lehma&gt; lehmat)</strong> lypsää parametrina annetut lehmät lypsyrobotin avulla, metodi heittää poikkeuksen <code>IllegalStateException</code>, jos lypsyrobottia ei ole asennettu</li>
+	<li><strong>public String toString()</strong> palauttaa navetan sisältämän maitosäiliön tilan</li>
+      </ul>
+      
+      <p><code>Collection</code> on Javan oma rajapinta joka kuvaa kokoelmien käyttäytymistä.  Esimerkiksi luokat <code>ArrayList</code> ja <code>LinkedList</code> toteuttavat rajapinnan <code>Collection</code>. Jokaista <code>Collection</code>-rajapinnan toteuttavaa ilmentymää voi myös iteroida for-each-tyyppisesti.</p>
+      
+      <p>Testaa luokkaa <code>Navetta</code> seuraavan ohjelmapätkän avulla. Älä hermoile luokasta <code>LinkedList</code>, se toimii ulkoapäin katsottuna kuin <code>ArrayList</code>, mutta sen kapseloima toteutus on hieman erilainen. Tästä lisää tietorakenteet-kurssilla!</p>
 
 <pre class="sh_java">
-        Navetta navetta = new Navetta(new Maitosailio());
-        System.out.println("Navetta: " + navetta);
+Navetta navetta = new Navetta(new Maitosailio());
+System.out.println("Navetta: " + navetta);
 
-        Lypsyrobotti robo = new Lypsyrobotti();
-        navetta.asennaLypsyrobotti(robo);
+Lypsyrobotti robo = new Lypsyrobotti();
+navetta.asennaLypsyrobotti(robo);
 
-        Lehma ammu = new Lehma();
-        ammu.eleleTunti();
-        ammu.eleleTunti();
+Lehma ammu = new Lehma();
+ammu.eleleTunti();
+ammu.eleleTunti();
 
-        navetta.hoida(ammu);
-        System.out.println("Navetta: " + navetta);
+navetta.hoida(ammu);
+System.out.println("Navetta: " + navetta);
 
-        LinkedList&lt;Lehma&gt; lehmaLista = new LinkedList();
-        lehmaLista.add(ammu);
-        lehmaLista.add(new Lehma());
+LinkedList&lt;Lehma&gt; lehmaLista = new LinkedList();
+lehmaLista.add(ammu);
+lehmaLista.add(new Lehma());
 
-        for(Lehma lehma: lehmaLista) {
-            lehma.eleleTunti();
-            lehma.eleleTunti();
-        }
+for(Lehma lehma: lehmaLista) {
+    lehma.eleleTunti();
+    lehma.eleleTunti();
+}
 
-        navetta.hoida(lehmaLista);
-        System.out.println("Navetta: " + navetta);
-</pre>
+navetta.hoida(lehmaLista);
+System.out.println("Navetta: " + navetta);</pre>
 
-<p>
-Tulostuksen tulee olla esimerkiksi seuraavanlainen:
-</p>
+      <p>Tulostuksen tulee olla esimerkiksi seuraavanlainen:</p>
 
 <pre>
 Navetta: 0.0/2000.0
@@ -9245,26 +9171,17 @@ Navetta: 2.8/2000.0
 Navetta: 9.6/2000.0
 </pre>
 
-<h4>Maatila</h4>
+      <h4>Maatila</h4>
 
-<p>
-Maatilalla on omistaja ja siihen kuuluu navetta sekä joukko lehmiä.
-Maatila toteuttaa myös aiemmin nähdyn rajapinnan <code>Eleleva</code>,
-jonka metodia <code>eleleTunti()</code>-kutsumalla kaikki maatilaan
-liittyvät lehmät elelevät tunnin.  Toteuta luokka maatila siten,
-että se toimii seuraavien esimerkkiohjelmien mukaisesti.
-</p>
+      <p>Maatilalla on omistaja ja siihen kuuluu navetta sekä joukko lehmiä. Maatila toteuttaa myös aiemmin nähdyn rajapinnan <code>Eleleva</code>, jonka metodia <code>eleleTunti()</code>-kutsumalla kaikki maatilaan liittyvät lehmät elelevät tunnin.  Toteuta luokka maatila siten, että se toimii seuraavien esimerkkiohjelmien mukaisesti.</p>
 
 <pre class="sh_java">
-        Maatila maatila = new Maatila("Esko", new Navetta(new Maitosailio()));
-        System.out.println(maatila);
+Maatila maatila = new Maatila("Esko", new Navetta(new Maitosailio()));
+System.out.println(maatila);
 
-        System.out.println(maatila.getOmistaja() + " on ahkera mies!");
-</pre>
+System.out.println(maatila.getOmistaja() + " on ahkera mies!");</pre>
 
-<p>
-Odotettu tulostus:
-</p>
+      <p>Odotettu tulostus:</p>
 
 <pre>
 Maatilan omistaja: Esko
@@ -9275,17 +9192,14 @@ Esko on ahkera mies!
 
 
 <pre class="sh_java">
-        Maatila maatila = new Maatila("Esko", new Navetta(new Maitosailio()));
-        maatila.lisaaLehma(new Lehma());
-        maatila.lisaaLehma(new Lehma());
-        maatila.lisaaLehma(new Lehma());
-        System.out.println(maatila);
-</pre>
+Maatila maatila = new Maatila("Esko", new Navetta(new Maitosailio()));
+maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
+System.out.println(maatila);</pre>
 
 
-<p>
-Odotettu tulostus:
-</p>
+      <p>Odotettu tulostus:</p>
 
 <pre>
 Maatilan omistaja: Esko
@@ -9297,21 +9211,18 @@ Lehmät:
 </pre>
 
 <pre class="sh_java">
-        Maatila maatila = new Maatila("Esko", new Navetta(new Maitosailio()));
+Maatila maatila = new Maatila("Esko", new Navetta(new Maitosailio()));
 
-        maatila.lisaaLehma(new Lehma());
-        maatila.lisaaLehma(new Lehma());
-        maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
 
-        maatila.eleleTunti();
-        maatila.eleleTunti();
+maatila.eleleTunti();
+maatila.eleleTunti();
 
-        System.out.println(maatila);
-</pre>
+System.out.println(maatila);</pre>
 
-<p>
-Odotettu tulostus:
-</p>
+      <p>Odotettu tulostus:</p>
 
 <pre>
 Maatilan omistaja: Esko
@@ -9323,25 +9234,22 @@ Lehmät:
 </pre>
 
 <pre class="sh_java">
-        Maatila maatila = new Maatila("Esko", new Navetta(new Maitosailio()));
-        Lypsyrobotti robo = new Lypsyrobotti();
-        maatila.asennaNavettaanLypsyrobotti(robo);
+Maatila maatila = new Maatila("Esko", new Navetta(new Maitosailio()));
+Lypsyrobotti robo = new Lypsyrobotti();
+maatila.asennaNavettaanLypsyrobotti(robo);
 
-        maatila.lisaaLehma(new Lehma());
-        maatila.lisaaLehma(new Lehma());
-        maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
 
-        maatila.eleleTunti();
-        maatila.eleleTunti();
+maatila.eleleTunti();
+maatila.eleleTunti();
 
-        maatila.hoidaLehmat();
+maatila.hoidaLehmat();
 
-        System.out.println(maatila);
-</pre>
+System.out.println(maatila);</pre>
 
-<p>
-Odotettu tulostus:
-</p>
+      <p>Odotettu tulostus:</p>
 
 <pre>
 Maatilan omistaja: Esko
@@ -9354,7 +9262,7 @@ Lehmät:
 </div>
 </div>
 
-<h3>Abstrakti luokka</h3>
+        <h3>Abstrakti luokka</h3>
 
         <p>Abstrakti luokka yhdistää rajapintoja ja perintää. Niistä ei voi tehdä ilmentymiä, vaan ilmentymät tehdään tehdään abstraktin luokan aliluokista.  Abstrakti luokka voi sisältää sekä normaaleja metodeja, joissa on metodirunko, että abstrakteja metodeja, jotka sisältävät ainoastaan metodimäärittelyn. Abstraktien metodien toteutus jätetään perivän luokan vastuulle. Yleisesti ajatellen abstrakteja luokkia käytetään esimerkiksi kun abstraktin luokan kuvaama käsite ei ole selkeä itsenäinen käsite. Tällöin siitä ei tule pystyä tekemään ilmentymiä. </p>
 
@@ -9374,8 +9282,7 @@ public abstract class Toiminto {
     }
 
     public abstract void suorita(Scanner lukija);
-}
-</pre>
+}</pre>
 
         <p>Abstrakti luokka <code>Toiminto</code> toimii runkona erilaisten toimintojen toteuttamiseen. Esimerkiksi pluslaskun voi toteuttaa perimällä luokka <code>Toiminto</code> seuraavasti.</p>
 
@@ -9452,11 +9359,10 @@ public class Kayttoliittyma {
         <p>Käyttöliittymä toimii seuraavasti:</p>
 
 <pre class="sh_java">
-        Kayttoliittyma kayttolittyma = new Kayttoliittyma(new Scanner(System.in));
-        kayttolittyma.lisaaToiminto(new Pluslasku());
+Kayttoliittyma kayttolittyma = new Kayttoliittyma(new Scanner(System.in));
+kayttolittyma.lisaaToiminto(new Pluslasku());
 
-        kayttolittyma.kaynnista();
-</pre>
+kayttolittyma.kaynnista();</pre>
 
 <pre>
 Toiminnot:
@@ -9478,11 +9384,11 @@ Valinta: <font color="red">0</font>
 
 <div class="tehtavat">
     <div class="tehtava">
-  <h3>Erilaisia laatikoita</h3>
+      <h3>Erilaisia laatikoita</h3>
 
-  <p>Tehtäväpohjan mukana tulee luokat <code>Tavara</code> ja <code>Laatikko</code>. Luokka <code>Laatikko</code> on abstrakti luokka, jossa useamman tavaran lisääminen on toteutettu siten, että kutsutaan aina <code>lisaa</code>-metodia. Yhden tavaran lisäämiseen tarkoitettu metodi <code>lisaa</code> on abstrakti, joten jokaisen <code>Laatikko</code>-luokan perivän laatikon tulee toteuttaa se. Tehtävänäsi on muokata luokkaa <code>Tavara</code> ja toteuttaa muutamia erilaisia laatikoita luokan <code>Laatikko</code> pohjalta.</p>
+      <p>Tehtäväpohjan mukana tulee luokat <code>Tavara</code> ja <code>Laatikko</code>. Luokka <code>Laatikko</code> on abstrakti luokka, jossa useamman tavaran lisääminen on toteutettu siten, että kutsutaan aina <code>lisaa</code>-metodia. Yhden tavaran lisäämiseen tarkoitettu metodi <code>lisaa</code> on abstrakti, joten jokaisen <code>Laatikko</code>-luokan perivän laatikon tulee toteuttaa se. Tehtävänäsi on muokata luokkaa <code>Tavara</code> ja toteuttaa muutamia erilaisia laatikoita luokan <code>Laatikko</code> pohjalta.</p>
 
-  <p>Lisää kaikki uudet luokat pakkaukseen <code>laatikot</code>.</p>
+      <p>Lisää kaikki uudet luokat pakkaukseen <code>laatikot</code>.</p>
 
 
 <pre class="sh_java">
@@ -9513,15 +9419,14 @@ public abstract class Laatikko {
   <p>Toteuta pakkaukseen <code>laatikot</code> luokka <code>MaksimipainollinenLaatikko</code>, joka perii luokan <code>Laatikko</code>. Maksimipainollisella laatikolla on konstruktori <code>public MaksimipainollinenLaatikko(int maksimipaino)</code>, joka määrittelee laatikon maksimipainon. Maksimipainolliseen laatikkoon voi lisätä tavaraa jos ja vain jos tavaran lisääminen ei ylitä laatikon maksimipainoa.</p>
 
 <pre class="sh_java">
-        MaksimipainollinenLaatikko kahviLaatikko = new MaksimipainollinenLaatikko(10);
-        kahviLaatikko.lisaa(new Tavara("Saludo", 5));
-        kahviLaatikko.lisaa(new Tavara("Pirkka", 5));
-        kahviLaatikko.lisaa(new Tavara("Kopi Luwak", 5));
+MaksimipainollinenLaatikko kahviLaatikko = new MaksimipainollinenLaatikko(10);
+kahviLaatikko.lisaa(new Tavara("Saludo", 5));
+kahviLaatikko.lisaa(new Tavara("Pirkka", 5));
+kahviLaatikko.lisaa(new Tavara("Kopi Luwak", 5));
 
-        System.out.println(kahviLaatikko.onkoLaatikossa(new Tavara("Saludo")));
-        System.out.println(kahviLaatikko.onkoLaatikossa(new Tavara("Pirkka")));
-        System.out.println(kahviLaatikko.onkoLaatikossa(new Tavara("Kopi Luwak")));
-</pre>
+System.out.println(kahviLaatikko.onkoLaatikossa(new Tavara("Saludo")));
+System.out.println(kahviLaatikko.onkoLaatikossa(new Tavara("Pirkka")));
+System.out.println(kahviLaatikko.onkoLaatikossa(new Tavara("Kopi Luwak")));</pre>
 
 <pre>
 true
@@ -9534,13 +9439,12 @@ false
         <p>Toteuta seuraavaksi pakkaukseen <code>laatikot</code> luokka <code>YhdenTavaranLaatikko</code>, joka perii luokan <code>Laatikko</code>. Yhden tavaran laatikolla on konstruktori <code>public YhdenTavaranLaatikko()</code>, ja siihen mahtuu tasan yksi tavara. Jos tavara on jo laatikossa sitä ei tule vaihtaa. Laatikkoon lisättävän tavaran painolla ei ole väliä.</p>
 
 <pre class="sh_java">
-        YhdenTavaranLaatikko laatikko = new YhdenTavaranLaatikko();
-        laatikko.lisaa(new Tavara("Saludo", 5));
-        laatikko.lisaa(new Tavara("Pirkka", 5));
+YhdenTavaranLaatikko laatikko = new YhdenTavaranLaatikko();
+laatikko.lisaa(new Tavara("Saludo", 5));
+laatikko.lisaa(new Tavara("Pirkka", 5));
 
-        System.out.println(laatikko.onkoLaatikossa(new Tavara("Saludo")));
-        System.out.println(laatikko.onkoLaatikossa(new Tavara("Pirkka")));
-</pre>
+System.out.println(laatikko.onkoLaatikossa(new Tavara("Saludo")));
+System.out.println(laatikko.onkoLaatikossa(new Tavara("Pirkka")));</pre>
 
 <pre>
 true
@@ -9551,13 +9455,12 @@ false
         <p>Toteuta seuraavaksi pakkaukseen <code>laatikot</code> luokka <code>HukkaavaLaatikko</code>, joka perii luokan <code>Laatikko</code>. Hukkaavalla laatikolla on konstruktori <code>public HukkaavaLaatikko()</code>. Hukkaavaan laatikkoon voi lisätä kaikki tavarat, mutta tavaroita ei löydy niitä etsittäessä. Laatikkoon lisäämisen tulee siis aina onnistua, mutta metodin <code>onkoLaatikossa</code> kutsumisen tulee aina palauttaa false.</p>
 
 <pre class="sh_java">
-        HukkaavaLaatikko laatikko = new HukkaavaLaatikko();
-        laatikko.lisaa(new Tavara("Saludo", 5));
-        laatikko.lisaa(new Tavara("Pirkka", 5));
+HukkaavaLaatikko laatikko = new HukkaavaLaatikko();
+laatikko.lisaa(new Tavara("Saludo", 5));
+laatikko.lisaa(new Tavara("Pirkka", 5));
 
-        System.out.println(laatikko.onkoLaatikossa(new Tavara("Saludo")));
-        System.out.println(laatikko.onkoLaatikossa(new Tavara("Pirkka")));
-</pre>
+System.out.println(laatikko.onkoLaatikossa(new Tavara("Saludo")));
+System.out.println(laatikko.onkoLaatikossa(new Tavara("Pirkka")));</pre>
 
 <pre>
 false
@@ -9568,54 +9471,52 @@ false
 </div>
 </div>
 
-<h3>Huomio olioiden poistamisesta ArrayListista</h3>
+    <h3>Huomio olioiden poistamisesta ArrayListista</h3>
 
-<p>Seuraavassa tehtävässä saatat joutua tilanteeseen, jossa haluat poistaa ArrayListiä läpikäydessäsi osan listan olioista:</p>
-
-<pre class="sh_java">
-   // joissain määritelty seuraavasti:
-   // ArrayList&lt;Olio&gt; lista = new ...
-
-   for ( Olio olio : lista ) {
-      if ( tarvitseePoistaa(olio) ) {
-         lista.remove(olio);
-      }
-   }
-</pre>
-
-<p>Ratkaisu ei toimi ja aiheuttaa poikkeuksen <code>ConcurrentModificationException</code>, sillä listaa <em>foreach</em>-tyylillä läpikäydessä listaa ei saa muokata. Palaamme aiheeseen hieman tarkemmin viikolla <span class="ahy">6</span><span class="amooc">12</span>. Jos törmäät tilanteeseen, voit hoitaa sen esim. seuraavasti:</p>
+    <p>Seuraavassa tehtävässä saatat joutua tilanteeseen, jossa haluat poistaa ArrayListiä läpikäydessäsi osan listan olioista:</p>
 
 <pre class="sh_java">
-   // joissain määritelty seuraavasti:
-   // ArrayList&lt;Olio&gt; lista = new ...
+// joissain määritelty seuraavasti:
+// ArrayList&lt;Olio&gt; lista = new ...
 
-   ArrayList&lt;Olio&gt; poistettavat = new ArrayList&lt;Olio&gt;();
-
-   for ( Olio olio : lista ) {
-      if ( tarvitseePoistaa(olio) ) {
-         poistattavat.add(olio);
-      }
+for (Olio olio : lista) {
+   if (tarvitseePoistaa(olio)) {
+      lista.remove(olio);
    }
+}</pre>
 
-   lista.removeAll(poistettavat);
-</pre>
+<p>Ratkaisu ei toimi ja aiheuttaa poikkeuksen <code>ConcurrentModificationException</code>, sillä kun listaa käydään läpi <em>foreach</em>-tyylillä, niin sitä ei saa muokata. Palaamme aiheeseen hieman tarkemmin myöhemmin. Jos törmäät tilanteeseen, voit hoitaa sen esim. seuraavasti:</p>
+
+<pre class="sh_java">
+// joissain määritelty seuraavasti:
+// ArrayList&lt;Olio&gt; lista = new ...
+
+ArrayList&lt;Olio&gt; poistettavat = new ArrayList&lt;&gt;();
+
+for (Olio olio : lista) {
+   if (tarvitseePoistaa(olio)) {
+      poistattavat.add(olio);
+   }
+}
+
+lista.removeAll(poistettavat);</pre>
 
 <p>Eli poistettavat oliot kerätään listan läpikäyntinä erilliselle listalle ja poisto-operaatio suoritetaan vasta listan läpikäynnin jälkeen.</p>
 
 <div class="tehtavat">
-<div class="tehtava">
+  <div class="tehtava">
 
-<h3>Luola</h3>
-
-
-  <p><em>Tämä tehtävä on neljän tehtäväpisteen arvoinen.</em> Huom! Toteuta kaikki toiminnallisuus pakkaukseen <code>luola</code>.</p>
-
-<p><b>Huom: jotta testit toimisivat, ohjelmasi saa luoda vain yhden Scanner-olion. Älä käytä luokkien nimissä skandeja. Älä myöskään käytä staattisia muuttujia, testit suorittavat ohjelman useita kertoja joten staattisiin muuttujiin edellisillä suorituskerroilla jääneet arvot todennäköisesti häiritsevät testien toimintaa!</b></p>
+    <h3>Luola</h3>
 
 
-<p>Tässä tehtävässä pääset toteuttamaan luolapelin. Pelissä pelaaja on luolassa hirviöitten kanssa. Pelaajan tehtävänä on ehtiä tallata kaikki hirviöt ennen kuin hänen lampustaan loppuu virta ja hirviöt pääsevät pimeän turvin syömään hänet. Pelaaja voi nähdä hirviöiden sijainnit välkäyttämällä lamppua, jonka jälkeen hänen on liikuttava sokkona ennen seuraavaa välkäytystä. Pelaaja voi kulkea monta askelta yhden siirron aikana.</p>
+    <p><em>Tämä tehtävä on neljän tehtäväpisteen arvoinen.</em> Huom! Toteuta kaikki toiminnallisuus pakkaukseen <code>luola</code>.</p>
 
-<p>Pelitilanne eli luola, pelaaja ja hirviöt esitetään pelaajalle tekstimuotoisesti. Tulostuksen ensimmäinen rivi kertoo jäljellä olevien siirtojen (eli lampun jäljellä olevan virran) määrän. Virran määrää seuraa pelaajan ja hirviöitten sijainnit, joiden jälkeen on pelitilanteesta piirretty kartta. Alla olevassa esimerkissä näet pelaajan (<code>@</code>) ja kolme hirviötä (<code>h</code>).  Alla olevassa esimerkissä pelaajalla on virtaa neljääntoista siirtoon.</p>
+    <p><b>Huom: jotta testit toimisivat, ohjelmasi saa luoda vain yhden Scanner-olion. Älä käytä luokkien nimissä skandeja. Älä myöskään käytä staattisia muuttujia, testit suorittavat ohjelman useita kertoja joten staattisiin muuttujiin edellisillä suorituskerroilla jääneet arvot todennäköisesti häiritsevät testien toimintaa!</b></p>
+
+
+    <p>Tässä tehtävässä pääset toteuttamaan luolapelin. Pelissä pelaaja on luolassa hirviöitten kanssa. Pelaajan tehtävänä on ehtiä tallata kaikki hirviöt ennen kuin hänen lampustaan loppuu virta ja hirviöt pääsevät pimeän turvin syömään hänet. Pelaaja voi nähdä hirviöiden sijainnit välkäyttämällä lamppua, jonka jälkeen hänen on liikuttava sokkona ennen seuraavaa välkäytystä. Pelaaja voi kulkea monta askelta yhden siirron aikana.</p>
+
+    <p>Pelitilanne eli luola, pelaaja ja hirviöt esitetään pelaajalle tekstimuotoisesti. Tulostuksen ensimmäinen rivi kertoo jäljellä olevien siirtojen (eli lampun jäljellä olevan virran) määrän. Virran määrää seuraa pelaajan ja hirviöitten sijainnit, joiden jälkeen on pelitilanteesta piirretty kartta. Alla olevassa esimerkissä näet pelaajan (<code>@</code>) ja kolme hirviötä (<code>h</code>).  Alla olevassa esimerkissä pelaajalla on virtaa neljääntoista siirtoon.</p>
 
 <pre>
 14
@@ -9628,49 +9529,47 @@ h 12 2
 .................
 ......h..........
 .@.........h.....
-.......h.........
-</pre>
+.......h.........</pre>
 
-<p>Yllä olevassa esimerkissä virtaa on 14 välkäytykseen. Pelaaja <code>@</code> sijatsee koordinaatissa <code>1 2</code>. Huomaa että koordinaatit lasketaan aina pelialueen vasemmasta ylälaidasta lähtien. Alla olevassa kartassa merkki <code>X</code> on koordinaatissa <code>0 0</code>, <code>Y</code> koordinaatissa <code>2 0</code> ja <code>Z</code> koordinaatissa <code>0 2</code>.</p>
+    <p>Yllä olevassa esimerkissä virtaa on 14 välkäytykseen. Pelaaja <code>@</code> sijatsee koordinaatissa <code>1 2</code>. Huomaa että koordinaatit lasketaan aina pelialueen vasemmasta ylälaidasta lähtien. Alla olevassa kartassa merkki <code>X</code> on koordinaatissa <code>0 0</code>, <code>Y</code> koordinaatissa <code>2 0</code> ja <code>Z</code> koordinaatissa <code>0 2</code>.</p>
 
 <pre>
 X.Y..............
 .................
 Z................
-.................
-</pre>
+.................</pre>
 
 
 
-<p>Käyttäjä voi liikkua antamalla sarjan komentoja ja painamalla rivinvaihtoa. Komennot ovat:</p>
-<ul>
-  <li><code>w</code> liiku ylöspäin</li>
-  <li><code>s</code> liiku alaspäin</li>
-  <li><code>a</code> liiku vasemmalle</li>
-  <li><code>d</code> liiku oikealle</li>
-</ul>
+    <p>Käyttäjä voi liikkua antamalla sarjan komentoja ja painamalla rivinvaihtoa. Komennot ovat:</p>
+    <ul>
+      <li><code>w</code> liiku ylöspäin</li>
+      <li><code>s</code> liiku alaspäin</li>
+      <li><code>a</code> liiku vasemmalle</li>
+      <li><code>d</code> liiku oikealle</li>
+    </ul>
 
-<p>Kun käyttäjän antamat komennot on suoritettu (niitä voi olla useampi), piirretään uusi pelitilanne. Lampun virta vähenee yhdellä aina kun uusi pelitilanne piirretään. Jos virta menee nollaan, peli loppuu ja ruudulle tulostetaan teksti <code>HÄVISIT</code></p>
+    <p>Kun käyttäjän antamat komennot on suoritettu (niitä voi olla useampi), piirretään uusi pelitilanne. Lampun virta vähenee yhdellä aina kun uusi pelitilanne piirretään. Jos virta menee nollaan, peli loppuu ja ruudulle tulostetaan teksti <code>HÄVISIT</code></p>
 
-<p>Hirviöt liikkuvat pelissä satunnaisesti, yhden askeleen jokaista pelaajan askelta kohti. Jos pelaaja ja hirviö osuvat samaan ruutuun (vaikka vain tilapäisesti), hirviö tuhoutuu. Jos hirviö yrittää siirtyä pelilaudalta ulos tai ruutuun jossa on jo hirviö, jätetään siirto suorittamatta. Kun kaikki hirviöt on tuhottu, peli loppuu ja tulostetaan <code>VOITIT</code>.</p>
+    <p>Hirviöt liikkuvat pelissä satunnaisesti, yhden askeleen jokaista pelaajan askelta kohti. Jos pelaaja ja hirviö osuvat samaan ruutuun (vaikka vain tilapäisesti), hirviö tuhoutuu. Jos hirviö yrittää siirtyä pelilaudalta ulos tai ruutuun jossa on jo hirviö, jätetään siirto suorittamatta. Kun kaikki hirviöt on tuhottu, peli loppuu ja tulostetaan <code>VOITIT</code>.</p>
 
-<p>Testaamisen helpottamiseksi tee peliisi luokka <code>Luola</code>, jolla on  :</p>
+    <p>Testaamisen helpottamiseksi tee peliisi luokka <code>Luola</code>, jolla on  :</p>
 
-<p>
-  <ul>
-    <li>konstruktori <strong><code>public Luola(int leveys, int korkeus, int hirvioita, int siirtoja, boolean hirviotLiikkuvat)</code></strong>
-      <p>Luvut <code>leveys</code> ja <code>korkeus</code> antavat luolan koon (se on aina neliskulmainen), <code>hirvioita</code> antaa hirviöiden lukumäärän alussa (hirviöiden sijainnin voi arpoa), <code>siirtoja</code> antaa siirtojen lukumäärän alussa ja jos <code>hirviotLiikkuvat</code> on <code>false</code>, hirviöt eivät liiku.</p></li>
-    <li>metodi <strong><code>public void run()</code></strong> joka käynnistää pelin</li>
-  </ul>
-</p>
+    <p>
+      <ul>
+	<li>konstruktori <strong><code>public Luola(int leveys, int korkeus, int hirvioita, int siirtoja, boolean hirviotLiikkuvat)</code></strong>
+	  <p>Luvut <code>leveys</code> ja <code>korkeus</code> antavat luolan koon (se on aina neliskulmainen), <code>hirvioita</code> antaa hirviöiden lukumäärän alussa (hirviöiden sijainnin voi arpoa), <code>siirtoja</code> antaa siirtojen lukumäärän alussa ja jos <code>hirviotLiikkuvat</code> on <code>false</code>, hirviöt eivät liiku.</p></li>
+	<li>metodi <strong><code>public void run()</code></strong> joka käynnistää pelin</li>
+      </ul>
+    </p>
 
-<p><em>Huom!</em> pelaajan tulee aloittaa sijainnista 0,0!</p>
-<p><em>Huom!</em> jos pelaaja tai hirviö koittaa liikkua ulos luolasta
-  tai kaksi hirviötä koittaa liikkua samaan ruutuun, ei liikettä tule
-  tapahtua!</p>
-</ul>
+    <p><em>Huom!</em> pelaajan tulee aloittaa sijainnista 0,0!</p>
+    <p><em>Huom!</em> jos pelaaja tai hirviö koittaa liikkua ulos luolasta
+      tai kaksi hirviötä koittaa liikkua samaan ruutuun, ei liikettä tule
+      tapahtua!</p>
 
-  <p>Alla vielä selkeyden vuoksi vielä esimerkkipeli:</p>
+    
+    <p>Alla vielä selkeyden vuoksi vielä esimerkkipeli:</p>
 
 <pre>
 14
@@ -9825,9 +9724,9 @@ VOITIT
 </pre>
 
 
+  </div>
 </div>
-</div>
-</div>
+  </div>
 </section>
 
 <section class="viikkoraja" id="5" >
