@@ -9809,8 +9809,7 @@ VOITIT
 
 <h2 id="tiedostostoon_kirjoitus">Tiedostoon kirjoittaminen</h3>
 
-<p>Luvussa <span class="ahy">15</span><span class="amooc">49</span> opimme, että tekstitiedostojen lukeminen onnistuu <code>Scanner</code>- ja <code>File</code>-luokkien avulla.
-Luokka <code><a href="http://docs.oracle.com/javase/6/docs/api/java/io/FileWriter.html">FileWriter</a></code> tarjoaa toiminnallisuuden tiedostoon kirjoittamiseen. Luokan <code>FileWriter</code> konstruktorille annetaan parametrina kohdetiedoston sijaintia kuvaava merkkijono.</p>
+  <p>Opimme aiemmin, että tekstitiedostojen lukeminen onnistuu <code>Scanner</code>- ja <code>File</code>-luokkien avulla. Luokka <code><a href="https://docs.oracle.com/javase/8/docs/api/java/io/FileWriter.html">FileWriter</a></code> tarjoaa toiminnallisuuden tiedostoon kirjoittamiseen. Luokan <code>FileWriter</code> konstruktorille annetaan parametrina kohdetiedoston sijaintia kuvaava merkkijono.</p>
 
 <pre class="sh_java">
 FileWriter kirjoittaja = new FileWriter("tiedosto.txt");
@@ -9881,13 +9880,13 @@ public class Tallentaja {
 </p>
 
 <pre class="sh_java">
-    public static void main(String[] args) throws FileNotFoundException, IOException {
-        TiedostonKasittelija t = new TiedostonKasittelija();
+public static void main(String[] args) throws FileNotFoundException, IOException {
+    TiedostonKasittelija t = new TiedostonKasittelija();
 
-        for (String rivi : t.lue("src/koesyote1.txt")) {
-            System.out.println(rivi);
-        }
+    for (String rivi : t.lue("src/koesyote1.txt")) {
+        System.out.println(rivi);
     }
+}
 </pre>
 
 <p>Tulostuksen pitäisi olla</p>
@@ -9909,6 +9908,7 @@ toka
 <p>Täydennä projektipohjan mukana tuleva metodi <code>public void tallenna(String tiedosto, ArrayList&lt;String&gt; tekstit)</code> sellaiseksi, että se tallentaa ensimmäisen parametrin määrittelemään tiedostoon toisena parametrina annetun listan siten, että jokainen merkkijono tulee omalle rivilleen.  Jos tiedosto on jo olemassa, kirjoitetaan vanhan version päälle.
 </p>
 </div>
+
 <div class="tehtava">
     <h3>Muistava kahteen suuntaan kääntävä sanakirja</h3>
 
@@ -9932,10 +9932,10 @@ sanakirja.lisaa("apina", "monkey");
 sanakirja.lisaa("banaani", "banana");
 sanakirja.lisaa("apina", "apfe");
 
-System.out.println( sanakirja.kaanna("apina") );
-System.out.println( sanakirja.kaanna("monkey") );
-System.out.println( sanakirja.kaanna("ohjelmointi") );
-System.out.println( sanakirja.kaanna("banana") );
+System.out.println(sanakirja.kaanna("apina"));
+System.out.println(sanakirja.kaanna("monkey"));
+System.out.println(sanakirja.kaanna("ohjelmointi"));
+System.out.println(sanakirja.kaanna("banana"));
 </pre>
 
 <p>Tulostuu</p>
@@ -9955,7 +9955,7 @@ banaani
 
 <p>Lisää sanakirjalle metodi <code>public void poista(String sana)</code></li> joka poistaa annetun sanan ja sen käännöksen sanakirjasta.</p>
 
-<p><strong>HUOM: </strong> kannattaa ehkä kerrata luku <em><span class="ahy">49.9</span><span class="amooc"></span>Huomio olioiden poistamisesta ArrayListista</em>.</p>
+<p>Kannattanee kerrata aiemmilta viikoilta materiaalia, mikä liittyy olioiden poistamiseen ArrayListista.</p>
 
 <p><b>HUOM2:</b> metodi <code>poista</code> ei kirjoita tiedostoon.</p>
 
@@ -9969,11 +9969,11 @@ sanakirja.lisaa("ohjelmointi", "programming");
 sanakirja.poista("apina");
 sanakirja.poista("banana");
 
-System.out.println( sanakirja.kaanna("apina") );
-System.out.println( sanakirja.kaanna("monkey") );
-System.out.println( sanakirja.kaanna("banana") );
-System.out.println( sanakirja.kaanna("banaani") );
-System.out.println( sanakirja.kaanna("ohjelmointi") );
+System.out.println(sanakirja.kaanna("apina"));
+System.out.println(sanakirja.kaanna("monkey"));
+System.out.println(sanakirja.kaanna("banana"));
+System.out.println(sanakirja.kaanna("banaani"));
+System.out.println(sanakirja.kaanna("ohjelmointi"));
 </pre>
 
 <p>Tulostuu</p>
@@ -10008,12 +10008,12 @@ olut:beer
 
 <pre class="sh_java">
 Scanner tiedostonLukija = new ...
-while ( tiedostonLukija.hasNextLine() ){
+while (tiedostonLukija.hasNextLine()) {
     String rivi = tiedostonLukija.nextLine();
     String[] osat = rivi.split(":");   // pilkotaan rivi :-merkkien kohdalta
 
-    System.out.println( osat[0] );     // ennen :-merkkiä ollut osa rivistä
-    System.out.println( osat[1] );     // :-merkin jälkeen ollut osa rivistä
+    System.out.println(osat[0]);     // ennen :-merkkiä ollut osa rivistä
+    System.out.println(osat[1]);     // :-merkin jälkeen ollut osa rivistä
 }
 </pre>
 
@@ -10023,13 +10023,13 @@ while ( tiedostonLukija.hasNextLine() ){
 MuistavaSanakirja sanakirja = new MuistavaSanakirja("src/sanat.txt");
 boolean onnistui = sanakirja.lataa();
 
-if ( onnistui ) {
+if (onnistui) {
   System.out.println("sanakirjan lataaminen onnistui");
 }
 
-System.out.println( sanakirja.kaanna("apina") );
-System.out.println( sanakirja.kaanna("ohjelmointi") );
-System.out.println( sanakirja.kaanna("alla oleva") );
+System.out.println(sanakirja.kaanna("apina"));
+System.out.println(sanakirja.kaanna("ohjelmointi"));
+System.out.println(sanakirja.kaanna("alla oleva"));
 </pre>
 
 <p>Tulostuu</p>
@@ -10092,7 +10092,7 @@ sanakirja.tallenna();
 
 <p>Käyttöliittymät ovat ikkunoita, jotka sisältävät erilaisia osia kuten nappeja, tekstikenttiä ja valikkoja. Käyttöliittymien ohjelmoinnissa käytetään Javan <a href="http://docs.oracle.com/javase/tutorial/uiswing/components/componentlist.html" target="_blank">Swing</a>-komponenttikirjastoa, joka tarjoaa luokkia käyttöliittymäkomponenttien luomiseen ja käsittelyyn.</p>
 
-<p>Käyttöliittymien peruselementti on luokka <code><a href="http://docs.oracle.com/javase/6/docs/api/javax/swing/JFrame.html" target="_blank">JFrame</a></code>, jonka sisältämään komponenttiosioon käyttöliittymäkomponentit luodaan. Oikeaoppisesti luodut käyttöliittymät toteuttavat rajapinnan <code>Runnable</code>, ja ne käynnistetään pääohjelmasta. Käytämme kurssilla seuraavanlaista käyttöliittymärunkoa:</p>
+<p>Käyttöliittymien peruselementti on luokka <code><a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html" target="_blank">JFrame</a></code>, jonka sisältämään komponenttiosioon käyttöliittymäkomponentit luodaan. Oikeaoppisesti luodut käyttöliittymät toteuttavat rajapinnan <code>Runnable</code>, ja ne käynnistetään pääohjelmasta. Käytämme kurssilla seuraavanlaista käyttöliittymärunkoa:</p>
 
 <pre class="sh_java">
 import java.awt.Container;
@@ -10135,43 +10135,43 @@ public class Kayttoliittyma implements Runnable {
 public class Kayttoliittyma implements Runnable {
 </pre>
 
-<p>Luokka <code>Kayttoliittyma</code> toteuttaa Javan rajapinnan <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Runnable.html" target="_blank">Runnable</a>, joka tarjoaa mahdollisuuden säikeistettyyn ohjelman suorittamiseen. Säikeistetyllä suorittamisella voidaan suorittaa useita ohjelman osia rinnakkain. Emme tutustu säikeisiin tarkemmin, lisää tietoa säikeistä tulee muunmuassa toisen vuoden kurssilla <em>Käyttöjärjestelmät</em>.</p>
+<p>Luokka <code>Kayttoliittyma</code> toteuttaa Javan rajapinnan <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html" target="_blank">Runnable</a>, joka tarjoaa mahdollisuuden säikeistettyyn ohjelman suorittamiseen. Säikeistetyllä suorittamisella voidaan suorittaa useita ohjelman osia rinnakkain. Emme tutustu säikeisiin tarkemmin, lisää tietoa säikeistä tulee muunmuassa toisen vuoden kurssilla <em>Käyttöjärjestelmät</em>.</p>
 
 <pre class="sh_java">
-    private JFrame frame;
+private JFrame frame;
 </pre>
 
 <p>Käyttöliittymä sisältää oliomuuttujana <code>JFrame</code>-olion, joka on näkyvän käyttöliittymän pohjaelementti. Kaikki käyttöliittymäkomponentit lisätään <code>JFrame</code>-olion sisältämään komponenttialueeseen. Huomaa että <strong>oliomuuttujia ei saa alustaa metodien ulkopuolella</strong>. Esimerkiksi oliomuuttujan <code>JFrame</code> alustus luokkamäärittelyssä <code>"private JFrame frame = new JFrame()"</code> kiertää käyttöliittymäsäikeiden suoritusjärjestyksen, ja voi johtaa ydintuhoon. Tai ohjelmasi kaatumiseen.</p>
 
 <pre class="sh_java">
-    @Override
-    public void run() {
-        frame = new JFrame("Otsikko");
-        frame.setPreferredSize(new Dimension(200, 100));
+@Override
+public void run() {
+    frame = new JFrame("Otsikko");
+    frame.setPreferredSize(new Dimension(200, 100));
 
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        luoKomponentit(frame.getContentPane());
+    luoKomponentit(frame.getContentPane());
 
-        frame.pack();
-        frame.setVisible(true);
-    }
+    frame.pack();
+    frame.setVisible(true);
+}
 </pre>
 
 <p>Rajapinta <code>Runnable</code> määrittelee metodin <code>public void run()</code>, joka jokaisen <code>Runnable</code>-rajapinnan toteuttajan tulee toteuttaa. Metodissa <code>public void run()</code> luodaan ensin uusi JFrame-ikkuna, jonka otsikoksi asetetaan <code>"Otsikko"</code>. Tämän jälkeen asetetaan ikkunan toivotuksi kooksi 200, 100 eli ikkunan leveydeksi tulee 200 pikseliä, korkeudeksi 100 pikseliä. Komento <code>frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);</code> kertoo JFrame-oliolle, että käyttöliittymän käynnistäneen ohjelman suoritus tulee lopettaa, kun käyttäjä painaa käyttöliittymässä olevaa ruksia.</p>
 
-<p>Tämän jälkeen kutsutaan luokassa myöhemmin määriteltyä metodia <code>luoKomponentit</code>. Metodille annetaan parametrina <code>JFrame</code>-olion <em><a href="http://docs.oracle.com/javase/6/docs/api/java/awt/Container.html" target="_blank">Container</a></em>-olio, johon voi lisätä käyttöliittymäkomponentteja.</em>
+<p>Tämän jälkeen kutsutaan luokassa myöhemmin määriteltyä metodia <code>luoKomponentit</code>. Metodille annetaan parametrina <code>JFrame</code>-olion <em><a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html" target="_blank">Container</a></em>-olio, johon voi lisätä käyttöliittymäkomponentteja.</em>
 
 <p>Lopuksi kutsutaan metodia <code>frame.pack()</code>, joka asettaa JFrame-olion aiemmin määritellyn kokoiseksi ja järjestää JFrame-olion sisältämän Container-olion sisällä olevat käyttöliittymäkomponentit. Lopuksi kutsutaan metodia <code>frame.setVisible(true)</code>, joka näyttää käyttöliittymän käyttäjälle.</p>
 
 <pre class="sh_java">
-    private void luoKomponentit(Container container) {
-    }
+private void luoKomponentit(Container container) {
+}
 </pre>
 
 <p>Metodissa <code>luoKomponentit</code> lisätään <code>JFrame</code>-olion sisältämään komponenttialueeseen käyttöliittymäkomponentteja. Esimerkissämme ei ole yhtäkään käyttöliittymäkomponenttia JFrame-ikkunan lisäksi. Luokalla <code>Kayttoliittyma</code> on myös sen käyttöä helpottava metodi <code>getFrame</code>, jolla päästään käsiksi luokan kapseloimaan JFrame-olioon.</em>
 
-<p>Swing-käyttöliittymät käynnistetään <code><a href="http://docs.oracle.com/javase/6/docs/api/javax/swing/SwingUtilities.html" target="_blank">SwingUtilities</a></code>-luokan tarjoaman <code>invokeLater</code>-metodin avulla. Metodi <code>invokeLater</code> saa parametrinaan <code>Runnable</code>-rajapinnan toteuttavan olion. Metodi asettaa <code>Runnable</code>-olion suoritusjonoon, ja kutsuu sitä kun ehtii. Luokan <code>SwingUtilities</code> avulla voimme käynnistää uusia säikeitä tarvittaessa.</p>
+<p>Swing-käyttöliittymät käynnistetään <code><a href="http://docs.oracle.com/javase/8/docs/api/javax/swing/SwingUtilities.html" target="_blank">SwingUtilities</a></code>-luokan tarjoaman <code>invokeLater</code>-metodin avulla. Metodi <code>invokeLater</code> saa parametrinaan <code>Runnable</code>-rajapinnan toteuttavan olion. Metodi asettaa <code>Runnable</code>-olion suoritusjonoon, ja kutsuu sitä kun ehtii. Luokan <code>SwingUtilities</code> avulla voimme käynnistää uusia säikeitä tarvittaessa.</p>
 
 <pre class="sh_java">
 import javax.swing.SwingUtilities;
@@ -10198,15 +10198,15 @@ public class Main {
 
 <h4>Teksti</h4>
 
-<p>Tekstin näyttäminen tapahtuu <code><a href="http://docs.oracle.com/javase/6/docs/api/javax/swing/JLabel.html" target="_blank">JLabel</a></code>-luokan avulla. Luokka <code>JLabel</code> tarjoaa käyttöliittymäkomponentin, jolle voi asettaa tekstiä ja jonka sisältämää tekstiä voi muokata. Teksti asetetaan joko konstruktorissa tai erillisellä <code>setText</code>-metodilla.</p>
+<p>Tekstin näyttäminen tapahtuu <code><a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JLabel.html" target="_blank">JLabel</a></code>-luokan avulla. Luokka <code>JLabel</code> tarjoaa käyttöliittymäkomponentin, jolle voi asettaa tekstiä ja jonka sisältämää tekstiä voi muokata. Teksti asetetaan joko konstruktorissa tai erillisellä <code>setText</code>-metodilla.</p>
 
 <p>Muokataan käyttöliittymäpohjaamme siten, että siinä näkyy tekstiä. Luodaan uusi JLabel-tekstikomponentti metodissa <code>luoKomponentit</code>. Tämän jälkeen lisätään se <code>JFrame</code>-oliolta saatuun <code>Container</code>-olioon <code>add</code>-metodia käyttäen.</p>
 
 <pre class="sh_java">
-    private void luoKomponentit(Container container) {
-        JLabel teksti = new JLabel("Tekstikenttä!");
-        container.add(teksti);
-    }
+private void luoKomponentit(Container container) {
+    JLabel teksti = new JLabel("Tekstikenttä!");
+    container.add(teksti);
+}
 </pre>
 
 <p>Kuten yllä olevasta lähdekoodista näemme, JLabel-käyttöliittymäkomponentti tulee näyttämään tekstin <code>"Tekstikenttä!"</code>. Kun suoritamme käyttöliittymän, näemme seuraavanlaisen ikkunan.</p>
@@ -10239,12 +10239,12 @@ public class Main {
 <p>Yritetään seuraavaksi lisätä käyttöliittymään sekä tekstiä, että nappi.</p>
 
 <pre class="sh_java">
-    private void luoKomponentit(Container container) {
-        JButton nappi = new JButton("Click!");
-        container.add(nappi);
-        JLabel teksti = new JLabel("Tekstiä.");
-        container.add(teksti);
-    }
+private void luoKomponentit(Container container) {
+    JButton nappi = new JButton("Click!");
+    container.add(nappi);
+    JLabel teksti = new JLabel("Tekstiä.");
+    container.add(teksti);
+}
 </pre>
 
 <p>Ohjelmaa suorittaessa näemme seuraavanlaisen käyttöliittymän.</p>
@@ -10255,32 +10255,32 @@ public class Main {
 
 <h3>Käyttöliittymäkomponenttien asettelu</h3>
 
-<p>Jokaisella käyttöliittymäkomponentilla on oma sijainti käyttöliittymässä. Komponentin sijainnin määrää käytössä oleva käyttöliittymän asettelija (<em>Layout Manager</em>). Yrittäessämme aiemmin lisätä useampia käyttöliittymäkomponentteja <code>Container</code>-olioon käyttöliittymässä oli vain yksi komponentti näkyvillä. Jokaisessa <code>Container</code>-oliossa on oletuksena käyttöliittymäasettelija <code><a href="http://docs.oracle.com/javase/6/docs/api/java/awt/BorderLayout.html" target="_blank">BorderLayout</a></code>.</p>
+<p>Jokaisella käyttöliittymäkomponentilla on oma sijainti käyttöliittymässä. Komponentin sijainnin määrää käytössä oleva käyttöliittymän asettelija (<em>Layout Manager</em>). Yrittäessämme aiemmin lisätä useampia käyttöliittymäkomponentteja <code>Container</code>-olioon käyttöliittymässä oli vain yksi komponentti näkyvillä. Jokaisessa <code>Container</code>-oliossa on oletuksena käyttöliittymäasettelija <code><a href="http://docs.oracle.com/javase/8/docs/api/java/awt/BorderLayout.html" target="_blank">BorderLayout</a></code>.</p>
 
 <p>BorderLayout asettelee käyttöliittymäkomponentit viiteen alueeseen: käyttöliittymän keskikohdan lisäksi käytössä ovat ilmansuunnat. Voimme antaa Container-olion <code>add</code>-metodille ylimääräisenä parametrina lisätoiveen kohdasta, johon haluamme asettaa käyttöliittymäkomponentin. BorderLayout-luokassa on käytössä luokkamuuttujat <code>BorderLayout.NORTH</code>, <code>BorderLayout.EAST</code>, <code>BorderLayout.SOUTH</code>, <code>BorderLayout.WEST</code>, ja <code>BorderLayout.CENTER</code>.</p>
 
 <p>Käytettävä käyttöliittymäasettelija asetetaan <code>Container</code>-oliolle metodin <code>setLayout</code>-parametrina. Metodille <code>add</code> voidaan antaa käyttöliittymäkomponentin lisäksi paikka, johon komponentti lisätään. Alla on esimerkki, jossa jokaiseen BorderLayoutin tarjoamaan paikkaan asetetaan käyttöliittymäkomponentti.</p>
 
 <pre class="sh_java">
-    private void luoKomponentit(Container container) {
-        // seuraava rivi siis ei tässä tilanteessa pakollinen, sillä BorderLayout on JFramessa joka tapauksessa oletuksena
-        container.setLayout(new BorderLayout());
+private void luoKomponentit(Container container) {
+    // seuraava rivi siis ei tässä tilanteessa pakollinen, sillä BorderLayout on JFramessa joka tapauksessa oletuksena
+    container.setLayout(new BorderLayout());
 
-        container.add(new JButton("Pohjoinen (North)"), BorderLayout.NORTH);
-        container.add(new JButton("Itä (East)"), BorderLayout.EAST);
-        container.add(new JButton("Etelä (South)"), BorderLayout.SOUTH);
-        container.add(new JButton("Länsi (West)"), BorderLayout.WEST);
-        container.add(new JButton("Keski (Center)"), BorderLayout.CENTER);
+    container.add(new JButton("Pohjoinen (North)"), BorderLayout.NORTH);
+    container.add(new JButton("Itä (East)"), BorderLayout.EAST);
+    container.add(new JButton("Etelä (South)"), BorderLayout.SOUTH);
+    container.add(new JButton("Länsi (West)"), BorderLayout.WEST);
+    container.add(new JButton("Keski (Center)"), BorderLayout.CENTER);
 
-        container.add(new JButton("Oletuspaikka (Center)"));
-    }
+    container.add(new JButton("Oletuspaikka (Center)"));
+}
 </pre>
 
  <p>Huomaa, että nappi <code>"Keski (Center)"</code> ei tule näkymään käyttöliittymässä, sillä nappi <code>"Oletuspaikka (Center)"</code> asetetaan oletuksena sen paikalle. Käyttöliittymässäpohjassa yllä oleva koodi näyttää seuraavalta.</p>
 
     <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/kali/layout-borderlayout.png"/></p>
 
-<p>Kuten käyttöliittymäkomponentteja, myös käyttöliittymän asettelijoita on useita. Oraclella on käyttöliittymäasettelijoihin visuaalinen opas osoitteessa <a href="http://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html" target="_blank">http://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html</a>. Tutustutaan seuraavaksi käyttöliittymäasettelijaan <code><a href="http://docs.oracle.com/javase/6/docs/api/javax/swing/BoxLayout.html" target="_blank">BoxLayout</a></code>.</a>
+<p>Kuten käyttöliittymäkomponentteja, myös käyttöliittymän asettelijoita on useita. Oraclella on käyttöliittymäasettelijoihin visuaalinen opas osoitteessa <a href="http://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html" target="_blank">http://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html</a>. Tutustutaan seuraavaksi käyttöliittymäasettelijaan <code><a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/BoxLayout.html" target="_blank">BoxLayout</a></code>.</a>
 
 <h4>BoxLayout</h4>
 
@@ -10289,14 +10289,14 @@ public class Main {
 <p>Käyttöliittymän asettelu <code>BoxLayout</code>-asettelijaa käyttäen toimii kuten <code>BorderLayout</code>-asettelijan käyttö. Luomme ensin asettelijan, jonka asetamme <code>Container</code>-oliolle sen metodilla <code>setLayout</code>. Tämän jälkeen voimme lisätä käyttöliittymäkomponentteja <code>Container</code>-olion <code>add</code>-metodilla. Emme tarvitse erillistä sijaintia ilmaisevaa parametria. Alla esimerkki vaakasuunnassa asetetuista käyttöliittymäkomponenteista.</p>
 
 <pre class="sh_java">
-    private void luoKomponentit(Container container) {
-        BoxLayout layout = new BoxLayout(container, BoxLayout.X_AXIS);
-        container.setLayout(layout);
+private void luoKomponentit(Container container) {
+    BoxLayout layout = new BoxLayout(container, BoxLayout.X_AXIS);
+    container.setLayout(layout);
 
-        container.add(new JLabel("Eka!"));
-        container.add(new JLabel("Toka!"));
-        container.add(new JLabel("Kolmas!"));
-    }
+    container.add(new JLabel("Eka!"));
+    container.add(new JLabel("Toka!"));
+    container.add(new JLabel("Kolmas!"));
+}
 </pre>
 
 <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/kali/boxlayout-x_axis.png"/></p>
@@ -10304,37 +10304,37 @@ public class Main {
 <p>Käyttöliittymäkomponenttien asettelu pystysuunnassa ei vaadi suurta muutosta. Vaihdamme <code>BoxLayout</code>-olion konstruktorille annettavaksi suuntaparametriksi <code>BoxLayout.Y_AXIS</code>.</p>
 
 <pre class="sh_java">
-    private void luoKomponentit(Container container) {
-        BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
-        container.setLayout(layout);
+private void luoKomponentit(Container container) {
+    BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
+    container.setLayout(layout);
 
-        container.add(new JLabel("Eka!"));
-        container.add(new JLabel("Toka!"));
-        container.add(new JLabel("Kolmas!"));
-    }
+    container.add(new JLabel("Eka!"));
+    container.add(new JLabel("Toka!"));
+    container.add(new JLabel("Kolmas!"));
+}
 </pre>
 
     <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/kali/boxlayout-y_axis.png"/></p>
 
-<p>Käyttöliittymäasettelijoita käyttämällä voimme luoda käyttöliittymiä, joissa käyttöliittymäkomponentit ovat aseteltu sopivasti. Alla on esimerkkikäyttöliittymä, jossa komponentit asetetaan pystysuuntaan. Ensin teksti, ja sitten vaihtoehtoinen valinta. Vaihtoehtoisen valinnan, eli valinnan jossa vain yksi vaihtoehto on aina voimassa, voi tehdä käyttämällä <code><a href="http://docs.oracle.com/javase/6/docs/api/javax/swing/ButtonGroup.html" target="_blank">ButtonGroup</a></code>-ryhmittelijää ja <code><a href="http://docs.oracle.com/javase/6/docs/api/javax/swing/JRadioButton.html" target="_blank">JRadioButton</a></code>-painikkeita.</p>
+<p>Käyttöliittymäasettelijoita käyttämällä voimme luoda käyttöliittymiä, joissa käyttöliittymäkomponentit ovat aseteltu sopivasti. Alla on esimerkkikäyttöliittymä, jossa komponentit asetetaan pystysuuntaan. Ensin teksti, ja sitten vaihtoehtoinen valinta. Vaihtoehtoisen valinnan, eli valinnan jossa vain yksi vaihtoehto on aina voimassa, voi tehdä käyttämällä <code><a href="http://docs.oracle.com/javase/8/docs/api/javax/swing/ButtonGroup.html" target="_blank">ButtonGroup</a></code>-ryhmittelijää ja <code><a href="http://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButton.html" target="_blank">JRadioButton</a></code>-painikkeita.</p>
 
 <pre class="sh_java">
-    private void luoKomponentit(Container container) {
-        BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
-        container.setLayout(layout);
+private void luoKomponentit(Container container) {
+    BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
+    container.setLayout(layout);
 
-        container.add(new JLabel("Valitse ruokavalio:"));
+    container.add(new JLabel("Valitse ruokavalio:"));
 
-        JRadioButton liha = new JRadioButton("Liha");
-        JRadioButton kala = new JRadioButton("Kala");
+    JRadioButton liha = new JRadioButton("Liha");
+    JRadioButton kala = new JRadioButton("Kala");
 
-        ButtonGroup buttonGroup = new ButtonGroup();
-        buttonGroup.add(liha);
-        buttonGroup.add(kala);
+    ButtonGroup buttonGroup = new ButtonGroup();
+    buttonGroup.add(liha);
+    buttonGroup.add(kala);
 
-        container.add(liha);
-        container.add(kala);
-    }
+    container.add(liha);
+    container.add(kala);
+}
 </pre>
 
 
@@ -10363,7 +10363,7 @@ public class Main {
 
 <p>Tapahtumankuuntelijat <em>kuuntelevat</em> käyttöliittymäkomponentteja joihin ne on liitetty. Aina kun käyttöliittymäkomponentille tehdään joku toiminto, esimerkiksi napille napin painaminen, käyttöliittymäkomponentti kutsuu jokaisen siihen liitetyn tapahtumakuuntelijan tiettyä metodia. Käytännössä tapahtumankuuntelijat ovat tietyn rajapinnan toteuttavia luokkia, joiden ilmentymiä käyttöliittymäkomponentille voi lisätä. Tapahtuman tapahtuessa käyttöliittymäkomponentti käy jokaisen siihen liitetyn tapahtumankuuntelijan läpi, ja kutsuu rajapinnassa määriteltyä metodia.</p>
 
-<p>Swing-käyttöliittymissä eniten käytetty tapahtumankuuntelurajapinta on <code><a href="http://docs.oracle.com/javase/6/docs/api/java/awt/event/ActionListener.html">ActionListener</a></code>. Rajapinta <code>ActionListener</code> määrittelee metodin <code>void actionPerformed(ActionEvent e)</code>, joka saa parametrinaan tapahtumasta kertovan <code><a href="http://docs.oracle.com/javase/6/docs/api/java/awt/event/ActionEvent.html" target="_blank">ActionEvent</a></code>-olion.</p>
+<p>Swing-käyttöliittymissä eniten käytetty tapahtumankuuntelurajapinta on <code><a href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/ActionListener.html">ActionListener</a></code>. Rajapinta <code>ActionListener</code> määrittelee metodin <code>void actionPerformed(ActionEvent e)</code>, joka saa parametrinaan tapahtumasta kertovan <code><a href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/ActionEvent.html" target="_blank">ActionEvent</a></code>-olion.</p>
 
 <p>Toteutetaan ensimmäinen oma tapahtumankuuntelija, jonka tarkoituksena on vain tulostaa viesti standarditulostusvirtaan nappia painettaessa. Luokka <code>ViestiKuuntelija</code> toteuttaa rajapinnan <code>ActionListener</code> ja tulostaa viestin <code>"Viesti vastaanotettu!"</code> kun metodia <code>actionPerformed</code> kutsutaan.</p>
 
@@ -10403,21 +10403,21 @@ Viesti vastaanotettu!
 
 <p>Haluamme usein että tapahtumankuuntelija muokkaa jonkun olion tilaa. Päästäksemme olioon käsiksi tapahtumankuuntelijassa, tulee meidän antaa viite käsiteltävään olioon tapahtumankuuntelijalle sen konstruktorissa. Tapahtumankuuntelijat ovat täysin samanlaisia luokkia kuin muutkin Javan luokat, eli pääsemme ohjelmoimaan kaiken haluamamme toiminnallisuuden.</p>
 
-<p>Pohditaan seuraavaa käyttöliittymää jossa on kaksi <code><a href="http://docs.oracle.com/javase/6/docs/api/javax/swing/JTextArea.html" target="_blank">JTextArea</a></code>-tyyppistä tekstikenttää, eli tekstikenttää johon käyttäjä voi syöttää tekstiä, ja <code>JButton</code>-tyyppinen nappi. Käyttöliittymä käyttää <code><a href="http://docs.oracle.com/javase/6/docs/api/java/awt/GridLayout.html" target="_blank">GridLayout</a></code>-asettelijaa, jonka avulla käyttöliittymän voi rakentaa taulukkomaiseksi. GridLayout-luokan konstruktorille määriteltiin yksi rivi ja kolme saraketta.</p>
+<p>Pohditaan seuraavaa käyttöliittymää jossa on kaksi <code><a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTextArea.html" target="_blank">JTextArea</a></code>-tyyppistä tekstikenttää, eli tekstikenttää johon käyttäjä voi syöttää tekstiä, ja <code>JButton</code>-tyyppinen nappi. Käyttöliittymä käyttää <code><a href="https://docs.oracle.com/javase/8/docs/api/java/awt/GridLayout.html" target="_blank">GridLayout</a></code>-asettelijaa, jonka avulla käyttöliittymän voi rakentaa taulukkomaiseksi. GridLayout-luokan konstruktorille määriteltiin yksi rivi ja kolme saraketta.</p>
 
 <pre class="sh_java">
-    private void luoKomponentit(Container container) {
-        GridLayout layout = new GridLayout(1, 3);
-        container.setLayout(layout);
+private void luoKomponentit(Container container) {
+    GridLayout layout = new GridLayout(1, 3);
+    container.setLayout(layout);
 
-        JTextArea textAreaVasen = new JTextArea("Le Kopioija");
-        JTextArea textAreaOikea = new JTextArea();
-        JButton kopioiNappi = new JButton("Kopioi!");
+    JTextArea textAreaVasen = new JTextArea("Le Kopioija");
+    JTextArea textAreaOikea = new JTextArea();
+    JButton kopioiNappi = new JButton("Kopioi!");
 
-        container.add(textAreaVasen);
-        container.add(kopioiNappi);
-        container.add(textAreaOikea);
-    }
+    container.add(textAreaVasen);
+    container.add(kopioiNappi);
+    container.add(textAreaOikea);
+}
 </pre>
 
     <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/kali/kopioija-alku.png"/></p>
@@ -10508,30 +10508,30 @@ public interface HenkiloVarasto {
 
 <h4>Käyttöliittymän toteutus</h4>
 
-<p>Käyttöliittymää toteutettaessa hyvä aloitustapa on sopivien käyttöliittymäkomponenttien lisääminen käyttöliittymään. Henkilöiden tallennuksessa tarvitsemme kentät nimelle ja henkilötunnukselle, sekä napin jolla henkilö voidaan lisätä. Käytetään Javan <code><a href="http://docs.oracle.com/javase/6/docs/api/javax/swing/JTextField.html" target="_blank">JTextField</a></code>-luokkaa tekstin syöttämiseen, ja <code>JButton</code>-luokkaa napin toteuttamiseen. Luodaan käyttöliittymään lisäksi selventävät <code>JLabel</code>-tyyppiset selitystekstit.</p>
+<p>Käyttöliittymää toteutettaessa hyvä aloitustapa on sopivien käyttöliittymäkomponenttien lisääminen käyttöliittymään. Henkilöiden tallennuksessa tarvitsemme kentät nimelle ja henkilötunnukselle, sekä napin jolla henkilö voidaan lisätä. Käytetään Javan <code><a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTextField.html" target="_blank">JTextField</a></code>-luokkaa tekstin syöttämiseen, ja <code>JButton</code>-luokkaa napin toteuttamiseen. Luodaan käyttöliittymään lisäksi selventävät <code>JLabel</code>-tyyppiset selitystekstit.</p>
 
 <p>Käytetään käyttöliittymän asetteluun <code>GridLayout</code>-asettelijaa. Rivejä käyttöliittymässä on 3, sarakkeita 2. Lisätään tapahtumankuuntelija myöhemmin. Käyttöliittymäluokan metodi <code>luoKomponentit</code> näyttää nyt seuraavalta.</p>
 
 <pre class="sh_java">
-    private void luoKomponentit(Container container) {
-        GridLayout layout = new GridLayout(3, 2);
-        container.setLayout(layout);
+private void luoKomponentit(Container container) {
+    GridLayout layout = new GridLayout(3, 2);
+    container.setLayout(layout);
 
-        JLabel nimiTeksti = new JLabel("Nimi: ");
-        JTextField nimiKentta = new JTextField();
-        JLabel hetuTeksti = new JLabel("Hetu: ");
-        JTextField hetuKentta = new JTextField();
+    JLabel nimiTeksti = new JLabel("Nimi: ");
+    JTextField nimiKentta = new JTextField();
+    JLabel hetuTeksti = new JLabel("Hetu: ");
+    JTextField hetuKentta = new JTextField();
 
-        JButton lisaaNappi = new JButton("Lisää henkilö!");
-        // tapahtumankuuntelija
+    JButton lisaaNappi = new JButton("Lisää henkilö!");
+    // tapahtumankuuntelija
 
-        container.add(nimiTeksti);
-        container.add(nimiKentta);
-        container.add(hetuTeksti);
-        container.add(hetuKentta);
-        container.add(new JLabel(""));
-        container.add(lisaaNappi);
-    }
+    container.add(nimiTeksti);
+    container.add(nimiKentta);
+    container.add(hetuTeksti);
+    container.add(hetuKentta);
+    container.add(new JLabel(""));
+    container.add(lisaaNappi);
+}
 </pre>
 
 <p>Käyttöliittymä näyttää seuraavalta kun siihen on lisätty tietoa.</p>
@@ -10574,32 +10574,32 @@ public class Kayttoliittyma implements Runnable {
     }
     // ...
 
-
+}
 </pre>
 
 <p>Voimme nyt luoda tapahtumankuuntelijan <code>HenkilonLisaysKuuntelija</code>, jolle annetaan sekä <code>HenkiloVarasto</code>-viite, että kentät.</p>
 
 <pre class="sh_java">
-    private void luoKomponentit(Container container) {
-        GridLayout layout = new GridLayout(3, 2);
-        container.setLayout(layout);
+private void luoKomponentit(Container container) {
+    GridLayout layout = new GridLayout(3, 2);
+    container.setLayout(layout);
 
-        JLabel nimiTeksti = new JLabel("Nimi: ");
-        JTextField nimiKentta = new JTextField();
-        JLabel hetuTeksti = new JLabel("Hetu: ");
-        JTextField hetuKentta = new JTextField();
+    JLabel nimiTeksti = new JLabel("Nimi: ");
+    JTextField nimiKentta = new JTextField();
+    JLabel hetuTeksti = new JLabel("Hetu: ");
+    JTextField hetuKentta = new JTextField();
 
-        JButton lisaaNappi = new JButton("Lisää henkilö!");
-        HenkilonLisaysKuuntelija kuuntelija = new HenkilonLisaysKuuntelija(henkiloVarasto, nimiKentta, hetuKentta);
-        lisaaNappi.addActionListener(kuuntelija);
+    JButton lisaaNappi = new JButton("Lisää henkilö!");
+    HenkilonLisaysKuuntelija kuuntelija = new HenkilonLisaysKuuntelija(henkiloVarasto, nimiKentta, hetuKentta);
+    lisaaNappi.addActionListener(kuuntelija);
 
-        container.add(nimiTeksti);
-        container.add(nimiKentta);
-        container.add(hetuTeksti);
-        container.add(hetuKentta);
-        container.add(new JLabel(""));
-        container.add(lisaaNappi);
-    }
+    container.add(nimiTeksti);
+    container.add(nimiKentta);
+    container.add(hetuTeksti);
+    container.add(hetuKentta);
+    container.add(new JLabel(""));
+    container.add(lisaaNappi);
+}
 </pre>
 
 
@@ -10622,12 +10622,12 @@ public class Kayttoliittyma implements Runnable {
 <p>Voit halutessasi testata luokan toimintaa seuraavan ohjelman avulla.</p>
 
 <pre class="sh_java">
-        Laskuri laskuri = new OmaLaskuri();
-        System.out.println("Arvo: " + laskuri.annaArvo());
-        laskuri.kasvata();
-        System.out.println("Arvo: " + laskuri.annaArvo());
-        laskuri.kasvata();
-        System.out.println("Arvo: " + laskuri.annaArvo());
+Laskuri laskuri = new OmaLaskuri();
+System.out.println("Arvo: " + laskuri.annaArvo());
+laskuri.kasvata();
+System.out.println("Arvo: " + laskuri.annaArvo());
+laskuri.kasvata();
+System.out.println("Arvo: " + laskuri.annaArvo());
 </pre>
 
 <pre>
@@ -10659,7 +10659,7 @@ Arvo: 2
 
    <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/kali/jpanel-container.png"/></p>
 
-<p>Voimme asettaa Container-tyyppisiä olioita toistensa sisään. Luokka <code><a href="http://docs.oracle.com/javase/6/docs/api/javax/swing/JPanel.html" target="_blank">JPanel</a></code> (katso myös <a href="http://docs.oracle.com/javase/tutorial/uiswing/components/panel.html" target="_blank">How to Use Panels</a>) mahdollistaa sisäkkäiset <code>Container</code>-oliot. JPanel-luokan ilmentymään voi lisätä käyttöliittymäkomponentteja samalla tavalla kuin <code>JFrame</code>-luokasta saatuun <code>Container</code>-ilmentymään. Tämän lisäksi <code>JPanel</code>-luokan ilmentymän voi lisätä <code>Container</code>-olioon. Tämä mahdollistaa useamman <code>Container</code>-olion käyttämisen käyttöliittymän suunnittelussa.</p>
+<p>Voimme asettaa Container-tyyppisiä olioita toistensa sisään. Luokka <code><a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JPanel.html" target="_blank">JPanel</a></code> (katso myös <a href="http://docs.oracle.com/javase/tutorial/uiswing/components/panel.html" target="_blank">How to Use Panels</a>) mahdollistaa sisäkkäiset <code>Container</code>-oliot. JPanel-luokan ilmentymään voi lisätä käyttöliittymäkomponentteja samalla tavalla kuin <code>JFrame</code>-luokasta saatuun <code>Container</code>-ilmentymään. Tämän lisäksi <code>JPanel</code>-luokan ilmentymän voi lisätä <code>Container</code>-olioon. Tämä mahdollistaa useamman <code>Container</code>-olion käyttämisen käyttöliittymän suunnittelussa.</p>
 
 <p>Yllä olevan käyttöliittymän luominen on helpompaa <code>JPanel</code>-luokan avulla.. Luodaan käyttöliittymä, jossa on kolme nappia "Suorita", "Testaa", ja "Lähetä", sekä tekstialue joka sisältää tekstiä. Napit ovat oma joukkonsa, joten tehdään niille erillinen <code>JPanel</code>-olio joka asetetaan <code>JFrame</code>-luokasta saadun <code>Container</code>-olion eteläosaan. Tekstialue tulee keskelle.</p>
 
@@ -10705,10 +10705,10 @@ public class ValikkoPanel extends JPanel {
 <p>Nyt käyttöliittymäluokassa voidaan luoda <code>ValikkoPanel</code>-luokan ilmentymä.</p>
 
 <pre class="sh_java">
-    private void luoKomponentit(Container container) {
-        container.add(new JTextArea());
-        container.add(new ValikkoPanel(), BorderLayout.SOUTH);
-    }
+private void luoKomponentit(Container container) {
+    container.add(new JTextArea());
+    container.add(new ValikkoPanel(), BorderLayout.SOUTH);
+}
 </pre>
 
 <p>Huomaa, että tapahtumankäsittelyä tarvittaessa luokalle <code>ValikkoPanel</code> tulee antaa parametrina kaikki tarvittavat oliot.</p>
@@ -10759,7 +10759,7 @@ public class ValikkoPanel extends JPanel {
 </div>
 <h2>Piirtäminen</h2>
 
-<p>Luokkaa <code>JPanel</code> käytetään <code>Container</code>-toiminnallisuuden lisäksi usein piirtoalustana siten, että käyttäjä perii luokan <code>JPanel</code> ja korvaa metodin <code>protected void paintComponent(Graphics graphics)</code>. Käyttöliittymä kutsuu metodia <code>paintComponent</code> aina kun käyttöliittymäkomponentin sisältö halutaan piirtää ruudulle. Metodi <code>paintComponent</code> saa käyttöliittymältä parametrina abstraktin luokan <code><a href="http://docs.oracle.com/javase/6/docs/api/java/awt/Graphics.html" target="_blank">Graphics</a></code> toteuttavan olion. Luodaan luokan <code>JPanel</code> perivä luokka <code>Piirtoalusta</code>, joka korvaa <code>paintComponent</code>-metodin.</p>
+<p>Luokkaa <code>JPanel</code> käytetään <code>Container</code>-toiminnallisuuden lisäksi usein piirtoalustana siten, että käyttäjä perii luokan <code>JPanel</code> ja korvaa metodin <code>protected void paintComponent(Graphics graphics)</code>. Käyttöliittymä kutsuu metodia <code>paintComponent</code> aina kun käyttöliittymäkomponentin sisältö halutaan piirtää ruudulle. Metodi <code>paintComponent</code> saa käyttöliittymältä parametrina abstraktin luokan <code><a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Graphics.html" target="_blank">Graphics</a></code> toteuttavan olion. Luodaan luokan <code>JPanel</code> perivä luokka <code>Piirtoalusta</code>, joka korvaa <code>paintComponent</code>-metodin.</p>
 
 <pre class="sh_java">
 public class Piirtoalusta extends JPanel {
@@ -10775,7 +10775,7 @@ public class Piirtoalusta extends JPanel {
 }
 </pre>
 
-<p>Yllä oleva piirtoalusta ei sisällä konkreettista piirtämistoiminnallisuutta. Asetamme konstruktorissa piirtoalustan taustan valkoiseksi kutsumalla yläluokan metodia <code>setBackground</code>. Metodi <code>setBackGround</code> saa parametrina <code><a href="http://docs.oracle.com/javase/6/docs/api/java/awt/Color.html" target="_blank">Color</a></code>-luokan ilmentymän. Luokka <code>Color</code> sisältää yleisimmät värit luokkamuuttujina, esimerkiksi väri valkoinen löytyy luokkamuuttujasta <code>Color.WHITE</code>.</p>
+<p>Yllä oleva piirtoalusta ei sisällä konkreettista piirtämistoiminnallisuutta. Asetamme konstruktorissa piirtoalustan taustan valkoiseksi kutsumalla yläluokan metodia <code>setBackground</code>. Metodi <code>setBackGround</code> saa parametrina <code><a href="http://docs.oracle.com/javase/8/docs/api/java/awt/Color.html" target="_blank">Color</a></code>-luokan ilmentymän. Luokka <code>Color</code> sisältää yleisimmät värit luokkamuuttujina, esimerkiksi väri valkoinen löytyy luokkamuuttujasta <code>Color.WHITE</code>.</p>
 
 <p><strong>Huom:</strong> metodin paintComponent alussa tulee olla kutsu korvattuun metodiin, eli ensimmäisen rivin tulee olla <code>super.paintComponent(g);</code> muuten piirtäminen ei toimi halutulla tavalla.</p>
 
@@ -10791,16 +10791,16 @@ public class Piirtoalusta extends JPanel {
 
     <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/kali/piirtoalusta.png"/></p>
 
-<p>Piirtoalustalle piirtäminen tapahtuu <code><a href="http://docs.oracle.com/javase/6/docs/api/java/awt/Graphics.html" target="_blank">Graphics</a></code>-olion tarjoamien metodien avulla. Muokataan <code>Piirtoalusta</code>-luokan metodia <code>paintComponent</code> siten, että siinä piirretään kaksi suorakulmiota <code>Graphics</code>-olion tarjoaman metodin <code>fillRect</code> avulla.</p>
+<p>Piirtoalustalle piirtäminen tapahtuu <code><a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Graphics.html" target="_blank">Graphics</a></code>-olion tarjoamien metodien avulla. Muokataan <code>Piirtoalusta</code>-luokan metodia <code>paintComponent</code> siten, että siinä piirretään kaksi suorakulmiota <code>Graphics</code>-olion tarjoaman metodin <code>fillRect</code> avulla.</p>
 
 <pre class="sh_java">
-    @Override
-    protected void paintComponent(Graphics graphics) {
-        super.paintComponent(graphics);
+@Override
+protected void paintComponent(Graphics graphics) {
+    super.paintComponent(graphics);
 
-        graphics.fillRect(50, 80, 100, 50);
-        graphics.fillRect(200, 20, 50, 200);
-    }
+    graphics.fillRect(50, 80, 100, 50);
+    graphics.fillRect(200, 20, 50, 200);
+}
 </pre>
 
 <p>Metodi <code>fillRect</code> saa parametrina suorakulmion <code>x</code>, ja <code>y</code> -koordinaatit, sekä suorakulmion leveyden ja korkeuden tässä järjestyksessä. Yllä siis piirretään ensin koordinaatista <code>(50, 80)</code> alkava 100 pikseliä leveä ja 50 pikseliä korkea suorakulmio. Tämän jälkeen piirretään koordinaatista <code>(200, 20)</code> alkava 50 pikseliä leveä ja 100 pikseliä korkea suorakulmio.</p>
@@ -10813,15 +10813,15 @@ public class Piirtoalusta extends JPanel {
 
 
 <pre class="sh_java">
-    @Override
-    protected void paintComponent(Graphics graphics) {
-        super.paintComponent(graphics);
+@Override
+protected void paintComponent(Graphics graphics) {
+    super.paintComponent(graphics);
 
-        graphics.setColor(Color.GREEN);
-        graphics.fillRect(0, 0, 10, 200);
-        graphics.setColor(Color.BLACK);
-        graphics.fillRect(0, 0, 200, 10);
-    }
+    graphics.setColor(Color.GREEN);
+    graphics.fillRect(0, 0, 10, 200);
+    graphics.setColor(Color.BLACK);
+    graphics.fillRect(0, 0, 200, 10);
+}
 </pre>
 
     <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/kali/piirtoalusta-koordinaatisto.png"/></p>
@@ -10924,15 +10924,15 @@ public class Kayttoliittyma implements Runnable {
 <p>Käyttöliittymän voi nyt käynnistää antamalla sen konstruktorille <code>Hahmo</code>-olion parametrina.</p>
 
 <pre class="sh_java">
-        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(new Hahmo(30, 30));
-        SwingUtilities.invokeLater(kayttoliittyma);
+Kayttoliittyma kayttoliittyma = new Kayttoliittyma(new Hahmo(30, 30));
+SwingUtilities.invokeLater(kayttoliittyma);
 </pre>
 
     <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/kali/piirtoalusta-hahmon-piirtaminen.png"/></p>
 
 <p>Yllä olevassa käyttöliittymässä näkyy huikea, pallonmuotoinen hahmo.</p>
 
-<p>Lisätään seuraavaksi ohjelmaan hahmon siirtämistoiminnallisuus. Haluamme liikuttaa hahmoa näppäimistöllä. Kun käyttäjä painaa nuolta vasemmalle, hahmon pitäisi siirtyä vasemmalle. Oikealle osoittavaa nuolta painettaessa hahmon pitäisi siirtyä oikealle. Tarvitsemme siis tapahtumankuuntelijan, joka kuuntelee näppäimistöä. Rajapinta <code><a href="http://docs.oracle.com/javase/6/docs/api/java/awt/event/KeyListener.html" target="_blank">KeyListener</a></code> määrittelee näppäimistönkuuntelijalta vaaditut toiminnallisuudet.</p>
+<p>Lisätään seuraavaksi ohjelmaan hahmon siirtämistoiminnallisuus. Haluamme liikuttaa hahmoa näppäimistöllä. Kun käyttäjä painaa nuolta vasemmalle, hahmon pitäisi siirtyä vasemmalle. Oikealle osoittavaa nuolta painettaessa hahmon pitäisi siirtyä oikealle. Tarvitsemme siis tapahtumankuuntelijan, joka kuuntelee näppäimistöä. Rajapinta <code><a href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyListener.html" target="_blank">KeyListener</a></code> määrittelee näppäimistönkuuntelijalta vaaditut toiminnallisuudet.</p>
 
 <p>Rajapinta <code>KeyListener</code> vaatii metodien <code>keyPressed</code>, <code>keyReleased</code>, ja <code>keyTyped</code> toteuttamista. Olemme kiinnostuneita vain tapahtumasta, jossa näppäintä painetaan, joten jätämme metodit <code>keyReleased</code> ja <code>keyTyped</code> tyhjiksi. Luodaan luokka <code>NappaimistonKuuntelija</code>, joka toteuttaa rajapinnan <code>KeyListener</code>. Luokka saa parametrina <code>Hahmo</code>-olion, jota tapahtumankäsittelijän tulee liikuttaa.</p>
 
@@ -10972,12 +10972,12 @@ public class NappaimistonKuuntelija implements KeyListener {
 <p>Haluamme kuunnella käyttöliittymään kohdistuvia näppäimen painalluksia (emme esimerkiksi ole kirjoittamassa tekstikenttään), joten lisätään näppäimistönkuuntelija <code>JFrame</code>-luokan ilmentymälle. Muokataan käyttöliittymäämme siten, että näppäimistönkuuntelija lisätään JFrame-oliolle.</p>
 
 <pre class="sh_java">
-    private void luoKomponentit(Container container) {
-        Piirtoalusta piirtoalusta = new Piirtoalusta(hahmo);
-        container.add(piirtoalusta);
+private void luoKomponentit(Container container) {
+    Piirtoalusta piirtoalusta = new Piirtoalusta(hahmo);
+    container.add(piirtoalusta);
 
-        frame.addKeyListener(new NappaimistonKuuntelija(hahmo));
-    }
+    frame.addKeyListener(new NappaimistonKuuntelija(hahmo));
+}
 </pre>
 
 <p>Nyt sovelluksemme kuuntelee näppäimistöltä tulleita painalluksia, ja ohjaa ne luokan <code>NappaimistonKuuntelija</code> ilmentymälle.</p>
@@ -10985,11 +10985,12 @@ public class NappaimistonKuuntelija implements KeyListener {
 <p>Kokeillessamme käyttöliittymää se ei kuitenkaan toimi: hahmo ei siirry ruudulla. Mistä tässä oikein on kyse? Voimme tarkastaa että näppäimistön painallukset ohjautuvat <code>NappaimistonKuuntelija</code>-oliolle lisäämällä <code>keyPressed</code>-metodin alkuun testitulostuksen.</p>
 
 <pre class="sh_java">
-    @Override
-    public void keyPressed(KeyEvent e) {
-        System.out.println("Nappia " + e.getKeyCode() +  " painettu.");
+@Override
+public void keyPressed(KeyEvent e) {
+    System.out.println("Nappia " + e.getKeyCode() +  " painettu.");
 
-        // ...
+    // ...
+}
 </pre>
 
 <p>Käynnistäessämme ohjelman ja painaessamme näppäimiä näemme konsolissa tulostuksen.</p>
@@ -11050,12 +11051,12 @@ public class NappaimistonKuuntelija implements KeyListener {
 <p>Muutetaan myös <code>Kayttoliittyma</code>-luokan <code>luoKomponentit</code>-metodia siten, että <code>Piirtoalusta</code>-luokan ilmentymä annetaan parametrina näppäimistönkuuntelijalle.</p>
 
 <pre class="sh_java">
-    private void luoKomponentit(Container container) {
-        Piirtoalusta piirtoalusta = new Piirtoalusta(hahmo);
-        container.add(piirtoalusta);
+private void luoKomponentit(Container container) {
+    Piirtoalusta piirtoalusta = new Piirtoalusta(hahmo);
+    container.add(piirtoalusta);
 
-        frame.addKeyListener(new NappaimistonKuuntelija(hahmo, piirtoalusta));
-    }
+    frame.addKeyListener(new NappaimistonKuuntelija(hahmo, piirtoalusta));
+}
 </pre>
 
 <p>Nyt hahmon liikuttaminen myös näkyy käyttöliittymässä. Aina kun käyttäjä painaa näppäimistöä, käyttöliittymään liitetty näppäimistönkuuntelija käsittelee kutsun. Jokaisen kutsun lopuksi kutsutaan piirtoalustan <code>repaint</code>-metodia, joka aiheuttaa piirtoalustan uudelleenpiirtämisen.</p>
@@ -11070,15 +11071,15 @@ public class NappaimistonKuuntelija implements KeyListener {
 
 <p>Aluksi tehdään muutama luokka, joilla kuvioita hallitaan. Pääsemme myöhemmin piirtämään kuvioita ruudulle. Tee kaikki ohjelman luokat pakkaukseen <code>liikkuvakuvio</code>.</p>
 
-<p>Tehtävässä käytetään perintää ja abstrakteja luokkia. Kertaa siis tarvittaessa luvut 18.1, 18.2 ja 18.5</p></p>
+<p>Tehtävässä käytetään perintää ja abstrakteja luokkia. Kertaa siis tarvittaessa niihin liittyvä sisältö.</p>
 
-<h4  >Abstrakti luokka Kuvio</h4>
+<h4>Abstrakti luokka Kuvio</h4>
 
 <p>Tee abstrakti luokka <code>Kuvio</code>. Kuviolla on oliomuuttujat <code>x</code> ja <code>y</code>, jotka kertovat kuvion sijainnin ruudulla sekä metodi <code>public void siirra(int dx, int dy)</code>, jonka avulla kuvion sijainti siirtyy parametrina olevien koordinaattisiirtymien verran. Esim. jos sijainti aluksi on (100,100), niin kutsun <code>siirra(10,-50)</code> jälkeen sijainti on (110, 50). Luokan konstruktorin <code>public Kuvio(int x, int y)</code> tulee asettaa kuviolle alkusijainti. Lisää luokalle myös metodit <code>public int getX()</code> ja <code>public int getY()</code>.</p>
 
 <p>Luokalla tulee olla myös abstrakti metodi <code>public abstract void piirra(Graphics graphics)</code>, jolla kuvio piirretään piirtoalustalle. Kuvion piirtämismetodi toteutetaan luokan <code>Kuvio</code> perivissä metodeissa.</p>
 
-<h4  >Ympyra</h4>
+<h4>Ympyra</h4>
 
 <p>Tee luokka <code>Ympyra</code> joka perii Kuvion. Ympyrällä on <code>halkaisija</code> jonka arvon konstruktori <code>public Ympyra(int x, int y, int halkaisija)</code> asettaa. Sijainti tallennetaan yläluokassa määriteltyihin oliomuuttujiin.
 </p>
@@ -11086,10 +11087,10 @@ public class NappaimistonKuuntelija implements KeyListener {
 <p>
 Ympyra määrittelee metodin <code>piirra</code> siten, että oikean kokoinen ympyrä piirretään koordinaattien osoittamaan paikkaan
 parametrina olevan <code>Graphics</code>-olion <code>fillOval</code>-metodia käyttäen, ympyrän sijaintia tulee käyttää metodin kahtena ensimmäisenä parametrina. Ota mallia Hahmo-esimerkin vastaavasta metodista.
-Graphics-olion metodien toimintaa kannattaa tutkia <a href="http://docs.oracle.com/javase/6/docs/api/java/awt/Graphics.html">Java API:sta.</a>
+Graphics-olion metodien toimintaa kannattaa tutkia <a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Graphics.html">Java API:sta.</a>
 </p>
 
-<h4  >Piirtoalusta</h4>
+<h4>Piirtoalusta</h4>
 
 <p>Luo luokka <code>Piirtoalusta</code> joka perii luokan <code>JPanel</code>, mallia voit ottaa esimerkiksi edellisen tehtävän mukana tulleesta piirtoalustasta. Piirtoalusta saa konstruktorin parametrina <code>Kuvio</code>-tyyppisen olion. Korvaa luokan <code>JPanel</code> metodi <code>protected void paintComponent(Graphics g)</code> siten, että siinä kutsutaan ensin yläluokan <code>paintComponent</code>-metodia ja sitten piirtoalustalle asetetun kuvion <code>piirra</code>-metodia.</p>
 
@@ -11098,17 +11099,17 @@ Graphics-olion metodien toimintaa kannattaa tutkia <a href="http://docs.oracle.c
 <p>Testaa lopuksi että seuraavalla esimerkkikoodilla ruudulle piirtyy ympyrä.</p>
 
 <pre class="sh_java">
-        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(new Ympyra(50, 50, 250));
-        SwingUtilities.invokeLater(kayttoliittyma);
+Kayttoliittyma kayttoliittyma = new Kayttoliittyma(new Ympyra(50, 50, 250));
+SwingUtilities.invokeLater(kayttoliittyma);
 </pre>
 
 <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/kali/liikkuvakuvio-ympyra.png"/></p>
 
 
 
-        <h4  >Näppäimistöohjaus</h4>
+        <h4>Näppäimistöohjaus</h4>
 
-<p>Laajennetaan piirtoalustaa siten, että kuviota voi liikutella nuolinäppäinten avulla. Luo rajapinnan <code><a href="http://docs.oracle.com/javase/6/docs/api/java/awt/event/KeyListener.html" target="_blank">KeyListener</a></code> toteuttava luokka <code>NappaimistonKuuntelija</code>. Luokan <code>NappaimistonKuuntelija</code> konstruktorin parametrit ovat luokan <code>Component</code> ilmentymä ja luokan <code>Kuvio</code> ilmentymä.</p>
+<p>Laajennetaan piirtoalustaa siten, että kuviota voi liikutella nuolinäppäinten avulla. Luo rajapinnan <code><a href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyListener.html" target="_blank">KeyListener</a></code> toteuttava luokka <code>NappaimistonKuuntelija</code>. Luokan <code>NappaimistonKuuntelija</code> konstruktorin parametrit ovat luokan <code>Component</code> ilmentymä ja luokan <code>Kuvio</code> ilmentymä.</p>
 
 <p>Luokan Component ilmentymä annetaan näppäimistönkuuntelijalle, jotta voimme päivittää halutun komponentin jokaisen näppäimenpainalluksen jälkeen uudestaan. Komponentin päivittäminen tapahtuu kutsumalla <code>Component</code> luokasta perityvää metodia <code>repaint</code>. Luokka Piirtoalusta on tyyppiä <code>Component</code> koska <code>Component</code> on luokan <code>JPanel</code> perivän luokan yläluokka.</p>
 
@@ -11119,7 +11120,7 @@ Graphics-olion metodien toimintaa kannattaa tutkia <a href="http://docs.oracle.c
 <p>Lisää näppäimistönkuuntelija Kayttoliittyma-luokan <code>lisaaKuuntelijat</code>-metodissa. Näppäimistönkuuntelija tulee liittää <code>JFrame</code>-olioon.</p>
 
 
-        <h4  >Nelio ja Laatikko</h4>
+        <h4>Nelio ja Laatikko</h4>
 
 
 <p>Peri luokasta <code>Kuvio</code> luokat <code>Nelio</code> ja <code>Laatikko</code>. Neliöllä on konstruktori <code>public Nelio(int x, int y, int sivunPituus)</code>, laatikon konstruktori on muotoa <code>public Laatikko(int x, int y, int leveys, int korkeus)</code>. Käytä piirtämisessä graphics-olion <code>fillRect</code>-metodia.</p>
@@ -11127,21 +11128,21 @@ Graphics-olion metodien toimintaa kannattaa tutkia <a href="http://docs.oracle.c
 <p>Varmista, että neliöt ja laatikot piirtyvät ja liikkuvat oikein Piirtoalustalla.</p>
 
 <pre class="sh_java">
-        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(new Nelio(50, 50, 250));
-        SwingUtilities.invokeLater(kayttoliittyma);
+Kayttoliittyma kayttoliittyma = new Kayttoliittyma(new Nelio(50, 50, 250));
+SwingUtilities.invokeLater(kayttoliittyma);
 </pre>
 
 <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/kali/liikkuvakuvio-nelio.png"/></p>
 
 
 <pre class="sh_java">
-        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(new Laatikko(50, 50, 100, 300));
-        SwingUtilities.invokeLater(kayttoliittyma);
+Kayttoliittyma kayttoliittyma = new Kayttoliittyma(new Laatikko(50, 50, 100, 300));
+SwingUtilities.invokeLater(kayttoliittyma);
 </pre>
 
 <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/kali/liikkuvakuvio-laatikko.png"/></p>
 
-        <h4  >Koostekuvio</h4>
+        <h4>Koostekuvio</h4>
 
         <p>Peri luokasta <code>Kuvio</code> luokka <code>Koostekuvio</code>. Koostekuvio sisältää joukon muita kuvioita jotka se tallettaa ArrayList:iin. Koostekuviolla on metodi <code>public void liita(Kuvio k)</code> jonka avulla koostekuvioon voi liittää kuvio-olion. Koostekuviolla ei ole omaa sijaintia ja ei ole merkitystä mitä koostekuvio asettaa perimiensä x- ja y-koordinaatin arvoiksi. Koostekuvio piirtää itsensä pyytämällä osiaan piirtämään itsensä, koostekuvion siirtyminen tapahtuu samoin. Kuviolta peritty metodi <code>siirra</code> on siis ylikirjoitettava!</p>
 
@@ -11150,15 +11151,15 @@ Graphics-olion metodien toimintaa kannattaa tutkia <a href="http://docs.oracle.c
         <p>Testaa että koostekuviosi piirtyy ja siirtyy oikein, esim. seuraavan koostekuvion avulla:</p>
 
 <pre class="sh_java">
-        Koostekuvio rekka = new Koostekuvio();
+Koostekuvio rekka = new Koostekuvio();
 
-        rekka.liita(new Laatikko(220, 110, 75, 100));
-        rekka.liita(new Laatikko(80, 120, 200, 100));
-        rekka.liita(new Ympyra(100, 200, 50));
-        rekka.liita(new Ympyra(220, 200, 50));
+rekka.liita(new Laatikko(220, 110, 75, 100));
+rekka.liita(new Laatikko(80, 120, 200, 100));
+rekka.liita(new Ympyra(100, 200, 50));
+rekka.liita(new Ympyra(220, 200, 50));
 
-        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(rekka);
-        SwingUtilities.invokeLater(kayttoliittyma);
+Kayttoliittyma kayttoliittyma = new Kayttoliittyma(rekka);
+SwingUtilities.invokeLater(kayttoliittyma);
 </pre>
 
 <p><img src="https://www.cs.helsinki.fi/group/java/k13/ohja/img-ohja/kali/liikkuvakuvio-rekka.png"/></p>
@@ -11322,11 +11323,11 @@ Kiitos!
 <p>Testaa metodia. Arvolla 0.0 ei pitäisi olla yhtään elossa olevaa solua, arvolla 1.0 kaikkien solujen tulisi olla elossa (eli näkyä X-merkkisinä). Arvolla 0.5 noin puolet soluista on eläviä.</p>
 
 <pre class="sh_java">
-        OmaAlusta alusta = new OmaAlusta(3, 3);
-        alusta.alustaSatunnaisetPisteet(1.0);
+OmaAlusta alusta = new OmaAlusta(3, 3);
+alusta.alustaSatunnaisetPisteet(1.0);
 
-        GameOfLifeTestaaja gom = new GameOfLifeTestaaja(alusta);
-        gom.pelaa();
+GameOfLifeTestaaja gom = new GameOfLifeTestaaja(alusta);
+gom.pelaa();
 </pre>
 
 <pre>
