@@ -15431,15 +15431,15 @@ public class Main {
 
   <h4>Kirja</h4>
 
-  <p>Luodaan ensiksi luokka Kirja. Kirjalla on oliomuuttujina <code>nimike</code>, eli kirjan nimi, <code>julkaisija</code>, eli kirjan julkaisija, ja <code>julkaisuvuosi</code> eli vuosi jolloin kirja on julkaistu. Kaksi ensimmäistä muuttujaa on merkkijonotyyppisiä, viimeisin on kokonaisluku. Oletamme tässä että kirjalla on aina vain yksi kirjoittaja.</p>
+  <p>Luodaan ensiksi luokka Kirja. Kirjalla on oliomuuttujina <code>nimeke</code>, eli kirjan nimi, <code>julkaisija</code>, eli kirjan julkaisija, ja <code>julkaisuvuosi</code> eli vuosi jolloin kirja on julkaistu. Kaksi ensimmäistä muuttujaa on merkkijonotyyppisiä, viimeisin on kokonaisluku. Oletamme tässä että kirjalla on aina vain yksi kirjoittaja.</p>
 
-  <p>Toteuta luokka <code>Kirja</code>. Kirjalla tulee olla myös konstruktori <code>public Kirja(String nimike, String julkaisija, int julkaisuvuosi)</code> sekä metodit <code>public String nimike()</code>, <code>public String julkaisija()</code>, <code>public int julkaisuvuosi()</code> ja <code>public String toString()</code>. Arvannet mitä metodien tulee tehdä, alla esimerkki.</p>
+  <p>Toteuta luokka <code>Kirja</code>. Kirjalla tulee olla myös konstruktori <code>public Kirja(String niemeke, String julkaisija, int julkaisuvuosi)</code> sekä metodit <code>public String nimeke()</code>, <code>public String julkaisija()</code>, <code>public int julkaisuvuosi()</code> ja <code>public String toString()</code>. Arvannet mitä metodien tulee tehdä, alla esimerkki.</p>
 
   <p>Testaa luokan toimintaa:</p>
 
 <pre class="sh_java">
 Kirja cheese = new Kirja("Cheese Problems Solved", "Woodhead Publishing", 2007);
-System.out.println(cheese.nimike());
+System.out.println(cheese.nimeke());
 System.out.println(cheese.julkaisija());
 System.out.println(cheese.julkaisuvuosi());
 
@@ -15481,7 +15481,7 @@ Battle Axes, Tom A. Hawk, 1851
 
   <h4>Hakutoiminnallisuus</h4>
 
-  <p>Kirjastosta tulee pystyä etsimään kirjoja nimikkeiden ja julkaisijoiden perusteella. Lisää kirjastolle metodit <code>public ArrayList&lt;Kirja&gt; haeKirjaNimikkeella(String nimike)</code>, <code>public ArrayList&lt;Kirja&gt; haeKirjaJulkaisijalla(String julkaisija)</code> ja <code>public ArrayList&lt;Kirja&gt; haeKirjaJulkaisuvuodella(int julkaisuvuosi)</code>. Metodit palauttavat listan kirjoista, joissa on haluttu nimike, julkaisija tai julkaisuvuosi.</p>
+  <p>Kirjastosta tulee pystyä etsimään kirjoja nimekkeiden ja julkaisijoiden perusteella. Lisää kirjastolle metodit <code>public ArrayList&lt;Kirja&gt; haeKirjaNimekkeella(String nimeke)</code>, <code>public ArrayList&lt;Kirja&gt; haeKirjaJulkaisijalla(String julkaisija)</code> ja <code>public ArrayList&lt;Kirja&gt; haeKirjaJulkaisuvuodella(int julkaisuvuosi)</code>. Metodit palauttavat listan kirjoista, joissa on haluttu nimeke, julkaisija tai julkaisuvuosi.</p>
 
   <p><b>Huom:</b> joudut siis tehdä metodin jonka paluuarvona on ArrayList. Tämä onnustuu seuraavaa metodirunkoa hyödyntäen:</p>
 
@@ -15489,10 +15489,10 @@ Battle Axes, Tom A. Hawk, 1851
 public class Kirjasto {
     // ...
 
-    public ArrayList&lt;Kirja&gt; haeKirjaNimikkeella(String nimike) {
+    public ArrayList&lt;Kirja&gt; haeKirjaNimekkeella(String nimeke) {
         ArrayList&lt;Kirja&gt; loydetyt = new ArrayList&lt;&gt;();
 
-        // käy läpi kaikki kirjat ja lisää ne joilla haetun kaltainen nimike listalle loydetyt
+        // käy läpi kaikki kirjat ja lisää ne joilla haetun kaltainen nimeke listalle loydetyt
 
         return loydetyt;
     }
@@ -15509,7 +15509,7 @@ kirjasto.lisaaKirja(new Kirja("The Stinky Cheese Man and Other Fairly Stupid Tal
 kirjasto.lisaaKirja(new Kirja("NHL Hockey", "Stanley Kupp", 1952));
 kirjasto.lisaaKirja(new Kirja("Battle Axes", "Tom A. Hawk", 1851));
 
-ArrayList&lt;Kirja&gt; hakutulos = kirjasto.haeKirjaNimikkeella("Cheese");
+ArrayList&lt;Kirja&gt; hakutulos = kirjasto.haeKirjaNimekkeella("Cheese");
 for (Kirja kirja: hakutulos) {
     System.out.println(kirja);
 }
@@ -15535,7 +15535,7 @@ Battle Axes, Tom A. Hawk, 1851
 
   <h4>Paranneltu hakutoiminnallisuus</h4>
 
-  <p>Hakutoiminnallisuutemme on jo hyvä, mutta se ei ymmärrä isojen ja pienten kirjainten eroa. Yllä olleessa esimerkissä haku nimikkeellä <code>"cheese"</code> ei olisi tuottanut yhtäkään tulosta. Myös toinen esimerkki, jossa oli ylimääräisiä välilyöntejä, ei näyttänyt haluttua tulosta. Haluamme että nimikkeiden ja julkaisijoiden nimillä haettaessa ei välitetä merkkien koosta, ja että käyttäjä voi syöttää ylimääräisiä välilyöntejä kirjan nimen alkuun tai loppuun (meidän ei tarvitse välittää sanojen välillä olevista tyhjistä!). Toteutetaan pieni apukirjasto <code>StringUtils</code> merkkijonojen vertailuun.</p>
+  <p>Hakutoiminnallisuutemme on jo hyvä, mutta se ei ymmärrä isojen ja pienten kirjainten eroa. Yllä olleessa esimerkissä haku nimekkeellä <code>"cheese"</code> ei olisi tuottanut yhtäkään tulosta. Myös toinen esimerkki, jossa oli ylimääräisiä välilyöntejä, ei näyttänyt haluttua tulosta. Haluamme että nimekkeiden ja julkaisijoiden nimillä haettaessa ei välitetä merkkien koosta, ja että käyttäjä voi syöttää ylimääräisiä välilyöntejä kirjan nimen alkuun tai loppuun (meidän ei tarvitse välittää sanojen välillä olevista tyhjistä!). Toteutetaan pieni apukirjasto <code>StringUtils</code> merkkijonojen vertailuun.</p>
 
   <p>Luo luokka <code>StringUtils</code>, ja lisää sille staattinen metodi <code>public static boolean sisaltaa(String sana, String haettava)</code>, joka tarkistaa sisältääkö merkkijono <code>sana</code> merkkijonon <code>haettava</code>. Jos jommankumman merkkijonon arvo on <em>null</em>, metodin tulee palauttaa arvo <code>false</code>. Metodin tarjoaman vertailun tulee olla välittämättä merkin koosta.
 
@@ -15546,7 +15546,7 @@ Battle Axes, Tom A. Hawk, 1851
   <p>Kun olet saanut metodin valmiiksi, käytä sitä <code>Kirjasto</code>-luokassa. Alla esimerkki:</p>
 
 <pre class="sh_java">
-if (StringUtils.sisaltaa(kirja.nimike(), haettuNimike)) {
+if (StringUtils.sisaltaa(kirja.nimeke(), nimeke)) {
     // kirja löytyi!
 }
 </pre>
@@ -15559,7 +15559,7 @@ kirjasto.lisaaKirja(new Kirja("The Stinky Cheese Man and Other Fairly Stupid Tal
 kirjasto.lisaaKirja(new Kirja("NHL Hockey", "Stanley Kupp", 1952));
 kirjasto.lisaaKirja(new Kirja("Battle Axes", "Tom A. Hawk", 1851));
 
-for (Kirja kirja: kirjasto.haeKirjaNimikkeella("CHEESE")) {
+for (Kirja kirja: kirjasto.haeKirjaNimekkeella("CHEESE")) {
     System.out.println(kirja);
 }
 
