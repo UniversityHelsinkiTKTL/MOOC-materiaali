@@ -11585,16 +11585,16 @@ public class Main {
     <div class="self-explanation" data-key="q-tarkkailija"></div>
 
 
-<h2>Muutamia hyödyllisiä tekniikoita</h2>
+    <h2>Muutamia hyödyllisiä tekniikoita</h2>
 
 
-<h3>Säännölliset lausekkeet</h3>
+    <h3>Säännölliset lausekkeet</h3>
 
-<p>Säännöllinen lauseke määrittelee tiiviissä muodossa joukon merkkijonoja. Säännöllisiä lausekkeita käytetään muunmuassa merkkijonojen oikeellisuuden tarkistamiseen. Tarkastellaan tehtävää, jossa täytyy tarkistaa, onko käyttäjän antama opiskelijanumero oikeanmuotoinen. Opiskelijanumero alkaa merkkijonolla "01", jota seuraa 7 numeroa väliltä 0&ndash;9.</p>
+    <p>Säännöllinen lauseke määrittelee tiiviissä muodossa joukon merkkijonoja. Säännöllisiä lausekkeita käytetään muunmuassa merkkijonojen oikeellisuuden tarkistamiseen. Tarkastellaan tehtävää, jossa täytyy tarkistaa, onko käyttäjän antama opiskelijanumero oikeanmuotoinen. Opiskelijanumero alkaa merkkijonolla "01", jota seuraa 7 numeroa väliltä 0&ndash;9.</p>
 
-<p>Opiskelijanumeron oikeellisuuden voisi tarkistaa esimerkiksi käymällä opiskelijanumeroa esittävän merkkijonon läpi merkki merkiltä <code>charAt</code>-metodin avulla. Toinen tapa olisi tarkistaa että ensimmäinen merkki on "0", ja käyttää <code>Integer.parseInt</code> metodikutsua merkkijonon muuntamiseen numeroksi. Tämän jälkeen voisi tarkistaa että <code>Integer.parseInt</code>-metodin palauttama luku on pienempi kuin 20000000.</p>
+    <p>Opiskelijanumeron oikeellisuuden voisi tarkistaa esimerkiksi käymällä opiskelijanumeroa esittävän merkkijonon läpi merkki merkiltä <code>charAt</code>-metodin avulla. Toinen tapa olisi tarkistaa että ensimmäinen merkki on "0", ja käyttää <code>Integer.parseInt</code> metodikutsua merkkijonon muuntamiseen numeroksi. Tämän jälkeen voisi tarkistaa että <code>Integer.parseInt</code>-metodin palauttama luku on pienempi kuin 20000000.</p>
 
-<p>Oikeellisuuden tarkistus säännöllisten lausekkeiden avulla vaatii ensin sopivan säännöllisen lausekkeen määrittelyn. Tämän jälkeen voimme käyttää <code>String</code>-luokan metodia <code>matches</code>, joka tarkistaa vastaako merkkijono parametrina annettua säännöllistä lauseketta. Opiskelijanumeron tapauksessa sopiva säännöllinen lauseke on <code>"01[0-9]{7}"</code>, ja käyttäjän syöttämän opiskelijanumeron tarkistaminen käy seuraavasti:</p>
+    <p>Oikeellisuuden tarkistus säännöllisten lausekkeiden avulla vaatii ensin sopivan säännöllisen lausekkeen määrittelyn. Tämän jälkeen voimme käyttää <code>String</code>-luokan metodia <code>matches</code>, joka tarkistaa vastaako merkkijono parametrina annettua säännöllistä lauseketta. Opiskelijanumeron tapauksessa sopiva säännöllinen lauseke on <code>"01[0-9]{7}"</code>, ja käyttäjän syöttämän opiskelijanumeron tarkistaminen käy seuraavasti:</p>
 
 <pre class="sh_java">
 System.out.print("Anna opiskelijanumero: ");
@@ -11604,50 +11604,48 @@ if (numero.matches("01[0-9]{7}")) {
     System.out.println("Muoto on oikea.");
 } else {
     System.out.println("Muoto ei ole oikea.");
-}
-</pre>
+}</pre>
 
-<p>Käydään seuraavaksi läpi eniten käytettyjä säännöllisten lausekkeiden merkintöjä.</p>
+    <p>Käydään seuraavaksi läpi eniten käytettyjä säännöllisten lausekkeiden merkintöjä.</p>
 
-<h4>Pystyviiva eli vaihtoehtoisuus</h4>
+    <h4>Pystyviiva eli vaihtoehtoisuus</h4>
 
-<p>Pystyviiva tarkoittaa, että säännöllisen lausekkeen osat ovat vaihtoehtoisia. Esimerkiksi lauseke <code>00|111|0000</code> määrittelee merkkijonot <code>00</code>, <code>111</code> ja <code>0000</code>. Metodi <code>matches</code> palauttaa arvon <code>true</code> jos merkkijono vastaa jotain määritellyistä vaihtoehdoista.</p>
+    <p>Pystyviiva tarkoittaa, että säännöllisen lausekkeen osat ovat vaihtoehtoisia. Esimerkiksi lauseke <code>00|111|0000</code> määrittelee merkkijonot <code>00</code>, <code>111</code> ja <code>0000</code>. Metodi <code>matches</code> palauttaa arvon <code>true</code> jos merkkijono vastaa jotain määritellyistä vaihtoehdoista.</p>
 
 <pre class="sh_java">
-    String merkkijono = "00";
+String merkkijono = "00";
 
-    if(merkkijono.matches("00|111|0000")) {
-        System.out.println("Merkkijonosta löytyi joku kolmesta vaihtoehdosta");
-    } else {
-        System.out.println("Merkkijonosta ei löytynyt yhtäkään vaihtoehdoista");
-    }
-</pre>
+if(merkkijono.matches("00|111|0000")) {
+    System.out.println("Merkkijonosta löytyi joku kolmesta vaihtoehdosta");
+} else {
+    System.out.println("Merkkijonosta ei löytynyt yhtäkään vaihtoehdoista");
+}</pre>
 
 <pre>
 Merkkijonosta löytyi joku kolmesta vaihtoehdosta
 </pre>
 
-<p>Säännöllinen lauseke <code>00|111|0000</code> vaatii että merkkijono on täsmälleen määritellyn muotoinen: se ei määrittele <em>"contains"</em>-toiminnallisuutta.</p>
+    <p>Säännöllinen lauseke <code>00|111|0000</code> vaatii että merkkijono on täsmälleen määritellyn muotoinen: se ei määrittele <em>"contains"</em>-toiminnallisuutta.</p>
 
 <pre class="sh_java">
-    String merkkijono = "1111";
+String merkkijono = "1111";
 
-    if(merkkijono.matches("00|111|0000")) {
-        System.out.println("Merkkijonosta löytyi joku kolmesta vaihtoehdosta");
-    } else {
-        System.out.println("Merkkijonosta ei löytynyt yhtäkään vaihtoehdoista");
-    }
+if(merkkijono.matches("00|111|0000")) {
+    System.out.println("Merkkijonosta löytyi joku kolmesta vaihtoehdosta");
+} else {
+    System.out.println("Merkkijonosta ei löytynyt yhtäkään vaihtoehdoista");
+}
 </pre>
 
 <pre>
 Merkkijonosta ei löytynyt yhtäkään vaihtoehdoista
 </pre>
 
-<h4>Sulut, eli merkkijonon osaan rajattu vaikutusalue</h4>
+    <h4>Sulut, eli merkkijonon osaan rajattu vaikutusalue</h4>
 
-<p>Sulkujen avulla voi määrittää, mihin säännöllisen lausekkeen osaan sulkujen sisällä olevat merkinnät vaikuttavat. Jos haluamme sallia merkkijonot <code>00000</code> ja <code>00001</code>, voimme määritellä ne pystyviivan avulla muodossa <code>00000|00001</code>. Sulkujen avulla voimme rajoittaa vaihtoehtoisuuden vain osaan merkkijonoa. Lauseke <code>0000(0|1)</code> määrittelee merkkijonot <code>00000</code> ja <code>00001</code>.</p>
+    <p>Sulkujen avulla voi määrittää, mihin säännöllisen lausekkeen osaan sulkujen sisällä olevat merkinnät vaikuttavat. Jos haluamme sallia merkkijonot <code>00000</code> ja <code>00001</code>, voimme määritellä ne pystyviivan avulla muodossa <code>00000|00001</code>. Sulkujen avulla voimme rajoittaa vaihtoehtoisuuden vain osaan merkkijonoa. Lauseke <code>0000(0|1)</code> määrittelee merkkijonot <code>00000</code> ja <code>00001</code>.</p>
 
-<p>Vastaavasti säännöllinen lauseke <code>auto(|n|a)</code> määrittelee sanan auto yksikön nominatiivin (auto), genetiivin (auton), partitiivin (autoa) ja akkusatiivin (auto tai auton).</p>
+    <p>Vastaavasti säännöllinen lauseke <code>auto(|n|a)</code> määrittelee sanan auto yksikön nominatiivin (auto), genetiivin (auton), partitiivin (autoa) ja akkusatiivin (auto tai auton).</p>
 
 
 <pre class="sh_java">
@@ -11661,20 +11659,20 @@ if (sana.matches("auto(|n|a|ssa|sta|on|lla|lta|lle|na|ksi|tta)")) {
 }
 </pre>
 
-<h4>Toistomerkinnät</h4>
+    <h4>Toistomerkinnät</h4>
 
-<p>Usein halutaan, että merkkijonossa toistuu jokin tietty alimerkkijono. Säännöllisissä lausekkeissa on käytössä seuraavat toistomerkinnät:</p>
+    <p>Usein halutaan, että merkkijonossa toistuu jokin tietty alimerkkijono. Säännöllisissä lausekkeissa on käytössä seuraavat toistomerkinnät:</p>
 
 <ul>
 <li>Merkintä <strong><code>*</code></strong> toisto 0... kertaa, esim<br/>
 <pre class="sh_java">
-    String merkkijono = "trolololololo";
+String merkkijono = "trolololololo";
 
-    if(merkkijono.matches("trolo(lo)*")) {
-        System.out.println("Muoto on oikea.");
-    } else {
-        System.out.println("Muoto ei ole oikea.");
-    }
+if(merkkijono.matches("trolo(lo)*")) {
+    System.out.println("Muoto on oikea.");
+} else {
+    System.out.println("Muoto ei ole oikea.");
+}
 </pre>
 
 <pre>
@@ -11683,14 +11681,14 @@ Muoto on oikea.
 </li>
 
 <li>Merkintä <strong><code>+</code></strong> toisto 1... kertaa, esim<br/>
-<pre class="sh_java">
-    String merkkijono = "trolololololo";
+ class="sh_java">
+String merkkijono = "trolololololo";
 
-    if(merkkijono.matches("tro(lo)+")) {
-        System.out.println("Muoto on oikea.");
-    } else {
-        System.out.println("Muoto ei ole oikea.");
-    }
+if(merkkijono.matches("tro(lo)+")) {
+    System.out.println("Muoto on oikea.");
+} else {
+    System.out.println("Muoto ei ole oikea.");
+}
 </pre>
 
 <pre>
@@ -11698,13 +11696,13 @@ Muoto on oikea.
 </pre>
 
 <pre class="sh_java">
-    String merkkijono = "nänänänänänänänä Bätmään!";
+String merkkijono = "nänänänänänänänä Bätmään!";
 
-    if(merkkijono.matches("(nä)+ Bätmään!")) {
-        System.out.println("Muoto on oikea.");
-    } else {
-        System.out.println("Muoto ei ole oikea.");
-    }
+if(merkkijono.matches("(nä)+ Bätmään!")) {
+    System.out.println("Muoto on oikea.");
+} else {
+    System.out.println("Muoto ei ole oikea.");
+}
 </pre>
 
 <pre>
@@ -11713,14 +11711,15 @@ Muoto on oikea.
 </li>
 
 <li>Merkintä <strong><code>?</code></strong> toisto 0 tai 1 kertaa, esim<br/>
-<pre class="sh_java">
-    String merkkijono = "You have to accidentally the whole meme";
 
-    if(merkkijono.matches("You have to accidentally (delete )?the whole meme")) {
-        System.out.println("Muoto on oikea.");
-    } else {
-        System.out.println("Muoto ei ole oikea.");
-    }
+<pre class="sh_java">
+String merkkijono = "You have to accidentally the whole meme";
+
+if(merkkijono.matches("You have to accidentally (delete )?the whole meme")) {
+    System.out.println("Muoto on oikea.");
+} else {
+    System.out.println("Muoto ei ole oikea.");
+}
 </pre>
 
 <pre>
@@ -11730,13 +11729,13 @@ Muoto on oikea.
 
 <li>Merkintä <strong><code>{a}</code></strong> toisto <code>a</code> kertaa, esim<br/>
 <pre class="sh_java">
-    String merkkijono = "1010";
+String merkkijono = "1010";
 
-    if(merkkijono.matches("(10){2}")) {
-        System.out.println("Muoto on oikea.");
-    } else {
-        System.out.println("Muoto ei ole oikea.");
-    }
+if(merkkijono.matches("(10){2}")) {
+    System.out.println("Muoto on oikea.");
+} else {
+    System.out.println("Muoto ei ole oikea.");
+}
 </pre>
 
 <pre>
@@ -11746,13 +11745,13 @@ Muoto on oikea.
 
 <li>Merkintä <strong><code>{a,b}</code></strong> toisto <code>a</code> ... <code>b</code> kertaa, esim<br/>
 <pre class="sh_java">
-    String merkkijono = "1";
+String merkkijono = "1";
 
-    if(merkkijono.matches("1{2,4}")) {
-        System.out.println("Muoto on oikea.");
-    } else {
-        System.out.println("Muoto ei ole oikea.");
-    }
+if(merkkijono.matches("1{2,4}")) {
+    System.out.println("Muoto on oikea.");
+} else {
+    System.out.println("Muoto ei ole oikea.");
+}
 </pre>
 
 <pre>
@@ -11762,13 +11761,13 @@ Muoto ei ole oikea.
 
 <li>Merkintä <strong><code>{a,}</code></strong> toisto <code>a</code> ... kertaa, esim<br/>
 <pre class="sh_java">
-    String merkkijono = "11111";
+String merkkijono = "11111";
 
-    if(merkkijono.matches("1{2,}")) {
-        System.out.println("Muoto on oikea.");
-    } else {
-        System.out.println("Muoto ei ole oikea.");
-    }
+if(merkkijono.matches("1{2,}")) {
+    System.out.println("Muoto on oikea.");
+} else {
+    System.out.println("Muoto ei ole oikea.");
+}
 </pre>
 
 <pre>
@@ -11777,11 +11776,13 @@ Muoto on oikea.
 </li>
 </ul>
 
-<p>Samassa säännöllisessä lausekkeessa voi käyttää myös useampia toistomerkintöjä. Esimerkiksi säännöllinen lauseke <code>5{3}(1|0)*5{3}</code> määrittelee merkkijonot, jotka alkavat ja loppuvat kolmella vitosella. Välissä saa tulla rajaton määrä ykkösiä ja nollia.</p>
+    <p>Samassa säännöllisessä lausekkeessa voi käyttää myös useampia toistomerkintöjä. Esimerkiksi säännöllinen lauseke <code>5{3}(1|0)*5{3}</code> määrittelee merkkijonot, jotka alkavat ja loppuvat kolmella vitosella. Välissä saa tulla rajaton määrä ykkösiä ja nollia.</p>
 
-<h4>Hakasulut, eli merkkiryhmät</h4>
+    <h4>Hakasulut, eli merkkiryhmät</h4>
 
-<p>Merkkiryhmän avulla voi määritellä lyhyesti joukon merkkejä. Merkit kirjoitetaan hakasulkujen sisään, ja merkkivälin voi määrittää viivan avulla. Esimerkiksi merkintä <code>[145]</code> tarkoittaa samaa kuin <code>(1|4|5)</code> ja merkintä <code>[2-36-9]</code> tarkoittaa samaa kuin <code>(2|3|6|7|8|9)</code>. Vastaavasti merkintä <code>[a-c]*</code> määrittelee säännöllisen lausekkeen, joka vaatii että merkkijono sisältää vain merkkejä <code>a</code>, <code>b</code> ja <code>c</code>.</p>
+    <p>Merkkiryhmän avulla voi määritellä lyhyesti joukon merkkejä. Merkit kirjoitetaan hakasulkujen sisään, ja merkkivälin voi määrittää viivan avulla. Esimerkiksi merkintä <code>[145]</code> tarkoittaa samaa kuin <code>(1|4|5)</code> ja merkintä <code>[2-36-9]</code> tarkoittaa samaa kuin <code>(2|3|6|7|8|9)</code>. Vastaavasti merkintä <code>[a-c]*</code> määrittelee säännöllisen lausekkeen, joka vaatii että merkkijono sisältää vain merkkejä <code>a</code>, <code>b</code> ja <code>c</code>.</p>
+
+    <div class="parqu-exercise" data-id="40" data-name="Merkkijonon hyväksyntä"></div> 
 
 <div class="tehtavat">
 <div class="tehtava">
@@ -11789,7 +11790,7 @@ Muoto on oikea.
 
 <p>Harjoitellaan hieman säännöllisten lausekkeiden käyttöä. Tehtävät tehdään oletuspakkauksessa olevaan luokkaan <code>Paaohjelma</code>.</h3>
 
-<h4  >Viikonpäivä</h4>
+<h4>Viikonpäivä</h4>
 
 <p>Tee säännöllisen lausekkeen avulla luokalle <code>Paaohjelma</code> metodi <code>public static boolean onViikonpaiva(String merkkijono)</code>, joka palauttaa <code>true</code> jos sen parametrina saama merkkijono on viikonpäivän lyhenne (ma, ti, ke, to, pe, la tai su).</p>
 
@@ -11805,7 +11806,7 @@ Anna merkkijono: <font color="red">abc</font>
 Muoto ei ole oikea.
 </pre>
 
-<h4  >Vokaalitarkistus</h4>
+<h4>Vokaalitarkistus</h4>
 
 <p>Tee luokalle <code>Paaohjelma</code> metodi <code>public static boolean kaikkiVokaaleja(String merkkijono)</code> joka tarkistaa säännöllisen lausekkeen avulla ovatko parametrina olevan merkkijonon kaikki merkit vokaaleja. </p>
 
@@ -11821,7 +11822,7 @@ Anna merkkijono: <font color="red">ane</font>
 Muoto ei ole oikea.
 </pre>
 
-<h4  >Kellonaika</h4>
+<h4>Kellonaika</h4>
 
 <p>Säännölliset lausekkeet sopivat tietynlaisiin tilanteisiin. Joissain tapaukseesa lausekkeista tulee liian monimutkaisia, ja merkkijonon "sopivuus" kannattaa tarkastaa muulla tyylillä tai voi olla tarkoituksenmukaista käyttää säännöllisiä lausekkeita vain osaan tarkastuksesta.</p>
 
@@ -11846,11 +11847,13 @@ Muoto ei ole oikea.
 
 </div>
 </div>
-<p> Nykyään lähes kaikista ohjelmointikielistä löytyy tuki säännöllisille lausekkeille. Säännöllisten lausekkeiden teoriaa tarkastellaan toisen vuoden kurssilla <em>Laskennan mallit</em>. Lisää säännöllisistä lausekkeista löydät esim. googlaamalla hakusanalla <em>regular expressions java</em>.</p>
 
-<h3>Enum eli lueteltu tyyppi</h3>
+    <p>Nykyään lähes kaikista ohjelmointikielistä löytyy tuki säännöllisille lausekkeille. Säännöllisten lausekkeiden teoriaa tarkastellaan toisen vuoden kurssilla <em>Laskennan mallit</em>. Lisää säännöllisistä lausekkeista löydät esim. googlaamalla hakusanalla <em>regular expressions java</em>.</p>
 
-<p>Toteutimme aiemmin pelikorttia mallintavan luokan <code>Kortti</code> suunilleen seuraavasti:</p>
+ 
+    <h3>Enum eli lueteltu tyyppi</h3>
+
+    <p>Toteutimme aiemmin pelikorttia mallintavan luokan <code>Kortti</code> suunilleen seuraavasti:</p>
 
 <pre class="sh_java">
 public class Kortti {
@@ -11890,42 +11893,48 @@ public class Kortti {
 }
 </pre>
 
-<p>Kortin maa tallennetaan kortissa olevaan oliomuuttujaan kokonaislukuna. Maan ilmaisemiseen on määritelty luettavuutta helpottavat vakiot. Kortteja ja maita ilmaisevia vakioita käytetään seuraavasti:</p>
+    <p>Kortin maa tallennetaan kortissa olevaan oliomuuttujaan kokonaislukuna. Maan ilmaisemiseen on määritelty luettavuutta helpottavat vakiot. Kortteja ja maita ilmaisevia vakioita käytetään seuraavasti:</p>
 
 <pre class="sh_java">
-public static void main(String[] args) {
-        Kortti kortti = new Kortti(10, Kortti.HERTTA);
+Kortti kortti = new Kortti(10, Kortti.HERTTA);
 
-        System.out.println(kortti);
+System.out.println(kortti);
 
-        if (kortti.getMaa() == Kortti.PATA) {
-            System.out.println("on pata");
-        } else {
-            System.out.println("ei ole pata");
-        }
-
+if (kortti.getMaa() == Kortti.PATA) {
+    System.out.println("on pata");
+} else {
+    System.out.println("ei ole pata");
 }
 </pre>
 
-<p>Maan esittäminen numerona on huono ratkaisu, sillä esimerkiksi seuraavat järjenvastaiset tavat käyttää korttia ovat mahdollisia:</p>
-
-<pre class="sh_java">
-        Kortti jarjetonKortti = new Kortti(10, 55);
-
-        System.out.println(jarjetonKortti);
-
-        if (jarjetonKortti.getMaa() == 34) {
-            System.out.println("kortin maa on 34");
-        } else {
-            System.out.println("kortin maa on jotain muuta kun 34");
-        }
-
-        int maaPotenssiinKaksi = jarjetonKortti.getMaa() * jarjetonKortti.getMaa();
-
-        System.out.println("kortin maa potenssiin kaksi on " + maaPotenssiinKaksi);
+<pre>
+ei ole pata
 </pre>
 
-<p>Jos tiedämme muuttujien mahdolliset arvot ennalta, voimme käyttää niiden esittämiseen <code>enum</code>-tyyppistä luokkaa eli <em>lueteltua tyyppiä</em>. Luetellut tyypit ovat oma luokkatyyppinsä rajapinnan ja normaalin luokan lisäksi. Lueteltu tyyppi määritellään avainsanalla <code>enum</code>. Esimerkiksi seuraava <code>Maa</code>-enumluokka määrittelee neljä vakioarvoa: <code>RUUTU</code>, <code>PATA</code>, <code>RISTI</code> ja <code>HERTTA</code>.</p>
+    <p>Maan esittäminen numerona on huono ratkaisu, sillä esimerkiksi seuraavat järjenvastaiset tavat käyttää korttia ovat mahdollisia:</p>
+
+<pre class="sh_java">
+Kortti jarjetonKortti = new Kortti(10, 55);
+
+System.out.println(jarjetonKortti);
+
+if (jarjetonKortti.getMaa() == 34) {
+    System.out.println("kortin maa on 34");
+} else {
+    System.out.println("kortin maa on jotain muuta kuin 34");
+}
+
+int maaPotenssiinKaksi = jarjetonKortti.getMaa() * jarjetonKortti.getMaa();
+
+System.out.println("kortin maa potenssiin kaksi on " + maaPotenssiinKaksi);
+</pre>
+
+<pre>
+kortin maa on jotain muuta kuin 34
+kortin maa potenssiin kaksi on 3025
+</pre>
+  
+    <p>Jos tiedämme muuttujien mahdolliset arvot ennalta, voimme käyttää niiden esittämiseen <code>enum</code>-tyyppistä luokkaa eli <em>lueteltua tyyppiä</em>. Luetellut tyypit ovat oma luokkatyyppinsä rajapinnan ja normaalin luokan lisäksi. Lueteltu tyyppi määritellään avainsanalla <code>enum</code>. Esimerkiksi seuraava <code>Maa</code>-enumluokka määrittelee neljä vakioarvoa: <code>RUUTU</code>, <code>PATA</code>, <code>RISTI</code> ja <code>HERTTA</code>.</p>
 
 <pre class="sh_java">
 public enum Maa {
@@ -11933,11 +11942,11 @@ public enum Maa {
 }
 </pre>
 
-<p>Yksinkertaisimmassa muodossaan <code>enum</code> luettelee pilkulla erotettuina määrittelemänsä vakioarvot. Enumien vakiot on yleensä tapana kirjoittaa kokonaan isoin kirjaimin.</p>
+    <p>Yksinkertaisimmassa muodossaan <code>enum</code> luettelee pilkulla erotettuina määrittelemänsä vakioarvot. Enumien vakiot on yleensä tapana kirjoittaa kokonaan isoin kirjaimin.</p>
 
-<p>Enum luodaan (yleensä) omaan tiedostoon, samaan tapaan kuin luokka tai rajapinta. NetBeansissa Enumin saa luotua valitsemalla projektin kohdalla <em>new/other/java/java enum</em>. </p>
+    <p>Enum luodaan (yleensä) omaan tiedostoon, samaan tapaan kuin luokka tai rajapinta. NetBeansissa Enumin saa luotua valitsemalla projektin kohdalla <em>new/other/java/java enum</em>. </p>
 
-<p>Seuraavassa luokka <code>Kortti</code> jossa maa esitetään enumin avulla:</p>
+    <p>Seuraavassa luokka <code>Kortti</code> jossa maa esitetään enumin avulla:</p>
 
 <pre class="sh_java">
 public class Kortti {
@@ -11952,7 +11961,7 @@ public class Kortti {
 
     @Override
     public String toString() {
-        return maa + " "+arvo;
+        return maa + " " + arvo;
     }
 
     public Maa getMaa() {
@@ -11962,94 +11971,90 @@ public class Kortti {
     public int getArvo() {
         return arvo;
     }
-}
-</pre>
+}</pre>
 
 <p>Kortin uutta versiota käytetään seuraavasti:</p>
 
 <pre class="sh_java">
-public class Paaohjelma {
+Kortti eka = new Kortti(10, Maa.HERTTA);
 
-    public static void main(String[] args) {
-        Kortti eka = new Kortti(10, Maa.HERTTA);
+System.out.println(eka);
 
-        System.out.println(eka);
-
-        if (eka.getMaa() == Maa.PATA) {
-            System.out.println("on pata");
-        } else {
-            System.out.println("ei ole pata");
-        }
-
-    }
+if (eka.getMaa() == Maa.PATA) {
+    System.out.println("on pata");
+} else {
+    System.out.println("ei ole pata");
 }
 </pre>
 
-<p>Tulostuu:</p>
+    <p>Tulostuu:</p>
 
 <pre>
 HERTTA 10
 ei ole pata
 </pre>
 
-<p>Huomaamme, että enumin tunnukset tulostuvat mukavasti! Koska kortin maat ovat nyt tyyppiä <code>Maa</code> ei ylemmän esimerkin "järjenvastaiset" kummallisuudet, esim. "maan korottaminen toiseen potenssiin" onnistu. Oraclella on <code>enum</code>-tyyppiin liittyvä sivusto osoitteessa <a href="http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html" target="_blank">http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html</a>.</p>
+    <p>Huomaamme, että enumin tunnukset tulostuvat mukavasti! Koska kortin maat ovat nyt tyyppiä <code>Maa</code> ei ylemmän esimerkin "järjenvastaiset" kummallisuudet, esim. "maan korottaminen toiseen potenssiin" onnistu. Oraclella on <code>enum</code>-tyyppiin liittyvä sivusto osoitteessa <a href="http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html" target="_blank">http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html</a>.</p>
 
-<h3>Iteraattori</h3>
+    <div class="parqu-exercise" data-id="39" data-name="Enum"></div> 
+    
 
-<p>Tarkastellaan seuraavaa luokkaa <code>Kasi</code>, joka mallintaa tietyssä korttipelissä pelaajan kädessä olevien korttien joukkoa:</p>
+    <h3>Iteraattori</h3>
+
+    <p>Tarkastellaan seuraavaa luokkaa <code>Kasi</code>, joka mallintaa tietyssä korttipelissä pelaajan kädessä olevien korttien joukkoa:</p>
 
 <pre class="sh_java">
 public class Kasi {
     private ArrayList&lt;Kortti&gt; kortit;
 
     public Kasi() {
-        kortit = new ArrayList&lt;Kortti&gt;();
+        this.kortit = new ArrayList&lt;&gt;();
     }
 
     public void lisaa(Kortti kortti){
-        kortit.add(kortti);
+        this.kortit.add(kortti);
     }
 
     public void tulosta(){
         for (Kortti kortti : kortit) {
-            System.out.println( kortti );
+            System.out.println(kortti);
         }
     }
 }
 </pre>
 
-<p>Luokan metodi <code>tulosta</code> tulostaa jokaisen kädessä olevan kortin tutuksi tullutta "for each"-lausetta käyttämällä. ArrayList ja muut <em>Collection</em>-rajapinnan toteuttavat "oliosäiliöt" toteuttavat rajapinnan <em>Iterable</em>. Rajapinnan <em>Iterable</em> toteuttavat oliot on mahdollista käydä läpi eli "iteroida" esimerkiksi. for each -tyyppisellä komennolla.</p>
+    <p>Luokan metodi <code>tulosta</code> tulostaa jokaisen kädessä olevan kortin tutuksi tullutta "for each"-lausetta käyttämällä. ArrayList ja muut <em>Collection</em>-rajapinnan toteuttavat "oliosäiliöt" toteuttavat rajapinnan <em>Iterable</em>. Rajapinnan <em>Iterable</em> toteuttavat oliot on mahdollista käydä läpi eli "iteroida" esimerkiksi. for each -tyyppisellä komennolla.</p>
 
-<p>Oliosäiliö voidaan käydä läpi myös käyttäen ns. <em>iteraattoria</em>, eli olioa, joka on varta vasten tarkoitettu tietyn oliokokoelman läpikäyntiin. Seuraavassa on iteraattoria käyttävä versio korttien tulostamisesta:</p>
+    <p>Oliosäiliö voidaan käydä läpi myös käyttäen ns. <em>iteraattoria</em>, eli olioa, joka on varta vasten tarkoitettu tietyn oliokokoelman läpikäyntiin. Seuraavassa on iteraattoria käyttävä versio korttien tulostamisesta:</p>
 
 <pre class="sh_java">
 public void tulosta() {
     Iterator&lt;Kortti&gt; iteraattori = kortit.iterator();
 
-    while ( iteraattori.hasNext() ){
-        System.out.println( iteraattori.next() );
+    while (iteraattori.hasNext()){
+        System.out.println(iteraattori.next());
     }
 }
 </pre>
 
-<p>Iteraattori pyydetään kortteja sisältävältä arraylistiltä <code>kortit</code>. Iteraattori on ikäänkuin "sormi", joka osoittaa aina tiettyä listan sisällä olevaa olioa, ensin ensimmäistä ja sitten seuraavaa jne... kunnes "sormen" avulla on käyty jokainen olio läpi.</p>
+    <p>Iteraattori pyydetään kortteja sisältävältä arraylistiltä <code>kortit</code>. Iteraattori on ikäänkuin "sormi", joka osoittaa aina tiettyä listan sisällä olevaa olioa, ensin ensimmäistä ja sitten seuraavaa jne... kunnes "sormen" avulla on käyty jokainen olio läpi.</p>
 
-<p>Iteraattori tarjoaa muutaman metodin. Metodilla <code>hasNext()</code> kysytään onko läpikäytäviä olioita vielä jäljellä. Jos on, voidaan iteraattorilta pyytää seuraavana vuorossa oleva olio metodilla <code>next()</code>. Metodi siis palauttaa seuraavana läpikäyntivuorossa olevan olion ja laittaa iteraattorin eli "sormen" osoittamaan seuraavana vuorossa olevaa läpikäytävää olioa.</p>
+    <p>Iteraattori tarjoaa muutaman metodin. Metodilla <code>hasNext()</code> kysytään onko läpikäytäviä olioita vielä jäljellä. Jos on, voidaan iteraattorilta pyytää seuraavana vuorossa oleva olio metodilla <code>next()</code>. Metodi siis palauttaa seuraavana läpikäyntivuorossa olevan olion ja laittaa iteraattorin eli "sormen" osoittamaan seuraavana vuorossa olevaa läpikäytävää olioa.</p>
 
-<p>Iteraattorin next-metodin palauttama olioviite voidaan ottaa toki talteen myös muuttujaan, eli metodi <code>tulosta</code> voitaisiin muotoilla myös seuraavasti:</p>
+    <p>Iteraattorin next-metodin palauttama olioviite voidaan ottaa toki talteen myös muuttujaan, eli metodi <code>tulosta</code> voitaisiin muotoilla myös seuraavasti:</p>
 
 <pre class="sh_java">
 public void tulosta(){
     Iterator&lt;Kortti&gt; iteraattori = kortit.iterator();
 
-    while ( iteraattori.hasNext() ){
+    while (iteraattori.hasNext()) {
         Kortti seuraavanaVuorossa = iteraattori.next();
-        System.out.println( seuraavanaVuorossa );
+        System.out.println(seuraavanaVuorossa);
     }
 }
 </pre>
 
-<p>Teemme metodin jonka avulla kädestä voi poistaa tiettyä arvoa pienemmät kortit:</p>
+    <p>Teemme metodin jonka avulla kädestä voi poistaa tiettyä arvoa pienemmät kortit:</p>
 
 <pre class="sh_java">
 public class Kasi {
@@ -12057,7 +12062,7 @@ public class Kasi {
 
     public void poistaHuonommat(int arvo) {
         for (Kortti kortti : kortit) {
-            if ( kortti.getArvo() &lt; arvo ) {
+            if (kortti.getArvo() &lt; arvo) {
                 kortit.remove(kortti);
             }
         }
@@ -12065,7 +12070,7 @@ public class Kasi {
 }
 </pre>
 
-<p>Huomaamme että metodin suoritus aiheuttaa kummallisen virheen:</p>
+    <p>Huomaamme että metodin suoritus aiheuttaa kummallisen virheen:</p>
 
 <pre>
 Exception in thread "main" java.util.ConcurrentModificationException
@@ -12076,9 +12081,9 @@ Exception in thread "main" java.util.ConcurrentModificationException
 Java Result: 1
 </pre>
 
-<p>Virheen syynä on se, että for-each:illa listaa läpikäydessä ei ole sallittua poistaa listalta olioita: komento for-each menee tästä "sekaisin".</p>
+    <p>Virheen syynä on se, että for-each:illa listaa läpikäydessä ei ole sallittua poistaa listalta olioita: komento for-each menee tästä "sekaisin".</p>
 
-<p>Jos listalta halutaan poistaa osa olioista läpikäynnin aikana osa, tulee tämä tehdä iteraattoria käyttäen. Iteraattori-olion metodia <code>remove</code> kutsuttaessa listalta poistetaan siististi se alkio jonka iteraattori palautti edellisellä metodin <code>next</code> kutsulla. Toimiva versio metodista seuraavassa:</p>
+    <p>Jos listalta halutaan poistaa osa olioista läpikäynnin aikana osa, tulee tämä tehdä iteraattoria käyttäen. Iteraattori-olion metodia <code>remove</code> kutsuttaessa listalta poistetaan siististi se alkio jonka iteraattori palautti edellisellä metodin <code>next</code> kutsulla. Toimiva versio metodista seuraavassa:</p>
 
 <pre class="sh_java">
 public class Kasi {
@@ -12114,8 +12119,8 @@ public class Kasi {
 <p>Tee pakkaukseen <code>henkilosto</code> luokka Luokka <code>Henkilo</code>. Henkilölle annetaan konstruktorin parametrina annettava nimi ja koulutus. Henkilöllä on myös koulutuksen kertova metodi <code>public Koulutus getKoulutus()</code> sekä alla olevan esimerkin mukaista jälkeä tekevä <code>toString</code>-metodi.</p>
 
 <pre class="sh_java">
-    Henkilo arto = new Henkilo("Arto", Koulutus.FT);
-    System.out.println(arto);
+Henkilo arto = new Henkilo("Arto", Koulutus.FT);
+System.out.println(arto);
 </pre>
 
 <pre>
@@ -12145,22 +12150,18 @@ Arto, FT
 <p>Seuraavassa esimerkki luokan käytöstä:</p>
 
 <pre class="sh_java">
-Public class Paaohjelma {
+Tyontekijat yliopisto = new Tyontekijat();
+yliopisto.lisaa(new Henkilo("Matti", Koulutus.FT));
+yliopisto.lisaa(new Henkilo("Pekka", Koulutus.FilYO));
+yliopisto.lisaa(new Henkilo("Arto", Koulutus.FT));
 
-    public static void main(String[] args) {
-        Tyontekijat yliopisto = new Tyontekijat();
-        yliopisto.lisaa(new Henkilo("Matti", Koulutus.FT));
-        yliopisto.lisaa(new Henkilo("Pekka", Koulutus.FilYO));
-        yliopisto.lisaa(new Henkilo("Arto", Koulutus.FT));
+yliopisto.tulosta();
 
-        yliopisto.tulosta();
+yliopisto.irtisano(Koulutus.FilYO);
 
-        yliopisto.irtisano(Koulutus.FilYO);
+System.out.println("==");
 
-        System.out.println("==");
-
-        yliopisto.tulosta();
-}
+yliopisto.tulosta();
 </pre>
 
 <p>Tulostuu:</p>
@@ -12177,20 +12178,20 @@ Arto, FT
 </div>
 </div>
 
-<h3>Toistolauseet ja continue</h3>
+    <h3>Toistolauseet ja continue</h3>
 
-<p>Toistolauseissa on komennon <code>break</code> lisäksi käytössä komento <code>continue</code>, joka mahdollistaa seuraavaan toistokierrokseen hyppäämisen.</p>
+    <p>Toistolauseissa on komennon <code>break</code> lisäksi käytössä komento <code>continue</code>, joka mahdollistaa seuraavaan toistokierrokseen hyppäämisen.</p>
 
 <pre class="sh_java">
-    List&lt;String&gt; nimet = Arrays.asList("Matti", "Pekka", "Arto");
+List&lt;String&gt; nimet = Arrays.asList("Matti", "Pekka", "Arto");
 
-    for(String nimi: nimet) {
-        if (nimi.equals("Arto")) {
-            continue;
-        }
-
-        System.out.println(nimi);
+for(String nimi: nimet) {
+    if (nimi.equals("Arto")) {
+        continue;
     }
+
+    System.out.println(nimi);
+}
 </pre>
 
 <pre>
@@ -12198,32 +12199,32 @@ Matti
 Pekka
 </pre>
 
-<p>Komentoa <code>continue</code> käytetään esimerkiksi silloin, kun tiedetään että toistolauseessa iteroitavilla muuttujilla on arvoja, joita ei haluta käsitellä lainkaan. Klassinen lähestymistapa olisi if-lauseen käyttö, mutta komento <code>continue</code> mahdollistaa sisennyksiä välttävän, ja samalla ehkä luettavamman lähestymistavan käsiteltävien arvojen välttämiseen. Alla on kaksi esimerkkiä, jossa käydään listalla olevia lukuja läpi. Jos luku on alle 5, se on jaollinen sadalla, tai se on jaollinen neljälläkymmenellä, niin sitä ei tulosteta, muulloin se tulostetaan. </p>
+    <p>Komentoa <code>continue</code> käytetään esimerkiksi silloin, kun tiedetään että toistolauseessa iteroitavilla muuttujilla on arvoja, joita ei haluta käsitellä lainkaan. Klassinen lähestymistapa olisi if-lauseen käyttö, mutta komento <code>continue</code> mahdollistaa sisennyksiä välttävän, ja samalla ehkä luettavamman lähestymistavan käsiteltävien arvojen välttämiseen. Alla on kaksi esimerkkiä, jossa käydään listalla olevia lukuja läpi. Jos luku on alle 5, se on jaollinen sadalla, tai se on jaollinen neljälläkymmenellä, niin sitä ei tulosteta, muulloin se tulostetaan. </p>
 
 <pre class="sh_java">
-    List&lt;Integer&gt; luvut = Arrays.asList(1, 3, 11, 6, 120);
+List&lt;Integer&gt; luvut = Arrays.asList(1, 3, 11, 6, 120);
 
-    for(int luku: luvut) {
-        if (luku > 4 && luku % 100 != 0 && luku % 40 != 0) {
-            System.out.println(luku);
-        }
-    }
-
-    for(int luku: luvut) {
-        if (luku &lt; 5) {
-            continue;
-        }
-
-        if (luku % 100 == 0) {
-            continue;
-        }
-
-        if (luku % 40 == 0) {
-            continue;
-        }
-
+for(int luku: luvut) {
+    if (luku > 4 && luku % 100 != 0 && luku % 40 != 0) {
         System.out.println(luku);
     }
+}
+
+for(int luku: luvut) {
+    if (luku &lt; 5) {
+        continue;
+    }
+
+    if (luku % 100 == 0) {
+        continue;
+    }
+
+    if (luku % 40 == 0) {
+        continue;
+    }
+
+    System.out.println(luku);
+}
 </pre>
 
 <pre>
@@ -12233,12 +12234,13 @@ Pekka
 6
 </pre>
 
-<h3>Enumien oliomuuttujat</h3>
+    <div class="parqu-exercise" data-id="38" data-name="Continue"></div> 
 
-<p>Luetellut tyypit voivat sisältää oliomuuttujia. Oliomuuttujien arvot tulee asettaa luetellun tyypin määrittelevän luokan sisäisessä eli näkyvyysmääreen <code>private</code> omaavassa konstruktorissa. Enum-tyyppisillä luokilla ei saa olla <code>public</code>-konstruktoria.</p>
-<p>
-Seuraavassa lueteltu tyyppi <code>Vari</code>, joka sisältää vakioarvot PUNAINEN, VIHREA ja SININEN. Vakioille on määritelty <a href="http://www.ratol.fi/opensource/xhtml/vari.htm">värikoodin</a> kertova oliomuuttuja:
-</p>
+    <h3>Enumien oliomuuttujat</h3>
+
+    <p>Luetellut tyypit voivat sisältää oliomuuttujia. Oliomuuttujien arvot tulee asettaa luetellun tyypin määrittelevän luokan sisäisessä eli näkyvyysmääreen <code>private</code> omaavassa konstruktorissa. Enum-tyyppisillä luokilla ei saa olla <code>public</code>-konstruktoria.</p>
+
+    <p>Seuraavassa lueteltu tyyppi <code>Vari</code>, joka sisältää vakioarvot PUNAINEN, VIHREA ja SININEN. Vakioille on määritelty <a href="http://www.ratol.fi/opensource/xhtml/vari.htm">värikoodin</a> kertova oliomuuttuja:</p>
 
 <pre class="sh_java">
 public enum Vari {
@@ -12258,9 +12260,10 @@ public enum Vari {
 }
 </pre>
 
-<p>Lueteltua tyyppiä <code>Vari</code> voidaan käyttää esimerkiksi seuraavasti:</p>
+    <p>Lueteltua tyyppiä <code>Vari</code> voidaan käyttää esimerkiksi seuraavasti:</p>
+
 <pre class="sh_java">
-    System.out.println(Vari.VIHREA.getKoodi());
+System.out.println(Vari.VIHREA.getKoodi());
 </pre>
 
 <pre>
@@ -12272,38 +12275,38 @@ public enum Vari {
 <div class="tehtava">
 <h3>Elokuvien suosittelija</h3>
 
-<p>Hiljattain Suomeen rantautunut <a href="https://signup.netflix.com/" target="_blank">Netflix</a> lupasi lokakuussa 2006 miljoona dollaria henkilölle tai ryhmälle, joka kehittäisi ohjelman, joka on 10% parempi elokuvien suosittelussa kuin heidän oma ohjelmansa. Kilpailu ratkesi syyskuussa 2009 (<a href="http://www.netflixprize.com/" target="_blank">http://www.netflixprize.com/</a>).</p>
+    <p>Hiljattain Suomeen rantautunut <a href="https://signup.netflix.com/" target="_blank">Netflix</a> lupasi lokakuussa 2006 miljoona dollaria henkilölle tai ryhmälle, joka kehittäisi ohjelman, joka on 10% parempi elokuvien suosittelussa kuin heidän oma ohjelmansa. Kilpailu ratkesi syyskuussa 2009 (<a href="http://www.netflixprize.com/" target="_blank">http://www.netflixprize.com/</a>).</p>
 
-<p>Rakennetaan tässä tehtävässä ohjelma elokuvien suositteluun. Alla on sen toimintaesimerkki:</p>
+    <p>Rakennetaan tässä tehtävässä ohjelma elokuvien suositteluun. Alla on sen toimintaesimerkki:</p>
 
 <pre class="sh_java">
-    ArvioRekisteri arviot = new ArvioRekisteri();
+ArvioRekisteri arviot = new ArvioRekisteri();
 
-    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
-    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
-    Elokuva eraserhead = new Elokuva("Eraserhead");
+Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
+Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
+Elokuva eraserhead = new Elokuva("Eraserhead");
 
-    Henkilo matti = new Henkilo("Matti");
-    Henkilo pekka = new Henkilo("Pekka");
-    Henkilo mikke = new Henkilo("Mikke");
-    Henkilo thomas = new Henkilo("Thomas");
+Henkilo matti = new Henkilo("Matti");
+Henkilo pekka = new Henkilo("Pekka");
+Henkilo mikke = new Henkilo("Mikke");
+Henkilo thomas = new Henkilo("Thomas");
 
-    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
-    arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
-    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
+arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
+arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
+arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
 
-    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
-    arviot.lisaaArvio(pekka, hiljaisetSillat, Arvio.HUONO);
-    arviot.lisaaArvio(pekka, eraserhead, Arvio.VALTTAVA);
+arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
+arviot.lisaaArvio(pekka, hiljaisetSillat, Arvio.HUONO);
+arviot.lisaaArvio(pekka, eraserhead, Arvio.VALTTAVA);
 
-    arviot.lisaaArvio(mikke, eraserhead, Arvio.HUONO);
+arviot.lisaaArvio(mikke, eraserhead, Arvio.HUONO);
 
 
-    Suosittelija suosittelija = new Suosittelija(arviot);
-    System.out.println(thomas + " suositus: " +
-            suosittelija.suositteleElokuva(thomas));
-    System.out.println(mikke + " suositus: " +
-            suosittelija.suositteleElokuva(mikke));
+Suosittelija suosittelija = new Suosittelija(arviot);
+System.out.println(thomas + " suositus: " +
+        suosittelija.suositteleElokuva(thomas));
+System.out.println(mikke + " suositus: " +
+        suosittelija.suositteleElokuva(mikke));
 </pre>
 
 <pre>
@@ -12311,36 +12314,33 @@ Thomas suositus: Hiljaiset sillat
 Mikke suositus: Tuulen viemää
 </pre>
 
-<p>Ohjelma osaa suositella elokuvia niiden yleisen arvion perusteella, sekä henkilökohtaisten henkilön antaminen arvioiden perusteella. Lähdetään rakentamaan ohjelmaa.</p>
+    <p>Ohjelma osaa suositella elokuvia niiden yleisen arvion perusteella, sekä henkilökohtaisten henkilön antaminen arvioiden perusteella. Lähdetään rakentamaan ohjelmaa.</p>
 
-<h4>Henkilo ja Elokuva</h4>
+    <h4>Henkilo ja Elokuva</h4>
 
-<p>Luo pakkaus <code>suosittelija.domain</code> ja lisää sinne luokat <code>Henkilo</code> ja <code>Elokuva</code>. Kummallakin luokalla on julkinen konstruktori <code>public <em>Luokka</em>(String nimi)</code>, sekä metodi <code>public String getNimi()</code>, joka palauttaa konstruktorissa saadun nimen.</p>
+    <p>Luo pakkaus <code>suosittelija.domain</code> ja lisää sinne luokat <code>Henkilo</code> ja <code>Elokuva</code>. Kummallakin luokalla on julkinen konstruktori <code>public <em>Luokka</em>(String nimi)</code>, sekä metodi <code>public String getNimi()</code>, joka palauttaa konstruktorissa saadun nimen.</p>
 
 <pre class="sh_java">
-    Henkilo henkilo = new Henkilo("Pekka");
-    Elokuva elokuva = new Elokuva("Eraserhead");
+Henkilo henkilo = new Henkilo("Pekka");
+Elokuva elokuva = new Elokuva("Eraserhead");
 
-    System.out.println(henkilo.getNimi() + " ja " + elokuva.getNimi());
+System.out.println(henkilo.getNimi() + " ja " + elokuva.getNimi());
 </pre>
 
 <pre>
 Pekka ja Eraserhead
 </pre>
 
-<p>Lisää luokille myös <code>public String toString()</code>-metodi, joka palauttaa konstruktorissa parametrina annetun nimen, sekä korvaa metodit <code>equals</code> ja <code>hashCode</code>.</p>
+    <p>Lisää luokille myös <code>public String toString()</code>-metodi, joka palauttaa konstruktorissa parametrina annetun nimen, sekä korvaa metodit <code>equals</code> ja <code>hashCode</code>.</p>
 
-<p>
-Korvaa <code>equals</code> siten että samuusvertailu tapahtuu oliomuuttujan <code>nimi</code> perusteella. Katso mallia luvusta 45.1. Luvussa 45.2. on ohje metodin <code>hashCode</code> korvaamiselle. Ainakin HashCode kannattaa generoida automaattisesti luvun lopussa olevan ohjeen mukaan:</p>
+    <p>Korvaa <code>equals</code> siten että samuusvertailu tapahtuu oliomuuttujan <code>nimi</code> perusteella. Katso mallia luvusta 45.1. Luvussa 45.2. on ohje metodin <code>hashCode</code> korvaamiselle. Ainakin HashCode kannattaa generoida automaattisesti luvun lopussa olevan ohjeen mukaan:</p>
 
-<p>
-<em>
-NetBeans tarjoaa metodien equals ja hashCode automaattisen luonnin. Voit valita valikosta Source -> Insert Code, ja valita aukeavasta listasta equals() and hashCode(). Tämän jälkeen NetBeans kysyy oliomuuttujat joita metodeissa käytetään.</em>
-</p>
 
-<h4>Arvio</h4>
+    <p><em>NetBeans tarjoaa metodien equals ja hashCode automaattisen luonnin. Voit valita valikosta Source -> Insert Code, ja valita aukeavasta listasta equals() and hashCode(). Tämän jälkeen NetBeans kysyy oliomuuttujat joita metodeissa käytetään.</em></p>
 
-<p>Luo pakkaukseen <code>suosittelija.domain</code> lueteltu tyyppi <code>Arvio</code>. Enum-luokalla <code>Arvio</code> on julkinen metodi <code>public int getArvo()</code>, joka palauttaa arvioon liittyvän arvon. Arviotunnusten ja niihin liittyvien arvosanojen tulee olla seuraavat:</p>
+    <h4>Arvio</h4>
+
+    <p>Luo pakkaukseen <code>suosittelija.domain</code> lueteltu tyyppi <code>Arvio</code>. Enum-luokalla <code>Arvio</code> on julkinen metodi <code>public int getArvo()</code>, joka palauttaa arvioon liittyvän arvon. Arviotunnusten ja niihin liittyvien arvosanojen tulee olla seuraavat:</p>
 
 <p>
 <table style="padding-left:2em">
@@ -12356,10 +12356,10 @@ NetBeans tarjoaa metodien equals ja hashCode automaattisen luonnin. Voit valita 
 
 <p>Luokkaa voi käyttää seuraavasti:</p>
 <pre class="sh_java">
-    Arvio annettu = Arvio.HYVA;
-    System.out.println("Arvio " + annettu + ", arvo " + annettu.getArvo());
-    annettu = Arvio.NEUTRAALI;
-    System.out.println("Arvio " + annettu + ", arvo " + annettu.getArvo());
+Arvio annettu = Arvio.HYVA;
+System.out.println("Arvio " + annettu + ", arvo " + annettu.getArvo());
+annettu = Arvio.NEUTRAALI;
+System.out.println("Arvio " + annettu + ", arvo " + annettu.getArvo());
 </pre>
 
 <pre>
@@ -12369,9 +12369,9 @@ Arvio NEUTRAALI, arvo 1
 
 <h4>ArvioRekisteri, osa 1</h4>
 
-<p>Aloitetaan arvioiden varastointiin liittyvän palvelun toteutus.</p>
+    <p>Aloitetaan arvioiden varastointiin liittyvän palvelun toteutus.</p>
 
-<p>Luo pakkaukseen <code>suosittelija</code> luokka <code>ArvioRekisteri</code>, jolla on konstruktori <code>public ArvioRekisteri()</code> sekä seuraavat metodit:</p>
+    <p>Luo pakkaukseen <code>suosittelija</code> luokka <code>ArvioRekisteri</code>, jolla on konstruktori <code>public ArvioRekisteri()</code> sekä seuraavat metodit:</p>
 
 <ul>
   <li><code>public void lisaaArvio(Elokuva elokuva, Arvio arvio)</code> lisää arviorekisteriin parametrina annetulle elokuvalle uuden arvion. Samalla elokuvalla voi olla useita samanlaisiakin arvioita.</li>
@@ -12382,19 +12382,19 @@ Arvio NEUTRAALI, arvo 1
 <p>Testaa metodien toimintaa seuraavalla lähdekoodilla:</p>
 
 <pre class="sh_java">
-    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
-    Elokuva eraserhead = new Elokuva("Eraserhead");
+Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
+Elokuva eraserhead = new Elokuva("Eraserhead");
 
-    ArvioRekisteri rekisteri = new ArvioRekisteri();
-    rekisteri.lisaaArvio(eraserhead, Arvio.HUONO);
-    rekisteri.lisaaArvio(eraserhead, Arvio.HUONO);
-    rekisteri.lisaaArvio(eraserhead, Arvio.HYVA);
+ArvioRekisteri rekisteri = new ArvioRekisteri();
+rekisteri.lisaaArvio(eraserhead, Arvio.HUONO);
+rekisteri.lisaaArvio(eraserhead, Arvio.HUONO);
+rekisteri.lisaaArvio(eraserhead, Arvio.HYVA);
 
-    rekisteri.lisaaArvio(hiljaisetSillat, Arvio.HYVA);
-    rekisteri.lisaaArvio(hiljaisetSillat, Arvio.OK);
+rekisteri.lisaaArvio(hiljaisetSillat, Arvio.HYVA);
+rekisteri.lisaaArvio(hiljaisetSillat, Arvio.OK);
 
-    System.out.println("Kaikki arviot: " + rekisteri.elokuvienArviot());
-    System.out.println("Arviot Eraserheadille: " + rekisteri.annaArviot(eraserhead));
+System.out.println("Kaikki arviot: " + rekisteri.elokuvienArviot());
+System.out.println("Arviot Eraserheadille: " + rekisteri.annaArviot(eraserhead));
 </pre>
 
 <pre>
@@ -12420,23 +12420,23 @@ Arviot Eraserheadille: [HUONO, HUONO, HYVA]
 <p>Testaa paranneltua <code>ArvioRekisteri</code>-luokkaa seuraavalla lähdekoodipätkällä:</p>
 
 <pre class="sh_java">
-    ArvioRekisteri arviot = new ArvioRekisteri();
+ArvioRekisteri arviot = new ArvioRekisteri();
 
-    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
-    Elokuva eraserhead = new Elokuva("Eraserhead");
+Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
+Elokuva eraserhead = new Elokuva("Eraserhead");
 
-    Henkilo matti = new Henkilo("Matti");
-    Henkilo pekka = new Henkilo("Pekka");
+Henkilo matti = new Henkilo("Matti");
+Henkilo pekka = new Henkilo("Pekka");
 
-    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
-    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
+arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
+arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
 
-    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
-    arviot.lisaaArvio(pekka, eraserhead, Arvio.OK);
+arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
+arviot.lisaaArvio(pekka, eraserhead, Arvio.OK);
 
-    System.out.println("Arviot Eraserheadille: " + arviot.annaArviot(eraserhead));
-    System.out.println("Matin arviot: " + arviot.annaHenkilonArviot(matti));
-    System.out.println("Arvioijat: " + arviot.arvioijat());
+System.out.println("Arviot Eraserheadille: " + arviot.annaArviot(eraserhead));
+System.out.println("Matin arviot: " + arviot.annaHenkilonArviot(matti));
+System.out.println("Arvioijat: " + arviot.arvioijat());
 </pre>
 
 <pre>
@@ -12456,22 +12456,22 @@ Arvioijat: [Pekka, Matti]
 <p>Testaa luokan toimintaa seuraavalla lähdekoodilla:</p>
 
 <pre class="sh_java">
-    Henkilo matti = new Henkilo("Matti");
-    Henkilo pekka = new Henkilo("Pekka");
-    Henkilo mikke = new Henkilo("Mikke");
-    Henkilo thomas = new Henkilo("Thomas");
+Henkilo matti = new Henkilo("Matti");
+Henkilo pekka = new Henkilo("Pekka");
+Henkilo mikke = new Henkilo("Mikke");
+Henkilo thomas = new Henkilo("Thomas");
 
-    Map&lt;Henkilo, Integer&gt; henkiloidenSamuudet = new HashMap&lt;Henkilo, Integer&gt;();
-    henkiloidenSamuudet.put(matti, 42);
-    henkiloidenSamuudet.put(pekka, 134);
-    henkiloidenSamuudet.put(mikke, 8);
-    henkiloidenSamuudet.put(thomas, 82);
+Map&lt;Henkilo, Integer&gt; henkiloidenSamuudet = new HashMap&lt;&gt;();
+henkiloidenSamuudet.put(matti, 42);
+henkiloidenSamuudet.put(pekka, 134);
+henkiloidenSamuudet.put(mikke, 8);
+henkiloidenSamuudet.put(thomas, 82);
 
-    List&lt;Henkilo&gt; henkilot = Arrays.asList(matti, pekka, mikke, thomas);
-    System.out.println("Henkilöt ennen järjestämistä: " + henkilot);
+List&lt;Henkilo&gt; henkilot = Arrays.asList(matti, pekka, mikke, thomas);
+System.out.println("Henkilöt ennen järjestämistä: " + henkilot);
 
-    Collections.sort(henkilot, new HenkiloComparator(henkiloidenSamuudet));
-    System.out.println("Henkilöt järjestämisen jälkeen: " + henkilot);
+Collections.sort(henkilot, new HenkiloComparator(henkiloidenSamuudet));
+System.out.println("Henkilöt järjestämisen jälkeen: " + henkilot);
 </pre>
 
 <pre>
@@ -12479,43 +12479,42 @@ Henkilöt ennen järjestämistä: [Matti, Pekka, Mikke, Thomas]
 Henkilöt järjestämisen jälkeen: [Pekka, Thomas, Matti, Mikke]
 </pre>
 
-<h4>ElokuvaComparator</h4>
+    <h4>ElokuvaComparator</h4>
 
+    <p>Luo pakkaukseen <code>suosittelija.comparator</code> luokka <code>ElokuvaComparator</code>. Luokan <code>ElokuvaComparator</code> tulee toteuttaa rajapinta <code>Comparator&lt;Elokuva&gt;</code>, ja sillä pitää olla konstruktori <code>public ElokuvaComparator(Map&lt;Elokuva, List&lt;Arvio&gt;&gt; arviot)</code>. Luokkaa <code>ElokuvaComparator</code> käytetään myöhemmin elokuvien järjestämiseen niiden arvioiden perusteella.</p>
 
-<p>Luo pakkaukseen <code>suosittelija.comparator</code> luokka <code>ElokuvaComparator</code>. Luokan <code>ElokuvaComparator</code> tulee toteuttaa rajapinta <code>Comparator&lt;Elokuva&gt;</code>, ja sillä pitää olla konstruktori <code>public ElokuvaComparator(Map&lt;Elokuva, List&lt;Arvio&gt;&gt; arviot)</code>. Luokkaa <code>ElokuvaComparator</code> käytetään myöhemmin elokuvien järjestämiseen niiden arvioiden perusteella.</p>
+    <p>ElokuvaComparator-luokan tulee tarjota mahdollisuus elokuvien järjestäminen niiden saamien arvosanojen keskiarvon perusteella. Korkeimman keskiarvon saanut elokuva tulee ensimmäisenä, matalimman keskiarvon saanut viimeisenä.</p>
 
-<p>ElokuvaComparator-luokan tulee tarjota mahdollisuus elokuvien järjestäminen niiden saamien arvosanojen keskiarvon perusteella. Korkeimman keskiarvon saanut elokuva tulee ensimmäisenä, matalimman keskiarvon saanut viimeisenä.</p>
-
-<p>Testaa luokan toimintaa seuraavalla lähdekoodilla:</p>
+    <p>Testaa luokan toimintaa seuraavalla lähdekoodilla:</p>
 
 <pre class="sh_java">
-    ArvioRekisteri arviot = new ArvioRekisteri();
+ArvioRekisteri arviot = new ArvioRekisteri();
 
-    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
-    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
-    Elokuva eraserhead = new Elokuva("Eraserhead");
+Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
+Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
+Elokuva eraserhead = new Elokuva("Eraserhead");
 
-    Henkilo matti = new Henkilo("Matti");
-    Henkilo pekka = new Henkilo("Pekka");
-    Henkilo mikke = new Henkilo("Mikke");
+Henkilo matti = new Henkilo("Matti");
+Henkilo pekka = new Henkilo("Pekka");
+Henkilo mikke = new Henkilo("Mikke");
 
-    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
-    arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
-    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
+arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
+arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
+arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
 
-    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
-    arviot.lisaaArvio(pekka, hiljaisetSillat, Arvio.HUONO);
-    arviot.lisaaArvio(pekka, eraserhead, Arvio.VALTTAVA);
+arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
+arviot.lisaaArvio(pekka, hiljaisetSillat, Arvio.HUONO);
+arviot.lisaaArvio(pekka, eraserhead, Arvio.VALTTAVA);
 
-    arviot.lisaaArvio(mikke, eraserhead, Arvio.HUONO);
+arviot.lisaaArvio(mikke, eraserhead, Arvio.HUONO);
 
-    Map&lt;Elokuva, List&lt;Arvio&gt;&gt; elokuvienArviot = arviot.elokuvienArviot();
+Map&lt;Elokuva, List&lt;Arvio&gt;&gt; elokuvienArviot = arviot.elokuvienArviot();
 
-    List&lt;Elokuva&gt; elokuvat = Arrays.asList(tuulenViemaa, hiljaisetSillat, eraserhead);
-    System.out.println("Elokuvat ennen järjestämistä: " + elokuvat);
+List&lt;Elokuva&gt; elokuvat = Arrays.asList(tuulenViemaa, hiljaisetSillat, eraserhead);
+System.out.println("Elokuvat ennen järjestämistä: " + elokuvat);
 
-    Collections.sort(elokuvat, new ElokuvaComparator(elokuvienArviot));
-    System.out.println("Elokuvat järjestämisen jälkeen: " + elokuvat);
+Collections.sort(elokuvat, new ElokuvaComparator(elokuvienArviot));
+System.out.println("Elokuvat järjestämisen jälkeen: " + elokuvat);
 </pre>
 
 <pre>
@@ -12535,27 +12534,27 @@ Toteuta metodi ensin siten, että se suosittelee aina elokuvaa, jonka arvioiden 
 <p>Testaa ohjelman toimimista seuraavalla lähdekoodilla:</p>
 
 <pre class="sh_java">
-    ArvioRekisteri arviot = new ArvioRekisteri();
+ArvioRekisteri arviot = new ArvioRekisteri();
 
-    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
-    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
-    Elokuva eraserhead = new Elokuva("Eraserhead");
+Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
+Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
+Elokuva eraserhead = new Elokuva("Eraserhead");
 
-    Henkilo matti = new Henkilo("Matti");
-    Henkilo pekka = new Henkilo("Pekka");
-    Henkilo mikke = new Henkilo("Mikael");
+Henkilo matti = new Henkilo("Matti");
+Henkilo pekka = new Henkilo("Pekka");
+Henkilo mikke = new Henkilo("Mikael");
 
-    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
-    arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
-    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
+arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
+arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
+arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
 
-    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
-    arviot.lisaaArvio(pekka, hiljaisetSillat, Arvio.VALTTAVA);
-    arviot.lisaaArvio(pekka, eraserhead, Arvio.VALTTAVA);
+arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
+arviot.lisaaArvio(pekka, hiljaisetSillat, Arvio.VALTTAVA);
+arviot.lisaaArvio(pekka, eraserhead, Arvio.VALTTAVA);
 
-    Suosittelija suosittelija = new Suosittelija(arviot);
-    Elokuva suositeltu = suosittelija.suositteleElokuva(mikke);
-    System.out.println("Mikaelille suositeltu elokuva oli: " + suositeltu);
+Suosittelija suosittelija = new Suosittelija(arviot);
+Elokuva suositeltu = suosittelija.suositteleElokuva(mikke);
+System.out.println("Mikaelille suositeltu elokuva oli: " + suositeltu);
 </pre>
 
 <pre>
@@ -12624,37 +12623,37 @@ Mikaelille suositeltu elokuva oli: Hiljaiset sillat
 <p>Voit testata ohjelmasi toimintaa seuraavalla lähdekoodilla:</p>
 
 <pre class="sh_java">
-    ArvioRekisteri arviot = new ArvioRekisteri();
+ArvioRekisteri arviot = new ArvioRekisteri();
 
-    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
-    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
-    Elokuva eraserhead = new Elokuva("Eraserhead");
-    Elokuva bluesBrothers = new Elokuva("Blues Brothers");
+Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
+Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
+Elokuva eraserhead = new Elokuva("Eraserhead");
+Elokuva bluesBrothers = new Elokuva("Blues Brothers");
 
-    Henkilo matti = new Henkilo("Matti");
-    Henkilo pekka = new Henkilo("Pekka");
-    Henkilo mikke = new Henkilo("Mikael");
-    Henkilo thomas = new Henkilo("Thomas");
-    Henkilo arto = new Henkilo("Arto");
+Henkilo matti = new Henkilo("Matti");
+Henkilo pekka = new Henkilo("Pekka");
+Henkilo mikke = new Henkilo("Mikael");
+Henkilo thomas = new Henkilo("Thomas");
+Henkilo arto = new Henkilo("Arto");
 
-    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
-    arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
-    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
+arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
+arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
+arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
 
-    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
-    arviot.lisaaArvio(pekka, eraserhead, Arvio.HUONO);
-    arviot.lisaaArvio(pekka, bluesBrothers, Arvio.VALTTAVA);
+arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
+arviot.lisaaArvio(pekka, eraserhead, Arvio.HUONO);
+arviot.lisaaArvio(pekka, bluesBrothers, Arvio.VALTTAVA);
 
-    arviot.lisaaArvio(mikke, eraserhead, Arvio.HUONO);
+arviot.lisaaArvio(mikke, eraserhead, Arvio.HUONO);
 
-    arviot.lisaaArvio(thomas, bluesBrothers, Arvio.HYVA);
-    arviot.lisaaArvio(thomas, hiljaisetSillat, Arvio.HYVA);
+arviot.lisaaArvio(thomas, bluesBrothers, Arvio.HYVA);
+arviot.lisaaArvio(thomas, hiljaisetSillat, Arvio.HYVA);
 
-    Suosittelija suosittelija = new Suosittelija(arviot);
-    System.out.println(thomas + " suositus: " + suosittelija.suositteleElokuva(thomas));
-    System.out.println(mikke + " suositus: " + suosittelija.suositteleElokuva(mikke));
-    System.out.println(matti + " suositus: " + suosittelija.suositteleElokuva(matti));
-    System.out.println(arto + " suositus: " + suosittelija.suositteleElokuva(arto));
+Suosittelija suosittelija = new Suosittelija(arviot);
+System.out.println(thomas + " suositus: " + suosittelija.suositteleElokuva(thomas));
+System.out.println(mikke + " suositus: " + suosittelija.suositteleElokuva(mikke));
+System.out.println(matti + " suositus: " + suosittelija.suositteleElokuva(matti));
+System.out.println(arto + " suositus: " + suosittelija.suositteleElokuva(arto));
 </pre>
 
 <pre>
@@ -12668,23 +12667,25 @@ Arto suositus: Hiljaiset sillat
 
 </div>
 </div>
-<h3>Vaihteleva määrä parametreja metodille</h3>
 
-<p>Olemme tähän mennessä luoneet metodimme siten, että niiden parametrien määrät ovat olleet selkeästi määritelty. Java tarjoaa tavan antaa metodille rajoittamattoman määrän määrätyntyyppisiä parametreja asettamalla metodimäärittelyssä parametrin tyypille kolme pistettä perään. Esimerkiksi metodille <code>public int summa(int... luvut)</code> voi antaa summattavaksi niin monta <code>int</code>-tyyppistä kokonaislukua kuin käyttäjä haluaa. Metodin sisällä parametrin arvoja voi käsitellä taulukkona.</p>
+    <h3>Vaihteleva määrä parametreja metodille</h3>
+
+    <p>Olemme tähän mennessä luoneet metodimme siten, että niiden parametrien määrät ovat olleet selkeästi määritelty. Java tarjoaa tavan antaa metodille rajoittamattoman määrän määrätyntyyppisiä parametreja asettamalla metodimäärittelyssä parametrin tyypille kolme pistettä perään. Esimerkiksi metodille <code>public int summa(int... luvut)</code> voi antaa summattavaksi niin monta <code>int</code>-tyyppistä kokonaislukua kuin käyttäjä haluaa. Metodin sisällä parametrin arvoja voi käsitellä taulukkona.</p>
 
 <pre class="sh_java">
-    public int summa(int... luvut) {
-        int summa = 0;
-        for (int i = 0; i &lt; luvut.length; i++) {
-            summa += luvut[i];
-        }
-        return summa;
+public int summa(int... luvut) {
+    int summa = 0;
+    for (int i = 0; i &lt; luvut.length; i++) {
+        summa += luvut[i];
     }
+
+    return summa;
+}
 </pre>
 
 <pre class="sh_java">
-    System.out.println(summa(3, 5, 7, 9));  // luvut = {3, 5, 7, 9}
-    System.out.println(summa(1, 2));        // luvut = {1, 2}
+System.out.println(summa(3, 5, 7, 9));  // luvut = {3, 5, 7, 9}
+System.out.println(summa(1, 2));        // luvut = {1, 2}
 </pre>
 
 <pre>
@@ -12692,13 +12693,13 @@ Arto suositus: Hiljaiset sillat
 3
 </pre>
 
-<p>Huomaa yllä miten parametrimäärittely <code>int... luvut</code> johtaa siihen, että metodin sisällä näkyy taulukkotyyppinen muuttuja <code>luvut</code>.</p>
+    <p>Huomaa yllä miten parametrimäärittely <code>int... luvut</code> johtaa siihen, että metodin sisällä näkyy taulukkotyyppinen muuttuja <code>luvut</code>.</p>
 
 <p>Metodille voi määritellä vain yhden parametrin joka saa rajattoman määrän arvoja, ja sen tulee olla metodimäärittelyn viimeinen parametri. Esimerkiksi:</p>
 
 <pre class="sh_java">
-    public void tulosta(String... merkkijonot, int kertaa) // ei sallittu!
-    public void tulosta(int kertaa, String... merkkijonot) // sallittu!
+public void tulosta(String... merkkijonot, int kertaa) // ei sallittu!
+public void tulosta(int kertaa, String... merkkijonot) // sallittu!
 </pre>
 
 <p>Ennalta määrittelemätöntä parametrien arvojen määrää käytetään esimerkiksi silloin, kun halutaan tarjota rajapinta, joka ei rajoita sen käyttäjää tiettyyn parametrien määrään. Vaihtoehtoinen lähestymistapa on metodimäärittely, jolla on parametrina tietyn tyyppinen lista. Tällöin oliot voidaan asettaa listaan ennen metodikutsua, ja kutsua metodia antamalla lista sille parametrina.</p>
@@ -12751,11 +12752,11 @@ public class GutenbergLukija {
         // kirjan verkosta hakeva koodi
     }
 
-    public List&lg;String&gt; rivitJoilleVoimassa(Ehto ehto){
-        List&lg;String&gt; ehdonTayttavat = new ArrayList&lg;String&gt;();
+    public List&lt;String&gt; rivitJoilleVoimassa(Ehto ehto){
+        List&lt;String&gt; ehdonTayttavat = new ArrayList&lt;&gt;();
 
         for (String rivi : sanat) {
-            if ( ehto.toteutuu(rivi)) {
+            if (ehto.toteutuu(rivi)) {
                 ehdonTayttavat.add(rivi);
             }
         }
@@ -12768,52 +12769,46 @@ public class GutenbergLukija {
 <p>Seuraavassa tulostetaan Rikoksesta ja rangaistuksesta kaikki rivit, joilla esiintyy sana "beer":</p>
 
 <pre class="sh_java">
-public static void main(String[] args) {
-    String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
-    GutenbergLukija kirja = new GutenbergLukija(osoite);
+String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+GutenbergLukija kirja = new GutenbergLukija(osoite);
 
-    Ehto ehto = new SisaltaaSanan("beer");
+Ehto ehto = new SisaltaaSanan("beer");
 
-    for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
-        System.out.println(rivi);
-    }
+for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
+    System.out.println(rivi);
 }
 </pre>
 
 
-<p><b>Huom:</b> Project Gutenbergin sivuilla olevat tekstit ovat tarkoitettu vain ihmisten luettaviksi. Jos tekstejä haluaa lukea koneellisesti eli esim. <em>GutenbergLukijalla</em>, on kirjan sivulta, esim. <a href="http://www.gutenberg.org/ebooks/2554">http://www.gutenberg.org/ebooks/2554</a> mentävä alakulmassa olevaan linkin <em>mirror sites</em> takaa löytyvälle sivulle, esim. bulgarialaiselle e-book Ltd:n sivulle ja luettava kirja sieltä löytyvästä osoitteesta.</p>
+    <p><b>Huom:</b> Project Gutenbergin sivuilla olevat tekstit ovat tarkoitettu vain ihmisten luettaviksi. Jos tekstejä haluaa lukea koneellisesti eli esim. <em>GutenbergLukijalla</em>, on kirjan sivulta, esim. <a href="http://www.gutenberg.org/ebooks/2554">http://www.gutenberg.org/ebooks/2554</a> mentävä alakulmassa olevaan linkin <em>mirror sites</em> takaa löytyvälle sivulle, esim. bulgarialaiselle e-book Ltd:n sivulle ja luettava kirja sieltä löytyvästä osoitteesta.</p>
 
 <h4>Kaikki sanat</h4>
 
 <p>Tee rajapinnan <code>ehto</code> toteuttava luokka <code>KaikkiRivit</code>, joka kelpuuttaa jokaisen rivin. Tämä ja muutkin tämän tehtävän luokat tulee toteuttaa pakkaukseen <code>lukija.ehdot</code>.</p>
 
 <pre class="sh_java">
-public static void main(String[] args) {
-    String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
-    GutenbergLukija kirja = new GutenbergLukija(osoite);
+String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+GutenbergLukija kirja = new GutenbergLukija(osoite);
 
-    Ehto ehto = new KaikkiRivit();
+Ehto ehto = new KaikkiRivit();
 
-    for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
-        System.out.println(rivi);
-    }
+for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
+    System.out.println(rivi);
 }
 </pre>
 
-<h4>Loppuu huuto- tai kysymysmerkkiin</h4>
+    <h4>Loppuu huuto- tai kysymysmerkkiin</h4>
 
-<p>Tee rajapinnan <code>ehto</code> toteuttava luokka <code>LoppuuHuutoTaiKysymysmerkkiin</code>, joka kelpuuttaa ne rivit, joiden viimeinen merkki on huuto- tai kysymysmerkki.</p>
+    <p>Tee rajapinnan <code>ehto</code> toteuttava luokka <code>LoppuuHuutoTaiKysymysmerkkiin</code>, joka kelpuuttaa ne rivit, joiden viimeinen merkki on huuto- tai kysymysmerkki.</p>
 
 <pre class="sh_java">
-public static void main(String[] args) {
-    String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
-    GutenbergLukija kirja = new GutenbergLukija(osoite);
+String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+GutenbergLukija kirja = new GutenbergLukija(osoite);
 
-    Ehto ehto = new LoppuuHuutoTaiKysymysmerkkiin();
+Ehto ehto = new LoppuuHuutoTaiKysymysmerkkiin();
 
-    for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
-        System.out.println(rivi);
-    }
+for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
+    System.out.println(rivi);
 }
 </pre>
 
@@ -12823,7 +12818,7 @@ public static void main(String[] args) {
 String nimi = "pekka";
 
 // HUOM: 'p' on merkki eli char p, "p" taas merkkojono, jonka ainoa merkki on p
-if ( nimi.charAt(0) == 'p' ) {
+if (nimi.charAt(0) == 'p') {
     System.out.println("alussa p");
 } else {
     System.out.println("alussa jokin muu kuin p");
@@ -12835,15 +12830,13 @@ if ( nimi.charAt(0) == 'p' ) {
 <p>Tee rajapinnan <code>ehto</code> toteuttava luokka <code>PituusVahintaan</code>, jonka oliot kelpuuttavat ne rivit, joiden pituus on vähintään olion konstruktorin parametrina annettu luku.</p>
 
 <pre class="sh_java">
-public static void main(String[] args) {
-    String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
-    GutenbergLukija kirja = new GutenbergLukija(osoite);
+String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+GutenbergLukija kirja = new GutenbergLukija(osoite);
 
-    Ehto ehto = new PituusVahintaan(40);
+Ehto ehto = new PituusVahintaan(40);
 
-    for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
-        System.out.println(rivi);
-    }
+for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
+    System.out.println(rivi);
 }
 </pre>
 
@@ -12853,18 +12846,16 @@ public static void main(String[] args) {
 </p>
 
 <pre class="sh_java">
-public static void main(String[] args) {
-    String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
-    GutenbergLukija kirja = new GutenbergLukija(osoite);
+String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+GutenbergLukija kirja = new GutenbergLukija(osoite);
 
-    Ehto ehto = new Molemmat(
-                    new LoppuuHuutoTaiKysymysmerkkiin(),
-                    new SisaltaaSanan("beer")
-                );
+Ehto ehto = new Molemmat(
+                new LoppuuHuutoTaiKysymysmerkkiin(),
+                new SisaltaaSanan("beer")
+            );
 
-    for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
-        System.out.println(rivi);
-    }
+for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
+    System.out.println(rivi);
 }
 </pre>
 
@@ -12875,15 +12866,13 @@ Seuraavassa tulostetaan rivit, joiden pituus vähemmän kuin 10.
 </p>
 
 <pre class="sh_java">
-public static void main(String[] args) {
-    String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
-    GutenbergLukija kirja = new GutenbergLukija(osoite);
+String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+GutenbergLukija kirja = new GutenbergLukija(osoite);
 
-    Ehto ehto = new Ei( new PituusVahintaan(10) );
+Ehto ehto = new Ei( new PituusVahintaan(10) );
 
-    for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
-        System.out.println(rivi);
-    }
+for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
+    System.out.println(rivi);
 }
 </pre>
 
@@ -12893,64 +12882,63 @@ public static void main(String[] args) {
 </p>
 
 <pre class="sh_java">
-public static void main(String[] args) {
-    String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
-    GutenbergLukija kirja = new GutenbergLukija(osoite);
+String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+GutenbergLukija kirja = new GutenbergLukija(osoite);
 
-    Ehto ehto = new VahintaanYksi(
-                    new SisaltaaSanan("beer"),
-                    new SisaltaaSanan("milk"),
-                    new SisaltaaSanan("oil")
-                );
+Ehto ehto = new VahintaanYksi(
+                new SisaltaaSanan("beer"),
+                new SisaltaaSanan("milk"),
+                new SisaltaaSanan("oil")
+            );
 
-    for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
-        System.out.println(rivi);
-    }
+for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
+    System.out.println(rivi);
 }
 </pre>
 
 <p>Huomaa, että ehtoja voi kombinoida mielivaltaisesti. Seuraavassa ehto, joka hyväksyy rivit, joilla on vähintään yksi sanoista "beer", "milk" tai "oil" ja jotka ovat pituudeltaan 20-30 merkkiä.</p>
 
 <pre class="sh_java">
-    Ehto sanat = new VahintaanYksi(
-                    new SisaltaaSanan("beer"),
-                    new SisaltaaSanan("milk"),
-                    new SisaltaaSanan("oil")
-                );
+Ehto sanat = new VahintaanYksi(
+                new SisaltaaSanan("beer"),
+                new SisaltaaSanan("milk"),
+                new SisaltaaSanan("oil")
+            );
 
-    Ehto oikeaPituus = new Molemmat(
-                         new PituusVahintaan(20),
-                         new Ei( new PituusVahintaan(31))
-                       );
+Ehto oikeaPituus = new Molemmat(
+                     new PituusVahintaan(20),
+                     new Ei( new PituusVahintaan(31))
+                   );
 
-    Ehto halutut = new Molemmat(sanat, oikeaPituus);
+Ehto halutut = new Molemmat(sanat, oikeaPituus);
 </pre>
 
 </div>
 </div>
+
 <h3>StringBuilder</h3>
 
 <p>Olemme tottuneet rakentamaan merkkijonoja seuraavaan tapaan:</p>
 
 <pre class="sh_java">
-    public static void main(String[] args) {
-        int[] t = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        System.out.println(muotoile(t));
-    }
+public static void main(String[] args) {
+    int[] t = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    System.out.println(muotoile(t));
+}
 
-    public static String muotoile(int[] t) {
-        String mj = "{";
+public static String muotoile(int[] t) {
+    String mj = "{";
 
-        for (int i = 0; i &lt; t.length; i++) {
-            mj += t[i];
-            if (i != t.length - 1) {
-                mj += ", ";
+    for (int i = 0; i &lt; t.length; i++) {
+        mj += t[i];
+        if (i != t.length - 1) {
+            mj += ", ";
 
-            }
         }
-
-        return mj + "}";
     }
+
+    return mj + "}";
+}
 </pre>
 
 <p>Tulostus:</p>
@@ -13038,24 +13026,24 @@ public static void main(String[] args) {
 <p>Huom! Kasvata matoa aina sen liikkuessa jos sen pituus on pienempi kuin 3.</p>
 
 <pre class="sh_java">
-        Mato mato = new Mato(5, 5, Suunta.OIKEA);
-        System.out.println(mato.getPalat());
-        mato.liiku();
-        System.out.println(mato.getPalat());
-        mato.liiku();
-        System.out.println(mato.getPalat());
-        mato.liiku();
-        System.out.println(mato.getPalat());
+Mato mato = new Mato(5, 5, Suunta.OIKEA);
+System.out.println(mato.getPalat());
+mato.liiku();
+System.out.println(mato.getPalat());
+mato.liiku();
+System.out.println(mato.getPalat());
+mato.liiku();
+System.out.println(mato.getPalat());
 
-        mato.kasva();
-        System.out.println(mato.getPalat());
-        mato.liiku();
-        System.out.println(mato.getPalat());
+mato.kasva();
+System.out.println(mato.getPalat());
+mato.liiku();
+System.out.println(mato.getPalat());
 
-        mato.setSuunta(Suunta.VASEN);
-        System.out.println(mato.osuuItseensa());
-        mato.liiku();
-        System.out.println(mato.osuuItseensa());
+mato.setSuunta(Suunta.VASEN);
+System.out.println(mato.osuuItseensa());
+mato.liiku();
+System.out.println(mato.osuuItseensa());
 </pre>
 
 <pre>
@@ -13125,21 +13113,21 @@ true
 <p>Voit käynnistää käyttöliittymän <code>Main</code>-luokassa seuraavasti. Ennen pelin käynnistystä odotamme että käyttöliittymä luodaan. Kun käyttöliittymä on luotu, se kytketään matopeliin ja matopeli käynnistetään.</p>
 
 <pre class="sh_java">
-        Matopeli matopeli = new Matopeli(20, 20);
+Matopeli matopeli = new Matopeli(20, 20);
 
-        Kayttoliittyma kali = new Kayttoliittyma(matopeli, 20);
-        SwingUtilities.invokeLater(kali);
+Kayttoliittyma kali = new Kayttoliittyma(matopeli, 20);
+SwingUtilities.invokeLater(kali);
 
-        while (kali.getPaivitettava() == null) {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException ex) {
-                System.out.println("Piirtoalustaa ei ole vielä luotu.");
-            }
-        }
+while (kali.getPaivitettava() == null) {
+    try {
+        Thread.sleep(100);
+    } catch (InterruptedException ex) {
+        System.out.println("Piirtoalustaa ei ole vielä luotu.");
+    }
+}
 
-        matopeli.setPaivitettava(kali.getPaivitettava());
-        matopeli.start();
+matopeli.setPaivitettava(kali.getPaivitettava());
+matopeli.start();
 </pre>
 
 <p>Peliin jää vielä paljon paranneltavaa. Palauta nyt tehtävä ja voit sen jälkeen laajentaa ja parannella peliä haluamallasi tavalla!</p>
