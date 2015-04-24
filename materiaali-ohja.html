@@ -13387,12 +13387,226 @@ matopeli.start();
 </div>
 
 
+    <h2>Erilaisista ohjelmointiparadigmoista ja deklaratiivisesta ohjelmoinnista</h2>
+
+    <p>Ohjelmointiparadigmalla tarkoitetaan ohjelmointikielen taustalla olevaa tapaa ajatella ja jäsentää ohjelman toiminta. Tällä kurssilla olemme keskittyneet lähinnä imperatiiviseen ohjelmointiin, missä koneelle kerrotaan askeleet, joita sen tulee ottaa, jotta haluttu tehtävä saadaan suoritettua. Konetta siis <em>käsketään</em> tekemään annettuja toimintoja.</p>
+
+    <p>Eräs imperatiivisen ohjelmoinnin osajoukko on proseduraalinen ohjelmointi, mitä harjoittelimme erityisesti kurssin alussa. Proseduraalisessa ohjelmoinnissa ohjelman tilaa pidetään yllä muuttujissa, ja mahdolliset metodit käsittelevät vain niille parametrina annettuja arvoja käytetä. Tässäkin ohjelma suoritetaan askel askeleelta, ja koneelle kerrotaan sen määrittelemällä kielellä mitä pitäisi tapahtua. Esimerkiksi alla on kuvattu koneen ymmärtämällä kielellä muuttujien a ja b arvojen vaihtaminen.</p>
+
+<pre class="sh_java">
+int a = 10;
+int b = 15;
+
+// vaihdetaan muuttujien a ja b arvot
+int c = b;
+b = a;
+a = c;
+</pre>
+
+    <p>Proseduraalisessa ohjelmoinnissa yksittäiset käskyt vaikuttavat tyypillisesti korkeintaan yksittäiseen muuttujaan.</p>
+
+    <p>Kun jatkoimme proseduraalisesta ohjelmoinnista eteenpäin, astuimme kurssilla olio-ohjelmoinnin pariin. Kun olio-ohjelmointia verrataan proseduraaliseen ohjelmointiin, muutamat oleelliset erot tulevat ilmi. Olio-ohjelmoinnissa olion tila voi periaatteessa muuttua mitä tahansa olion metodia käytettäessä, ja tuo tilan muutos voi vaikuttaa myös muiden olion metodien toimintaan -- ja sitä kautta ohjelman suorituksen osa-alueisiin. Olemme käyttäneet olioita kurssilla lähinnä osana tietokonetta käskyttäen, mutta myös toisenlaisia tapoja on olemassa.</p>
+
+    <p>Deklaratiivinen ohjelmointi on ohjelmointiparadigma, missä pyritään kuvailemaan mitä ohjelman tulee tehdä sen sijaan, että kuvattaisiin yksittäisiä suoritettavia käskyjä. Esimerkiksi funktionaalisessa ohjelmoinnissa, joka voidaan nähdä deklaratiivisen ohjelmoinnin osajoukkona, ohjelmoija keskittyy lähinnä halutun tiedon tunnistamiseen, sekä tiedon muutamiseen haluttuun muotoon.</p>
+
+    <p>Koska ohjelmointikielet tarjoavat nykyään tyypillisesti välineitä sekä imperatiiviseen että deklaratiiviseen ohjelmointiin, tapahtuu ohjelmien rakentaminen usein moniparadigmaisesti, missä imperatiivista ja deklaratiivista ohjelmointityyliä sekoitetaan tarvittaessa. Myös Java tarjoaa välineitä sekä imperatiiviseen että deklaratiiviseen ohjelmointiin.</p>
+
+
+    <h3>Listan läpikäynti</h3>
+
+    <p>Tarkastellaan kahta erilaista tapaa tulostaa listalla olevat alkiot. Ensimmäisenä vuorossa imperatiivinen lähestymistapa, missä käytämme <code>for</code>-toistolausetta alkioiden läpikäyntiin sekä tuttua <code>System.out.println</code>-komentoa yksittäisten alkioiden tulostamiseen.</p>
+
+<pre class="sh_java">
+List&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
+Collections.addAll(lista, 1, 3, 5, 7);
+
+for (int arvo: lista) {
+    System.out.println(arvo);
+}
+</pre>
+
+<pre>
+1
+3
+5
+7
+</pre>
+
+    <p>Deklaratiivisessa ohjelmointityylissä listalle kerrotaan mitä sen jokaiselle alkiolle tulee tehdä. Alla listalle sanotaan että sen jokainen alkio tulee antaa tulostusmetodille. </p>
+
+<pre class="sh_java">
+List&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
+Collections.addAll(lista, 1, 3, 5, 7);
+
+lista.forEach(System.out::println);
+</pre>
+
+
+<pre>
+1
+3
+5
+7
+</pre>
+
+    <h3>Metodiviite</h3>
+
+    <p>Komento <code>forEach</code> antaa jokaisen listalla olevan alkion vuorollaan komennon parametrina olevalle metodille. Kuten huomaat, tulostuskomennossa on kaksoispisteet tulostusmetodin yhteydessä -- <code>System.out::println</code> -- tällä tavalla annetaan viittaus metodiin, jolle listan alkiot annetaan. Käytössä olevat metodit eivät ole rajattu Javan omiin metodeihin kuten tulostuskutsuun, vaan voimme yhtä hyvin käyttää myös itse ohjelmoimiamme metodeja.</p>
+
+<pre class="sh_java">
+public class Apumetodit {
+
+    public static void kerroKahdellaJaTulosta(int luku) {
+        System.out.println(luku * 2);        
+    }
+}
+</pre>
+
+    <p>Listan läpikäynnin yhteydessä ylläolevaa metodia kutsuttaisiin seuraavanlaisesti:</p>
+
+<pre class="sh_java">
+List&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
+Collections.addAll(lista, 1, 3, 5, 7);
+
+lista.forEach(Apumetodit::kerroKahdellaJaTulosta);
+</pre>
+
+<pre>
+2
+6
+10
+14
+</pre>
+
+    <h3>Anonyymit metodit (funktiot)</h3>
+
+    <p>Kun tarkastelemme <code>forEach</code>-kutsua tarkemmin, voimme oikeastaan antaa sille myös tiedon alkioiden käsittelytavasta. Tämä tieto annetaan <em>anonyymien metodien</code> avulla. Anonyymit metodit määritellään muodossa <code>alkio -&gt; kasittely</code>, esimerkiksi <code>i -&gt; System.out.println(i)</code>.</p>
+
+<pre class="sh_java">
+lista.forEach(i -&gt; System.out.println(i));
+</pre>
+
+    <p>Anonyymi metodi voi sisältää myös useampia komentoja, jolloin käytetään aaltosuluilla alkavaa ja loppuvaa lohkoa komentojen listaamiseen. Komennot suoritetaan järjestyksessä ylhäältä alas.</p>
+
+
+<pre class="sh_java">
+lista.forEach(i -&gt; {
+    if (i == 5) {
+        System.out.print("Kapow ");
+    }
+    System.out.println(i);
+});
+</pre>
+
+<pre>
+1
+3
+Kapow 5
+7
+</pre>
+
+    <p>Edelläoleva anonyymi metodi määsittelee annetulle alkiolle suoritettavan koodin sekä metodin parametrin. Se vastaa kutakuinkin seuraavaa staattista metodia.</p>
+
+<pre class="sh_java">
+public static void tulosta(int luku) {
+    if (i == 5) {
+        System.out.print("Kapow ");
+    }
+    System.out.println(i);
+}</pre>
+
+
+    <h3>Syötevirrat</h3>
+
+    <p>Kutsun <code>lista.forEach</code> yhteydessä oikeastaan luodaan virta syötteitä (<a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html" target="_blank">Stream</a>), jolle kaikki listalla olevat alkiot syötetään, ja joka ohjaa alkiot eteenpäin. Kutsu näyttää käytännössä seuraavalta:</p>
+
+<pre class="sh_java">
+lista.stream().forEach(System.out::println);
+</pre>
+
+    <p>Tämä "stream" tarjoaa joukon metodeja, joiden avulla käsiteltävän listan alkioita voidaan käsitellä muokata ennen (esimerkiksi) tulostusta.</p>
+
+    <h4>Käsiteltävien alkioiden rajaus (Filter)</h4>
+
+    <p>Stream tarjoaa esimerkiksi <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#filter-java.util.function.Predicate-" target="_blank">filter</a>-metodin, jonka avulla voidaan rajata käsiteltävät alkiot. Alla rajataan käsittely vain alkioihin, joiden arvon on yli 5.</p>
+
+<pre class="sh_java">
+lista.stream().filter(i -&gt; i &gt; 5).forEach(System.out::println);
+</pre>
+
+<pre>
+7
+</pre>
+
+    <p>Rajaus on tehty anonyymillä metodilla, jossa alkion arvoa verrataan lukuun 5. Ylläoleva anonyymi metodi vastaa seuraavaa metodia:</p>
+
+<pre class="sh_java">
+public static boolean onSuurempiKuinViisi(int arvo) {
+    return i &gt; 5;
+}
+</pre>
+
+    <h4>Alkioiden muuntaminen toiseen muotoon (Map)</h4>
+
+    <p>Syötevirran erilaisilla <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#map-java.util.function.Function-" target="_blank">map</a>-metodeilla alkioita voidaan muuntaa toiseen muotoon. Esimerkiksi aiemmin tekemämme kahdella kertominen onnistuu map-metodin avulla.</p>
+
+<pre class="sh_java">
+lista.stream().filter(i -&gt; i &gt; 5).map(i -&gt; i * 2).forEach(System.out::println);
+</pre>
+
+<pre>
+14
+</pre>
+
+    <p>Map-metodi voi sisältää myös lohkon, mutta, tällöin sille tulee erikseen määritellä return-komento.</p>
+
+<pre class="sh_java">
+lista.stream().map(x -&gt; {
+    if (x == 5) {
+        return "Kapow " + 5;
+    }
+    
+    return x;
+}).forEach(System.out::println);
+</pre>
+
+    <p>Tämä komento erityisen kätevä esimerkiksi olioita läpikäytäessä. Metodin <code>map</code> avulla voidaan myös valita metodin palauttama arvo. Esimerkiksi Henkilöiden nimet saisi seuraavalla tavalla -- olettaen, että käytössämme on <code>Henkilo</code>-luokka, ja luokalla metodi <code>getNimi</code>.</p>
+
+<pre class="sh_java">
+List&lt;Henkilo&gt; lista = new ArrayList&lt;&gt;();
+// luetaan listalle henkilot
+
+lista.stream().map(h -&gt; h.getNimi()).forEach(System.out::println);
+</pre>
+
+    <h4>Alkioiden muuntaminen toisen tyyppiseksi</h4>
+
+    <p>Syötevirrat tarjoavat myös metodeja alkioiden muuntamiseksi tiettyyn tyyppiin. Esimerkiksi metodilla <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#mapToInt-java.util.function.ToIntFunction-" target="_blank">mapToInt</a> tehdään muunnos lukuvirraksi (<a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html" target="_blank">IntStream</a>), jonka jälkeen pääsemme käsiksi lukuja sisältävän syötevirran tarjoamiin metodeihin, kuten keskiarvon laskemiseen.</p>
+
+    <p>Allaoleva lähdekoodi laskee kaikkien listalla olevien positiivisten alkioiden keskiarvon ja tulostaa sen.</p>
+
+<pre class="sh_java">
+List&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
+Collections.addAll(lista, 1, 3, 5, 7);
+
+lista.stream().filter(i -&gt; i &gt;= 0).mapToInt(i -&gt; i).average().ifPresent(System.out::println);
+</pre>
+
+<pre>
+3.5
+</pre>
+
+    <p>IntStream-lukuvirran metodi <a href="" target="_blank">average</a> palauttaa <a href="" target="_blank">OptionalDouble</a>-tyyppisen alkion, joka tarjoaa metodin <code>ifPresent</code>, jonka avulla kerrotaan mitä tehdään jos keskiarvon laskeminen onnistuu. Tässä tapauksessa keskiarvo annetaan tulostusmetodille.</p>
+
+    <p>&nbsp;</p>
+
+    <p>Oracle tarjoaa lisää oppaita tähän ohjelmointityyliin liittyen, hyvä lähtökohta lienee <a href="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html" target="_blank">Lambda QuickStart</a>.</p>
 
     <h2>Kertausta</h2>
 
-    <p>Kurssin viimeinen viikko koostuu kurssilla nähtyjen teemojen kertauksesta. Osa tehtävistä on jo tuttuja, osa uusia. Kaikista tehtävistä on tehty sellaisia, että että niissä ei ole testejä -- olet täysin vastuussa ohjelman toiminnasta. Palauttamalla tehtävän takaat että se toimii toivotusti, jolloin saat siitä myös pisteet. Kertaa tehtäviä tehdessäsi materiaalia -- kannattaa varata tehtäville myös ajatteluaikaa.</p> 
+    <p>Kurssin viimeinen viikko koostuu edellä olevan pikakatsauksen lisäksi kurssilla nähtyjen teemojen kertauksesta. Osa tehtävistä on jo tuttuja, osa uusia. Kaikista tehtävistä on tehty sellaisia, että että niissä ei ole testejä -- olet täysin vastuussa ohjelman toiminnasta -- voit kokeilla edellä näkemiäsi menetelmiä, tai kerrata aiemmin tutuksi tulleita käsitteitä. Palauttamalla tehtävän takaat että se toimii toivotusti, jolloin saat siitä myös pisteet. Kertaa tehtäviä tehdessäsi materiaalia -- kannattaa varata tehtäville myös ajatteluaikaa.</p> 
 
-    <p>Voit myös paikata yhden tekemättä jääneen viikon tekemällä TMC:ssä kurssin <code>XXX-ohja-kertaus</code> kokeeseen mennessä. Kertauskurssiin liittyvä materiaali löytyy <a href="https://www.cs.helsinki.fi/group/java/k13/materiaali-ohjakertaus.html" target="_blank">tämän linkin takaa</a>.</p>
+    <p class="hidden-in-mooc">Voit myös paikata yhden tekemättä jääneen viikon tekemällä TMC:ssä kurssin <code>XXX-ohja-kertaus</code> kokeeseen mennessä. Kertauskurssiin liittyvä materiaali löytyy <a href="https://www.cs.helsinki.fi/group/java/k13/materiaali-ohjakertaus.html" target="_blank">tämän linkin takaa</a>.</p>
 
 
     <div class="tehtavat">
@@ -13444,8 +13658,6 @@ Anna sademäärä:
 <font color="red">999999</font>
 Yhtään sademäärää ei syötetty.
 </pre>
-
-	<p>Jos käy niin, että jäät täysin "jumiin" etkä saa tehtyä ratkaisua, palauta kuitenkin paras yrityksesi ja laita ohjelmasi alkuun mukaan kommentti, jossa kerrot, mikä tehtävässä tuntui vaikealta tai muuten aiheutti "jumituksen". Saat tällöin myös tehtävästä pisteet.</p>
 
       </div>
 
