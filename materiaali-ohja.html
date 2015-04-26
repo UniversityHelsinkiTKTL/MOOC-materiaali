@@ -13391,7 +13391,7 @@ matopeli.start();
 
     <p>Ohjelmointiparadigmalla tarkoitetaan ohjelmointikielen taustalla olevaa tapaa ajatella ja jäsentää ohjelman toiminta. Tällä kurssilla olemme keskittyneet lähinnä imperatiiviseen ohjelmointiin, missä koneelle kerrotaan askeleet, joita sen tulee ottaa, jotta haluttu tehtävä saadaan suoritettua. Konetta siis <em>käsketään</em> tekemään annettuja toimintoja.</p>
 
-    <p>Eräs imperatiivisen ohjelmoinnin osajoukko on proseduraalinen ohjelmointi, mitä harjoittelimme erityisesti kurssin alussa. Proseduraalisessa ohjelmoinnissa ohjelman tilaa pidetään yllä muuttujissa, ja mahdolliset metodit käsittelevät vain niille parametrina annettuja arvoja käytetä. Tässäkin ohjelma suoritetaan askel askeleelta, ja koneelle kerrotaan sen määrittelemällä kielellä mitä pitäisi tapahtua. Esimerkiksi alla on kuvattu koneen ymmärtämällä kielellä muuttujien a ja b arvojen vaihtaminen.</p>
+    <p>Eräs imperatiivisen ohjelmoinnin osajoukko on proseduraalinen ohjelmointi, mitä harjoittelimme erityisesti kurssin alussa. Proseduraalisessa ohjelmoinnissa ohjelman tilaa pidetään yllä muuttujissa, ja mahdolliset metodit käsittelevät vain niille parametrina annettuja arvoja. Ohjelma suoritetaan askel askeleelta, ja koneelle kerrotaan sen määrittelemällä kielellä mitä pitäisi tapahtua. Esimerkiksi alla on kuvattu koneen ymmärtämällä kielellä muuttujien a ja b arvojen vaihtaminen.</p>
 
 <pre class="sh_java">
 int a = 10;
@@ -13403,14 +13403,18 @@ b = a;
 a = c;
 </pre>
 
-    <p>Proseduraalisessa ohjelmoinnissa yksittäiset käskyt vaikuttavat tyypillisesti korkeintaan yksittäiseen muuttujaan.</p>
+<!--
+    <p>Proseduraalisessa ohjelmoinnissa yksittäiset käskyt vaikuttavat tyypillisesti korkeintaan yksittäiseen asiaan.</p>
+-->
 
-    <p>Kun jatkoimme proseduraalisesta ohjelmoinnista eteenpäin, astuimme kurssilla olio-ohjelmoinnin pariin. Kun olio-ohjelmointia verrataan proseduraaliseen ohjelmointiin, muutamat oleelliset erot tulevat ilmi. Olio-ohjelmoinnissa olion tila voi periaatteessa muuttua mitä tahansa olion metodia käytettäessä, ja tuo tilan muutos voi vaikuttaa myös muiden olion metodien toimintaan -- ja sitä kautta ohjelman suorituksen osa-alueisiin. Olemme käyttäneet olioita kurssilla lähinnä osana tietokonetta käskyttäen, mutta myös toisenlaisia tapoja on olemassa.</p>
+    <p>Kun olio-ohjelmointia verrataan proseduraaliseen ohjelmointiin, muutamat oleelliset erot tulevat ilmi. Olio-ohjelmoinnissa olion tila voi periaatteessa muuttua mitä tahansa olion metodia käytettäessä, ja tuo tilan muutos voi vaikuttaa myös muiden olion metodien toimintaan -- ja sitä kautta ohjelman suorituksen osa-alueisiin. Olemme käyttäneet olioita kurssilla lähinnä myös tietokonetta käskyttäen, mutta myös toisenlaisia tapoja on olemassa.</p>
 
     <p>Deklaratiivinen ohjelmointi on ohjelmointiparadigma, missä pyritään kuvailemaan mitä ohjelman tulee tehdä sen sijaan, että kuvattaisiin yksittäisiä suoritettavia käskyjä. Esimerkiksi funktionaalisessa ohjelmoinnissa, joka voidaan nähdä deklaratiivisen ohjelmoinnin osajoukkona, ohjelmoija keskittyy lähinnä halutun tiedon tunnistamiseen, sekä tiedon muutamiseen haluttuun muotoon.</p>
 
     <p>Koska ohjelmointikielet tarjoavat nykyään tyypillisesti välineitä sekä imperatiiviseen että deklaratiiviseen ohjelmointiin, tapahtuu ohjelmien rakentaminen usein moniparadigmaisesti, missä imperatiivista ja deklaratiivista ohjelmointityyliä sekoitetaan tarvittaessa. Myös Java tarjoaa välineitä sekä imperatiiviseen että deklaratiiviseen ohjelmointiin.</p>
 
+
+    <p>Tutustutaan hieman näihin Javan ominaisuuksiin seuraavaksi.</p>
 
     <h3>Listan läpikäynti</h3>
 
@@ -13494,6 +13498,7 @@ lista.forEach(i -&gt; {
     if (i == 5) {
         System.out.print("Kapow ");
     }
+
     System.out.println(i);
 });
 </pre>
@@ -13512,6 +13517,7 @@ public static void tulosta(int luku) {
     if (i == 5) {
         System.out.print("Kapow ");
     }
+
     System.out.println(i);
 }</pre>
 
@@ -13546,6 +13552,7 @@ public static boolean onSuurempiKuinViisi(int arvo) {
 }
 </pre>
 
+
     <h4>Alkioiden muuntaminen toiseen muotoon (Map)</h4>
 
     <p>Syötevirran erilaisilla <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#map-java.util.function.Function-" target="_blank">map</a>-metodeilla alkioita voidaan muuntaa toiseen muotoon. Esimerkiksi aiemmin tekemämme kahdella kertominen onnistuu map-metodin avulla.</p>
@@ -13579,6 +13586,7 @@ List&lt;Henkilo&gt; lista = new ArrayList&lt;&gt;();
 lista.stream().map(h -&gt; h.getNimi()).forEach(System.out::println);
 </pre>
 
+
     <h4>Alkioiden muuntaminen toisen tyyppiseksi</h4>
 
     <p>Syötevirrat tarjoavat myös metodeja alkioiden muuntamiseksi tiettyyn tyyppiin. Esimerkiksi metodilla <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#mapToInt-java.util.function.ToIntFunction-" target="_blank">mapToInt</a> tehdään muunnos lukuvirraksi (<a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html" target="_blank">IntStream</a>), jonka jälkeen pääsemme käsiksi lukuja sisältävän syötevirran tarjoamiin metodeihin, kuten keskiarvon laskemiseen.</p>
@@ -13601,6 +13609,7 @@ lista.stream().filter(i -&gt; i &gt;= 0).mapToInt(i -&gt; i).average().ifPresent
     <p>&nbsp;</p>
 
     <p>Oracle tarjoaa lisää oppaita tähän ohjelmointityyliin liittyen, hyvä lähtökohta lienee <a href="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html" target="_blank">Lambda QuickStart</a>.</p>
+
 
     <h2>Kertausta</h2>
 
