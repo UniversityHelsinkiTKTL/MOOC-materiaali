@@ -6916,7 +6916,7 @@ for (int luku : luvut) {
 System.out.println(luku);
 }
 
-while (luvut.contains(Integer.valueOf(3))) {
+while (luvut.contains(3)) {
 luvut.remove(Integer.valueOf(3));
 }
 
@@ -6946,7 +6946,7 @@ public static void main(String[] args) {
     }
 
     // tarkastetaan onko listalla luku 3
-    while (luvut.contains(Integer.valueOf(3))) {
+    while (luvut.contains(3)) {
         luvut.remove(Integer.valueOf(3));  // jos löytyi, niin poistetaan se
     }
     // tehdään tämä whilessä jotta saadaan kaikki kolmoset poistetua!
@@ -6982,7 +6982,7 @@ public static void main(String[] args) {
     // tässä tulostetaan luvut
     tulosta(luvut);
 
-    while (luvut.contains(Integer.valueOf(3))) {
+    while (luvut.contains(3)) {
       luvut.remove(Integer.valueOf(3));
     }
 
@@ -7029,7 +7029,7 @@ public static void tulosta(ArrayList&lt;Integer&gt; luvut) {
 }
 
 public static void poista(ArrayList&lt;Integer&gt; luvut, int poistettava) {
-    while (luvut.contains(Integer.valueOf(poistettava))) {
+    while (luvut.contains(poistettava)) {
         luvut.remove(Integer.valueOf(poistettava));
     }
 }
