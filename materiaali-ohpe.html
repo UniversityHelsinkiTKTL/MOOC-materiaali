@@ -10742,8 +10742,6 @@ public class LottoRivi {
     private ArrayList&lt;Integer&gt; numerot;
 
     public LottoRivi() {
-        // Alustetaan lista numeroille
-        this.numerot = new ArrayList&lt;&gt;();
         // Arvo numerot heti LottoRivin luomisen yhteydessä
         this.arvoNumerot();
     }
@@ -10757,6 +10755,8 @@ public class LottoRivi {
     }
 
     public void arvoNumerot() {
+        // Alustetaan lista numeroille
+        this.numerot = new ArrayList&lt;&gt;();
         // Kirjoita numeroiden arvonta tänne käyttämällä metodia sisaltaaNumeron()
     }
 }
