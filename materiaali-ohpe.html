@@ -1280,6 +1280,93 @@ System.out.println(tulos);
 
 
 
+
+  <h3>Muuttujan arvon asettamiseen liittyviä väärinkäsityksiä</h3>
+
+
+  <p>Kun tietokone suorittaa ohjelmakoodia, suorittaa se sitä käsky kerrallaan, edeten aina täsmälleen siten, kuin ohjelmakoodissa sanotaan. Kun muuttujaan asetetaan arvo, tapahtuu aina sama asia, eli yhtäsuuruusmerkin oikealla puolella oleva arvo kopioidaan yhtäsuuruusmerkin vasemmalla puolella olevan muuttujan arvoksi, eli muuttujan nimeämään paikkaan.</p>
+
+  <p>On tärkeää, että ohjelmoija ymmärtää, että arvon asettaminen muuttujaan tekee aina saman asian.</p>
+
+  <p>Kolme yleistä väärinkäsitystä, jotka liittyvät muuttujan arvon asettamiseen ovat seuraavat:</p>
+
+  <ul>
+    <li>Muuttujan asettamisen näkeminen siirtona kopioimisen sijaan: ohjelmakoodin <code>eka = toka</code> suorituksen jälkeen ajatellaan, että muuttujan <code>toka</code> arvo on siirtynyt muuttujan <code>eka</code> arvoksi, jonka jälkeen muuttujalla <code>toka</code> ei ole enää arvoa, tai sen arvo on esimerkiksi nolla. Tämä ei pidä paikkansa, sillä ohjelmakoodin <code>eka = toka</code> suorituksessa muuttujan <code>toka</code> nimeämässä paikassa oleva arvo kopioidaan muuttujan <code>eka</code> nimeämään paikkaan. Muuttujan <code>toka</code> arvo ei siis muutu.</li>
+    <li>Muuttujan asettamisen näkeminen riippuvuutena kopioimisen sijaan: ohjelmakoodin <code>eka = toka</code> suorituksen jälkeen ajatellaan, että mikä tahansa muutos muuttujaan <code>toka</code> vaikuttaa automaattisesti myös muuttujaan <code>eka</code>. Tämä ei pidä paikkansa, sillä asetus -- kopiointi -- on yksittäinen tapahtuma. Se tapahtuu vain silloin, ohjelmakoodi <code>eka = toka</code> suoritetaan.</li>
+    <li>Kolmas väärinkäsitys liittyy kopioimisen suuntaan: ohjelmakoodin <code>eka = toka</code> suorituksessa ajatellaan, että muuttujan <code>toka</code> arvoksi kopioidaan muuttujan <code>eka</code> arvo. Tämä näkyy myös tilanteina, missä ohjelmoija voi vahingossa kirjoittaa esimerkiksi <code>42 = arvo</code> -- onneksi ohjelmointiympäristöt tukevat myös tässä.</li>
+  </ul>
+
+  <p>Ehkäpä paras tapa tietokoneen ohjelmakoodin suorittamisen ymmärtämiseen on paperin ja kynän käyttäminen. Kun luet ohjelmakoodia, kirjoita paperille uusien muuttujien nimet, sekä kirjoita ylös rivi riviltä, miten ohjelmakoodissa olevien muuttujien arvot muuttuvat. Havainnollistetaan suoritusta seuraavalla ohjelmakoodilla:</p>
+
+<pre class="sh_java">
+rivi 1: int eka = (1 + 1);
+rivi 2: int toka = eka + 3 * (2 + 5);
+rivi 3: 
+rivi 4: eka = 5;
+rivi 5:
+rivi 6: int kolmas = eka + toka;
+rivi 7: System.out.println(eka);
+rivi 8: System.out.println(toka);
+rivi 9: System.out.println(kolmas);
+</pre>
+
+    <p>Alla on kirjoitettu ylläolevan ohjelmakoodin suoritus auki.</p>
+
+<pre>
+rivi 1: luodaan muuttuja eka
+rivi 1: kopioidaan muuttujan eka arvoksi laskun 1 + 1 tulos
+rivi 1: muuttujan eka arvo on 2
+
+rivi 2: luodaan muuttuja toka
+rivi 2: lasketaan 2 + 5, 2 + 5 ->  7
+rivi 2: lasketaan 3 * 7, 3 * 7 -> 21
+rivi 2: lasketaan eka + 21
+rivi 2: kopioidaan muuttujan eka arvo laskuun, muuttujan eka arvo on 2
+rivi 2: lasketaan 2 + 21, 2 + 21 -> 23
+rivi 2: kopioidaan muuttujan toka arvoksi 23
+rivi 2: muuttujan toka arvo on 23
+
+rivi 3: (tyhjä, ei tehdä mitään)
+
+rivi 4: kopioidaan muuttujan eka arvoksi 5
+rivi 4: muuttujan eka arvo on 5
+
+rivi 5: (tyhjä, ei tehdä mitään)
+
+rivi 6: luodaan muuttuja kolmas
+rivi 6: lasketaan eka + toka
+rivi 6: kopioidaan muuttujan eka arvo laskuun, muuttujan eka arvo on 5
+rivi 6: lasketaan 5 + toka
+rivi 6: kopioidaan muuttujan toka arvo laskuun, muuttujan toka arvo on 23
+rivi 6: lasketaan 5 + 23 -> 28
+rivi 6: kopioidaan muuttujan kolmas arvoksi 28
+rivi 6: muuttujan kolmas arvo on 28
+
+rivo 7: tulostetaan muuttuja eka
+rivi 7: kopioidaan muuttujan eka arvo tulostettavaksi, muuttujan eka arvo on 5
+rivi 7: tulostetaan arvo 5
+
+rivi 8: tulostetaan muuttuja toka
+rivi 8: kopioidaan muuttujan toka arvo tulostettavaksi, muuttujan toka arvo on 23
+rivi 8: tulostetaan arvo 23
+
+rivi 9: tulostetaan muuttuja kolmas
+rivi 9: kopioidaan muuttujan kolmas arvo tulostettavaksi, muuttujan kolmas arvo on 28
+rivi 9: tulostetaan arvo 28
+</pre>
+
+
+    <p>Kirjota allaolevan ohjelmakoodin suoritus auki.</p> 
+
+<pre class="sh_java">
+int toka = 32;
+int eka = toka; 
+toka = 17;
+</pre>
+
+    <p>Mikä muuttujan <code>eka</code> arvo on lopuksi?</p>
+
+
   <h2 id="syötteen_lukeminen">Käyttäjän syötteen lukeminen</h2>
 
   <p>Tähän asti ohjelmamme ovat olleet kovin yksipuolisia. Seuraavaksi luemme <em>syötettä</em> käyttäjältä.  Käytämme syötteen lukemiseen erityistä <em>Scanner</em>-apuvälinettä.</p>
