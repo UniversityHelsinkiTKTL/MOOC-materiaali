@@ -4349,16 +4349,16 @@ public static void main(String[] args) {
     tervehdi(nimi1 + " " + nimi2);
 
     int ika = 20;
-    tervehdi("Jani " + ika + " vuotta");
+    tervehdi("Veera " + ika + " vuotta");
 }
 </pre>
 
 <pre>
 Hei Ilari S, terveiset metodimaailmasta!
-Hei Jani 20 vuotta, terveiset metodimaailmasta!
+Hei Veera 20 vuotta, terveiset metodimaailmasta!
 </pre>
 
-  <p>Molemmissa tapauksissa metodilla on edelleen vain 1 parametri. Jos parametri on lause, kuten esimerkiksi <code>nimi1 + " " + nimi2</code>, lasketaan lauseen arvo ennen metodin kutsumista. Ensimmäisessä tapauksessa parametrin arvo saadaan merkkijonokatenaationa <code>nimi1 + " " + nimi2</code> joka siis on arvoltaan <i>Ilari S</i> ja jälkimmäisessä tapauksessa merkkijonokatenaatiosta <code>"Jani " + ika + " vuotta"</code>. </p>
+  <p>Molemmissa tapauksissa metodilla on edelleen vain 1 parametri. Jos parametri on lause, kuten esimerkiksi <code>nimi1 + " " + nimi2</code>, lasketaan lauseen arvo ennen metodin kutsumista. Ensimmäisessä tapauksessa parametrin arvo saadaan merkkijonokatenaationa <code>nimi1 + " " + nimi2</code> joka siis on arvoltaan <i>Ilari S</i> ja jälkimmäisessä tapauksessa merkkijonokatenaatiosta <code>"Veera " + ika + " vuotta"</code>. </p>
 
   <h3>Monta parametria</h3>
 
@@ -4371,8 +4371,8 @@ public static void tervehdi(String nimi, String mistaTerveiset) {
 </pre>
 
 <pre class="sh_java">
-String kuka = "Matti";
-String terveiset = "Kyröjoelta";
+String kuka = "Milla";
+String terveiset = "Monacosta";
 
 tervehdi(kuka, terveiset);
 tervehdi(kuka, terveiset + " ja Kumpulasta");
@@ -4381,8 +4381,8 @@ tervehdi(kuka, terveiset + " ja Kumpulasta");
   <p>Jälkimmäisessä <code>tervehdi</code>-funktion kutsussa toinen parametri muodostetaan katenoimalla muuttujaan <code>terveiset</code> teksti <code>" ja Kumpulasta"</code>.  Tämä suoritetaan ennen varsinaista funktion suoritusta.</p>
 
 <pre>
-Hei Matti, terveiset Kyröjoelta
-Hei Matti, terveiset Kyröjoelta ja Kumpulasta
+Hei Milla, terveiset Monacosta
+Hei Milla, terveiset Monacosta ja Kumpulasta
 </pre>
 
 
@@ -4390,6 +4390,7 @@ Hei Matti, terveiset Kyröjoelta ja Kumpulasta
 
 
   <h3>Metodi kutsuu toista metodia</h3>
+
 <p>main ei ole suinkaan ainoa joka voi kutsua metodeita. Metodit voivat kutsua myös toisiaan. Tehdään metodi <code>tervehdiMontaKertaa</code>, joka tervehtii käyttäjää useasti metodin <code>tervehdi</code> avulla:</p>
 
 <pre class="sh_java">
