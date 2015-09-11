@@ -6348,9 +6348,9 @@ public class ListaOhjelma {
 public static void main(String[] args) {
     ArrayList&lt;String&gt; opettajat = new ArrayList&lt;&gt;();
 
-    opettajat.add("Juha");
+    opettajat.add("Veera");
     opettajat.add("Jyri");
-    opettajat.add("Markus");
+    opettajat.add("Verna");
     opettajat.add("Mikko");
     opettajat.add("Pihla");
     opettajat.add("Sami");
@@ -6383,8 +6383,8 @@ public static void main(String[] args) {
 
 <pre>
 opettajien lukumäärä 6
-listalla ensimmäisena Juha
-listalla kolmantena Markus
+listalla ensimmäisena Veera
+listalla kolmantena Verna
 Juha ei ole opettajien listalla
 </pre>
 
@@ -6404,8 +6404,8 @@ public static void main(String[] args) {
 
     opettajat.add("Sami");
     opettajat.add("Samu");
-    opettajat.add("Tuomo L");
-    opettajat.add("Tuomo K");
+    opettajat.add("Anne");
+    opettajat.add("Anna");
 
     System.out.println(opettajat.get(0));
     System.out.println(opettajat.get(1));
@@ -6417,8 +6417,8 @@ public static void main(String[] args) {
 <pre>
 Sami
 Samu
-Tuomo L
-Tuomo K
+Anne
+Anna
 </pre>
 
   <p>Ratkaisu on kuitenkin erittäin kömpelö. Entä jos listalla olisi enemmän alkiota? Tai vähemmän? Entäs jos ei olisi edes tiedossa listalla olevien alkioiden määrää?</p>
@@ -6431,8 +6431,8 @@ public static void main(String[] args) {
 
     opettajat.add("Sami");
     opettajat.add("Samu");
-    opettajat.add("Tuomo L");
-    opettajat.add("Tuomo K");
+    opettajat.add("Anne");
+    opettajat.add("Anna");
 
     int paikka = 0;
     System.out.println(opettajat.get(paikka));
@@ -6453,8 +6453,8 @@ public static void main(String[] args) {
 
     opettajat.add("Sami");
     opettajat.add("Samu");
-    opettajat.add("Tuomo L");
-    opettajat.add("Tuomo K");
+    opettajat.add("Anne");
+    opettajat.add("Anna");
 
     int paikka = 0;
     while (paikka &lt; opettajat.size()) {  // muistatko miksi paikka &lt;= opettajat.size() ei toimi?
@@ -6479,10 +6479,10 @@ public static void main(String[] args) {
     ArrayList&lt;String&gt; opettajat = new ArrayList&lt;&gt;();
 
     opettajat.add("Antti");
-    opettajat.add("Pekka");
-    opettajat.add("Juhana");
+    opettajat.add("Anne");
     opettajat.add("Martin");
     opettajat.add("Matti");
+    opettajat.add("Veera");
 
     for (String opettaja : opettajat) {
         System.out.println(opettaja);
@@ -6492,7 +6492,7 @@ public static void main(String[] args) {
 
   <p>Kuten huomaame, ei listalla olevien merkkijonojen paikkanumeroista tarvitse välittää, vaan for käy listan sisällön läpi "automaattisesti".</p>
 
-  <p>Komennon for aaltosulkujen sisällä olevassa koodissa käytetään muuttujaa <code>opettaja</code>, joka on määritelty for-rivillä kaksoispisteen vasemmalla puolella. Käy niin, että kukin listalla <code>opettajat</code> oleva merkkijono asetetaan vuorollaan muuttujan <code>opettaja</code> arvoksi. Eli kun for:iin mennään, on <code>opettaja</code> ensin <em>Antti</em>, forin toisella toistolla <code>opettaja</code> on <em>Pekka</em>, jne </p>
+  <p>Komennon for aaltosulkujen sisällä olevassa koodissa käytetään muuttujaa <code>opettaja</code>, joka on määritelty for-rivillä kaksoispisteen vasemmalla puolella. Käy niin, että kukin listalla <code>opettajat</code> oleva merkkijono asetetaan vuorollaan muuttujan <code>opettaja</code> arvoksi. Eli kun for:iin mennään, on <code>opettaja</code> ensin <em>Antti</em>, forin toisella toistolla <code>opettaja</code> on <em>Anne</em>, jne </p>
 
   <p>Vaikka <code>for</code>-komento voi tuntua aluksi hieman oudolta, kannattaa sen käyttöön ehdottomasti totutella!</p>
 
@@ -6588,12 +6588,11 @@ public class Ohjelma {
   <p>Tulostuu:</p>
 
 <pre>
+Anne
 Antti
-Arto
-Juhana
 Martin
 Matti
-Pekka
+Veera
 </pre>
 
   <p>Annetaan siis lista parametriksi metodille <code>Collections.sort</code>. <strong>Huom!</strong> Jotta Collections:in apuvälineet toimisivat, on ohjelman yläosassa oltava <code>import java.util.Collections;</code> tai <code>import java.util.*;</code></p>
@@ -6783,8 +6782,8 @@ C++
 <pre class="sh_java">
 ArrayList&lt;String&gt; tyypit = new ArrayList&lt;&gt;();
 tyypit.add("Pekka");
-tyypit.add("Mauri");
-tyypit.add("Jore");
+tyypit.add("Pihla");
+tyypit.add("Verna");
 tyypit.add("Simppa");
 
 System.out.println("Tyypit:");
@@ -6803,8 +6802,8 @@ System.out.println(tyypit);
 
 <pre>
 Tyypit:
-[Pekka, Mauri, Jore, Simppa]
-[Jore, Mauri, Pekka]
+[Pekka, Pihla, Verna, Simppa]
+[Pekka, Pihla, Simppa]
 </pre>
     </div>
   </div>
@@ -7237,7 +7236,6 @@ public static boolean kaikkiPositiivisia(ArrayList&lt;Integer&gt; luvut) {
     // jos tultiin tänne asti, ei yhtään negatiivista löytynyt
     // siispä palautetaan true
     return true;
-    }
 }
 </pre>
   <p>Eli jos lukujen listaa läpikäydessä törmätään negatiiviseen lukuun, voidaan metodista poistua heti palauttamalla false. Jos listalla ei ole yhtään negatiivista, päädytään loppuun ja voidaan palauttaa true. Olemme päässeet metodissa kokonaan eroon apumuuttujan käytöstä!</p>
