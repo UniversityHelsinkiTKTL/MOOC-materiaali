@@ -8669,7 +8669,7 @@ public class Henkilo {
 
   <pre class="sh_java">
 public static void main(String[] args) {
-    Henkilo pekka = new Henkilo("Pekka");
+    Henkilo ada = new Henkilo("Ada");
     // ...
 }
 </pre>
@@ -8687,7 +8687,7 @@ public class Henkilo {
     }
 }</pre>
 
-  <p>Konstruktori on nimeltään sama kuin luokan nimi. Yllä luokka (<em>class</em>) on <code>Henkilo</code>, ja konstruktori <code>public Henkilo(String nimiAlussa)</code>. Konstruktorille parametrina tuleva arvo tulee sulkuihin konstruktorin nimen perään. Konstruktorin voi ajatella olevan metodi, jonka Java suorittaa kun olio luodaan komennolla <code>new Henkilo("Pekka");</code> Oliot luodaan aina konstruktorin avulla. </p>
+  <p>Konstruktori on nimeltään sama kuin luokan nimi. Yllä luokka (<em>class</em>) on <code>Henkilo</code>, ja konstruktori <code>public Henkilo(String nimiAlussa)</code>. Konstruktorille parametrina tuleva arvo tulee sulkuihin konstruktorin nimen perään. Konstruktorin voi ajatella olevan metodi, jonka Java suorittaa kun olio luodaan komennolla <code>new Henkilo("Ada");</code> Oliot luodaan aina konstruktorin avulla. </p>
 
   <p>Muutama huomio: konstruktorin sisällä on komento <code>this.ika = 0</code>. Tässä asetetaan arvo 0 <em>juuri tämän olion, eli "this"-olion</em> sisäiselle muuttujalle <code>ika</code>. Toinen komento <code>this.nimi = nimiAlussa;</code> taas asettaa juuri tämän olion sisäiselle muuttujalle <code>nimi</code> arvoksi parametrina annetun merkkijonon. Olion muuttujat <code>ika</code> ja <code>nimi</code> näkyvät konstruktorissa ja muuallakin olion sisällä automaattisesti. Niihin viitataan <code>this</code>-etuliitteellä. Koska niissä on private-määre, niin olion ulkopuolelle ne eivät näy.</p>
 
@@ -8743,11 +8743,11 @@ public class Henkilo {
 public class Main {
 
     public static void main(String[] args) {
-        Henkilo pekka = new Henkilo("Pekka");
+        Henkilo ada = new Henkilo("Ada");
         Henkilo antti = new Henkilo("Antti");
         Henkilo martin = new Henkilo("Martin");
 
-        pekka.tulostaHenkilo();
+        ada.tulostaHenkilo();
         antti.tulostaHenkilo();
         martin.tulostaHenkilo();
     }
@@ -8756,7 +8756,7 @@ public class Main {
   <p>Tulostuu:</p>
 
 <pre>
-Pekka, ikä 0 vuotta
+Ada, ikä 0 vuotta
 Antti, ikä 0 vuotta
 Martin, ikä 0 vuotta
 </pre>
@@ -8811,18 +8811,18 @@ public class Henkilo {
 public class Main {
 
     public static void main(String[] args) {
-        Henkilo pekka = new Henkilo("Pekka");
+        Henkilo ada = new Henkilo("Ada");
         Henkilo antti = new Henkilo("Antti");
 
-        pekka.tulostaHenkilo();
+        ada.tulostaHenkilo();
         antti.tulostaHenkilo();
 
         System.out.println("");
 
-        pekka.vanhene();
-        pekka.vanhene();
+        ada.vanhene();
+        ada.vanhene();
 
-        pekka.tulostaHenkilo();
+        ada.tulostaHenkilo();
         antti.tulostaHenkilo();
     }
 }
@@ -8831,14 +8831,14 @@ public class Main {
   <p>Ohjelman tulostus on seuraava:</p>
 
 <pre>
-Pekka, ikä 0 vuotta
+Ada, ikä 0 vuotta
 Antti, ikä 0 vuotta
 
-Pekka, ikä 2 vuotta
+Ada, ikä 2 vuotta
 Antti, ikä 0 vuotta
 </pre>
 
-  <p>Eli "syntyessään" molemmat oliot ovat nollavuotiaita (konstruktorissa suoritetaan mm. rivi <code>this.ika = 0;</code>). Olion <code>pekka</code> metodia <code>vanhene</code> kutsutaan kaksi kertaa. Kuten tulostus näyttää, tämä saa aikaan sen että Pekan ikä on vanhenemisen jälkeen 2 vuotta. Kutsumalla metodia Pekkaa vastaavalle oliolle, toisen henkilöolion ikä ei muutu.</p>
+  <p>Eli "syntyessään" molemmat oliot ovat nollavuotiaita (konstruktorissa suoritetaan mm. rivi <code>this.ika = 0;</code>). Olion <code>ada</code> metodia <code>vanhene</code> kutsutaan kaksi kertaa. Kuten tulostus näyttää, tämä saa aikaan sen että Adan ikä on vanhenemisen jälkeen 2 vuotta. Kutsumalla metodia Adaa vastaavalle oliolle, toisen henkilöolion ikä ei muutu.</p>
 
   <p>Jokaisella oliolla on siis oma sisäinen tilansa.</p>
 
