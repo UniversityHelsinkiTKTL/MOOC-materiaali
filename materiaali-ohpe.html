@@ -10989,15 +10989,15 @@ public Henkilo(String nimi, int ika) {
 <pre class="sh_java">
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka", 24);
-    Henkilo esko = new Henkilo("Esko");
+    Henkilo ada = new Henkilo("Ada");
 
     System.out.println(pekka);
-    System.out.println(esko);
+    System.out.println(ada);
 }
 </pre>
 <pre>
 Pekka, ikä 24 vuotta
-Esko, ikä 0 vuotta
+Ada, ikä 0 vuotta
 </pre>
 
 <p>Tekniikkaa jossa luokalla on kaksi konstruktoria, kutsutaan <em>konstruktorin kuormittamiseksi</em>. Luokalla voi siis olla useita konstruktoreja, jotka poikkeavat toisistaanparametriensa määrältä tai tyypeiltä. Ei kuitenkaan ole mahdollista tehdä kahta erilaista konstruktoria joilla on täysin saman tyyppiset parametrit. Emme siis voi edellisten lisäksi lisätä konstruktoria <code>public Henkilo(String nimi, int paino)</code> sillä Javan on mahdoton erottaa tätä kaksiparametrisesta konstruktorissa, jossa luku tarkoittaa ikää.</p>
@@ -11661,10 +11661,10 @@ public class Henkilo {
 <p>Haluamme vertailla kahden henkilön ikää. Vertailu voidaan hoitaa usealla tavalla. Henkilölle voitaisiin määritellä getterimetodi <code>getIka</code> ja kahden henkilön iän vertailu tapauhtuisi tällöin seuraavasti:</p>
 <pre class="sh_java">
 Henkilo pekka = new Henkilo("Pekka");
-Henkilo juhana = new Henkilo("Juhana")
+Henkilo ada = new Henkilo("Ada")
 
-if (pekka.getIka() &gt; juhana.getIka()) {
-    System.out.println(pekka.getNimi() + " on vanhempi kuin " + juhana.getNimi());
+if (pekka.getIka() &gt; ada.getIka()) {
+    System.out.println(pekka.getNimi() + " on vanhempi kuin " + ada.getNimi());
 }
 </pre>
 
@@ -11676,19 +11676,19 @@ if (pekka.getIka() &gt; juhana.getIka()) {
 <pre class="sh_java">
 public static void main(String[] args) {
     Henkilo pekka = new Henkilo("Pekka", 24);
-    Henkilo antti = new Henkilo("Antti", 22);
+    Henkilo ada = new Henkilo("Ada", 22);
 
-    if (pekka.vanhempiKuin(antti)) {  //  sama kun pekka.vanhempiKuin(antti)==true
-        System.out.println(pekka.getNimi() + " on vanhempi kuin " + antti.getNimi());
+    if (pekka.vanhempiKuin(ada)) {  //  sama kun pekka.vanhempiKuin(ada)==true
+        System.out.println(pekka.getNimi() + " on vanhempi kuin " + ada.getNimi());
     } else {
-        System.out.println(pekka.getNimi() + " ei ole vanhempi kuin " + antti.getNimi());
+        System.out.println(pekka.getNimi() + " ei ole vanhempi kuin " + ada.getNimi());
     }
 }</pre>
 
-<p>Tässä siis kysytään onko pekka anttia vanhempi "jos pekka on vanhempi kuin antti". Metodi <code>vanhempiKuin</code> palauttaa arvon <code>true</code> jos olio jonka kohdalla metodia kutsutaan (<code>olio.vanhempiKuin(parametrinaAnnettavaOlio)</code>) on vanhempi kuin parametrina annettava olio, ja <code>false</code> muuten. Käytännössä yllä kutsutaan "Pekkaa" vastaavan olion, johon muuttuja <code>pekka</code> viittaa, metodia <code>vanhempiKuin</code>, jolle annetaan parametriksi "Anttia" vastaavan olion viite <code>antti</code>. </p>
+<p>Tässä siis kysytään onko pekka anttia vanhempi "jos pekka on vanhempi kuin ada". Metodi <code>vanhempiKuin</code> palauttaa arvon <code>true</code> jos olio jonka kohdalla metodia kutsutaan (<code>olio.vanhempiKuin(parametrinaAnnettavaOlio)</code>) on vanhempi kuin parametrina annettava olio, ja <code>false</code> muuten. Käytännössä yllä kutsutaan "Pekkaa" vastaavan olion, johon muuttuja <code>pekka</code> viittaa, metodia <code>vanhempiKuin</code>, jolle annetaan parametriksi "Adaa" vastaavan olion viite <code>antti</code>. </p>
 <p>Ohjelman tulostaa:</p>
 <pre>
-Pekka on vanhempi kuin Antti
+Pekka on vanhempi kuin Ada
 </pre>
 
 <p>Metodi saa parametrikseen henkilöolion (tarkemmin sanottuna viitteen henkilöolioon, eli "langan päässä" olevan henkilön) ja vertaa omaa ikäänsä <code>this.ika</code> verrattavaksi annetun henkilön ikään <code>verrattava.ika</code>. Toteutus näyttää seuraavalta:</p>
@@ -12237,7 +12237,7 @@ olohuone.setVasen(makuuhuone);
 kylpyhuone.setVasen(makuuhuone);
 </pre>
 
-<p>Huoneistosokkelomme on siitä mielenkiintoinen, että siellä ei ole ovia takaisinpäin. Tämä on tarkoituksellista tässä esimerkissä -- näemme kohta miksi :). Pohditaan seuraavaksi huoneiden läpikäyntiä -- tehdään luokka <code>Huoneistokauppias</code>, joka käy huoneiston jokaisen huoneen läpi annetusta huoneesta lähtien, ja kertoo huoneen nimen.</p>
+<p>Huoneistosokkelomme on siitä mielenkiintoinen, että siellä ei ole ovia takaisinpäin. Tämä on tarkoituksellista tässä esimerkissä -- näemme kohta miksi. Pohditaan seuraavaksi huoneiden läpikäyntiä -- tehdään luokka <code>Huoneistokauppias</code>, joka käy huoneiston jokaisen huoneen läpi annetusta huoneesta lähtien, ja kertoo huoneen nimen.</p>
 
 <pre class="sh_java">
 public class Huoneistokauppias {
@@ -12350,11 +12350,30 @@ Poistun huoneesta Olohuone
 Poistun huoneesta Eteinen
 </pre>
 
-<p>Huoneistokauppiaamme ei vieläkään käy kaikissa huoneissa, mikä oli alkuperäinen tavoite. Kokeile esimerkkiä itse, ja muokkaa koodia siten, että kaikissa huoneissa käydään!</p>
+<p>Huoneistokauppiaamme ei vieläkään käy kaikissa huoneissa. Lisätään sille mahdollisuus käyttää oikeaa ovea.</p>
+
+<pre class="sh_java">
+    public void vieraile(Huone huone) {
+        if (huone == null) {
+            return;
+        }
+
+        System.out.println("Olen huoneessa " + huone.getNimi());
+        
+        this.vieraile(huone.valitseVasenOvi());
+        this.vieraile(huone.valitseOikeaOvi());
+
+        System.out.println("Poistun huoneesta " + huone.getNimi());
+    }
+</pre>
+
+<p>Pohdi kynän ja paperin avulla mitä ylläolevassa esimerkissä tapahtuu.</p>
 
 <div class="tehtavat">
   <div class="tehtava">
     <h3>Sukututkija</h3>
+
+    <p><strong>Huom! Lue huolella edellinen esimerkki läpi ja kokeile sitä ennen tämän tehtävän tekemistä!</strong></p>
 
     <p>Tehtäväpohjassa tulee mukana luokka <code>Henkilo</code>, jolla on oliomuuttujat nimi sekä isä ja äiti. Koodissa on lisäksi myös konstruktori, jolla asetetaan luotavalle henkilölle nimi. Konstruktorin lisäksi luokassa on gettereitä ja settereitä, joilla pääsee käsiksi oliomuuttujiin.</p>
 
