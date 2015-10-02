@@ -13886,7 +13886,7 @@ public class PainonvartijaYhdistys {
 
 <pre class="sh_java">
 public static void main(String[] args) {
-    PainonvartijaYhdistys painonVartija = new PainonvartijaYhdistys("Kumpluan paino", 25);
+    PainonvartijaYhdistys painonVartija = new PainonvartijaYhdistys("Kumpulan paino", 25);
 
     // ..
 
@@ -14247,10 +14247,10 @@ public class Henkilo {
 <pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
-        Henkilo joni = new Henkilo("Joni", 15, 1, 1993);
+        Henkilo verna = new Henkilo("Verna", 15, 1, 1993);
         Henkilo leo = new Henkilo("Leo", 1, 1, 1990);
 
-        System.out.println(joni.getNimi() + " ikä " + joni.ika() + " vuotta");
+        System.out.println(verna.getNimi() + " ikä " + verna.ika() + " vuotta");
         System.out.println(leo.getNimi() + " ikä " + leo.ika() + " vuotta");
     }
 }
@@ -14259,7 +14259,7 @@ public class Main {
   <p>Tulostus:</p>
 
 <pre>
-Joni ikä 22 vuotta
+Verna ikä 22 vuotta
 Leo ikä 25 vuotta
 </pre>
 
@@ -14279,10 +14279,10 @@ public class Henkilo {
 public class Main {
     public static void main(String[] args) {
         Henkilo pekka = new Henkilo("Pekka", 15, 2, 1983);
-        Henkilo martin = new Henkilo("Martin", 1, 3, 1983);
+        Henkilo venla = new Henkilo("Venla", 22, 7, 2015);
 
-        System.out.println(martin.getNimi() + " vanhempi kuin " + pekka.getNimi() + ": " + martin.vanhempiKuin(pekka));
-        System.out.println(pekka.getNimi() + " vanhempi kuin " + martin.getNimi() + ": " + pekka.vanhempiKuin(martin));
+        System.out.println(venla.getNimi() + " vanhempi kuin " + pekka.getNimi() + ": " + venla.vanhempiKuin(pekka));
+        System.out.println(pekka.getNimi() + " vanhempi kuin " + venla.getNimi() + ": " + pekka.vanhempiKuin(venla));
     }
 }
 </pre>
@@ -14290,8 +14290,8 @@ public class Main {
   <p>Tulostus:</p>
 
 <pre>
-Martin vanhempi kuin Pekka: false
-Pekka vanhempi kuin Martin: true
+Venla vanhempi kuin Pekka: false
+Pekka vanhempi kuin Venla: true
 </pre>
 
   <h4>Uusia konstruktoreja</h4>
@@ -14307,10 +14307,10 @@ Pekka vanhempi kuin Martin: true
 public class Main {
       public static void main(String[] args) {
       Henkilo pekka = new Henkilo("Pekka", new Paivays(15, 2, 1983));
-      Henkilo sepe = new Henkilo("Sepe");
+      Henkilo iina = new Henkilo("Iina");
 
       System.out.println(pekka);
-      System.out.println(sepe);
+      System.out.println(iina);
     }
 }
 </pre>
@@ -14319,7 +14319,7 @@ public class Main {
 
 <pre>
 Pekka, syntynyt 15.2.1983
-Sepe, syntynyt 13.2.2015
+Iina, syntynyt 6.10.2015
 </pre>
   <p><b>Huom:</b> jälkimmäinen rivi riippuu päivämäärästä, jolloin koodi ajetaan!</p>
 </div>
@@ -14647,9 +14647,8 @@ for (int luku : luvut) {
 <pre class="sh_java">
 String[] nimet = {"Juhana L.", "Matti P.", "Matti L.", "Pekka M."};
 
-    for (String nimi : nimet) {
-        System.out.println(nimi);
-    }
+for (String nimi : nimet) {
+    System.out.println(nimi);
 }
 </pre>
 
