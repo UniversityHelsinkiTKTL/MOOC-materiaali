@@ -15468,27 +15468,27 @@ public class Henkilo {
 <pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
-        Henkilo pekka = new Henkilo("Pekka");
+        Henkilo ada = new Henkilo("Ada");
         Henkilo antti = new Henkilo("Antti");
         Henkilo juhana = new Henkilo("Juhana");
 
         for (int i = 0; i &lt; 30; i++) {
-            pekka.vanhene();
+            ada.vanhene();
             juhana.vanhene();
         }
 
         antti.vanhene();
 
+        if (ada.taysiIkainen()) {
+            System.out.println(ada.getNimi() + " on täysi-ikäinen");
+        } else {
+            System.out.println(ada.getNimi() + " on alaikäinen ");
+        }
+
         if (antti.taysiIkainen()) {
             System.out.println(antti.getNimi() + " on täysi-ikäinen");
         } else {
             System.out.println(antti.getNimi() + " on alaikäinen");
-        }
-
-        if (pekka.taysiIkainen()) {
-            System.out.println(pekka.getNimi() + " on täysi-ikäinen");
-        } else {
-            System.out.println(pekka.getNimi() + " on alaikäinen ");
         }
 
         if (juhana.taysiIkainen()) {
@@ -15507,20 +15507,20 @@ public class Main {
 public class Main {
 
     public static void main(String[] args) {
-        Henkilo pekka = new Henkilo("Pekka");
+        Henkilo ada = new Henkilo("Ada");
         Henkilo antti = new Henkilo("Antti");
         Henkilo juhana = new Henkilo("Juhana");
 
         for (int i = 0; i &lt; 30; i++) {
-            pekka.vanhene();
+            ada.vanhene();
             juhana.vanhene();
         }
 
         antti.vanhene();
 
-        ilmoitaTaysiIkaisyys(antti);
+        ilmoitaTaysiIkaisyys(ada);
 
-        ilmoitaTaysiIkaisyys(pekka);
+        ilmoitaTaysiIkaisyys(antti);
 
         ilmoitaTaysiIkaisyys(juhana);
     }
@@ -16834,7 +16834,7 @@ Luku 99 ei ole taulukossa
 public static void main(String[] args) {
     Henkilo[] henkilot = new Henkilo[3];
 
-    henkilot[0] = new Henkilo("Pekka");
+    henkilot[0] = new Henkilo("Ada");
     henkilot[1] = new Henkilo("Antti");
     henkilot[2] = new Henkilo("Juhana");
 
@@ -16850,15 +16850,15 @@ public static void main(String[] args) {
 }
 </pre>
 
-  <p>Alussa luodaan taulukko johon mahtuu 3 henkilöolioa. Laitetaan Pekka lokeroon 0, Antti lokeroon 1 ja Juhana lokeroon 2. Vanhennetaan kaikkia 30 vuotta ja tarkastetaan kaikkien täysi-ikäisyys edellisen luvun metodia hyödyntäen.</p>
+  <p>Alussa luodaan taulukko johon mahtuu 3 henkilöolioa. Laitetaan Ada lokeroon 0, Antti lokeroon 1 ja Juhana lokeroon 2. Vanhennetaan kaikkia 30 vuotta ja tarkastetaan kaikkien täysi-ikäisyys edellisen luvun metodia hyödyntäen.</p>
 
 <p>Sama esimerkki ArrayListien avulla:</p>
 
 <pre class="sh_java">
 public static void main(String[] args) {
-    ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;Henkilo&gt;();
+    ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
 
-    henkilot.add(new Henkilo("Pekka"));
+    henkilot.add(new Henkilo("Ada"));
     henkilot.add(new Henkilo("Antti"));
     henkilot.add(new Henkilo("Juhana"));
 
