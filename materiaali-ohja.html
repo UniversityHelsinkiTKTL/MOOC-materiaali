@@ -1263,7 +1263,7 @@ public class Kirja {
       <div class="tehtava">
         <h3>Hymiöt</h3>
 
-	<p class="hidden-in-mooc ignore-in-mooc"><strong>Huom! Tehtävät löytyvät TMC:stä kurssin k2015-ohja alta. Palvelimen osoitteena käytetään https://tmc.mooc.fi/hy</strong></p>
+	<p class="hidden-in-mooc ignore-in-mooc"><strong>Huom! Tehtävät löytyvät TMC:stä kurssin hy-s2015-ohja alta. Palvelimen osoitteena käytetään https://tmc.mooc.fi/hy</strong></p>
 
         <p>Laadi tehtavapohjan mukana tulevalle luokalle <code>Hymiot</code> apumetodi <code>private static void tulostaHymioityna(String merkkijono)</code>. Metodin tulee tulostaa annettu merkkijono hymiöillä ympyröitynä. Käytä hymiönä merkkijonoa <code>:)</code>.</p>
 
@@ -2204,15 +2204,15 @@ public class Main {
         Tavara puhelin = new Tavara("Nokia 3210", 1);
         Tavara tiiliskivi = new Tavara("tiiliskivi", 4);
 
-        Matkalaukku matinLaukku = new Matkalaukku(10);
-        matinLaukku.lisaaTavara(kirja);
-        matinLaukku.lisaaTavara(puhelin);
+        Matkalaukku adanLaukku = new Matkalaukku(10);
+        adanLaukku.lisaaTavara(kirja);
+        adanLaukku.lisaaTavara(puhelin);
 
         Matkalaukku pekanLaukku = new Matkalaukku(10);
         pekanLaukku.lisaaTavara(tiiliskivi);
 
         Lastiruuma lastiruuma = new Lastiruuma(1000);
-        lastiruuma.lisaaMatkalaukku(matinLaukku);
+        lastiruuma.lisaaMatkalaukku(adanLaukku);
         lastiruuma.lisaaMatkalaukku(pekanLaukku);
 
         System.out.println(lastiruuma);
@@ -2237,15 +2237,15 @@ public class Main {
         Tavara puhelin = new Tavara("Nokia 3210", 1);
         Tavara tiiliskivi = new Tavara("tiiliskivi", 4);
 
-        Matkalaukku matinLaukku = new Matkalaukku(10);
-        matinLaukku.lisaaTavara(kirja);
-        matinLaukku.lisaaTavara(puhelin);
+        Matkalaukku adanLaukku = new Matkalaukku(10);
+        adanLaukku.lisaaTavara(kirja);
+        adanLaukku.lisaaTavara(puhelin);
 
         Matkalaukku pekanLaukku = new Matkalaukku(10);
         pekanLaukku.lisaaTavara(tiiliskivi);
 
         Lastiruuma lastiruuma = new Lastiruuma(1000);
-        lastiruuma.lisaaMatkalaukku(matinLaukku);
+        lastiruuma.lisaaMatkalaukku(adanLaukku);
         lastiruuma.lisaaMatkalaukku(pekanLaukku);
 
         System.out.println("Ruuman matkalaukuissa on seuraavat tavarat:");
