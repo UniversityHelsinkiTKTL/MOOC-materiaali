@@ -4844,15 +4844,15 @@ public int compareTo(Kerholainen kerholainen) {
 List&lt;Kerholainen&gt; kerholaiset = new ArrayList&lt;&gt;();
 kerholaiset.add(new Kerholainen("mikael", 182));
 kerholaiset.add(new Kerholainen("matti", 187));
-kerholaiset.add(new Kerholainen("joel", 184));
+kerholaiset.add(new Kerholainen("ada", 184));
 
 System.out.println(kerholaiset);
 Collections.sort(kerholaiset);
 System.out.println(kerholaiset);</pre>
 
 <pre>
-[mikael (182), matti (187), joel (184)]
-[mikael (182), joel (184), matti (187)]</pre>
+[mikael (182), matti (187), ada (184)]
+[mikael (182), ada (184), matti (187)]</pre>
 
   <p>Jos kerholaiset haluaa järjestää käänteiseen järjestykseen, riittää vain <code>compareTo</code>-metodissa olevien muuttujien paikan vaihtaminen.</p>
 
