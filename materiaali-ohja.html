@@ -7302,10 +7302,10 @@ public class Tehtavakirjanpito {
 
 <pre class="sh_java">
 Tehtavakirjanpito kirjanpito = new Tehtavakirjanpito();
-kirjanpito.lisaa("Mikael", 3);
-kirjanpito.lisaa("Mikael", 4);
-kirjanpito.lisaa("Mikael", 3);
-kirjanpito.lisaa("Mikael", 3);
+kirjanpito.lisaa("Ada", 3);
+kirjanpito.lisaa("Ada", 4);
+kirjanpito.lisaa("Ada", 3);
+kirjanpito.lisaa("Ada", 3);
 
 kirjanpito.lisaa("Pekka", 4);
 kirjanpito.lisaa("Pekka", 4);
@@ -7318,7 +7318,7 @@ kirjanpito.tulosta();</pre>
 <pre>
 Matti: [1, 2]
 Pekka: [4]
-Mikael: [3, 4]</pre>
+Ada: [3, 4]</pre>
 
 
     <p>Huomaamme että käyttäjien nimet eivät tulostu esimerkissä järjestyksessä. Tämä selittyy sillä että <code>HashMap</code>-tyyppisessä hajautustaulussa alkioiden tallennus tapahtuu <code>hashCode</code>-metodin palauttaman hajautusarvon perusteella, eikä se liity millään tavalla alkioiden järjestykseen.</p>
