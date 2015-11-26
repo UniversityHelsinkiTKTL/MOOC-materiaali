@@ -11416,28 +11416,27 @@ public class Main {
 
 
 
-<div class="panel-group" id="2tehtavanvaihto-flap">
+
+<div class="panel-group" id="2tehtavanvaihto-wk13">
   <div class="panel panel-default">
-    <a class="panel-title" data-toggle="collapse" data-parent="#2tehtavanvaihto-flap" href="#2tehtavanvaihto-flap2">
+    <a class="panel-title" data-toggle="collapse" data-parent="#2tehtavanvaihto-wk13" href="#2tehtavanvaihto-wk132">
       <div class="panel-heading">
-	<h4 id="taskswitching-form-flap-legend">Kysely / tutkimus: Tehtävänvaihtotesti</h4>
+	<h4 id="taskswitching-form-wk13-legend">Kysely / tutkimus: Tehtävänvaihtotesti</h4>
     </div>
     </a>
-    <div class="panel-collapse collapse" id="2tehtavanvaihto-flap2">
+    <div class="panel-collapse collapse" id="2tehtavanvaihto-wk132">
       <div class="panel-body">
 	
 	<p>Tässä osallistut taas kokeellisessa psykologiassa käytettyyn <a href="http://en.wikipedia.org/wiki/Task_switching_(psychology)" target="_blank">tehtävänvaihtotestiin</a>, missä tutkitaan aivojen mukautumista kahden tai useamman samanaikaisen tehtävän suorittamiseen. Tavoitteenamme on selvittää vaikuttaako ohjelmointi aivojen kykyyn hoitaa useampia samanaikaisia tehtäviä. Tämä testi tehdään useamman kerran kurssin aikana.</p>
 
-	<p>Toisin kuin edellisissä tehtävänvaihtotehtävissä, käytät tässä peliä, missä on tavoitteena ohjata pelihahmoa porttien läpi sekä tunnistaa kuvioita.</p>
-
-	<p>Käytössä olevassa pelissä on seitsemän osaa. Ensimmäisessä osassa harjoitellaan porttien läpäisemistä, toisessa osassa porttien läpäisemisen lisäksi pidetään hahmoa tietyllä tasolla, ja kolmannessa osassa reagoidaan lisäksi kuvioihin. Neljännessä osassa, edellisten lisäksi, tunnistetaan värejä; viidennessä osassa tunnistetaan kuvioita, kuudennessa osassa tunnistetaan molempia ja harjoitellaan oikeaa testausta varten. Seitsemännessä osassa pelataan peliä.</p>
+	<p>Käytössä olevassa testiohjelmassa on neljä osaa. Ensimmäisessä osassa mitataan reaktioaikaa, toisessa osassa parittoman (odd) ja parillisen (even) luvun tunnistamista, kolmannessa osassa konsonantin (consonant) ja vokaalin (vowel) tunnistamista, ja viimeisessä osassa yhdistetään osat kaksi ja kolme. Näet jokaisen osion jälkeen edellisen osion tulokset.</p>
 	
-	<p>Testin tulokset tulevat vain tutkimuskäyttöön, eikä mahdollisesti raportoitavista tuloksista voida yksilöidä yksittäisiä vastaajia. Pelin pelaaminen kestää noin 10 minuuttia.</p>
+	<p>Testin tulokset tulevat vain tutkimuskäyttöön, eikä mahdollisesti raportoitavista tuloksista voida yksilöidä yksittäisiä vastaajia. Tehtävän suorittamiseen menee noin 10-15 minuuttia.</p>
 	
 	<p>Kun olet vastannut allaolevaan lomakkeeseen, testi aukeaa uudessa ikkunassa. Varmistathan, että selaimesi sallii uusien ikkunoiden avaamisen tästä ohjelmointimateriaalista!</p>
 	
 	<div>
-	  <form class="form-horizontal" id="taskswitching-form-flap"> 
+	  <form class="form-horizontal" id="taskswitching-form-wk13"> 
             <legend>Tehtävänvaihtotestin taustakysely</legend>
 	    
             <div class="form-group">
@@ -11553,7 +11552,7 @@ public class Main {
             </div>
 	    
             <input type="hidden" name="week" value="week5"/>
-            <input type="hidden" id="taskswitching-form-flap-started-entering" name="taskswitching-form-flap-started-entering" value="">
+            <input type="hidden" id="taskswitching-form-wk13-started-entering" name="taskswitching-form-wk10-started-entering" value="">
 	    
             <div class="form-group">
               <label class="col-md-4 control-label" for="frustration">Kuinka turhautunut olit?</label>
@@ -11565,14 +11564,14 @@ public class Main {
             <div class="form-group">
               <label class="col-md-4 control-label">&nbsp;</label>
               <div class="form-inline col-md-8">
-		<strong><label id="taskswitching-form-flap-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+		<strong><label id="taskswitching-form-wk13-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
               </div>
             </div>
 	    
             <div class="form-group">
               <label class="col-md-4 control-label">&nbsp;</label>
               <div class="form-inline col-md-8">
-		<button type="button" id="taskswitching-form-flap-submit" class="btn btn-primary">Lähetä lomake ja käynnistä tutkimus</button>
+		<button type="button" id="taskswitching-form-wk13-submit" class="btn btn-primary">Lähetä lomake ja käynnistä tutkimus</button>
               </div>
             </div>
 	  </form>
@@ -11581,6 +11580,7 @@ public class Main {
     </div>
   </div>
 </div>
+
 
     <div class="self-explanation" data-key="q-tarkkailija"></div>
 
@@ -13190,9 +13190,13 @@ matopeli.start();
 
 		  <p>&nbsp;</p>
 
-		  <p>Tällä hetkellä, minkä arvosanan (0-5) uskot saavasi kurssista:</p>
+		  <p>Tällä hetkellä, kuinka monta pistettä (0-15) uskot saavasi kurssikokeesta:</p>
 
-		  <input class="form-control" name="arvosana" style="width:200px"></input>
+		  <input class="form-control" name="kurssikoe" style="width:200px"></input>
+
+		  <p>Tällä hetkellä, kuinka monta pistettä (0-15) uskot saavasi konekokeesta:</p>
+
+		  <input class="form-control" name="konekoe" style="width:200px"></input>
 
                 </div>
 
@@ -13219,7 +13223,7 @@ matopeli.start();
   </div>
 </div>
 
-
+<!--
 <div class="panel-group" id="2tehtavanvaihto-flap">
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2tehtavanvaihto-flap" href="#2tehtavanvaihto-flap2">
@@ -13385,6 +13389,7 @@ matopeli.start();
     </div>
   </div>
 </div>
+-->
 
 
     <h2>Erilaisista ohjelmointiparadigmoista ja deklaratiivisesta ohjelmoinnista</h2>
