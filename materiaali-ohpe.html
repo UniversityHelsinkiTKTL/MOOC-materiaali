@@ -2411,6 +2411,8 @@ Virheellinen tunnus tai salasana!
 
   <p>Ehdollisuuden lisäksi tarvitsemme usein toistoa: käyttäjätunnusta ja salasanaa pitää pystyä kysymään uudelleen niin kauan kunnes oikea käyttäjätunnus/salasana-pari on annettu.</p>
 
+  <h3>Ikuinen toisto</h3>
+
   <p>Yksinkertaisin toiston muoto on ikuinen toisto. Seuraava ohjelma tulostaa merkkijonoa <em>osaan ohjelmoida!</em> ikuisesti eli "äärettömän monta kertaa":</p>
 
 <pre class="sh_java">
@@ -2421,7 +2423,12 @@ while (true) {
 
   <p>Komento <code>while (true)</code> saa sen aikaan, että siihen liittyvää lohkoa, eli <code>{}</code>:lla ympäröityjä komentoja suoritetaan äärettömän monta kertaa.</p>
 
-  <p>Ikuinen toisto ei yleensä ole se mitä halutaan. Saat NetBeansista käynnissä olevan ohjelman sammutettua painamalla tulostusikkunan vasemmalla puolella olevaa punaista nappia. Ohjelmakoodissa toisto keskeytetään komennolla <code>break</code>.</p>
+  <p>TODO: kuva siitä, että suoritus palaa aina alkuun.</p>
+
+
+  <h3>Toistolauseesta poistuminen</h3>
+
+  <p>Ikuinen toisto ei yleensä ole se mitä halutaan. Saat NetBeansista käynnissä olevan ohjelman sammutettua painamalla tulostusikkunan vasemmalla puolella olevaa punaista nappia. Ohjelmakoodissa toistolauseesta poistutaan komennolla <code>break</code>.</p>
 
 <pre class="sh_java">
 while (true) {
@@ -2437,7 +2444,9 @@ while (true) {
 System.out.println("kiitos ja kuulemiin.");
 </pre>
 
-  <p>Nyt toisto etenee siten että ensin tulostuu <em>osaan ohjelmoida!</em> ja tämän jälkeen ohjelma kysyy käyttäjältä jatketaanko vielä. Jos käyttäjä vastaa <em>ei</em>, suoritetaan komento <code>break</code> jonka ansiosta toisto lopetetaan ja suoritetaan komento joka tulostaa <em>kiitos ja kuulemiin.</em></p>
+  <p>Kun tietokone suorittaa komennon <code>break</code>, siirtyy se toistolausetta seuraavan komennon suorittamiseen.</p>
+
+  <p>Ylläolevassa esimerkissä toisto etenee siten että ensin tulostuu <em>osaan ohjelmoida!</em> ja tämän jälkeen ohjelma kysyy käyttäjältä jatketaanko vielä. Jos käyttäjä vastaa <em>ei</em>, suoritetaan komento <code>break</code>. Tällöin suoritus siirtyy toistolausetta seuraavaan komentoon, joka tulostaa merkkijonon <em>kiitos ja kuulemiin.</em></p>
 
 <pre>
 osaan ohjelmoida!
@@ -2449,7 +2458,9 @@ jatketaanko (ei lopettaa)? <font color="red">ei</font>
 kiitos ja kuulemiin.
 </pre>
 
-  <p>Toiston sisällä voi tehdä erilaisia asioita. Seuraavassa yksinkertainen laskin. Laskin kysyy käyttäjältä komentoa. Komennossa <em>lopetus</em> suoritetaan <code>break</code> ja toisto loppuu. Tämän jälkeen kysytään kahta lukua. Jos komento oli <em>summa</em> lasketaan lukujen summa ja tulostetaan se.  Jos komento oli <em>erotus</em> toimitaan vastaavasti. Muussa tapauksessa ilmoitetaan että komento on tuntematon.</p>
+  <h3>Esimerkki: Laskin</h3>
+
+  <p>Seuraavassa esimerkissä on toteutettu summa- ja erotustoiminnallisuudet tarjoava laskin. Laskin kysyy käyttäjältä komentoa. Komennolla <em>lopetus</em> suoritetaan <code>break</code> ja toisto loppuu. Jos komento ei ole lopetus, kysytään kahta lukua. Jos komento oli <em>summa</em> lasketaan lukujen summa ja tulostetaan se.  Jos komento oli <em>erotus</em> toimitaan vastaavasti. Muussa tapauksessa ilmoitetaan että komento on tuntematon. Lopulta palataan toistolausekkeen alkuun, ja toistolausekkeessa olevan koodin suoritus alkaa uudelleen.</p>
 
 <pre class="sh_java">
 System.out.println("tervetuloa käyttämään laskinta");
