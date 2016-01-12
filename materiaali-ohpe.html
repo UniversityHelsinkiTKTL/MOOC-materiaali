@@ -74,7 +74,7 @@
 
 <h3>Kurssin tehtävistä ja arvostelusta</h3>
 
-<p>Kurssilla on tehtäviä, joiden tekeminen on oleellinen osa kurssin suoritusta. Ensimmäisellä viikolla alkavat ohjelmointitehtävät, ja toisesta viikosta lähtien ohjelmointitehtävien lisäksi materiaalissa on myös selitystehtäviä, joissa annettuun kysymykseen tai ongelmaan tulee kirjoittaa selitys ohjeiden mukaan. <span class="hidden-in-mooc">Kurssin toisesta viikosta lähtien mukana on myös muutamia viikoittaisia tehtäviä, jotka tehdään <em>pariohjelmointina</em> pajassa. </span>Katso <span class="hidden-in-mooc"><a href="http://www.cs.helsinki.fi/group/java/k15/" target="_blank">kurssisivulta</a></span><span class="hidden-in-hy"><a href="http://mooc.fi/courses/2015/ohjelmoinnin-mooc/" target="_blank">kurssisivulta</a></span> tarkempaa tietoa kurssin arvostelusta<span class="hidden-in-hy"> ja suoritustavoista</span>.</p>
+<p>Kurssilla on tehtäviä, joiden tekeminen on oleellinen osa kurssin suoritusta. Ensimmäisellä viikolla alkavat ohjelmointitehtävät, ja toisesta viikosta lähtien ohjelmointitehtävien lisäksi materiaalissa on myös selitystehtäviä, joissa annettuun kysymykseen tai ongelmaan tulee kirjoittaa selitys ohjeiden mukaan. <span class="hidden-in-mooc">Kurssin toisesta viikosta lähtien mukana on myös muutamia viikoittaisia tehtäviä, jotka tehdään <em>pariohjelmointina</em> pajassa. </span>Katso <span class="hidden-in-mooc"><a href="http://www.cs.helsinki.fi/group/java/k16/" target="_blank">kurssisivulta</a></span><span class="hidden-in-hy"><a href="http://mooc.fi/courses/2016/ohjelmoinnin-mooc/" target="_blank">kurssisivulta</a></span> tarkempaa tietoa kurssin arvostelusta<span class="hidden-in-hy"> ja suoritustavoista</span>.</p>
 
 <p>Ohjelmointi- ja selitystehtävien lisäksi materiaalissa on tutkimuskysymyksiä ja kyselyitä. <span class="hidden-in-hy">Kyselyihin vastaamalla tuet ohjelmoinnin oppimiseen liittyvää tutkimusta.</span><span class="hidden-in-mooc">Vastaamalla rehellisesti kaikkiin materiaalissa oleviin tutkimuskysymyksiin ja -kyselyihin saat lisäpisteitä, joilla voit paikata tekemättä jääneitä tehtäviä.</span></p>
 
@@ -86,7 +86,7 @@
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#1taustatiedot" href="#1taustatiedot2">
       <div class="panel-heading">
-	<h4 id="taustatiedot-form-legend">Kysely: Taustatiedot</h4>
+	<h4 class="kysely" id="taustatiedot-form-legend">Kysely: Taustatiedot</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="1taustatiedot2">
@@ -438,6 +438,13 @@
                             </label>
                         </div>
 
+                        <div class="checkbox col-md-4">
+                            <label for="osallistuminen-opiskelupaikka">
+                                <input type="checkbox" name="osallistuminen" id="osallistuminen-opiskelupaikka" value="osallistuminen-opiskelupaikka">
+                                Saadakseni opiskelupaikan
+                            </label>
+                        </div>
+
 
                         <div class="checkbox col-md-8">
                             <label for="osallistuminen-muu">
@@ -489,7 +496,7 @@
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2mslqmotivaatio" href="#2mslqmotivaatio2">
       <div class="panel-heading">
-	<h4 id="msql-motivaatio-form-legend">Kysely: Oppimiskokemukset ja motivaatio</h4>
+	<h4 class="kysely" id="msql-motivaatio-form-legend">Kysely: Oppimiskokemukset ja motivaatio</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2mslqmotivaatio2">
@@ -564,15 +571,13 @@
 
   <h3>Lähdekoodi ja Komennot</h3> 
 
-  <p>Ohjelma -- resepti -- muodostuu <em>lähdekoodista</em>. Tietokone suorittaa lähdekoodissa olevia <em>komentoja</em> pääsääntöisesti rivi riviltä <em>ylhäältä alaspäin</em> ja <em>vasemmalta oikealle</em>. Lähdekoodi on ohjelmoijan kirjoittamaa, ja se tallennetaan tekstimuodossa.</p>
-
-  <p>Varsinaisesti ohjelma muodostuu lähdekoodiin kirjoitetuista komennoista.  Tietokone suorittaa komentojen perusteella <em>operaatioita</em>, eli toimintoja.  Esimerkiksi tekstin (<em>merkkijono</em>) "Hei maailma"-tulostuksessa tärkein komento on <code>System.out.println</code>.</p>
+  <p>Ohjelma -- resepti -- muodostuu <em>lähdekoodista</em>. Tietokone suorittaa lähdekoodissa olevia <em>komentoja</em> pääsääntöisesti rivi riviltä <em>ylhäältä alaspäin</em> ja <em>vasemmalta oikealle</em>. Lähdekoodi on ohjelmoijan kirjoittamaa, ja se tallennetaan tekstimuodossa. Jokaisen komennon yhteydessä tietokone toimii komennon määräämällä tavalla. Esimerkiksi tekstin (<em>merkkijono</em>) "Hei maailma" tulostuksessa käytetään komentoa:</p>
 
 <pre class="sh_java">
 System.out.println("Hei maailma");
 </pre>
 
-  <p>Komento <code>System.out.println</code> tulostaa sille sulkeiden sisällä hipsuissa annetun merkkijonon. Komennon pääte <code>ln</code> on lyhenne sanasta <i>line</i>, ja komento tulostaa annetun merkkijonon jälkeen myös rivinvaihdon.</p>
+  <p>Komento <code>System.out.println</code> tulostaa sille sulkeiden sisällä hipsuissa annetun merkkijonon. Komennon pääte <code>ln</code> on lyhenne sanasta <i>line</i>, eli komento tulostaa merkkijonon jälkeen myös rivinvaihdon. Komennon loppuun kirjoitetaan puolipiste <code>;</code>.</p>
 
   <h3>Ohjelmarunko</h3>
 
@@ -586,11 +591,11 @@ public class Esimerkki {
 }
 </pre>
 
-  <p>Ohjelmarunko sijaitsee <i>.java</i>-päätteisessä tiedostossa, jonka nimi on sama kuin ohjelman nimi -- tässä Esimerkki -- "public class <em>Esimerkki</em>". Ohjelman <i>Esimerkki</i> tulee siis sijaita tiedostossa, jonka nimi on <code>Esimerkki.java</code>.</p>
+  <p>Ohjelmarunko sijaitsee <i>.java</i>-päätteisessä tekstitiedostossa, jonka nimi on sama kuin ohjelman nimi -- tässä Esimerkki -- "public class <em>Esimerkki</em>". Ohjelma <i>Esimerkki</i> sijaitsee siis tiedostossa, jonka nimi on <code>Esimerkki.java</code>.</p>
 
-  <p>Ohjelmaa suoritettaessa suoritetaan riviä <code>public static void main(String[] args) {</code> seuraava alue, mikä päättyy sulkevaan aaltosulkuun <code>}</code>. Tällä hetkellä ainoa suoritettava komento on <em>System.out.println("Tulostettava teksti");</em>, mikä tulostaa tekstin "Tulostettava teksti".</p>
+  <p>Tietokone aloittaa ohjelman suorituksen riviä <code>public static void main(String[] args) {</code> seuraavalta riviltä, ja käy komentoja yksitellen läpi. Ohjelmakoodin suoritus päättyy sulkevaan aaltosulkuun <code>}</code>. Tällä hetkellä ainoa suoritettava komento on <em>System.out.println("Tulostettava teksti");</em>, mikä tulostaa tekstin "Tulostettava teksti".</p>
 
-  <p>Jatkossa esimerkeissä ei aina erikseen näytetä ohjelmarunkoa, mutta voit olettaa, että se tarvitaan.</p>
+  <p>Jatkossa materiaalin esimerkeissä ei aina erikseen näytetä ohjelmarunkoa, mutta voit olettaa, että se tarvitaan.</p>
 
 
   <h3>Tutustuminen ohjelmointiympäristöön</h3>
@@ -599,11 +604,19 @@ public class Esimerkki {
 
   <p>Nykyaikainen ohjelmointi tapahtuu lähes poikkeuksetta ohjelmointiympäristössä. Ohjelmointiympäristö sisältää joukon ohjelmoijaa auttavia aputoimintoja. Se ei rakenna ohjelmaa ohjelmoijan puolesta, mutta se muunmuassa vinkkaa helpoista virheistä ohjelmakoodissa ja auttaa ohjelmoijaa hahmottamaan ohjelman rakennetta.</p>
 
-  <div class="help">
-    <p>Käytämme tällä kurssilla <a href="http://netbeans.org/">NetBeans</a>-nimistä ohjelmointiympäristöä. Ohjeita kurssin työvälineiden käyttöön löytyy <a class="hidden-in-hy" href="http://mooc.fi/courses/general/ohjelmointi/ukk/#netbeansilla-työskentelyä-helpottavia-näppäinkomentoja-ym." target="_blank">täältä</a><a class="hidden-in-mooc" href="http://www.cs.helsinki.fi/group/java/k15/">kurssisivulta</a>.</p>
+  <aside class="help">
+    <p>Käytämme tällä kurssilla <a href="http://netbeans.org/">NetBeans</a>-nimistä ohjelmointiympäristöä. Ohjeita kurssin työvälineiden käyttöön löytyy <a class="hidden-in-hy" href="http://mooc.fi/courses/general/ohjelmointi/ukk/#netbeansilla-työskentelyä-helpottavia-näppäinkomentoja-ym." target="_blank">täältä</a><a class="hidden-in-mooc" href="http://www.cs.helsinki.fi/group/java/k16/">kurssisivulta kohdasta "Kurssimateriaalit ja osallistuminen"</a>.</p>
 
-  <p>Jatkossa julkaisemme pikkuhiljaa lisää ohjeita NetBeansin käyttöön. Vaikka ohjelma tuntuisi nyt sekavalta, älä hätäile. NetBeans on loppujenlopuksi hyvin helppokäyttöinen. Perusteet opit 5 minuutissa, ja kurssin myötä opit koko ajan lisää.</p>
-  </div>
+    <p><strong>Huom! Asenna kurssilla käytettävä ohjelmointiympäristö viimeistään nyt. <span class="hidden-in-hy">Ohjeet löytyvät kurssin <a href="http://mooc.fi/courses/general/ohjelmointi/" target="_blank">Alkutoimet</a>-sivulta.</span></strong></p>
+
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/sQYq2LISMRU" frameborder="0" allowfullscreen></iframe>
+
+    <p>Tällä kurssilla TMC-palvelimen osoite on <strong><span class="hidden-in-mooc">http://tmc.mooc.fi/hy</span><span class="hidden-in-hy">http://tmc.mooc.fi/mooc</span></strong> ja kurssin nimi on <strong><span class="hidden-in-mooc">hy-k2016-ohpe</span><span class="hidden-in-hy">2016-ohjelmointi</span></strong>.</p>
+
+    <p>Julkaisemme kurssin edetessä pikkuhiljaa lisää ohjeita NetBeansin käyttöön. Vaikka ohjelma tuntuisi nyt sekavalta, älä hätäile. NetBeans on loppujenlopuksi hyvin helppokäyttöinen. Perusteet opit 5 minuutissa, ja kurssin myötä opit koko ajan lisää.</p>
+
+  
+  </aside>
 
   <p>Ennen kuin tiedät mitä teet, <b>toimi täsmälleen ohjeen kuvaamalla tavalla</b>. Useimmat seuraavista tehtävänannoista näyttävät mitä pyydetyn tehtävän tulisi tulostaa ruudulle toimiakseen oikein. </p>
 
@@ -680,11 +693,12 @@ public class Esimerkki {
   <p>Tulostamiseen on käytännössä kaksi komentoa:</p>
 
   <ul>
-    <li><code>System.out.println("sana");</code> tulostaa tekstin "sana" ja loppurivinvaihdon</li>
+    <li><code>System.out.println("sana");</pre> tulostaa tekstin "sana" ja loppurivinvaihdon</li>
     <li><code>System.out.print("sana");</code> tulostaa tekstin "sana" ilman loppurivinvaihtoa</li>
   </ul>
 
   <p>Tulostettavan tekstin osana voi olla myös erikoismerkkejä, joista tärkein on rivinvaihto, eli <code>\n</code>. Erikoismerkkejä on <a href="http://en.wikipedia.org/wiki/Escape_character" title="Escape character - Wikipedia, the free encyclopedia" target="_blank">muitakin</a>.</p>
+
 <pre class="sh_java">
 System.out.println("Ensimmäinen\nToinen\nKolmas");</pre>
 
@@ -731,7 +745,11 @@ System.out.print(" ja kaikki sen ihmiset."); // Lisäämme samalle riville tekst
 
 // System.out.print("tätä riviä ei suoriteta koska se on kommentoitu ulos");</pre>
 
+<pre>
+Hei maailma ja kaikki sen ihmiset.</pre>
+
   <p>Esimerkissä alin rivi esittelee erityisen kätevän käyttökohteen kommenteille: kirjoitettua koodia ei tarvitse poistaa jos haluaa tilapäisesti kokeilla jotain.</p>
+
 
 
   <div class="tehtavat">
@@ -1018,7 +1036,9 @@ laskuSuluitta = laskuSuluitta + 3 * 2;
 laskuSuluitta = laskuSuluitta + 5;
 System.out.println(laskuSuluitta); // tulostaa 13
 </pre>
+
   <p>Laskentaoperaatioita voidaan suorittaa lähes missä tahansa kohdassa ohjelmakoodia.</p>
+
 <pre class="sh_java">
 int eka = 2;
 int toka = 4;
@@ -1377,12 +1397,10 @@ toka = 17;
 
   <h2 id="syötteen_lukeminen">Käyttäjän syötteen lukeminen</h2>
 
-  <p>Tähän asti ohjelmamme ovat olleet kovin yksipuolisia. Seuraavaksi luemme <em>syötettä</em> käyttäjältä.  Käytämme syötteen lukemiseen erityistä <em>Scanner</em>-apuvälinettä.</p>
-
-  <p>Lisätään <em>Scanner</em> valmiiseen pääohjelmarunkoomme.  Älä hätäile vaikka pääohjelmarunko saattaa näyttää vaikeaselkoiselta, jatkamme koodausta kuten ennenkin, eli kohtaan mikä on merkattu kommentilla <em>ohjelmakoodi</em>.</p>
+  <p>Seuraavaksi tutustumme <em>syötteen</em> lukemiseen käyttäjältä, johon käytämme <em>Scanner</em>-apuvälinettä. Apuväline tuodaan käyttöön lisäämällä komento <code>import java.util.Scanner;</code> ennen pääohjelmarungon aloitusta (<code>public class ...</code>). 
 
 <pre class="sh_java">
-import java.util.Scanner;
+import java.util.Scanner; // tuodaan lukemiseen käytetty apuväline Scanner käyttöömme
 
 public class Esimerkki {
 
@@ -1394,23 +1412,26 @@ public class Esimerkki {
 }
 </pre>
 
+  <p>Älä hätäile vaikka pääohjelmarunko saattaa näyttää vaikeaselkoiselta! Jatkamme yhä koodausta kommentilla <em>ohjelmakoodi</em> merkittyyn kohtaan.</p>
+
+
   <h3 id="syote_simppeli">Merkkijonon lukeminen</h3>
 
-  <p>Seuraava koodi lukee käyttäjän nimen ja tulostaa tervehdyksen:</p>
+  <p>Seuraava koodi lukee käyttäjän nimen ja tulostaa tervehdyksen (käyttäjän syöttämä teksti merkitty punaisella):</p>
 
 <pre class="sh_java">
 System.out.print("Mikä on nimesi? ");
 String nimi = lukija.nextLine(); // Luetaan käyttäjältä rivi tekstiä ja asetetaan se muuttujaan nimi
 
-System.out.println("Hei, " + nimi);
+System.out.println("Hei " + nimi);
 </pre>
 
 <pre>
 Mikä on nimesi? <span class="red">Venla</span>
-Hei, Venla
+Hei Venla
 </pre>
 
-  <p>(Seuraavassa on yllä oleva ohjelma pääohjelmarungon kanssa.  Ohjelman nimi on <em>Tervehdys</em>.  Koska ohjelman nimi on Tervehdys, täytyy sen sijaita tiedostossa <code>Tervehdys.java</code>.</p>
+  <p>Seuraavassa on yllä oleva ohjelma pääohjelmarungon kanssa.  Ohjelman nimi on <em>Tervehdys</em>.</p>
 
 <!--
  -- Käyttäessäsi NetBeans-ohjelmointiympäristöä, toimi kuten alussa olleessa
@@ -1430,19 +1451,16 @@ public class Tervehdys {
         System.out.print("Kenelle sanotaan hei: ");
         String nimi = lukija.nextLine(); // Luetaan käyttäjältä rivi tekstiä ja asetetaan sen arvo muuttujaan nimi
 
-        System.out.print("Hei " + nimi);
+        System.out.println("Hei " + nimi);
     }
 }
 </pre>
 
-  <p>Kun yllä oleva ohjelma ajetaan, pääset kirjoittamaan syötteen.  NetBeansin tulostusvälilehti (alhaalla) näyttää ajetun ohjelman jälkeen seuraavalta (käyttäjä syöttää nimen "Venla").</p>
+  <p>Kun yllä oleva ohjelma ajetaan, pääset kirjoittamaan syötteen.  NetBeansin tulostusvälilehti näyttää ajetun ohjelman jälkeen seuraavalta (käyttäjä syöttää nimen "Venla").</p>
 
-<pre>
-run:
-Kenelle sanotaan hei: Venla
-Hei Venla
-BUILD SUCCESSFUL (total time: 6 seconds)
-</pre>
+  <div><img class="naytto" src="../img/material/netbeans-output-venla.png"/></div>
+
+  <p>&nbsp;</p>
 
 <div class="tehtavat">
   <div class="tehtava">
@@ -1893,43 +1911,51 @@ Luku on suurempi kuin nolla.
         <th>arvosana</th>
       </tr>
       <tr>
-        <td>0&ndash;29</td>
+	<td>&lt; 0</td>
+	<td>mahdotonta!</td>
+      </tr>
+      <tr>
+        <td>0&ndash;74</td>
         <td>hylätty</td>
       </tr>
       <tr>
-        <td>30&ndash;34</td>
-        <td>1</td>
+        <td>75-89</td>
+        <td>hyväksytty</td>
       </tr>
       <tr>
-        <td>35&ndash;39</td>
-        <td>2</td>
-      </tr>
-      <tr>
-        <td>40&ndash;44</td>
-        <td>3</td>
-      </tr>
-      <tr>
-        <td>45&ndash;49</td>
-        <td>4</td>
-      </tr>
-      <tr>
-        <td>50&ndash;60</td>
+        <td>90&ndash;100</td>
         <td>5</td>
+      </tr>
+      <tr>
+        <td>&gt; 100</td>
+        <td>uskomatonta!</td>
       </tr>
     </table>
     <p>Esimerkkitulostuksia:</p>
 
 <pre>
-Anna pisteet [0-60]: <font color="red">37</font>
+Anna pisteet [0-100]: <font color="red">37</font>
 
-Arvosana: 2
+Arvosana: hylätty
 </pre>
 <pre>
-Anna pisteet [0-60]: <font color="red">51</font>
+Anna pisteet [0-100]: <font color="red">76</font>
+
+Arvosana: hyväksytty
+</pre>
+
+<pre>
+Anna pisteet [0-100]: <font color="red">95</font>
 
 Arvosana: 5
 </pre>
 
+
+<pre>
+Anna pisteet [0-100]: <font color="red">-3</font>
+
+Arvosana: mahdotonta!
+</pre>
   </div>
 </div>
 
