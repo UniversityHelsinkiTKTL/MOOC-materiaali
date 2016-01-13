@@ -2569,28 +2569,34 @@ Salaisuus on: znvavbfgv grugl!
 </div>
 
 <div class="tehtava">
+
   <h3 class="req">Lämpötiloja</h3>
+
   <p>Saat tehtäväpohjan mukana komponentin nimeltään <code>Kuvaaja</code>. <code>Kuvaaja</code> piirtää sille annetuista luvuista kuvaajan. Lukuja annetaan kuvaajalle näin: </p>
 
 <pre class="sh_java">
 Kuvaaja.lisaaNumero(13.0);
 </pre>
 
+<pre class="sh_java">
+double arvo = 10;
+Kuvaaja.lisaaNumero(arvo);
+</pre>
+
   <p>Teemme ohjelman, joka piirtää kuvaajan sille annetuista päivittäisistä lämpötiloista.</p>
 
   <h4>Kysely</h4>
 
-  <p>Tee ohjelma, joka kysyy käyttäjältä liukulukuja (<code>double</code>) ja lisää ne kuvaajaan. Käytä jälleen <code>while (true) { ... }</code>-rakennetta.</p>
+  <p>Tee ohjelma, joka kysyy käyttäjältä liukulukuja (<code>double</code>) ja lisää ne kuvaajaan. Liukulukuja tulee kysyä kunnes käyttäjä syöttää luvun, joka on pienempi kuin -1000. Tällaista lukua ei tule lisätä kuvaajaan.</p>
 
-  <p><strong>Huom:</strong><code>double</code>-luku luetaan seuraavasti <code>double luku = Double.parseDouble(lukija.nextLine());</code></p>
+  <p>Liukulukuja luetaan seuraavasti <code>double luku = Double.parseDouble(lukija.nextLine());</code></p>
 
-  <p><strong>Huom2:</strong> ohjelmasi toimii "ikuisessa" silmukassa eli on tarkoitus että sen suoritus ei pääty koskaan. Saat ohjelmasi pysähtymään painamalla NetBeansin konsoli-ikkunan oikeassa laidassa olevaa punaista neliöä.</p>
-
-  <p><strong>HUOM3:</strong> Tee kaikki muutokset tiedostoon <code>Lampotiloja.java</code>. Älä muokkaa tiedostoa <code>Kuvaaja.java</code></p>
+  <p><strong>HUOM:</strong> Tee kaikki muutokset tiedostoon <code>Lampotiloja.java</code>. Älä muokkaa tiedostoa <code>Kuvaaja.java</code></p>
 
   <h4>Tarkastus</h4>
 
   <p>Paranna edellistä ohjelmaasi niin, että lämpötilat jotka ovat alle -30 tai yli 40 jätetään lisäämättä.</p>
+
   </div>
 
   <div class="tehtava">
