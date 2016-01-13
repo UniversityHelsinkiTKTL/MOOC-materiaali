@@ -626,9 +626,8 @@ public class Esimerkki {
 
   <!-- syntax ok-->
   <div class="tehtavat" id="viikko1">
-    <p class="help">Seuraavassa tehtävässä harjoitellaan tuntuman saamista NetBeansiin ja ruudulle tulostamista.</p>
 
-    <p><strong>Näet tehtävänannon klikkaamalla tehtävän nimeä</strong></p>
+    <p>Seuraavassa tehtävässä harjoitellaan tuntuman saamista NetBeansiin ja ruudulle tulostamista. <strong>Näet tehtävänannon klikkaamalla tehtävän nimeä</strong></p>
 
     <NEXTWEEK></NEXTWEEK>
 
@@ -793,10 +792,17 @@ System.out.println("public static ... sisällä -- kahdeksan merkin sisennys -- 
 
   <p>Tyylivirheet näytetään ohjelmointiympäristössä keltaisella, ja normaalit testi-ilmoitukset punaisella. Kurssilla tutuksi tuleva tehtävän edistymispalkki muuttuu myöskin keltaiseksi, jos koodissa havaitaan tyylivirheitä. Vaikkakin näppäinyhdistelmä alt + shift + f (OS X control + shift + f) auttaa useimpien tyylivirheiden korjaamiseen, on koodia syytä kirjoittaa oikein alusta alkaen.</p>
 
+  <aside class="help">
+    <p>Lähdekoodi tulee sisentää oikein.</p>
+    
+    <p>Javassa koodia sisennetään neljän välilyönnin tai yhden tabulaattorin verran jokaisen lohkon kohdalla. Käytä sisentämiseen joko välilyöntejä tai tabulaattoreita. Joissakin tapauksissa sisennys saattaa hajota mikäli käytät molempia. NetBeans auttaa tässä kun painat kirjainyhdistelmää "alt + shift + f" (OS X "control + shift + f").</p>
+
+    <p>Jatkossa ohjelmakoodi tulee sisentää oikein myös tehtävissä. Jos sisennys on väärin, ei TMC hyväksy tehtävää.</p>
+
+  </aside>
 
   <!-- syntax ok-->
   <div class="tehtavat">
-    <p class="help">Jatkossa lähdekoodi tulee sisentää oikein. Javassa koodia sisennetään neljän välilyönnin tai yhden tabulaattorin verran jokaisen lohkon kohdalla. Käytä sisentämiseen joko välilyöntejä tai tabulaattoreita. Joissakin tapauksissa sisennys saattaa hajota mikäli käytät molempia. NetBeans auttaa tässä kun painat kirjainyhdistelmää "alt + shift + f" (OS X "control + shift + f").</p>
 
     <div class="tehtava">
       <h3 class="req">Kuusi</h3>
@@ -875,18 +881,30 @@ String teksti = "sisältää tekstiä";
 int kokonaisluku = 123;
 double liukuluku = 3.141592653;
 
-System.out.println("Tekstimuuttujan arvo on " + teksti);
-System.out.println("Kokonaislukumuuttujan arvo on " + kokonaisluku);
-System.out.println("Liukulukumuuttujan arvo on " + liukuluku);
+System.out.println("Tekstimuuttuja: " + teksti);
+System.out.println("Kokonaislukumuuttuja: " + kokonaisluku);
+System.out.println("Liukulukumuuttuja: " + liukuluku);
 </pre>
 
 
   <p>Tulostus:</p>
+
 <pre>
-Tekstimuuttujan arvo on sisältää tekstiä
-Kokonaislukumuuttujan arvo on 123
-Liukulukumuuttujan arvo on 3.141592653
+Tekstimuuttuja: sisältää tekstiä
+Kokonaislukumuuttuja: 123
+Liukulukumuuttuja: 3.141592653
 </pre>
+
+<aside class="help">
+  <p><strong>Ohjelman suorituksen askeleittainen visualisointi</strong></p>
+
+  <p>Java-ohjelmien suorituksen etenemistä voi tarkastella osoitteessa <a href="http://cscircles.cemc.uwaterloo.ca/java_visualize/" target="_blank">http://cscircles.cemc.uwaterloo.ca/java_visualize/</a> olevan palvelun avulla. Alla on liitettynä edellinen esimerkki visualisoituna. Painamalla nappia "Forward" ohjelman suoritus etenee.</p>
+
+
+  <iframe style="width: 100%; height: 480px;" src="http://cscircles.cemc.uwaterloo.ca/java_visualize/iframe-embed.html?faking_cpp=false#data=%7B%22user_script%22%3A%22public%20class%20Esimerkki%20%7B%5Cn%20%20%20public%20static%20void%20main(String%5B%5D%20args)%20%7B%5Cn%20%20%20%20%20%20String%20teksti%20%3D%20%5C%22sis%C3%A4lt%C3%A4%C3%A4%20teksti%C3%A4%5C%22%3B%5Cn%20%20%20%20%20%20int%20kokonaisluku%20%3D%20123%3B%5Cn%20%20%20%20%20%20double%20liukuluku%20%3D%203.141592653%3B%5Cn%5Cn%20%20%20%20%20%20System.out.println(%5C%22Tekstimuuttuja%3A%20%5C%22%20%2B%20teksti)%3B%5Cn%20%20%20%20%20%20System.out.println(%5C%22Kokonaislukumuuttuja%3A%20%5C%22%20%2B%20kokonaisluku)%3B%5Cn%20%20%20%20%20%20System.out.println(%5C%22Liukulukumuuttuja%3A%20%5C%22%20%2B%20liukuluku)%3B%5Cn%20%20%20%7D%5Cn%7D%22%2C%22options%22%3A%7B%22showStringsAsValues%22%3Atrue%2C%22showAllFields%22%3Afalse%7D%2C%22args%22%3A%5B%5D%2C%22stdin%22%3A%22%22%7D&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0&resizeContainer=true&highlightLines=true&rightStdout=true" frameborder="0" scrolling="no"></iframe>
+
+</aside>
+
 
 <div class="tehtavat">
   <div class="tehtava">
@@ -1383,6 +1401,15 @@ rivi 9: kopioidaan muuttujan kolmas arvo tulostettavaksi, muuttujan kolmas arvo 
 rivi 9: tulostetaan arvo 28
 </pre>
 
+<aside class="help">
+  
+  <p><strong>Ohjelman askeleittainen visualisointi</strong></p>
+
+  <p>Alla edellinen ohjelma askeleittain visualisoituna. Käytössä oleva askeleittainen visualisointi käsittelee ohjelmakoodia riveittäin -- pohdi askeleiden kohdalla miten ohjelma päätyy sen tulostamaan lopputulokseen.</p>
+
+  <iframe style="width: 100%; height: 480px;" src="http://cscircles.cemc.uwaterloo.ca/java_visualize/iframe-embed.html?faking_cpp=false#data=%7B%22user_script%22%3A%22public%20class%20Esimerkki%20%7B%5Cn%20%20%20public%20static%20void%20main(String%5B%5D%20args)%20%7B%5Cn%20%20%20%20%20%20int%20eka%20%3D%20(1%20%2B%201)%3B%5Cn%20%20%20%20%20%20int%20toka%20%3D%20eka%20%2B%203%20*%20(2%20%2B%205)%3B%5Cn%20%20%20%20%20%20eka%20%3D%205%3B%5Cn%20%20%20%20%20%20int%20kolmas%20%3D%20eka%20%2B%20toka%3B%5Cn%20%20%20%20%20%20%5Cn%20%20%20%20%20%20System.out.println(eka)%3B%5Cn%20%20%20%20%20%20System.out.println(toka)%3B%5Cn%20%20%20%20%20%20System.out.println(kolmas)%3B%5Cn%20%20%20%7D%5Cn%7D%22%2C%22options%22%3A%7B%22showStringsAsValues%22%3Atrue%2C%22showAllFields%22%3Afalse%7D%2C%22args%22%3A%5B%5D%2C%22stdin%22%3A%22%22%7D&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0&resizeContainer=true&highlightLines=true&rightStdout=true" frameborder="0" scrolling="no"></iframe>
+</aside>
+
 
     <p>Kirjota allaolevan ohjelmakoodin suoritus auki.</p> 
 
@@ -1849,6 +1876,13 @@ Kolme lienee lukuna!
 
   <p>Luetaan ylläoleva esimerkki: 'Jos luku on yksi, tulosta "Luku on yksi", muuten jos luku on kaksi, tulosta "Lukuna on kaksi", muuten jos lukuna on kolme, tulosta "Kolme lienee lukuna!".  Muulloin, tulosta "Jotain muuta!"'.</p>
 
+  <aside class="help">
+
+    <p><strong>Ohjelman askeleittainen visualisointi</strong></p>
+
+<iframe style="width: 100%; height: 480px;" src="http://cscircles.cemc.uwaterloo.ca/java_visualize/iframe-embed.html?faking_cpp=false#data=%7B%22user_script%22%3A%22public%20class%20Esimerkki%20%7B%5Cn%20%20%20public%20static%20void%20main(String%5B%5D%20args)%20%7B%5Cn%20%20%20%20%20%20int%20luku%20%3D%203%3B%5Cn%5Cn%20%20%20%20%20%20if%20(luku%20%3D%3D%201)%20%7B%5Cn%20%20%20%20%20%20%20%20%20System.out.println(%5C%22Luku%20on%20yksi%5C%22)%3B%5Cn%20%20%20%20%20%20%7D%20else%20if%20(luku%20%3D%3D%202)%20%7B%5Cn%20%20%20%20%20%20%20%20%20System.out.println(%5C%22Lukuna%20on%20kaksi%5C%22)%3B%5Cn%20%20%20%20%20%20%7D%20else%20if%20(luku%20%3D%3D%203)%20%7B%5Cn%20%20%20%20%20%20%20%20%20System.out.println(%5C%22Kolme%20lienee%20lukuna!%5C%22)%3B%5Cn%20%20%20%20%20%20%7D%20else%20%7B%5Cn%20%20%20%20%20%20%20%20%20System.out.println(%5C%22Jotain%20muuta!%5C%22)%3B%5Cn%20%20%20%20%20%20%7D%5Cn%20%20%20%7D%5Cn%7D%22%2C%22options%22%3A%7B%22showStringsAsValues%22%3Atrue%2C%22showAllFields%22%3Afalse%7D%2C%22args%22%3A%5B%5D%2C%22stdin%22%3A%22%22%7D&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0&resizeContainer=true&highlightLines=true&rightStdout=true" frameborder="0" scrolling="no"></iframe>
+  </aside>
+
 
   <div class="tehtavat">
     <div class="tehtava">
@@ -2240,6 +2274,12 @@ if (luku &gt; 0) {
 }
 </pre>
 
+<aside class="help">
+
+  <p><strong>Ohjelman askeleittainen visualisointi</strong></p>
+
+  <iframe style="width: 100%; height: 480px;" src="http://cscircles.cemc.uwaterloo.ca/java_visualize/iframe-embed.html?faking_cpp=false#data=%7B%22user_script%22%3A%22public%20class%20Esimerkki%20%7B%5Cn%20%20%20public%20static%20void%20main(String%5B%5D%20args)%20%7B%5Cn%20%20%20%20%20%20int%20x%20%3D%2045%3B%5Cn%20%20%20%20%20%20int%20luku%20%3D%2055%3B%5Cn%5Cn%20%20%20%20%20%20if%20(luku%20%3E%200)%20%7B%5Cn%20%20%20%20%20%20%20%20%20System.out.println(%5C%22Luku%20on%20positiivinen%5C%22)%3B%5Cn%5Cn%20%20%20%20%20%20%20%20%20if%20(luku%20%3E%20x)%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20System.out.println(%5C%22%20ja%20suurempi%20kuin%20muuttujan%20x%20arvo%5C%22)%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20System.out.println(%5C%22muuttujan%20x%20arvohan%20on%20%5C%22%20%2B%20x)%3B%5Cn%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%7D%5Cn%20%20%20%7D%5Cn%7D%22%2C%22options%22%3A%7B%22showStringsAsValues%22%3Atrue%2C%22showAllFields%22%3Afalse%7D%2C%22args%22%3A%5B%5D%2C%22stdin%22%3A%22%22%7D&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0&resizeContainer=true&highlightLines=true&rightStdout=true" frameborder="0" scrolling="no"></iframe>
+</aside>
 
 
 <div class="tehtavat">
@@ -2431,6 +2471,8 @@ while (true) {
   <p>Ikuinen toisto ei yleensä ole se mitä halutaan. Saat NetBeansista käynnissä olevan ohjelman sammutettua painamalla tulostusikkunan vasemmalla puolella olevaa punaista nappia. Ohjelmakoodissa toistolauseesta poistutaan komennolla <code>break</code>.</p>
 
 <pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+
 while (true) {
     System.out.println("osaan ohjelmoida!");
 
@@ -2457,6 +2499,15 @@ osaan ohjelmoida!
 jatketaanko (ei lopettaa)? <font color="red">ei</font>
 kiitos ja kuulemiin.
 </pre>
+
+<aside class="help">
+
+  <p><strong>Ohjelman askeleittainen visualisointi</strong></p>
+
+  <p>Tarkastele allaolevaa ohjelmaa ja pohdi mitä se tulostaa. Kokeile tämän jälkeen askeleittaista etenemistä, ja tarkasta olitko oikeassa.</p>
+
+  <iframe style="width: 100%; height: 480px;" src="http://cscircles.cemc.uwaterloo.ca/java_visualize/iframe-embed.html?faking_cpp=false#data=%7B%22user_script%22%3A%22public%20class%20Esimerkki%20%7B%5Cn%20%20%20public%20static%20void%20main(String%5B%5D%20args)%20%7B%5Cn%20%20%20%20%20%20int%20luku%20%3D%201%3B%5Cn%20%20%20%20%20%20%5Cn%20%20%20%20%20%20while%20(true)%20%7B%5Cn%20%20%20%20%20%20%20%20%20if(luku%20%3E%205)%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20break%3B%20%20%5Cn%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20System.out.println(luku)%3B%5Cn%20%20%20%20%20%20%20%20%20luku%2B%2B%3B%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%5Cn%20%20%20%20%20%20System.out.println(%5C%22Kiitos!%5C%22)%3B%5Cn%20%20%20%7D%5Cn%7D%22%2C%22options%22%3A%7B%22showStringsAsValues%22%3Atrue%2C%22showAllFields%22%3Afalse%7D%2C%22args%22%3A%5B%5D%2C%22stdin%22%3A%22%22%7D&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0&resizeContainer=true&highlightLines=true&rightStdout=true" frameborder="0" scrolling="no"></iframe>
+</aside>
 
   <h3>Esimerkki: Laskin</h3>
 
