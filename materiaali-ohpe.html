@@ -93,7 +93,7 @@
       <div class="panel-body">
 
         <!-- Taustatiedot -->
-<form class="form-horizontal" id="taustatiedot-form">
+	<form class="form-horizontal" id="taustatiedot-form">
             <fieldset>
                 <legend id="taustatiedot-form-legend">Kysely: Taustatiedot</legend>
                 <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
@@ -2847,9 +2847,69 @@ komento (sammuta, vasen, oikea, liiku, liikuMonta, viereen, ratkaise): <font col
   </div>
   </div>
 </div>
-</section>
 
-<p>TODO: viikon loppukysely</p>
+
+
+<div class="panel-group" id="1yhteenveto">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#1yhteenveto" href="#1yhteenveto2">
+      <div class="panel-heading">
+	<h4 class="kysely" id="yhteenveto-1-form-legend">Kysely: Reflektio</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="1yhteenveto2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="yhteenveto-1-form">
+            <fieldset>
+                <legend id="yhteenveto-1-legend">Kysely: Reflektio</legend>
+
+                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-1-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-1-form-tmc-tunnus" name="yhteenveto-1-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <ul>
+		  <li>kuinka paljon aikaa käytit</li>
+		  <li>kuinka vaikealta tuntui kokonaisuudessaan (skaalalla 1-n)</li>
+		  <li></li>
+		  <li>mitkä olivat kolme helpoiten opittavaa asiaa</li>
+		  <li>mitkä olivat kolme vaikeiten opittavaa asiaa</li>
+		  <li>mitä parantaisit tältä viikolta</li>
+		  <li>yleistä palautetta</li>
+		</ul>
+
+                <input type="hidden" id="yhteenveto-1-form-started-entering" name="yhteenveto-1-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="yhteenveto-1-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="yhteenveto-1-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</section>
 
 <div class="tyhja"></div>
 
