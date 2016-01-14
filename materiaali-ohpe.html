@@ -946,43 +946,79 @@ Zetor
   </div>
 
 
+  <h3>Muuttujaan voi asettaa uuden arvon</h3>
+
   <p>Muuttuja säilyttää arvonsa kunnes siihen asetetaan toinen arvo.  Huomaa että muuttujan tyyppi kirjoitetaan vain kun muuttuja esitellään ohjelmassa ensimmäistä kertaa.</p>
 
 <pre class="sh_java">
-int kokonaisluku = 123;
-System.out.println("Kokonaislukumuuttujan arvo on " + kokonaisluku);
+int luku = 123;
+System.out.println("Muuttujan arvo on " + luku);
 
-kokonaisluku = 42;
-System.out.println("Kokonaislukumuuttujan arvo on " + kokonaisluku);
+luku = 42;
+System.out.println("Muuttujan arvo on " + luku);
 </pre>
   <p>Tulostus:</p>
 <pre>
-Kokonaislukumuuttujan arvo on 123
-Kokonaislukumuuttujan arvo on 42
+Muuttujan arvo on 123
+Muuttujan arvo on 42
 </pre>
 
-<p>TODO: tikku-ukkokuva, katsoo riviä, kärryyn tulee arvoja ja ne muuttuu -- kun tulostus, niin ukko sanoo sen</p>
+    <h4>Muuttuja ja muisti</h4>
 
+
+<!--
+    <img class="naytto" src="../img/drawings/muuttujan-arvon-vaihto-0.png"/>
+-->
+
+    <p>Tarkastellaan edellisen ohjelmakoodin suoritusta askel askeleelta. Kun muuttuja esitellään ohjelmakoodissa ensimmäistä kertaa, eli sekä muuttujan tyyppi (tässä <code>int</code>) että sen nimi (tässä <code>luku</code>) kerrotaan, tietokone luo muuttujaa varten nimetyn lokeron. Tämän jälkeen yhtäsuuruusmerkin oikealla puolella oleva arvo kopioidaan tähän nimettyyn lokeroon.</p>
+
+    <img class="naytto" src="../img/drawings/muuttujan-arvon-vaihto-1.png"/>
+    
+    <p>Kun ohjelmakoodissa viitataan muuttujaan sen nimellä -- tässä halutaan tulostaa merkkijono "Muuttujan arvo on " sekä muuttujan <code>luku</code> arvo, muuttujan <code>luku</code> arvo haetaan sen nimellä löytyvästä lokerosta.</p>
+
+    <img class="naytto" src="../img/drawings/muuttujan-arvon-vaihto-2.png"/>
+
+    <p>Kun muuttujaan asetetaan arvo (tässä <code>luku = 42</code>), tarkistetaan ensin löytyykö muuttujan nimistä lokeroa. Jos lokero löytyy, uusi arvo kopioidaan lokeroon vanhan arvon tilalle ja vanha arvo katoaa. Jos muuttujan nimellä ei löydy lokeroa, ohjelman suoritus päättyy virheilmoitukseen tai ohjelmaa ei voida käynnistää.</p>
+
+    <img class="naytto" src="../img/drawings/muuttujan-arvon-vaihto-3.png"/>
+
+    <p>Seuraavaksi ohjelmakoodissa viitataan taas muuttujaan sen nimellä -- tässäkin halutaan tulostaa merkkijono "Muuttujan arvo on " sekä muuttujan <code>luku</code> arvo. Toimitaan kuten normaalisti, eli haetaan muuttujan <code>luku</code> arvo sen nimellä löytyvästä lokerosta.</p>
+
+    <img class="naytto" src="../img/drawings/muuttujan-arvon-vaihto-4.png"/>
+    
 
   <h3>Muuttujan tyyppi pysyy</h3>
-  <p>Kun muuttujan tyyppi on kertaalleen määritelty, ei se enää muutu.  Esimerkiksi merkkijonomuuttuja ei voi muuttua kokonaislukumuuttujaksi, eikä siihen voi asettaa kokonaislukua.</p>
+
+  <p>Kun muuttujan tyyppi on kertaalleen määritelty, ei se enää muutu.  Esimerkiksi merkkijonoa ei voi asettaa kokonaislukutyyppiseen muuttujaan, eikä merkkijonomuuttujaan voi asettaa kokonaislukua.</p>
+
 <pre class="sh_java">
-String merkkijono = "tsuppadui!";
-merkkijono = 42; // Ei onnistu! :(
+String merkkijono = "Hei maailma!";
+merkkijono = 42; // Ei onnistu
+
+int luku = 10;
+merkkijono = luku; // Ei myöskään onnistu
 </pre>
 
-  <p>Liukulukuun voi asettaa kokonaisluvun, sillä Java muuttaa kokonaisluvut liukuluvuiksi tarvittaessa.</p>
+  <p>Poikkeus kuitenkin löytyy: liukulukutyyppiseen muuttujaan voi asettaa kokonaisluvun, sillä Java osaa muuttaa kokonaisluvun liukuluvuksi asetuksen yhteydessä.</p>
 
 <pre class="sh_java">
 double liukuluku = 0.42;
-liukuluku = 1; // Onnistuu! :)
+liukuluku = 1; // Onnistuu
+
+int luku = 10;
+liukuluku = luku; // Onnistuu myös
 </pre>
 
-  <p>Liukulukua ei kuitenkaan voi asettaa kokonaislukuun.</p>
+  <p>Liukulukua ei kuitenkaan voi asettaa kokonaislukuun, sillä emme halua että desimaaliarvot leikkautuisivat vahingossa pois.</p>
 
 <pre class="sh_java">
-int luku = 4.2; // ei onnistu
+int luku = 4.2; // Ei onnistu
+
+double liukuluku = 0.42;
+luku = liukuluku; // Ei myöskään onnistu
 </pre>
+
+
 
   <h3>Sallittu ja kuvaava muuttujan nimi</h3>
 
@@ -1026,7 +1062,7 @@ int camelCase = 5; // Ei sallittu -- muuttuja camelCase on jo käytössä!
 
   <h2 id="laskentaa">Laskentaa</h2>
 
-  <p>Laskentaoperaatiot ovat varsin suoraviivaisia: <code>+</code>, <code>-</code>, <code>*</code> ja <code>/</code>.  Laskentajärjestys on myös varsin suoraviivainen: operaatiot lasketaan vasemmalta oikealle sulut huomioon ottaen. Kuitenkin <code>*</code> ja <code>/</code> lasketaan ennen <code>+</code> ja <code>-</code> operaatioita. <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html" target="_blank">Tässä vielä tarkemmin laskujärjestyksestä javassa.</a> Linkin takana oleva materiaali ei ole kuitenkaan aloittelijan kannalta kovin oleellista.</p>
+  <p>Laskentaoperaatiot ovat varsin suoraviivaisia: <code>+</code>, <code>-</code>, <code>*</code> ja <code>/</code>.  Laskentajärjestys on myös varsin suoraviivainen: operaatiot lasketaan vasemmalta oikealle sulut huomioon ottaen. Kuitenkin <code>*</code> ja <code>/</code> lasketaan ennen <code>+</code> ja <code>-</code> operaatioita, samoin kuin perus- tai kansakoulumatematiikassa on tullut tutuksi. <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html" target="_blank">Tässä vielä tarkemmin laskujärjestyksestä javassa.</a> Linkin takana oleva materiaali ei ole kuitenkaan aloittelijan kannalta kovin oleellista.</p>
 
 <pre class="sh_java">
 int eka = 2;
@@ -1037,6 +1073,11 @@ System.out.println(toka); // tulostaa 4
 int summa = eka + toka; // muuttujaan summa asetetaan muuttujien eka ja toka arvojen summa
 System.out.println(summa); // tulostaa 6
 </pre>
+
+<h3>Laskujärjestyksen määrittely sulkujen avulla</h3>
+
+<p>Laskujärjestystä voi muokata sulkujen avulla. Sulkujen sisällä olevat laskuoperaatiot suoritetaan ennen niiden ulkopuolella olevia laskuoperaatioita.</p>
+
 <pre class="sh_java">
 int laskuSuluilla = (1 + 1) + 3 * (2 + 5);
 System.out.println(laskuSuluilla); // tulostaa 23
@@ -1044,6 +1085,7 @@ System.out.println(laskuSuluilla); // tulostaa 23
 int laskuSuluitta = 1 + 1 + 3 * 2 + 5;
 System.out.println(laskuSuluitta); // tulostaa 13
 </pre>
+
 
   <p>Yllä olevan sulkuesimerkin voi suorittaa myös askeleittain.</p>
 
@@ -1341,12 +1383,10 @@ System.out.println(tulos);
   <p>Kolme yleistä väärinkäsitystä, jotka liittyvät muuttujan arvon asettamiseen ovat seuraavat:</p>
 
   <ul>
-    <li>Muuttujan asettamisen näkeminen siirtona kopioimisen sijaan: ohjelmakoodin <code>eka = toka</code> suorituksen jälkeen ajatellaan, että muuttujan <code>toka</code> arvo on siirtynyt muuttujan <code>eka</code> arvoksi, jonka jälkeen muuttujalla <code>toka</code> ei ole enää arvoa, tai sen arvo on esimerkiksi nolla. Tämä ei pidä paikkansa, sillä ohjelmakoodin <code>eka = toka</code> suorituksessa muuttujan <code>toka</code> nimeämässä paikassa oleva arvo kopioidaan muuttujan <code>eka</code> nimeämään paikkaan. Muuttujan <code>toka</code> arvo ei siis muutu.</li>
-    <li>Muuttujan asettamisen näkeminen riippuvuutena kopioimisen sijaan: ohjelmakoodin <code>eka = toka</code> suorituksen jälkeen ajatellaan, että mikä tahansa muutos muuttujaan <code>toka</code> vaikuttaa automaattisesti myös muuttujaan <code>eka</code>. Tämä ei pidä paikkansa, sillä asetus -- kopiointi -- on yksittäinen tapahtuma. Se tapahtuu vain silloin, ohjelmakoodi <code>eka = toka</code> suoritetaan.</li>
+    <li>Muuttujan asettamisen näkeminen siirtona kopioimisen sijaan: ohjelmakoodin <code>eka = toka</code> suorituksen jälkeen ajatellaan, että muuttujan <code>toka</code> arvo on siirtynyt muuttujan <code>eka</code> arvoksi, jonka jälkeen muuttujalla <code>toka</code> ei ole enää arvoa, tai sen arvo on esimerkiksi nolla. Tämä ei pidä paikkansa, sillä ohjelmakoodin <code>eka = toka</code> suorituksessa muuttujan <code>toka</code> nimeämässä paikassa oleva arvo kopioidaan muuttujan <code>eka</code> nimeämään paikkaan. Muuttujan <code>toka</code> arvo ei siis muutu.<br/></li>
+    <li>Muuttujan asettamisen näkeminen riippuvuutena kopioimisen sijaan: ohjelmakoodin <code>eka = toka</code> suorituksen jälkeen ajatellaan, että mikä tahansa muutos muuttujaan <code>toka</code> vaikuttaa automaattisesti myös muuttujaan <code>eka</code>. Tämä ei pidä paikkansa, sillä asetus -- kopiointi -- on yksittäinen tapahtuma. Se tapahtuu vain silloin, ohjelmakoodi <code>eka = toka</code> suoritetaan.<br/></li>
     <li>Kolmas väärinkäsitys liittyy kopioimisen suuntaan: ohjelmakoodin <code>eka = toka</code> suorituksessa ajatellaan, että muuttujan <code>toka</code> arvoksi kopioidaan muuttujan <code>eka</code> arvo. Tämä näkyy myös tilanteina, missä ohjelmoija voi vahingossa kirjoittaa esimerkiksi <code>42 = arvo</code> -- onneksi ohjelmointiympäristöt tukevat myös tässä.</li>
   </ul>
-
-  <p>TODO: kuvat</p>
 
   <p>Ehkäpä paras tapa tietokoneen ohjelmakoodin suorittamisen ymmärtämiseen on paperin ja kynän käyttäminen. Kun luet ohjelmakoodia, kirjoita paperille uusien muuttujien nimet, sekä kirjoita ylös rivi riviltä, miten ohjelmakoodissa olevien muuttujien arvot muuttuvat. Havainnollistetaan suoritusta seuraavalla ohjelmakoodilla:</p>
 
@@ -2107,7 +2147,9 @@ if (onkoPienempi) {
 }
 </pre>
 
-<p>TODO: kuva edellisen suorituksesta; ukko lukee muuttujat, tulee kärryyn, tehdään vertaus, luodaan muuttuja, tehdään vertaus -- koska true niin tulostus</p>
+  <img class="naytto" src="../img/drawings/boolean-muuttuja.png"/>
+
+  <p>Yllä olevassa kuvassa ohjelmakoodia on suoritettu niin pitkään, että ohjelman muuttujat on luotu ja niihin on asetettu arvot. Muuttujassa <code>onkoPienempi</code> on arvona <code>true</code>. Seuraavana suoritetaan vertailu <code>if (onkoPienempi) </code> -- muuttujaan <code>onkoPienempi</code> liittyvä arvo löytyy sen lokerosta, ja lopulta ohjelma tulostaa:</p>
 
 
 <pre>
@@ -2126,6 +2168,11 @@ if (onkoPienempi) {
 <pre class="sh_java">
 int jakojaannos = 7 % 2; 
 System.out.println(jakojaannos); // tulostaa 1
+
+System.out.println(5 % 3); // tulostaa 2
+System.out.println(7 % 4); // tulostaa 3
+System.out.println(8 % 4); // tulostaa 0
+System.out.println(1 % 2); // tulostaa 1
 </pre>
 
   <p>Jos haluamme tietää onko käyttäjän syöttämä luku jaollinen neljälläsadalla, tarkastamme onko syötetyn luvun jakojäännös neljänsadan suhteen nolla.</p>
@@ -2176,9 +2223,11 @@ Luku 7 on pariton.
 
   <h3>Monimutkaisemman ongelman ratkaiseminen osa kerrallaan</h3>
 
-  <p>Tutustutaan klassiseen ohjelmointiongelmaan: 'Kirjoita ohjelma, joka kysyy käyttäjältä lukua yhden ja sadan väliltä ja tulostaa luvun. Jos luku on kolmella jaollinen, luvun sijaan tulostetaan "Fizz". Jos luku on viidellä jaollinen, luvun sijaan tulostetaan "Buzz". Jos luku on sekä kolmellä että viidellä jaollinen, luvun sijaan tulostetaan "FizzBuzz"'.</p>
+  <p>Tutustutaan klassiseen ohjelmointiongelmaan:</p>
 
-  <p>Ohjelmoija lähtee ratkaisemaan tehtävää lukemalla ehdot yksi kerrallaan läpi ja toteuttamalla kullekin ehdolle oman vertailun. Tällöin ohjelman rakenne muotoutuu seuraavanlaisesta ajatusketjusta:</p>
+  <aside>'Kirjoita ohjelma, joka kysyy käyttäjältä lukua yhden ja sadan väliltä ja tulostaa luvun. Jos luku on kolmella jaollinen, luvun sijaan tulostetaan "Fizz". Jos luku on viidellä jaollinen, luvun sijaan tulostetaan "Buzz". Jos luku on sekä kolmellä että viidellä jaollinen, luvun sijaan tulostetaan "FizzBuzz"'.</aside>
+
+  <p>Ohjelmoija lähtee ratkaisemaan tehtävää lukemalla ongelmakuvauksen, ja luomalla ohjelmakoodia ongelmakuvausta seuraten. Koska ohjelman suoritusehdot esitellään ongelmassa annetussa järjestyksessä, muodostuu ohjelman rakenne järjestyksen perusteella. Ohjelman rakenne muodostuu seuraavien askelten perusteella:</p>
 
     <ol>
       <li>Tee ohjelma, joka lukee luvun käyttäjältä ja tulostaa sen.</li>
@@ -2187,7 +2236,7 @@ Luku 7 on pariton.
       <li>Jos luku on jaollinen kolmella ja viidellä, tulosta luvun sijan merkkijono "FizzBuzz".</li>
     </ol>
 
-    <p>Ajatusketju muodostuu ongelmalliseksi viimeistään neljännen kohdan paikkeilla. Alla oleva koodi seurailee ylläolevaa ajatusketjua, mutta ei toimi oikein. Kokeile itse!</p>
+    <p>Jos-tyyppiset ehdot on helppo toteuttaa <code>if-else if-else</code> -valintakäskyjen avulla. Alla oleva koodi on toteutettu ylläolevien askelten perusteella, mutta se ei kuitenkaan toimi oikein. Miksi ei? Kokeile itse!</p>
 
 <pre class="sh_java">
 Scanner lukija = new Scanner(System.in);
@@ -2205,7 +2254,13 @@ if (luku % 3 == 0) {
 }
 </pre>
 
-    <p>Ylläolevassa lähestymistavassa ongelmana on se, että <em>valintakäskyjen läpikäynti lopetetaan aina ensimmäiseen ehtoon, jonka arvo on totta</em>. Esimerkiksi luvulla 15 tulostetaan merkkijono "Fizz", sillä luku on kolmella jaollinen (15 % 3 == 0).</p>
+    <p>Alla kerrotaan syy edellisen ohjelman toimimattomuuteen, spoilerivaroitus!</p>
+
+    <p><img src="../img/doh/spoileri.png"/></p>
+
+    <h4>Valintakäskyjen suoritusjärjestyksestä</h4>
+
+    <p>Edellisessä lähestymistavassa ongelmana on se, että <em>valintakäskyjen läpikäynti lopetetaan ensimmäiseen ehtoon, jonka arvo on totta</em>. Esimerkiksi luvulla 15 tulostetaan merkkijono "Fizz", sillä luku on kolmella jaollinen (15 % 3 == 0).</p>
 
     <p>Yksi lähestymistapa ylläolevan ajatusketjun kehittämiseen on ensin etsiä <em>vaativin ehto</em> ja toteuttaa se. Tämän jälkeen toteutettaisiin muut ehdot. Yllä olevassa esimerkissä ehto "jos luku on jaollinen kolmella <strong>ja</strong> viidellä" vaatii kahden tapauksen toteutumista. Nyt ajatusketju olisi muotoa.</p>
 
@@ -2470,9 +2525,7 @@ while (true) {
 }
 </pre>
 
-  <p>Komento <code>while (true)</code> saa sen aikaan, että siihen liittyvää lohkoa, eli <code>{}</code>:lla ympäröityjä komentoja suoritetaan äärettömän monta kertaa.</p>
-
-  <p>TODO: kuva siitä, että suoritus palaa aina alkuun.</p>
+  <p>Komento <code>while (true)</code> saa sen aikaan, että siihen liittyvää lohkoa, eli <code>{}</code>:lla ympäröityjä komentoja -- tässä <code>System.out.println("osaan ohjelmoida!");</code> -- suoritetaan äärettömän monta kertaa.</p>
 
 
   <h3>Toistolauseesta poistuminen</h3>
@@ -2517,6 +2570,22 @@ kiitos ja kuulemiin.
 
   <iframe style="width: 100%; height: 480px;" src="http://cscircles.cemc.uwaterloo.ca/java_visualize/iframe-embed.html?faking_cpp=false#data=%7B%22user_script%22%3A%22public%20class%20Esimerkki%20%7B%5Cn%20%20%20public%20static%20void%20main(String%5B%5D%20args)%20%7B%5Cn%20%20%20%20%20%20int%20luku%20%3D%201%3B%5Cn%20%20%20%20%20%20%5Cn%20%20%20%20%20%20while%20(true)%20%7B%5Cn%20%20%20%20%20%20%20%20%20if(luku%20%3E%205)%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20break%3B%20%20%5Cn%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20System.out.println(luku)%3B%5Cn%20%20%20%20%20%20%20%20%20luku%2B%2B%3B%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%5Cn%20%20%20%20%20%20System.out.println(%5C%22Kiitos!%5C%22)%3B%5Cn%20%20%20%7D%5Cn%7D%22%2C%22options%22%3A%7B%22showStringsAsValues%22%3Atrue%2C%22showAllFields%22%3Afalse%7D%2C%22args%22%3A%5B%5D%2C%22stdin%22%3A%22%22%7D&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0&resizeContainer=true&highlightLines=true&rightStdout=true" frameborder="0" scrolling="no"></iframe>
 </aside>
+
+  <h3>Yhteenveto: while-true-break</h3>
+  
+  <p>
+    <figure>
+      <img class="naytto" src="../img/drawings/while-true-break.png"/>
+
+      <figcaption><p>Toistolauseen suorittaminen alkaa while-ehdosta (1). Jos ehto on totta -- tässä <code>true</code> eli aina totta -- toistettavan ohjelmakoodin suoritus alkaa. Toistettava ohjelmakoodi sijaitsee while-ehdon jälkeisen avaavan aaltosulun ja sitä vastaavan sulkevan aaltosulun rajaamalla alueella.</p>
+
+	<p>Suoritus etenee aivan kuten normaalin ohjelmakoodin suoritus (2), mutta, kun ohjelman suoritus päätyy toistolauseen päättävään aaltosulkuun (3), palataan kohtaan (1).</p>
+
+	<p>Jos suorituksessa kohdataan avainsana <code>break</code>, toistettavasta ohjelmakoodista poistutaan heti -- tällöin ohjelman suoritus jatkuu toistettavan ohjelmakoodin alueen sulkevan aaltosulun jälkeisestä komennosta.</p></figcaption>
+    </figure>
+  </p>
+
+
 
   <h3>Esimerkki: Laskin</h3>
 
