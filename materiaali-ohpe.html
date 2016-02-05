@@ -8525,7 +8525,7 @@ komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, andywarhol)?
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2saucier" href="#2saucier2">
       <div class="panel-heading">
-	<h4 id="saucier-form-legend">Kysely: Kuvaavat adjektiivit ja persoonallisuus</h4>
+	<h4 class="kysely" id="saucier-form-legend">Kysely: Kuvaavat adjektiivit ja persoonallisuus</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2saucier2">
@@ -8597,7 +8597,7 @@ komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, andywarhol)?
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2pystyvyys" href="#2pystyvyys2">
       <div class="panel-heading">
-	<h4 id="pystyvyys-form-legend">Kysely: Minäpystyvyys</h4>
+	<h4 class="kysely" id="pystyvyys-form-legend">Kysely: Minäpystyvyys</h4>
       </div>
     </a>
     <div class="panel-collapse collapse" id="2pystyvyys2">
@@ -8986,8 +8986,601 @@ komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, andywarhol)?
 -->
 
 
+<h2>ArrayList ja HashMap</h2>
+
+<p>Kerrataan ensin edellisellä viikolla tutuksi tullutta ArrayListia, jonka jälkeen tutustutaan toisenlaiseen tapaan tallentaa tietoa.</p>
+
+<h3>ArrayList</h3>
+
+<p>ArrayList on listarakenne, johon voidaan tallentaa lähes rajaton määrä arvoja. Uusi ArrayList-olio luodaan seuraavalla komennolla:</p>
+
+<pre class="sh_java">
+ArrayList&lt;<em>Tyyppi</em>&gt; lista = new ArrayList&lt;&gt;();
+</pre>
+
+<p>Listalle annetaan tyyppiparametri <em>Tyyppi</em>, joka kertoo minkätyyppisiä arvoja listalle tullaan tallentamaan. Tyyppiparametreja ovat esimerkiksi <code>String</code>, <code>Integer</code> (vastaa int-tyyppistä muuttujaa) sekä <code>Double</code> (vastaa double-tyyppistä muuttujaa). Yllä <code>lista</code> on muuttujan nimi, jolla juuri luotuun listaan viitataan ohjelmakoodissa.</p>
+
+<p>Luodaan lista <em>nimet</em>, johon lisätään kuusi nimeä. Tämän jälkeen niistä tulostetaan kolme ensimmäistä. Listan kohtien numerointi alkaa aina nollasta, eli ensimmäinen arvo on kohdassa 0, toinen arvo kohdassa 1, kolmas arvo kohdassa 2 ja niin edelleen.</p>
+
+
+<pre class="sh_java">
+ArrayList&lt;String&gt; nimet = new ArrayList&lt;&gt;();
+nimet.add("Ada-Maaria");
+nimet.add("Antti");
+nimet.add("Joonas");
+nimet.add("Lalli");
+nimet.add("Miika");
+nimet.add("Otto-Ville");
+
+System.out.println("Nimiä yhteensä: " + nimet.size());
+
+System.out.println("Kohdassa 0: " + nimet.get(0));
+System.out.println("Kohdassa 1: " + nimet.get(1));
+System.out.println("Kohdassa 2: " + nimet.get(2));
+</pre>
+
+<p>Ohjelman tulostus on seuraava:</p>
+
+<pre>
+Nimiä yhteensä: 6
+Kohdassa 0: Ada-Maaria
+Kohdassa 1: Antti
+Kohdassa 2: Joonas
+</pre>
+
+<!--
+<p>TODO: kuva listasta tietokoneen muistissa</p>
+-->
+
+<p>Listan läpikäynti onnistuu sekä while-toistolauseen avulla että for-each -toistolauseen avulla.</p>
+
+<pre class="sh_java">
+ArrayList&lt;String&gt; nimet = new ArrayList&lt;&gt;();
+nimet.add("Sonja");
+nimet.add("Terho");
+nimet.add("Tiia");
+nimet.add("Timo");
+nimet.add("Ville-Veikko");
+
+// while-toistolla tapahtuva listan alkioiden tulostaminen
+int indeksi = 0;
+while (indeksi &lt; nimet.size()) {
+    System.out.println(nimet.get(indeksi));
+    indeksi++;
+}
+
+// for-each toistolla tapahtuva listan alkioiden tulostaminen
+for (String nimi: nimet) {
+    System.out.println(nimi);
+}</pre>
+
+<p>Lyhyt yhteenveto ArrayListin komennoista:</p>
+
+<ul>
+  <li>ArrayList&lt;<em>Tyyppi</em>&gt; <em>lista</em> = new ArrayList&lt;&gt;()</code> - luo uuden lista-nimisen ArrayList-listan, johon tallennetaan <em>Tyyppi</em>-tyyppiparametrin tyyppisiä arvoja.</li>
+  <li><em>lista</em>.<code>add(<em>Tyyppi</em> alkio)</code> - lisää alkion listalle.</li>
+  <li><em>lista</em>.<code>get(int indeksi)</code> - palauttaa alkion listan kohdasta <em>indeksi</em>.</li>
+  <li><em>lista</em>.<code>size()</code> - palauttaa alkion listalla olevien alkioiden lukumäärän.</li>
+</ul>
+
 
 <div class="tehtavat">
+
+  <div class="tehtava">
+
+    <h3>Desibelimittaukset</h3>
+
+    <p>Kerrataan listojen käyttöä ja toteutetaan kurssin kolmannen viikon alussa nähty tehtävä "Desibelimittaukset" listojen ja metodien avulla. Kun tämän tehtävän aliosat on toteutettu, seuraava pääohjelma lukee luvut listalle, valitsee niistä vain osan, ja tulostaa lukujen keskiarvon tai ilmoittaa ettei lukuja ole.</p>
+
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
+
+lueLuvut(lukija, lista);
+lista = valitseLuvutValilta(lista, 0, Integer.MAX_VALUE);
+
+if (lista.isEmpty()) {
+    System.out.println("Ei lukuja.");
+} else {
+    System.out.println("Lukujen keskiarvo: " + keskiarvo(lista));
+}
+</pre>
+
+
+    <h4>Lukujen lukeminen listalle</h4>
+
+    <p>Toteuta metodi <code>public static ArrayList&lt;Integer&gt; lueLuvut(Scanner lukija, ArrayList&lt;Integer&gt; lista)</code>, joka käyttää sille parametrina annettua Scanner-lukijaa lukujen lukemiseen, ja tallentaa luetut luvut listalle. Lukeminen tulee lopettaa kun käyttäjä syöttää tyhjän merkkijonon, eli painaa enter.</p>
+
+    <p>Merkkijonon lukeminen ja sen muuntaminen kokonaisluvuksi onnistuu osissa seuraavasti:</p>
+
+<pre class="sh_java">
+String luettu = lukija.nextLine();
+int luettuLuku = Integer.parseInt(luettu);
+</pre>
+
+    <p>Kun olet toteuttanut metodin <code>public static ArrayList&lt;Integer&gt; lueLuvut(Scanner lukija, ArrayList&lt;Integer&gt; lista)</code>, toimii ohjelma seuraavasti:</p>
+
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
+
+lueLuvut(lukija, lista);
+
+System.out.println();
+
+for (int luku: lista) {
+    System.out.println(luku);
+}
+</pre>
+
+<pre>
+Syötä lukuja, tyhjä syöte lopettaa.
+<font color="red">-41</font>
+<font color="red">22</font>
+<font color="red">97</font>
+
+-41
+22
+97
+</pre>
+
+
+    <h4>Lukujen valinta</h4>
+
+    <p>Toteuta metodi <code>public static ArrayList&lt;Integer&gt; valitseLuvutValilta(ArrayList&lt;Integer&gt; luvut, int pienin, int suurin)</code>, joka valitsee parametrina annetusta listasta ne luvut, jotka ovat suurempia tai yhtäsuuria kuin <code>pienin</code> ja pienempiä tai yhtäsuuria kuin <code>suurin</code>, ja palauttaa ne metodista uudessa ArrayList-listarakenteessa.</p>
+
+    <p>Kun olet toteuttanut metodin, voit kokeilla sen toimintaa seuraavalla ohjelmakoodilla:</p>
+
+<pre class="sh_java">
+ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
+lista.add(10, 20, 30, 42);
+
+ArrayList&lt;Integer&gt; rajattu = valitseLuvutValilta(lista, 20, 50);
+
+System.out.println("Lukuja alkuperäisellä listalla: " + lista.size());
+
+for (int luku: rajattu) {
+    System.out.println(luku);
+}
+</pre>
+
+    <p>Ylläolevan ohjelmakoodin tulostuksen pitäisi olla seuraava:</p>
+
+<pre>
+Lukuja alkuperäisellä listalla: 4
+20
+30
+42
+</pre>
+
+
+    <h4>Keskiarvo</h4>
+
+    <p>Toteuta metodi <code>public static double keskiarvo(ArrayList&lt;Integer&gt; luvut)</code>, joka laskee sille annetussa listassa olevien lukujen keskiarvon ja palauttaa sen. Voit olettaa, että metodille parametrina annetulla listalla on aina vähintään yksi luku.</p> 
+
+    <p>Kun olet toteuttanut metodin, voit kokeilla sen toimintaa seuraavalla ohjelmakoodilla:</p>
+
+<pre class="sh_java">
+ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
+lista.add(10, 15, 20, 25, 30);
+
+System.out.println("Lukujen keskiarvo on " + keskiarvo(lista));
+</pre>
+
+    <p>Ylläolevan ohjelmakoodin tulostuksen pitäisi olla seuraava:</p>
+
+<pre>
+Lukujen keskiarvo on 20
+</pre>
+
+
+  </div>
+
+  <div class="tehtava">
+    
+    <h3>Vieraslista</h3>
+    
+    <p>Toteutetaan seuraavaksi vieraslistan ylläpitämiseen käytettävä ohjelma. Ohjelman toiminta kokonaisuudessaan on seuraavanlainen:</p>
+
+<pre>
+Syötä nimiä vieraslistalle, tyhjä rivi lopettaa.
+<font color="red">Jack Bauer</font>
+<font color="red">Jack Bower</font>
+<font color="red">Jack Baur</font>
+<font color="red">Jack Bowr</font>
+
+Syötä nimiä, tyhjä rivi lopettaa.
+<font color="red">Chuck Norris</font>
+Nimi ei ole listalla.
+<font color="red">Jack Baluer</font>
+Nimi ei ole listalla.
+<font color="red">Jack Bauer</font>
+Nimi on listalla.
+<font color="red">Jack Bower</font>
+Nimi on listalla.
+
+Kiitos!
+</pre>
+
+    <p>Pääohjelmametodi tulee kokonaisuudessaan olemaan seuraavanlainen:</p>
+
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
+
+lueNimet(lukija, lista);
+System.out.println("");
+tarkistaNimet(lukija, lista);
+System.out.println("Kiitos!");
+</pre>
+
+    <p>Toteutetaan metodit <code>lueNimet</code> ja <code>tarkistaNimet</code>.</p>
+    
+
+    <h4>Nimien lukeminen listalle</h4>
+    
+    <p>Toteuta metodi <code>public static void lueNimet(Scanner lukija, ArrayList&lt;String&gt; lista)</code>, joka lukee käyttäjän kirjoittamat syötteet metodille parametrina annetulle listalle. Syötteiden lukeminen lopetetaan kun käyttäjä syöttää tyhjän rivin. Kun metodia kutsutaan pääohjelmasta, tulee tulostuksen olla esimerkiksi seuraavanlainen.</p>
+
+<pre>
+Syötä nimiä vieraslistalle, tyhjä rivi lopettaa.
+<font color="red">Jack Bauer</font>
+<font color="red">Jack Bower</font>
+
+Kiitos!
+</pre>
+
+    <p>Esimerkki kutsusta:</p>
+
+<pre class="sh_java">
+public static void main(String[] args) {
+    Scanner lukija = new Scanner(System.in);
+    ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
+
+    lueNimet(lukija, lista);
+}
+
+// metodi ja sen toteutus
+</pre>
+
+    <h4>Nimien tarkistaminen</h4>
+
+    <p>Toteuta metodi <code>public static void tarkistaNimet(Scanner lukija, ArrayList&lt;String&gt; lista)</code>, joka kysyy käyttäjiltä nimiä, ja tarkistaa löytyykö nimiä patametrina saadulla listalla. Kun käyttäjä syöttää tyhjän merkkijonon (eli painaa vain enteriä), nimien tarkastus lopetetaan ja metodista poistutaan.</p>
+
+    <p>Kun parametrina annetulla listalla on nimi <em>Coolness</em>, metodin kutsu toimii esimerkiksi seuraavasti:</p>
+
+<pre>
+Syötä nimiä, tyhjä rivi lopettaa.
+<font color="red">Chuck Norris</font>
+Nimi ei ole listalla.
+<font color="red">Jack Bauer</font>
+Nimi ei ole listalla.
+<font color="red">Coolness</font>
+Nimi on listalla.
+<font color="red">Testi</font>
+Nimi ei ole listalla.
+
+</pre>
+
+    <p>Kun olet valmis, kokeile vielä että ohjelma toimii halutusti tehtävänannon alussa olevalla koodilla.</p>
+
+  </div>
+  
+</div>
+
+
+<p>ArrayList on erittäin hyödyllinen kun halutaan tallentaa muuttujien arvoja myöhempää käsittelyä varten. Siinä on kuitenkin pieni rajoite. Tiedon yhdistäminen toiseen tietoon, esimerkiksi puhelinnumeroihin liittyvien nimien hakeminen, sanakirjan sanakäännösparien etsiminen tai käsitteiden ilmentymien lukumäärien laskeminen on ArrayListin kanssa -- vaikkakin mahdollista -- on hieman haastavaa. Tutustutaan seuraavaksi HashMap-nimiseen apuvälineeseen, joka on varsin näppärä väline tietoparien tallentamiseen.</p>
+
+<h3>HashMap</h3>
+
+<p>HashMap on apuväline tietoparien tallentamiseen. Sitä käytetään silloin kun halutaan tallentaa avain-arvo -pareja, kuten esimerkiksi viivakoodeihin liittyviä tuotteita tai henkilöihin liittyviä saldotilanteita. HashMap-olio luodaan seuraavasti:</p>
+
+<pre class="sh_java">
+HashMap&lt;<em>Tyyppi, Tyyppi</em>&gt; arvoparit = new HashMap&lt;&gt;();
+</pre>
+
+<p>Yllä tyyppiparametrit kuvataan <em>Tyyppi</em>-muuttujien avulla. Tyyppiparametreilla määritellään minkätyyppisiä avaimia ja minkätyyppisiä arvoja luotavaan HashMapiin tallennetaan. Kuten ArrayListissä, tyyppiparametreja ovat esimerkiksi <code>Integer</code>, <code>String</code> ja <code>Double</code>. </p>
+
+<p>Seuraavassa esimerkissä luodaan sanakirjaohjelma. Sanakirjaohjelmalle määritellään ensin ne sanaparit, jotka se tuntee, jonka jälkeen ohjelma kyselee käyttäjältä sanoja:</p>
+
+<pre class="sh_java">
+// luodaan HashMap-olio, johon sanat tallennetaan
+HashMap&lt;String, String&gt; sanakirja = new HashMap&lt;&gt;();
+// lisätään sanapareja
+sanakirja.put("mänty", "pine");
+sanakirja.put("omena", "apple");
+sanakirja.put("ananas", "pineapple");
+
+Scanner lukija = new Scanner(System.in);
+
+while(true) {
+    System.out.print("Syötä haettava sana > ");
+    String syote = lukija.nextLine();
+    if (syote.isEmpty()) {
+        break;
+    }
+
+    if (sanakirja.containsKey(syote)) {
+        System.out.println("Sanan " + syote + " käännös on " + sanakirja.get(syote));
+    } else {
+        System.out.println("Sanaa " + syote + " ei löydy sanakirjasta.");
+    }
+}
+
+System.out.println("Kiitos!");
+</pre>
+
+<p>Ohjelma voi toimia esimerkiksi seuraavasti:</p>
+
+<pre>
+Syötä haettava sana > <font color="red">norja</font>
+Sanaa norja ei löydy sanakirjasta
+Syötä haettava sana > <font color="red">omena</font>
+Sanan omena käännös on apple
+Syötä haettava sana > <font color="red">ananas</font>
+Sanan ananas kännös on pineapple
+Syötä haettava sana > <font color="red">pineapple</font>
+Sanaa pineapple ei löydy sanakirjasta
+</pre>
+
+<p>HashMap tallentaa tietopareja siten, että avain -- put-metodille ensin annettava muuttuja -- on se, jonka perusteella arvoja -- put-metodille annettava toinen muuttuja -- voi hakea. Yllä olevassa esimerkissä <em>pineapple</em> on tallennettu arvoksi, joten sitä ei löydy avaimena.</p>
+
+
+<p>Lyhyt yhteenveto HashMapin komennoista:</p>
+
+<ul>
+  <li>HashMap&lt;<em>Tyyppi1</em>, <em>Tyyppi2</em>&gt; <em>tietoparit</em> = new HashMap&lt;&gt;()</code> - luo uuden tietoparit-nimisen HashMapin, johon tallennetaan <em>Tyyppi2</em>-tyyppiparametrin tyyppisiä arvoja <em>Tyyppi1</em>-tyyppiparametrin tyyppisillä avaimilla.</li>
+  <li><em>tietoparit</em>.<code>put(<em>Tyyppi1</em> avain, <em>Tyyppi2</em> arvo)</code> - lisää tietoparin <em>avain, arvo</em> HashMapiin.</li>
+  <li><em>tietoparit</em>.<code>get(<em>Tyyppi1</em> avain)</code> - palauttaa avaimella löytyvät arvon. Jos arvoa ei löydy, palautetaan <em>null</em>.</li>
+  <li><em>tietoparit</em>.<code>containsKey(<em>Tyyppi1</em> avain)</code> - palauttaa totuusarvoisen muuttujan (boolean), joka kertoo onko HashMapissa haettua avainta.</li>
+</ul>
+
+
+<div class="tehtavat">
+
+
+  <div class="tehtava">
+
+    <h3>Numeropalvelu</h3>
+
+    <p>Toteuta edellistä sanakirjaesimerkkiä mukaillen ohjelma, joka ensin lukee ja tallentaa käyttäjän syöttämiä puhelinnumeroita ja nimiä. Lukeminen lopetetaan kun käyttäjä syöttää tyhjän merkkijonon. Tämän jälkeen käynnistetään numeropalvelu, joka kertoo soittajan nimen käyttäjän syöttämän puhelinnumeron perusteella. Jos puhelinnumeron omistaja on tiedossa, kerrotaan se, muuten kerrotaan että soittaja on tuntematon. Numeropalvelu sammutetaan kun käyttäjä syöttää tyhjän merkkijonon.</p>
+
+    <p>Ohjelman tulee esimerkiksi toimia seuraavasti:</p>
+
+<pre>
+Syötä puhelinnumero, tyhjä lopettaa: <font color="red">123-12345</font>
+Syötä nimi: <font color="red">Andrew</font>
+
+Syötä puhelinnumero, tyhjä lopettaa: <font color="red">867-5309</font>
+Syötä nimi: <font color="red">Jenny</font>
+
+Syötä puhelinnumero, tyhjä lopettaa: 
+
+Kiitos!
+
+* Numeropalvelu *
+
+Mikä numero tarkistetaan? 
+> <font color="red">012-12345</font>
+Tuntematon numero.
+
+Mikä numero tarkistetaan? 
+> <font color="red">867-5309</font>
+Soittaja on Jenny
+
+Mikä numero tarkistetaan? 
+> 
+
+Kiitos!
+</pre>
+
+  </div>
+</div>
+
+
+<h4>HashMapin käyttö metodikutsussa</h4>
+
+<p>HashMap on viittaustyyppinen muuttuja samalla tavalla kuin ArrayList. Tämä tarkoitta sitä, että kun HashMap-olio annetaan metodille parametrina, metodikutsun yhteydessä kopioituu vain viite, ja metodin sisällä voidaan muokata alkuperäistä HashMap-olioita.</p>
+
+<p>Allaoleva esimerkkiohjelma kuvastaa tätä ominaisuutta.</p>
+
+<pre class="sh_java">
+import java.util.HashMap;
+
+public class Esimerkki {
+
+  public static void main(String[] args) {
+    HashMap&lt;String, String&gt; parit = new HashMap&lt;&gt;();
+    lisaaArvo(parit, "Esimerkki", "Toimii");
+
+    System.out.println(parit.get("Esimerkki"));
+  }
+
+  public static void lisaaArvo(HashMap&lt;String, String&gt; arvot, String avain, String arvo) {
+    arvot.put(avain, arvo);
+  }
+}
+</pre>
+
+<p>Kokeile mitä ylläoleva ohjelma tulostaa!</p>
+
+
+<h4>Arvon päivittäminen</h4>
+
+<p>HashMapilla ei ole metodia olemassaolevan arvon päivittämiseen, vaan päivitys tapahtuu edellisen arvon ylikirjoittamisella. Jos HashMapia käytetään asioiden laskemiseen, tulee lisäyksen yhteydessä hakea vanha arvo, kasvattaa sitä yhdellä, ja lisätä kasvatettu arvo takaisin HashMap-olioon. Alla olevassa esimerkissä on toteutettu bongauslaskuri, joka pitää kirjaa erilaisista bongauksista.</p>
+
+
+<pre class="sh_java">
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Bongauslaskuri {
+
+  public static void main(String[] args) {
+    Scanner lukija = new Scanner(System.in);
+    HashMap&lt;String, Integer&gt; bongaukset = new HashMap&lt;&gt;();
+
+    while (true) {
+      String bongattu = lukija.nextLine();
+      if(bongattu.isEmpty()) {
+        break; 
+      }
+
+      if (!bongaukset.containsKey(bongattu)) {        
+        bongaukset.put(bongaus, 1);
+      } else {
+        bongaukset.put(bongaus, bongaukset.get(bongaus) + 1);      
+      }
+
+      System.out.println("Bongauksia " + bongaus + " yhteensä " + bongaukset.get(bongaus));
+    }
+  }
+}
+</pre>
+
+<!--
+<p>TODO: selitystehtävä, kerro rivi riviltä ylläolevan ohjelman main-metodin toiminta.</p>
+-->
+
+<div class="tehtavat">
+
+  <div class="tehtava">
+
+    <h3>Kahvikassa</h3>
+
+    <p>Toteutetaan tässä tehtävässä toiminnallisuutta kahvikassan kirjanpitoon. Kahvikassa pitää kirjaa henkilöiden juomista kahveista. Juotuja kahveja voi maksaa pois tuomalla kahvipaikalle uusia kahvipaketteja. Kun ohjelma on valmis, sen tominnallisuus on seuraavanlainen.</p>
+
+<pre>
+** Kahvikassa **
+> <font color="red">Sonja</font>
+Luodaan tunnus Sonja.
+Juotuja kahveja 0.
+
+Kirjoita "juo" jos haluat juoda kahvin, "tuo" jos toit kahvipaketin.
+> <font color="red">juo</font>
+Juotuja kahveja 1.
+
+** Kahvikassa **
+> <font color="red">Sonja</font>
+Juotuja kahveja 1.
+
+Kirjoita "juo" jos haluat juoda kahvin, "tuo" jos toit kahvipaketin.
+> <font color="red">tuo</font>
+Juotuja kahveja -9.
+
+** Kahvikassa **
+> <font color="red">Ada</font>
+Luodaan tunnus Ada.
+Juotuja kahveja 0.
+
+Kirjoita "juo" jos haluat juoda kahvin, "tuo" jos toit kahvipaketin.
+> <font color="red">juo</font>
+Juotuja kahveja 1.
+
+** Kahvikassa **
+...
+</pre>
+
+    <p>Kun ohjelmaan kirjautuu uusi käyttäjä, käyttäjätunnus luodaan ja käyttäjälle asetetaan saldoksi 0. Kun käyttäjä kirjoittaa "juo", juotujen kahvien määrä kasvaa yhdellä. Jos taas käyttäjä kirjoittaa "tuo", juotujen kahvien määrä vähenee kymmenellä. Lopeta ohjelman suoritus kun käyttäjä kirjoittaa tyhjän merkkijonon.</p>
+
+    <p>Tehdään ohjelma paloissa.</p>
+
+    <h4>Tietojen hakeminen ja uuden käyttäjän luominen</h4>
+
+    <p>Luo metodi <code>public static void haeTiedot(HashMap&lt;String, Integer&gt; kassa, String nimi)</code>, joka tarkistaa onko käyttäjää <code>kassa</code>-nimisenä parametrina annetussa HashMapissa. Jos käyttäjää ei löydy, luodaan käyttäjä ja asetetaan käyttäjän juotujen kahvien määräksi 0. Lopulta parametrina annetusta HashMapista haetaan käyttäjän juomien kahvien määrä ja tulostetaan se.</p>
+
+    <p>Esimerkkejä metodin toiminnasta:</p>
+
+<pre class="sh_java">
+HashMap&lt;String, Integer&gt; data = new HashMap&lt;&gt;();
+haeTiedot(data, "Arto");
+</pre>
+
+<pre>
+Luodaan tunnus Arto.
+Juotuja kahveja 0.
+</pre>
+
+<pre class="sh_java">
+HashMap&lt;String, Integer&gt; data = new HashMap&lt;&gt;();
+haeTiedot(data, "Arto");
+haeTiedot(data, "Arto");
+</pre>
+
+<pre>
+Luodaan tunnus Arto.
+Juotuja kahveja 0.
+Juotuja kahveja 0.
+</pre>
+
+<pre class="sh_java">
+HashMap&lt;String, Integer&gt; data = new HashMap&lt;&gt;();
+haeTiedot(data, "Arto");
+haeTiedot(data, "Ada");
+haeTiedot(data, "Arto");
+</pre>
+
+<pre>
+Luodaan tunnus Arto.
+Juotuja kahveja 0.
+Luodaan tunnus Ada.
+Juotuja kahveja 0.
+Juotuja kahveja 0.
+</pre>
+
+
+    <h4>Saldon muuttaminen</h4>
+
+    <p>Luo metodi <code>public static void muutaSaldoa(HashMap&lt;String, Integer&gt; kassa, String nimi, int paljonko)</code>, joka muuttaa parametrina annetussa <code>kassa</code>-parametrissa olevaan henkilöön <code>nimi</code> liittyvää saldoa parametrina annetun <code>paljonko</code>-muuttujan verran.</p>
+
+    <p>Esimerkkejä metodin toiminnasta yhdessä edellisessä osassa toteutetun haeTiedot-metodin kanssa:</p>
+
+<pre class="sh_java">
+HashMap&lt;String, Integer&gt; data = new HashMap&lt;&gt;();
+haeTiedot(data, "Arto");
+muutaSaldoa(data, "Arto", 1);
+haeTiedot(data, "Arto");
+</pre>
+
+<pre>
+Luodaan tunnus Arto.
+Juotuja kahveja 0.
+Juotuja kahveja 1.
+</pre>
+
+<pre class="sh_java">
+HashMap&lt;String, Integer&gt; data = new HashMap&lt;&gt;();
+haeTiedot(data, "Arto");
+muutaSaldoa(data, "Arto", -10);
+haeTiedot(data, "Arto");
+</pre>
+
+<pre>
+Luodaan tunnus Arto.
+Juotuja kahveja 0.
+Juotuja kahveja -10.
+</pre>
+
+    <h4>Kahvikassan toiminnallisuus</h4>
+
+    <p>Toteuta pääohjelmametodi, joka hyödyntää edellä toteutettuja metodeja. Käyttäjän tulee ensin syöttää nimi, jonka jälkeen kahvikassa tarkistaa onko käyttäjää olemassa. Jos käyttäjä on olemassa, kerrotaan käyttäjän juomien kahvien määrä. Jos käyttäjää taas ei ole olemassa, luodaan käyttäjä, jonka jälkeen kerrotaan käyttäjän juomien kahvien määrä. Tämän jälkeen käyttäjältä kysytään haluaako hän juoda vai tuoda kahvia. Jos käyttäjä haluaa juoda kahvia, hänen juomiensa kahvien määrää kasvatetaan yhdellä, jonka jälkeen juotujen kahvien määrä tulostetaan. Jos taas käyttäjä haluaa tuoda kahvia, hänen juomiensa kahvien määrää vähennetään kymmenellä, jonka jälkeen juotujen kahvien määrä tulostetaan. Ohjelman suoritus tulee lopettaa kun käyttäjä kirjoittaa nimeksi tyhjän merkkijonon, eli painaa enteriä.</p>
+    
+    <p>Aloita metodin toteutus siten, että määrittelet Scanner-lukijan ja HashMap&lt;String, Integer&gt; -olion.</p>
+
+<pre class="sh_java">
+public static void main(String[] args) {
+    Scanner lukija = new Scanner(System.in);
+    HashMap&lt;String, Integer&gt; kahvit = new HashMap&lt;&gt;();
+
+    // kahvikassan toiminnallisuus  
+}
+
+// aiemmin toteutetut metodit
+</pre>
+
+  </div>
+
+<!--
+
 
   <div class="tehtava">
 
@@ -9050,104 +9643,38 @@ for (int i = 0; i &lt; 18; i++) {
     <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/vapaarobotti-kahdeksantoistakulmio.png" /></p>
 
   </div>
-
-  <div class="tehtava">
-
-    <h3>Vieraslista</h3>
-
-    <p>Huom! Kertaa ennen tämän tehtävän tekemistä edellisen viikon materiaalista ArrayList.</p>
-
-    <p>Toteutetaan ohjelma, minkä avulla voidaan ensin syöttää nimiä vieraslistaan, minkä jälkeen tarkastellaan onko osallistujat vieraslistalla. Ohjelman toiminta kokonaisuudessaan on seuraavanlainen:</p>
-
-<pre>
-Syötä nimiä vieraslistalle, tyhjä rivi lopettaa.
-<font color="red">Jack Bauer</font>
-<font color="red">Jack Bower</font>
-<font color="red">Jack Baur</font>
-<font color="red">Jack Bowr</font>
-
-
-Syötä nimiä, tyhjä rivi lopettaa.
-<font color="red">Chuck Norris</font>
-Nimi ei ole listalla.
-<font color="red">Jack Baluer</font>
-Nimi ei ole listalla.
-<font color="red">Jack Bauer</font>
-Nimi on listalla.
-<font color="red">Jack Bower</font>
-Nimi on listalla.
-
-Kiitos!
-</pre>
-
-    <p>Tehdään ohjelma osissa samalla metodien käyttöä muistellen.</p>
-
-    <h4>Nimien lukeminen</h4>
-
-    <p>Toteuta metodi <code>public static void lueNimet(Scanner lukija, ArrayList&lt;String&gt; lista)</code>, joka käyttää parametrina saatavaa lukijaa nimien lukemiseen listalle.</p>
-
-    <p>Kun metodia kutsutaan pääohjelmasta, tulee tulostuksen olla esimerkiksi seuraavanlainen.</p>
-
-<pre>
-Syötä nimiä vieraslistalle, tyhjä rivi lopettaa.
-<font color="red">Jack Bauer</font>
-<font color="red">Jack Bower</font>
-
-</pre>
-
-    <p>Esimerkki kutsusta:</p>
-
-<pre class="sh_java">
-public static void main(String[] args) {
-    Scanner lukija = new Scanner(System.in);
-    ArrayList&lt;String&gt; lista = new ArrayList<>();
-
-    lueNimet(lukija, lista);
-}
-
-// metodi ja sen toteutus
-</pre>
-
-    <h4>Nimien tarkistaminen</h4>
-
-    <p>Toteuta metodi <code>public static void tarkistaNimet(Scanner lukija, ArrayList&lt;String&gt; lista)</code>, joka käyttää parametrina saatavaa lukijaa käyttäjän syöttämien nimien lukemiseen. Jokaisen luetun nimen kohdalla tarkastetaan onko se listalla. Kun käyttäjä syöttää tyhjän merkkijonon (eli painaa vain enteriä), nimien tarkastus lopetetaan ja metodista poistutaan.</p>
-
-    <p>Kun parametrina annetulla listalla on nimi <em>Coolness</em>, metodin kutsu toimii esimerkiksi seuraavasti:</p>
-
-<pre>
-Syötä nimiä, tyhjä rivi lopettaa.
-<font color="red">Chuck Norris</font>
-Nimi ei ole listalla.
-<font color="red">Jack Bauer</font>
-Nimi ei ole listalla.
-<font color="red">Coolness</font>
-Nimi on listalla.
-<font color="red">Testi</font>
-Nimi ei ole listalla.
-
-</pre>
-
-
-    <p>Kun olet toteuttanut kaikki metodit, kokeile ohjelman toimintaa siten, että <code>main</code>-metodisi sisältää seuraavat rivit:</p>
-
-<pre class="sh_java">
-Scanner lukija = new Scanner(System.in);
-ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
-
-lueNimet(lukija, lista);
-System.out.println("");
-tarkistaNimet(lukija, lista);
-System.out.println("Kiitos!");
-</pre>
-
-  </div>
+-->
 
 </div>
+
+
+<!--
+<aside class="info">
+  <p><strong>Tietorakenne </strong></p>
+
+  <p>..</p>
+
+<p>TODO: modaa</p>
+
+Tietorakenne tarkoittaa ohjelman käsittelemän tiedon säilytystapaa. Tähän mennessä olemme käyttäneet kaikkialla tietorakennetta ArrayList. Periaatteessa kaikki ohjelmat voi tehdä pelkän ArrayList-rakenteen avulla. Kuitenkin jos ohjelman käsittelemän tiedon määrä on suuri, ArrayList voi osoittautua liian hitaaksi tietorakenteeksi.
+
+Jokaisella tietorakenteella on omat vahvuutensa ja heikkoutensa. Tärkeä ohjelmoijan taito onkin valita oikea tietorakenne käyttötilanteen mukaan. Ohjelmoinnin peruskursseilla tietorakenteet ovat sivuosassa, mutta niistä on silti hyvä tietää jotain. Aiheeseen tutustutaan syvällisemmin erillisellä Tietorakenteet-kurssilla.
+
+</aside>
+
+-->
+
 
   
   <h2 id="olio_ohjelmointi">Olio-ohjelmointi</h2>
 
+<!--
   <p>Pieni johdanto olio-ohjelmointiin ennen aloitusta.</p>
+-->
+
+<!--
+<p>TODO: jatka tästä, nimeä tehtäväpohjat uudestaan (ja vaihda pisteet)</p>
+-->
 
   <p>Proseduraalisessa ohjelmoinnissa, eli tähän asti opiskelemassamme ohjelmointityylissä, ohjelma jäsennellään jakamalla se pienempiin osiin eli metodeihin.  Metodi toimii ohjelman erillisenä osana, ja sitä voi kutsua mistä tahansa ohjelmastan sisältä.  Metodia kutsuttaessa ohjelman suoritus siirtyy metodin alkuun, ja suorituksen päätyttyä palataan takaisin siihen kohtaan mistä metodia kutsuttiin.</p>
 
@@ -9269,7 +9796,7 @@ System.out.println(artonSveitsilainenTili);
     <h4>Ensimmäinen tilisi</h4>
 
     <p>
-      <large><b>Huom:</b> tämän tehtävän jokaista alikohtaa varten on oma tehtäväpohja, tee tämä tehtävä pohjaan 081.1</large>
+      <large><b>Huom:</b> tämän tehtävän jokaista alikohtaa varten on oma tehtäväpohja, tee tämä tehtävä pohjaan 083.1</large>
     </p>
 
     <p>Tee ohjelma, joka luo tilin jonka saldo on 100.0, panee tilille 20.0 ja tulostaa tilin. <strong>Huom!</strong> tee kaikki nämä operaatiot täsmälleen tässä järjestyksessä.</p>
@@ -9277,7 +9804,7 @@ System.out.println(artonSveitsilainenTili);
     <h4>Ensimmäinen tilisiirtosi</h4>
 
     <p>
-      <large><b>Huom:</b> tämän tehtävän jokaista alikohtaa varten on oma tehtäväpohja, tee tämä tehtävä pohjaan 081.2</large>
+      <large><b>Huom:</b> tämän tehtävän jokaista alikohtaa varten on oma tehtäväpohja, tee tämä tehtävä pohjaan 083.2</large>
     </p>
 
     <p>Tee ohjelma joka:</p>
@@ -9293,7 +9820,7 @@ System.out.println(artonSveitsilainenTili);
     <h4>Tilisiirtoja</h4>
 
     <p>
-      <large><b>Huom:</b> tämän tehtävän jokaista alikohtaa varten on oma tehtäväpohja, tee tämä tehtävä pohjaan 081.3</large>
+      <large><b>Huom:</b> tämän tehtävän jokaista alikohtaa varten on oma tehtäväpohja, tee tämä tehtävä pohjaan 083.3</large>
     </p>
 
     <p>Yllä siirsit rahaa tililtä toiselle. Tehdään seuraavaksi metodi joka tekee saman!</p>
@@ -10066,9 +10593,9 @@ System.out.println(antti.toString());
     
     <p>Projektiin tulee kuulumaan kaksi kooditiedostoa:</p>
     
-    <p>Tehtäväpohjan eli projektin <em>Viikko4_088.Maksukortti</em> mukana tulee kooditiedosto <code>Paaohjelma</code> jonka sisällä on <code>main</code>-metodi.</p>
+    <p>Tehtäväpohjan eli projektin <em>Viikko4_090.Maksukortti</em> mukana tulee kooditiedosto <code>Paaohjelma</code> jonka sisällä on <code>main</code>-metodi.</p>
     
-    <p>Lisää projektiin uusi luokka nimeltä <code>Maksukortti</code>. Uuden luokan saa lisättyä seuraavasti: Ruudun vasemmalla reunalla on projektilistaus. Paina projektin nimen <em>Viikko4_088.Maksukortti</em> kohdalla hiiren oikeaa nappia. Valitse avautuvasta valikosta <em>New</em> ja <em>Java Class</em>. Anna luokan nimeksi (Class Name) <code>Maksukortti</code>. </p>
+    <p>Lisää projektiin uusi luokka nimeltä <code>Maksukortti</code>. Uuden luokan saa lisättyä seuraavasti: Ruudun vasemmalla reunalla on projektilistaus. Paina projektin nimen <em>Viikko4_090.Maksukortti</em> kohdalla hiiren oikeaa nappia. Valitse avautuvasta valikosta <em>New</em> ja <em>Java Class</em>. Anna luokan nimeksi (Class Name) <code>Maksukortti</code>. </p>
     
     <p>Tee ensin <code>Maksukortti</code>-olion konstruktori, jolle annetaan kortin alkusaldo ja joka tallentaa sen olion sisäiseen muuttujaan. Tee sitten <code>toString</code>-metodi, joka palauttaa kortin saldon muodossa "Kortilla on rahaa X euroa".</p>
     
@@ -11044,6 +11571,124 @@ Soitetaan!</pre>
 
     </div>
   </div>
+
+
+<div class="panel-group" id="4yhteenveto">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#4yhteenveto" href="#4yhteenveto2">
+      <div class="panel-heading">
+	<h4 class="kysely" id="yhteenveto-4-form-legend">Viikon 4 Loppukysely</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="4yhteenveto2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="yhteenveto-4-form">
+            <fieldset>
+                <legend id="yhteenveto-4-legend">Viikon 4 Loppukysely</legend>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-4-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-4-form-tmc-tunnus" name="yhteenveto-4-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-4-form-tuntia">Kuinka monta tuntia käytit kurssin neljänteen viikkoon (noin)</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-4-form-tuntia" name="yhteenveto-4-form-tuntia" type="number" class="form-control input-md">
+                    </div>
+                </div>
+
+		<p>&nbsp;</p>
+
+		<p>Alla on esitetty viikkoon liittyviä väittämiä. Jos olet täysin eri mieltä väittämän kanssa, valitse 1. Jos olet täysin samaa mieltä väittämän kanssa, valitse 7. Muuten, valitse luku väliltä.</p>
+
+                <div class="row" id="yhteenveto-4-form-skaala">
+                    <div class="col-md-3">Täysin eri mieltä.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Täysin samaa mieltä.</div>
+                </div>
+
+		<p>&nbsp;</p>
+
+                <div id="yhteenveto-4-form-vaittamat">
+		  <div class="row"><div class="col-md-3">1. Viikko oli työläs.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">2. Viikko oli opettavainen.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">3. Viikko oli turhauttava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">4. Viikko oli mukava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">5. Viikko oli vaikea.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="7" type="radio">7</label></div></div>
+                </div>
+		
+		<p>&nbsp;</p>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-4-form-vaikein">Vaikein asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-4-form-vaikein" name="yhteenveto-4-form-vaikein" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-4-form-helpoin">Helpoin asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-4-form-helpoin" name="yhteenveto-4-form-helpoin" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-4-form-turhauttavinta">Turhauttavinta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-4-form-turhauttavinta" name="yhteenveto-4-form-turhauttavinta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-4-form-parasta">Parasta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-4-form-parasta" name="yhteenveto-4-form-parasta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-4-form-palaute">Yleinen palaute:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-4-form-palaute" rows="6" name="yhteenveto-4-form-palaute" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <input type="hidden" id="yhteenveto-4-form-started-entering" name="yhteenveto-4-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="yhteenveto-4-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="yhteenveto-4-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>
 
