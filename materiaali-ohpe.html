@@ -9003,7 +9003,7 @@ ArrayList&lt;<em>Tyyppi</em>&gt; lista = new ArrayList&lt;&gt;();
 <p>ArrayList voi sisältää esimerkiksi lukuja. Alla olevalla ohjelmakoodilla luodaan uusi ArrayList-olio, ja lisätään siihen lukuja.</p>
 
 <pre class="sh_java">
-ArrayList&lt;Integer;&gt; luvut = new ArrayList&lt;&gt;();
+ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
 luvut.add(6);
 luvut.add(1);
 luvut.add(2);
@@ -9112,7 +9112,7 @@ if (lista.isEmpty()) {
 
     <h4>Lukujen lukeminen listalle</h4>
 
-    <p>Toteuta metodi <code>public static ArrayList&lt;Integer&gt; lueLuvut(Scanner lukija, ArrayList&lt;Integer&gt; lista)</code>, joka käyttää sille parametrina annettua Scanner-lukijaa lukujen lukemiseen, ja tallentaa luetut luvut listalle. Lukeminen tulee lopettaa kun käyttäjä syöttää tyhjän merkkijonon, eli painaa enter.</p>
+    <p>Toteuta metodi <code>public static void lueLuvut(Scanner lukija, ArrayList&lt;Integer&gt; lista)</code>, joka käyttää sille parametrina annettua Scanner-lukijaa lukujen lukemiseen, ja tallentaa luetut luvut listalle. Lukeminen tulee lopettaa kun käyttäjä syöttää tyhjän merkkijonon, eli painaa enter.</p>
 
     <p>Merkkijonon lukeminen ja sen muuntaminen kokonaisluvuksi onnistuu osissa seuraavasti:</p>
 
@@ -9156,7 +9156,10 @@ Syötä lukuja, tyhjä syöte lopettaa.
 
 <pre class="sh_java">
 ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
-lista.add(10, 20, 30, 42);
+lista.add(10);
+lista.add(20);
+lista.add(30);
+lista.add(42);
 
 ArrayList&lt;Integer&gt; rajattu = valitseLuvutValilta(lista, 20, 50);
 
@@ -9185,7 +9188,11 @@ Lukuja alkuperäisellä listalla: 4
 
 <pre class="sh_java">
 ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
-lista.add(10, 15, 20, 25, 30);
+lista.add(10);
+lista.add(15);
+lista.add(20);
+lista.add(25);
+lista.add(30);
 
 System.out.println("Lukujen keskiarvo on " + keskiarvo(lista));
 </pre>
@@ -9193,7 +9200,7 @@ System.out.println("Lukujen keskiarvo on " + keskiarvo(lista));
     <p>Ylläolevan ohjelmakoodin tulostuksen pitäisi olla seuraava:</p>
 
 <pre>
-Lukujen keskiarvo on 20
+Lukujen keskiarvo on 20.0
 </pre>
 
 
