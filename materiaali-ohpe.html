@@ -9870,6 +9870,10 @@ public class Henkilo {
 }
 </pre>
 
+  <p>Luokista voi piirtää myös luokkakaavion, jonka merkintätekniikkaan tutustutaan tässä samalla. Luokka, jossa ei ole yhtäkään metodia tai muuttujaa näyttää seuraavalta:</p>
+
+  <p><img src="../img/diagrams/v4-henkilo.png"></p>
+
   <p>Luokan tulee määritellä mitä metodeja ja ominaisuuksia luokan olioilla on. Päätetään, että jokaisella henkilöllä on nimi ja ikä. Nimi on luonnollista esittää merkkijonona, eli Stringinä, ja ikä taas kokonaislukuna. Lisätään nämä rakennuspiirustuksiimme:</p>
 
 <pre class="sh_java">
@@ -9883,6 +9887,10 @@ public class Henkilo {
 
   <p>Luokan sisälle määriteltyjä muuttujia kutsutaan <em>oliomuuttujiksi</em> tai <em>olion kentiksi</em> tai <em>olion attribuuteiksi</em>. Rakkaalla lapsella on monta nimeä.</p>
 
+  <p>Nyt luokkakaavioon on merkitty luokan nimi sekä muuttujat. Muuttujille määritellään tyyppi muodossa "muuttujanNimi: muuttujanTyyppi". Miinusmerkki muuttujaa ennen kertoo, että se on määritelty private-etuliitteellä.</p>
+
+  <p><img src="../img/diagrams/v4-henkilo-ika-ja-nimi.png"></p>
+
   <p>Olemme nyt määritelleet rakennuspiirustukset -- luokan -- henkilöoliolle. Jokaisella uudella henkilöolioilla on muuttujat <code>nimi</code> ja <code>ika</code>, joissa voi olla oliokohtainen arvo. Henkilöiden "tila" koostuu niiden nimeen ja ikään asetetuista arvoista.</p>
 
   
@@ -9893,7 +9901,10 @@ public class Henkilo {
 
       <p> Uuden luokan saa lisättyä seuraavasti: Ruudun vasemmalla reunalla on projektilistaus. Paina projektin nimen kohdalla hiiren oikeaa nappia. Valitse avautuvasta valikosta <em>New</em> ja <em>Java Class</em>. Anna luokan nimeksi (Class Name) <code>Koira</code>. </p>
 
-      <p>Luo tehtäväpohjaan luokka nimeltä <code>Koira</code> ja lisää sille oliomuuttujat <code>private String nimi</code>, <code>private String rotu</code> ja <code>private int ika</code>.</p>
+      <p>Luo tehtäväpohjaan luokka nimeltä <code>Koira</code> ja lisää sille oliomuuttujat <code>private String nimi</code>, <code>private String rotu</code> ja <code>private int ika</code>. Luokkakaaviossa luokka Koira näyttää seuraavalta:</p>
+
+      <p><img src="../img/diagrams/v4-teht-koira.png"></p>
+
 
       <p>Luokalla ei vielä oikeastaan tee mitään, mutta tämän askeleen harjoittelusta on hyötyä myöhempää ajatellen.</p>
       
@@ -9930,6 +9941,11 @@ public class Henkilo {
 
   <p>Muutama huomio: konstruktorin sisällä on komento <code>this.ika = 0</code>. Tässä asetetaan arvo 0 <em>juuri tämän olion, eli "this"-olion</em> sisäiselle muuttujalle <code>ika</code>. Toinen komento <code>this.nimi = nimiAlussa;</code> taas asettaa juuri tämän olion sisäiselle muuttujalle <code>nimi</code> arvoksi parametrina annetun merkkijonon. Olion muuttujat <code>ika</code> ja <code>nimi</code> näkyvät konstruktorissa ja muuallakin olion sisällä automaattisesti. Niihin viitataan <code>this</code>-etuliitteellä. Koska niissä on private-määre, niin olion ulkopuolelle ne eivät näy.</p>
 
+  <p>Nyt luokkakaavioon on merkitty luokan nimen ja muuttujien lisäksi myös konstruktori. Konstruktori saa public näkyvyysmääreen takia eteen plussan, jonka lisäksi siitä merkitään sen nimi ja parametrin tyypit (tässä <code>+ Henkilo(String)</code>). Konstruktorilla ei ole erikseen palautustyyppiä, joten sitä ei kaavioon merkitä.</p>
+
+  <p><img src="../img/diagrams/v4-henkilo-ika-ja-nimi-ja-konstruktori.png"></p>
+
+
   <p>Vielä yksi huomio: jos ohjelmoija ei tee luokalle konstruktoria, tekee Java automaattisesti luokalle oletuskonstruktorin. Oletuskonstruktori on konstruktori joka ei tee mitään. Jos konstruktoria ei jostain syystä tarvita, ei sellaista tarvitse ohjelmoida.</p>
 
   
@@ -9942,6 +9958,8 @@ public class Henkilo {
 
       
       <p>Luo luokka nimeltä <code>Luokka</code>. Luokalla on oliomuuttujina <code>private String koodi</code>, esimerkiksi "B221", ja <code>private int istumapaikat</code>. Luo tämän jälkeen konstruktori <code>public Luokka(String luokanKoodi, int istumapaikkojenMaara)</code>, minkä avulla oliomuuttujiin asetetaan arvot.</p>
+
+      <p><img src="../img/diagrams/v4-teht-luokka.png"></p>
 
       <p>Tälläkään luokalla ei vielä oikeastaan tee mitään, mutta seuraavassa tehtävässä luokastamme tehdyllä oliolla voi jo tulostella :).</p>
 
@@ -9974,7 +9992,11 @@ public class Henkilo {
 
   <p>Metodi kirjoitetaan luokan sisälle konstruktorin alapuolelle. Metodin nimen eteen tulee <code>public void</code> sillä metodin on tarkoitus näkyä ulkomaailmalle ja metodi ei palauta mitään. Huomaa, että sana <code>static</code> ei nyt ilmene missään. Olioiden yhteydessä <code>static</code>-määrettä ei käytetä. Selitämme tulevilla viikoilla hieman tarkemmin mistä tässä on kysymys.</p>
 
-  <p>Metodin <code>tulostaHenkilo</code> sisällä on yksi koodirivi joka käyttää hyvakseen oliomuuttujia <code>nimi</code> ja <code>ika</code>. Juuri tämän olion muuttujiin viitataan taas etuliitteellä <code>this</code>. Kaikki olion muuttujat ovat siis näkyvillä ja käytettävissä metodin sisällä.</p>
+  <p>Luokkakaavioon on merkitty luokan nimen, muuttujien lisäksi ja konstruktorin lisäksi nyt myös metodi <code>tulostaHenkilo</code>. Koska metodilla on public-määre, tulee sille alkuun plus, jota seuraa metodin nimi. Metodille ei ole merkitty parametreja, joten niitä ei erikseen merkitä sulkujen sisälle. Metodeille merkitään myös palautustyyppi, tässä "void".</p>
+
+  <p><img src="../img/diagrams/v4-henkilo-ika-ja-nimi-ja-konstruktori-ja-tulosta.png"></p>
+
+  <p>Metodin <code>tulostaHenkilo</code> sisällä on yksi koodirivi joka käyttää hyvakseen oliomuuttujia <code>nimi</code> ja <code>ika</code> -- luokkakaavio ei kerro sisäisestä toteutuksesta. Olion sisäisiin muuttujiin viitataan etuliitteellä <code>this</code>. Kaikki olion muuttujat ovat siis näkyvillä ja käytettävissä metodin sisällä.</p>
 
   <p>Luodaan pääohjelmassa kolme henkilöä ja pyydetään niitä tulostamaan itsensä:</p>
 
@@ -10023,6 +10045,8 @@ Martin, ikä 0 vuotta
 Banaani, hinta 1.1, 13 kpl</pre>
 	</li>
       </ul>
+
+      <p>Piirrä myös luokkaan liittyvä luokkakaavio itsellesi!</p>
     </div>
   </div>
 
@@ -10043,6 +10067,11 @@ public class Henkilo {
 </pre>
 
   <p>Metodi kirjoitetaan <code>tulostaHenkilo</code>-metodin tapaan luokan <code>Henkilo</code> sisälle. Metodissa kasvatetaan oliomuuttujan <code>ika</code> arvoa yhdellä.</p>
+
+  <p>Myös luokkakaavio päivittyy.</p>
+
+  <p><img src="../img/diagrams/v4-henkilo-ika-ja-nimi-ja-konstruktori-ja-tulosta-ja-vanhene.png"></p>
+
 
   <p>Kutsutaan metodia ja katsotaan mitä tapahtuu:</p>
 
@@ -10243,6 +10272,41 @@ arvo: 100
   </div>
 
 
+  <h4>Listat oliomuuttujina</h4>
+
+  <p>Oliomuuttujina voi käyttää myös listoja. Olemme aiemmin huomanneet, että listat ovat esimerkiksi näppäriä silloin, silloin kun haluamme pitää kirjaa useammasta erillisestä asiasta. Alla olevassa esimerkissä käsitteelle soittolista on luotu luokka. Soittolista sisältää kappaleita. </p>
+
+<pre class="sh_java">
+// importit
+
+public class Soittolista {
+    private ArrayList&lt;String&gt; kappaleet;
+
+    public Soittolista() {
+        this.kappaleet = new ArrayList&lt;&gt;();
+    }
+
+    public void lisaaKappale(String kappale) {
+        this.kappaleet.add(kappale);
+    }
+
+    public void poistaKappale(String kappale) {
+        this.kappaleet.remove(kappale);
+    }
+
+    public void tulostaKappaleet() {
+        for (String kappale: this.kappaleet) {
+            System.out.println(kappale);
+        } 
+    }
+}
+</pre>
+
+  <p><img src="../img/diagrams/v4-soittolista.png"></p>
+
+  <p>Kokeile ylläolevan soittolistan käyttöä hiekkalaatikossa!</p>
+
+
   <div class="tehtava">
 
     <h3>Ruokalista</h3>
@@ -10268,7 +10332,10 @@ public class Ruokalista {
 
     <p>Ruokalistaoliolla on oliomuuttujana ArrayList, jonka on tarkoitus tallentaa ruokalistalla olevien ruokalajien nimet.</p>
 
-    <p>Ruokalistan tulee tarjota metodit <code>public void lisaaAteria(String ateria)</code>, <code>public void tulostaAteriat()</code>, ja <code>public void tyhjennaRuokalista()</code>.</p>
+    <p>Ruokalistan tulee tarjota metodit <code>public void lisaaAteria(String ateria)</code>, <code>public void tulostaAteriat()</code>, ja <code>public void tyhjennaRuokalista()</code> -- luokkakaaviona lopullinen toteutus näyttää seuraavalta.</p>
+
+    <p><img src="../img/diagrams/v4-teht-ruokalista.png"></p>
+
 
     <h4>Aterian lisääminen</h4>
 
@@ -10305,6 +10372,11 @@ public class Henkilo {
     }
 }
 </pre>
+
+  <p>Luokka kokonaisuudessaan:</p>
+
+  <p><img src="../img/diagrams/v4-henkilo-ika-ja-nimi-ja-konstruktori-ja-tulosta-ja-vanhene-ja-palautaika.png"></p>
+
 
   <p>Eli koska kyseessä olioon liittyvä metodi, ei määrittelyssä ole sanaa static. Olioiden arvon palauttavia metodeja käytetään kuten mitä tahansa arvon palauttavia metodeja:</p>
 
@@ -10401,6 +10473,10 @@ public class Henkilo {
     public void vanhene() {
         this.ika = this.ika + 1;
     }
+
+    public int palautaIka() {
+        return this.ika;
+    }
 }
 </pre>
 
@@ -10481,6 +10557,11 @@ public class Henkilo {
 </pre>
 
   <p>Metodi <code>getNimi</code> palauttaa oliomuuttujan <code>nimi</code> kutsujalle. Metodin nimi on hieman erikoinen. Javassa on usein tapana nimetä oliomuuttujan palauttava metodi juuri näin, eli <code>getMuuttujanNimi</code>. Tälläisiä metodeja kutsutaan usein "gettereiksi".</p>
+
+
+  <p>Luokka kokonaisuudessaan:</p>
+
+  <p><img src="../img/diagrams/v4-henkilo-getterit.png"></p>
 
   <p>Muotoillaan pääohjelma käyttämään uutta "getteri"-metodia:</p>
 
@@ -10570,7 +10651,7 @@ System.out.println(antti.toString());
 
   <p>Käy niin, että oliolta pyydetään sen merkkijonoesitys. Olion palauttama merkkijonoesitys tulostetaan normaaliin tapaan <code>System.out.println</code>-komennolla. </p>
 
-  <p><b>Voimme nyt poistaa turhaksi käyneen <code>tulostaOlio</code>-metodin.</b></p>
+  <p><b>Voimme nyt poistaa turhaksi käyneen <code>tulostaHenkilo</code>-metodin.</b></p>
 
   <p>Olioscreencastin toinen osa: </p>
 
@@ -10585,7 +10666,10 @@ System.out.println(antti.toString());
 
     <h3>Maksukortti</h3>
     
-    <p>Helsingin Yliopiston opiskelijaruokaloissa eli Unicafeissa opiskelijat maksavat lounaansa käyttäen maksukorttia.</p>
+    <p>Helsingin Yliopiston opiskelijaruokaloissa eli Unicafeissa opiskelijat maksavat lounaansa käyttäen maksukorttia. Lopullinen Maksukortti tulee näyttämään luokkakaaviona seuraavalta:</p>
+
+    <p><img src="../img/diagrams/v4-teht-maksukortti.png"></p>
+
     
     <p>Tässä tehtäväsäsarjassa tehdään luokka <code>Maksukortti</code>, jonka tarkoituksena on jäljitellä Unicafeissa tapahtuvaa maksutoimintaa.</p>
     
