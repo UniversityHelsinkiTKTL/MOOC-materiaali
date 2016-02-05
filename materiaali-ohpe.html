@@ -9000,7 +9000,30 @@ ArrayList&lt;<em>Tyyppi</em>&gt; lista = new ArrayList&lt;&gt;();
 
 <p>Listalle annetaan tyyppiparametri <em>Tyyppi</em>, joka kertoo minkätyyppisiä arvoja listalle tullaan tallentamaan. Tyyppiparametreja ovat esimerkiksi <code>String</code>, <code>Integer</code> (vastaa int-tyyppistä muuttujaa) sekä <code>Double</code> (vastaa double-tyyppistä muuttujaa). Yllä <code>lista</code> on muuttujan nimi, jolla juuri luotuun listaan viitataan ohjelmakoodissa.</p>
 
-<p>Luodaan lista <em>nimet</em>, johon lisätään kuusi nimeä. Tämän jälkeen niistä tulostetaan kolme ensimmäistä. Listan kohtien numerointi alkaa aina nollasta, eli ensimmäinen arvo on kohdassa 0, toinen arvo kohdassa 1, kolmas arvo kohdassa 2 ja niin edelleen.</p>
+<p>ArrayList voi sisältää esimerkiksi lukuja. Alla olevalla ohjelmakoodilla luodaan uusi ArrayList-olio, ja lisätään siihen lukuja.</p>
+
+<pre class="sh_java">
+ArrayList&lt;Integer;&gt; luvut = new ArrayList&lt;&gt;();
+luvut.add(6);
+luvut.add(1);
+luvut.add(2);
+luvut.add(4);
+luvut.add(4);
+luvut.add(3);
+</pre>
+
+<p>Metodilla <code>add</code> lisättävät luvut asetetaan aina listan loppuun, ensimmäiseen vapaaseen kohtaan. Listan kohtien numerointi ("indeksointi") alkaa aina nollasta, eli ensimmäinen arvo on kohdassa 0, toinen arvo kohdassa 1, kolmas arvo kohdassa 2 ja niin edelleen.</p>
+
+<p><img class="naytto" src="../img/drawings/arraylist.png"></p>
+
+<p>Jos ylläolevaan listaan lisättäisiin uusi alkio kutsumalla <code>luvut</code>-listan metodia <code>add</code> parametrilla 8, menisi luku 8 listan indeksiin 6 eli seitsemänneksi luvuksi.</p>
+
+<p><img class="naytto" src="../img/drawings/arraylist-add.png"></p>
+
+
+<p><strong>Lista toimii vastaavasti merkkijonoilla</string></p>
+
+<p>Luodaan lista <em>nimet</em>, johon lisätään kuusi nimeä. Tämän jälkeen niistä tulostetaan kolme ensimmäistä. </p>
 
 
 <pre class="sh_java">
@@ -9261,6 +9284,8 @@ Nimi ei ole listalla.
 
 </pre>
 
+    <p>Jos et muista miten alkion listalla olemassaoloa voi tarkistaa helposti, katso edellisen viikon materiaalista vinkkejä.</p>
+
     <p>Kun olet valmis, kokeile vielä että ohjelma toimii halutusti tehtävänannon alussa olevalla koodilla.</p>
 
   </div>
@@ -9279,6 +9304,46 @@ HashMap&lt;<em>Tyyppi, Tyyppi</em>&gt; arvoparit = new HashMap&lt;&gt;();
 </pre>
 
 <p>Yllä tyyppiparametrit kuvataan <em>Tyyppi</em>-muuttujien avulla. Tyyppiparametreilla määritellään minkätyyppisiä avaimia ja minkätyyppisiä arvoja luotavaan HashMapiin tallennetaan. Kuten ArrayListissä, tyyppiparametreja ovat esimerkiksi <code>Integer</code>, <code>String</code> ja <code>Double</code>. </p>
+
+<p>Alla olevassa esimerkissä on luotu HashMap-olio kaupunkien hakemiseen postinumeron perusteella, jonka jälkeen HashMap-olioon on lisätty neljä postinumero-kaupunki -paria. Kuten huomaat, parien lisääminen tapahtuu <code>put(<em>Tyyppi</em> avain, <em>Tyyppi</em> arvo)</code>-metodin avulla.</p>
+
+<pre class="sh_java">
+HashMap&lt;String, String&gt; postinumerot = new HashMap&lt;&gt;();
+postinumerot.put("00710", "Helsinki");
+postinumerot.put("90014", "Oulu");
+postinumerot.put("33720", "Tampere");
+postinumerot.put("33014", "Tampere");
+</pre>
+
+<p><img class="naytto" src="../img/drawings/hashmap.png"></p>
+
+<p>Toisin kuin listoilla, HashMapissa ei ole varsinaisesti käsitettä "indeksi", vaan arvoja haetaan avaimen perusteella. Ylläolevassa esimerkissä avaimeksi on määritelty postinumero (merkkijono). Voimme siis hakea arvoa merkkijonon perusteella -- HashMapin metodia <code>get(<em>Tyyppi</em> avain)</code> käytetään arvon hakemiseen avaimen perusteella.</p>
+
+<pre class="sh_java">
+HashMap&lt;String, String&gt; postinumerot = new HashMap&lt;&gt;();
+postinumerot.put("00710", "Helsinki");
+postinumerot.put("90014", "Oulu");
+postinumerot.put("33720", "Tampere");
+postinumerot.put("33014", "Tampere");
+
+System.out.println(postinumerot.get("33014")); // tulostaa "Tampere"
+</pre>
+
+<p>Jos avainta ei löydy, palauttaa get-metodi arvon <code>null</code>.</p>
+
+<pre class="sh_java">
+HashMap&lt;String, String&gt; postinumerot = new HashMap&lt;&gt;();
+postinumerot.put("00710", "Helsinki");
+postinumerot.put("90014", "Oulu");
+postinumerot.put("33720", "Tampere");
+postinumerot.put("33014", "Tampere");
+
+System.out.println(postinumerot.get("00550")); // tulostaa null
+</pre>
+
+
+<p><strong>HashMap toimii vastaavasti myös muilla muuttujatyypeillä</strong></p>
+
 
 <p>Seuraavassa esimerkissä luodaan sanakirjaohjelma. Sanakirjaohjelmalle määritellään ensin ne sanaparit, jotka se tuntee, jonka jälkeen ohjelma kyselee käyttäjältä sanoja:</p>
 
