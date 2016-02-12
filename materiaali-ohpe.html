@@ -11862,7 +11862,7 @@ Soitetaan!</pre>
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2rosenberg" href="#2rosenberg2">
       <div class="panel-heading">
-	<h4 id="rosenberg-form-legend">Kysely: Itsetunto</h4>
+	<h4 class="kysely" id="rosenberg-form-legend">Kysely: Itsetunto</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2rosenberg2">
@@ -11934,7 +11934,7 @@ Soitetaan!</pre>
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2tehtavanvaihto-wk2" href="#2tehtavanvaihto-wk52">
       <div class="panel-heading">
-	<h4 id="taskswitching-form-wk5-legend">Kysely / tutkimus: Tehtävänvaihtotesti 2</h4>
+	<h4 class="kysely" id="taskswitching-form-wk5-legend">Kysely / tutkimus: Tehtävänvaihtotesti 2</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2tehtavanvaihto-wk52">
@@ -12096,9 +12096,569 @@ Soitetaan!</pre>
 
 
 
+    <h2 id="lohkoista">Lohkoista ja sisäkkäisistä toistolauseista</h2>
+
+    <p>Aaltosululla <code>{</code> alkavaa ja aaltosululla <code>}</code> loppuvaa koodia sisältävää aluetta kutsutaan <em>lohkoksi</em>.  Kuten on jo nähty, lohkoja käytetään luokkaan kuuluvan alueen rajaamisessa, metodiin kuuluvan alueen määrittelyn rajaamisessa sekä ehto- ja toistolauseiden alueen rajaamisessa. Avautuvalle aaltosululle tulee aina löytyä vastaava sulkeva pari.</p>
+
+    <p>Eräs tärkeä, liian pieneen rooliin jäänyt aaltosulkuihin ja lohkoon liittyvä tieto on se, että lohkon sisällä määritellyt muuttujat ovat olemassa vain kyseisen lohkon sisällä.</p>
+
+    <p>Alla määritellään ehtolauseeseen liittyvän lohkon sisällä tekstimuuttuja <code>teksti</code>, joka on olemassa vain lohkon sisällä.  Lohkossa esitellyn muuttujan tulostus lohkon ulkopuolella ei toimi!</p>
+
+<pre class="sh_java">
+int luku = 5;
+
+if (luku == 5) {
+    String teksti = "Oho!";
+}
+
+// muuttujaa teksti ei ole olemassa täällä: 
+// se määriteltiin edelläolevan lohkon sisällä
+System.out.println(teksti);
+</pre>
+
+    <p>Lohkossa voidaan käyttää ja muuttaa sen ulkopuolella määriteltyjä muuttujia, kunhan ne on määritelty ennen lohkoa.</p>
+
+<pre class="sh_java">
+int luku = 5;
+
+if (luku == 5) {
+    luku = 6;
+}
+
+System.out.println(luku); // tulostaa luvun 6
+</pre>
+
+
+<pre class="sh_java">
+String teksti = "Jee!";
+int luku = 5;
+
+if (luku == 5) {
+    teksti = "Oho!";
+}
+
+System.out.println(teksti); // tulostaa "Oho!"
+</pre>
+
+
+    <p>Lohkon sisällä voi olla lähes mitä tahansa koodia. Esimerkiksi while-toistolauseen määrittelemän lohkon sisällä voi olla toinen while-toistolauseke. Tarkastellaan seuraavaa ohjelmaa:</p>
+
+<pre class="sh_java">
+int rivinumero = 0;
+
+while (rivinumero &lt; 3) {
+    System.out.print(rivinumero + ": ");
+
+    int luku = 0;
+    while (luku &lt; 3) {
+        System.out.print(luku + " ");
+        luku++;
+    }
+    
+    System.out.println();
+    rivinumero++;
+}
+</pre>
+
+    <p>Ohjelman tulostus on seuraava:</p>
+
+<pre>
+0: 0 1 2
+1: 0 1 2
+2: 0 1 2
+</pre>
+
+
+    <aside class="help">
+  <p><strong>Ohjelman suorituksen askeleittainen visualisointi</strong></p>
+
+  <script type="text/template" id="stepwiseVisualization18Data">
+var dataFromBackend = {"code":"public class Esimerkki {\n   public static void main(String[] args) {\n      int rivinumero = 0;\n\n      while (rivinumero < 3) {\n         System.out.print(rivinumero + \": \");\n\n         int luku = 0;\n         while (luku < 3) {\n            System.out.print(luku + \" \");\n            luku++;\n         }\n\n         System.out.println();\n         rivinumero++;\n      }\n   }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"rivinumero":0},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"rivinumero":0},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"8","frame_id":8}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: ","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"rivinumero":0},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"11","frame_id":11}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":0,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"13","frame_id":13}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":0,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"17","frame_id":17}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":0,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"22","frame_id":22}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":1,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"23","frame_id":23}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":1,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"24","frame_id":24}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":1,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"28","frame_id":28}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":1,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"33","frame_id":33}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":2,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"34","frame_id":34}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":2,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"35","frame_id":35}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":2,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"39","frame_id":39}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":2,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"44","frame_id":44}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":3,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"45","frame_id":45}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":3,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"46","frame_id":46}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 ","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luku":3,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"50","frame_id":50}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n","event":"step_line","line":15,"stack_to_render":[{"func_name":"main:15","encoded_locals":{"luku":3,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"53","frame_id":53}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n","event":"step_line","line":16,"stack_to_render":[{"func_name":"main:16","encoded_locals":{"rivinumero":1},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"54","frame_id":54}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"rivinumero":1},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"56","frame_id":56}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"rivinumero":1},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"60","frame_id":60}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: ","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"rivinumero":1},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"65","frame_id":65}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":0,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"67","frame_id":67}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":0,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"71","frame_id":71}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":0,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"76","frame_id":76}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":1,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"77","frame_id":77}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":1,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"78","frame_id":78}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":1,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"82","frame_id":82}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":1,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"87","frame_id":87}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":2,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"88","frame_id":88}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":2,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"89","frame_id":89}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":2,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"93","frame_id":93}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":2,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"98","frame_id":98}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":3,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"99","frame_id":99}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":3,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"100","frame_id":100}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 ","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luku":3,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"104","frame_id":104}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n","event":"step_line","line":15,"stack_to_render":[{"func_name":"main:15","encoded_locals":{"luku":3,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"107","frame_id":107}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n","event":"step_line","line":16,"stack_to_render":[{"func_name":"main:16","encoded_locals":{"rivinumero":2},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"108","frame_id":108}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"rivinumero":2},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"110","frame_id":110}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"rivinumero":2},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"114","frame_id":114}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: ","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"rivinumero":2},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"119","frame_id":119}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":0,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"121","frame_id":121}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":0,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"125","frame_id":125}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":0,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"130","frame_id":130}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":1,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"131","frame_id":131}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":1,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"132","frame_id":132}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":1,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"136","frame_id":136}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":1,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"141","frame_id":141}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":2,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"142","frame_id":142}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":2,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"143","frame_id":143}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":2,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"147","frame_id":147}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":2,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"152","frame_id":152}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":3,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"153","frame_id":153}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":3,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"154","frame_id":154}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 ","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luku":3,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"158","frame_id":158}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 \n","event":"step_line","line":15,"stack_to_render":[{"func_name":"main:15","encoded_locals":{"luku":3,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"161","frame_id":161}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 \n","event":"step_line","line":16,"stack_to_render":[{"func_name":"main:16","encoded_locals":{"rivinumero":3},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"162","frame_id":162}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 \n","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"rivinumero":3},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"164","frame_id":164}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 \n","event":"step_line","line":17,"stack_to_render":[{"func_name":"main:17","encoded_locals":{"rivinumero":3},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"168","frame_id":168}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 \n","event":"return","line":17,"stack_to_render":[{"func_name":"main:17","encoded_locals":{"rivinumero":3,"__return__":["VOID"]},"ordered_varnames":["rivinumero","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"170","frame_id":170}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"};
+</script>
+
+  <iframe style="width: 100%; height: 580px;" frameborder="0" scrolling="no" id="stepwiseVisualization18"></iframe>
+
+</aside>
+
+    <p>Eli mitä ohjelmassa tapahtuukaan? Jos ajatellaan pelkkää ulommaista while-lohkoa, on toiminnallisuus helppo ymmärtää: </p>
+
+<pre class="sh_java">
+int rivinumero = 0;
+
+while (rivinumero &lt; 3) {
+    System.out.print(rivinumero + ": ");
+
+    // sisempi while
+
+    System.out.println();
+    rivinumero++;
+}
+</pre>
+
+    <p>Eli ensin <code>rivinumero=0</code> ja tulostuu <code>0:</code> ja rivinvaihto. Tämän jälkeen rivinumero kasvaa ja tulostuu ykkönen, jne., eli ulompi for saa aikaan seuraavan:</p>
+
+<pre>
+0:
+1:
+2:
+</pre>
+
+
+
+    <p>Myös sisempi while on helppo ymmärtää erillään. Se saa aina aikaan tulosteen <code>0 1 2</code>. Kun yhdistämme nämä kaksi, huomaamme, että sisempi while-toistolause suorittaa tulosteensa aina juuri ennen ulomman while-toistolauseen tulostamaa rivinvaihtoa.</p>
+
+<pre class="sh_java">
+int luku = 0;
+while (luku &lt; 3) {
+    System.out.print(luku + " ");
+    luku++;
+}
+</pre>
+
+<pre>
+0 1 2
+</pre>
+
+    <aside class="info">
+
+      <p><strong>Toiminnallisuuden yhdistäminen vai toiminnallisuuden pilkkominen osiin</strong></p>
+      
+      <p>Edellä kuvasimme lohkojen toimintaa esimerkillä, missä yhdistimme kaksi erillistä toistolausetta yhteen. Samalla ohjelmasta kuitenkin muodostui hieman monimutkaisempi: mitä enemmän palasia lisäämme yhteen, sitä enemmän kokonaisuuden hallinta vie keskittymisestä.</p>
+
+      <p>Jos ohjelmaa haluttaisiin jatkokehittää, voisikin olla näppärä toteuttaa se osissa metodeina. Tällöin yhden metodin vastuulla voisi olla esimerkiksi sisempi toistolause, ja toisen metodin vastuulla ulompi toistolause.</p>
+
+    </aside>
+  
+
+    <div class="parqu-exercise" data-id="24" data-name="Muuttujien näkyvyys"></div>
+
+
+    <h3>Toisen muuttujan käyttö toiston ehtona</h3>
+
+    <p>Tutkitaan seuraavaa muunnosta edelliseen esimerkkiin:</p>
+
+<pre class="sh_java">
+int rivinumero = 0;
+
+while (rivinumero &lt; 3) {
+    System.out.print(rivinumero + ": ");
+
+    int luku = 0;
+    while (luku &lt;= rivinumero) {
+        System.out.print(luku + " ");
+        luku++;
+    }
+    
+    System.out.println();
+    rivinumero++;
+}
+</pre>
+
+    <p>Sisemmän toistolausekkeen toistojen määrä riippuukin nyt ulommassa toistolausekkeessa käytettävän muuttujan <code>rivinumero</code> arvosta. Eli kun <code>rivinumero=0</code>, tulostaa sisempi toistolause luvun 0, kun <code>rivinumero=1</code>, tulostaa sisempi toistolauseke "0 1 ", jne. Koko ohjelman tulostus on seuraava: </p>
+
+<pre>
+0: 0
+1: 0 1
+2: 0 1 2
+</pre>
+
+    <p>Seuraava ohjelma tulostaa lukujen 1..10 kertotaulun. </p>
+
+<pre class="sh_java">
+int rivinumero = 1;
+
+while (rivinumero &lt;= 10) {
+    int sarake = 1;
+
+    while (sarake &lt;= 10) {
+        System.out.print(rivinumero * sarake + " ");
+        sarake++;
+    }
+
+    System.out.println();
+    rivinumero++;
+}
+</pre>
+
+    <p> Tulostus näyttää seuraavalta: </p>
+
+<pre>
+1 2 3 4 5 6 7 8 9 10
+2 4 6 8 10 12 14 16 18 20
+3 6 9 12 15 18 21 24 27 30
+4 8 12 16 20 24 28 32 36 40
+5 10 15 20 25 30 35 40 45 50
+6 12 18 24 30 36 42 48 54 60
+7 14 21 28 35 42 49 56 63 70
+8 16 24 32 40 48 56 64 72 80
+9 18 27 36 45 54 63 72 81 90
+10 20 30 40 50 60 70 80 90 100
+</pre>
+
+    <p>Ylimmällä rivillä on luvun 1 kertotaulu. Alussa <code>rivinumero=1</code> ja sisemmän toistolauseen muuttuja <code>sarake</code> saa arvot 1...10. Jokaisella <code>rivinumero, sarake</code> -arvoparilla tulostetaan niiden tulo. Eli alussa <code>rivinumero=1, sarake=1</code>, sitten <code>rivinumero=1, sarake=2</code>, ..., <code>rivinumero=1, sarake=10</code> seuraavaksi <code>rivinumero=2, sarake=1</code>, jne. </p>
+
+    <p>Kertotaulu-ohjelman voi pilkkoa pienempiin osiin. Voimme määritellä metodit <code>public void tulostaKertotaulunRivi(int kerroin, int montakokertaa)</code> ja <code>public void tulostaKertotaulu(int mihinAsti)</code>.</p>
+
+<pre class="sh_java">
+public class Kertotaulu {
+
+    public void tulosta(int mihinAsti) {
+        int rivinumero = 1;
+
+        while (rivinumero &lt;= mihinAsti) {
+            tulostaKertotaulunRivi(rivinumero, mihinAsti);
+
+            System.out.println();
+            rivinumero++;
+        }
+    }
+
+
+    public void tulostaKertotaulunRivi(int rivi, int lukuja) {
+        int sarake = 1;
+
+        while (sarake &lt;= lukuja) {
+            System.out.print(rivi * sarake + " ");
+            sarake++;
+        }
+    }
+}
+</pre>
+
+    <p>Nyt kutsu <code>new Kertotaulu().tulosta(5);</code> tulostaa allaolevan kertotaulun.</p>
+
+<pre>
+1 2 3 4 5
+2 4 6 8 10
+3 6 9 12 15
+4 8 12 16 20
+5 10 15 20 25
+</pre>
+
+
+<div class="tehtavat">
+  <p>Kerrataan ja syvennytään seuraavaksi aiemmillakin viikoilla harjoiteltuja toistolausekkeita, muuttujia sekä indeksejä. Seuraavassa kahdessa tehtävässä aiemmin tehdyistä tehtävistä 44, 45, 58 sekä aiemmin tehdyistä tehtävistä on hyötyä.</p>
+
+  <div class="tehtava">
+    <h3>Lukutulostin</h3>
+
+    <p>Toteuta luokka <code>Lukutulostin</code> ja tee sille seuraavat toiminnallisuudet.</p>
+
+    <h4>Lukuporras</h4>
+
+    <p>Toteuta luokalle <code>Lukutulostin</code> metodi <code>public void lukuporras(int luku)</code>. Metodin tulee toimia seuraavasti.</p>
+
+<pre class="sh_java">
+Lukutulostin tulostin = new Lukutulostin();
+tulostin.lukuporras(2);
+System.out.println();
+tulostin.lukuporras(3);
+</pre>
+
+<pre>
+1
+1 2
+
+1
+1 2
+1 2 3
+</pre>
+
+<pre class="sh_java">
+Lukutulostin tulostin = new Lukutulostin();
+tulostin.lukuporras(5);
+System.out.println();
+tulostin.lukuporras(2);
+</pre>
+
+<pre>
+1
+1 2 
+1 2 3
+1 2 3 4
+1 2 3 4 5
+
+1
+1 2
+</pre>
+
+    <h4>Jatkuva lukuporras</h4>
+
+
+    <p>Toteuta luokalle <code>Lukutulostin</code> metodi <code>public void jatkuvaLukuporras(int luku)</code>. Metodin tulee toimia seuraavasti.</p>
+
+<pre class="sh_java">
+Lukutulostin tulostin = new Lukutulostin();
+tulostin.jatkuvaLukuporras(2);
+System.out.println();
+tulostin.jatkuvaLukuporras(3);
+</pre>
+
+<pre>
+1
+2 3
+
+1
+2 3
+4 5 6
+</pre>
+
+<pre class="sh_java">
+Lukutulostin tulostin = new Lukutulostin();
+tulostin.jatkuvaLukuporras(5);
+System.out.println();
+tulostin.jatkuvaLukuporras(2);
+</pre>
+
+<pre>
+1
+2 3 
+4 5 6
+7 8 9 10
+11 12 13 14 15
+
+1
+2 3
+</pre>
+
+    <h4>Kertokolmio</h4>
+
+    <p>Toteuta luokalle <code>Lukutulostin</code> metodi <code>public void kertokolmio(int luku)</code>. Kertokolmio-metodin tulee toimia seuraavien esimerkkien mukaisesti.</p>
+
+
+<pre class="sh_java">
+Lukutulostin tulostin = new Lukutulostin();
+tulostin.kertokolmio(2);
+</pre>
+
+<pre>
+1
+2 4
+</pre>
+
+<pre class="sh_java">
+Lukutulostin tulostin = new Lukutulostin();
+tulostin.kertokolmio(5);
+System.out.println();
+tulostin.kertokolmio(3);
+</pre>
+
+
+<pre>
+1
+2 4 
+3 6 9
+4 8 12 16
+5 10 15 20 25
+
+1
+2 4
+3 6 9
+</pre>
+  </div>
+
+  <div class="tehtava">
+    <h3>Sanatulostin</h3>
+
+    <p>Toteuta luokka <code>Sanatulostin</code>, jossa on seuraavat toiminnallisuudet. Vinkki: merkkijonon metodilla charAt saa merkin annetusta indeksistä; tässä tehtävässä myös jakojäännöksestä saattaa olla hyötyä.</p>
+
+    <h4>Sanaporras</h4>
+
+    <p>Toteuta luokalle <code>Sanatulostin</code> merkkijonon vastaanottava konstruktori sekä metodi <code>public void sanaporras(int luku)</code>, joka toimii seuraavasti:</p>
+
+<pre class="sh_java">
+Sanatulostin tulostin = new Sanatulostin("Ananas");
+tulostin.sanaporras(2);
+System.out.println();
+tulostin.sanaporras(4);
+</pre>
+
+<pre>
+A
+na
+
+A
+na
+nas
+Anan
+</pre>
+
+<pre class="sh_java">
+Sanatulostin tulostin = new Sanatulostin("Sauna");
+tulostin.sanaporras(3);
+</pre>
+
+<pre>
+S
+au
+naS
+</pre>
+
+
+    <h4>Laskeva sanaporras</h4>
+
+    <p>Toteuta luokalle <code>Sanatulostin</code> metodi <code>public void laskevaSanaporras(int luku)</code> joka toimii seuraavasti:</p>
+
+<pre class="sh_java">
+Sanatulostin tulostin = new Sanatulostin("Ananas");
+tulostin.laskevaSanaporras(2);
+System.out.println();
+tulostin.laskevaSanaporras(3);
+</pre>
+
+<pre>
+An
+a
+
+Ana
+na
+s
+</pre>
+
+<pre class="sh_java">
+Sanatulostin tulostin = new Sanatulostin("Sauna");
+tulostin.laskevaSanaporras(4);
+</pre>
+
+<pre>
+Saun
+aSa
+un
+a
+</pre>
+
+
+<h4>Sanapyramidi</h4>
+
+    <p>Toteuta luokalle <code>Sanatulostin</code> metodi <code>public void sanapyramidi(int luku)</code>, joka toimii seuraavasti:</p>
+
+<pre class="sh_java">
+Sanatulostin tulostin = new Sanatulostin("Nauris");
+tulostin.sanapyramidi(3);
+System.out.println();
+tulostin.sanapyramidi(1);
+</pre>
+
+<pre>
+N
+au
+ris
+Na
+u
+
+N
+</pre>
+
+<pre class="sh_java">
+Sanatulostin tulostin = new Sanatulostin("Saippuakauppias");
+tulostin.sanapyramidi(4);
+System.out.println();
+tulostin.sanapyramidi(2);
+</pre>
+
+<pre>
+S
+ai
+ppu
+akau
+ppi
+as
+S
+
+S
+ai
+p
+</pre>
+
+
+  </div>
+
+</div>
+
+
+<h3>Lohkot ja luokat</h3>
+
+<p>Luokan määrittely alkaa luokan nimellä, jota seuraa lohko.</p>
+
+<pre class="sh_java">
+// luokan Esimerkki määrittely
+public class Esimerkki {
+
+}
+</pre>
+
+<p>Tämän lohkon sisälle tulee oliomuuttujat, eli ne muuttujat, joita luokasta tehtävät oliot saavat omakseen.</p>
+
+<pre class="sh_java">
+// luokan Esimerkki määrittely
+public class Esimerkki {
+  // oliomuuttujat
+}
+</pre>
+
+<p>Oliomuuttujien lisäksi luokan määrittelyyn käytettävä lohko sisältää konstruktoreja ja metodeja.</p>
+
+<pre class="sh_java">
+// luokan Esimerkki määrittely
+public class Esimerkki {
+  // oliomuuttujat
+
+  // konstruktorit
+
+  // metodit
+}
+</pre>
+
+
+<p>Jokainen konstruktori ja metodi myös määrittelee oman lohkonsa.</p>
+
+<pre class="sh_java">
+// luokan Esimerkki määrittely
+public class Esimerkki {
+  // oliomuuttujat
+
+  // konstruktorit
+  public Esimerkki() {
+    // konstruktorin oma lohko
+  }
+
+  // metodit
+  public void tulostaLuku() {
+    // metodin tulostaLuku oma lohko
+  }
+}
+</pre>
+
+<p>Konstruktoreissa ja metodeissa voi olla myös sisäisiä lohkoja.</p>
+
+<pre class="sh_java">
+// luokan Esimerkki määrittely
+public class Esimerkki {
+  // oliomuuttujat
+
+  // konstruktorit
+  public Esimerkki() {
+    // konstruktorin oma lohko
+  }
+
+  // metodit
+  public void tulostaLuku() {
+    // metodin tulostaLuku oma lohko
+    int luku = 5;
+    if (luku > 4) {
+      // lisää lohkoja!
+    }
+  }
+}
+</pre>
+
+<p>Lohkoja kaikkialla! </p>
+
+
   <h2>Satunnaisuus</h2>
 
   <p>Tietokoneohjelmissa satunnaisuutta käytetään esimerkiksi salausalgoritmeissa, koneoppimisessa sekä tietokonepelien ennustettavuuden vähentämisessä. Satunnaisuutta mallinnetaan käytännössä <em>satunnaislukujen</em> avulla, joiden luomiseen Java valmiin <code>Random</code>-luokan. Random-luokasta voi tehdä olion jota voi käyttää seuraavalla tavalla.</p>
+
   <pre class="sh_java">
 import java.util.Random;
 
@@ -12135,9 +12695,11 @@ public class Arvontaa {
 
   <p>Satunnaisia kokonaislukuja voidaan käyttää esimerkiksi nopanheittojen mallintamiseen.</p>
 
-  <div id="viikko5" class="tehtavat">
+  <div class="tehtavat">
     <div class="tehtava">
+
     <h3 class="req">Nopan heittäminen</h3>
+
     <p> Tehtäväpohjassa on luokka <code>Noppa</code>, jonka runko on seuraava:</p>
 
 <pre class="sh_java">
@@ -12159,7 +12721,7 @@ public class Noppa {
 }
 </pre>
 
-    <p>Muokkaa luokkaa siten, että sen konstruktori<code>Noppa(int tahkojenMaara)</code> luo uuden noppa-olion annetulla nopan tahkojen (eri oman numeronsa sisältämien "puolien") määrällä. Muokkaa myös metodia <code>heita</code> siten, että se antaa satunnaisen nopanheiton tuloksen, jonka arvon tulee olla väliltä <code>1...tahkojen määrä</code>.</p>
+    <p>Muokkaa luokkaa siten, että sen konstruktori<code>Noppa(int tahkojenMaara)</code> luo uuden noppa-olion annetulla nopan tahkojen (eri oman numeronsa sisältämien "puolien") määrällä. Muokkaa myös metodia <code>heita</code> siten, että se antaa satunnaisen nopanheiton tuloksen, jonka arvon tulee olla väliltä <code>1...tahkojen määrä</code> (vinkki: plus!).</p>
 
     <p>Seuraavassa noppaa testaava pääohjelma: </p>
 
@@ -12176,7 +12738,9 @@ public class Ohjelma {
     }
 }
 </pre>
+
     <p>Tulostus voisi olla esimerkiksi seuraava:</p>
+
 <pre>
 1
 6
@@ -12252,9 +12816,15 @@ public class Ohjelma {
     public static void main(String[] args) {
         SaaEnnustaja ennustaja = new SaaEnnustaja();
 
-        // käytetään listaa apuvälineenä
+        // tallennetaan päivät listalle
         ArrayList&lt;String&gt; paivat = new ArrayList&lt;&gt;();
-        Collections.addAll(paivat, "Ma", "Ti", "Ke", "To", "Pe", "La", "Su");
+        paivat.add("Ma");
+        paivat.add("Ti");
+        paivat.add("Ke");
+        paivat.add("To");
+        paivat.add("Pe");
+        paivat.add("La");
+        paivat.add("Su");
 
         System.out.println("Seuraavan viikon sääennuste:");
         for(String paiva : paivat) {
@@ -12282,14 +12852,25 @@ Su: Aurinko paistaa -5 astetta
 
 <div class="tehtavat">
   <div class="tehtava">
+    <p><b>Vihje:</b> näin muutat kokonaisluvun <tt>luku</tt> kirjaimeksi:</p>
+
+<pre class="sh_java">
+int luku = 17;
+char merkki = "abcdefghijklmnopqrstuvwxyz".charAt(luku);
+</pre>
+
     <h3>Salasanan arpoja</h3>
+
     <p>Tehtävänäsi on täydentää luokkaa <code>SalasananArpoja</code>, jossa on seuraavat toiminnot:</p>
+
     <ul>
       <li> konstruktori <code>SalasananArpoja</code> luo uuden olion, joka käyttää annettua salasanan pituutta</li>
       <li> metodi <code>luoSalasana</code> palauttaa uuden, merkeistä a-z muodostetun konstruktorin parametrin määräämän pituisen salasanan </li>
     </ul>
+
     <p>Luokan runko on seuraava:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 import java.util.Random;
 
 public class SalasananArpoja {
@@ -12304,8 +12885,10 @@ public class SalasananArpoja {
     }
 }
 </pre>
+
     <p>Seuraavassa ohjelma joka käyttää SalasananArpoja-olioa:</p>
-    <pre class="sh_java">
+
+<pre class="sh_java">
 public class Ohjelma {
     public static void main(String[] args) {
         SalasananArpoja arpoja = new SalasananArpoja(13);
@@ -12316,23 +12899,25 @@ public class Ohjelma {
     }
 }
 </pre>
+
     <p>Ohjelman tulostus voisi näyttää seuraavalta:</p>
+
 <pre>
 Salasana: mcllsoompezvs
 Salasana: urcxboisknkme
 Salasana: dzaccatonjcqu
 Salasana: bpqmedlbqaopq
 </pre>
-    <p><b>Vihje1:</b> näin muutat kokonaisluvun <tt>luku</tt> kirjaimeksi:</p>
-<pre class="sh_java">
-int luku = 17;
-char merkki = "abcdefghijklmnopqrstuvwxyz".charAt(luku);
-</pre>
+
+
   </div>
 
   <div class="tehtava">
+
     <h3>Lottoarvonta</h3>
+
     <p>Tehtävänäsi on täydentää luokkaa <code>LottoRivi</code>, joka arpoo viikon lottonumerot. Lottonumerot ovat väliltä 1&ndash;39 ja niitä arvotaan 7. Lottorivi koostuu siis 7:stä eri numerosta väliltä 1&ndash;39. Luokassa on seuraavat toiminnot:</p>
+
     <ul>
       <li> konstruktori <code>LottoRivi</code> luo uuden LottoRivi-olion joka sisältää uudet, arvotut numerot</li>
       <li> metodi <code>numerot</code> palauttaa tämän lottorivin lottonumerot</li>
@@ -12398,13 +12983,22 @@ Lottonumerot:
 Lottonumerot:
 2 9 11 18 23 32 34
 </pre>
+
     <p><strong>Huom!</strong> Sama numero saa esiintyä lottorivissä vain kerran.</p>
+
   </div>
 
 </div>
 
 
+
 <h2>Lisää luokista ja olioista</h2>
+
+  <p>Merkittävä osa tämän viikon tehtävistä liittyy olioiden sekä niiden välisten viittausten rakentamiseen ja ymmärtämiseen. Aloitamme yksittäisten olioiden rakentamisella, jonka jälkeen pohdimme <em>viittaustyyppisen</em> muuttujan toiminnallisuutta "olio on langan päässä"-lauseen kautta. Käsittelemme tämän jälkeen olioita, jotka käsittelevät olioita, jonka jälkeen siirrymme olioihin, jotka voivat sisältää oliota sekä listallisia muita olioita.</p>
+
+  <p>Tällä viikolla -- kuten muutenkin -- tekee hyvää ottaa välillä askel taaemmaksi TMC:stä ja piirtää paperille käytettyjen olioiden välisiä viitteitä. Kaikki oma harjoittelu esimerkiksi hiekkalaatikossa on myös erittäin hyödyllistä.</p>
+
+
 
 <h3>Useita konstruktoreja</h3>
 <p>Palataan jälleen henkilöitä käsittelevän luokan pariin. Luokka <code>Henkilo</code> näyttää tällä hetkellä seuraavalta:</p>
@@ -12519,7 +13113,7 @@ Ada, ikä 0 vuotta
 
 <p>Mutta hetkinen, aiemmin todettiin että "copy-paste"-koodi ei ole hyvä idea. Kun tarkastellaan edellä tehtyjä kuormitettuja konstruktoreita, niissä on aika paljon samaa. Emme ole oikein tyytyväisiä tilanteeseen.</p>
 
-<p>Konstruktoreista ylempi on oikeastaan alemman erikoistapaus. Entä jos ylempi konstruktori voisi "kutsua" alempaa konstruktoria?</p>
+<p>Konstruktoreista ylempi, eli nimen parametrinaan saava konstruktori, on oikeastaan alemman, eli nimen ja iän parametrinaan saavan konstruktorin, erikoistapaus. Entä jos ylempi konstruktori voisi "kutsua" alempaa konstruktoria?</p>
 
 <p>Tämä onnistuu, sillä konstruktorin sisältä voi kutsua toista konstruktoria juuri tähän olioon liittyvän <code>this</code>-ilmauksen avulla!</p>
 
@@ -12722,7 +13316,7 @@ public static void main(String[] args) {
 </pre>
 <p>Viimeisen koodirivin jälkeen näyttää seuraavalta:</p>
 <p> <img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/lanka4.PNG"/> </p>
-<p>Alempaan olioon ei nyt viittaa kukaan. Oliosta on tullut "roska". Javan roskienkerääjä käy siivoamassa aika ajoin roskaksi joutuneet oliot. Jos näin ei tehtäisi, jäisivät ne kuluttamaan turhaan koneen muistia ohjelman suorituksen loppuun asti.</p>
+<p>Alempaan olioon ei nyt viittaa kukaan. Oliosta on tullut "roska". Javan roskienkerääjä käy siivoamassa aika ajoin roskaksi joutuneet oliot. Jos näin ei tehtäisi, jäisivät ne varaamaan koneen muistia ohjelman suorituksen loppuun asti.</p>
 <p>Huomaamme, että viimeisellä rivillä yritetään vielä tulostaa "ei mitään" eli <code>null</code>. Käy seuraavasti:</p>
 <pre>
 Pekka, ikä 24 vuotta
@@ -13151,9 +13745,11 @@ kassassa rahaa 1100.0 edullisia lounaita myyty 0 maukkaita lounaita myyty 1
 </div>
 
 
+<!--
     
     <div class="self-explanation" data-key="q-kuormittaminen"></div>
-    
+-->    
+
 
 <h3>Metodin parametrina toinen samantyyppinen olio</h3>
 
@@ -13401,6 +13997,41 @@ Suurin asunto löytyi!
 Asunnossa on 78 neliötä.
 </pre>
 
+<p>Vaihtoehtoinen tapa edellisen ohjelman toteutuksella on seuraava. Jos listalla ei ole yhtäkään asuntoa, emme jatka metodin suoritusta eteenpäin (komento return). Muuten otamme suurimmaksi asunnoksi listan ensimmäisen alkion, ja vertailemme asunnot kuten edellä. Tällä tavalla vältämme toistolauseen sisällä olevan nul-vertailun.</p>
+
+
+<pre class="sh_java">
+public static void main(String[] args) {
+    ArrayList&lt;Asunto&gt; asunnot = new ArrayList&lt;&gt;();
+
+    asunnot.add(new Asunto(1, 16, 5500));
+    asunnot.add(new Asunto(2, 38, 4200));
+    asunnot.add(new Asunto(3, 78, 2500));
+
+    if(asunnot.isEmpty()) {
+        System.out.println("Ei löytynyt suurinta asuntoa :(");
+        return; // lopetetaan void-tyyppisen metodin suoritus
+    }
+
+    Asunto suurin = asunnot.get(0);
+
+    for(Asunto asunto: asunnot) {
+        if (asunto.suurempi(suurin)) {
+            suurin = asunto;
+        }
+    }
+
+    System.out.println("Suurin asunto löytyi!");
+}
+</pre>
+
+<p>Ohjelman tulostus:</p>
+
+<pre>
+Suurin asunto löytyi!
+Asunnossa on 78 neliötä.
+</pre>
+
 
 <div class="tehtavat">
   <div class="tehtava">
@@ -13582,10 +14213,10 @@ public class Kello {
 }
 </pre>
 
-  <p>Kopioi uuteen projektiin viime viikon tehtävässä <code>YlhaaltaRajoitettuLaskuri</code>-toteutettu <code>YlhaaltaRajoitettuLaskuri</code>-luokka.</p>
+  <p>Luokkaan YlhaaltaRajoitettuLaskuri on kopioitu eräs ratkaisu viime viikon tehtävään. Toteuta luokan <code>Kello</code> konstruktori ja puuttuvat metodit kolmea ylhäältä rajoitettua laskuria hyödyntäen.</p>
 
-  <p>Toteuta luokan <code>Kello</code> konstruktori ja puuttuvat
-    metodit. Voit testata kelloasi seuraavalla pääohjelmalla:</p>
+    <p> Voit testata kelloasi seuraavalla pääohjelmalla:</p>
+
   <pre class="sh_java">
 public class Main {
     public static void main(String[] args) {
@@ -13600,7 +14231,9 @@ public class Main {
     }
 }
 </pre>
+
   <p>Tulostuksen tulisi edetä seuraavasti:</p>
+
 <pre>
 23:59:50
 23:59:51
@@ -13618,6 +14251,803 @@ public class Main {
 </pre>
 </div>
 </div>
+
+
+
+<h3>Olion sisällä listallinen olioita</h3>
+
+<p>Laajennetaan <code>PainonvartijaYhdistys</code>-oliota siten, että yhdistys tallettaa kaikki jäsenensä <code>ArrayList</code>-olioon. Listalle tulee siis <code>Henkilo</code>-olioita. Yhdistykselle annetaan laajennetussa versiossa konstruktorin parametrina nimi:</p>
+<pre class="sh_java">
+public class PainonvartijaYhdistys {
+    private double alinPainoindeksi;
+    private String nimi;
+    private ArrayList&lt;Henkilo&gt; jasenet;
+
+    public PainonvartijaYhdistys(String nimi, double alinPainoindeksi) {
+        this.alinPainoindeksi = alinPainoindeksi;
+        this.nimi = nimi;
+        this.jasenet = new ArrayList&lt;&gt;();
+    }
+
+//..
+}
+</pre>
+<p>Tehdään metodi jolla henkilö liitetään yhdistykseen. Metodi ei liitä yhdistykseen kuin tarpeeksi suuren painoindeksin omaavat henkilöt. Tehdään myös toString jossa tulostetaan jäsenten nimet:</p>
+<pre class="sh_java">
+public class PainonvartijaYhdistys {
+  // ...
+
+    public boolean hyvaksytaanJaseneksi(Henkilo henkilo) {
+        if (henkilo.painoIndeksi() &lt; this.alinPainoindeksi) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public void lisaaJaseneksi(Henkilo henkilo) {
+        if (!hyvaksytaanJaseneksi(henkilo)) { // sama kuin hyvaksytaanJaseneksi(henkilo) == false
+            return;
+        }
+
+        this.jasenet.add(henkilo);
+    }
+
+    public String toString() {
+        String jasenetMerkkijonona = "";
+
+        for (Henkilo jasen : this.jasenet) {
+            jasenetMerkkijonona += "  " + jasen.getNimi() + "\n";
+        }
+
+        return "Painonvartijayhdistys " + this.nimi + " jäsenet: \n" + jasenetMerkkijonona;
+    }
+}
+</pre>
+<p>Metodi <code>lisaaJaseneksi</code> käyttää aiemmin tehtyä metodia <code>hyvaksytaanJaseneksi</code>.</p>
+<p>Kokeillaan laajentunutta painonvartijayhdistystä:</p>
+<pre class="sh_java">
+public static void main(String[] args) {
+    PainonvartijaYhdistys painonVartija = new PainonvartijaYhdistys("Kumpulan paino", 25);
+
+    Henkilo matti = new Henkilo("Matti");
+    matti.setPaino(86);
+    matti.setPituus(180);
+    painonVartija.lisaaJaseneksi(matti);
+
+    Henkilo juhana = new Henkilo("Juhana");
+    juhana.setPaino(64);
+    juhana.setPituus(172);
+    painonVartija.lisaaJaseneksi(juhana);
+
+    Henkilo harri = new Henkilo("Harri");
+    harri.setPaino(104);
+    harri.setPituus(182);
+    painonVartija.lisaaJaseneksi(harri);
+
+    Henkilo petri = new Henkilo("Petri");
+    petri.setPaino(112);
+    petri.setPituus(173);
+    painonVartija.lisaaJaseneksi(petri);
+
+    System.out.println(painonVartija);
+}
+</pre>
+<p>Tulostuksesta huomaamme, että Juhanaa ei kelpuutettu jäseneksi:</p>
+<pre>
+Painonvartijayhdistys Kumpulan paino jäsenet:
+Matti
+Harri
+Petri
+</pre>
+
+
+  <div class="parqu-exercise" data-id="21" data-name="Arraylist oliona"></div>
+
+  <!-- CAST4 -->
+
+  <a href="http://www.youtube.com/watch?feature=player_embedded&v=Rut2pt5ztN0" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
+
+
+<div class="tehtavat">
+
+  <div class="tehtava">
+
+    <h3>Joukkueet ja pelaajat</h3>
+
+    <h4 class="req"><code>Joukkue</code>-luokka</h4>
+  
+    <p>Tee luokka <code>Joukkue</code>, johon tallennetaan joukkueen nimi (<code>String</code>). Tee luokkaan seuraavat metodit:</p>
+
+    <ul>
+      <li> konstruktori, jolle annetaan joukkueen nimi</li>
+      <li> <code>haeNimi</code>, joka palauttaa joukkueen nimen</li>
+    </ul>
+
+    <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
+
+<pre class="sh_java">
+public class Main {
+    public static void main(String[] args) {
+        Joukkue tapiiri = new Joukkue("FC Tapiiri");
+        System.out.println("Joukkue: " + tapiiri.haeNimi());
+    }
+}
+</pre>
+
+    <p>Ohjelman tulostus on seuraava:</p>
+  
+<pre>
+Joukkue: FC Tapiiri
+</pre>
+
+    <h4 class="req">Pelaaja</h4>
+
+    <p>Luo luokka <code>Pelaaja</code>, johon tallennetaan pelaajan nimi ja tehtyjen maalien määrä. Tee luokkaan kaksi konstruktoria: yksi jolle annetaan vain pelaajan nimi, toinen jolle annetaan sekä pelaajan nimi että pelaajan tekemien maalien määrä. Lisää pelaajalle myös metodit:</p>
+
+    <ul>
+      <li> <code>haeNimi</code>, joka palauttaa pelaajan nimen</li>
+      <li> <code>maalit</code>, joka palauttaa tehtyjen maalien määrän</li>
+      <li> <code>toString</code>, joka palauttaa pelaajan merkkijonoesityksen</li>
+    </ul>
+
+<pre class="sh_java">
+public class Main {
+    public static void main(String[] args) {
+        Joukkue tapiiri = new Joukkue("FC Tapiiri");
+        System.out.println("Joukkue: " + tapiiri.haeNimi());
+
+        Pelaaja matti = new Pelaaja("Matti");
+        System.out.println("Pelaaja: " + matti);
+
+        Pelaaja pekka = new Pelaaja("Pekka", 39);
+        System.out.println("Pelaaja: " + pekka);
+    }
+}
+</pre>
+
+<pre>
+Joukkue: FC Tapiiri
+Pelaaja: Matti, maaleja 0
+Pelaaja: Pekka, maaleja 39
+</pre>
+
+    <h4 class="req">Pelaajat joukkueisiin</h4>
+
+    <p>Lisää luokkaan <code>Joukkue</code> seuraavat metodit:</p>
+
+    <ul>
+      <li> <code>lisaaPelaaja</code>, joka lisää pelaajan joukkueeseen</li>
+      <li> <code>tulostaPelaajat</code>, joka tulostaa joukkueessa olevat pelaajat</li>
+    </ul>
+    
+    <p>Tallenna joukkueessa olevat pelaajat <code>Joukkue</code>-luokan sisäiseen <code>ArrayList</code>-listaan.</p>
+    
+    <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
+
+<pre class="sh_java">
+public class Main {
+    public static void main(String[] args) {
+        Joukkue tapiiri = new Joukkue("FC Tapiiri");
+
+        Pelaaja matti = new Pelaaja("Matti");
+        Pelaaja pekka = new Pelaaja("Pekka", 39);
+
+        tapiiri.lisaaPelaaja(matti);
+        tapiiri.lisaaPelaaja(pekka);
+        tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
+
+        tapiiri.tulostaPelaajat();
+    }
+}
+</pre>
+
+    <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+Matti, maaleja 0
+Pekka, maaleja 39
+Mikael, maaleja 1
+</pre>
+
+    <h4 class="req">Joukkueen maksimikoko ja nykyinen koko</h4>
+
+    <p>Lisää luokkaan <code>Joukkue</code> seuraavat metodit:</p>
+
+    <ul>
+      <li> <code>asetaMaksimikoko(int maksimikoko)</code>, joka asettaa joukkueen maksimikoon (eli maksimimäärän pelaajia)</li>
+      <li> <code>koko</code>, joka palauttaa pelaajien määrän (<code>int</code>)</li>
+    </ul>
+    
+    <p>Joukkueen suurin sallittu pelaajamäärä on oletusarvoisesti 16. Metodin <code>asetaMaksimikoko</code> avulla tätä rajaa voi muuttaa. Muuta metodia <code>lisaaPelaaja</code> niin, että se ei lisää pelaajaa joukkueeseen, jos sallittu pelaajamäärä ylittyisi.</p>
+    
+    <p><strong>HUOM:</strong> muista lisätä oletusarvoinen maksimikoko koodiisi sillä muuten arvoksi tulee 0. Tämä aiheuttaa edellisen kohdan testien hajoamisen, sillä testit luovat oletusmaksimikokoisia joukkueita ja jos joukkueen maksimikoko on 0, ei joukkueeseen voi lisätä yhtään pelaajaa.</p>
+
+    <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
+
+<pre class="sh_java">
+public class Main {
+    public static void main(String[] args) {
+        Joukkue tapiiri = new Joukkue("FC Tapiiri");
+        tapiiri.asetaMaksimikoko(1);
+
+        Pelaaja matti = new Pelaaja("Matti");
+        Pelaaja pekka = new Pelaaja("Pekka", 39);
+        tapiiri.lisaaPelaaja(matti);
+        tapiiri.lisaaPelaaja(pekka);
+        tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
+
+        System.out.println("Pelaajia yhteensä: " + tapiiri.koko());
+    }
+}
+</pre>
+
+<pre>
+Pelaajia yhteensä: 1
+</pre>
+
+    <h4 class="req">Joukkueen maalit</h4>
+
+    <p>Lisää luokkaan <code>Joukkue</code> metodi:</p>
+    
+    <ul>
+      <li> <code>maalit</code>, joka palauttaa joukkueen pelaajien tekemien maalien yhteismäärän.</li>
+    </ul>
+    
+    <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
+
+<pre class="sh_java">
+public class Main {
+    public static void main(String[] args) {
+        Joukkue tapiiri = new Joukkue("FC Tapiiri");
+
+        Pelaaja matti = new Pelaaja("Matti");
+        Pelaaja pekka = new Pelaaja("Pekka", 39);
+        tapiiri.lisaaPelaaja(matti);
+        tapiiri.lisaaPelaaja(pekka);
+        tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
+
+        System.out.println("Maaleja yhteensä: " + tapiiri.maalit());
+    }
+}
+</pre>
+
+<pre>
+Maaleja yhteensä: 40
+</pre>
+
+  </div>
+
+
+  <div class="tehtava">
+    <h3>Matkavalokuvat</h3>
+  
+    <p>Matkailijat tykkäävät ottaa valokuvia erilaisista kohteista. Usein kuvissa sattuu kuitenkin olemaan turisti kohteen edessä, mikä harmittaa. Tämä harmitus kasvaa erityisesti, jos samainen turisti esiintyy jokaisessa kuvassa.</p>
+
+  <p>Alla on kaksi kuvaa eräästä reissusta.</p>
+
+  <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/103-turisti1.png"/></p>
+
+  <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/103-turisti2.png"/></p>
+
+  <p>Tehdään ohjelma, minkä tavoitteena on poistaa turisti kuvasta. Apunamme meillä on kolmannella viikolla olleessa tehtävässä <code>Fotari</code> nähdyn apukirjaston toinen versio, joka tarjoaa apuvälineet kuvien lukemiseen ja näyttämiseen.</p>
+ 
+  <p>Fotarin tarjoama toiminnallisuus on seuraavanlainen:</p>
+  
+  <ul>
+    <li><code>Fotari.lataa(String kuva);</code> lataa parametrina annettavan merkkijonon osoittamassa sijainnissa olevan kuvan, ja palauttaa <code>Kuva</code>-tyyppisen olion. Käyttöesimerkki: <code>Kuva kuva = Fotari.lataa("G0010099.png");</code>.</li>
+    <li><code>Fotari.nayta(Kuva kuva);</code> avaa parametrina annettavan <code>Kuva</code>-tyyppisen kuvan erilliseen ikkunaan, mistä sitä voi tarkastella. Käyttöesimerkki:
+<pre class="sh_java">
+Kuva kuva = Fotari.lataa("G0010099.png");
+Fotari.nayta(kuva);
+</pre></li>
+  </ul>
+
+  <p>Tämän lisäksi, ladatuilla kuvaolioilla on käytössä seuraavat metodit:</p>
+
+  
+  <ul>
+    <li><code>getLeveys();</code> palauttaa kuvan leveyden. Esimerkki: <code>int leveys = kuva.getLeveys();</code></li>
+    <li><code>getKorkeus();</code> palauttaa kuvan korkeuden. Esimerkki: <code>int korkeus = kuva.getKorkeus();</code></li>
+    <li><code>punainen(int x, int y);</code> palauttaa punaisen värin määrän annetussa koordinaatissa. Värin määrä on aina luku väliltä 0-255. Esimerkki: <code>int punainen = kuva.punainen(3, 2);</code></li>
+    <li><code>vihrea(int x, int y);</code> palauttaa vihreän värin määrän annetussa koordinaatissa. Värin määrä on aina luku väliltä 0-255. Esimerkki: <code>int vihrea = kuva.vihrea(7, 4);</code></li>
+    <li><code>sininen(int x, int y);</code> palauttaa sinisen värin määrän annetussa koordinaatissa. Värin määrä on aina luku väliltä 0-255. Esimerkki: <code>int sininen = kuva.sininen(1, 1);</code></li>
+    <li><code>asetaVari(int x, int y, int punainen, int vihrea, int sininen);</code> asettaa annettuun koordinaattiin annetut värimäärät. Esimerkki: <code>kuva.asetaVari(0, 0, 255, 255, 255);</code> -- lisää valkoisen pisteen kuvan kohtaan (0, 0). </li>
+  </ul>
+
+  <p>Kuva-luokassa on olemassa myös konstruktori, minkä avulla voi luoda uusia Kuva-olioita. Konstruktori saa parametrikseen luotavan kuvan leveyden ja korkeuden. Esimerkiksi seuraava koodi luo uuden kuvan, jonka leveys on 200 ja korkeus on 100, sekä näyttää sen Fotarin avulla. Konstruktori asettaa oletuksena jokaiseen kuvan pikseliin mustan värin, missä punaisen, vihreän ja sinisen määrä on 0.</p>
+
+<pre class="sh_java">
+Kuva kuva = new Kuva(200, 100);
+Fotari.nayta(kuva);
+</pre>
+
+  <h4 class="req">Yhdistin ja kuvien lataaminen</h4>
+
+  <p>Toteutetaan kuvien yhdistämistä varten erillinen luokka <code>Yhdistin</code>. Luo luokka <code>Yhdistin</code>, jonka konstruktori saa parametrinaan merkkijonon, millä kuvataan yhdistämistapaa. Tarvitset myös oliomuuttujan yhdistämistavan tallentamiseen, sillä sitä hyödynnetään tehtävän myöhemmissä osissa.</p>
+
+  <p>Luo yhdistimelle lisäksi apumetodi <code>lataaKuvat</code>, joka saa parametrinaan <code>ArrayList&lt;String&gt;</code>-tyyppisen listan merkkijonoja, jotka sisältävät kuvien sijainteja. Metodin <code>lataaKuvat</code> tulee palauttaa taulukko <code><code>ArrayList&lt;Kuva&gt;</code>, mihin kuvat on ladattu.</p>
+
+  <p>Hyödynnä tässä sopivasti Fotarin tarjoamaa <code>lataa</code>-metodia.</p>
+
+  <p>Voit testata kuvien lataamisen toimintaa esimerkiksi seuraavalla koodilla:</p>
+
+<pre class="sh_java">
+ArrayList&lt;String&gt; tiedostot = new ArrayList&lt;&gt;();
+tiedostot.add("G0010111.png");
+tiedostot.add("G0010161.png");
+tiedostot.add("G0010163.png");
+
+Yhdistin yhdistin = new Yhdistin("vaalein");
+ArrayList&lt;Kuva&gt; kuvat = yhdistin.lataaKuvat(tiedostot);
+
+Fotari.nayta(kuvat.get(0));
+</pre>
+
+  <p>Huom! Jos Fotari tai Kuva on alleviivattu, eikä ohjelma löydä niitä, lisää käyttämiesi luokkien alkuun seuraavat rivit:</p>
+
+<pre class="sh_java">
+import kuva.Fotari;
+import kuva.Kuva;
+</pre>
+
+
+
+  <h4 class="req">Ladattujen kuvien yhdistäminen ja vaaleimman värin valinta</h4>
+
+  <p>Nyt kun saat ladattua kuvia ja näytettyä niitä, tavoitteena on seuraavaksi yhdistää kuvia.</p>
+
+  <p>Toteuta yhdistimelle metodi <code>yhdistaKuvat</code>, jolle annetaan parametrina <code>ArrayList&lt;Kuva&gt;</code>-tyyppinen lista kuvia. Jos käyttäjä antaa yhdistimelle konstruktorin parametrina arvon <code>"vaalein"</code>, tulee metodin toimia seuraavasti:</p>
+
+  <ol>
+    <li>Katsotaan ensimmäisen listalla olevan kuvan koko, ja luodaan uusi kuva sen perusteella.</li>
+    <li>Käydään uuden kuvan jokainen pikseli läpi, ja kopioidaan pikseliin vanhojen kuvien saman pikselin <em>suurin</em> punainen, <em>suurin</em> vihrea, ja <em>suurin</em> sininen.</li>
+  </ol>
+ 
+  <p>Suunnittele ylläoleva toteutus ennen kuin lähdet tekemään sitä. Kolmannella viikolla olleen Fotari-tehtävän muistelusta ja tarkastelusta lienee myös hyötyä.</p>
+
+  <p>Kun metodi on toteutettu, ohjelmaa voi testata seuraavasti:</p>
+
+
+<pre class="sh_java">
+ArrayList&lt;String&gt; tiedostot = new ArrayList&lt;&gt;();
+// tiedostojen lisääminen
+
+Yhdistin yhdistin = new Yhdistin("vaalein");
+ArrayList&lt;Kuva&gt; kuvat = yhdistin.lataaKuvat(tiedostot);
+Kuva kuva = yhdistin.yhdistaKuvat(kuvat);
+        
+Fotari.nayta(kuva);
+</pre>
+
+    <p>Lopputulos voi näyttää esimerkiksi seuraavanlaiselta:</p>
+
+    <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/103-vaalein.png"/></p>
+
+
+
+    <h4 class="req">Tummimman värin valinta</h4>
+
+    <p>Muokkaa toteutustasi siten, että yhdistimelle voi antaa konstruktorin parametrina myös arvon "tummin". Tällöin kuvien yhdistämisen tulee luoda uusi kuva, johon laitetaan yhdistettävien kuvien tummimmat pikselit.</p>
+
+  <p>Kun metodi on toteutettu, ohjelmaa voi testata seuraavasti:</p>
+
+
+<pre class="sh_java">
+ArrayList&lt;String&gt; tiedostot = new ArrayList&lt;&gt;();
+// tiedostojen lisääminen
+
+Yhdistin yhdistin = new Yhdistin("tummin");
+ArrayList&lt;Kuva&gt; kuvat = yhdistin.lataaKuvat(tiedostot);
+Kuva kuva = yhdistin.yhdistaKuvat(kuvat);
+        
+Fotari.nayta(kuva);
+</pre>
+
+    <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/103-tummin.png"/></p>
+    
+
+    <h4 class="req">Värien mediaani</h4>
+
+    <p>Noniin, hankkiudutaan turistista eroon.</p>
+
+    <p>Muokkaa toteutustasi siten, että yhdistimelle voi antaa konstruktorin parametrina arvon "mediaani". Tällöin kuvien yhdistämisen tulee luoda uusi kuva, johon laitetaan yhdistettävien pikseleiden keskimmäinen arvo, eli mediaani. Esimerkiksi, jos viiden kuvan sinisten värien arvot ovat <code>211, 123, 17, 155, 8</code>, on niiden mediaani <code>123</code>. Saat mediaanin selville järjestämällä arvot, ja valitsemalla listan keskimmäisen arvon.</p>
+
+  <p>Kun metodi on toteutettu, ohjelmaa voi testata seuraavasti:</p>
+
+
+<pre class="sh_java">
+ArrayList&lt;String&gt; tiedostot = new ArrayList&lt;&gt;();
+// tiedostojen lisääminen
+
+Yhdistin yhdistin = new Yhdistin("mediaani");
+ArrayList&lt;Kuva&gt; kuvat = yhdistin.lataaKuvat(tiedostot);
+Kuva kuva = yhdistin.yhdistaKuvat(kuvat);
+        
+Fotari.nayta(kuva);
+</pre>
+
+    <p>Toteutuksen pitäisi poistaa ärsyttävä turisti:</p>
+
+    <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/103-mediaani.png"/></p>
+
+    <p>Huippua!</p>
+    
+
+    
+  </div>
+</div>
+</div>
+
+<div class="panel-group" id="5yhteenveto">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#5yhteenveto" href="#5yhteenveto2">
+      <div class="panel-heading">
+	<h4 class="kysely" id="yhteenveto-5-form-legend">Viikon 5 Loppukysely</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="5yhteenveto2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="yhteenveto-5-form">
+            <fieldset>
+                <legend id="yhteenveto-5-legend">Viikon 5 Loppukysely</legend>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-5-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-5-form-tmc-tunnus" name="yhteenveto-5-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-5-form-tuntia">Kuinka monta tuntia käytit kurssin viidenteen viikkoon (noin)</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-5-form-tuntia" name="yhteenveto-5-form-tuntia" type="number" class="form-control input-md">
+                    </div>
+                </div>
+
+		<p>&nbsp;</p>
+
+		<p>Alla on esitetty viikkoon liittyviä väittämiä. Jos olet täysin eri mieltä väittämän kanssa, valitse 1. Jos olet täysin samaa mieltä väittämän kanssa, valitse 7. Muuten, valitse luku väliltä.</p>
+
+                <div class="row" id="yhteenveto-5-form-skaala">
+                    <div class="col-md-3">Täysin eri mieltä.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Täysin samaa mieltä.</div>
+                </div>
+
+		<p>&nbsp;</p>
+
+                <div id="yhteenveto-5-form-vaittamat">
+		  <div class="row"><div class="col-md-3">1. Viikko oli työläs.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">2. Viikko oli opettavainen.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">3. Viikko oli turhauttava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">4. Viikko oli mukava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">5. Viikko oli vaikea.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="7" type="radio">7</label></div></div>
+                </div>
+		
+		<p>&nbsp;</p>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-5-form-vaikein">Vaikein asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-5-form-vaikein" name="yhteenveto-5-form-vaikein" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-5-form-helpoin">Helpoin asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-5-form-helpoin" name="yhteenveto-5-form-helpoin" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-5-form-turhauttavinta">Turhauttavinta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-5-form-turhauttavinta" name="yhteenveto-5-form-turhauttavinta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-5-form-parasta">Parasta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-5-form-parasta" name="yhteenveto-5-form-parasta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-5-form-palaute">Yleinen palaute:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-5-form-palaute" rows="6" name="yhteenveto-5-form-palaute" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <input type="hidden" id="yhteenveto-5-form-started-entering" name="yhteenveto-5-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="yhteenveto-5-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="yhteenveto-5-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</section>
+
+
+
+
+<section class="viikkoraja" id="6">
+  <div class="viikkoraja"></div>
+  <div class="viikkoraja-mooc" id="Viikko 6" deadline="avautuu kun 85 %  5. viikosta tehty" data-first-chapter-index="23" data-first-exercise-index="94" data-first-week-index="6" data-first-chapter-index-mooc="23" data-first-exercise-index-mooc="94" data-first-week-index-mooc="6" tekija="Arto Vihavainen, Matti Luukkainen">
+
+
+
+<div class="panel-group" id="2al-et-lister-three">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#2al-et-lister-three" href="#2al-et-lister-three2">
+      <div class="panel-heading">
+	<h4 id="al-et-lister-three-form-legend">Kysely: Ohjelmointirutiini ja muuttujien ymmärrys, osa 3</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="2al-et-lister-three2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="al-et-lister-three-form">
+            <fieldset>
+                <legend id="al-et-lister-three-form-legend">Tutkimus: Ohjelmointirutiini ja muuttujien ymmärrys</legend>
+                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="al-et-lister-three-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="al-et-lister-three-form-tmc-tunnus" name="al-et-lister-three-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+
+                <p class="help-block">Tässä kyselyssä kartoitetaan tähän mennessä kertynyttä ohjelmointirutiiniasi sekä muuttujien ymmärrystä. Vastaathan kyselyyn nykyisen osaamisesi perusteella, älä siis esimerkiksi kokeile koodinpätkiä tietokoneella ennen vastauksen antamista.</p>
+
+		<p>&nbsp;</p>
+
+                <div id="al-et-lister-three">
+
+                    <p>Tutki seuraavaa koodia.</p>
+
+                    <pre class="sh_java">
+if (a &gt; b) {
+    if (b &gt; c) {
+        System.out.println(c);
+    } else {
+        System.out.println(b);
+    }
+} else {
+    if (a &gt; c) {
+        System.out.println(c);
+    } else {
+        System.out.println(a);
+    }
+}
+</pre>
+
+                    <p>Kun pohdit ylläolevaa koodia, mikä seuraavista muuttujien arvoista johtaa muuttujan b arvon tulostamiseen?</p>
+
+		    <div>
+		      <input type="radio" name="w6q6a" value="one">a=1; b=2; c=3;<br/>
+		      <input type="radio" name="w6q6a" value="two">a=1; b=3; c=2;<br/>
+		      <input type="radio" name="w6q6a" value="three">a=2; b=1; c=3;<br/>
+		      <input type="radio" name="w6q6a" value="four">a=3; b=2; c=1;<br/>
+		    </div>
+
+		    <p>&nbsp;</p>
+
+                    <p>Kuvaa yhdellä lauseella ylläolevan koodin toimintaa ja tarkoitusta. Huom! Älä kerro koodin toimintaa rivi riviltä, vaan kerro koodin tarkoitus.</p>
+
+                    <textarea class="form-control" rows="2" name="kysymys-b"></textarea>
+
+                </div>
+
+                <input type="hidden" id="al-et-lister-three-form-started-entering" name="al-et-lister-three-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="al-et-lister-three-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="al-et-lister-three-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel-group" id="2vak">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#2vak" href="#2vak2">
+      <div class="panel-heading">
+	<h4 id="vak-form-legend">Kysely: Opiskelutyyli</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="2vak2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="vak-form">
+            <fieldset>
+                <legend id="vak-form-legend">Tutkimus: Opiskelutyyli</legend>
+                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="vak-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="vak-form-tmc-tunnus" name="vak-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+
+                <p class="help-block">Tässä kyselyssä kartoitetaan suosittuja oppimistyylejä. Aseta jokaisessa kohdassa numero 3 sille vaihtoehdolle, joka luonnehtii Sinua parhaiten, ja numero 1 sille vaihtoehdolle, joka luonnehtii Sinua vähiten. Aseta numero 2 väliin jääville.</p>
+
+		<p>&nbsp;</p>
+
+                <div id="vak">
+
+		  <ol>
+		    <li>Opin helpoiten
+		      <ul>
+			<li>näkemällä, katsomalla <input name="vak-1-vis" type="text" size="2"/></li>
+			<li>kuulemalla, keskustelemalla <input name="vak-1-aud" type="text" size="2"/></li>
+			<li>motorisesti tehden, kosketellen <input name="vak-1-mot" type="text" size="2"/></li>
+		      </ul>
+		    </li>
+		    <li>Muistan parhaiten asiat jos
+		      <ul>
+			<li>olen nähnyt ne <input name="vak-2-vis" type="text" size="2"/></li>
+			<li>muistettavaan on liittynyt ääniä, puhetta <input name="vak-2-aud" type="text" size="2"/></li>
+			<li>niihin on liittynyt motorista tekemistä, koskettamista <input name="vak-2-mot" type="text" size="2"/></li>
+		      </ul>
+		    </li>
+		    <li>Toisista ihmisistä muistan helpoiten
+		      <ul>
+			<li>ulkomuodon, kasvot, vaatteet <input name="vak-3-vis" type="text" size="2"/></li>
+			<li>hänen äänensä, puheensa <input name="vak-3-aud" type="text" size="2"/></li>
+			<li>hänen kanssaan tehdyt, koetut asiat <input name="vak-3-mot" type="text" size="2"/></li>
+		      </ul>
+		    </li>
+		    <li>Puherytmini on
+		      <ul>
+			<li>nopeaa <input name="vak-4-vis" type="text" size="2"/></li>
+			<li>keskinopeaa <input name="vak-4-aud" type="text" size="2"/></li>
+			<li>hidasta <input name="vak-4-mot" type="text" size="2"/></li>
+		      </ul>
+		    </li>
+		    <li>Sanavalinnoissani sanon tyypillisesti
+		      <ul>
+			<li>miltä näyttää? <input name="vak-5-vis" type="text" size="2"/></li>
+			<li>miltä kuulostaa? <input name="vak-5-aud" type="text" size="2"/></li>
+			<li>miltä tuntuu? <input name="vak-5-mot" type="text" size="2"/></li>
+		      </ul>
+		    </li>
+		    <li>Suunnitellessani suosin
+		      <ul>
+			<li>visuaalista materiaalia, kuvia, tekstiä <input name="vak-6-vis" type="text" size="2"/></li>
+			<li>juttelen jonkun kanssa tai sisäistä itsepuhelua <input name="vak-6-aud" type="text" size="2"/></li>
+			<li>teen konkreettisia kokeiluja ja tunnustelen, miltä eri vaihtoehdot tuntuvat <input name="vak-6-mot" type="text" size="2"/></li>
+		      </ul>
+		    </li>
+		    <li>Vieraalla paikkakunnalla löydän
+		      <ul>
+			<li>karttaa/visuaalisia opasteita tutkimalla <input name="vak-7-vis" type="text" size="2"/></li>
+			<li>kysymällä joltakulta <input name="vak-7-aud" type="text" size="2"/></li>
+			<li>lähden etsimään kävellen/kulkuvälineellä ja samalla painan paikkoja mieleen <input name="vak-7-mot" type="text" size="2"/></li>
+		      </ul>
+		    </li>
+		    <li>Merkittävimmät elämykset saan
+		      <ul>
+			<li>kauniista näkymistä <input name="vak-8-vis" type="text" size="2"/></li>
+			<li>Hyvästä musiikista tai muista äänistä <input name="vak-8-aud" type="text" size="2"/></li>
+			<li>kosketus- ja/tai liikunnallisista kokemuksista <input name="vak-8-mot" type="text" size="2"/></li>
+		      </ul>
+		    </li>
+		    <li>Vaateostoksia tehdessäni pohdin voimakkaimmin
+		      <ul>
+			<li>miltä ne näyttävät <input name="vak-9-vis" type="text" size="2"/></li>
+			<li>millaisia puheita niistä käydään <input name="vak-9-aud" type="text" size="2"/></li>
+			<li>miltä ne tuntuvat ylläni <input name="vak-9-mot" type="text" size="2"/></li>
+		      </ul>
+		    </li>
+		    <li>Jos on täysi vapaus valita, suunnittelen olohuoneeni niin, että
+		      <ul>
+			<li>se miellyttää minun silmääni/visuaalista kauneustajuani <input name="vak-10-vis" type="text" size="2"/></li>
+			<li>sen ääniympäristö on miellyttävä (äänet omasta huoneesta, naapurista, ulkoa) <input name="vak-10-aud" type="text" size="2"/></li>
+			<li>oleminen, tekeminen, liikkuminen on helppoa ja mukavaa (materiaalit, sijainnit) <input name="vak-10-mot" type="text" size="2"/></li>
+		      </ul>
+		    </li>
+		  </ol>
+
+                </div>
+
+                <input type="hidden" id="vak-form-started-entering" name="vak-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="vak-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="vak-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <h2>Tiedoston lukeminen</h2>
+
+  
+  <aside class="info">
+    <p>Mikä ihmeen tiedosto</p>
+
+    <p>sisältää informaatiota jonkinlaisessa muodossa, usein tekstimuodossa</p>
+
+    <p>jotkut kuitenkin ohjelman päättämässä muodossa<p>
+  </aside>
+  
+
+  <p>TODO: tehtava: mittaustulokset, luetaan tiedostosta. tiedosto sisältää n riviä tuloksia, ja niistä pitäisi sitten kertoa yleisin x, harvinaisin x, keskimääräinen x..?</p>
+
+  <p>TODO: tehtava: tiedostossa on lottorivejä. kirjoita ohjelma, joka lukee lottorivit, ja kertoo käyttäjälle kuinka monta kertaa käyttäjä olisi saanut ainakin 5 oikein antamalla rivillään viimeisen 30 vuoden aikana.</p>
+
+
+
+
+
+
 
 <!-- foobar -->
 <h3>Lisää omien metodien kutsumisesta</h3>
@@ -14111,1135 +15541,6 @@ Philip III of Spain, äiti tuntematon ja isä tuntematon.</pre>
 </div>
 
 
-<h3>Olion sisällä listallinen olioita</h3>
-
-<p>Laajennetaan <code>PainonvartijaYhdistys</code>-oliota siten, että yhdistys tallettaa kaikki jäsenensä <code>ArrayList</code>-olioon. Listalle tulee siis <code>Henkilo</code>-olioita. Yhdistykselle annetaan laajennetussa versiossa konstruktorin parametrina nimi:</p>
-<pre class="sh_java">
-public class PainonvartijaYhdistys {
-    private double alinPainoindeksi;
-    private String nimi;
-    private ArrayList&lt;Henkilo&gt; jasenet;
-
-    public PainonvartijaYhdistys(String nimi, double alinPainoindeksi) {
-        this.alinPainoindeksi = alinPainoindeksi;
-        this.nimi = nimi;
-        this.jasenet = new ArrayList&lt;&gt;();
-    }
-
-//..
-}
-</pre>
-<p>Tehdään metodi jolla henkilö liitetään yhdistykseen. Metodi ei liitä yhdistykseen kuin tarpeeksi suuren painoindeksin omaavat henkilöt. Tehdään myös toString jossa tulostetaan jäsenten nimet:</p>
-<pre class="sh_java">
-public class PainonvartijaYhdistys {
-  // ...
-
-    public boolean hyvaksytaanJaseneksi(Henkilo henkilo) {
-        if (henkilo.painoIndeksi() &lt; this.alinPainoindeksi) {
-            return false;
-        }
-
-        return true;
-    }
-
-    public void lisaaJaseneksi(Henkilo henkilo) {
-        if (!hyvaksytaanJaseneksi(henkilo)) { // sama kuin hyvaksytaanJaseneksi(henkilo) == false
-            return;
-        }
-
-        this.jasenet.add(henkilo);
-    }
-
-    public String toString() {
-        String jasenetMerkkijonona = "";
-
-        for (Henkilo jasen : this.jasenet) {
-            jasenetMerkkijonona += "  " + jasen.getNimi() + "\n";
-        }
-
-        return "Painonvartijayhdistys " + this.nimi + " jäsenet: \n" + jasenetMerkkijonona;
-    }
-}
-</pre>
-<p>Metodi <code>lisaaJaseneksi</code> käyttää aiemmin tehtyä metodia <code>hyvaksytaanJaseneksi</code>.</p>
-<p>Kokeillaan laajentunutta painonvartijayhdistystä:</p>
-<pre class="sh_java">
-public static void main(String[] args) {
-    PainonvartijaYhdistys painonVartija = new PainonvartijaYhdistys("Kumpulan paino", 25);
-
-    Henkilo matti = new Henkilo("Matti");
-    matti.setPaino(86);
-    matti.setPituus(180);
-    painonVartija.lisaaJaseneksi(matti);
-
-    Henkilo juhana = new Henkilo("Juhana");
-    juhana.setPaino(64);
-    juhana.setPituus(172);
-    painonVartija.lisaaJaseneksi(juhana);
-
-    Henkilo harri = new Henkilo("Harri");
-    harri.setPaino(104);
-    harri.setPituus(182);
-    painonVartija.lisaaJaseneksi(harri);
-
-    Henkilo petri = new Henkilo("Petri");
-    petri.setPaino(112);
-    petri.setPituus(173);
-    painonVartija.lisaaJaseneksi(petri);
-
-    System.out.println(painonVartija);
-}
-</pre>
-<p>Tulostuksesta huomaamme, että Juhanaa ei kelpuutettu jäseneksi:</p>
-<pre>
-Painonvartijayhdistys Kumpulan paino jäsenet:
-Matti
-Harri
-Petri
-</pre>
-
-
-  <div class="parqu-exercise" data-id="21" data-name="Arraylist oliona"></div>
-
-  <!-- CAST4 -->
-
-  <a href="http://www.youtube.com/watch?feature=player_embedded&v=Rut2pt5ztN0" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
-
-
-<div class="tehtavat">
-
-  <div class="tehtava">
-
-    <h3>Joukkueet ja pelaajat</h3>
-
-    <h4 class="req"><code>Joukkue</code>-luokka</h4>
-  
-    <p>Tee luokka <code>Joukkue</code>, johon tallennetaan joukkueen nimi (<code>String</code>). Tee luokkaan seuraavat metodit:</p>
-
-    <ul>
-      <li> konstruktori, jolle annetaan joukkueen nimi</li>
-      <li> <code>haeNimi</code>, joka palauttaa joukkueen nimen</li>
-    </ul>
-
-    <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
-
-<pre class="sh_java">
-public class Main {
-    public static void main(String[] args) {
-        Joukkue tapiiri = new Joukkue("FC Tapiiri");
-        System.out.println("Joukkue: " + tapiiri.haeNimi());
-    }
-}
-</pre>
-
-    <p>Ohjelman tulostus on seuraava:</p>
-  
-<pre>
-Joukkue: FC Tapiiri
-</pre>
-
-    <h4 class="req">Pelaaja</h4>
-
-    <p>Luo luokka <code>Pelaaja</code>, johon tallennetaan pelaajan nimi ja tehtyjen maalien määrä. Tee luokkaan kaksi konstruktoria: yksi jolle annetaan vain pelaajan nimi, toinen jolle annetaan sekä pelaajan nimi että pelaajan tekemien maalien määrä. Lisää pelaajalle myös metodit:</p>
-
-    <ul>
-      <li> <code>haeNimi</code>, joka palauttaa pelaajan nimen</li>
-      <li> <code>maalit</code>, joka palauttaa tehtyjen maalien määrän</li>
-      <li> <code>toString</code>, joka palauttaa pelaajan merkkijonoesityksen</li>
-    </ul>
-
-<pre class="sh_java">
-public class Main {
-    public static void main(String[] args) {
-        Joukkue tapiiri = new Joukkue("FC Tapiiri");
-        System.out.println("Joukkue: " + tapiiri.haeNimi());
-
-        Pelaaja matti = new Pelaaja("Matti");
-        System.out.println("Pelaaja: " + matti);
-
-        Pelaaja pekka = new Pelaaja("Pekka", 39);
-        System.out.println("Pelaaja: " + pekka);
-    }
-}
-</pre>
-
-<pre>
-Joukkue: FC Tapiiri
-Pelaaja: Matti, maaleja 0
-Pelaaja: Pekka, maaleja 39
-</pre>
-
-    <h4 class="req">Pelaajat joukkueisiin</h4>
-
-    <p>Lisää luokkaan <code>Joukkue</code> seuraavat metodit:</p>
-
-    <ul>
-      <li> <code>lisaaPelaaja</code>, joka lisää pelaajan joukkueeseen</li>
-      <li> <code>tulostaPelaajat</code>, joka tulostaa joukkueessa olevat pelaajat</li>
-    </ul>
-    
-    <p>Tallenna joukkueessa olevat pelaajat <code>Joukkue</code>-luokan sisäiseen <code>ArrayList</code>-listaan.</p>
-    
-    <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
-
-<pre class="sh_java">
-public class Main {
-    public static void main(String[] args) {
-        Joukkue tapiiri = new Joukkue("FC Tapiiri");
-
-        Pelaaja matti = new Pelaaja("Matti");
-        Pelaaja pekka = new Pelaaja("Pekka", 39);
-
-        tapiiri.lisaaPelaaja(matti);
-        tapiiri.lisaaPelaaja(pekka);
-        tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
-
-        tapiiri.tulostaPelaajat();
-    }
-}
-</pre>
-
-    <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
-
-<pre>
-Matti, maaleja 0
-Pekka, maaleja 39
-Mikael, maaleja 1
-</pre>
-
-    <h4 class="req">Joukkueen maksimikoko ja nykyinen koko</h4>
-
-    <p>Lisää luokkaan <code>Joukkue</code> seuraavat metodit:</p>
-
-    <ul>
-      <li> <code>asetaMaksimikoko(int maksimikoko)</code>, joka asettaa joukkueen maksimikoon (eli maksimimäärän pelaajia)</li>
-      <li> <code>koko</code>, joka palauttaa pelaajien määrän (<code>int</code>)</li>
-    </ul>
-    
-    <p>Joukkueen suurin sallittu pelaajamäärä on oletusarvoisesti 16. Metodin <code>asetaMaksimikoko</code> avulla tätä rajaa voi muuttaa. Muuta metodia <code>lisaaPelaaja</code> niin, että se ei lisää pelaajaa joukkueeseen, jos sallittu pelaajamäärä ylittyisi.</p>
-    
-    <p><strong>HUOM:</strong> muista lisätä oletusarvoinen maksimikoko koodiisi sillä muuten arvoksi tulee 0. Tämä aiheuttaa edellisen kohdan testien hajoamisen, sillä testit luovat oletusmaksimikokoisia joukkueita ja jos joukkueen maksimikoko on 0, ei joukkueeseen voi lisätä yhtään pelaajaa.</p>
-
-    <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
-
-<pre class="sh_java">
-public class Main {
-    public static void main(String[] args) {
-        Joukkue tapiiri = new Joukkue("FC Tapiiri");
-        tapiiri.asetaMaksimikoko(1);
-
-        Pelaaja matti = new Pelaaja("Matti");
-        Pelaaja pekka = new Pelaaja("Pekka", 39);
-        tapiiri.lisaaPelaaja(matti);
-        tapiiri.lisaaPelaaja(pekka);
-        tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
-
-        System.out.println("Pelaajia yhteensä: " + tapiiri.koko());
-    }
-}
-</pre>
-
-<pre>
-Pelaajia yhteensä: 1
-</pre>
-
-    <h4 class="req">Joukkueen maalit</h4>
-
-    <p>Lisää luokkaan <code>Joukkue</code> metodi:</p>
-    
-    <ul>
-      <li> <code>maalit</code>, joka palauttaa joukkueen pelaajien tekemien maalien yhteismäärän.</li>
-    </ul>
-    
-    <p>Seuraava pääohjelma testaa luokan toimintaa:</p>
-
-<pre class="sh_java">
-public class Main {
-    public static void main(String[] args) {
-        Joukkue tapiiri = new Joukkue("FC Tapiiri");
-
-        Pelaaja matti = new Pelaaja("Matti");
-        Pelaaja pekka = new Pelaaja("Pekka", 39);
-        tapiiri.lisaaPelaaja(matti);
-        tapiiri.lisaaPelaaja(pekka);
-        tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
-
-        System.out.println("Maaleja yhteensä: " + tapiiri.maalit());
-    }
-}
-</pre>
-
-<pre>
-Maaleja yhteensä: 40
-</pre>
-
-  </div>
-
-
-  <div class="tehtava">
-    <h3>Matkavalokuvat</h3>
-  
-    <p>Matkailijat tykkäävät ottaa valokuvia erilaisista kohteista. Usein kuvissa sattuu kuitenkin olemaan turisti kohteen edessä, mikä harmittaa. Tämä harmitus kasvaa erityisesti, jos samainen turisti esiintyy jokaisessa kuvassa.</p>
-
-  <p>Alla on kaksi kuvaa eräästä reissusta.</p>
-
-  <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/103-turisti1.png"/></p>
-
-  <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/103-turisti2.png"/></p>
-
-  <p>Tehdään ohjelma, minkä tavoitteena on poistaa turisti kuvasta. Apunamme meillä on kolmannella viikolla olleessa tehtävässä <code>Fotari</code> nähdyn apukirjaston toinen versio, joka tarjoaa apuvälineet kuvien lukemiseen ja näyttämiseen.</p>
- 
-  <p>Fotarin tarjoama toiminnallisuus on seuraavanlainen:</p>
-  
-  <ul>
-    <li><code>Fotari.lataa(String kuva);</code> lataa parametrina annettavan merkkijonon osoittamassa sijainnissa olevan kuvan, ja palauttaa <code>Kuva</code>-tyyppisen olion. Käyttöesimerkki: <code>Kuva kuva = Fotari.lataa("G0010099.png");</code>.</li>
-    <li><code>Fotari.nayta(Kuva kuva);</code> avaa parametrina annettavan <code>Kuva</code>-tyyppisen kuvan erilliseen ikkunaan, mistä sitä voi tarkastella. Käyttöesimerkki:
-<pre class="sh_java">
-Kuva kuva = Fotari.lataa("G0010099.png");
-Fotari.nayta(kuva);
-</pre></li>
-  </ul>
-
-  <p>Tämän lisäksi, ladatuilla kuvaolioilla on käytössä seuraavat metodit:</p>
-
-  
-  <ul>
-    <li><code>getLeveys();</code> palauttaa kuvan leveyden. Esimerkki: <code>int leveys = kuva.getLeveys();</code></li>
-    <li><code>getKorkeus();</code> palauttaa kuvan korkeuden. Esimerkki: <code>int korkeus = kuva.getKorkeus();</code></li>
-    <li><code>punainen(int x, int y);</code> palauttaa punaisen värin määrän annetussa koordinaatissa. Värin määrä on aina luku väliltä 0-255. Esimerkki: <code>int punainen = kuva.punainen(3, 2);</code></li>
-    <li><code>vihrea(int x, int y);</code> palauttaa vihreän värin määrän annetussa koordinaatissa. Värin määrä on aina luku väliltä 0-255. Esimerkki: <code>int vihrea = kuva.vihrea(7, 4);</code></li>
-    <li><code>sininen(int x, int y);</code> palauttaa sinisen värin määrän annetussa koordinaatissa. Värin määrä on aina luku väliltä 0-255. Esimerkki: <code>int sininen = kuva.sininen(1, 1);</code></li>
-    <li><code>asetaVari(int x, int y, int punainen, int vihrea, int sininen);</code> asettaa annettuun koordinaattiin annetut värimäärät. Esimerkki: <code>kuva.asetaVari(0, 0, 255, 255, 255);</code> -- lisää valkoisen pisteen kuvan kohtaan (0, 0). </li>
-  </ul>
-
-  <p>Kuva-luokassa on olemassa myös konstruktori, minkä avulla voi luoda uusia Kuva-olioita. Konstruktori saa parametrikseen luotavan kuvan leveyden ja korkeuden. Esimerkiksi seuraava koodi luo uuden kuvan, jonka leveys on 200 ja korkeus on 100, sekä näyttää sen Fotarin avulla. Konstruktori asettaa oletuksena jokaiseen kuvan pikseliin mustan värin, missä punaisen, vihreän ja sinisen määrä on 0.</p>
-
-<pre class="sh_java">
-Kuva kuva = new Kuva(200, 100);
-Fotari.nayta(kuva);
-</pre>
-
-  <h4 class="req">Yhdistin ja kuvien lataaminen</h4>
-
-  <p>Toteutetaan kuvien yhdistämistä varten erillinen luokka <code>Yhdistin</code>. Luo luokka <code>Yhdistin</code>, jonka konstruktori saa parametrinaan merkkijonon, millä kuvataan yhdistämistapaa. Tarvitset myös oliomuuttujan yhdistämistavan tallentamiseen, sillä sitä hyödynnetään tehtävän myöhemmissä osissa.</p>
-
-  <p>Luo yhdistimelle lisäksi apumetodi <code>lataaKuvat</code>, joka saa parametrinaan <code>ArrayList&lt;String&gt;</code>-tyyppisen listan merkkijonoja, jotka sisältävät kuvien sijainteja. Metodin <code>lataaKuvat</code> tulee palauttaa taulukko <code><code>ArrayList&lt;Kuva&gt;</code>, mihin kuvat on ladattu.</p>
-
-  <p>Hyödynnä tässä sopivasti Fotarin tarjoamaa <code>lataa</code>-metodia.</p>
-
-  <p>Voit testata kuvien lataamisen toimintaa esimerkiksi seuraavalla koodilla:</p>
-
-<pre class="sh_java">
-ArrayList&lt;String&gt; tiedostot = new ArrayList&lt;&gt;();
-tiedostot.add("G0010111.png");
-tiedostot.add("G0010161.png");
-tiedostot.add("G0010163.png");
-
-Yhdistin yhdistin = new Yhdistin("vaalein");
-ArrayList&lt;Kuva&gt; kuvat = yhdistin.lataaKuvat(tiedostot);
-
-Fotari.nayta(kuvat.get(0));
-</pre>
-
-  <p>Huom! Jos Fotari tai Kuva on alleviivattu, eikä ohjelma löydä niitä, lisää käyttämiesi luokkien alkuun seuraavat rivit:</p>
-
-<pre class="sh_java">
-import kuva.Fotari;
-import kuva.Kuva;
-</pre>
-
-
-
-  <h4 class="req">Ladattujen kuvien yhdistäminen ja vaaleimman värin valinta</h4>
-
-  <p>Nyt kun saat ladattua kuvia ja näytettyä niitä, tavoitteena on seuraavaksi yhdistää kuvia.</p>
-
-  <p>Toteuta yhdistimelle metodi <code>yhdistaKuvat</code>, jolle annetaan parametrina <code>ArrayList&lt;Kuva&gt;</code>-tyyppinen lista kuvia. Jos käyttäjä antaa yhdistimelle konstruktorin parametrina arvon <code>"vaalein"</code>, tulee metodin toimia seuraavasti:</p>
-
-  <ol>
-    <li>Katsotaan ensimmäisen listalla olevan kuvan koko, ja luodaan uusi kuva sen perusteella.</li>
-    <li>Käydään uuden kuvan jokainen pikseli läpi, ja kopioidaan pikseliin vanhojen kuvien saman pikselin <em>suurin</em> punainen, <em>suurin</em> vihrea, ja <em>suurin</em> sininen.</li>
-  </ol>
- 
-  <p>Suunnittele ylläoleva toteutus ennen kuin lähdet tekemään sitä. Kolmannella viikolla olleen Fotari-tehtävän muistelusta ja tarkastelusta lienee myös hyötyä.</p>
-
-  <p>Kun metodi on toteutettu, ohjelmaa voi testata seuraavasti:</p>
-
-
-<pre class="sh_java">
-ArrayList&lt;String&gt; tiedostot = new ArrayList&lt;&gt;();
-// tiedostojen lisääminen
-
-Yhdistin yhdistin = new Yhdistin("vaalein");
-ArrayList&lt;Kuva&gt; kuvat = yhdistin.lataaKuvat(tiedostot);
-Kuva kuva = yhdistin.yhdistaKuvat(kuvat);
-        
-Fotari.nayta(kuva);
-</pre>
-
-    <p>Lopputulos voi näyttää esimerkiksi seuraavanlaiselta:</p>
-
-    <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/103-vaalein.png"/></p>
-
-
-
-    <h4 class="req">Tummimman värin valinta</h4>
-
-    <p>Muokkaa toteutustasi siten, että yhdistimelle voi antaa konstruktorin parametrina myös arvon "tummin". Tällöin kuvien yhdistämisen tulee luoda uusi kuva, johon laitetaan yhdistettävien kuvien tummimmat pikselit.</p>
-
-  <p>Kun metodi on toteutettu, ohjelmaa voi testata seuraavasti:</p>
-
-
-<pre class="sh_java">
-ArrayList&lt;String&gt; tiedostot = new ArrayList&lt;&gt;();
-// tiedostojen lisääminen
-
-Yhdistin yhdistin = new Yhdistin("tummin");
-ArrayList&lt;Kuva&gt; kuvat = yhdistin.lataaKuvat(tiedostot);
-Kuva kuva = yhdistin.yhdistaKuvat(kuvat);
-        
-Fotari.nayta(kuva);
-</pre>
-
-    <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/103-tummin.png"/></p>
-    
-
-    <h4 class="req">Värien mediaani</h4>
-
-    <p>Noniin, hankkiudutaan turistista eroon.</p>
-
-    <p>Muokkaa toteutustasi siten, että yhdistimelle voi antaa konstruktorin parametrina arvon "mediaani". Tällöin kuvien yhdistämisen tulee luoda uusi kuva, johon laitetaan yhdistettävien pikseleiden keskimmäinen arvo, eli mediaani. Esimerkiksi, jos viiden kuvan sinisten värien arvot ovat <code>211, 123, 17, 155, 8</code>, on niiden mediaani <code>123</code>. Saat mediaanin selville järjestämällä arvot, ja valitsemalla listan keskimmäisen arvon.</p>
-
-  <p>Kun metodi on toteutettu, ohjelmaa voi testata seuraavasti:</p>
-
-
-<pre class="sh_java">
-ArrayList&lt;String&gt; tiedostot = new ArrayList&lt;&gt;();
-// tiedostojen lisääminen
-
-Yhdistin yhdistin = new Yhdistin("mediaani");
-ArrayList&lt;Kuva&gt; kuvat = yhdistin.lataaKuvat(tiedostot);
-Kuva kuva = yhdistin.yhdistaKuvat(kuvat);
-        
-Fotari.nayta(kuva);
-</pre>
-
-    <p>Toteutuksen pitäisi poistaa ärsyttävä turisti:</p>
-
-    <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/103-mediaani.png"/></p>
-
-    <p>Huippua!</p>
-    
-
-
-</div>
-</div>
-</div>
-
-</section>
-
-
-
-
-<section class="viikkoraja" id="6">
-  <div class="viikkoraja"></div>
-  <div class="viikkoraja-mooc" id="Viikko 6" deadline="avautuu kun 85 %  5. viikosta tehty" data-first-chapter-index="23" data-first-exercise-index="94" data-first-week-index="6" data-first-chapter-index-mooc="23" data-first-exercise-index-mooc="94" data-first-week-index-mooc="6" tekija="Arto Vihavainen, Matti Luukkainen">
-
-
-
-<div class="panel-group" id="2al-et-lister-three">
-  <div class="panel panel-default">
-    <a class="panel-title" data-toggle="collapse" data-parent="#2al-et-lister-three" href="#2al-et-lister-three2">
-      <div class="panel-heading">
-	<h4 id="al-et-lister-three-form-legend">Kysely: Ohjelmointirutiini ja muuttujien ymmärrys, osa 3</h4>
-    </div>
-    </a>
-    <div class="panel-collapse collapse" id="2al-et-lister-three2">
-      <div class="panel-body">
-
-        <!-- Taustatiedot -->
-	<form class="form-horizontal" id="al-et-lister-three-form">
-            <fieldset>
-                <legend id="al-et-lister-three-form-legend">Tutkimus: Ohjelmointirutiini ja muuttujien ymmärrys</legend>
-                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
-
-                <!-- TMC-tunnus-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="al-et-lister-three-form-tmc-tunnus">TMC-tunnus</label>  
-                    <div class="col-md-4">
-                        <input id="al-et-lister-three-form-tmc-tunnus" name="al-et-lister-three-form-tmc-tunnus" type="text" class="form-control input-md">
-                    </div>
-                </div>
-
-
-                <p class="help-block">Tässä kyselyssä kartoitetaan tähän mennessä kertynyttä ohjelmointirutiiniasi sekä muuttujien ymmärrystä. Vastaathan kyselyyn nykyisen osaamisesi perusteella, älä siis esimerkiksi kokeile koodinpätkiä tietokoneella ennen vastauksen antamista.</p>
-
-		<p>&nbsp;</p>
-
-                <div id="al-et-lister-three">
-
-                    <p>Tutki seuraavaa koodia.</p>
-
-                    <pre class="sh_java">
-if (a &gt; b) {
-    if (b &gt; c) {
-        System.out.println(c);
-    } else {
-        System.out.println(b);
-    }
-} else {
-    if (a &gt; c) {
-        System.out.println(c);
-    } else {
-        System.out.println(a);
-    }
-}
-</pre>
-
-                    <p>Kun pohdit ylläolevaa koodia, mikä seuraavista muuttujien arvoista johtaa muuttujan b arvon tulostamiseen?</p>
-
-		    <div>
-		      <input type="radio" name="w6q6a" value="one">a=1; b=2; c=3;<br/>
-		      <input type="radio" name="w6q6a" value="two">a=1; b=3; c=2;<br/>
-		      <input type="radio" name="w6q6a" value="three">a=2; b=1; c=3;<br/>
-		      <input type="radio" name="w6q6a" value="four">a=3; b=2; c=1;<br/>
-		    </div>
-
-		    <p>&nbsp;</p>
-
-                    <p>Kuvaa yhdellä lauseella ylläolevan koodin toimintaa ja tarkoitusta. Huom! Älä kerro koodin toimintaa rivi riviltä, vaan kerro koodin tarkoitus.</p>
-
-                    <textarea class="form-control" rows="2" name="kysymys-b"></textarea>
-
-                </div>
-
-                <input type="hidden" id="al-et-lister-three-form-started-entering" name="al-et-lister-three-form-started-entering" value="">
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">&nbsp;</label>
-                    <div class="form-inline col-md-8">
-                        <strong><label id="al-et-lister-three-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">&nbsp;</label>
-                    <div class="form-inline col-md-8">
-                        <button type="button" id="al-et-lister-three-form-submit" class="btn btn-primary">Lähetä lomake</button>
-                    </div>
-                </div>
-
-            </fieldset>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="panel-group" id="2vak">
-  <div class="panel panel-default">
-    <a class="panel-title" data-toggle="collapse" data-parent="#2vak" href="#2vak2">
-      <div class="panel-heading">
-	<h4 id="vak-form-legend">Kysely: Opiskelutyyli</h4>
-    </div>
-    </a>
-    <div class="panel-collapse collapse" id="2vak2">
-      <div class="panel-body">
-
-        <!-- Taustatiedot -->
-	<form class="form-horizontal" id="vak-form">
-            <fieldset>
-                <legend id="vak-form-legend">Tutkimus: Opiskelutyyli</legend>
-                <p class="help-block">Käytämme tietoja kurssiemme kehittämiseen ja opetuksen tutkimukseen.</p>
-
-                <!-- TMC-tunnus-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="vak-form-tmc-tunnus">TMC-tunnus</label>  
-                    <div class="col-md-4">
-                        <input id="vak-form-tmc-tunnus" name="vak-form-tmc-tunnus" type="text" class="form-control input-md">
-                    </div>
-                </div>
-
-
-                <p class="help-block">Tässä kyselyssä kartoitetaan suosittuja oppimistyylejä. Aseta jokaisessa kohdassa numero 3 sille vaihtoehdolle, joka luonnehtii Sinua parhaiten, ja numero 1 sille vaihtoehdolle, joka luonnehtii Sinua vähiten. Aseta numero 2 väliin jääville.</p>
-
-		<p>&nbsp;</p>
-
-                <div id="vak">
-
-		  <ol>
-		    <li>Opin helpoiten
-		      <ul>
-			<li>näkemällä, katsomalla <input name="vak-1-vis" type="text" size="2"/></li>
-			<li>kuulemalla, keskustelemalla <input name="vak-1-aud" type="text" size="2"/></li>
-			<li>motorisesti tehden, kosketellen <input name="vak-1-mot" type="text" size="2"/></li>
-		      </ul>
-		    </li>
-		    <li>Muistan parhaiten asiat jos
-		      <ul>
-			<li>olen nähnyt ne <input name="vak-2-vis" type="text" size="2"/></li>
-			<li>muistettavaan on liittynyt ääniä, puhetta <input name="vak-2-aud" type="text" size="2"/></li>
-			<li>niihin on liittynyt motorista tekemistä, koskettamista <input name="vak-2-mot" type="text" size="2"/></li>
-		      </ul>
-		    </li>
-		    <li>Toisista ihmisistä muistan helpoiten
-		      <ul>
-			<li>ulkomuodon, kasvot, vaatteet <input name="vak-3-vis" type="text" size="2"/></li>
-			<li>hänen äänensä, puheensa <input name="vak-3-aud" type="text" size="2"/></li>
-			<li>hänen kanssaan tehdyt, koetut asiat <input name="vak-3-mot" type="text" size="2"/></li>
-		      </ul>
-		    </li>
-		    <li>Puherytmini on
-		      <ul>
-			<li>nopeaa <input name="vak-4-vis" type="text" size="2"/></li>
-			<li>keskinopeaa <input name="vak-4-aud" type="text" size="2"/></li>
-			<li>hidasta <input name="vak-4-mot" type="text" size="2"/></li>
-		      </ul>
-		    </li>
-		    <li>Sanavalinnoissani sanon tyypillisesti
-		      <ul>
-			<li>miltä näyttää? <input name="vak-5-vis" type="text" size="2"/></li>
-			<li>miltä kuulostaa? <input name="vak-5-aud" type="text" size="2"/></li>
-			<li>miltä tuntuu? <input name="vak-5-mot" type="text" size="2"/></li>
-		      </ul>
-		    </li>
-		    <li>Suunnitellessani suosin
-		      <ul>
-			<li>visuaalista materiaalia, kuvia, tekstiä <input name="vak-6-vis" type="text" size="2"/></li>
-			<li>juttelen jonkun kanssa tai sisäistä itsepuhelua <input name="vak-6-aud" type="text" size="2"/></li>
-			<li>teen konkreettisia kokeiluja ja tunnustelen, miltä eri vaihtoehdot tuntuvat <input name="vak-6-mot" type="text" size="2"/></li>
-		      </ul>
-		    </li>
-		    <li>Vieraalla paikkakunnalla löydän
-		      <ul>
-			<li>karttaa/visuaalisia opasteita tutkimalla <input name="vak-7-vis" type="text" size="2"/></li>
-			<li>kysymällä joltakulta <input name="vak-7-aud" type="text" size="2"/></li>
-			<li>lähden etsimään kävellen/kulkuvälineellä ja samalla painan paikkoja mieleen <input name="vak-7-mot" type="text" size="2"/></li>
-		      </ul>
-		    </li>
-		    <li>Merkittävimmät elämykset saan
-		      <ul>
-			<li>kauniista näkymistä <input name="vak-8-vis" type="text" size="2"/></li>
-			<li>Hyvästä musiikista tai muista äänistä <input name="vak-8-aud" type="text" size="2"/></li>
-			<li>kosketus- ja/tai liikunnallisista kokemuksista <input name="vak-8-mot" type="text" size="2"/></li>
-		      </ul>
-		    </li>
-		    <li>Vaateostoksia tehdessäni pohdin voimakkaimmin
-		      <ul>
-			<li>miltä ne näyttävät <input name="vak-9-vis" type="text" size="2"/></li>
-			<li>millaisia puheita niistä käydään <input name="vak-9-aud" type="text" size="2"/></li>
-			<li>miltä ne tuntuvat ylläni <input name="vak-9-mot" type="text" size="2"/></li>
-		      </ul>
-		    </li>
-		    <li>Jos on täysi vapaus valita, suunnittelen olohuoneeni niin, että
-		      <ul>
-			<li>se miellyttää minun silmääni/visuaalista kauneustajuani <input name="vak-10-vis" type="text" size="2"/></li>
-			<li>sen ääniympäristö on miellyttävä (äänet omasta huoneesta, naapurista, ulkoa) <input name="vak-10-aud" type="text" size="2"/></li>
-			<li>oleminen, tekeminen, liikkuminen on helppoa ja mukavaa (materiaalit, sijainnit) <input name="vak-10-mot" type="text" size="2"/></li>
-		      </ul>
-		    </li>
-		  </ol>
-
-                </div>
-
-                <input type="hidden" id="vak-form-started-entering" name="vak-form-started-entering" value="">
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">&nbsp;</label>
-                    <div class="form-inline col-md-8">
-                        <strong><label id="vak-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">&nbsp;</label>
-                    <div class="form-inline col-md-8">
-                        <button type="button" id="vak-form-submit" class="btn btn-primary">Lähetä lomake</button>
-                    </div>
-                </div>
-
-            </fieldset>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-    <h2 id="lohkoista">Lohkoista ja sisäkkäisistä toistolauseista</h2>
-
-    <p>Aaltosululla <code>{</code> alkavaa ja aaltosululla <code>}</code> loppuvaa koodia sisältävää aluetta kutsutaan <em>lohkoksi</em>.  Kuten on jo nähty, lohkoja käytetään muun muassa ehto- ja toistolauseiden alueen rajaamisessa. <em>Tärkeä lohkon ominaisuus on se, että lohkossa määritellyt muuttujat ovat voimassa vain lohkon sisällä</em>.</p>
-
-    <p>Seuraavassa esimerkissä määritellään ehtolausekkeeseen liittyvän lohkon sisällä tekstimuuttuja <code>teksti</code>, joka on olemassa vain lohkon sisällä.  Lohkossa esitellyn muuttujan tulostus lohkon ulkopuolella ei toimi!</p>
-
-<pre class="sh_java">
-int luku = 5;
-
-if (luku == 5) {
-    String teksti = "Oho!";
-}
-
-System.out.println(teksti); // ei toimi!
-</pre>
-
-    <p>Lohkossa voidaan käyttää ja muuttaa sen ulkopuolella ennen lohkoa määriteltyjä muuttujia.</p>
-
-<pre class="sh_java">
-int luku = 5;
-
-if (luku == 5) {
-    luku = 6;
-}
-
-System.out.println(luku); // tulostaa luvun 6
-</pre>
-
-
-<pre class="sh_java">
-String teksti = "Jee!";
-int luku = 5;
-
-if (luku == 5) {
-    teksti = "Oho!";
-}
-
-System.out.println(teksti); // tulostaa "Oho!"
-</pre>
-
-
-    <p>Lohkon sisällä voi olla mitä tahansa koodia. Esimerkiksi while-toistolauseen määrittelemän lohkon sisällä voi olla toinen while-toistolauseke. Tarkastellaan seuraavaa ohjelmaa:</p>
-
-<pre class="sh_java">
-int rivinumero = 0;
-
-while (rivinumero &lt; 3) {
-    System.out.print(rivinumero + ": ");
-
-    int luku = 0;
-    while (luku &lt; 3) {
-        System.out.print(luku + " ");
-        luku++;
-    }
-    
-    System.out.println();
-    rivinumero++;
-}
-</pre>
-
-    <p>Ohjelman tulostus on seuraava:</p>
-
-<pre>
-0: 0 1 2
-1: 0 1 2
-2: 0 1 2
-</pre>
-
-    <p>Eli mitä ohjelmassa tapahtuukaan? Jos ajatellaan pelkkää ulommaista while-lohkoa, on toiminnallisuus helppo ymmärtää: </p>
-
-<pre class="sh_java">
-int rivinumero = 0;
-
-while (rivinumero &lt; 3) {
-    System.out.print(rivinumero + ": ");
-
-    // sisempi while
-
-    System.out.println();
-    rivinumero++;
-}
-</pre>
-
-    <p>Eli ensin <code>rivinumero=0</code> ja tulostuu <code>0:</code> ja rivinvaihto. Tämän jälkeen rivinumero kasvaa ja tulostuu ykkönen, jne., eli ulompi for saa aikaan seuraavan:</p>
-
-<pre>
-0:
-1:
-2:
-</pre>
-
-    <p>Myös sisempi while on helppo ymmärtää erillään. Se saa aina aikaan tulosteen <code>0 1 2</code>. Kun yhdistämme nämä kaksi, huomaamme, että sisempi while-toistolause suorittaa tulosteensa aina juuri ennen ulomman while-toistolauseen tulostamaa rivinvaihtoa.</p>
-
-
-    <div class="parqu-exercise" data-id="24" data-name="Muuttujien näkyvyys"></div>
-
-
-    <h3>Toisen muuttujan käyttö toiston ehtona</h3>
-
-    <p>Tutkitaan seuraavaa muunnosta edelliseen esimerkkiin:</p>
-
-<pre class="sh_java">
-int rivinumero = 0;
-
-while (rivinumero &lt; 3) {
-    System.out.print(rivinumero + ": ");
-
-    int luku = 0;
-    while (luku &lt;= rivinumero) {
-        System.out.print(luku + " ");
-        luku++;
-    }
-    
-    System.out.println();
-    rivinumero++;
-}
-</pre>
-
-    <p>Sisemmän toistolausekkeen toistojen määrä riippuukin nyt ulommassa toistolausekkeessa käytettävän muuttujan <code>rivinumero</code> arvosta. Eli kun <code>rivinumero=0</code>, tulostaa sisempi toistolause luvun 0, kun <code>rivinumero=1</code>, tulostaa sisempi toistolauseke "0 1 ", jne. Koko ohjelman tulostus on seuraava: </p>
-
-<pre>
-0: 0
-1: 0 1
-2: 0 1 2
-</pre>
-
-    <p>Seuraava ohjelma tulostaa lukujen 1..10 kertotaulun. </p>
-
-<pre class="sh_java">
-int rivinumero = 1;
-
-while (rivinumero &lt;= 10) {
-    
-    int sarake = 1;
-
-    while (sarake &lt;= 10) {
-        System.out.print(rivinumero * sarake + " ");
-
-        sarake++;
-    }
-
-    System.out.println();
-    rivinumero++;
-}
-</pre>
-
-    <p> Tulostus näyttää seuraavalta: </p>
-
-<pre>
-1 2 3 4 5 6 7 8 9 10
-2 4 6 8 10 12 14 16 18 20
-3 6 9 12 15 18 21 24 27 30
-4 8 12 16 20 24 28 32 36 40
-5 10 15 20 25 30 35 40 45 50
-6 12 18 24 30 36 42 48 54 60
-7 14 21 28 35 42 49 56 63 70
-8 16 24 32 40 48 56 64 72 80
-9 18 27 36 45 54 63 72 81 90
-10 20 30 40 50 60 70 80 90 100
-</pre>
-
-    <p>Ylimmällä rivillä on luvun 1 kertotaulu. Alussa <code>rivinumero=1</code> ja sisemmän toistolauseen muuttuja <code>sarake</code> saa arvot 1...10. Jokaisella <code>rivinumero, sarake</code> -arvoparilla tulostetaan niiden tulo. Eli alussa <code>rivinumero=1, sarake=1</code>, sitten <code>rivinumero=1, sarake=2</code>, ..., <code>rivinumero=1, sarake=10</code> seuraavaksi <code>rivinumero=2, sarake=1</code>, jne. </p>
-
-    <p>Kertotaulu-ohjelman voi toki pilkkoa pienempiin osiin. Voimme määritellä metodit <code>public void tulostaKertotaulunRivi(int kerroin, int montakokertaa)</code> ja <code>public void tulostaKertotaulu(int mihinAsti)</code>.</p>
-
-<pre class="sh_java">
-public class Kertotaulu {
-
-    public void tulosta(int mihinAsti) {
-        int rivinumero = 1;
-
-        while (rivinumero &lt;= mihinAsti) {
-            tulostaKertotaulunRivi(rivinumero, mihinAsti);
-
-            System.out.println();
-            rivinumero++;
-        }
-    }
-
-
-    public void tulostaKertotaulunRivi(int rivi, int lukuja) {
-        int sarake = 1;
-
-        while (sarake &lt;= lukuja) {
-            System.out.print(rivi * sarake + " ");
-            sarake++;
-        }
-    }
-}
-</pre>
-
-    <p>Nyt kutsu <code>new Kertotaulu().tulosta(5);</code> tulostaa allaolevan kertotaulun.</p>
-
-<pre>
-1 2 3 4 5
-2 4 6 8 10
-3 6 9 12 15
-4 8 12 16 20
-5 10 15 20 25
-</pre>
-
-
-<div class="tehtavat">
-  <p>Harjoitellaan taas toistolausekkeiden, muuttujien ja indeksien käyttöä.</p>
-
-  <div class="tehtava">
-    <h3>Lukutulostin</h3>
-
-    <p>Toteuta luokka <code>Lukutulostin</code> ja tee sille seuraavat toiminnallisuudet. <strong>Huom!</strong> Tässä tehtävässä ei ole etenemistä ohjaavia automaattisia testejä, jotta voit harjoitella ohjelmointia ilman "apupyöriä". Palauta tehtävä kun tiedät itse, että se toimii halutusti. <span class="only-in-hy hidden-in-mooc">Pajassa saat tukea myös tehtäviin, joissa apupyöriä ei ole!</span></p>
-
-    <h4>Lukuporras</h4>
-
-    <p>Toteuta luokalle <code>Lukutulostin</code> metodi <code>public void lukuporras(int luku)</code>. Metodin tulee toimia seuraavasti.</p>
-
-<pre class="sh_java">
-Lukutulostin tulostin = new Lukutulostin();
-tulostin.lukuporras(2);
-System.out.println();
-tulostin.lukuporras(3);
-</pre>
-
-<pre>
-1
-1 2
-
-1
-1 2
-1 2 3
-</pre>
-
-<pre class="sh_java">
-Lukutulostin tulostin = new Lukutulostin();
-tulostin.lukuporras(5);
-System.out.println();
-tulostin.lukuporras(2);
-</pre>
-
-<pre>
-1
-1 2 
-1 2 3
-1 2 3 4
-1 2 3 4 5
-
-1
-1 2
-</pre>
-
-    <h4>Rajattu lukuporras</h4>
-
-    <p>Toteuta luokalle <code>Lukutulostin</code> metodi <code>public void rajattuLukuporras(int alku, int loppu)</code>. Metodin tulee toimia seuraavasti.</p>
-
-<pre class="sh_java">
-Lukutulostin tulostin = new Lukutulostin();
-tulostin.rajattuLukuporras(2, 2);
-System.out.println();
-tulostin.rajattuLukuporras(2, 3);
-</pre>
-
-<pre>
-1 2
-
-1 2
-1 2 3
-</pre>
-
-<pre class="sh_java">
-Lukutulostin tulostin = new Lukutulostin();
-tulostin.rajattuLukuporras(3, 5);
-System.out.println();
-tulostin.rajattuLukuporras(1, 2);
-</pre>
-
-<pre>
-1 2 3
-1 2 3 4
-1 2 3 4 5
-
-1
-1 2
-</pre>
-
-
-    <h4>Jatkuva lukuporras</h4>
-
-
-    <p>Toteuta luokalle <code>Lukutulostin</code> metodi <code>public void jatkuvaLukuporras(int luku)</code>. Metodin tulee toimia seuraavasti.</p>
-
-<pre class="sh_java">
-Lukutulostin tulostin = new Lukutulostin();
-tulostin.jatkuvaLukuporras(2);
-System.out.println();
-tulostin.jatkuvaLukuporras(3);
-</pre>
-
-<pre>
-1
-2 3
-
-1
-2 3
-4 5 6
-</pre>
-
-<pre class="sh_java">
-Lukutulostin tulostin = new Lukutulostin();
-tulostin.jatkuvaLukuporras(5);
-System.out.println();
-tulostin.jatkuvaLukuporras(2);
-</pre>
-
-<pre>
-1
-2 3 
-4 5 6
-7 8 9 10
-11 12 13 14 15
-
-1
-2 3
-</pre>
-
-    <h4>Kertokolmio</h4>
-
-    <p>Toteuta luokalle <code>Lukutulostin</code> metodi <code>public void kertokolmio(int luku)</code>. Kertokolmio-metodin tulee toimia seuraavien esimerkkien mukaisesti.</p>
-
-
-<pre class="sh_java">
-Lukutulostin tulostin = new Lukutulostin();
-tulostin.kertokolmio(2);
-</pre>
-
-<pre>
-1
-2 4
-</pre>
-
-<pre class="sh_java">
-Lukutulostin tulostin = new Lukutulostin();
-tulostin.kertokolmio(5);
-System.out.println();
-tulostin.kertokolmio(3);
-</pre>
-
-
-<pre>
-1
-2 4 
-3 6 9
-4 8 12 16
-5 10 15 20 25
-
-1
-2 4
-3 6 9
-</pre>
-  </div>
-
-  <div class="tehtava">
-    <h3>Sanatulostin</h3>
-
-    <p>Toteuta luokka <code>Sanatulostin</code>, jossa on seuraavat toiminnallisuudet. Kuten edellisessä tehtävässä, myös tässäkään tehtävässä ei ole apupyöriä.</p>
-
-    <h4>Sanaporras</h4>
-
-    <p>Toteuta luokalle <code>Sanatulostin</code> merkkijonon vastaanottava konstruktori sekä metodi <code>public void sanaporras(int luku)</code>, joka toimii seuraavasti:</p>
-
-<pre class="sh_java">
-Sanatulostin tulostin = new Sanatulostin("Ananas");
-tulostin.sanaporras(2);
-System.out.println();
-tulostin.sanaporras(4);
-</pre>
-
-<pre>
-A
-na
-
-A
-na
-nas
-Anan
-</pre>
-
-<pre class="sh_java">
-Sanatulostin tulostin = new Sanatulostin("Sauna");
-tulostin.sanaporras(3);
-</pre>
-
-<pre>
-S
-au
-naS
-</pre>
-
-
-    <h4>Laskeva sanaporras</h4>
-
-    <p>Toteuta luokalle <code>Sanatulostin</code> metodi <code>public void laskevaSanaporras(int luku)</code> joka toimii seuraavasti:</p>
-
-<pre class="sh_java">
-Sanatulostin tulostin = new Sanatulostin("Ananas");
-tulostin.laskevaSanaporras(2);
-System.out.println();
-tulostin.laskevaSanaporras(3);
-</pre>
-
-<pre>
-An
-a
-
-Ana
-na
-s
-</pre>
-
-<pre class="sh_java">
-Sanatulostin tulostin = new Sanatulostin("Sauna");
-tulostin.laskevaSanaporras(4);
-</pre>
-
-<pre>
-Saun
-aSa
-un
-a
-</pre>
-
-
-<h4>Sanapyramidi</h4>
-
-    <p>Toteuta luokalle <code>Sanatulostin</code> metodi <code>public void sanapyramidi(int luku)</code>, joka toimii seuraavasti:</p>
-
-<pre class="sh_java">
-Sanatulostin tulostin = new Sanatulostin("Nauris");
-tulostin.sanapyramidi(3);
-System.out.println();
-tulostin.sanapyramidi(1);
-</pre>
-
-<pre>
-N
-au
-ris
-Na
-u
-
-N
-</pre>
-
-<pre class="sh_java">
-Sanatulostin tulostin = new Sanatulostin("Saippuakauppias");
-tulostin.sanapyramidi(4);
-System.out.println();
-tulostin.sanapyramidi(2);
-</pre>
-
-<pre>
-S
-ai
-ppu
-akau
-ppi
-as
-S
-
-S
-ai
-p
-</pre>
-
-
-  </div>
-
-</div>
 
 
     <h2>Olioharjoittelua</h2>
