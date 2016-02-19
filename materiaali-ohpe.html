@@ -15284,7 +15284,7 @@ Tomaatteja: 0 kpl
 
     <h4>Listalta poistaminen</h4>
 
-    <p>Lisää luokalle <code>Ostoslista</code> metodi <code>public void poista(String tuote)</code>, joka poistaa <em>yhden</code> kappaleen annettua tuotetta. Metodin tulee toimia seuraavasti.</p>
+    <p>Lisää luokalle <code>Ostoslista</code> metodi <code>public void poista(String tuote)</code>, joka poistaa <em>yhden</em> kappaleen annettua tuotetta. Metodin tulee toimia seuraavasti.</p>
 
 <pre class="sh_java">
 Ostoslista lista = new Ostoslista();
@@ -16596,7 +16596,7 @@ arvo kohdassa (2, 1): 0
 
     <p><a href="https://fi.wikipedia.org/wiki/Taikaneli%C3%B6" target="_blank">Taikaneliöt</a> ovat kokonaisluvuista järjestettyjä neliöitä, joiden jokaisen rivin, sarakkeen ja lävistäjän summa on sama. Harjoitellaan taulukoiden käyttöä taikaneliöiden yhteydessä.</p>
 
-    <p>Ohjelmassa on annettu osittain toteutettu luokka <code>Taikanelio</code>, jota voidaan käyttää taikaneliön tulostamiseen sekä tarkistamaan. Tehtävänäsi on lisätä luokkaan toiminnallisuutta, jolla tarkistetaan onko neliö taikaneliö.</p>
+    <p>Ohjelmassa on annettu osittain toteutettu luokka <code>Taikanelio</code>, jota voidaan käyttää lähtökohtana. Tehtävänäsi on ensin lisätä luokkaan toiminnallisuutta, jolla tarkistetaan onko neliö taikaneliö. Tämän jälkeen toteutat algoritmin taikaneliön luomiseen.</p>
 
     <h4>Rivien summat</h4>
 
@@ -16607,16 +16607,14 @@ arvo kohdassa (2, 1): 0
 <pre> 
 8 1 6 
 3 5 7
-4 9 2
-</pre>
+4 9 2</pre>
 
     <p>Vaikka taikaneliö ei olisi "oikea" taikaneliö, tulee rivien summat silti palauttaa. Allaolevalla esimerkillä rivienSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>6, 15, 24</code>.</p>
 
 <pre> 
 1 2 3
 4 5 6
-7 8 9
-</pre>
+7 8 9</pre>
 
 
 
@@ -16630,16 +16628,14 @@ arvo kohdassa (2, 1): 0
 <pre> 
 8 1 6 
 3 5 7
-4 9 2
-</pre>
+4 9 2</pre>
 
     <p>Vaikka taikaneliö ei olisi "oikea" taikaneliö, tulee sarakkeiden summat silti palauttaa. Allaolevalla esimerkillä sarakkeidenSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>12, 15, 18</code>.</p>
 
 <pre> 
 1 2 3
 4 5 6
-7 8 9
-</pre>
+7 8 9</pre>
 
 
     <h4>Lävistäjien summat</h4>
@@ -16651,16 +16647,14 @@ arvo kohdassa (2, 1): 0
 <pre> 
 8 1 6 
 3 5 7
-4 9 2
-</pre>
+4 9 2</pre>
 
     <p>Vaikka taikaneliö ei olisi "oikea" taikaneliö, tulee lävistäjien summat silti palauttaa. Allaolevalla esimerkillä lavistajienSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>15, 15</code> (1 + 5 + 9) ja (7 + 5 + 3).</p>
 
 <pre> 
 1 2 3
 4 5 6
-7 8 9
-</pre>
+7 8 9</pre>
 
     <h4>Taikaneliön luominen</h4>
 
