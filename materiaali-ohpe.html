@@ -14813,7 +14813,7 @@ Fotari.nayta(kuva);
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2al-et-lister-three" href="#2al-et-lister-three2">
       <div class="panel-heading">
-	<h4 id="al-et-lister-three-form-legend">Kysely: Ohjelmointirutiini ja muuttujien ymmärrys, osa 3</h4>
+	<h4 class="kysely" id="al-et-lister-three-form-legend">Kysely: Ohjelmointirutiini ja muuttujien ymmärrys, osa 3</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2al-et-lister-three2">
@@ -14902,7 +14902,7 @@ if (a &gt; b) {
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2vak" href="#2vak2">
       <div class="panel-heading">
-	<h4 id="vak-form-legend">Kysely: Opiskelutyyli</h4>
+	<h4 class="kysely" id="vak-form-legend">Kysely: Opiskelutyyli</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2vak2">
@@ -15027,536 +15027,225 @@ if (a &gt; b) {
   </div>
 </div>
 
-  <h2>Tiedoston lukeminen</h2>
 
-  
-  <aside class="info">
-    <p>Mikä ihmeen tiedosto</p>
+  <h2>Näppäimistön ja muunlaisten syötteiden lukeminen</h2>
 
-    <p>sisältää informaatiota jonkinlaisessa muodossa, usein tekstimuodossa</p>
-
-    <p>jotkut kuitenkin ohjelman päättämässä muodossa<p>
-  </aside>
-  
-
-  <p>TODO: tehtava: mittaustulokset, luetaan tiedostosta. tiedosto sisältää n riviä tuloksia, ja niistä pitäisi sitten kertoa yleisin x, harvinaisin x, keskimääräinen x..?</p>
-
-  <p>TODO: tehtava: tiedostossa on lottorivejä. kirjoita ohjelma, joka lukee lottorivit, ja kertoo käyttäjälle kuinka monta kertaa käyttäjä olisi saanut ainakin 5 oikein antamalla rivillään viimeisen 30 vuoden aikana.</p>
-
-
-
-
-
-
-
-<!-- foobar -->
-<h3>Lisää omien metodien kutsumisesta</h3>
-
-<p>Olemme oppineet aiemmin, että metodeista voi kutsua muita metodeja. Esimerkiksi, seuraavassa luokassa <code>Esine</code> kutsutaan metodia <code>getNimi</code> metodista <code>toString</code>.</p>
+  <p>Olemme kurssin ensimmäiseltä viikolta lähtien käyttäneet <code>Scanner</code>-luokasta tehtyä oliota käyttäjän kirjoittaman syötteen lukemiseen.</p>
 
 <pre class="sh_java">
-public class Esine {
-    private String nimi;
-    private int paino;
+// luodaan Scanner-olio, joka lukee näppäimistösyötettä
+Scanner lukija = new Scanner(System.in);
 
-    public Esine(String nimi, int paino) {
-        this.nimi = nimi;
-        this.paino = paino;
-    }
+// jatketaan syötteen lukemista kunnes käyttäjä syöttää
+// rivin "loppu"
+while (true) {
+    String rivi = lukija.nextLine();
 
-    public String getNimi() {
-        return this.nimi;
-    }
-
-    public int getPaino() {
-        return this.paino;
-    }
-
-    public String toString() {
-        return this.getNimi() + " " + this.getPaino() + "kg.";
-    }
-}</pre>
-
-<pre class="sh_java">
-Esine tuoli = new Esine("Tuoli", 1);
-Esine tiskikone = new Esine("Tiskikone", 22);
-
-
-System.out.println(tuoli);
-System.out.println(tiskikone);</pre>
-
-<pre>
-Tuoli 1kg.
-Tiskikone 22kg.</pre>
-
-<p><strong>Metodista voi kutsua myös samaa metodia.</strong></p>
-
-<p>Pohditaan hyvin sokkelomaista huoneistokompleksia. Jokaisessa huoneistokompleksin huoneessa on kolme ovea, joista pääsee muihin huoneisiin. Ovien lisäksi jokaisella huoneella on nimi.</p>
-
-<p>Voimme mallintaa tätä sokkelomaista huoneistokompleksia luokan <code>Huone</code> avulla. Huoneeseen liittyy nimi, sekä kaksi muuta huonetta, joihin pääsee ovien kautta. Luokan <code>Huone</code> oliomuuttujat ovat seuraavanlaiset:</p>
-
-<pre class="sh_java">
-public class Huone {
-    private String nimi;
-
-    private Huone vasen;
-    private Huone oikea;
-}</pre>
-
-<p>Lisätään huoneelle konstruktori ja setterit. Setterien avulla voimme asettaa huoneeseen liittyvät huoneet vasta niiden luomisen jälkeen.</p>
-
-<pre class="sh_java">
-public class Huone {
-    private String nimi;
-
-    private Huone vasen;
-    private Huone oikea;
-
-    public Huone(String nimi) {
-        this.nimi = nimi;
-    }
-
-    public String getNimi() {
-        return this.nimi;
-    }
-
-    public void setVasen(Huone huone) {
-        this.vasen = huone;
-    }
-
-    public void setOikea(Huone huone) {
-        this.oikea = huone;
-    }
-}</pre>
-
-<p>Lisätään huoneeseen vielä metodit <code>valitseVasenOvi</code> ja <code>valitseOikeaOvi</code>, jotka johtavat valittaviin huoneisiin.</p>
-
-<pre class="sh_java">
-public class Huone {
-    private String nimi;
-
-    private Huone vasen;
-    private Huone oikea;
-
-    public Huone(String nimi) {
-        this.nimi = nimi;
-    }
-
-    public String getNimi() {
-        return this.nimi;
-    }
-
-    public Huone valitseVasenOvi() {
-        return this.vasen;
-    }
-
-    public void setVasen(Huone huone) {
-        this.vasen = huone;
-    }
-
-    public Huone valitseOikeaOvi() {
-        return this.oikea;
-    }
-
-    public void setOikea(Huone huone) {
-        this.oikea = huone;
-    }
-}</pre>
-
-<p>Luodaan huoneistosokkelo, mistä eteisestä pääsee olohuoneeseen ja kylpyhuoneeseen. Olohuoneesta pääsee kylpyhuoneeseen ja makuuhuoneeseen. Kylpyhuoneesta pääsee makuuhuoneeseen.</p>
-
-<pre class="sh_java">
-Huone eteinen = new Huone("Eteinen");
-Huone kylpyhuone = new Huone("Kylpyhuone");
-Huone olohuone = new Huone("Olohuone");
-Huone makuuhuone = new Huone("Makuuhuone");
-
-eteinen.setVasen(olohuone);
-eteinen.setOikea(kylpyhuone);
-
-olohuone.setOikea(kylpyhuone);
-olohuone.setVasen(makuuhuone);
-
-kylpyhuone.setVasen(makuuhuone);
-</pre>
-
-<p>Huoneistosokkelomme on siitä mielenkiintoinen, että siellä ei ole ovia takaisinpäin. Tämä on tarkoituksellista tässä esimerkissä -- näemme kohta miksi. Pohditaan seuraavaksi huoneiden läpikäyntiä -- tehdään luokka <code>Huoneistokauppias</code>, joka käy huoneiston jokaisen huoneen läpi annetusta huoneesta lähtien, ja kertoo huoneen nimen.</p>
-
-<pre class="sh_java">
-public class Huoneistokauppias {
- 
-    public Huoneistokauppias() {
-    }
-
-    public void vieraile(Huone huone) {
-        System.out.println("Olen huoneessa " + huone.getNimi());
+    if (rivi.equals("loppu")) {
+        break;
     }
 }
 </pre>
 
-<p>Yllä oleva metodimme ei kuitenkaan kerro muusta kuin nykyisestä huoneesta, ja haluaisimme että huoneistokauppias vierailee jokaisessa huoneessa. Voimme pyytää huoneistokauppiasta vierailemaan myös huoneen viereisessä huoneessa.</p>
+  <p>Yllä Scanner-luokan konstruktorille annetaan parametrina järjestelmän syötevirta, johon näppäinpanallukset ohjataan ohjelman tekstikäyttöliittymästä. Scanner voi saada konstruktorin parametrina myös muita olioita.</p>
+
+  <h3>Lukeminen tiedostosta</h3>
+
+  <p>Tiedostot ovat tietokoneella sijaitsevia tietokokoelmia, jotka voivat sisältää vaikkapa kuvia tai musiikkia. Tutustutaan tässä tekstitiedostojen lukemiseen.</p>
+
+  <p>Myös tiedoston voi lukea Scanner-oliolla. Tällöin Scanner-oliolle annetaan konstruktorin parametrina <code>File</code>-olio, joka kertoo tiedoston sijainnin tiedostojärjestelmässä. Tiedostoja lukiessa voidaan kohdata virhetilanne, joten tiedoston lukeminen vaatii erillisen "yrittämisen" (try) sekä mahdollisen virheen kiinnioton (catch). Palaamme mahdollisten virheiden käsittelyyn tarkemmin myöhemmin tällä kurssilla.</p>
 
 <pre class="sh_java">
-    public void vieraile(Huone huone) {
-        System.out.println("Olen huoneessa " + huone.getNimi());
-        
-        this.vieraile(huone.valitseVasenOvi());
-    }
+ArrayList&lt;String&gt; rivit = new ArrayList&lt;&gt;();
+
+// luodaan lukija tiedoston lukemista varten
+try (Scanner lukija = new Scanner(new File("tiedosto.txt"))) {
+
+  // luetaan kaikki tiedoston rivit
+  while (lukija.hasNextLine()) {
+    rivit.add(lukija.nextLine());
+  }
+} catch (Exception e) {
+  System.out.println("Virhe: " + e.getMessage());
+}
+
+// tee jotain luetuilla riveillä
 </pre>
 
-<p>Nyt huoneistokauppias vierailee jokaisen huoneen vasemmalla olevassa huoneessa. Mutta! Kun suoritamme seuraavan koodin, näemme virheen.</p>
-
-<pre class="sh_java">
-Huone eteinen = new Huone("Eteinen");
-Huone kylpyhuone = new Huone("Kylpyhuone");
-Huone olohuone = new Huone("Olohuone");
-Huone makuuhuone = new Huone("Makuuhuone");
-
-eteinen.setVasen(olohuone);
-eteinen.setOikea(kylpyhuone);
-
-olohuone.setOikea(kylpyhuone);
-olohuone.setVasen(makuuhuone);
-
-kylpyhuone.setVasen(makuuhuone);
-
-Huoneistokauppias jethro = new Huoneistokauppias();
-jethro.vieraile(eteinen);
-</pre>
+  <p>Jos tiedosto löytyy ja sen lukeminen onnistuu, tulee ohjelman suorituksen lopussa tiedoston "tiedosto.txt" rivit olemaan listamuuttujassa <code>rivit</code>. Jos taas tiedostoa ei löydy, tai sen lukeminen epäonnistuu, ilmoittaaa Java tästä virheviestillä. Alla eräs mahdollisuus:</p>
 
 <pre>
-Olen huoneessa Eteinen
-Olen huoneessa Olohuone
-Olen huoneessa Makuuhuone
-<font color="red">Exception in thread "main" java.lang.NullPointerException
-at Main.main(Main.java:<em>rivi</em>)
-Java Result: 1</font>
+Virhe: tiedosto.txt (No such file or directory)
 </pre>
 
-<p>Virhe johtuu siitä, että huoneistokauppias on erittäin innostunut menemään myös huoneisiin, joita ei ole -- metodi <code>getVasenOvi()</code> palauttaa <em>null</em>-viitteen jos huoneen vasemmaksi huoneeksi ei ole asetettu mitään.</p>
 
-<p>Voimme korjata tilanteen lisäämällä vierailumetodin alkuun tarkistuksen. Jos huone jossa vieraillaan on null, palataan metodista <em>heti</em>.</p>
+  <aside class="info">
+    <p><strong>Tiedoston sijainti</strong></p>
 
-<pre class="sh_java">
-    public void vieraile(Huone huone) {
-        if (huone == null) {
-            return;
-        }
+    <p>Voit käydä tarkastelemassa NetBeansissa kaikkia projektiin liittyviä tiedostoja valitsemalla <code>Files</code>-välilehden. Jos tiedosto on projektin juuressa, saa sen auki File-olion avulla vain nimen perusteella. Jos taas tiedosto on jossain muualla, tulee myös sen polku kertoa.</p>
+  </aside>
 
-        System.out.println("Olen huoneessa " + huone.getNimi());
-        
-        this.vieraile(huone.valitseVasenOvi());
-    }
-</pre>
-
-<p>Nyt huoneistokauppias pystyy vierailemaan jokaisen huoneen vasemmalla olevan oven takana. Selvennetään huoneistokauppiaan kulkua vielä hieman lisäämällä tarkennus hänen kulkemiseen.</p>
-<pre class="sh_java">
-    public void vieraile(Huone huone) {
-        if (huone == null) {
-            return;
-        }
-
-        System.out.println("Olen huoneessa " + huone.getNimi());
-        
-        this.vieraile(huone.valitseVasenOvi());
-        
-        System.out.println("Poistun huoneesta " + huone.getNimi());
-    }
-</pre>
-
-<p>Nyt ohjelmakoodi toimii varsin hienosti.</p>
-
-<pre class="sh_java">
-Huone eteinen = new Huone("Eteinen");
-Huone kylpyhuone = new Huone("Kylpyhuone");
-Huone olohuone = new Huone("Olohuone");
-Huone makuuhuone = new Huone("Makuuhuone");
-
-eteinen.setVasen(olohuone);
-eteinen.setOikea(kylpyhuone);
-
-olohuone.setOikea(kylpyhuone);
-olohuone.setVasen(makuuhuone);
-
-kylpyhuone.setVasen(makuuhuone);
-
-Huoneistokauppias jethro = new Huoneistokauppias();
-jethro.vieraile(eteinen);
-</pre>
-
-<pre>
-Olen huoneessa Eteinen
-Olen huoneessa Olohuone
-Olen huoneessa Makuuhuone
-Poistun huoneesta Makuuhuone
-Poistun huoneesta Olohuone
-Poistun huoneesta Eteinen
-</pre>
-
-<p>Huoneistokauppiaamme ei vieläkään käy kaikissa huoneissa. Lisätään sille mahdollisuus käyttää oikeaa ovea.</p>
-
-<pre class="sh_java">
-    public void vieraile(Huone huone) {
-        if (huone == null) {
-            return;
-        }
-
-        System.out.println("Olen huoneessa " + huone.getNimi());
-        
-        this.vieraile(huone.valitseVasenOvi());
-        this.vieraile(huone.valitseOikeaOvi());
-
-        System.out.println("Poistun huoneesta " + huone.getNimi());
-    }
-</pre>
-
-<p>Pohdi kynän ja paperin avulla mitä ylläolevassa esimerkissä tapahtuu.</p>
 
 <div class="tehtavat">
+
+
   <div class="tehtava">
-    <h3>Sukututkija</h3>
-
-    <p><strong>Huom! Lue huolella edellinen esimerkki läpi ja kokeile sitä ennen tämän tehtävän tekemistä!</strong></p>
-
-    <p>Tehtäväpohjassa tulee mukana luokka <code>Henkilo</code>, jolla on oliomuuttujat nimi sekä isä ja äiti. Koodissa on lisäksi myös konstruktori, jolla asetetaan luotavalle henkilölle nimi. Konstruktorin lisäksi luokassa on gettereitä ja settereitä, joilla pääsee käsiksi oliomuuttujiin.</p>
-
-<pre class="sh_java">
-public class Henkilo {
-
-    private String nimi;
-    private Henkilo isa;
-    private Henkilo aiti;
-
-    public Henkilo(String nimi) {
-        this.nimi = nimi;
-    }
-
-    public String getNimi() {
-        return nimi;
-    }
-
-    public void setNimi(String nimi) {
-        this.nimi = nimi;
-    }
-
-    public Henkilo getIsa() {
-        return isa;
-    }
-
-    public void setIsa(Henkilo isa) {
-        this.isa = isa;
-    }
-
-    public Henkilo getAiti() {
-        return aiti;
-    }
-
-    public void setAiti(Henkilo aiti) {
-        this.aiti = aiti;
-    }
-}</pre>
-
-    <p>Luokan <code>Henkilo</code> avulla voi mallintaa sukupuuta. Alla olevassa koodissa hahmotellaan <a href="http://en.wikipedia.org/wiki/Charles_II_of_Spain" target="_blank">Charles II of Spain</a>in esi-isiä.</p>
-
-<pre class="sh_java">
-        Henkilo charles = new Henkilo("Charles II of Spain");
-        Henkilo mariana = new Henkilo("Mariana of Austria");
-        Henkilo philipIV = new Henkilo("Philip IV of Spain");
-        
-        charles.setIsa(philipIV);
-        charles.setAiti(mariana);
-        
-        Henkilo mariaSpain = new Henkilo("Maria Anna of Spain");
-        Henkilo ferdinandIII = new Henkilo("Ferdinand III, Holy Roman Emperor");
-        
-        mariana.setIsa(ferdinandIII);
-        mariana.setAiti(mariaSpain);</pre>
-
-    <p>Koodi luo käytännössä seuraavanlaisen sukupuun.</p>
-
-    <p><img src="http://www.cs.helsinki.fi/group/java/tmp/90-sukupuu.png"/></p>
-
-    <p>Tässä tehtävässä harjoitellaan olioviitteiden käsittelyä ja tehdään <em>Sukututkija</em> henkilöiden suhteiden tulostamiseen.</p>
-
-
-    <h4>Sukututkija</h4>
-
-    <p>Luo luokka <code>Sukututkija</code>. Luokalla ei ole yhtään oliomuuttujaa ja sillä tulee olla konstruktori, jolla ei ole yhtäkään parametria.</p>
-
-    <p>Lisää tämän jälkeen sukututkijalle metodi <code>public void kerroHenkilosta(Henkilo henkilo)</code>. Metodin ei tarvitse tehdä vielä tässä vaiheessa mitään.</p>
-
-    <p>Voit nyt luoda uuden sukututkijan, ja kutsua sille metodia <code>kerroHenkilosta</code> seuraavasti. Alla käytössä myös tehtäväpohjassa valmiina tuleva luokka <code>Henkilo</code>.</p>
-
-<pre class="sh_java">
-Henkilo tupu = new Henkilo("Tupu Ankka");
-
-Sukututkija peloton = new Sukututkija();
-peloton.kerroHenkilosta(tupu);
-</pre>
-
-    <p>Metodin <code>kerroHenkilosta</code> ei tarvitse vielä tehdä mitään.</p>
-
-    <h4>Henkilöstä kertominen</h4>
-
-    <p>Muokkaa metodia <code>kerroHenkilosta</code> siten, että se tulostaa parametrina annetun henkilön nimen sekä henkilön vanhempien nimet.</p>
-
-    <p>Jos henkilön vanhempia ei tunneta (ne ovat null), sanotaan että kyseinen vanhempi on tuntematon.</p>
-
-<pre class="sh_java">
-Henkilo hannu = new Henkilo("Hannu Hanhi");
-Henkilo hjalmar = new Henkilo("Hjalmar Hanhi");
-Henkilo dora = new Henkilo("Dora Ankka");
-
-hannu.setIsa(hjalmar);
-hannu.setAiti(dora);
-
-Sukututkija peloton = new Sukututkija();
-peloton.kerroHenkilosta(hannu);
-</pre>
-
-    <p>Ylläolevan koodin tulee tulostaa seuraavanlainen lause:</p>
-<pre>
-Hannu Hanhi, äiti Dora Ankka ja isä Hjalmar Hanhi.</pre>
-
-    <p>Jos vanhempaa ei ole asetettu, tulostetaan kyseisen vanhemman kohdalla tuntematon.</p>
-
-<pre class="sh_java">
-Henkilo tupu = new Henkilo("Tupu Ankka");
-Henkilo della = new Henkilo("Della Ankka");
-tupu.setAiti(della);
-
-Sukututkija peloton = new Sukututkija();
-peloton.kerroHenkilosta(tupu);
-</pre>
-
-    <p>Ylläoleva koodi tulostaa.</p>
-<pre>
-Tupu Ankka, äiti Della Ankka ja isä tuntematon.</pre>
-
-<pre class="sh_java">
-Henkilo kornelius = new Henkilo("Kornelius Ankanpää");
-Henkilo julle = new Henkilo("Julle Ankanpää");
-kornelius.setIsa(julle);
-
-Sukututkija peloton = new Sukututkija();
-peloton.kerroHenkilosta(kornelius);
-</pre>
-
-    <p>Ylläoleva koodi tulostaa.</p>
-<pre>
-Kornelius Ankanpää, äiti tuntematon ja isä Julle Ankanpää.</pre>
-
-    <p>Vastaavasti jos molemmat vanhemmat ovat tuntemattomia, tulostus on esimerkiksi. </p>
-<pre>
-Kornelius Ankanpää, äiti tuntematon ja isä tuntematon.</pre>
-
-    <p>Olettaen että Kornelius Ankanpää on tulostettavan henkilön nimi.</p>
-
-
-    <h4>Henkilön suvusta kertominen</h4>
-
-    <p>Huom! Tämä tehtävä on kahden tehtäväpisteen arvoinen.</p>
     
-    <p>Lisää sukututkijalle metodi <code>public void kerroHenkilonSuvusta(Henkilo henkilo)</code>, joka tulostaa henkilön sekä henkilön jokaisen sukulaisen tiedot edellisen tehtävän muodossa. Huom! Kutsun tulee myös tulostaa jokainen tutkittava esi-isä -- ei esimerkiksi vain kahta sukupolvea.</p>
+    <h3>Vieraslista tiedostosta</h3>
+    
+    <p>Toteutimme neljännellä viikolla vieraslistaohjelman, missä käyttäjää pyydettiin syöttämään nimiä vieraslistalle. Kun nimet oli syötetty, käyttäjä syötti yksittäisiä nimiä joiden olemassaolo tarkitettiin vieraslistalta. Ohjelman toiminta oli seuraavanlainen:</p>
 
-    <p>Alla muutamia esimerkkejä metodin toiminnasta.</p>
+<pre>
+Syötä nimiä vieraslistalle, tyhjä rivi lopettaa.
+<font color="red">Jack Bauer</font>
+<font color="red">Jack Bower</font>
+<font color="red">Jack Baur</font>
+<font color="red">Jack Bowr</font>
 
-<pre class="sh_java">
-Henkilo tupu = new Henkilo("Tupu Ankka");
+Syötä nimiä, tyhjä rivi lopettaa.
+<font color="red">Chuck Norris</font>
+Nimi ei ole listalla.
+<font color="red">Jack Baluer</font>
+Nimi ei ole listalla.
+<font color="red">Jack Bauer</font>
+Nimi on listalla.
+<font color="red">Jack Bower</font>
+Nimi on listalla.
 
-Sukututkija peloton = new Sukututkija();
-peloton.kerroHenkilonSuvusta(tupu);
+Kiitos!
 </pre>
-<pre>
-Tupu Ankka, äiti tuntematon ja isä tuntematon.</pre>
+
+
+    <p>Muokataan tässä ohjelmaa siten, että toisin kuin aiemmin, nimet luetaan tiedostosta. Pääohjelmametodi tulee kokonaisuudessaan olemaan seuraavanlainen:</p>
 
 <pre class="sh_java">
-Henkilo tupu = new Henkilo("Tupu Ankka");
-Henkilo della = new Henkilo("Della Ankka");
-tupu.setAiti(della);
+Scanner lukija = new Scanner(System.in);
 
-Sukututkija peloton = new Sukututkija();
-peloton.kerroHenkilonSuvusta(tupu);
+System.out.println("Minkä niminen tiedosto luetaan? ");
+String tiedosto = lukija.nextLine();
+
+// kun toteutat metodit, voit testata toimintaa täällä
+ArrayList&lt;String&gt; lista = lueNimet(tiedosto);
+
+System.out.println("");
+tarkistaNimet(lukija, lista);
+System.out.println("Kiitos!");
 </pre>
 
-<pre>
-Tupu Ankka, äiti Della Ankka ja isä tuntematon.
-Della Ankka, äiti tuntematon ja isä tuntematon.</pre>
+    <p>Toteuteta metodi <code>lueNimet</code>, joka lukee nimet parametrina annetusta tiedostosta. Kun metodi on valmis, ohjelma toimii kuten aiempi vieraslistasovellus, mutta nimet luetaan tiedostosta -- nimiä ei siis tarvitse syöttää jokaisen käynnistyksen yhteydessä.</p>
 
-    <p>Jos osa henkilön esi-isistä ovat sukua toisilleen, ei haittaa vaikka osa henkilöistä tulostetaan useamman kerran. Alla esimerkkinä muutama <a href="http://en.wikipedia.org/wiki/Charles_II_of_Spain" target="_blank">Charles II of Spain</a>in esi-isistä.</p>
+    <p>Kun olet valmis, kokeile vielä että ohjelma toimii halutusti tehtävänannon alussa olevalla koodilla.</p>
+
+    <p>Huom! Tehtäväpohjassa on mukana kaksi tiedostoa, <code>nimet.txt</code> ja <code>toiset-nimet.txt</code>, joiden sisällöt ovat seuravat. Älä muuta näiden tiedostojen sisältöä!</p>
+
+    <p>nimet.txt:</p>
+
+<pre>
+ada
+arto
+leena
+testi</pre>
+
+    <p>toiset-nimet.txt:</p>
+
+<pre>
+leo
+jarmo
+alicia</pre>
+
+  </div>
+
+
+  <div class="tehtava">
+
+    <h3>Desibelimittaukset tiedostosta</h3>
+
+    <p>Olemme toteuttaneet aiemmin kurssilla muutamaan otteeseen ohjelman, missä käyttäjä syöttää desibelimittauksia. Kun desibelimittaukset on syötetty, poistetaan luetuista luvuista virheelliset ja/tai turhat luvut. Lopulta kerrotaan lukujen keskiarvo, tai jos lukuja ei ole lainkaan, kerrotaan ettei mittaustuloksia ole.</p>
+
+    <p>Tässä tehtävässä toteutat metodin <code>public static ArrayList&lt;Integer&gt; lueLuvut(String tiedosto)</code>, joka lukee luvut parametrina annetusta tiedostosta, ja palauttaa ne listalla. Kun metodi on toteutettu, voit kokeilla ohjelman toimintaa seuraavalla ohjelmakoodilla.</p>
 
 <pre class="sh_java">
-Henkilo charles = new Henkilo("Charles II of Spain");
-Henkilo mariana = new Henkilo("Mariana of Austria");
-Henkilo philipIV = new Henkilo("Philip IV of Spain");
+Scanner lukija = new Scanner(System.in);
 
-charles.setIsa(philipIV);
-charles.setAiti(mariana);
+System.out.println("Minkä niminen tiedosto luetaan? ");
+String tiedosto = lukija.nextLine();
 
-Henkilo mariaSpain = new Henkilo("Maria Anna of Spain");
-Henkilo ferdinandIII = new Henkilo("Ferdinand III, Holy Roman Emperor");
+ArrayList&lt;Integer&gt; lista = lueLuvut(tiedosto);
+lista = valitseLuvutValilta(lista, 0, Integer.MAX_VALUE);
 
-mariana.setIsa(ferdinandIII);
-mariana.setAiti(mariaSpain);
+if (lista.isEmpty()) {
+    System.out.println("Ei lukuja.");
+} else {
+    System.out.println("Lukujen keskiarvo: " + keskiarvo(lista));
+}
+</pre>
 
-Henkilo philipIII = new Henkilo("Philip III of Spain");
-Henkilo margaret = new Henkilo("Margaret of Austria");
+    <p>Huom! Tehtäväpohjassa on mukana kaksi tiedostoa, <code>mittaukset-1.txt</code> ja <code>mittaukset-2.txt</code>, joiden sisällöt ovat seuravat. Älä muuta näiden tiedostojen sisältöä!</p>
 
-philipIV.setIsa(philipIII);
-philipIV.setAiti(margaret);
-
-mariaSpain.setIsa(philipIII);
-mariaSpain.setAiti(margaret);
-
-Henkilo ferdinandII = new Henkilo("Ferdinand II, Holy Roman Emperor");
-Henkilo mariaBavaria = new Henkilo("Maria Anna of Bavaria");
-
-ferdinandIII.setIsa(ferdinandII);
-ferdinandIII.setAiti(mariaBavaria);
-
-
-Sukututkija darwin = new Sukututkija();
-darwin.kerroHenkilonSuvusta(charles);</pre>
+    <p>mittaukset-1.txt:</p>
 
 <pre>
-Charles II of Spain, äiti Mariana of Austria ja isä Philip IV of Spain.
-Mariana of Austria, äiti Maria Anna of Spain ja isä Ferdinand III, Holy Roman Emperor.
-Maria Anna of Spain, äiti Margaret of Austria ja isä Philip III of Spain.
-Margaret of Austria, äiti tuntematon ja isä tuntematon.
-Philip III of Spain, äiti tuntematon ja isä tuntematon.
-Ferdinand III, Holy Roman Emperor, äiti Maria Anna of Bavaria ja isä Ferdinand II, Holy Roman Emperor.
-Maria Anna of Bavaria, äiti tuntematon ja isä tuntematon.
-Ferdinand II, Holy Roman Emperor, äiti tuntematon ja isä tuntematon.
-Philip IV of Spain, äiti Margaret of Austria ja isä Philip III of Spain.
-Margaret of Austria, äiti tuntematon ja isä tuntematon.
-Philip III of Spain, äiti tuntematon ja isä tuntematon.</pre>
+300
+9
+20
+15</pre>
 
-    <p>Ei siis haittaa jos osa henkilöistä tulostuu useamman kerran.</p>
+    <p>mittaukset-2.txt:</p>
 
-    <p><strong>Huom!</strong> henkilöiden tulostusjärjestyksellä ei myöskään ole tässä väliä. Voit siis hyvin kertoa ensin esimerkiksi henkilöstä Philip III of Spain ennen Mariana of Austriasta kertomista.</p>
+<pre>
+123
+-5
+12
+67
+-300
+1902</pre>
 
-    <p>Vinkki! Kannattanee hyödyntää edellisessä tehtävässä toteutettua metodia <code>kerroHenkilosta</code>. Kun olet toteuttanut metodin, joka kertoo nykyisestä henkilöstä, katso mitä käy jos annat metodille <code>kerroHenkilonSuvusta</code> tällä hetkellä tarkasteltavan henkilön vanhemman (jos sellainen on olemassa).</p> 
 
+  </div>
+  
 </div>
-</div>
 
+
+  <h3>Syötteen lukeminen verkkoyhteyden yli</h3>
+
+  <p>Lähes kaikki verkkosivut, kuten tämäkin oppimateriaali, voidaan lukea tekstimuodossa ohjelmallista käsittelyä varten. Scanner-oliolle voi antaa konstruktorin parametrina oikeastaan lähes minkälaisen syötevirran tahansa. Alla olevassa esimerkissä luodaan URL-olio annetusta web-osoitteesta, pyydetään siihen liittyvää tietovirtaa, ja annetaan se juuri luotavalle Scanner-oliolle luettavaksi.</p>
+
+
+<pre class="sh_java">
+ArrayList&lt;String&gt; rivit = new ArrayList&lt;&gt;();
+
+// luodaan lukija web-osoitteen lukemista varten
+try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").openStream())) {
+
+  // luetaan osoitteesta http://www.cs.helsinki.fi/home/
+  // saatava vastaus 
+  while (lukija.hasNextLine()) {
+    rivit.add(lukija.nextLine());
+  }
+} catch (Exception e) {
+  System.out.println("Virhe: " + e.getMessage());
+}
+
+// tehdään jotain vastauksella
+</pre>
+
+  <p>Web-selain on oikeastaan ohjelma siinä missä muutkin ohjelmat. Toisin kuin yllä toteutettu yksinkertainen web-sivun lataaja, web-selain osaa myös tulkita vastauksena tulevan HTML-muotoisen lähdekoodin.</p>
 
 
 
     <h2>Olioharjoittelua</h2>
 
-    <p>Kertaa edellisen viikon materiaali ennen jatkamista!</p>
-
+    <p>Kerrataan hieman aiemmin oppimaamme, ja tutustutaan vielä muutamiin olioiden ominaisuuksiin.</p>
 
 <div class="tehtavat">
   <div class="tehtava">
     <h3>Ostoslista</h3>
 
-    <p>Jatkamme vielä tehtävien tekemistä siten, että niissä ei ole apupyöriä. Tehdään tässä luokka ostoslistan ylläpitoon.</p>
+    <p>Toteutetaan sovellus ostoslistan hallintaan. Ostoslistalle voi lisätä ostettavia asioita, tarkistaa kunkin ostettavan asian lukumäärän, sekä poistaa ostettavia asioita. Voit toteuttaa Ostoslista-olion sisäisen toiminnallisuuden esimerkiksi HashMap- tai ArrayList-tietorakenteen avulla.</p> 
 
-    <h4>Lisääminen ja tarkistus</h4>
+    <h4>Lisääminen ja kappalemäärä</h4>
     
-    <p>Toteuta luokka <code>Ostoslista</code>, jolla on parametriton konstruktori, ja joka sisältää listan <code>String</code>-olioita. Toteuta luokalle metodit <code>public void lisaa(String tuote)</code> ja <code>public boolean onkoListalla(String tuote)</code>.</p>
+    <p>Toteuta luokka <code>Ostoslista</code>, jolla on parametriton konstruktori, ja joka sisältää listan <code>String</code>-olioita. Toteuta luokalle metodit <code>public void lisaa(String tuote)</code>, joka lisää yhden kappaleen tuotetta ostoslistalle, ja <code>public int kappalemaara(String tuote)</code>, joka palauttaa tuotteen kappalemäärän listalta. Jos tuotetta ei ole ostoslistalla, tulee metodin <code>kappalemaara</code> palauttaa arvo 0.</p>
 
     <p>Luokkaa <code>Ostoslista</code> ja luotavia metodeja tulee voida käyttää seuraavasti:</p>
 
@@ -15565,25 +15254,16 @@ Ostoslista lista = new Ostoslista();
 lista.lisaa("porkkana");
 lista.lisaa("nauris");
 
-if (!lista.onkoListalla("kauris")) {
-    System.out.println("kauris ei ole listalla");
-}
-
-if (lista.onkoListalla("nauris")) {
-    System.out.println("nauris on listalla");
-}
+System.out.println("Kauriita: " + lista.kappalemaara("kauris"));
+System.out.println("Nauriita: " + lista.kappalemaara("nauris"));
 </pre>
 
 <pre>
-kauris ei ole listalla
-nauris on listalla
+Kauriita: 0
+Nauriita: 1
 </pre>
 
-
-    <h4>Kappalemäärä</h4>
-
-
-    <p>Lisää luokalle <code>Ostoslista</code> metodi <code>public int kappalemaara(String tuote)</code>, joka palauttaa listalla olevien tuotteiden lukumäärän haetulle tuotteelle. Metodin tulee toimia seuraavasti.</p>
+    <p>Toinen esimerkki</p>
 
 <pre class="sh_java">
 Ostoslista lista = new Ostoslista();
@@ -15600,6 +15280,7 @@ System.out.println("Tomaatteja: " + lista.kappalemaara("tomaatti") + " kpl");
 Porkkanaa: 3 kpl
 Tomaatteja: 0 kpl
 </pre>
+
 
     <h4>Listalta poistaminen</h4>
 
@@ -15629,38 +15310,6 @@ Tomaatteja: 0 kpl
 
 Porkkanaa: 2 kpl
 Tomaatteja: 0 kpl
-</pre>
-
-
-<h4>Siisti tulostus</h4>
-
-    <p>Lisää luokalle <code>Ostoslista</code> metodi, jonka avulla siitä tehtävä olio voidaan tulostaa <code>System.out.println()</code>-komennon avulla. Tulostuksen tulee toimia seuraavasti (huomaathan että tuotteet tulostetaan aakkosjärjestyksessä):</p>
-
-<pre class="sh_java">
-Ostoslista lista = new Ostoslista();
-lista.lisaa("porkkana");
-lista.lisaa("porkkana");
-lista.lisaa("nauris");
-lista.lisaa("porkkana");
-lista.lisaa("satsuma");
-
-System.out.println(lista);
-
-lista.poista("porkkana");
-
-System.out.println(lista);
-</pre>
-
-<pre>
-Ostetaan seuraavat tuotteet
-nauris 1 kpl.
-porkkana 3 kpl.
-satsuma 1 kpl.
-
-Ostetaan seuraavat tuotteet
-nauris 1 kpl.
-porkkana 2 kpl.
-satsuma 1 kpl.
 </pre>
 
 
@@ -15803,8 +15452,9 @@ public class Tehdas {
 
     <div class="parqu-exercise" data-id="23" data-name="Klooniaikakone"></div>
 
+<!--
     <div class="self-explanation" data-key="q-olioParametrinaJaMetodinPaluuarvona"></div>
-    
+    -->
 
 <div class="tehtavat">
   <div class="tehtava">
@@ -16374,6 +16024,13 @@ System.out.println(jono);  // koehäntä
 
 <p>Nyt siis muuttuja <code>jono</code> viittaa <em>uuteen</em> merkkijono-olioon, joka luotiin yhdistämällä muuttujan aiemmin viittaama merkkijono "koe" ja merkkijono "häntä". Merkkijono-olioon "koe" ei enää viitata.</p>
 
+
+<!--
+<p>TODO: tehtävä</p>
+-->
+
+
+
 <!-- TODO: jatka, viite;  -->
 
 <h2 id="taulukko">Taulukko</h2>
@@ -16861,9 +16518,301 @@ Tähtiä: 3
 </pre>
 </div>
 </div>
+ 
+
+  <h3>Kaksiulotteinen taulukko</h3>
+
+  <p>Taulukon voi luoda myös kaksiulotteisena. Tämä on kätevää esimerkiksi silloin, jos haluamme ylläpitää sijainteja koordinaatistossa. Kaksiulotteisen taulukon, jossa on kaksi riviä ja kolme saraketta, tapahtuu seuraavasti:</p>
+
+<pre class="sh_java">
+int rivit = 2;
+int sarakkeet = 3;
+int[][] kaksiulotteinenTaulukko = new int[rivit][sarakkeet];
+</pre>
+
+  <p>Yllä luomme taulukon, jonka jokainen rivi sisältää uuden taulukon, jossa on tietty määrä sarakkeita. Kaksiulotteisen taulukon läpikäynti onnistuu esimerkiksi kahden sisäkkäisen for-toistolauseen avulla seuraavasti:</p>
+
+<pre class="sh_java">
+int rivit = 2;
+int sarakkeet = 3;
+int[][] kaksiulotteinenTaulukko = new int[rivit][sarakkeet];
+
+for (int y = 0; y &lt; kaksiulotteinenTaulukko.length; y++) {
+    for (int x = 0; x &lt; kaksiulotteinenTaulukko[y].length; x++) {
+        System.out.println("arvo kohdassa (" + x + ", " + y + "): " + kaksiulotteinenTaulukko[y][x]);
+
+    }
+}
+</pre>
+
+<p>Ylläolevan ohjelman tulostus on seuraavan, sillä int-tyyppisiä muuttujia sisältävä taulukko alustaa solujen arvon oletuksena nollaksi.</p>
+
+<pre>
+arvo kohdassa (0, 0): 0
+arvo kohdassa (1, 0): 0
+arvo kohdassa (2, 0): 0
+arvo kohdassa (0, 1): 0
+arvo kohdassa (1, 1): 0
+arvo kohdassa (2, 1): 0
+</pre>
+
+  <p>Voimme muuttaa taulukon arvoja kuten ennenkin. Alla asetamme kahteen kohtaan uudet arvot.</p> 
+
+<pre class="sh_java">
+int rivit = 2;
+int sarakkeet = 3;
+int[][] kaksiulotteinenTaulukko = new int[rivit][sarakkeet];
+
+kaksiulotteinenTaulukko[0][1] = 4;
+kaksiulotteinenTaulukko[1][1] = 1;
+kaksiulotteinenTaulukko[1][0] = 8;
+
+for (int y = 0; y &lt; kaksiulotteinenTaulukko.length; y++) {
+    for (int x = 0; x &lt; kaksiulotteinenTaulukko[y].length; x++) {
+        System.out.println("arvo kohdassa (" + x + ", " + y + "): " + kaksiulotteinenTaulukko[y][x]);
+
+    }
+}
+</pre>
+
+  <p>Nyt tulostus näyttää seuraavalta:</p>
+
+<pre>
+arvo kohdassa (0, 0): 0
+arvo kohdassa (1, 0): 4
+arvo kohdassa (2, 0): 0
+arvo kohdassa (0, 1): 8
+arvo kohdassa (1, 1): 1
+arvo kohdassa (2, 1): 0
+</pre>
+
+  <p>Kaksiulotteinen taulukko on oikeastaan myös <em><a href="https://fi.wikipedia.org/wiki/Matriisi" target="_blank">matriisi</a></em>.  Matriiseja käytetään muunmuassa tietokonegrafiikassa. Esimerkiksi kuviin yksittäiset pikselit (esimerkiksi kuvan punainen, sininen ja vihreä väri kohdassa (x, y)) esitetään usein matriisin avulla.</p>
+
+
+
+<div class="tehtavat">
+  <div class="tehtava">
+    <h3>Taikaneliö</h3>
+
+    <p><a href="https://fi.wikipedia.org/wiki/Taikaneli%C3%B6" target="_blank">Taikaneliöt</a> ovat kokonaisluvuista järjestettyjä neliöitä, joiden jokaisen rivin, sarakkeen ja lävistäjän summa on sama. Harjoitellaan taulukoiden käyttöä taikaneliöiden yhteydessä.</p>
+
+    <p>Ohjelmassa on annettu osittain toteutettu luokka <code>Taikanelio</code>, jota voidaan käyttää taikaneliön tulostamiseen sekä tarkistamaan. Tehtävänäsi on lisätä luokkaan toiminnallisuutta, jolla tarkistetaan onko neliö taikaneliö.</p>
+
+    <h4>Rivien summat</h4>
+
+    <p>Luokassa Taikanelio on valmiina metodi <code>public ArrayList&lt;Integer&gt; rivienSummat()</code>, joka palauttaa tyhjän ArrayList-olion. Muuta metodin toiminnallisuutta siten, että se palauttaa listan, jossa on jokaisen taikaneliön rivin summa.</p>
+
+    <p>Esimerkiksi seuraavanlaisella taikaneliöllä rivienSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>15, 15, 15</code>.</p>
+
+<pre> 
+8 1 6 
+3 5 7
+4 9 2
+</pre>
+
+    <p>Vaikka taikaneliö ei olisi "oikea" taikaneliö, tulee rivien summat silti palauttaa. Allaolevalla esimerkillä rivienSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>6, 15, 24</code>.</p>
+
+<pre> 
+1 2 3
+4 5 6
+7 8 9
+</pre>
+
+
+
+    <h4>Sarakkeiden summat</h4>
+
+
+    <p>Luokassa Taikanelio on valmiina metodi <code>public ArrayList&lt;Integer&gt; sarakkeidenSummat()</code>, joka palauttaa tyhjän ArrayList-olion. Muuta metodin toiminnallisuutta siten, että se palauttaa listan, jossa on jokaisen taikaneliön sarakkeen summa.</p>
+
+    <p>Esimerkiksi seuraavanlaisella taikaneliöllä sarakkeidenSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>15, 15, 15</code>.</p>
+
+<pre> 
+8 1 6 
+3 5 7
+4 9 2
+</pre>
+
+    <p>Vaikka taikaneliö ei olisi "oikea" taikaneliö, tulee sarakkeiden summat silti palauttaa. Allaolevalla esimerkillä sarakkeidenSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>12, 15, 18</code>.</p>
+
+<pre> 
+1 2 3
+4 5 6
+7 8 9
+</pre>
+
+
+    <h4>Lävistäjien summat</h4>
+
+    <p>Toteuta seuraavaksi metodi <code>public ArrayList&lt;Integer&gt; lavistajienSummat()</code>, joka palauttaa listan, jossa on taikaneliön lävistäjien summat.</p>
+
+    <p>Esimerkiksi seuraavanlaisella taikaneliöllä lavistajienSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>15, 15</code> (8 + 5 + 2) ja (4 + 5 + 6).</p>
+
+<pre> 
+8 1 6 
+3 5 7
+4 9 2
+</pre>
+
+    <p>Vaikka taikaneliö ei olisi "oikea" taikaneliö, tulee lävistäjien summat silti palauttaa. Allaolevalla esimerkillä lavistajienSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>15, 15</code> (1 + 5 + 9) ja (7 + 5 + 3).</p>
+
+<pre> 
+1 2 3
+4 5 6
+7 8 9
+</pre>
+
+    <h4>Taikaneliön luominen</h4>
+
+    <p>Huom! Tämä tehtävä on melko visainen, kannattanee palauttaa edelliset osat ennen tämän aloitusta.</p>
+
+    <p>Taikaneliön pystyy myös luomaan. Tutustutaan <a href="https://en.wikipedia.org/wiki/Siamese_method" target="_blank">Siamese method</a>-menetelmään, jonka avulla voidaan luoda parittomien lukujen kokoisia taikaneliöitä.</p>
+
+    <p>Siamese method -algoritmi toimii siten, että numero yksi asetetaan ylimmän rivin keskimmäiseen sarakkeeseen. Tämän jälkeen siirrytään yksi ylös ja yksi oikealle ja asetetaan luku kaksi. Tämän jälkeen taas siirrytään yksi ylös ja yksi oikealle, ja asetetaan luku kolme jne.</p>
+    
+    <p>Lukujen lisäämiseen liittyy kaksi sääntöä:</p>
+
+    <ol>
+      <li>Jos siirtymä tapahtuu siten, että mennään taikaneliön alueen ulkopuolelle, hypätään toiselle laidalle. Jos siis mennään "oikealta yli" mennään vasempaan laitaan ja jos mennään "ylhäältä yli" mennään alalaitaan.</li>
+      <li>Jos kohdassa on jo luku, ei mennäkään ylös ja oikealle, vaan astutaan yksi askel alaspäin.</li>
+    </ol>
+
+
+    <figure>
+      <img class="naytto" src="../img/exercises/taikaneliot-siamese.gif"/>
+
+      <figcaption><p>Siamese method -algoritmin suoritus. Kuva Wikipediasta (<a href="https://en.wikipedia.org/wiki/Siamese_method" target="_blank">Siamese method</a>).</p></figcaption>
+    </figure>
+
+    <p>Toteuta parittomien taikalukujen luominen luokan <code>Taikaneliotehdas</code> metodiin <code>luoTaikanelio</code>. Metodin tarvitsee toimia vain tilanteissa, missä neliön leveys on pariton luku.</p>
 
 
   </div>
+</div>
+  
+
+
+  </div>
+
+
+<div class="panel-group" id="6yhteenveto">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#6yhteenveto" href="#6yhteenveto2">
+      <div class="panel-heading">
+	<h4 class="kysely" id="yhteenveto-6-form-legend">Viikon 6 Loppukysely</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="6yhteenveto2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="yhteenveto-6-form">
+            <fieldset>
+                <legend id="yhteenveto-6-legend">Viikon 6 Loppukysely</legend>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-6form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-6-form-tmc-tunnus" name="yhteenveto-6-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-6-form-tuntia">Kuinka monta tuntia käytit kurssin kuudenteen viikkoon (noin)</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-1-form-tuntia" name="yhteenveto-6-form-tuntia" type="number" class="form-control input-md">
+                    </div>
+                </div>
+
+		<p>&nbsp;</p>
+
+		<p>Alla on esitetty viikkoon liittyviä väittämiä. Jos olet täysin eri mieltä väittämän kanssa, valitse 1. Jos olet täysin samaa mieltä väittämän kanssa, valitse 7. Muuten, valitse luku väliltä.</p>
+
+                <div class="row" id="yhteenveto-6-form-skaala">
+                    <div class="col-md-3">Täysin eri mieltä.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Täysin samaa mieltä.</div>
+                </div>
+
+		<p>&nbsp;</p>
+
+                <div id="yhteenveto-6-form-vaittamat">
+		  <div class="row"><div class="col-md-3">1. Viikko oli työläs.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">2. Viikko oli opettavainen.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">3. Viikko oli turhauttava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">4. Viikko oli mukava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">5. Viikko oli vaikea.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="7" type="radio">7</label></div></div>
+                </div>
+		
+		<p>&nbsp;</p>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-6-form-vaikein">Vaikein asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-6-form-vaikein" name="yhteenveto-6-form-vaikein" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-6-form-helpoin">Helpoin asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-6-form-helpoin" name="yhteenveto-6-form-helpoin" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-6-form-turhauttavinta">Turhauttavinta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-6-form-turhauttavinta" name="yhteenveto-6-form-turhauttavinta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-6-form-parasta">Parasta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-6-form-parasta" name="yhteenveto-6-form-parasta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-6-form-palaute">Yleinen palaute:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-6-form-palaute" rows="6" name="yhteenveto-6-form-palaute" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <input type="hidden" id="yhteenveto-6-form-started-entering" name="yhteenveto-6-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="yhteenveto-6-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="yhteenveto-6-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </section>
 
 
@@ -18819,6 +18768,503 @@ System.out.println(tilanne);
 <strong>Viikko 6 loppuu</strong>
 <hr />
 -->
+
+
+<h2>Olioharjoittelu</h2>
+
+<!-- foobar -->
+<h3>Lisää omien metodien kutsumisesta</h3>
+
+<p>Olemme oppineet aiemmin, että metodeista voi kutsua muita metodeja. Esimerkiksi, seuraavassa luokassa <code>Esine</code> kutsutaan metodia <code>getNimi</code> metodista <code>toString</code>.</p>
+
+<pre class="sh_java">
+public class Esine {
+    private String nimi;
+    private int paino;
+
+    public Esine(String nimi, int paino) {
+        this.nimi = nimi;
+        this.paino = paino;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+
+    public int getPaino() {
+        return this.paino;
+    }
+
+    public String toString() {
+        return this.getNimi() + " " + this.getPaino() + "kg.";
+    }
+}</pre>
+
+<pre class="sh_java">
+Esine tuoli = new Esine("Tuoli", 1);
+Esine tiskikone = new Esine("Tiskikone", 22);
+
+
+System.out.println(tuoli);
+System.out.println(tiskikone);</pre>
+
+<pre>
+Tuoli 1kg.
+Tiskikone 22kg.</pre>
+
+<p><strong>Metodista voi kutsua myös samaa metodia.</strong></p>
+
+<p>Pohditaan hyvin sokkelomaista huoneistokompleksia. Jokaisessa huoneistokompleksin huoneessa on kolme ovea, joista pääsee muihin huoneisiin. Ovien lisäksi jokaisella huoneella on nimi.</p>
+
+<p>Voimme mallintaa tätä sokkelomaista huoneistokompleksia luokan <code>Huone</code> avulla. Huoneeseen liittyy nimi, sekä kaksi muuta huonetta, joihin pääsee ovien kautta. Luokan <code>Huone</code> oliomuuttujat ovat seuraavanlaiset:</p>
+
+<pre class="sh_java">
+public class Huone {
+    private String nimi;
+
+    private Huone vasen;
+    private Huone oikea;
+}</pre>
+
+<p>Lisätään huoneelle konstruktori ja setterit. Setterien avulla voimme asettaa huoneeseen liittyvät huoneet vasta niiden luomisen jälkeen.</p>
+
+<pre class="sh_java">
+public class Huone {
+    private String nimi;
+
+    private Huone vasen;
+    private Huone oikea;
+
+    public Huone(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+
+    public void setVasen(Huone huone) {
+        this.vasen = huone;
+    }
+
+    public void setOikea(Huone huone) {
+        this.oikea = huone;
+    }
+}</pre>
+
+<p>Lisätään huoneeseen vielä metodit <code>valitseVasenOvi</code> ja <code>valitseOikeaOvi</code>, jotka johtavat valittaviin huoneisiin.</p>
+
+<pre class="sh_java">
+public class Huone {
+    private String nimi;
+
+    private Huone vasen;
+    private Huone oikea;
+
+    public Huone(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+
+    public Huone valitseVasenOvi() {
+        return this.vasen;
+    }
+
+    public void setVasen(Huone huone) {
+        this.vasen = huone;
+    }
+
+    public Huone valitseOikeaOvi() {
+        return this.oikea;
+    }
+
+    public void setOikea(Huone huone) {
+        this.oikea = huone;
+    }
+}</pre>
+
+<p>Luodaan huoneistosokkelo, mistä eteisestä pääsee olohuoneeseen ja kylpyhuoneeseen. Olohuoneesta pääsee kylpyhuoneeseen ja makuuhuoneeseen. Kylpyhuoneesta pääsee makuuhuoneeseen.</p>
+
+<pre class="sh_java">
+Huone eteinen = new Huone("Eteinen");
+Huone kylpyhuone = new Huone("Kylpyhuone");
+Huone olohuone = new Huone("Olohuone");
+Huone makuuhuone = new Huone("Makuuhuone");
+
+eteinen.setVasen(olohuone);
+eteinen.setOikea(kylpyhuone);
+
+olohuone.setOikea(kylpyhuone);
+olohuone.setVasen(makuuhuone);
+
+kylpyhuone.setVasen(makuuhuone);
+</pre>
+
+<p>Huoneistosokkelomme on siitä mielenkiintoinen, että siellä ei ole ovia takaisinpäin. Tämä on tarkoituksellista tässä esimerkissä -- näemme kohta miksi. Pohditaan seuraavaksi huoneiden läpikäyntiä -- tehdään luokka <code>Huoneistokauppias</code>, joka käy huoneiston jokaisen huoneen läpi annetusta huoneesta lähtien, ja kertoo huoneen nimen.</p>
+
+<pre class="sh_java">
+public class Huoneistokauppias {
+ 
+    public Huoneistokauppias() {
+    }
+
+    public void vieraile(Huone huone) {
+        System.out.println("Olen huoneessa " + huone.getNimi());
+    }
+}
+</pre>
+
+<p>Yllä oleva metodimme ei kuitenkaan kerro muusta kuin nykyisestä huoneesta, ja haluaisimme että huoneistokauppias vierailee jokaisessa huoneessa. Voimme pyytää huoneistokauppiasta vierailemaan myös huoneen viereisessä huoneessa.</p>
+
+<pre class="sh_java">
+    public void vieraile(Huone huone) {
+        System.out.println("Olen huoneessa " + huone.getNimi());
+        
+        this.vieraile(huone.valitseVasenOvi());
+    }
+</pre>
+
+<p>Nyt huoneistokauppias vierailee jokaisen huoneen vasemmalla olevassa huoneessa. Mutta! Kun suoritamme seuraavan koodin, näemme virheen.</p>
+
+<pre class="sh_java">
+Huone eteinen = new Huone("Eteinen");
+Huone kylpyhuone = new Huone("Kylpyhuone");
+Huone olohuone = new Huone("Olohuone");
+Huone makuuhuone = new Huone("Makuuhuone");
+
+eteinen.setVasen(olohuone);
+eteinen.setOikea(kylpyhuone);
+
+olohuone.setOikea(kylpyhuone);
+olohuone.setVasen(makuuhuone);
+
+kylpyhuone.setVasen(makuuhuone);
+
+Huoneistokauppias jethro = new Huoneistokauppias();
+jethro.vieraile(eteinen);
+</pre>
+
+<pre>
+Olen huoneessa Eteinen
+Olen huoneessa Olohuone
+Olen huoneessa Makuuhuone
+<font color="red">Exception in thread "main" java.lang.NullPointerException
+at Main.main(Main.java:<em>rivi</em>)
+Java Result: 1</font>
+</pre>
+
+<p>Virhe johtuu siitä, että huoneistokauppias on erittäin innostunut menemään myös huoneisiin, joita ei ole -- metodi <code>getVasenOvi()</code> palauttaa <em>null</em>-viitteen jos huoneen vasemmaksi huoneeksi ei ole asetettu mitään.</p>
+
+<p>Voimme korjata tilanteen lisäämällä vierailumetodin alkuun tarkistuksen. Jos huone jossa vieraillaan on null, palataan metodista <em>heti</em>.</p>
+
+<pre class="sh_java">
+    public void vieraile(Huone huone) {
+        if (huone == null) {
+            return;
+        }
+
+        System.out.println("Olen huoneessa " + huone.getNimi());
+        
+        this.vieraile(huone.valitseVasenOvi());
+    }
+</pre>
+
+<p>Nyt huoneistokauppias pystyy vierailemaan jokaisen huoneen vasemmalla olevan oven takana. Selvennetään huoneistokauppiaan kulkua vielä hieman lisäämällä tarkennus hänen kulkemiseen.</p>
+<pre class="sh_java">
+    public void vieraile(Huone huone) {
+        if (huone == null) {
+            return;
+        }
+
+        System.out.println("Olen huoneessa " + huone.getNimi());
+        
+        this.vieraile(huone.valitseVasenOvi());
+        
+        System.out.println("Poistun huoneesta " + huone.getNimi());
+    }
+</pre>
+
+<p>Nyt ohjelmakoodi toimii varsin hienosti.</p>
+
+<pre class="sh_java">
+Huone eteinen = new Huone("Eteinen");
+Huone kylpyhuone = new Huone("Kylpyhuone");
+Huone olohuone = new Huone("Olohuone");
+Huone makuuhuone = new Huone("Makuuhuone");
+
+eteinen.setVasen(olohuone);
+eteinen.setOikea(kylpyhuone);
+
+olohuone.setOikea(kylpyhuone);
+olohuone.setVasen(makuuhuone);
+
+kylpyhuone.setVasen(makuuhuone);
+
+Huoneistokauppias jethro = new Huoneistokauppias();
+jethro.vieraile(eteinen);
+</pre>
+
+<pre>
+Olen huoneessa Eteinen
+Olen huoneessa Olohuone
+Olen huoneessa Makuuhuone
+Poistun huoneesta Makuuhuone
+Poistun huoneesta Olohuone
+Poistun huoneesta Eteinen
+</pre>
+
+<p>Huoneistokauppiaamme ei vieläkään käy kaikissa huoneissa. Lisätään sille mahdollisuus käyttää oikeaa ovea.</p>
+
+<pre class="sh_java">
+    public void vieraile(Huone huone) {
+        if (huone == null) {
+            return;
+        }
+
+        System.out.println("Olen huoneessa " + huone.getNimi());
+        
+        this.vieraile(huone.valitseVasenOvi());
+        this.vieraile(huone.valitseOikeaOvi());
+
+        System.out.println("Poistun huoneesta " + huone.getNimi());
+    }
+</pre>
+
+<p>Pohdi kynän ja paperin avulla mitä ylläolevassa esimerkissä tapahtuu.</p>
+
+<div class="tehtavat">
+  <div class="tehtava">
+    <h3>Sukututkija</h3>
+
+    <p><strong>Huom! Lue huolella edellinen esimerkki läpi ja kokeile sitä ennen tämän tehtävän tekemistä!</strong></p>
+
+    <p>Tehtäväpohjassa tulee mukana luokka <code>Henkilo</code>, jolla on oliomuuttujat nimi sekä isä ja äiti. Koodissa on lisäksi myös konstruktori, jolla asetetaan luotavalle henkilölle nimi. Konstruktorin lisäksi luokassa on gettereitä ja settereitä, joilla pääsee käsiksi oliomuuttujiin.</p>
+
+<pre class="sh_java">
+public class Henkilo {
+
+    private String nimi;
+    private Henkilo isa;
+    private Henkilo aiti;
+
+    public Henkilo(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public String getNimi() {
+        return nimi;
+    }
+
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public Henkilo getIsa() {
+        return isa;
+    }
+
+    public void setIsa(Henkilo isa) {
+        this.isa = isa;
+    }
+
+    public Henkilo getAiti() {
+        return aiti;
+    }
+
+    public void setAiti(Henkilo aiti) {
+        this.aiti = aiti;
+    }
+}</pre>
+
+    <p>Luokan <code>Henkilo</code> avulla voi mallintaa sukupuuta. Alla olevassa koodissa hahmotellaan <a href="http://en.wikipedia.org/wiki/Charles_II_of_Spain" target="_blank">Charles II of Spain</a>in esi-isiä.</p>
+
+<pre class="sh_java">
+        Henkilo charles = new Henkilo("Charles II of Spain");
+        Henkilo mariana = new Henkilo("Mariana of Austria");
+        Henkilo philipIV = new Henkilo("Philip IV of Spain");
+        
+        charles.setIsa(philipIV);
+        charles.setAiti(mariana);
+        
+        Henkilo mariaSpain = new Henkilo("Maria Anna of Spain");
+        Henkilo ferdinandIII = new Henkilo("Ferdinand III, Holy Roman Emperor");
+        
+        mariana.setIsa(ferdinandIII);
+        mariana.setAiti(mariaSpain);</pre>
+
+    <p>Koodi luo käytännössä seuraavanlaisen sukupuun.</p>
+
+    <p><img src="http://www.cs.helsinki.fi/group/java/tmp/90-sukupuu.png"/></p>
+
+    <p>Tässä tehtävässä harjoitellaan olioviitteiden käsittelyä ja tehdään <em>Sukututkija</em> henkilöiden suhteiden tulostamiseen.</p>
+
+
+    <h4>Sukututkija</h4>
+
+    <p>Luo luokka <code>Sukututkija</code>. Luokalla ei ole yhtään oliomuuttujaa ja sillä tulee olla konstruktori, jolla ei ole yhtäkään parametria.</p>
+
+    <p>Lisää tämän jälkeen sukututkijalle metodi <code>public void kerroHenkilosta(Henkilo henkilo)</code>. Metodin ei tarvitse tehdä vielä tässä vaiheessa mitään.</p>
+
+    <p>Voit nyt luoda uuden sukututkijan, ja kutsua sille metodia <code>kerroHenkilosta</code> seuraavasti. Alla käytössä myös tehtäväpohjassa valmiina tuleva luokka <code>Henkilo</code>.</p>
+
+<pre class="sh_java">
+Henkilo tupu = new Henkilo("Tupu Ankka");
+
+Sukututkija peloton = new Sukututkija();
+peloton.kerroHenkilosta(tupu);
+</pre>
+
+    <p>Metodin <code>kerroHenkilosta</code> ei tarvitse vielä tehdä mitään.</p>
+
+    <h4>Henkilöstä kertominen</h4>
+
+    <p>Muokkaa metodia <code>kerroHenkilosta</code> siten, että se tulostaa parametrina annetun henkilön nimen sekä henkilön vanhempien nimet.</p>
+
+    <p>Jos henkilön vanhempia ei tunneta (ne ovat null), sanotaan että kyseinen vanhempi on tuntematon.</p>
+
+<pre class="sh_java">
+Henkilo hannu = new Henkilo("Hannu Hanhi");
+Henkilo hjalmar = new Henkilo("Hjalmar Hanhi");
+Henkilo dora = new Henkilo("Dora Ankka");
+
+hannu.setIsa(hjalmar);
+hannu.setAiti(dora);
+
+Sukututkija peloton = new Sukututkija();
+peloton.kerroHenkilosta(hannu);
+</pre>
+
+    <p>Ylläolevan koodin tulee tulostaa seuraavanlainen lause:</p>
+<pre>
+Hannu Hanhi, äiti Dora Ankka ja isä Hjalmar Hanhi.</pre>
+
+    <p>Jos vanhempaa ei ole asetettu, tulostetaan kyseisen vanhemman kohdalla tuntematon.</p>
+
+<pre class="sh_java">
+Henkilo tupu = new Henkilo("Tupu Ankka");
+Henkilo della = new Henkilo("Della Ankka");
+tupu.setAiti(della);
+
+Sukututkija peloton = new Sukututkija();
+peloton.kerroHenkilosta(tupu);
+</pre>
+
+    <p>Ylläoleva koodi tulostaa.</p>
+<pre>
+Tupu Ankka, äiti Della Ankka ja isä tuntematon.</pre>
+
+<pre class="sh_java">
+Henkilo kornelius = new Henkilo("Kornelius Ankanpää");
+Henkilo julle = new Henkilo("Julle Ankanpää");
+kornelius.setIsa(julle);
+
+Sukututkija peloton = new Sukututkija();
+peloton.kerroHenkilosta(kornelius);
+</pre>
+
+    <p>Ylläoleva koodi tulostaa.</p>
+<pre>
+Kornelius Ankanpää, äiti tuntematon ja isä Julle Ankanpää.</pre>
+
+    <p>Vastaavasti jos molemmat vanhemmat ovat tuntemattomia, tulostus on esimerkiksi. </p>
+<pre>
+Kornelius Ankanpää, äiti tuntematon ja isä tuntematon.</pre>
+
+    <p>Olettaen että Kornelius Ankanpää on tulostettavan henkilön nimi.</p>
+
+
+    <h4>Henkilön suvusta kertominen</h4>
+
+    <p>Huom! Tämä tehtävä on kahden tehtäväpisteen arvoinen.</p>
+    
+    <p>Lisää sukututkijalle metodi <code>public void kerroHenkilonSuvusta(Henkilo henkilo)</code>, joka tulostaa henkilön sekä henkilön jokaisen sukulaisen tiedot edellisen tehtävän muodossa. Huom! Kutsun tulee myös tulostaa jokainen tutkittava esi-isä -- ei esimerkiksi vain kahta sukupolvea.</p>
+
+    <p>Alla muutamia esimerkkejä metodin toiminnasta.</p>
+
+<pre class="sh_java">
+Henkilo tupu = new Henkilo("Tupu Ankka");
+
+Sukututkija peloton = new Sukututkija();
+peloton.kerroHenkilonSuvusta(tupu);
+</pre>
+<pre>
+Tupu Ankka, äiti tuntematon ja isä tuntematon.</pre>
+
+<pre class="sh_java">
+Henkilo tupu = new Henkilo("Tupu Ankka");
+Henkilo della = new Henkilo("Della Ankka");
+tupu.setAiti(della);
+
+Sukututkija peloton = new Sukututkija();
+peloton.kerroHenkilonSuvusta(tupu);
+</pre>
+
+<pre>
+Tupu Ankka, äiti Della Ankka ja isä tuntematon.
+Della Ankka, äiti tuntematon ja isä tuntematon.</pre>
+
+    <p>Jos osa henkilön esi-isistä ovat sukua toisilleen, ei haittaa vaikka osa henkilöistä tulostetaan useamman kerran. Alla esimerkkinä muutama <a href="http://en.wikipedia.org/wiki/Charles_II_of_Spain" target="_blank">Charles II of Spain</a>in esi-isistä.</p>
+
+<pre class="sh_java">
+Henkilo charles = new Henkilo("Charles II of Spain");
+Henkilo mariana = new Henkilo("Mariana of Austria");
+Henkilo philipIV = new Henkilo("Philip IV of Spain");
+
+charles.setIsa(philipIV);
+charles.setAiti(mariana);
+
+Henkilo mariaSpain = new Henkilo("Maria Anna of Spain");
+Henkilo ferdinandIII = new Henkilo("Ferdinand III, Holy Roman Emperor");
+
+mariana.setIsa(ferdinandIII);
+mariana.setAiti(mariaSpain);
+
+Henkilo philipIII = new Henkilo("Philip III of Spain");
+Henkilo margaret = new Henkilo("Margaret of Austria");
+
+philipIV.setIsa(philipIII);
+philipIV.setAiti(margaret);
+
+mariaSpain.setIsa(philipIII);
+mariaSpain.setAiti(margaret);
+
+Henkilo ferdinandII = new Henkilo("Ferdinand II, Holy Roman Emperor");
+Henkilo mariaBavaria = new Henkilo("Maria Anna of Bavaria");
+
+ferdinandIII.setIsa(ferdinandII);
+ferdinandIII.setAiti(mariaBavaria);
+
+
+Sukututkija darwin = new Sukututkija();
+darwin.kerroHenkilonSuvusta(charles);</pre>
+
+<pre>
+Charles II of Spain, äiti Mariana of Austria ja isä Philip IV of Spain.
+Mariana of Austria, äiti Maria Anna of Spain ja isä Ferdinand III, Holy Roman Emperor.
+Maria Anna of Spain, äiti Margaret of Austria ja isä Philip III of Spain.
+Margaret of Austria, äiti tuntematon ja isä tuntematon.
+Philip III of Spain, äiti tuntematon ja isä tuntematon.
+Ferdinand III, Holy Roman Emperor, äiti Maria Anna of Bavaria ja isä Ferdinand II, Holy Roman Emperor.
+Maria Anna of Bavaria, äiti tuntematon ja isä tuntematon.
+Ferdinand II, Holy Roman Emperor, äiti tuntematon ja isä tuntematon.
+Philip IV of Spain, äiti Margaret of Austria ja isä Philip III of Spain.
+Margaret of Austria, äiti tuntematon ja isä tuntematon.
+Philip III of Spain, äiti tuntematon ja isä tuntematon.</pre>
+
+    <p>Ei siis haittaa jos osa henkilöistä tulostuu useamman kerran.</p>
+
+    <p><strong>Huom!</strong> henkilöiden tulostusjärjestyksellä ei myöskään ole tässä väliä. Voit siis hyvin kertoa ensin esimerkiksi henkilöstä Philip III of Spain ennen Mariana of Austriasta kertomista.</p>
+
+    <p>Vinkki! Kannattanee hyödyntää edellisessä tehtävässä toteutettua metodia <code>kerroHenkilosta</code>. Kun olet toteuttanut metodin, joka kertoo nykyisestä henkilöstä, katso mitä käy jos annat metodille <code>kerroHenkilonSuvusta</code> tällä hetkellä tarkasteltavan henkilön vanhemman (jos sellainen on olemassa).</p> 
+
+</div>
+</div>
+
+
+
 
   <h2>Tehtävien hautausmaa</h2>
   <p><big>Loppuivatko tehtävät kesken?
