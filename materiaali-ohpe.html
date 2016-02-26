@@ -16823,7 +16823,7 @@ arvo kohdassa (2, 1): 0
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2yhdesta-sataan" href="#2yhdesta-sataan2">
       <div class="panel-heading">
-	<h4 id="yhdesta-sataan-form-legend">Kysely: Oma arvio osaamisesta</h4>
+	<h4 class="kysely" id="yhdesta-sataan-form-legend">Kysely: Oma arvio osaamisesta</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2yhdesta-sataan2">
@@ -16866,12 +16866,13 @@ arvo kohdassa (2, 1): 0
                   
 		  <textarea class="form-control" rows="4" name="vaikeimmat"></textarea>
 
+<!--
 		  <p>&nbsp;</p>
 
 		  <p>Tällä hetkellä, minkä arvosanan (0-5) uskot saavasi kurssista:</p>
 
 		  <input class="form-control" name="arvosana" style="width:200px"></input>
-
+-->
                 </div>
 
                 <input type="hidden" id="yhdesta-sataan-form-started-entering" name="yhdesta-sataan-form-started-entering" value="">
@@ -16902,7 +16903,7 @@ arvo kohdassa (2, 1): 0
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2al-et-lister-four" href="#2al-et-lister-four2">
       <div class="panel-heading">
-	<h4 id="al-et-lister-four-form-legend">Kysely: Ohjelmointirutiini ja muuttujien ymmärrys, osa 4</h4>
+	<h4 class="kysely" id="al-et-lister-four-form-legend">Kysely: Ohjelmointirutiini ja muuttujien ymmärrys, osa 4</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2al-et-lister-four2">
@@ -16983,7 +16984,7 @@ if (y1 &lt; y2) {
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2scott-self-beliefs" href="#2scott-self-beliefs2">
       <div class="panel-heading">
-	<h4 id="scott-self-beliefs-form-legend">Kysely: Ohjelmointiin liittyvät uskomukset ja tunteet</h4>
+	<h4 class="kysely" id="scott-self-beliefs-form-legend">Kysely: Ohjelmointiin liittyvät uskomukset ja tunteet</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2scott-self-beliefs2">
@@ -17037,61 +17038,149 @@ if (y1 &lt; y2) {
 
 
 
+  <h2>Virhetilanteiden etsiminen ja korjaaminen</h2>
+
+  <p>Ohjelmia luodessa niihin päätyy virheitä. Joskus virheet eivät ole niin vakavia, ja aiheuttavat päänvaivaa lähinnä ohjelman käyttäjälle, mutta joskus virheet voivat johtaa hyvinkin vakaviin seurauksiin.</p>
+
+
+    <aside class="info">
+      <p><strong>Ohjelmistovirhe</strong></p>
+
+
+      <p>Osoitteessa <a href="http://sunnyday.mit.edu/accidents/MCO_report.pdf" target="_blank">http://sunnyday.mit.edu/accidents/MCO_report.pdf</a> oleva raportti kuvaa erään hieman vakavamman ohjelmistovirheestä johtuneen tapaturman, sekä ohjelmistovirheen.</p>
+
+      <p>Ohjelmistovirhe liittyi siihen, että käytetty ohjelma odotti, että ohjelmoija käyttäisi <a href="https://fi.wikipedia.org/wiki/Kansainv%C3%A4linen_yksikk%C3%B6j%C3%A4rjestelm%C3%A4" target="_blank">kansainvälistä yksikköjärjestelmää</a> laskuissa (metrit, kilogrammat, ...). Ohjelmoija oli kuitenkin käyttänyt <a href="https://en.wikipedia.org/wiki/English_Engineering_units" target="_blank">amerikkalaista mittajärjestelmää</a> erään järjestelmän osan laskuissa, jolloin satelliitin navigointiin liittynyt automaattinen korjausjärjestelmä ei toiminut oikein.</p>
+
+      <p>Satelliitti tuhoutui.</p>
+
+    </aside>
+
+    <p>Tehdään seuraavaksi muutamia ohjelmia, joissa on virhe, ja muistellaan samalla mistä nämä virheet tulevat.</p>
+
+
+<!-- CAST63-->
+
 <div class="tehtavat">
   <div class="tehtava">
+    <h3>NullPointerException</h3>
 
-    <h3>Sademäärät</h3>
+    <p>Toteuta ohjelma, jonka suorittaminen tuottaa virheen <code>NullPointerException</code>. Ohjelman tulee olla sellainen, että käyttäjän ei tarvitse antaa konelle syötettä (esim. näppäimistöltä).</p>
 
-    <p>Tässä ohjelmassa harjoitellaan toistolauseiden, lukujen käyttöä sekä käyttäjän antaman syötteen lukemista. Tehtäväpohjassa ei ole automaattisia testejä, joten testeistä ei ole apua ohjelman rakentamisessa. <strong>Tehtävä on kolmen tehtäväpisteen arvoinen</strong>.</p>
 
-    <p><strong>Toteuta ohjelma sademäärien keskiarvon laskemiseen</strong></p>
-
-    <p>Ohjelman tulee lukea käyttäjän antamasta syötteestä sademääriä kunnes käyttäjä syöttää luvun 999999. Sademääriksi kelpaavat nollat ja positiiviset luvut. Käyttäjän syöttämät negatiiviset luvut ohitetaan.</p>
-
-    <p>Kun käyttäjä syöttää luvun 999999, ohjelman tulee tulostaa käyttäjän syöttämien sademäärien keskiarvo tai ilmoitus siitä, ettei keskiarvoa voida laskea (koska ei syötetty yhtään sademäärää).</p>
-
-    <p>Käytä Javan Scanner-luokkaa tai muuta sinulle tuttua tapaa käyttäjän syötteen lukemiseen. Voit olettaa, että syötteet ovat desimaalilukuja (<code>double</code>).</p>
-
-    <p>Sinun ei tarvitse huomioida mitenkään tapauksia, joissa käyttäjä antaa tyhjän syötteen tai syöttää luvuiksi kelpaamaattomia merkkejä.</p>
-
-    <p>Luku 999999 annetaan vain lopettamisen merkiksi, eikä sitä tule ottaa mukaan keskiarvoon.</p>
-
-    <div class="abtest-1">
-
-    <p>Alla on annettu esimerkki siitä, miltä ohjelman käyttäminen voi näyttää. Käyttäjän antamat syötteet on merkitty punaisella värillä. Sinun EI ole pakko tuottaa pilkulleen samanlaista tulostetta, mutta ohjelman on laskettava oikea tulos syötteen perusteella tähän tapaan.</p>
-
-<pre>
-Anna sademääriä, lopeta luvulla 999999.
-Anna sademäärä:
-<font color="red">1000</font>
-Anna sademäärä:
-<font color="red">2000.50</font>
-Anna sademäärä:
-<font color="red">0</font>
-Anna sademäärä:
-<font color="red">-100</font>
-Anna sademäärä:
-<font color="red">999.50</font>
-Anna sademäärä:
-<font color="red">999999</font>
-Sademäärien keskiarvo on 1000.0.
-</pre>
-
-<p>Tässä taas keskiarvoa ei saada määritettyä:</p>
-
-<pre>
-Anna sademääriä, lopeta luvulla 999999.
-Anna sademäärä:
-<font color="red">999999</font>
-Yhtään sademäärää ei syötetty.
-</pre>
-  
   </div>
 
-  <p>Jos käy niin, että jäät täysin "jumiin" etkä saa tehtyä ratkaisua, palauta kuitenkin paras yrityksesi ja laita ohjelmasi alkuun mukaan kommentti, jossa kerrot, mikä tehtävässä tuntui vaikealta tai muuten aiheutti "jumituksen". Saat tällöin myös tehtävästä pisteet.</p>
+  <div class="tehtava">
+    <h3>IndexOutOfBoundsException</h3>
+
+    <p>Toteuta ohjelma, jonka suorittaminen tuottaa virheen <code>IndexOutOfBoundsException</code>. Ohjelman tulee olla sellainen, että käyttäjän ei tarvitse antaa konelle syötettä (esim. näppäimistöltä).</p>
+
+  </div>
+
+  <div class="tehtava">
+    <h3>StringIndexOutOfBoundsException</h3>
+
+    <p>Toteuta ohjelma, jonka suorittaminen tuottaa virheen <code>StringIndexOutOfBoundsException</code>. Ohjelman tulee olla sellainen, että käyttäjän ei tarvitse antaa konelle syötettä (esim. näppäimistöltä).</p>
+
+  </div>
+
+  <div class="tehtava">
+    <h3>ArrayIndexOutOfBoundsException</h3>
+
+    <p>Toteuta ohjelma, jonka suorittaminen tuottaa virheen <code>ArrayIndexOutOfBoundsException</code>. Ohjelman tulee olla sellainen, että käyttäjän ei tarvitse antaa konelle syötettä (esim. näppäimistöltä).</p>
 
   </div>
 </div>
+
+
+  <p>Ohjelmien muuttuessa monimutkaisemmiksi, tulee virheiden löytämisestäkin koko ajan haastavampaa. NetBeansiin integroitu debuggeri voi olla avuksi virheiden löytämisessä. Seuraavalla screencastilla esitellään debuggerin käyttöä. Screencast esittelee myös miten projekteja voidaan luoda, avata ja sulkea sekä miten ohjelmia voidaan suorittaa NetBeansin ulkopuolella. </p>
+
+  <a href="http://www.youtube.com/watch?feature=player_embedded&v=2QlbAvDPmk8" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
+
+
+<!--
+<p><iframe allowfullscreen="" frameborder="0"  height="450" width="700" src="http://www.youtube.com/embed/2QlbAvDPmk8"></iframe></p>
+-->
+
+
+
+<div class="tehtavat">
+
+  <div class="tehtava">
+    <h3>Debuggailua</h3>
+
+    <p>Ohjelmassa on yritetty luoda sovellus, joka kysyy käyttäjältä merkkijonoa ja lukua. Sovelluksen pitäisi toimia esimerkiksi seuraavasti:</p>
+
+<pre>
+Sana: <font color="red">testi</font>
+Luku: <font color="red">3</font>
+t
+ e
+  s
+t
+ i
+</pre>
+
+    <p>Esimerkki 2:</p>
+
+<pre>
+Sana: <font color="red">esim</font>
+Luku: <font color="red">2</font>
+e
+ s
+i
+ m
+</pre>
+
+    <p>Tällä hetkellä se ei kuitenkaan toimi oikein. Ota selvää miksi, ja korjaa ohjelma.</p>
+
+  </div>
+</div>
+
+<h3>Stack trace</h3>
+
+<p>Kun ohjelmassa tapahtuu virhe, se tyypillisesti tulostaa ns. stack tracen, eli niiden metodikutsujen listan, joiden seurauksena virhetilanne syntyi. Stack trace voi näyttää esimerkiksi seuraavalta:</p>
+
+<pre>
+Exception in thread "main" java.lang.NullPointerException
+        at Kirja.haeOtsikko(Kirja.java:22)
+        at Kirjoittaja.haeOtsikot(Kirjoittaja.java:62)
+        at Ohjelma.main(Ohjelma.java:15)
+</pre>
+
+<p>Listan alussa kerrotaan minkälainen virhe tapahtui (tässä NullPointerException), ja seuraavalla rivillä kerrotaan missä virhe tapahtui. Rivi "at Kirja.haeOtsikko(Kirja.java:22)" sanoo, että virhe tapahtui luokan Kirja rivillä 22.</p>
+
+<pre>
+        at Kirja.haeOtsikko(Kirja.java:22)
+</pre>
+
+<p>Voimme tarkastella Kirja-luokan riviä, ja etsiä syitä virheelle. Kirjan kyseinen metodi voisi olla esimerkiksi seuraavanlainen:</p>
+
+<pre class="sh_java">
+public String haeOtsikko() {
+    if(otsikko.length() &gt; 0) { &lt;-- rivi 22
+        return otsikko;
+    }
+
+    return "Ei otsikkoa";
+}
+</pre>
+
+<p>Tämä tarkoittaisi todennäköisesti, että muuttujan <code>otsikko</code> arvo on <code>null</code> kun otsikkoa haetaan.</p>
+
+
+
+<h3>Muistilista debuggaukseen</h3>
+
+<p>Jos koodisi ei toimi etkä tiedä missä on virhe, näillä askeleilla pääset alkuun.</p>
+
+<ol>
+  <li>Sisennä koodisi oikein ja selvitä, puuttuuko sulkuja.</li>
+  <li>Testaa ohjelman kulkua erilaisilla syötteillä, ja selvitä minkälaisella syötteellä ohjelma ei toimi halutusti. Jos sait virheen testeistä, testit saattavat myös kertoa käytetyn syötteen.</li>
+  <li>Lisää ohjelmaan tulostuskomentoja, joissa tulostat käytettävien muuttujien arvoja ohjelman suorituksen eri vaiheissa.</li>
+  <li>Tarkista, että kaikki käyttämäsi muuttujat on alustettu. Jos tätä ei ole tehty, seuraa virhe NullPointerException.</li>
+  <li>Jos ohjelmasi aiheuttaa poikkeuksen, kannattaa ehdottomasti kiinnittää huomiota poikkeuksen yhteydessä olevaan <em>stack traceen</em>, eli niiden metodikutsujen listaan, minkä seurauksena poikkeuksen aiheuttanut tilanne syntyi.</li>
+  <li>Opettele käyttämään debuggeria, aiemmin nähdyllä videolla pääsee alkuun.</li>
+</ol>
 
 
 
@@ -17916,7 +18005,7 @@ public class Sanajoukko {
 }
 </pre>
 
-  <p>Metodi <code>palindromeja</code> käy läpi kaikki joukon sanat ja käyttää apumetodia <code>onPalindromi</code> avukseen palindromien määrän laskemisessa. Koska apumetodi <code>onPalindromi</code> on tarkoitettu ainoastaan olion sisäiseen käyttöön, on sen <i>näkyvyysmääreeksi</i> määritelty <code>private</code>. Olion käyttäjän siis ei ole mahdollista kutsua metodia, metodia voi kutsua ainoastaan olion sisältä. Palaamme näkyvyysmääreisiin tarkemmin ohjelmoinnin jatkokurssilla.</p>
+  <p>Metodi <code>palindromeja</code> käy läpi kaikki joukon sanat ja käyttää apumetodia <code>onPalindromi</code> avukseen palindromien määrän laskemisessa. Koska apumetodi <code>onPalindromi</code> on tarkoitettu ainoastaan olion sisäiseen käyttöön, on sen <i>näkyvyysmääreeksi</i> määritelty <code>private</code>. Olion käyttäjän siis ei ole mahdollista kutsua metodia, metodia voi kutsua ainoastaan olion sisältä. Palaamme näkyvyysmääreisiin tarkemmin myöhemmin.</p>
 
   <h4>Uusiokäyttö</h4>
 
@@ -18052,18 +18141,6 @@ Haukka (Dorkus Dorkus): 2 havaintoa
 </div>
 </div>
 
-
-  <h2>Debuggeri ja muuta hyödyllistä</h2>
-
-<!-- CAST63-->
-
-  <p>Ohjelmien muuttuessa monimutkaisemmiksi, tulee virheiden löytämisestäkin koko ajan haastavampaa. NetBeansiin integroitu debuggeri voi olla avuksi virheiden löytämisessä. Seuraavalla screencastilla esitellään debuggerin käyttöä. Screencast esittelee myös miten projekteja voidaan luoda, avata ja sulkea sekä miten ohjelmia voidaan suorittaa NetBeansin ulkopuolella. </p>
-
-  <a href="http://www.youtube.com/watch?feature=player_embedded&v=2QlbAvDPmk8" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
-
-<!--
-<p><iframe allowfullscreen="" frameborder="0"  height="450" width="700" src="http://www.youtube.com/embed/2QlbAvDPmk8"></iframe></p>
--->
 
   <h2>Taulukon järjestäminen ja etsintä</h2>
 
@@ -18584,6 +18661,52 @@ Luku 99 ei ole taulukossa
 </div>
 </div>
 
+<p>Huom! Kertaa edellisen viikon kohta kaksiulotteisista taulukoista ennen seuraavan tehtävän tekemistä.</p>
+
+<div class="tehtavat">
+<div class="tehtava">
+
+  <h3>Schelling</h3>
+
+  <p><a href="https://en.wikipedia.org/wiki/Thomas_Schelling" target="_blank">Thomas Schelling</a> on yhdysvaltalainen taloustieteilijä, joka esitti ihmisten eriytymistä selittävän mallin.</p>
+
+  <p>Malli perustuu ajatukselle, että vaikka ihmiset asetettasiin satunnaisesti asumaan, he muuttavat pois jos he eivät pidä naapureistaan. Tässä tehtävässä täydennetään ohjelmaa, jonka avulla Schellingin mallia voidaan simuloida.</p>
+
+  <p>Simulaation suoritus alkaa kartasta, jossa ihmiset ovat satunnaisessa järjestyksessä.</p>
+  
+  <p><img src="../img/exercises/schelling-start.png"/></p>
+      
+  <p>Ja päättyy tyypillisesti tilanteeseen, missä samankaltaiset ihmiset ovat päätyneet samankaltaisten ihmisten luo.</p>
+  
+  <p><img src="../img/exercises/schelling-end.png"/></p>
+
+  <p>Ohjelmasta puuttuu muutamia oleellisia toiminnallisuuksia: (1) kartan tyhjennys, (2) tyhjien paikkojen etsiminen, ja (3) tyytymättömien henkilöiden tunnistaminen. Kannattaa ennen aloitusta tutustua nykyiseen tehtävän koodiin -- ohjelmassa on mukana myös visualisointiin käytettävä komponentti.</p>
+
+  <h4>Kartan tyhjentäminen ja tyhjien paikkojen etsiminen</p>
+
+  <p>Simulaatiomallissa käytetään kaksiulotteista taulukkoa asuinalueen kuvaamiseen. Taulukossa oleva arvo 0 kuvaa tyhjää paikkaa, kun taas luvut 1-4 erilaisia ihmisjoukkoja.</p>
+
+  <p>Toteuta ensin luokan <code>Eriytymismalli</code> metodiin <code>public void asetaKaikkiTyhjiksi()</code> toiminnallisuus, joka asettaa jokaisen taulukon <code>data</code> solun arvoksi 0.</p>
+
+  <p>Lisää tämän jälkeen metodiin <code>public ArrayList&lt;Piste&gt; tyhjatPaikat()</code> toiminnallisuus, joka tunnistaa tyhjät paikat (solut, joissa on arvo 0), luo jokaisesta Piste-olion, ja palauttaa ne listana. Huomaa, että kaksiulotteisessa taulukossa ensimmäinen ulottuvuus kuvaa y-koordinaattia, ja toinen x-koordinaattia (taulukko[y][x]).</p>
+
+
+  <h4>Tyytymättömien hakeminen</h4>
+
+  <p>Malli saa konstruktorin parametrina arvon <code>tyytyvaisyysraja</code>, joka kuvaa tyytyväisyyssuhdetta. Jos ruudussa (x, y) olevan henkilön naapureista on samankaltaisia yli <code>tyytyvaisyysraja</code>n verran, on henkilö tyytyväinen. Muuten henkilö on tyytymätön.</p>
+
+  <p>Naapureista tulee tarkastella kaikkia ruudun vieressä olevia ruutuja. Tyhjää ruutua ei oteta huomioon.</p>
+
+  <p>Toteuta metodi <code>public ArrayList&lt;Piste&gt; haeTyytymattomat()</code>, joka palauttaa tyytymättömät listana.</p>
+
+  <p>Kun ohjelma toimii, ihaile sen toimintaa :)</p>
+
+
+</div>
+
+</div>
+
+
   <h2>Taulukoista ja olioista</h2>
   <p>Jos tarvetta on, taulukkoon voi luonnollisesti laittaa minkä tahansa tyyppisen olion. Seuraavassa esimerkki taulukosta johon talletetaan <em>Henkilo</em>-olioita:</p>
 
@@ -18674,9 +18797,11 @@ public class Viikko {
     </div>
   </div>
 
+<!--
   <div class="only-in-hy hidden-in-mooc ignore-in-mooc">
     <div class="self-explanation" data-key="q-vanhaKoe"></div>
   </div>
+-->
 
   <p class="only-in-hy hidden-in-mooc ignore-in-mooc">Ohjelmoinnin jatkokurssilla teemme matopelin. Fiilistellään tässä välissä vielä hieman ja pohditaan <em>matopelin älyn</em> rakentamista.</p>
 
@@ -18728,6 +18853,126 @@ System.out.println(tilanne);
 
 
 </div>
+
+
+<div class="panel-group" id="6yhteenveto">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#6yhteenveto" href="#6yhteenveto2">
+      <div class="panel-heading">
+	<h4 class="kysely" id="yhteenveto-7-form-legend">Viikon 7 Loppukysely</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="6yhteenveto2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="yhteenveto-7-form">
+            <fieldset>
+                <legend id="yhteenveto-7-legend">Viikon 7 Loppukysely</legend>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-7-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-7-form-tmc-tunnus" name="yhteenveto-6-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-7-form-tuntia">Kuinka monta tuntia käytit kurssin seitsemänteen viikkoon (noin)</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-1-form-tuntia" name="yhteenveto-7-form-tuntia" type="number" class="form-control input-md">
+                    </div>
+                </div>
+
+		<p>&nbsp;</p>
+
+		<p>Alla on esitetty viikkoon liittyviä väittämiä. Jos olet täysin eri mieltä väittämän kanssa, valitse 1. Jos olet täysin samaa mieltä väittämän kanssa, valitse 7. Muuten, valitse luku väliltä.</p>
+
+                <div class="row" id="yhteenveto-6-form-skaala">
+                    <div class="col-md-3">Täysin eri mieltä.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Täysin samaa mieltä.</div>
+                </div>
+
+		<p>&nbsp;</p>
+
+                <div id="yhteenveto-6-form-vaittamat">
+		  <div class="row"><div class="col-md-3">1. Viikko oli työläs.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">2. Viikko oli opettavainen.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">3. Viikko oli turhauttava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">4. Viikko oli mukava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">5. Viikko oli vaikea.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="7" type="radio">7</label></div></div>
+                </div>
+		
+		<p>&nbsp;</p>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-7-form-vaikein">Vaikein asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-7-form-vaikein" name="yhteenveto-7-form-vaikein" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-7-form-helpoin">Helpoin asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-7-form-helpoin" name="yhteenveto-7-form-helpoin" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-7-form-turhauttavinta">Turhauttavinta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-7-form-turhauttavinta" name="yhteenveto-7-form-turhauttavinta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-7-form-parasta">Parasta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-7-form-parasta" name="yhteenveto-7-form-parasta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-6-form-palaute">Yleinen palaute:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-7-form-palaute" rows="6" name="yhteenveto-7-form-palaute" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <input type="hidden" id="yhteenveto-7-form-started-entering" name="yhteenveto-7-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="yhteenveto-7-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="yhteenveto-7-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </section>
 
 
