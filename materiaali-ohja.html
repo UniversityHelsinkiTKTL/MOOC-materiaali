@@ -49,7 +49,7 @@ jQuery(document).ready(function() {
 <section class="viikkoraja" id="0">
   <div div class="viikkoraja-mooc" id="Huomautus lukijalle" tekija="Arto Vihavainen, Matti Luukkainen">
 
-    <p class="hidden-kesakurssit">Tämä on suoraa jatkoa Ohjelmoinnin perusteet -kurssin <a href="https://www.cs.helsinki.fi/group/java/s13/ohpe/index.html">materiaaliin.</a></p>
+    <p class="hidden-kesakurssit">Tämä on suoraa jatkoa Ohjelmoinnin perusteet -kurssin <a href="https://www.cs.helsinki.fi/group/java/k16-materiaali/">materiaaliin.</a></p>
 
     <p class="hidden-kesakurssit">Tämä materiaali on tarkoitettu Helsingin Yliopiston Tietojenkäsittelytieteen laitoksen syksyn 2012 Ohjelmoinnin perusteet- ja jatkokurssille.
     Materiaali pohjautuu keväiden 2012, 2011 ja 2010 kurssimateriaaleihin, joiden sisältöön ovat vaikuttaneet Matti Paksula, Antti Laaksonen, Pekka Mikkola, Juhana Laurinharju, Martin Pärtel, Joel Kaasinen ja Mikael Nousiainen</p>
@@ -81,7 +81,7 @@ jQuery(document).ready(function() {
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#1taustatiedot" href="#1taustatiedot2">
       <div class="panel-heading">
-	<h4 id="taustatiedot-form-ohja-legend">Kysely: Taustatiedot</h4>
+	<h4 class="kysely" id="taustatiedot-form-ohja-legend">Kysely: Taustatiedot</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="1taustatiedot2">
@@ -457,7 +457,7 @@ jQuery(document).ready(function() {
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="ohpe">Suoritin juuri kurssin ohjelmoinnin perusteet</label>
+                    <label class="col-md-4 control-label" for="ohpe">Suoritin juuri tämän kurssin edeltävät seitsemän viikkoa (kurssin ohjelmoinnin perusteet).</label>
                     <div class="form-inline col-md-8">
                         <div class="checkbox col-md-4">
                             <label for="just-ohpe">
@@ -497,7 +497,7 @@ jQuery(document).ready(function() {
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2mslqmotivaatio" href="#2mslqmotivaatio2">
       <div class="panel-heading">
-	<h4 id="mslq-motivaatio-form-ohja-legend">Kysely: Oppimiskokemukset ja motivaatio</h4>
+	<h4 class="kysely" id="mslq-motivaatio-form-ohja-legend">Kysely: Oppimiskokemukset ja motivaatio</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2mslqmotivaatio2">
@@ -566,16 +566,32 @@ jQuery(document).ready(function() {
 
     <h2>Ohjelmoinnin perusteiden kertausta</h2>
     
-    <p>Tässä luvussa kerrataan pikaisesti muutamia aiempina viikkoina tutuksi tulleita asioita. Ruostunutta ohjelmointitaitoa voi verestää myös <a href="http://www.cs.helsinki.fi/group/java/s12/ohpe/materiaali-ohpekertaus.html">täältä</a> löytyvän tehtäväsarjan avulla.</p>
+    <p>Tässä luvussa kerrataan pikaisesti muutamia aiempina viikkoina tutuksi tulleita asioita.</p>
+
+<!--
+<p> Ruostunutta ohjelmointitaitoa voi verestää myös TODO: <a href="http://www.cs.helsinki.fi/group/java/s12/ohpe/materiaali-ohpekertaus.html">täältä</a> löytyvän tehtäväsarjan avulla.</p>
+-->
+
 
     <h3>Ohjelma, käskyt ja muuttujat</h3>
 
-    <p>Tietokoneohjelma koostuu joukosta käskyjä, joita tietokone suorittaa yksi kerrallaan, ylhäältä alaspäin. Käskyillä on aina määrätty rakenne ja semantiikka. Javassa, eli kurssilla käyttämässämme ohjelmointikielessä, käskyjä luetaan ylhäältä alas vasemmalta oikealle. Ohjelmointikurssit aloitetaan usein esittelemällä ohjelma, joka tulostaa merkkijonon <code>Hei maailma!</code>. Alla on Java-kielellä kirjoitettu käsky <code>Hei maailma!</code> -merkkijonon tulostamiseksi.</p>
+<p>Tietokoneohjelma koostuu joukosta käskyjä, joita tietokone suorittaa yksi kerrallaan. Käskyillä on aina määrätty rakenne ja semantiikka. Javassa, eli kurssilla käyttämässämme ohjelmointikielessä, käskyjä luetaan ylhäältä alas vasemmalta oikealle. Ohjelmointikurssit aloitetaan usein esittelemällä ohjelma, joka tulostaa merkkijonon <code>Hei maailma!</code>. Alla on Java-kielellä kirjoitettu käsky <code>Hei maailma!</code> -merkkijonon tulostamiseksi.</p>
 
 <pre class="sh_java">
 System.out.println("Hei maailma!");</pre>
 
-    <p>Käskyssä kutsutaan <code>System</code>-luokkaan liittyvän muuttujan <code>println</code>-metodia, joka tulostaa ensin parametrina annetun merkkijonon ja sen jälkeen rivinvaihdon. Metodille annetaan parametrina merkkijono <code>Hei maailma!</code>, jolloin tulostus on <code>Hei maailma!</code> jota seuraa rivinvaihto.</p>
+    <p>Käskyssä kutsutaan <code>System</code>-luokkaan liittyvän muuttujan <code>println</code>-metodia, joka tulostaa ensin parametrina annetun merkkijonon ja sen jälkeen rivinvaihdon. Metodille annetaan parametrina merkkijono <code>Hei maailma!</code>, jolloin tulostuu <code>Hei maailma!</code> ja rivinvaihto.</p>
+
+<div class="tehtavat" id="viikko8">
+    <p class="hidden-in-mooc ignore-in-mooc"><strong>Huom! Ohjelmoinnin jatkokurssin tehtävät löytyvät TMC:stä kurssin hy-k2016-ohja alta. Palvelimen osoitteena käytetään https://tmc.mooc.fi/hy</strong></p>
+
+  <div class="tehtava">
+    <h3>Heippa taas!</h3>
+
+    <p>Toteuta tehtäväpohjaan ohjelma, joka tulostaa merkkijonon "Heippa taas!"</p>
+
+  </div>
+</div>
 
     <p>Ohjelmaan voi liittyä muuttujia joita voi käyttää osana ohjelman toimintaa. Alla on ohjelma, joka ensin esittelee kokonaislukutyyppisen muuttujan <code>pituus</code> johon asetetaan seuraavalla rivillä arvo 179. Tämän jälkeen tulostetaan muuttujan <code>pituus</code> arvo eli <code>179</code>.</p>
 
@@ -584,21 +600,62 @@ int pituus;
 pituus = 179;
 System.out.println(pituus);</pre>
 
-    <p>Yllä ohjelman suoritus tapahtuisi rivi kerrallaan. Ensin suoritetaan rivi <code>int pituus;</code>, jossa esitellään muuttuja nimeltä <code>pituus</code>. Seuraavaksi suoritetaan rivi <code>pituus = 179;</code>, jossa asetetaan edellisellä rivillä esiteltyyn muuttujaan arvo <code>179</code>. Tämän jälkeen suoritetaan rivi <code>System.out.println(pituus);</code>, jossa kutsutaan aiemmin näkemäämme tulostusmetodia, jolle annetaan parametrina muuttuja pituus. Metodi tulostaa muuttujan <code>pituus</code> sisällön eli arvon <code>179</code>.</p>
+    <p>Yllä ohjelman suoritus tapahtuisi rivi kerrallaan. Ensin suoritetaan rivi <code>int pituus;</code>, jossa luodaan kokonaislukutyyppinen muuttuja ja annetaan sille nimeksi <code>pituus</code>. Seuraavaksi suoritetaan rivi <code>pituus = 179;</code>, jossa asetetaan muuttujaan nimeltä <code>pituus</code> arvo <code>179</code>. Tämän jälkeen suoritetaan rivi <code>System.out.println(pituus);</code>, jossa kutsutaan aiemmin näkemäämme tulostusmetodia siten, että tulostuksessa tulostetaan <code>pituus</code>-nimiseltä muuttujalta löytyvä arvo eli <code>179</code>.</p>
 
-    <p>Yllä olevassa ohjelmassa ei oikeastaan ole tarvetta esitellä muuttujaa <code>pituus</code> ja asettaa siihen arvoa erillisillä riveillä. Muuttujan esittelyn ja siihen liittyvän arvon asetuksen voi tehdä myös samalla rivillä.</p>
+    <p>Yllä olevassa ohjelmassa ei oikeastaan ole tarvetta luoda muuttujaa <code>pituus</code> ja asettaa siihen arvoa erillisillä riveillä. Muuttujan luomisen ja siihen liittyvän arvon asetuksen voi tehdä myös samalla rivillä.</p>
 
 <pre class="sh_java">
 int pituus = 179;</pre>
 
     <p>Yllä olevaa riviä suoritettaessa esitellään ensin muuttuja <code>pituus</code>, johon asetetaan esittelyn yhteydessä arvo <code>179</code>.</p>
 
-    <p>Kaikki tieto esiintyy oikeasti tietokoneen sisällä jonona bittejä, eli lukuja nolla ja yksi. Muuttujat ovat ohjelmointikielten tarjoama abstraktio, jolla voidaan käsitellä erilaisia arvoja helpommin. Muuttujia käytetään arvojen säilyttämiseen ja ohjelman tilan ylläpitoon. Javassa käytössämme on muun muassa alkeisarvoiset muuttujatyypit <code>int</code> (kokonaisluku), <code>double</code> (liukuluku), <code>boolean</code> (totuusarvo), <code>char</code> (merkki) sekä viitetyyppiset muuttujatyypit  <code>String</code> (merkkijono), <code>ArrayList</code> (taulukko) ja kaikki luokat. Palaamme alkeistyyppisiin ja viitetyyppisiin muuttujiin ja niiden eroihin tarkemmin myöhemmin.</p>
+    <aside class="info">
+  
+      <br/>
+      <h1>Tieto tietokoneen sisällä</h1>
 
+      
+      <p>Kaikki tieto esiintyy tietokoneen sisällä jonona bittejä, eli sarjana nollia ja ykkösiä. Muuttujat ovat ohjelmointikielten tarjoama abstraktio, joka helpottaa erityyppisten arvojen käsittelyä.</p>
+
+      <p>Muuttujia käytetään arvojen säilyttämiseen ja ohjelman tilan ylläpitoon. Javassa käytössämme on muun muassa alkeisarvoiset muuttujatyypit <code>int</code> (kokonaisluku), <code>double</code> (liukuluku), <code>boolean</code> (totuusarvo), <code>char</code> (merkki) sekä viitetyyppiset muuttujatyypit <code>String</code> (merkkijono), <code>ArrayList</code> (taulukko) ja kaikki luokista tehdyt oliot. Palaamme alkeistyyppisiin ja viitetyyppisiin muuttujiin ja niiden eroihin tarkemmin myöhemmin.</p>
+
+    </aside>
+
+
+<div class="tehtavat">
+
+  <div class="tehtava">
+    <h3>Tarina</h3>
+
+    <p>Ohjelma tulostaa tällä hetkellä seuraavan tarinan:</p>
+
+<pre>
+Olipa kerran Aapeli, joka asui paikassa 
+nimeltä hissi. Eräänä päivänä tepastellessaan
+Aapeli kohtasi hirviön, jolla oli päällään hattivatti.
+'Hmm...' mietti Aapeli ja muisti, että hänellä
+oli mukanaan taikasauva. Aapeli heilautti sitä,
+*puff* hirviö katosi!
+</pre>
+
+    <p>Muuta ohjelmaa sopivilta kohdin niin, että ohjelman tulostus muuttuu seuraavanlaiseksi:</p>
+
+<pre>
+Olipa kerran Hattivatti, joka asui paikassa 
+nimeltä hattivatistan. Eräänä päivänä tepastellessaan
+Hattivatti kohtasi hirviön, jolla oli päällään kaapu.
+'Hmm...' mietti Hattivatti ja muisti, että hänellä
+oli mukanaan räpylä. Hattivatti heilautti sitä,
+*puff* hirviö katosi!
+</pre>
+
+  </div>
+</div>
+    
 
     <h3>Muuttujien vertaileminen ja syötteen lukeminen</h3>
 
-    <p>Ohjelmien toiminnallisuus rakennetaan kontrollirakenteiden avulla. Kontrollirakenteet mahdollistavat erilaiset toiminnot ohjelman muuttujien arvoista riippuen. Alla esimerkki <code>if-else if-else</code> -kontrollirakenteesta, jossa tehdään erilainen toiminto vertailun tuloksesta riippuen. Esimerkissä tulostetaan merkkijono <code>Kaasua</code> jos muuttujan <code>nopeus</code> arvo on pienempi kuin 110, merkkijono <code>Jarrua</code> jos muuttujan <code>nopeus</code> arvo on suurempi kuin 120 ja merkkijono <code>Kruisaillaan</code> muissa tapauksissa.</p>
+    <p>Ohjelmien toiminnallisuus rakennetaan kontrollirakenteiden avulla. Kontrollirakenteet mahdollistavat erilaiset toiminnot ohjelman muuttujien arvoista riippuen. Alla esimerkki <code>if-else if-else</code> -kontrollirakenteesta, jossa toiminto riippuu tehtyjen vertailujen tuloksesta.</p>
 
 <pre class="sh_java">
 int nopeus = 105;
@@ -612,7 +669,9 @@ if(nopeus &lt; 110) {
 }
 </pre>
 
-    <p>Koska yllä olevassa esimerkissä muuttujan <code>nopeus</code> arvo on 105, tulostaa ohjelma aina merkkijonon <code>Kaasua</code>. Muistathan että merkkijonojen yhtäsuuruusvertailu tapahtuu merkkijonoon liittyvällä <code>equals</code>-metodilla. Alla on esimerkki jossa käytetään Javan <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html" target="_blank">Scanner</a>-luokasta luotua olioita käyttäjän kirjoittaman syötteen lukemiseen. Ohjelma tarkistaa ovatko käyttäjän syöttämät merkkijonot samat.</p>
+    <p>Esimerkissä tulostetaan merkkijono <code>Kaasua</code> jos muuttujan <code>nopeus</code> arvo on pienempi kuin 110, merkkijono <code>Jarrua</code> jos muuttujan <code>nopeus</code> arvo on suurempi kuin 120 ja merkkijono <code>Kruisaillaan</code> muissa tapauksissa. Koska esimerkissä muuttujan <code>nopeus</code> arvo on 105, tulostaa ohjelma aina merkkijonon <code>Kaasua</code>.</p>
+
+    <p>Vertailut kuten <code>&lt;</code> tai <code>==</code> toimivat alkeistyyppisillä muuttujilla, mutta viittaustyyppisillä muuttujilla vertailu tapahtuu <code>equals</code> ja <code>compareTo</code>-metodeilla. Alla olevassa esimerkissä käytetään Javan <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html" target="_blank">Scanner</a>-luokasta luotua oliota käyttäjän kirjoittaman syötteen lukemiseen. Ohjelma tarkistaa ovatko käyttäjän syöttämät merkkijonot samat.</p>
 
 <pre class="sh_java">
 Scanner lukija = new Scanner(System.in);
@@ -640,20 +699,49 @@ Syötä toinen merkkijono: <font color="red">salaatti</font>
 
 Kirjoittamasi merkkijonot eivät olleet samat!</pre>
 
+
+<div class="tehtavat">
+  <div class="tehtava">
+
+    <h3>Eipäs juupas!</h3>
+
+    <p>Kirjoita ohjelma, joka kysyy käyttäjältä kahta merkkijonoa. Jos merkkijonot ovat samat, ohjelman tulee tulostaa seuraavanlainen viesti.</p> 
+
+<pre>
+Olipas!
+No eipäs ollut!
+Juupas!
+</pre>
+
+    <p>Jos taas syötetyt merkkijonot ovat erilaiset, ohjelman tulee tulostaa seuraavanlainen viesti.</p>
+
+<pre>
+Eipäs ollut!
+Juupas!
+Eipäs!
+</pre>
+
+  </div>
+</div>
+
+
     <h3>Toistolausekkeet</h3>
 
-    <p>Ohjelmissa tarvitaan usein toistoa. Tehdään ensin ns. while-true-break -toistolause, jota jatketaan niin pitkään kunnes käyttäjä syöttää merkkijonon <code>salasana</code>. Lause <code>while(true)</code> aloittaa toistolauseen, jota jatketaan kunnes kohdataan avainsana <code>break</code>.</p>
+    <p>Ohjelmissa tarvitaan usein toistoa. Tehdään ensin ns. <code>while-true-break</code> -toistolause, jossa toistolauseen sisäinen lohko suoritetaan yhä uudestaan kunnes käyttäjä syöttää merkkijonon <code>salasana</code>. Lausetta <code>while(true)</code> aloittaa toistolauseen, jota jatketaan kunnes kohdataan avainsana <code>break</code>.</p>
 
 <pre class="sh_java">
 Scanner lukija = new Scanner(System.in);
 
 while(true) {
+    // toistettava lohko alkaa tästä
     System.out.print("Syötä salasana: ");
     String salasana = lukija.nextLine();
 
     if(salasana.equals("salasana")) {
         break;
     }
+
+    // toistettava lohko päättyy tänne
 }
 
 System.out.println("Kiitos!");
@@ -663,7 +751,7 @@ System.out.println("Kiitos!");
 <pre>
 Syötä salasana: <font color="red">porkkana</font>
 Syötä salasana: <font color="red">salasana</font>
-Kiitos</pre>
+Kiitos!</pre>
 
 
     <p>While-toistolausekkeeseen voi asettaa totuusarvon <code>true</code> sijaan myös vertailun. Alla tulostetaan käyttäjän syöttämä merkkijono siten, että sillä on ylä- ja alapuolella tähtiä.</p>
@@ -697,7 +785,24 @@ Syötä merkkijono: <font color="red">porkkana</font>
 porkkana
 ********</pre>
 
-    <p>Yllä olevan esimerkin pitäisi nostattaa kylmiä väreitä selkäpiissäsi. Kylmät väreet toivottavasti johtuvat siitä, että huomaat esimerkin rikkovan ohjelmoinnin perusteissa opittuja käytänteitä. Esimerkissä on turhaa toistoa joka tulee poistaa metodien avulla.</p>
+    <p>Yllä olevan esimerkki nostattaa mahdollisesti kylmiä väreitä selkäpiissäsi. Kylmät väreet johtuvat mahdollisesti siitä, että huomaat esimerkin rikkovan muutamia aiemmin opittuja hyviä käytänteitä. Esimerkissä on turhaa toistoa joka tulee poistaa metodien avulla.</p>
+
+<div class="tehtavat">
+  <div class="tehtava">
+
+    <h3>Salasana tähtinä</h3>
+
+    <p>Kirjoita ohjelma, joka kysyy käyttäjältä salasanaa. Kun käyttäjä syöttää salasanan, ohjelma tulostaa viestin "Salasanasi on siis ***", missä tähtiä on yhtä paljon kuin käyttäjän salasanassa on merkkejä.</p>
+
+    <p>Esimerkki:</p>
+
+<pre>
+Anna salasanasi: <font color="red">nauris!</font>
+Salasanasi on siis *******
+</pre>
+
+  </div>
+</div>
 
     <p>While-toistolauseen lisäksi käytössämme on myös for-toistolauseen kaksi versiota. Uudempaa for-lauseketta käytetään listojen läpikäyntiin.</p>
 
@@ -716,7 +821,7 @@ Hei
 Hallo
 Hi</pre>
 
-    <p>Perinteisempää for-lausetta käytetään samankaltaisissa tilanteissa kuin <code>while</code>-toistolausetta. Sitä voidaan käyttää esimerkiksi taulukoiden läpikäyntiin. Seuraavassa esimerkissä kerrotaan jokaisen taulukon <code>luvut</code> alkion sisältö kahdella ja lopuksi tulostetaan luvut uudempaa for-lausetta käyttäen.</p>
+    <p>Perinteisempää for-lausetta käytetään samankaltaisissa tilanteissa kuin <code>while</code>-toistolausetta. Sitä voidaan käyttää esimerkiksi taulukoiden läpikäyntiin. Seuraavassa esimerkissä kerrotaan jokaisen <code>luvut</code>-taulukon alkion arvo kahdella, asetetaan arvo takaisin taulukkoon, ja lopuksi tulostetaan luvut uudempaa for-lausetta käyttäen.</p>
 
 <pre class="sh_java">
 int[] luvut = new int[] {1, 2, 3, 4, 5, 6};
@@ -753,16 +858,47 @@ Hip!
 Hip!
 Hip!</pre>
 
+<div class="tehtavat">
+  <div class="tehtava">
+
+    <h3>Hip hip hurraa!</h3>
+
+    <p>Kirjoita ohjelma, joka kysyy käyttäjältä merkkijonoa ja tulostaa merkkijonon merkki kerrallaan omille riveilleen siten, että joka toisella merkillä tulostetaan merkin lisäksi "hip" ja joka viidennellä merkillä tulostetaan merkin lisäksi "hurraa".</p>
+
+    <p>Ohjelman pitäisi toimia esimerkiksi seuraavasti.</p>
+
+<pre>
+Kirjoita merkkijono: <font color="red">saippuakauppias</font>
+s
+a hip
+i 
+p hip
+p hurraa
+u hip
+a 
+k hip
+a 
+u hip hurraa
+p
+p hip
+i
+a hip
+s hurraa
+</pre>
+
+  </div>
+</div>
+
 
     <h3>Metodit</h3>
 
-    <p>Metodit ovat tapa pilkkoa ohjelman toiminnallisuutta pienempiin osakokonaisuuksiin. Kaikkien Java-ohjelmien suoritus alkaa pääohjelmametodista, joka määritellään lauseella <code>public static void main(String[] args)</code>. Lause määrittelee staattisen, eli luokkaan liittyvän metodin, joka saa parametrina merkkijonotaulukon. </p>
+    <p>Metodit ovat tapa pilkkoa ohjelman toiminnallisuutta pienempiin osakokonaisuuksiin. Kaikkien Java-ohjelmien suoritus alkaa pääohjelmametodista, joka määritellään lauseella <code>public static void main(String[] args)</code>. Lause määrittelee staattisen, eli luokkaan liittyvän metodin, joka saa parametrina merkkijonotaulukon.</p>
 
-    <p>Ohjelmoija määrittelee metodeja ohjelman sisältävien toiminnallisuuksien abstrahoimiseksi. Ohjelmoidessa tulee tavoitella tilannetta, jossa ohjelmaa voidaan katsoa <em>korkeammalta tasolta</em>, jolloin pääohjelma koostuu joukosta itse määriteltyjen, hyvin nimettyjen metodien kutsuja. Metodit taas tarkentavat ohjelman toiminnallisuutta ja ehkä toteuttavat oman toiminnallisuutensa kutsumalla joitain muita metodeja.</p>
+    <p>Ohjelmoija määrittelee metodeja ohjelman sisältävien toiminnallisuuksien abstrahoimiseksi. Ohjelmoidessa tavoitellaan tilannetta, jossa ohjelmaa voidaan katsoa <em>korkeammalta tasolta</em>, jolloin pääohjelma koostuu joukosta hyvin nimettyjen metodien kutsuja. Metodit taas tarkentavat ohjelman toiminnallisuutta ja ehkä toteuttavat osan omasta toiminnallisuudestaan kutsumalla muita metodeja.</p>
 
-    <p>Metodit joiden määrittelyssä on sana <code>static</code>, liittyvät metodin sisältävään <em>luokkaan</em> ja toimivat ns. apumetodeina. Metodit joiden määrittelyssä ei ole sanaa <code>static</code> liittyvät luokasta tehtyihin ilmentymiin, eli <em>olioihin</em>, ja voivat muokata yksittäisten olioiden sisäistä tilaa.</p>
+    <p>Metodit joiden määrittelyssä on sana <code>static</code>, liittyvät metodin sisältävään <em>luokkaan</em> ja toimivat apumetodeina. Metodit joiden määrittelyssä ei ole sanaa <code>static</code> liittyvät luokasta tehtyihin ilmentymiin, eli <em>olioihin</em>, ja voivat muokata yksittäisten olioiden sisäistä tilaa.</p>
 
-    <p>Metodilla on aina näkyvyysmääre (public, näkyy kaikille, private, näkyy vain luokan sisällä), paluutyyppi (void, ei palauta arvoa) sekä metodin nimi. Seuraavassa luodaan luokkaan liittyvä metodi <code>public static void tulosta(String merkkijono, int kertaa)</code>, joka tulostaa merkkijonon halutun määrän kertoja. Käytetään tällä kertaa metodia <code>System.out.print</code>, joka toimii muuten samoin kuin <code>System.out.println</code>, mutta ei tulosta rivinvaihtoa.</p>
+    <p>Metodilla on tyypillisesti näkyvyysmääre (esim. public, näkyy kaikille, private, näkyy vain luokan sisällä), paluutyyppi (esim. void, ei palauta arvoa, int, palauttaa kokonaislukutyyppisen muuttujan) sekä metodin nimi. Seuraavassa luodaan luokkaan liittyvä metodi <code>public static void tulosta(String merkkijono, int kertaa)</code>, joka tulostaa merkkijonon halutun määrän kertoja. Käytetään tällä kertaa metodia <code>System.out.print</code>, joka toimii muuten samoin kuin <code>System.out.println</code>, mutta ei tulosta rivinvaihtoa.</p>
 
 <pre class="sh_java">
 public static void tulosta(String merkkijono, int kertaa) {
@@ -771,7 +907,18 @@ public static void tulosta(String merkkijono, int kertaa) {
     }
 }</pre>
 
-    <p>Yllä oleva metodi tulostaa parametrina annetun merkkijonon niin monta kertaa kuin parametrina annettu kokonaisluku kertoo.</p>
+    <p>Yllä oleva metodi tulostaa parametrina annetun merkkijonon niin monta kertaa kuin parametrina annettu kokonaisluku kertoo. Esimerkiksi kutsu:</p>
+
+<pre class="sh_java">
+tulosta("liiku", 3);
+</pre>
+
+    <p>Tulostaa</p>
+
+<pre>
+liikuliikuliiku
+</pre>
+
 
     <p>Toistolausekkeisiin liittyvässä luvussa huomasimme että koodi sisälsi tähtien tulostamisen osalta ikävästi "copypastea". Metodien avulla voimme siirtää tähtien tulostamisen erillisen metodiin. Luodaan metodi <code>public static void tulostaTahtia(int kertaa)</code>, joka tulostaa parametrina annetun määrän tähtiä. Metodi käyttää <code>for</code>-toistolausetta <code>while</code>:n sijaan.</p>
 
@@ -783,7 +930,7 @@ public static void tulostaTahtia(int kertaa) {
     System.out.println();
 }</pre>
 
-    <p>Metodia hyödyntäessä aiemmin kauhistusta aihettanut esimerkkimme näyttää seuraavalta.</p>
+    <p>Metodia hyödyntäessä aiempi esimerkkimme näyttää seuraavalta.</p>
 
 <pre class="sh_java">
 Scanner lukija = new Scanner(System.in);
@@ -796,9 +943,45 @@ System.out.println(merkkijono);
 tulostaTahtia(merkkijono.length());</pre>
 
 
+<div class="tehtavat">
+  <div class="tehtava">
+    <h3>Hymiöt</h3>
+
+    <p>Laadi tehtavapohjan mukana tulevalle luokalle <code>Hymiot</code> apumetodi <code>private static void tulostaHymioityna(String merkkijono)</code>. Metodin tulee tulostaa annettu merkkijono hymiöillä ympyröitynä. Käytä hymiönä merkkijonoa <code>:)</code>.</p>
+
+<pre class="sh_java">
+tulostaHymioityna("\\:D/");</pre>
+
+<pre>
+:):):):):)
+:) \:D/ :)
+:):):):):)</pre>
+
+        <p>Huomaa, että merkkijonoon on kirjoitettava \\ jotta saadaan tulostumaan merkki \.</p>
+
+        <p><em>Huom!</em> Jos merkkijonon pituus on pariton, tulee ylimääräinen välilyönti lisätä annetun merkkijonon oikealle puolelle.</p>
+
+<pre class="sh_java">
+tulostaHymioityna("\\:D/");
+tulostaHymioityna("87.");</pre>
+
+<pre>
+:):):):):)
+:) \:D/ :)
+:):):):):)
+:):):):):)
+:) 87.  :)
+:):):):):)</pre>
+
+        <p>Kannattaa ensin miettiä montako hymiötä minkäkin pituiselle merkkijonolle tulee tulostaa. Merkkijonon pituuden saa selville siihen liittyvällä <code>length</code>-metodilla. Ala- ja ylärivin hymiöiden tulostamiseen auttaa toistolause, keskimmäisellä rivillä selviät normaalilla tulostuskomennolla. Pituuden parittomuuden voit tarkistaa jakojäännöksen avulla <code>merkkijono.length() % 2 == 1</code>.</p>
+
+  </div>
+</div>
+
+
     <h3>Luokka</h3>
 
-    <p>Metodit toimivat ohjelman abstrahoimisessa tiettyyn pisteeseen asti, mutta ohjelmien kasvaessa suuremmiksi, ohjelmia halutaan pilkkoa vielä pienempiin ja loogisempiin kokonaisuuksiin. Luokkien avulla voimme määritellä ohjelmaan korkeamman tason käsitteitä ja käsitteisiin liittyviä toiminnallisuuksia. Jokainen Java-ohjelma vaatii toimiakseen luokan, eli yllä rakennettu <code>Hei maailma!</code> -esimerkki ei toimisi ilman luokkamäärittelyä. Luokka määritellään avainsanoilla <code>public class LuokanNimi</code>.</p>
+    <p>Metodit toimivat ohjelman abstrahoimisessa tiettyyn pisteeseen asti, mutta ohjelmien kasvaessa suuremmiksi, ohjelmia halutaan pilkkoa vielä pienempiin ja loogisempiin kokonaisuuksiin. Luokkien avulla voimme määritellä ohjelmaan korkeamman tason käsitteitä ja käsitteisiin liittyviä toiminnallisuuksia. Jokainen Java-ohjelma vaatii toimiakseen luokan, eli ensimmäinenkään <code>Hei maailma!</code> -esimerkki ei toimisi ilman luokkamäärittelyä. Luokka määritellään avainsanoilla <code>public class LuokanNimi</code>.</p>
 
 <pre class="sh_java">
 public class HeiMaailma {
@@ -807,7 +990,7 @@ public class HeiMaailma {
     }
 }</pre>
 
-    <p>Luokkia siis käytetään ohjelmassa esiintyvien käsitteiden ja niihin liittyvien toiminnallisuuksien määrittelyyn. Luokista voidaan luoda olioita, jotka ovat luokan ilmentymiä. Jokaisella tiettyyn luokkaan liittyvällä oliolla on sama rakenne, mutta oliohin liittyvien muuttujien arvot voivat olla erilaiset. Olioiden metodit käsittelevät olioiden tilaa, eli sisäisiä muuttujia.</p>
+    <p>Luokkia käytetään ohjelmassa esiintyvien käsitteiden ja niihin liittyvien toiminnallisuuksien määrittelyyn. Luokista voidaan luoda olioita, jotka ovat luokan ilmentymiä. Jokaisella tiettyyn luokkaan liittyvällä oliolla on sama rakenne, mutta oliohin liittyvien muuttujien arvot voivat olla erilaiset. Olioiden metodit käsittelevät olioiden tilaa, eli sisäisiä muuttujia.</p>
 
     <p>Tutkitaan alla olevaa luokkaa <code>Kirja</code>, jolla on oliomuuttujat nimi (merkkijono) ja julkaisuvuosi (kokonaisluku).</p>
 
@@ -941,10 +1124,93 @@ Maijan tileillä rahaa: 0
 Matin tileillä rahaa: 160000
 Maijan tileillä rahaa: 10000</pre>
 
-    <p>Ensin kummankin henkilön tilit ovat tyhjiä. Kun palkkatilille, johon oliolla <code>matti</code> on viite, lisätään rahaa, kasvaa Matin tileillä oleva rahamäärä. Kun kotitaloustilille lisätään rahaa, <em>kasvaa kummankin henkilön rahamäärä</em>. Tämä johtuu siitä että sekä Matilla että Maijalla on "oikeus" kotitaloustilille, eli kummakin omassa oliomuuttujassa <code>tilit</code> on viite kotitaloustiliin. Palaamme alkeis- ja viitetyyppisten muuttujien eroon tarkemmin myöhemmin.</p>
+    <p>Ensin kummankin henkilön tilit ovat tyhjiä. Kun palkkatilille, johon oliolla <code>matti</code> on viite, lisätään rahaa, kasvaa Matin tileillä oleva rahamäärä. Kun kotitaloustilille lisätään rahaa, <em>kasvaa kummankin henkilön rahamäärä</em>. Tämä johtuu siitä että sekä Matilla että Maijalla on "oikeus" kotitaloustilille, eli kummakin omassa oliomuuttujassa <code>tilit</code> on viite kotitaloustiliin.</p>
+
+
+<div class="tehtavat">
+  <div class="tehtava">
+
+    <h3>Lahjapakkaamo</h3>
+    
+
+    
+    <p>Tässä tehtäväsarjassa tehdään luokat <code>Lahja</code> ja <code>Pakkaus</code>. Lahjalla on nimi ja paino, ja Pakkaus sisältää lahjoja.</p>
+
+    <h4>Lahja-luokka</h4>
+    
+    <p>Tee luokka <code>Lahja</code>, josta muodostetut oliot vastaavat erilaisia lahjoja. Tallennettavat tiedot ovat tavaran nimi ja paino (kg).</p>
+
+    <p>Lisää luokkaan seuraavat metodit:</p>
+    
+    <ul>
+      <li>Konstruktori, jolle annetaan parametrina lahjan nimi ja paino</li>
+      <li>Metodi <code>public String getNimi()</code>, joka palauttaa lahjan nimen</li>
+      <li>Metodi <code>public int getPaino()</code>, joka palauttaa lahjan painon</li>
+      <li>Metodi <code>public String toString()</code>, joka palauttaa merkkijonon muotoa "nimi (paino kg)"</li>
+    </ul>
+    
+    <p>Seuraavassa on luokan käyttöesimerkki:</p>
+
+<pre class="sh_java">
+public class Main {
+    public static void main(String[] args) {
+        Lahja kirja = new Lahja("Aapiskukko", 2);
+
+        System.out.println("Lahjan nimi: " + kirja.getNimi());
+        System.out.println("Lahjan paino: " + kirja.getPaino());
+
+        System.out.println("Lahja: " + kirja);
+    }
+}</pre>
+
+        <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+Lahjan nimi: Aapiskukko
+Lahjan paino: 2
+Lahja: Aapiskukko (2 kg)</pre>
+
+        <h4>Pakkaus-luokka</h4>
+
+        <p>Tee luokka <code>Pakkaus</code>. Pakkaus voi sisältää äärettömän määrän lahjoja, jonka lisäksi se tarjoaa metodin lahjojen yhteispainon laskemiseen.</p>
+
+        <p>Lisää luokkaan seuraavat metodit:</p>
+
+        <ul>
+          <li> Parametriton konstruktori</li>
+          <li> Metodi <code>public void lisaaLahja(Lahja lahja)</code>, joka lisää parametrina annettavan lahjan pakkaukseen. Metodi ei palauta mitään arvoa.</li>
+        </ul>
+
+        <p>Tavarat kannattaa tallentaa <code>ArrayList</code>-olioon:</p>
+
+<pre class="sh_java">
+ArrayList&lt;Lahja&gt; lahjat = new ArrayList&lt;&gt;();</pre>
+
+        <p>Seuraavassa on luokan käyttöesimerkki:</p>
+
+<pre class="sh_java">
+public class Main {
+    public static void main(String[] args) {
+        Lahja kirja = new Lahja("Aapiskukko", 2);
+
+        Pakkaus paketti = new Pakkaus();
+        paketti.lisaaLahja(kirja);
+        System.out.println(paketti.getPaino());
+    }
+}</pre>
+
+        <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+2</pre>
+
+  </div>
+</div>
+
 
 
     <h3>Ohjelmien rakenteesta</h3>
+
 
     <p>Ohjelmista tulee olla selkeitä niin ohjelmoijalle kuin muille ohjelmaa tarkasteleville. Selkeys saadaan aikaan sopivalla luokkarakenteella ja hyvien nimeämiskäytänteiden seuraamisella. Jokaisella luokalla tulee olla selkeä vastuu, johon liittyviä tehtäviä luokka hoitaa. Metodeja käytetään toiston vähentämiseen ja luokkien sisäisten toimintojen jäsentämiseen. Myös metodilla tulee olla selkeä vastuu eli metodien ei tule olla liian pitkiä ja liian montaa asiaa tekeviä. Liian montaa asiaa tekevät monimutkaiset metodit tuleekin pilkkoa useiksi pienemmiksi apumetodeiksi joita alkuperäinen metodi kutsuu. Hyvät ohjelmoijat ohjelmoivat koodia, jota he ja heidän työkaverinsa ymmärtävät myös viikkoja koodin kirjoittamisen jälkeenkin.</p>
 
@@ -1197,34 +1463,34 @@ public class Kayttoliittyma {
 }</pre>
 
 
-    <p> Nyt ohjelma on rakenteeltaan riittävän selkeä, metodit ovat kuvaavasti nimettyjä ja jokaisella metodilla on oma pieni tehtävä, josta metodi huolehtii. Huomaa että emme lisänneet refaktoroidessa ohjelmaan uutta toiminnallisuutta, muokkasimme vain rakennetta selkeämmäksi.</p>
+    <p>Nyt ohjelma on rakenteeltaan selkeä, metodit ovat kuvaavasti nimettyjä ja jokaisella metodilla on oma pieni tehtävä, josta metodi huolehtii. Huomaa että emme lisänneet refaktoroidessa ohjelmaan uutta toiminnallisuutta, muokkasimme vain rakennetta selkeämmäksi.</p>
 
 
     <h3>Ohjelmoinnista ja ennenkaikkea harjoittelun tärkeydestä</h3>
 
-    <p>Tietääksemme kukaan ei ole oppinut ohjelmoimaan luentoja kuuntelemalla. Ohjelmointitaidon kehittymisen kannalta harjoittelu ja kertaaminen on tärkeää. Ohjelmointitaitoa on verrattu niin kielten puhumiseen kuin instrumentin soittamiseen, kummassakin kehittyy vain harjoittelemalla. Oikeastaan, esimerkiksi hyvät viulistit eivät ole hyviä <em>vain</em> sen takia, että he ovat harjoitelleet paljon. Harjoittelua motivoi myös se, että se on hauskaa. Samaa voi sanoa ohjelmoijista.</p>
+    <p>Tietääksemme kukaan ei ole oppinut ohjelmoimaan luentoja kuuntelemalla. Ohjelmointitaidon kehittymisen kannalta harjoittelu ja kertaaminen on tärkeää. Ohjelmointitaitoa on verrattu niin kielten puhumiseen kuin instrumentin soittamiseen -- kummassakin kehittyy vain harjoittelemalla. Oikeastaan, esimerkiksi hyvät viulistit eivät ole hyviä <em>vain</em> sen takia, että he ovat harjoitelleet paljon, vaan he ovat myös oppineet pitämään siitä mitä he tekevät. Harjoittelua motivoi se, että se on hauskaa. Samaa voi sanoa ohjelmoinnista.</p>
 
     <p>Linus Torvaldsin sanoin <em>"Most good programmers do programming not because they expect to get paid or get adulation by the public, but because it is fun to program."</em>.</p>
 
     <p>Tohtori Luukkainen on kirjoittanut listan jota kannattaa seurata ohjelmoidessa ja siinä kehittyessä. Seuraa listan neuvoja kunnes osaat ne unissasikin.</p>
 
     <ul>
-      <li> Etene pieni askel kerrallaan
-      <ul>
-        <li> Yritä pilkkoa ongelma osaongelmiin ja <strong>ratkaise vain yksi osaongelma kerrallaan</strong> </li>
-        <li> Testaa aina että ohjelma on etenemässä oikeaan suuntaan eli että osaongelman ratkaisu meni oikein</li>
+      <li>Etene pieni askel kerrallaan
+	<ul>
+          <li> Yritä pilkkoa ongelma osaongelmiin ja <strong>ratkaise vain yksi osaongelma kerrallaan</strong> </li>
+          <li> Testaa aina että ohjelma on etenemässä oikeaan suuntaan eli että osaongelman ratkaisu meni oikein</li>
       </ul></li>
       <li> Kirjoita mahdollisimman "siistiä" koodia
-      <ul>
-        <li> sisennä koodi </li>
-        <li> käytä kuvaavia muuttujien ja metodien nimiä</li>
-        <li> älä tee liian pitkiä metodeja, edes mainia</li>
-        <li> tee yhdessä metodissa vaan yksi asia</li>
-        <li> <strong>poista koodistasi kaikki copy-paste</strong></li>
-        <li> korvaa koodisi "huonot" ja epäsiistit osat siistillä koodilla</li>
+	<ul>
+          <li> Sisennä koodi </li>
+          <li> Käytä kuvaavia muuttujien ja metodien nimiä</li>
+          <li> Älä tee liian pitkiä metodeja, edes mainia</li>
+          <li> Tee yhdessä metodissa vaan yksi asia</li>
+          <li> <strong>Poista koodistasi kaikki copy-paste</strong></li>
+          <li> Korvaa koodisi "huonot" ja epäsiistit osat siistillä koodilla</li>
       </ul></li>
     </ul>
-
+    
 
 
     <h3>Näkyvyysmääreet</h3>
@@ -1256,44 +1522,7 @@ public class Kirja {
 
     <p>Yllä olevasta Kirja-luokasta luotujen olioiden tietoihin pääsee käsiksi vain kirjan julkisten metodien kautta. Private-määreellä merkityt oliomuuttujat ovat näkyvillä ja käsiteltävissä vain luokan sisäisessä koodissa. Jos kirjalla olisi private-määreellinen metodi, ei sitäkään voisi käyttää muualta kuin Kirja-luokan sisältä.</p>
 
-    <p>Sitten itse asiaan, eli harjoitteluun!</p>
-
-    <div class="tehtavat" id="viikko8">
-
-      <div class="tehtava">
-        <h3>Hymiöt</h3>
-
-	<p class="hidden-in-mooc ignore-in-mooc"><strong>Huom! Tehtävät löytyvät TMC:stä kurssin hy-s2015-ohja alta. Palvelimen osoitteena käytetään https://tmc.mooc.fi/hy</strong></p>
-
-        <p>Laadi tehtavapohjan mukana tulevalle luokalle <code>Hymiot</code> apumetodi <code>private static void tulostaHymioityna(String merkkijono)</code>. Metodin tulee tulostaa annettu merkkijono hymiöillä ympyröitynä. Käytä hymiönä merkkijonoa <code>:)</code>.</p>
-
-<pre class="sh_java">
-tulostaHymioityna("\\:D/");</pre>
-
-<pre>
-:):):):):)
-:) \:D/ :)
-:):):):):)</pre>
-
-        <p>Huomaa, että merkkijonoon on kirjoitettava \\ jotta saadaan tulostumaan merkki \.</p>
-
-        <p><em>Huom!</em> Jos merkkijonon pituus on pariton, tulee ylimääräinen välilyönti lisätä annetun merkkijonon oikealle puolelle.</p>
-
-<pre class="sh_java">
-tulostaHymioityna("\\:D/");
-tulostaHymioityna("87.");</pre>
-
-<pre>
-:):):):):)
-:) \:D/ :)
-:):):):):)
-:):):):):)
-:) 87.  :)
-:):):):):)</pre>
-
-        <p>Kannattaa ensin miettiä montako hymiötä minkäkin pituiselle merkkijonolle tulee tulostaa. Merkkijonon pituuden saa selville siihen liittyvällä <code>length</code>-metodilla. Ala- ja ylärivin hymiöiden tulostamiseen auttaa toistolause, keskimmäisellä rivillä selviät normaalilla tulostuskomennolla. Pituuden parittomuuden voit tarkistaa jakojäännöksen avulla <code>merkkijono.length() % 2 == 1</code>.</p>
-
-      </div>
+    <div class="tehtavat">
 
       <div class="tehtava">
         <h3>Merkkijonomuuntaja</h3>
@@ -1523,13 +1752,14 @@ Laskuja laskettiin 1</pre>
     </div>
 
 
+
     <h2>Alkeis- ja viitetyyppiset muuttujat</h2>
 
     <p>Java on vahvasti tyypitetty kieli, eli kaikilla sen muuttujilla on <em>tyyppi</em>. Muuttujien tyypit voidaan jakaa kahteen kategoriaan: <strong>alkeis- ja viitetyyppisiin muuttujiin</strong>. Kummankin kategorian tyypisillä muuttujilla on oma "lokero", joka sisältää niihin liittyvän tiedon. Alkeistyyppisillä muuttujilla lokeroon talletetaan muuttujien konkreettinen <em>arvo</em>, kun taas viitetyyppisten muuttujien lokero sisältää <em>viitteen</em> muuttujaan liittyvään konkreettiseen <em>olioon</em>.</p>
 
     <h3>Alkeistyyppiset muuttujat</h3>
 
-    <p>Alkeistyyppisen muuttujan arvo tallennetaan muuttujaa varten luotuun lokeroon. Jokaisella alkeistyyppisellä muuttujalla on oma lokero ja oma arvo. Muuttujalle luodaan uusi lokero silloin kun se esitellään (esim. <code>int numero;</code>). Lokeroon asetetaan arvo sijoitusoperaatiolla <code>=</code>. Alla on esimerkki alkeistyyppisen int (kokonaisluku) -muuttujan esittelemisestä ja arvon asettamisesta samassa lausekkeessa.</p>
+    <p>Alkeistyyppisen muuttujan arvo tallennetaan muuttujaa varten luotuun lokeroon, johon pääsee käsiksi muuttujan nimellä. Jokaisella alkeistyyppisellä muuttujalla on oma nimetty lokero ja oma arvo. Muuttujalle luodaan uusi lokero silloin kun se esitellään (esim. <code>int numero;</code>). Lokeroon asetetaan arvo sijoitusoperaatiolla <code>=</code>. Alla on esimerkki alkeistyyppisen int (kokonaisluku) -muuttujan esittelemisestä ja arvon asettamisesta samassa lausekkeessa.</p>
 
 <pre class="sh_java">
 int numero = 42;</pre>
@@ -2998,6 +3228,128 @@ Valitse toiminto:
 
     </div>
   </div>
+
+
+<div class="panel-group" id="8yhteenveto">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#8yhteenveto" href="#8yhteenveto2">
+      <div class="panel-heading">
+	<h4 class="kysely" id="yhteenveto-8-form-legend">Viikon 8 Loppukysely</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="8yhteenveto2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="yhteenveto-8-form">
+            <fieldset>
+                <legend id="yhteenveto-8-legend">Viikon 8 Loppukysely</legend>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-8-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-8-form-tmc-tunnus" name="yhteenveto-8-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-8-form-tuntia">Kuinka monta tuntia käytit kurssin kahdeksanteen viikkoon (noin)</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-8-form-tuntia" name="yhteenveto-8-form-tuntia" type="number" class="form-control input-md">
+                    </div>
+                </div>
+
+		<p>&nbsp;</p>
+
+		<p>Alla on esitetty viikkoon liittyviä väittämiä. Jos olet täysin eri mieltä väittämän kanssa, valitse 1. Jos olet täysin samaa mieltä väittämän kanssa, valitse 7. Muuten, valitse luku väliltä.</p>
+
+                <div class="row" id="yhteenveto-8-form-skaala">
+                    <div class="col-md-3">Täysin eri mieltä.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Täysin samaa mieltä.</div>
+                </div>
+
+		<p>&nbsp;</p>
+
+                <div id="yhteenveto-8-form-vaittamat">
+		  <div class="row"><div class="col-md-3">1. Viikko oli työläs.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">2. Viikko oli opettavainen.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">3. Viikko oli turhauttava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">4. Viikko oli mukava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">5. Viikko oli vaikea.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="7" type="radio">7</label></div></div>
+                </div>
+		
+		<p>&nbsp;</p>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-8-form-vaikein">Vaikein asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-8-form-vaikein" name="yhteenveto-8-form-vaikein" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-8-form-helpoin">Helpoin asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-8-form-helpoin" name="yhteenveto-8-form-helpoin" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-8-form-turhauttavinta">Turhauttavinta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-8-form-turhauttavinta" name="yhteenveto-8-form-turhauttavinta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-8-form-parasta">Parasta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-8-form-parasta" name="yhteenveto-8-form-parasta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-8-form-palaute">Yleinen palaute:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-8-form-palaute" rows="6" name="yhteenveto-8-form-palaute" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <input type="hidden" id="yhteenveto-8-form-started-entering" name="yhteenveto-8-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="yhteenveto-8-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="yhteenveto-8-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 </section>
 
 
