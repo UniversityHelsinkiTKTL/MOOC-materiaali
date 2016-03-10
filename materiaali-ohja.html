@@ -3365,7 +3365,7 @@ Valitse toiminto:
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2mslqtoimintatavat" href="#2mslqtoimintatavat2">
       <div class="panel-heading">
-	<h4 id="mslq-toimintatavat-form-legend">Kysely: Opiskeluun liittyvät toimintatavat</h4>
+	<h4 class="kysely" id="mslq-toimintatavat-form-legend">Kysely: Opiskeluun liittyvät toimintatavat</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2mslqtoimintatavat2">
@@ -3431,7 +3431,7 @@ Valitse toiminto:
 </div>
 
 
-    <p>Kuten kurssilla ohjelmoinnin perusteet, myös kurssilla ohjelmoinnin jatkokurssi on selitystehtäviä. Ajattele tehtäviä niin, että harjoittelet kertomaan kurssiin liittyvistä asioista kaverillesi. Käytä kursseilta tutuksi tullutta termistöä -- kertaa myös aiempaa materiaalia tarvittaessa. Kukin selitystehtävä on kahden tehtäväpisteen arvoinen.</p>
+    <p>Kun kohtaat selitystehtävän, ajattele tehtävää niin, että harjoittelet kertomaan kurssiin liittyvistä asioista kaverillesi. Käytä kursseilta tutuksi tullutta termistöä -- kertaa myös aiempaa materiaalia tarvittaessa.</p>
 
     <div class="self-explanation" data-key="q-lentokoneolio"></div>
 
@@ -3694,6 +3694,33 @@ if (olioKirja.equals(toinenOlioKirja)) {
 <pre>
 Kirjat olivat samat</pre>
 
+<div class="tehtavat">
+  <div class="tehtava">
+    <h3>Sama päiväys</h3>
+
+    <p>Laajennetaan Viikon 6 tehtävässä "Päivämäärien erotus" toteutettua Paivays-luokkaa siten, että se osaa myös sanoa ovatko päivämäärät täsmälleen samat.</p>
+
+    <p>Lisää <code>Paivays</code>-luokkaan metodi <code>public boolean equals(Object object)</code>, joka kertoo onko metodille parametrina annettu olio päiväys ja onko parametrina annetun olion päiväys sama kuin käytetyn olion päiväys.</p>
+
+    <p>Metodin tulee toimia seuraavasti:</p>
+
+<pre class="sh_java">
+Paivays p = new Paivays(1, 2, 2000);
+System.out.println(p.equals("heh"));
+System.out.println(p.equals(new Paivays(5, 2, 2012)));
+System.out.println(p.equals(new Paivays(1, 2, 2000)));</pre>
+
+    <p>Tulostuksen pitäisi olla:</p>
+
+<pre>
+false
+false
+true</pre>
+
+  </div>
+</div>
+
+
   <h4>Equals ja ArrayList</h4>
 
   <p>Useat Javan valmiit tietorakenteet käyttävät <code>equals</code>-metodia osana sisäistä hakumekanismiaan. Esimerkiksi luokan <code>ArrayList</code> <code>contains</code>-metodi vertailee olioiden yhtäsuuruutta <code>equals</code>-metodin avulla. Jatketaan aiemmin määrittelemämme <code>Kirja</code>-luokan käyttöä seuraavassa esimerkissä. Jos emme toteuta omissa olioissamme <code>equals</code>-metodia, emme voi käyttää esimerkiksi <code>contains</code>-metodia. Kokeile alla olevaa koodia kahdella erilaisella <code>Kirja</code>-luokalla. Toisessa on <code>equals</code>-metodi, ja toisessa sitä ei ole.</p>
@@ -3768,6 +3795,18 @@ public int hashCode() {
 
     return this.julkaisuvuosi + this.nimi.hashCode();
 }</pre>
+
+
+<div class="tehtavat">
+  <div class="tehtava">
+    <h3>Hajautusarvo päiväykselle</h3>
+
+    <p>Laajennetaan vielä edellisessä tehtävässä nähtyä <code>Paivays</code>-luokkaa siten, että sillä on myös oma <code>hashCode</code>-metodi.</p>
+
+    <p>Lisää <code>Paivays</code>-luokkaan metodi <code>public int hashCode()</code>, joka laskee päiväys-oliolle hajautusarvon. Toteuta hajautusarvon laskeminen siten, että vuosien 1900 ja 2100 välillä löytyy mahdollisimman vähän samankaltaisia hajautusarvoja.</p>
+
+  </div>
+</div>
 
 
   <p>Sivuhuomautus: HashMapissa avaimina olevien olioiden hashCode-metodin tulos kertoo hajautusrakenteeseen talletettavien arvon paikan eli indeksin hajautustaulussa. Saatat tässä kohtaa miettiä "eikö tämä johda tilanteeseen jossa useampi olio päätyy samaan indeksiin hajautustaulussa?". Vastaus on kyllä ja ei. Vaikka metodi <code>hashCode</code> antaisi kahdelle eri oliolle saman arvon, on hajautustaulut toteutettu sisäisesti siten että useampi olio voi olla samassa indeksissä. Jotta samassa indeksissä olevat oliot voi erottaa toisistaan, tulee hajautustaulun avaimina toimivina olioilla olla metodi <code>equals</code> toteutettuna. Lisätietoa hajautustaulujen toteuttamisen periaatteista tulee kurssilla <em>tietorakenteet ja algoritmit</em>.</p>
@@ -3858,7 +3897,7 @@ Pekka
 Pekka
 Arto</pre>
 
-  <p><em>NetBeans tarjoaa metodien <code>equals</code> ja <code>hashCode</code> automaattisen luonnin. Voit valita valikosta Source -> Insert Code, ja valita aukeavasta listasta <em>equals() and hashCode()</em>. Tämän jälkeen NetBeans kysyy oliomuuttujat joita metodeissa käytetään.</em></p>
+  <p><em>NetBeans tarjoaa metodien <code>equals</code> ja <code>hashCode</code> automaattisen luonnin. Voit valita valikosta Source -> Insert Code, ja valita aukeavasta listasta <em>equals() and hashCode()</em>. Tämän jälkeen NetBeans kysyy oliomuuttujat joita metodeissa käytetään. Nämä NetBeansin generoimat metodit ovat tyypillisesti "tarpeeksi hyviä".</em></p>
 
 
   <div class="tehtavat" id="viikko8">
@@ -3959,6 +3998,10 @@ Jürgen</pre>
 
 
   <h2 id="rajapinta">Rajapinta</h2>
+
+<!--
+  <p>Joku motivoiva tarina tähän väliin?</p>
+-->
 
   <p>Rajapinnan (engl. <em>interface</em>) avulla määritellään luokalta vaadittu käyttäytyminen, eli sen metodit. Rajapinnat määritellään kuten normaalit Javan olevat luokat, mutta luokan alussa olevan määrittelyn "<code>public class ...</code>" sijaan käytetään määrittelyä "<code>public interface ...</code>". Rajapinnat määrittelevät käyttäytymisen metodien niminä ja palautusarvoina, mutta ne eivät aina sisällä metodien konkreettista toteutusta. Näkyvyysmäärettä rajapintoihin ei erikseen merkitä, sillä se on aina <code>public</code>. Tutkitaan luettavuutta kuvaavaa rajapintaa <em>Luettava</em>.</p>
 
@@ -4440,7 +4483,7 @@ public class Suklaalevy implements Talletettava {
 }
 </pre>
 
-<pre clsas="sh_java">
+<pre class="sh_java">
 public class Tehdas {
     // koska Javan generoima oletuskonstruktori riittää, emme tarvitse konstruktoria!
 
@@ -4656,6 +4699,32 @@ merkkijonot.add("merkkijono-olio linkedlist-oliossa!");</pre>
 
   <p>Tällä ohjelmointikurssilla eteen tulevissa tilanteissa kannattanee käytännössä valita aina ArrayList. Rajapintoihin ohjelmointi kuitenkin kannattaa: toteuta ohjelmasi siten, että käytät tietorakenteita rajapintojen kautta.</p>
 
+<div class="tehtavat">
+  <div class="tehtava">
+    <h3>List metodin parametrina</h3>
+
+    <p>Toteuta luokkaan <code>Paaohjelma</code> <em>luokkametodi</em> <code>palautaKoko</code>, joka saa parametrina List-olion ja palauttaa sen koon kokonaislukuna.</p>
+
+    <p>Metodin tulee toimia esimerkiksi seuraavasti:</p>
+
+<pre class="sh_java">
+List&lt;String&gt; nimet = new ArrayList&lt;&gt;();
+nimet.add("eka");
+nimet.add("toka");
+nimet.add("kolmas");
+
+System.out.println(palautaKoko(nimet));
+</pre>
+
+    <p>Tulostaa:</p>
+
+<pre>
+3</pre>
+
+  </div>
+</div>
+
+
   <h4>Map</h4>
 
   <p>Rajapinta <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html">Map</a> määrittelee hajautustauluihin liittyvän peruskäyttäytymisen. Koska HashMap-luokka toteuttaa <code>Map</code>-rajapinnan, voi sitä käyttää myös <code>Map</code>-rajapinnan kautta.</p>
@@ -4682,6 +4751,32 @@ hai: kyllä</pre>
 
   <p>Metodi <code>keySet</code> palauttaa <code>Set</code>-rajapinnan toteuttavan joukon alkioita. <code>Set</code>-rajapinnan toteuttavan joukon voi käydä läpi for-each -toistorakenteella. Hajautustaulusta saa talletetut arvot metodin <code>values</code>-avulla. Metodi <code>values</code> palauttaa <code>Collection</code> rajapinnan toteuttavan joukon alkioita. Tutustutaan vielä pikaisesti Set- ja Collection-rajapintoihin.</p>
 
+
+<div class="tehtavat">
+  <div class="tehtava">
+    <h3>Map metodin parametrina</h3>
+
+    <p>Toteuta luokkaan <code>Paaohjelma</code> <em>luokkametodi</em> <code>palautaKoko</code>, joka saa parametrina Map-olion ja palauttaa sen koon kokonaislukuna.</p>
+
+    <p>Metodin tulee toimia esimerkiksi seuraavasti:</p>
+
+<pre class="sh_java">
+Map&lt;String, String&gt; nimet = new HashMap&lt;&gt;();
+nimet.put("eka", "first");
+nimet.put("toka", "second");
+
+System.out.println(palautaKoko(nimet));
+</pre>
+
+    <p>Tulostaa:</p>
+
+<pre>
+2</pre>
+
+  </div>
+</div>
+
+
   <h4>Set</h4>
 
   <p>Rajapinta <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html" target="_blank">Set</a> kuvaa joukkoihin liittyvää toiminnallisuutta. Javassa joukot sisältävät aina joko 0 tai 1 kappaletta tiettyä oliota. Set-rajapinnan toteuttaa muun muassa <code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html" target="_blank">HashSet</a></code>. Joukon alkioita pystyy käymään läpi for-each -rakenteen avulla seuraavasti.</p>
@@ -4703,6 +4798,36 @@ kaksi</pre>
   <p>Huomaa että HashSet ei ota millään tavalla kantaa joukon alkioiden järjestykseen.</p>
 
   <div class="parqu-exercise" data-id="32" data-name="Setin koko"></div> 
+
+<div class="tehtavat">
+  <div class="tehtava">
+
+    <h3>Set metodin parametrina</h3>
+
+    <h3>Map metodin parametrina</h3>
+
+    <p>Toteuta luokkaan <code>Paaohjelma</code> <em>luokkametodi</em> <code>palautaKoko</code>, joka saa parametrina Set-olion ja palauttaa sen koon kokonaislukuna.</p>
+
+    <p>Metodin tulee toimia esimerkiksi seuraavasti:</p>
+
+<pre class="sh_java">
+Set&lt;String&gt; nimet = new HashSet&lt;&gt;();
+nimet.put("eka");
+nimet.put("eka");
+nimet.put("toka");
+nimet.put("toka");
+nimet.put("toka");
+
+System.out.println(palautaKoko(nimet));
+</pre>
+
+    <p>Tulostaa:</p>
+
+<pre>
+2</pre>
+
+  </div>
+</div>
   
   <h4>Collection</h4>
 
@@ -5062,8 +5187,9 @@ kauppa.asioi("Pekka");</pre>
   </div>
 
 
+<!--
   <div class="self-explanation" data-key="q-mikaihmeenlist"></div>
-
+-->
 
   <h2>Geneerisyys</h2>
 
@@ -5211,7 +5337,7 @@ System.out.println(kerholaiset);</pre>
 
   <div class="tehtavat">
     <div class="tehtava">
-      <h3>Ihmiset järjestykseen palkan mukaan</h3>
+      <h3>Palkkajärjestys</h3>
 
       <p>Saat valmiin luokan Ihminen. Ihmisellä on nimi- ja palkkatiedot. Muokkaa Ihminen-luokasta <code>Comparable</code>-rajapinnan toteuttava niin, että <code>compareTo</code>-metodi lajittelee ihmiset palkan mukaan järjestykseen isoimmasta palkasta pienimpään.</p>
     </div>
@@ -5600,6 +5726,126 @@ Sija    Nimi
     <p><iframe allowfullscreen="" frameborder="0"  height="450" width="700" src="http://www.youtube.com/embed/LFxtwce8chM"></iframe></p>
 -->
 </div>
+
+
+<div class="panel-group" id="9yhteenveto">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#9yhteenveto" href="#9yhteenveto2">
+      <div class="panel-heading">
+	<h4 class="kysely" id="yhteenveto-9-form-legend">Viikon 9 Loppukysely</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="9yhteenveto2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="yhteenveto-9-form">
+            <fieldset>
+                <legend id="yhteenveto-9-legend">Viikon 9 Loppukysely</legend>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-9-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-9-form-tmc-tunnus" name="yhteenveto-9-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-9-form-tuntia">Kuinka monta tuntia käytit kurssin yhdeksänteen viikkoon (noin)</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-9-form-tuntia" name="yhteenveto-9-form-tuntia" type="number" class="form-control input-md">
+                    </div>
+                </div>
+
+		<p>&nbsp;</p>
+
+		<p>Alla on esitetty viikkoon liittyviä väittämiä. Jos olet täysin eri mieltä väittämän kanssa, valitse 1. Jos olet täysin samaa mieltä väittämän kanssa, valitse 7. Muuten, valitse luku väliltä.</p>
+
+                <div class="row" id="yhteenveto-9-form-skaala">
+                    <div class="col-md-3">Täysin eri mieltä.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Täysin samaa mieltä.</div>
+                </div>
+
+		<p>&nbsp;</p>
+
+                <div id="yhteenveto-9-form-vaittamat">
+		  <div class="row"><div class="col-md-3">1. Viikko oli työläs.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">2. Viikko oli opettavainen.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">3. Viikko oli turhauttava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">4. Viikko oli mukava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">5. Viikko oli vaikea.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="7" type="radio">7</label></div></div>
+                </div>
+		
+		<p>&nbsp;</p>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-9-form-vaikein">Vaikein asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-9-form-vaikein" name="yhteenveto-9-form-vaikein" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-9-form-helpoin">Helpoin asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-9-form-helpoin" name="yhteenveto-9-form-helpoin" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-9-form-turhauttavinta">Turhauttavinta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-9-form-turhauttavinta" name="yhteenveto-9-form-turhauttavinta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-9-form-parasta">Parasta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-9-form-parasta" name="yhteenveto-9-form-parasta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-9-form-palaute">Yleinen palaute:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-9-form-palaute" rows="6" name="yhteenveto-9-form-palaute" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <input type="hidden" id="yhteenveto-9-form-started-entering" name="yhteenveto-9-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="yhteenveto-9-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="yhteenveto-9-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </section>
 
 
