@@ -4804,19 +4804,17 @@ kaksi</pre>
 
     <h3>Set metodin parametrina</h3>
 
-    <h3>Map metodin parametrina</h3>
-
     <p>Toteuta luokkaan <code>Paaohjelma</code> <em>luokkametodi</em> <code>palautaKoko</code>, joka saa parametrina Set-olion ja palauttaa sen koon kokonaislukuna.</p>
 
     <p>Metodin tulee toimia esimerkiksi seuraavasti:</p>
 
 <pre class="sh_java">
 Set&lt;String&gt; nimet = new HashSet&lt;&gt;();
-nimet.put("eka");
-nimet.put("eka");
-nimet.put("toka");
-nimet.put("toka");
-nimet.put("toka");
+nimet.add("eka");
+nimet.add("eka");
+nimet.add("toka");
+nimet.add("toka");
+nimet.add("toka");
 
 System.out.println(palautaKoko(nimet));
 </pre>
