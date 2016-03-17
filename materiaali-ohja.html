@@ -5857,7 +5857,7 @@ Sija    Nimi
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2mslqtahto" href="#2mslqtahto2">
       <div class="panel-heading">
-	<h4 id="mslq-tahto-ohja-form-legend">Kysely: Opiskeluun liittyvät tahtotilat ja strategiat</h4>
+	<h4 class="kysely" id="mslq-tahto-ohja-form-legend">Kysely: Opiskeluun liittyvät tahtotilat ja strategiat</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2mslqtahto2">
@@ -5928,7 +5928,7 @@ Sija    Nimi
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2tehtavanvaihto-wk10" href="#2tehtavanvaihto-wk102">
       <div class="panel-heading">
-	<h4 id="taskswitching-form-wk10-legend">Kysely / tutkimus: Tehtävänvaihtotesti</h4>
+	<h4 class="kysely" id="taskswitching-form-wk10-legend">Kysely / tutkimus: Tehtävänvaihtotesti</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2tehtavanvaihto-wk102">
@@ -6165,6 +6165,110 @@ public class Lukijalaite {
   <p>Ylläoleva lukijalaitteen toteutus pystyy lukemaan mitä tahansa viestejä, kunhan viesti toteuttaa rajapinnan <code>Luettava</code>.</p>
 
 -->
+
+  <p><strong>Muutamia kertaus- ja pähkinätehtäviä</strong></p>
+
+  <p>Kurssin kymmenes viikko alkaa kertaus- ja pähkinätehtävillä, joilla pääset muistelemaan aiemmin käsiteltyjä asioita. Tehtävissä ei ole automaattisia testejä -- mieti, miten varmistat ohjelman toiminnallisuuden itse!</p>
+
+  <p>Huom! Kirjoita jokaiseen tehtävään <strong>kaksi</strong> ratkaisua, missä ratkaiset ongelman eri tavoilla. Ratkaisutapa lasketaan erilaiseksi jos ainakin osa ohjelmakoodista on toteutettu eri tavalla. Muuttujien nimien muuttamista ei lasketa eri tavoiksi, mutta ratkaisun pilkkominen useammaksi metodiksi tai täysin erilainen ongelmanratkaisulogiikka taas kelpaa.</p>
+
+  <div class="tehtavat" id="viikko10">
+
+    <div class="tehtava">
+      <h3>Painoindeksi</h3>
+
+      <p><a href="https://fi.wikipedia.org/wiki/Painoindeksi" target="_blank">Painoindeksi</a> on mitta-arvo, jonka avulla voidaan arvioida ihmisen painon ja pituuden suhdetta. Painoindeksi lasketaan kaavalla:</p>
+
+      <p><strong>Painoindeksi = paino / (pituus * pituus)</strong></p>
+
+      <p>Painoindeksiä käytetään muunmuassa ali- ja ylipainon tunnistamisessa. Jos henkilön painoindeksi on alle 18.5 luokitellaan hänet alipainoiseksi ("alipaino"). Jos painoindeksi on vähintään 18.5 mutta alle 25, on luokittelu "normaali". Jos taas painoindeksi on vähintään 25 mutta alle 30, on luokittelu "ylipainoinen". Jos taas painoindeksi on vähintään 30, on luokittelu "merkittävästi ylipainoinen".</p>
+
+      <p>Luokissa <code>Raportinluoja1</code> ja <code>Raportinluoja2</code> on metodi <code>public PainoindeksiRaportti painoindeksiRaportti(List&lt;Henkilo&gt; henkilotiedot)</code>, joka saa parametrina listan henkilöitä ja palauttaa painoindeksiraportin -- kannattaa tutustua luokkiin <code>Painoindeksiraportti</code> ja <code>Henkilo</code>.</p>
+
+      <p>Luo luokkiin <code>Raportinluoja1</code> ja <code>Raportinluoja2</code> <em>erilaiset</em> toteutukset metodille <code>painoindeksiRaportti</code> painoindeksiraporttien luomiseen.</p>
+
+      <p>Tuotettavan painoindeksiraportin tulee sisältää lista nimistä (huom! ei henkilöistä) siten, että henkilöt ovat kategorisoitu heihin sopiviin painoindeksiluokkiin.</p>
+
+      <p>Testaa toteutustasi ennen sen palautusta. Koska tehtävässä ei ole automaattisia testejä, mieti myös miten ja minkälaisilla syötteillä testaat sen toimintaa.</p>
+    </div>
+
+
+    <div class="tehtava">
+
+      <h3>Mittausten tasoitus</h3>
+
+      <p>Data-analytiikassa mittausten tasoittamisella tarkoitetaan liiallisen kohinan tai muiden häiriöiden poistamiseen datasta, jonka jälkeen oleellisten hahmojen tunnistamista datasta tulee mahdollisesti helpommaksi. Eräs suoraviivainen tekniikka mittausten tasoitukseen on muuttaa jokainen mittausarvo sen, sitä edeltävän mittausarvon ja sitä seuraavan mittausarvon mittausten keskiarvoksi. Jos oletamme, että poikkeukselliset arvot ovat häiriö mittadatassa, tämä keskiarvomenetelmä tasaa arvot potentiaalisesti luotettavimmiksi arvoiksi.</p>
+
+      <p>Tutkitaan esimerkiksi seuraavia sykemittauksia, jotka on kerätty henkilötietodatasta.</p>
+
+<pre>
+  95 102 98 88 105
+</pre>
+
+      <p>Jos ylläolevan mittausdatan tasaa keskiarvomenetelmällä, on tasauksen tuottama data seuraavanlainen:</p>
+
+<pre>
+  95 98.33 96 97 105
+</pre>
+
+      <p>Tässä:</p>
+
+      <ul>
+	<li>Arvo 102 muutettiin arvoon 98.33: (95 + 102 + 98) / 3</li>
+	<li>Arvo 98 muutettiin arvoon 96: (102 + 98 + 88) / 3</li>
+	<li>Arvo 88 muutettiin arvoon 97: (98 + 88 + 105) / 3</li>
+      </ul>
+
+      <p>Luokissa <code>MittaustenTasoittaja1</code> ja <code>MittaustenTasoittaja2</code> on metodi <code>public List&lt;Double&gt; tasoita(List&lt;Henkilo&gt; henkilotiedot)</code>, joka saa parametrina listan henkilö-olioita (henkilöiden nimillä ei ole väliä, oleellista on sykemittausdata -- muuttuja <code>syke</code>) ja palauttaa listan tasattuja sykemittauksia -- luokka <code>Henkilo</code> on tässä sama kuin edellisessä tehtävässä.</p>
+
+      <p>Luo luokkiin <code>MittaustenTasoittaja1</code> ja <code>MittaustenTasoittaja2</code> <em>erilaiset</em> toteutukset metodille <code>tasoita</code> listana annettujen henkilo-olioihin tallennettujen sykemittausten tasoittamiseen. Toteutusten tulee siis käsitellä lista henkilötietueita, joista jokaisessa on sykemittaus, ja palauttaa lista double-arvoja, jotka ovat tasoitettuja sykemittauksia.</p>
+
+    </div>
+
+    <div class="tehtava">
+
+      <h3>Kolme yleisintä sanaa</h3>
+
+      <p>Luokissa <code>YleisimmatSanat1</code> ja <code>YleisimmatSanat2</code> on metodi <code>public List&lt;String&gt; yleisetSanat(List&lt;String&gt; sanat)</code>, joka saa parametrina listan merkkijonoja ja palauttaa listan merkkijonoja.</p>
+
+
+      <p>Luo luokkiin <code>YleisimmatSanat1</code> ja <code>YleisimmatSanat2</code> <em>erilaiset</em> toteutukset kolmen yleisimmän merkkijonon tunnistamiseen. Yleisimmät merkkijonot tulee tunnistaa metodille <code>yleisetSanat</code> syötteeksi annetusta listasta, ja metodin tulee palauttaa yleisimmät merkkijonot listassa. Palauttava lista tulee olla järjestettynä siten, että listan ensimmäisenä alkiona on yleisin merkkijono, toisena alkiona on toiseksi yleisin merkkijono, ja kolmantena alkiona on kolmanneksi yleisin merkkijono.</p>
+      
+      <p>Jos merkkijonot ovat yhtä yleisiä, aseta lyhin sana (vähiten merkkejä) ennen pidempää sanaa. Voit olettaa, että syötteen kolme yleisintä sanaa ovat eri pituisia. Voit lisäksi olettaa, että syötteessä on vähintään kolme eri sanaa.</p>
+
+      <p>Testaa toteutustasi ennen sen palautusta. Koska tehtävässä ei ole automaattisia testejä, mieti myös miten ja minkälaisilla syötteillä testaat sen toimintaa.</p>
+
+    </div>
+
+    <div class="tehtava">
+
+      <h3>Seismiset mittaukset</h3>
+
+      <p>Geologit haluavat tarkastella paikallisen vuoren mahdollista maanjäristystoimintaa. He ovat asentaneet mittarin seismisen toiminnan (maan tärinän) mittaamiseen. Mittari lukee seismistä toimintaa tietyin aikavälein ja lähettää mitattua dataa mittausarvo kerrallaan tutkimuslaboratorion tietokoneelle.</p>
+
+      <p>Mittari lisää lisäksi mittausdataan päivämäärätietoja näyttämään seismisen toiminnan mittauspäivää. Mittarin lähettämä data on seuraavassa muodossa:</p>
+
+<pre>
+  20151004 200 150 175 20151005 0.002 0.03 20151007 ...
+</pre>
+
+      <p>Kahdeksanlukuiset arvot ovat päivämääriä (vuosi-kuukausi-päivä -muodossa) ja numerot nollan ja viidensadan välillä ovat värähtelyjen taajuuksia (hertzeinä). Ylläoleva esimerkki näyttää mittaukset 200, 150, ja 175 lokakuun neljäntenä päivänä vuonna 2015 ja mittaukset 0.002 ja 0.03 lokakuun viidentenä päivänä vuonna 2015. Lokakuun kuudennelta päivältä ei ole lainkaan mittausdataa (välillä verkkoyhteydessä on ongelmia, jolloin mittausdataa saattaa kadota).</p>
+
+      <p>Oleta, että mittausdata on järjestetty päivämäärien mukaan (myöhempi päivämäärä ei ikinä ilmesty datassa ennen aiempaa päivämäärää) ja että kaikki data on samalta vuodelta. Voit myös olettaa, että jokaiselta datassa olevalta päivältä on vähintään yksi mittausarvo.</p>
+
+      <p>Luokissa <code>MittausRaportoija1</code> ja <code>MittausRaportoija2</code> on tyhjä metodi <code>List&lt;SuurinTaajuusRaportti&gt; paivittaisetMaksimit(List&lt;Double&gt; mittausData, int kuukausi)</code>, joka saa parametrina listan mittausdataa sekä kuukauden (oleta, että yksi (01) vastaa tammikuuta ja kaksitoista (12) vastaa joulukuuta). Metodin tulee tuottaa lista raportteja, joista jokainen sisältää suurimman mittaustuloksen kuukauden yksittäiselle päivälle, josta löytyy mittausdataa.</p>
+
+      <p>Suunnittele ja toteuta <em>kaksi erilaista</em> toteutusta metodille <code>paivittaisetMaksimit</code> ja toteuta ne luokkiin <code>MittausRaportoija1</code> ja <code>MittausRaportoija2</code>. Metodin tulee siis käsitellä lista Double-muotoisia syötteitä, joista löytyy sekä päivämääriä että mittausarvoja. Metodin tulee käsitellä vain parametrina annettuun kuukauteen liittyviä arvoja, ja syötteiden perusteella tulee tunnistaa jokaiselle parametrina annetulle kuukauden päivälle suurin päiväkohtainen arvo. Suurimmat päiväkohtaiset arvot asetetaan palautettavaan listaan <code>SuurinTaajuusRaportti</code>-muotoisina olioina, ja metodi palauttaa lopulta listan tulevaa käsittelyä varten.</p>
+
+
+      <p>Kuten edellisissä tehtävissä, testaa tässäkin toteutustasi ennen sen palautusta. Koska tehtävässä ei ole automaattisia testejä, mieti myös miten ja minkälaisilla syötteillä testaat sen toimintaa.</p>
+
+    </div>
+
+  </div>
+  
+
+  <p>Kun olet tehnyt neljä edellistä tehtävää (tai ainakin yrittänyt tehdä kaikkia neljää tehtävää), vastaa vielä osoitteessa <a href="http://goo.gl/forms/VZ2yyRNUVB" target="_blank">http://goo.gl/forms/VZ2yyRNUVB</a> olevaan kyselyyn.</p>
 
 
   <h2>Single responsibility principle</h2>
@@ -6434,8 +6538,9 @@ public class Main {
     }
 }</pre>
 
-
+<!--
   <div class="self-explanation" data-key="q-srpJaRefaktorointi"></div>
+-->
 
   <h2>Monta rajapintaa ja rajapintojen tarjoamasta joustavuudesta</h2>
 
@@ -6488,7 +6593,7 @@ public class Henkilo implements Tunnistettava {
 
 <pre class="sh_java">
 public class Rekisteri {
-    private HashMap&lt;String, Tunnistettava&gt; rekisteroidyt;
+    private Map&lt;String, Tunnistettava&gt; rekisteroidyt;
 
     public Rekisteri() {
         this.rekisteroidyt = new HashMap&lt;&gt;();
@@ -6593,7 +6698,7 @@ public class Tuote implements Tunnistettava {
         this.viivakoodi = viivakoodi;
     }
 
-    public String getTunniste() {
+    public String getTunnus() {
         return viivakoodi;
     }
 
@@ -6615,6 +6720,28 @@ tuote.muutaHinta(23);</pre>
 
   <p>Eli teimme luokasta <code>Rekisteri</code> melko yleiskäyttöisen pitämällä sen riippumattomana konkreettisista luokista. Mikä tähänsa luokka, joka toteuttaa rajapinnan <code>Tunnistettava</code>, on rekisterin kanssa käyttökelpoinen. Metodin <code>haeKaikkiJarjestyksessä</code> toimiminen tosin edellyttää luokalta myös vertailtavuuden eli Comparable&lt;Tunnistettava&gt;-rajapinnan toteuttamisen.</p>
 
+<!--
+
+  <h3>Rekisteri ja Geneerisyys</h3>
+
+  <p>Edellisessä esimerkissä toteutimme rekisterin, joka tallentaa Tunnistettava-rajapinnan toteuttavia olioita. Kun lisäsimme rekisteri-olioon tuotteita, oli niiden noutaminen hieman epämiellyttävää. Haimme Tuote-olion rekisteristä seuraavasti:</p>
+
+<pre class="sh_java">
+Rekisteri tuotteet = new Rekisteri();
+tuotteet.lisaa(new Tuote("piimä", "11111112"));
+Tuote tuote = (Tuote) tuotteet.hae("11111112");
+</pre>
+
+  <p>Tuote-olion hakeminen vaatii siis sen erityisen muuttamisen Tuote-olioksi tyyppimuunnoksen avulla.</p>
+
+  <p>Jos tiedämme, että rekisteriin tallennetaan aina tietyn tyyppisiä Tunnistettavia olioita, voimme tehdä rekisteristä vielä hieman yleiskäyttöisemmän. Rekisterille voidaan määritellä tyyppiparametri, joka kertoo rekisterin käsittelemät oliot.</p>
+
+
+<p>
+, sillä tuote-olioiden hakemiseen tunnistettava-rajapinnan toteuttavista esineistä tuotteiden hakemiseen rekisteristä käytettiin epämukavaa, sillä tuotteet haettiin </p>
+
+
+-->
   <!--
 
     <p>Tehdään luokka <code>Henkilorekisteri</code>, josta voimme hakea henkilöitä <code>Tunnistettava</code>-rajapinnan avulla. Yksittäisten henkilöiden hakemisen lisäksi <code>Henkilorekisteri</code> tarjoaa metodin kaikkien henkilöiden hakemiseen listana.</p>
@@ -7486,6 +7613,8 @@ Exception in thread "main" java.lang.NullPointerException
 
     <h2>Tiedoston lukeminen</h2>
 
+    <p><em>Tarkennetaan hieman viikolla 6 tarkasteltua tiedoston lukemista.</em></p>
+
     <p>Huomattava osa ohjelmista käsittelee jollain tavalla tallennettua tietoa. Otetaan ensiaskeleet tiedostojen käsittelyyn Javassa. Javan API tarjoaa luokan <a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html" target="_blank">File</a>, jonka sisältö voidaan lukea kurssilla jo tutuksi tulleen <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html" target="_blank">Scanner</a>-luokan avulla.</p>
 
     <p>Luokan <code>File</code> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html" target="_blank">API-kuvausta</a> lukiessamme huomaamme <code>File</code>-luokalla on konstruktori <code>File(String pathname)</code> (<em>Creates a new File instance by converting the given pathname string into an abstract pathname</em>). Voimme siis antaa avattavan tiedoston polun <code>File</code>-luokan konstruktorille.</p>
@@ -7599,6 +7728,35 @@ loppuu,
 odotetun
 taulukon
 sopimattomaksi,</pre>
+
+<p><strong>Try with resources</strong></p>
+
+<p>Edellisissä esimerkeissä avattua tiedostoa ei erikseen suljeta. Lukijan sulkeminen tapahtuu <code>Scanner</code>-olion <code>close</code>-metodin avulla.</p>
+
+<p>Osa tiedostoja ja muita syötevirtoja käsittelevistä luokista toteuttaa rajapinnan <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html" target="_blank">AutoCloseable</a>. Tämä mahdollistaa ohjelmakoodin kirjoittamisen, missä luokasta tehty ilmentymä suljetaan automaattisesti erityisen <em>try with resources</em>-rakenteen avulla.</p>
+
+<p>Tässä resurssin avaaminen tehdään <code>try</code>-lohkon parametrina, jonka jälkeen <code>try</code>-lohkossa käsitellään resurssia. Varsinaista sulje-tapahtumaa ei tarvitse tehdä lainkaan.</p>
+
+<pre class="sh_java">
+ArrayList&lt;String&gt; rivit = new ArrayList&lt;&gt;();
+
+// avataan resurssi
+try (Scanner lukija = new Scanner(new File("tiedosto.txt"))) {
+
+  // käsitellään resurssia
+
+  while (lukija.hasNextLine()) {
+    rivit.add(lukija.nextLine());
+  }
+
+} catch (Exception e) {
+  // käsitellään mahdollinen poikkeus
+  System.out.println("Virhe: " + e.getMessage());
+}
+
+// tee jotain luetuilla riveillä
+</pre>
+
 
     <h3>Merkistöongelmista</h3>
 
@@ -7921,7 +8079,7 @@ Ada: [3, 4]</pre>
 
 <div class="tehtavat">
 <div class="tehtava">
-<h3>Sanakirja usealle käännökselle</h3>
+<h3>Usean käännöksen sanakirja</h3>
 
   <p>Tehdään hieman laajennettu versio aiemmin kurssilla tehdystä sanakirjasta. Tehtävänäsi on toteuttaa pakkaukseen <code>sanakirja</code> luokka <code>OmaUseanKaannoksenSanakirja</code>, joka voi tallettaa yhden tai useamman käännöksen jokaiselle sanalle. Luokan tulee toteuttaa tehtäväpohjassa annettu rajapinta <code>UseanKaannoksenSanakirja</code>, jossa on seuraavat toiminnot:</p>
 
@@ -8252,6 +8410,125 @@ komento: <font color="red">x</font></pre>
 </div>
 </div>
 </div>
+
+
+<div class="panel-group" id="10yhteenveto">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#10yhteenveto" href="#10yhteenveto2">
+      <div class="panel-heading">
+	<h4 class="kysely" id="yhteenveto-10-form-legend">Viikon 10 Loppukysely</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="10yhteenveto2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="yhteenveto-10-form">
+            <fieldset>
+                <legend id="yhteenveto-10-legend">Viikon 10 Loppukysely</legend>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-10-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-10-form-tmc-tunnus" name="yhteenveto-10-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-10-form-tuntia">Kuinka monta tuntia käytit kurssin kymmenenteen viikkoon (noin)</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-1-form-tuntia" name="yhteenveto-10-form-tuntia" type="number" class="form-control input-md">
+                    </div>
+                </div>
+
+		<p>&nbsp;</p>
+
+		<p>Alla on esitetty viikkoon liittyviä väittämiä. Jos olet täysin eri mieltä väittämän kanssa, valitse 1. Jos olet täysin samaa mieltä väittämän kanssa, valitse 7. Muuten, valitse luku väliltä.</p>
+
+                <div class="row" id="yhteenveto-10-form-skaala">
+                    <div class="col-md-3">Täysin eri mieltä.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Täysin samaa mieltä.</div>
+                </div>
+
+		<p>&nbsp;</p>
+
+                <div id="yhteenveto-10-form-vaittamat">
+		  <div class="row"><div class="col-md-3">1. Viikko oli työläs.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">2. Viikko oli opettavainen.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">3. Viikko oli turhauttava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">4. Viikko oli mukava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">5. Viikko oli vaikea.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="7" type="radio">7</label></div></div>
+                </div>
+		
+		<p>&nbsp;</p>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-10-form-vaikein">Vaikein asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-10-form-vaikein" name="yhteenveto-10-form-vaikein" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-10-form-helpoin">Helpoin asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-10-form-helpoin" name="yhteenveto-10-form-helpoin" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-10-form-turhauttavinta">Turhauttavinta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-10-form-turhauttavinta" name="yhteenveto-10-form-turhauttavinta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-10-form-parasta">Parasta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-10-form-parasta" name="yhteenveto-10-form-parasta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-10-form-palaute">Yleinen palaute:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-10-form-palaute" rows="6" name="yhteenveto-10-form-palaute" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <input type="hidden" id="yhteenveto-10-form-started-entering" name="yhteenveto-10-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="yhteenveto-10-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="yhteenveto-10-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 </section>
 
 
