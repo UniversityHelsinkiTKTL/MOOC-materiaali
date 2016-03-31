@@ -6815,9 +6815,6 @@ public class Henkilo implements Tunnistettava, Comparable&lt;Henkilo&gt; {
     }
 </pre>
 
--->
-
-  <!--
 
     <h3>Kassaesimerkki</h3>
 
@@ -8542,7 +8539,7 @@ komento: <font color="red">x</font></pre>
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2saucier-ohja" href="#2saucier-ohja2">
       <div class="panel-heading">
-	<h4 id="saucier-ohja-form-legend">Kysely: Kuvaavat adjektiivit ja persoonallisuus</h4>
+	<h4 class="kysely" id="saucier-ohja-form-legend">Kysely: Kuvaavat adjektiivit ja persoonallisuus</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2saucier-ohja2">
@@ -8646,13 +8643,13 @@ public class Lintu {
     }
 }</pre>
 
-      <p>Ideana on toteuttaa rengastustoimistoon toiminnallisuus jonka avulla voidaan pitää kirjaa tiettynä vuotena rengastettujen lintujen havaintojen lukumääristä ja havaintopaikoista. Havaintomääriä ja -paikkoja ei kuitenkaan talleteta Lintu-olioihin, vaan erilliseen HashMap:iin jonka avaimena käytetään Lintu-olioita. Kuten muistamme viikolta 8, on tälläisessä tapauksessa toteutettava luokalle <code>Lintu</code> metodit <code>equals(Object t)</code> ja <code>hashCode()</code>.</p>
+      <p>Ideana on toteuttaa rengastustoimistoon toiminnallisuus jonka avulla voidaan pitää kirjaa tiettynä vuotena rengastettujen lintujen havaintojen lukumääristä ja havaintopaikoista. Havaintomääriä ja -paikkoja ei kuitenkaan talleteta Lintu-olioihin, vaan erilliseen HashMap:iin jonka avaimena käytetään Lintu-olioita. Kuten aiemmin opimme, tälläisessä tapauksessa luokalle <code>Lintu</code> on toteutettava metodit <code>equals(Object t)</code> ja <code>hashCode()</code>.</p>
 
       <p>Joillain linnuilla on useita suomenkielisä nimiä (esim. punakottaraisesta käytetään edelleen joskus sen vanhaa nimitystä rusokottarainen), latinankielinen nimi on kuitenkin aina yksikäsitteinen. Tee luokalle <code>Lintu</code> <code>equals-</code> ja <code>hashCode-</code>metodit jotka toimivat siten, että lintu-oliot tulkitaan samoiksi jos niiden latinankielinen nimi ja rengastusvuosi ovat samat.</p>
 
       <p>Esimerkki:</p>
 
-<pre>
+<pre class="sh_java">
 Lintu lintu1 = new Lintu("punakottarainen", "Sturnus roseus", 2012);
 Lintu lintu2 = new Lintu("rusokottarainen", "Sturnus roseus", 2012);
 Lintu lintu3 = new Lintu("varis", "Corvus corone cornix", 2012);
@@ -8707,6 +8704,107 @@ Larus argentatus (1980) havaintoja: 0</pre>
 
     </div>
 </div>
+
+
+<p><strong>Muutamia kertaus- ja pähkinätehtäviä</strong></p>
+
+<p>Kuten kurssin kymmenennellä viikolla, myös yhdennellätoista viikolla tehdään muutamia kertaus- ja pähkinätehtävillä, joilla pääset muistelemaan aiemmin käsiteltyjä asioita. Tehtävissä ei ole automaattisia testejä -- mieti, miten varmistat ohjelman toiminnallisuuden itse! -- Tällä kertaa sinun ei tarvitse erikseen keksiä kahta erilaista ratkaisua tehtäviin. </p>
+
+
+<div class="tehtavat">
+    <div class="tehtava">
+      <h3>Palindromin tunnistus</h3>
+
+      <p>Palindromi on merkkijono, jonka sisältämät merkit ovat samat sekä normaalissa että käänteisessä järjestyksessä. Kirjainkoolla ei ole väliä. </p>
+
+      <p>Toteuta metodi <code>public static boolean onPalindromi(String merkkijono)</code>, joka saa parametrikseen merkkijonon ja kertoo onko parametrina saatu merkkijono palindromi. Toteuta metodi siten, että se käsittelee merkkeinä vain kirjaimet ja numerot -- välilyönnit, pisteet ym. merkit tulee jättää huomioimatta.</p>
+
+<pre class="sh_java">
+System.out.println(onPalindromi("a man, a plan, a canal: Panama")); // true
+System.out.println(onPalindromi("not a bird, not a plane, superman!")); // false
+System.out.println(onPalindromi("saippuakauppias")); // true
+System.out.println(onPalindromi("porkkanakauppias")); // false
+</pre>
+
+      <p>Testaa toteutustasi ennen sen palautusta. Koska tehtävässä ei ole automaattisia testejä, mieti myös miten ja minkälaisilla syötteillä testaat sen toimintaa.</p>
+
+    </div>
+
+
+    <div class="tehtava">
+      <h3>Suurimpien lukujen summa</h3>
+
+      <p>Toteuta metodi <code>public static int suurimpienLukujenSumma(List&lt;List&lt;Integer&gt;&gt; lukulistat)</code>, joka saa parametrina listan numeroita sisältäviä listoja. Metodin tulee etsiä jokaisen listan suurin luku ja palauttaa niiden summa. Voit olettaa, että jokaisella listalla on vähintään yksi luku.</p>
+
+      <p>Esimerkki:</p>
+
+<pre class="sh_java">
+List&lt;Integer&gt; luvut1 = new ArrayList&lt;&gt;();
+List&lt;Integer&gt; luvut2 = new ArrayList&lt;&gt;();
+luvut1.add(7);
+luvut1.add(2);
+luvut1.add(9);
+
+luvut2.add(11);
+luvut2.add(12);
+luvut2.add(5);
+
+List&lt;List&lt;Integer&gt;&gt; listat = new ArrayList&lt;&gt;();
+listat.add(luvut1);
+listat.add(luvut2);
+
+System.out.println(suurimpienLukujenSumma(listat)); // tulostaa 21
+</pre>
+
+      <p>Testaa toteutustasi ennen sen palautusta. Koska tehtävässä ei ole automaattisia testejä, mieti myös miten ja minkälaisilla syötteillä testaat sen toimintaa.</p>
+
+    </div>
+
+    <div class="tehtava">
+      <h3>Summa Summarum</h3>
+
+
+      <p>Toteuta metodi <code>public static List&lt;Integer&gt; summaSummarum(List&lt;Integer&gt; luvut)</code>, joka saa parametrina numeroita sisältävät listan. Metodin tulee palauttaa lista, joka sisältää nollalla erotettujen lukujen summat. Jos parametrina annetussa listassa on kaksi peräkkäistä nollaa, jätä niitä seuraavat luvut huomioimatta.</p>
+
+      <p>Esimerkki:</p>
+
+<pre class="sh_java">
+List&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
+lista.add(1);
+lista.add(2);
+lista.add(0);
+lista.add(7);
+lista.add(0);
+lista.add(5);
+lista.add(4);
+lista.add(1);
+lista.add(0);
+lista.add(0);
+lista.add(6);
+
+List&lt;Integer&gt; summat = summaSummarum(lista);
+for (int luku: summat) {
+    System.out.println(luku);
+}
+</pre>
+
+      <p>Tulostaa</p>
+<pre>
+3
+7
+10
+</pre>
+
+      <p>Testaa toteutustasi ennen sen palautusta. Koska tehtävässä ei ole automaattisia testejä, mieti myös miten ja minkälaisilla syötteillä testaat sen toimintaa.</p>
+
+    </div>
+</div>
+
+
+<!--
+Huom! Kirjoita jokaiseen tehtävään kaksi ratkaisua, missä ratkaiset ongelman eri tavoilla. Ratkaisutapa lasketaan erilaiseksi jos ainakin osa ohjelmakoodista on toteutettu eri tavalla. Muuttujien nimien muuttamista ei lasketa eri tavoiksi, mutta ratkaisun pilkkominen useammaksi metodiksi tai täysin erilainen ongelmanratkaisulogiikka taas kelpaa.
+-->
+   
 
     <h2>Olioiden monimuotoisuus</h2>
 
@@ -9458,8 +9556,9 @@ public class Tilaus {
 
     <p>Nyt asiakkaan muuttaessa tarvitsee muuttaa vain asiakkaan tietoja, tilauksiin ei tarvitse tehdä muutoksia.</p>
 
+<!--
     <div class="self-explanation" data-key="q-perinnasta"></div>
-
+-->
 
     <div class="tehtavat">
       <div class="tehtava">
@@ -9767,6 +9866,254 @@ Täydennä analyysin tulostus sellaiseksi, että mukana ovat myös muutoshistori
 <!--Puuttu </p></p></p></p> -->
 </div>
 </div>
+
+<!--
+  <h3>TODO SEURAAVA!</h3>
+
+  <h3>Rekisteri ja Geneerisyys</h3>
+
+  <p>Edellisessä esimerkissä toteutimme rekisterin, joka tallentaa Tunnistettava-rajapinnan toteuttavia olioita. Kun lisäsimme rekisteri-olioon tuotteita, oli niiden noutaminen hieman epämiellyttävää. Haimme Tuote-olion rekisteristä seuraavasti:</p>
+
+<pre class="sh_java">
+Rekisteri tuotteet = new Rekisteri();
+tuotteet.lisaa(new Tuote("piimä", "11111112"));
+Tuote tuote = (Tuote) tuotteet.hae("11111112");
+</pre>
+
+  <p>Tuote-olion hakeminen vaatii siis sen erityisen muuttamisen Tuote-olioksi tyyppimuunnoksen avulla.</p>
+
+  <p>Jos tiedämme, että rekisteriin tallennetaan aina tietyn tyyppisiä Tunnistettavia olioita, voimme tehdä rekisteristä vielä hieman yleiskäyttöisemmän. Rekisterille voidaan määritellä tyyppiparametri, joka kertoo rekisterin käsittelemät oliot.</p>
+
+
+<p>
+, sillä tuote-olioiden hakemiseen tunnistettava-rajapinnan toteuttavista esineistä tuotteiden hakemiseen rekisteristä käytettiin epämukavaa, sillä tuotteet haettiin </p>
+
+
+
+    <p>Tehdään luokka <code>Henkilorekisteri</code>, josta voimme hakea henkilöitä <code>Tunnistettava</code>-rajapinnan avulla. Yksittäisten henkilöiden hakemisen lisäksi <code>Henkilorekisteri</code> tarjoaa metodin kaikkien henkilöiden hakemiseen listana.</p>
+
+<pre class="sh_java">
+public class Henkilorekisteri {
+    private HashMap&lt;String, Henkilo&gt; henkilot;
+
+    public Henkilorekisteri(HashMap&lt;String, Henkilo&gt; henkilot) {
+        this.henkilot = henkilot;
+    }
+
+    public void lisaaHenkilo(Henkilo henkilo) {
+        this.henkilot.put(henkilo.getTunnus(), henkilo);
+    }
+
+    public void haeHenkiloTunnuksella(Tunnistettava tunnistettava) {
+        this.henkilot.get(tunnistettava.getTunnus());
+    }
+
+    public List&lt;Henkilo&gt; getHenkilot() {
+        return new ArrayList&lt;Henkilo&gt;(henkilot.values());
+    }
+}
+</pre>
+
+    <p>Entä jos haluaisimme järjestää henkilölistan aakkosjärjestykseen?</p>
+
+
+    <p>Yksi luokka voi toteuttaa useamman rajapinnan, eli voimme toteuttaa <code>Henkilo</code>-luokalla rajapinnan <code>Tunnistettava</code> lisäksi viime viikolta tutun rajapinnan <code>Comparable</code>. Useamman rajapinnan toteuttaminen tapahtuu erottamalla toteutettavat rajapinnat toisistaan pilkuilla (<code>public class ... implements <em>RajapintaEka</em>, <em>RajapintaToka</em> ...</code>). Toteuttaessamme useampaa rajapintaa, tulee meidän toteuttaa kaikki rajapintojen vaatimat metodit. Toteutetaan seuraavaksi luokalla <code>Henkilo</code> rajapinta <code>Comparable</code>.</p>
+
+<pre class="sh_java">
+package sovellus.domain;
+
+public class Henkilo implements Tunnistettava, Comparable&lt;Henkilo&gt; {
+    private String nimi;
+    private String henkilotunnus;
+
+    public Henkilo(String nimi, String henkilotunnus) {
+        this.nimi = nimi;
+        this.henkilotunnus = henkilotunnus;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+
+    public String getHenkilotunnus() {
+        return this.henkilotunnus;
+    }
+
+    @Override
+    public String getTunnus() {
+        return getHenkilotunnus();
+    }
+
+    @Override
+    public int compareTo(Henkilo toinen) {
+        return this.nimi.compareTo(toinen.getNimi());
+    }
+}
+</pre>
+
+    <p>Nyt henkilöstörekisterin listaa-metodia voidaan laajentaa seuraavaan tapaan:</p>
+
+<pre class="sh_java">
+    public List&lt;Henkilo&gt; getHenkilot() {
+        ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;Henkilo&gt;(henkilot.values());
+        Collections.sort(henkilot);
+        return henkilot;
+    }
+</pre>
+
+    <h3>Kassaesimerkki</h3>
+
+    <p>Pohditaan seuraavaksi kauppojen kassalaitteessa olevaan lukijalaitteeseen liittyvää tuotteen tunnistamistoimintoa. Oletetaan että tuotteet sisältävät niihin liittyvän viivakoodin, nimen ja hinnan. Tuotteita kuvastava <code>Tuote</code>-olio toteuttaa aiemmin määritellyn rajapinnan <code>Tunnistettava</code>.</p>
+
+<pre class="sh_java">
+package sovellus.domain;
+
+public class Tuote implements Tunnistettava {
+    private String viivakoodi;
+    private String nimi;
+    private int hinta;
+
+    public Tuote(String viivakoodi, String nimi, int hinta) {
+        this.viivakoodi = viivakoodi;
+        this.nimi = nimi;
+        this.hinta = hinta;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+
+    public int getHinta() {
+        return this.hinta;
+    }
+
+    @Override
+    public String getTunnus() {
+        return this.viivakoodi;
+    }
+}
+</pre>
+
+    <p>Toteutetaan seuraavaksi <code>Lukijalaite</code>, joka osaa muuntaa tunnistettavat oliot tuotteiksi. Lukijalaitteen tulee lukea ja tunnistaa tuotteet rajapinnan <code>Tunnistettava</code>-avulla. Toteutetaan luokka <code>Lukijalaite</code> siten, että se sisältää hajautustaulun, josta tuotteet löytyvät tunnisteen perusteella. Lukijalaite on osa sovelluksen logiikkaa, joten lisätään se pakkaukseen <code>sovellus.logiikka</code>.</p>
+
+<pre class="sh_java">
+package sovellus.logiikka;
+
+public class Lukijalaite {
+    private HashMap&lt;String, Tuote&gt; tuotteet;
+
+    public Lukijalaite(HashMap&lt;String, Tuote&gt; tuotteet) {
+        this.tuotteet = tuotteet;
+    }
+
+    public Tuote tunnista(Tunnistettava tunnistettava) {
+        return this.tuotteet.get(tunnistettava.getTunnus());
+    }
+}
+</pre>
+
+    <p>Lukijalaite-olio palauttaa <code>Tuote</code>-olion jos sen tunnus löytyy lukijalaitteen sisältämästä hajautustaulusta. Luodaan seuraavaksi kassa, joka käyttää lukijalaitetta tuotteiden lisäämiseen ostettujen tuotteiden listalle. Kassalla on metodi <code>public void osta</code>, jolle annetaan luokan <code>Tunnistettava</code>-ilmentymä parametrina. Ostaminen lisää lukijalaitteella tunnistetun tuotteen ostettujen listalle. Jos tuotetta ei tunnisteta, ei tehdä mitään. Metodi <code>tulostaOstokset</code> tulostaa ostettujen tuotteiden nimet.</p>
+
+<pre class="sh_java">
+package sovellus.domain;
+
+public class Kassa {
+    private Lukijalaite laite;
+    private List&lt;Tuote&gt; tuotteet;
+
+    public Kassa(Lukijalaite lukijalaite) {
+        this.laite = lukijalaite;
+        this.tuotteet = new ArrayList&lt;Tuote&gt;();
+    }
+
+    public void osta(Tunnistettava tunnistettava) {
+        Tuote tunnistettu = this.laite.tunnista(tunnistettava);
+        if (tunnistettu == null) {
+            return;
+        }
+
+        this.tuotteet.add(tunnistettu);
+    }
+
+    public void tulostaOstokset() {
+        for(Tuote tuote: this.tuotteet) {
+            System.out.println(tuote.getNimi());
+        }
+    }
+}
+</pre>
+
+    <p>Huomaamme tässä vaiheessa että tuotteiden lukeminen listalta, joka on tulostettu tuotteiden lisäysjärjestyksessä, on hyvin kuormittavaa asiakkaalle. Muokataan tulostusta siten, että tuotteet listataan aakkosjärjestyksessä. Lisätään <code>Tuote</code>-luokalle rajapinta <code>Comparable</code>, jonka avulla tuotteet voidaan järjestää aakkosjärjestyksessä.</p>
+
+<pre class="sh_java">
+package sovellus.domain;
+
+public class Tuote implements Tunnistettava, Comparable&lt;Tuote&gt; {
+    private String viivakoodi;
+    private String nimi;
+    private int hinta;
+
+    public Tuote(String viivakoodi, String nimi, int hinta) {
+        this.viivakoodi = viivakoodi;
+        this.nimi = nimi;
+        this.hinta = hinta;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+
+    public int getHinta() {
+        return this.hinta;
+    }
+
+    @Override
+    public String getTunnus() {
+        return this.viivakoodi;
+    }
+
+    @Override
+    public int compareTo(Tuote tuote) {
+        return this.nimi.compareTo(tuote.getNimi());
+    }
+}
+</pre>
+
+    <p>Muokataan vielä kassaan liittyvää toiminnallisuutta siten, että tuotteet järjestetään tarvittaessa. Huomaa että tuotteita tarvitsee järjestää vain silloin kun tuotteita <em>ostetaan</em>. Ostaminen on ainut tilanne, jossa tuotteita sisältävän listan järjestys mahdollisesti muuttuu. Tällöin ostokset ovat aina järjestyksessä metodia <code>tulostaOstokset</code> kutsuttaessa.</p>
+
+<pre class="sh_java">
+package sovellus.domain;
+
+public class Kassa {
+    private Lukijalaite laite;
+    private List&lt;Tuote&gt; tuotteet;
+
+    public Kassa(Lukijalaite lukijalaite) {
+        this.laite = lukijalaite;
+        this.tuotteet = new ArrayList&lt;Tuote&gt;();
+    }
+
+    public void osta(Tunnistettava tunnistettava) {
+        Tuote tunnistettu = this.laite.tunnista(tunnistettava);
+        if (tunnistettu == null) {
+            return;
+        }
+
+        this.tuotteet.add(tunnistettu);
+        Collections.sort(this.tuotteet);
+    }
+
+    public void tulostaOstokset() {
+        for(Tuote tuote: this.tuotteet) {
+            System.out.println(tuote.getNimi());
+        }
+    }
+}
+</pre>
+
+    <p>tanne extends bla</p>
+
+-->
 
 
     <h3>Perintä, rajapinnat, kumpikin, vai eikö kumpaakaan?</h3>
@@ -10606,6 +10953,125 @@ VOITIT
   </div>
 </div>
   </div>
+
+
+<div class="panel-group" id="11yhteenveto">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#11yhteenveto" href="#11yhteenveto2">
+      <div class="panel-heading">
+	<h4 class="kysely" id="yhteenveto-11-form-legend">Viikon 11 Loppukysely</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="11yhteenveto2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="yhteenveto-11-form">
+            <fieldset>
+                <legend id="yhteenveto-11-legend">Viikon 11 Loppukysely</legend>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-11-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-11-form-tmc-tunnus" name="yhteenveto-11-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-11-form-tuntia">Kuinka monta tuntia käytit kurssin yhdenteentoista viikkoon (noin)</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-1-form-tuntia" name="yhteenveto-11-form-tuntia" type="number" class="form-control input-md">
+                    </div>
+                </div>
+
+		<p>&nbsp;</p>
+
+		<p>Alla on esitetty viikkoon liittyviä väittämiä. Jos olet täysin eri mieltä väittämän kanssa, valitse 1. Jos olet täysin samaa mieltä väittämän kanssa, valitse 7. Muuten, valitse luku väliltä.</p>
+
+                <div class="row" id="yhteenveto-11-form-skaala">
+                    <div class="col-md-3">Täysin eri mieltä.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Täysin samaa mieltä.</div>
+                </div>
+
+		<p>&nbsp;</p>
+
+                <div id="yhteenveto-11-form-vaittamat">
+		  <div class="row"><div class="col-md-3">1. Viikko oli työläs.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">2. Viikko oli opettavainen.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">3. Viikko oli turhauttava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">4. Viikko oli mukava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">5. Viikko oli vaikea.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="7" type="radio">7</label></div></div>
+                </div>
+		
+		<p>&nbsp;</p>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-11-form-vaikein">Vaikein asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-11-form-vaikein" name="yhteenveto-11-form-vaikein" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-11-form-helpoin">Helpoin asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-11-form-helpoin" name="yhteenveto-11-form-helpoin" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-11-form-turhauttavinta">Turhauttavinta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-11-form-turhauttavinta" name="yhteenveto-11-form-turhauttavinta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-11-form-parasta">Parasta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-11-form-parasta" name="yhteenveto-11-form-parasta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-11-form-palaute">Yleinen palaute:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-11-form-palaute" rows="6" name="yhteenveto-11-form-palaute" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <input type="hidden" id="yhteenveto-11-form-started-entering" name="yhteenveto-11-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="yhteenveto-11-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="yhteenveto-11-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 </section>
 
 <section class="viikkoraja" id="5" >
