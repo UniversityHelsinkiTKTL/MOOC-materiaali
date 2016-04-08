@@ -11082,7 +11082,7 @@ VOITIT
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2pystyvyys-ohja" href="#2pystyvyys-ohja2">
       <div class="panel-heading">
-	<h4 id="pystyvyys-ohja-form-legend">Kysely: Minäpystyvyys</h4>
+	<h4 class="kysely" id="pystyvyys-ohja-form-legend">Kysely: Minäpystyvyys</h4>
       </div>
     </a>
     <div class="panel-collapse collapse" id="2pystyvyys-ohja2">
@@ -11149,6 +11149,14 @@ VOITIT
   </div>
 </div>
 
+
+<!--
+  <p><strong>Muutamia kertaus- ja pähkinätehtäviä</strong></p>
+
+  <p>Kurssin kahdennentoista viikon alussa on edellisten viikkojen kertaus- ja pähkinätehtäviin liittyvä kysely. Vastaa tässä kohtaa osoitteessa TODO olevaan kyselyyn. </p>
+
+  <p>TODO:</p>
+-->
 
 <h2 id="tiedostostoon_kirjoitus">Tiedostoon kirjoittaminen</h3>
 
@@ -11420,6 +11428,163 @@ sanakirja.tallenna();
 
 <p>Eli käytön aluksi ladataan sanakirja tiedostosta ja lopussa tallennetaan se takaisin tiedostoon jotta sanakirjaan tehdyt muutokset pysyvät voimassa seuraavallekin käynnistyskerralle.</p>
 </div>
+
+<div class="tehtava">
+  <h3>Tunteikkaat Elokuva-arviot</h3>
+
+  <p>Tässä tehtävässä nivotaan yhteen aiemmin harjoiteltuja hajautustauluja, tiedoston lukemista sekä tehdään pieni askel koneoppimisen suuntaan. Koneoppiminen on tietojenkäsittelytieteen osa-alue, missä tutkitaan ja rakennetaan ohjelmia, jotka voivat oppia muunmuassa niille annetusta datasta. </p>
+
+  <p>Käytössämme oleva data (kansiossa src oleva tiedosto arviot.txt) sisältää yli 8000 englanninkielistä elokuva-arviota, joihin on valmiiksi lisätty tunnearvio. Tunnearviot on annettu skaalalla nollasta neljään, missä arvot ovat seuraavat:</p>
+
+  <ol>
+    <li>0 - negatiivinen</li>
+    <li>1 - hieman negatiivinen</li>
+    <li>2 - neutraali</li>
+    <li>3 - hieman positiivinen</li>
+    <li>4 - positiivinen</li>
+  </ol>
+
+  <p>Teemme seuraavaksi ohjelman, joka pyrkii arvioimaan liittyykö tekstimuotoiseen elokuva-arvioon negatiivinen, positiivinen vai neutraali tunne.</p>
+
+  <h4>Sanojen lukumäärä</h4>
+
+  <p>Toteuta tehtäväpohjassa annettuun luokkaan <code>TunteikkaatArviot</code> metodi <code>public int sanojenLukumaara(String sana)</code>. Metodin tulee kertoa sille parametrina annetun merkkijonon <code>sana</code> esiintymislukumäärä luokan konstruktorille annetussa merkkijonolistassa.</p>
+
+  <p>Kannattanee tässä jo miettiä minkälainen tietorakenne olisi hyvä sanojen lukumäärän tallentamiseen. Saat merkkijonoon liittyvät yksittäiset sanat selville esimerkiksi String-luokan <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#split-java.lang.String-" target="_blank">split</a>-metodin avulla.</p>
+
+  <p>Voit kokeilla ohjelmasi toimintaa esimerkiksi seuraavalla koodilla:</p>
+
+<pre class="sh_java">
+List&lt;String&gt; rivit = lueRivit("src/arviot.txt");
+TunteikkaatArviot arviot = new TunteikkaatArviot(rivit);
+System.out.println(arviot.sanojenLukumaara("what"));
+System.out.println(arviot.sanojenLukumaara("is"));
+System.out.println(arviot.sanojenLukumaara("love"));
+System.out.println(arviot.sanojenLukumaara("chuck"));
+System.out.println(arviot.sanojenLukumaara("norris"));
+System.out.println(arviot.sanojenLukumaara("mikkihiiri"));
+</pre>
+
+  <p>Ylläoleva esimerkki tuottaa seuraavanlaisen tulostuksen.</p>
+
+<pre>
+338
+2538
+172
+2
+1
+0
+</pre>
+
+  <p>Huom! Käsittele pienellä ja isolla kirjoitetut sanat samoina sanoina!</p>
+
+  <h4>Yksittäisen sanan tunne</h4>
+
+  <p>Tehtäväpohjassa annetut tiedostot <code>arviot-lyhyt-1.txt</code>, <code>arviot-lyhyt-2.txt</code> ja <code>arviot.txt</code> sisältävät elokuva-arvioita. Tiedostojen muoto on seuraavanlainen, missä jokaisen rivin ensimmäinen arvo on arvioon liitetty tunnearvo skaalalla nollasta neljään. Tätä seuraa konkreettinen tekstimuotoinen arvio. Esimerkiksi:</p>
+
+<pre>
+1 Simply put , there should have been a more compelling excuse to pair Susan Sarandon and Goldie Hawn .	
+3 Definitely in the guilty pleasure B-movie category , Reign of Fire is so incredibly inane that it is laughingly enjoyable .	
+3 It 's an experience in understanding a unique culture that is presented with universal appeal .	
+0 The French director has turned out nearly 21\/2 hours of unfocused , excruciatingly tedious cinema that , half an hour in , starts making water torture seem appealing .	
+</pre>
+
+  <p>Yllä on kuvattu neljän eri elokuvan saamat arviot, sekä niihin liitetyt tunnearvot. Ensimmäinen arvio on hieman negatiivinen, kaksi seuraavaa hieman positiivisia, ja viimeinen on negatiivinen.</p>
+
+  <p>Toteuta tässä osiossa metodiin <code>public double sananTunne(String sana)</code> toiminnallisuus, joka palauttaa parametrina annetulle sanalle keskimääräisen tunnearvon.</p>
+
+  <p>Keskimääräinen tunnearvo lasketaan niiden arvioiden keskiarvona, joissa sana esiintyy. Jos sana esiintyy useaan kertaan arviossa, tulee arvio ottaa useampaan kertaan huomioon. Jos sanaan ei esiinny kertaakaan, palauta neutraali arvo, eli 2.0.</p>
+
+  <p>Ylläolevassa esimerkissä sana "it" esiintyy kahdesti, kummassakin lauseessa arvio on 3. Sanan "it" keskimääräiseksi tunnearvoksi tulee siis (3+3) / 2 = 3. Vastaavasti sana "that" esiintyy kolmesti, ja tunnearvoksi tulee (3+3+0) / 3 = 2.</p>
+
+  
+  <p>Voit kokeilla ohjelmasi toimintaa esimerkiksi seuraavalla koodilla:</p>
+
+<pre class="sh_java">
+List&lt;String&gt; rivit = lueRivit("src/arviot.txt");
+TunteikkaatArviot arviot = new TunteikkaatArviot(rivit);
+System.out.println(arviot.sananTunne("poor"));
+System.out.println(arviot.sananTunne("is"));
+System.out.println(arviot.sananTunne("love"));
+System.out.println(arviot.sananTunne("damme"));
+System.out.println(arviot.sananTunne("norris"));
+</pre>
+
+  <p>Ylläoleva esimerkki tuottaa seuraavanlaisen tulostuksen.</p>
+
+<pre>
+0.8235294117647058
+2.0260047281323876
+2.645348837209302
+2.5
+2.0
+</pre>
+
+  <p>Toteuta lisäksi myös metodi <code>public String sananTunneMerkkijonona(String sana)</code>, joka tarkastelee sanaan liittyvää tunnearvoa ja palauttaa tunnearvoon liittyvän merkkijonon. Jos tunnearvo on pienempi tai yhtäsuuri kuin 1.9, tulee palauttaa merkkijono "negatiivinen". Jos taas tunnearvo on pienempi tai yhtäsuuri kuin 2.1, tulee palauttaa merkkijono "neutraali". Muulloin palautetaan merkkijono "positiivinen".</p>
+
+<pre class="sh_java">
+List&lt;String&gt; rivit = lueRivit("src/arviot.txt");
+TunteikkaatArviot arviot = new TunteikkaatArviot(rivit);
+System.out.println(arviot.sananTunneMerkkijonona("poor"));
+System.out.println(arviot.sananTunneMerkkijonona("is"));
+System.out.println(arviot.sananTunneMerkkijonona("love"));
+System.out.println(arviot.sananTunneMerkkijonona("damme"));
+System.out.println(arviot.sananTunneMerkkijonona("norris"));
+</pre>
+
+<pre>
+negatiivinen
+neutraali
+positiivinen
+positiivinen
+neutraali
+</pre>  
+
+  <p>Huom! Käsittele pienellä ja isolla kirjoitetut sanat samoina sanoina!</p>
+
+
+  <h4>Lauseen tunne</h4>
+
+  <p>Toteuta seuraavaksi metodi <code>public double lauseenTunne(String lause)</code>, joka palauttaa lauseen tunteen. Laske lauseen tunnearvo lauseeseen liittyvien sanojen tunnearvojen keskiarvona.</p>
+
+<pre class="sh_java">
+List&lt;String&gt; rivit = lueRivit("src/arviot.txt");
+TunteikkaatArviot arviot = new TunteikkaatArviot(rivit);
+
+System.out.println(arviot.lauseenTunne("unicorn is a mythical creature"));
+System.out.println(arviot.lauseenTunne("chuck norris made a happy meal cry"));
+System.out.println(arviot.lauseenTunne("the movie was an utter and complete failure"));
+</pre>
+
+<pre>
+2.181146685022733
+2.104368086244505
+1.73662040170538
+</pre>
+
+  <p>Toteuta vielä lopuksi metodi <code>public String lauseenTunneMerkkijonona(string lause)</code>, joka palauttaa lauseen tunteen merkkijonomuodossa. Käytä tässä samaa muunnosta kuin edellisessä osassa.</p>
+
+
+<pre class="sh_java">
+List&lt;String&gt; rivit = lueRivit("src/arviot.txt");
+TunteikkaatArviot arviot = new TunteikkaatArviot(rivit);
+
+System.out.println(arviot.lauseenTunneMerkkijonona("unicorn is a mythical creature"));
+System.out.println(arviot.lauseenTunneMerkkijonona("chuck norris made a happy meal cry"));
+System.out.println(arviot.lauseenTunneMerkkijonona("the movie was an utter and complete failure"));
+</pre>
+
+<pre>
+positiivinen
+positiivinen
+negatiivinen
+</pre>
+
+
+  <p>Huom! Käsittele pienellä ja isolla kirjoitetut sanat samoina sanoina!</p>
+  
+</div>
+
 </div>
 
   <div class="self-explanation" data-key="q-api-filewriter-printwriter"></div>
@@ -12746,6 +12911,125 @@ public class Main {
 </div>
 </div>
 </div>
+
+<div class="panel-group" id="12yhteenveto">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#12yhteenveto" href="#12yhteenveto2">
+      <div class="panel-heading">
+	<h4 class="kysely" id="yhteenveto-12-form-legend">Viikon 12 Loppukysely</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="12yhteenveto2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="yhteenveto-12-form">
+            <fieldset>
+                <legend id="yhteenveto-12-legend">Viikon 12 Loppukysely</legend>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-12-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-12-form-tmc-tunnus" name="yhteenveto-12-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-12-form-tuntia">Kuinka monta tuntia käytit kurssin kahdenteentoista viikkoon (noin)</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-1-form-tuntia" name="yhteenveto-12-form-tuntia" type="number" class="form-control input-md">
+                    </div>
+                </div>
+
+		<p>&nbsp;</p>
+
+		<p>Alla on esitetty viikkoon liittyviä väittämiä. Jos olet täysin eri mieltä väittämän kanssa, valitse 1. Jos olet täysin samaa mieltä väittämän kanssa, valitse 7. Muuten, valitse luku väliltä.</p>
+
+                <div class="row" id="yhteenveto-12-form-skaala">
+                    <div class="col-md-3">Täysin eri mieltä.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Täysin samaa mieltä.</div>
+                </div>
+
+		<p>&nbsp;</p>
+
+                <div id="yhteenveto-12-form-vaittamat">
+		  <div class="row"><div class="col-md-3">1. Viikko oli työläs.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">2. Viikko oli opettavainen.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">3. Viikko oli turhauttava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">4. Viikko oli mukava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">5. Viikko oli vaikea.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="7" type="radio">7</label></div></div>
+                </div>
+		
+		<p>&nbsp;</p>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-12-form-vaikein">Vaikein asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-12-form-vaikein" name="yhteenveto-12-form-vaikein" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-12-form-helpoin">Helpoin asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-12-form-helpoin" name="yhteenveto-12-form-helpoin" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-12-form-turhauttavinta">Turhauttavinta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-12-form-turhauttavinta" name="yhteenveto-12-form-turhauttavinta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-12-form-parasta">Parasta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-12-form-parasta" name="yhteenveto-12-form-parasta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-12-form-palaute">Yleinen palaute:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-12-form-palaute" rows="6" name="yhteenveto-12-form-palaute" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <input type="hidden" id="yhteenveto-12-form-started-entering" name="yhteenveto-12-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="yhteenveto-12-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="yhteenveto-12-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </section>
 
 <section class="viikkoraja" id="6" >
