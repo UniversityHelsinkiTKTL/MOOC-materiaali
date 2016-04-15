@@ -13044,7 +13044,7 @@ public class Main {
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2tehtavanvaihto-wk13" href="#2tehtavanvaihto-wk132">
       <div class="panel-heading">
-	<h4 id="taskswitching-form-wk13-legend">Kysely / tutkimus: Tehtävänvaihtotesti</h4>
+	<h4 class="kysely" id="taskswitching-form-wk13-legend">Kysely / tutkimus: Tehtävänvaihtotesti</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2tehtavanvaihto-wk132">
@@ -13205,7 +13205,394 @@ public class Main {
 </div>
 
 
+<!--
     <div class="self-explanation" data-key="q-tarkkailija"></div>
+-->
+
+    <h2>Kertailua</h2>
+
+    <p>Aloitetaan tehtäväsarja taas muutamalla kertaustehtävällä.</p>
+
+
+    <div class="tehtavat">
+      <div class="tehtava">
+	<h3 class="">Karkausvuosi</h3>
+
+	<p>Vuosi on karkausvuosi, jos se on jaollinen 4:llä. Kuitenkin jos vuosi on jaollinen 100:lla, se on karkausvuosi vain silloin, kun se on jaollinen myös 400:lla.</p>
+	
+	<p>Tee ohjelma, joka lukee käyttäjältä vuosiluvun, ja tarkistaa, onko vuosi karkausvuosi.</p>
+
+<pre>
+Anna vuosi: <font color="red">2011</font>
+Vuosi ei ole karkausvuosi.
+</pre>
+<pre>
+Anna vuosi: <font color="red">2012</font>
+Vuosi on karkausvuosi.
+</pre>
+<pre>
+Anna vuosi: <font color="red">1800</font>
+Vuosi ei ole karkausvuosi.
+</pre>
+<pre>
+Anna vuosi: <font color="red">2000</font>
+Vuosi on karkausvuosi.
+</pre>
+
+  </div>
+
+
+  <div class="tehtava">
+    <h3>Varianssi</h3>
+
+    <p>Tee metodi <code>varianssi</code>, joka laskee ja palauttaa saamansa kokonaislukuja sisältävän listan otosvarianssin. Ohjeen varianssin laskemiseksi voit katsoa esimerkiksi tehtävän lopusta tai <a href="http://fi.wikipedia.org/wiki/Varianssi#Populaatio-_ja_otosvarianssi">Wikipediasta</a> kohdasta populaatio- ja otosvarianssi. <span class="only-in-hy hidden-in-mooc">Jos sana varianssi kuulostaa pelottavalta, voit toki kysyä apua myös pajassa.</span></p>
+
+    <p>Tee metodi käyttäen apuna aiemmissa tehtävissä tehtyä metodia <code>keskiarvo</code>. Huom! Kutsu metodia kuitenkin vain kertaalleen yhden varianssin laskemisen aikana.</p>
+
+    <pre class="sh_java">
+public static double varianssi(ArrayList&lt;Integer&gt; lista) {
+    // kirjoita koodia tähän
+}
+
+public static void main(String[] args) {
+    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
+    lista.add(3);
+    lista.add(2);
+    lista.add(7);
+    lista.add(2);
+
+    System.out.println("Varianssi: " + varianssi(lista));
+}
+</pre>
+
+    <p>Ohjelman tulostus:</p>
+
+<pre>
+Varianssi: 5.666667
+</pre>
+
+    <p>(Lukujen keskiarvo on 3.5, joten otosvarianssi on ((3 - 3.5)² + (2 - 3.5)² + (7 - 3.5)² + (2 - 3.5)²)/(4 - 1) ˜ 5,666667.) </p>
+
+    <p>Kun listassa on N kappaletta lukuja voidaan otosvarianssi lasketaan seuraavasti:</p>
+    <pre><b>(</b>(luku<sub>1</sub> - keskiarvo)² + (luku<sub>2</sub> - keskiarvo)² + ... + (luku<sub>N</sub> - keskiarvo)²<b>)</b> / (N - 1)</pre>
+    
+    <p><strong>Huom!</strong> Muistathan kokeillessasi ohjelmaa, että yhden alkion kokoisen listan (otos)varianssia ei ole määritelty! Kaavassa tapahtuu tällöin nollalla jakaminen. Java esittää nollalla jakamisen tuloksen <em>epänumerona</em> <code>NaN</code></p>
+  </div>
+
+
+    <div class="tehtava">
+
+    <h3>Kello laskurin avulla</h3>
+
+    <p>Tässä tehtävässä tehdään luokka <code>YlhaaltaRajoitettuLaskuri</code> ja sovelletaan sitä kellon tekemiseen.</p>
+
+    <h4 class="req">Rajoitettu laskuri</h4>
+
+    <p>Tehdään luokka <code>YlhaaltaRajoitettuLaskuri</code>. Luokan olioilla on seuraava toiminnallisuus:</p>
+
+    <ul>
+      <li>Laskurilla on oliomuuttuja, joka muistaa laskurin arvon. Laskurin arvo on luku väliltä 0...yläraja.</li>
+      <li>Aluksi laskurin arvo on 0.</li>
+      <li>Olion konstruktori määrittää laskurin ylärajan.</li>
+      <li>Metodi <code>seuraava</code> kasvattaa laskurin arvoa. Mutta jos laskurin arvo ylittää ylärajan, sen arvoksi tulee 0.</li>
+      <li> Metodi <code>toString</code> palauttaa laskurin arvon merkkijonona.</li>
+    </ul>
+
+    <p>Tehtäväpohjassa on valmiina pääohjelmaa varten tiedosto <code>Paaohjelma</code>. Aloita tekemällä luokka <code>YlhaaltaRajoitettuLaskuri</code> vastaavasti kuin Maksukortti-tehtävässä. Näin tehdään myös tulevissa tehtäväsarjoissa.</p>
+
+    <p>Luokan rungoksi tulee seuraava:</p>
+
+<pre class="sh_java">
+public class YlhaaltaRajoitettuLaskuri {
+    private int arvo;
+    private int ylaraja;
+
+    public YlhaaltaRajoitettuLaskuri(int ylarajanAlkuarvo) {
+        // kirjoita koodia tähän
+    }
+
+    public void seuraava() {
+        // kirjoita koodia tähän
+    }
+
+    public String toString() {
+        // kirjoita koodia tähän
+    }
+}
+</pre>
+
+    <p><b>Vihje</b>: et voi palauttaa toStringissä suoraan kokonaislukutyyppisen oliomuuttujan <code>laskuri</code> arvoa. Kokonaislukumuuttujasta <code>arvo</code> saa merkkijonomuodon esim. lisäämällä sen eteen tyhjän merkkijonon eli kirjoittamalla <code>"" + arvo</code>.</p>
+
+    <p>Seuraavassa on pääohjelma, joka käyttää laskuria:</p>
+
+<pre class="sh_java">
+public class Paaohjelma {
+    public static void main(String[] args) {
+        YlhaaltaRajoitettuLaskuri laskuri = new YlhaaltaRajoitettuLaskuri(4);
+        System.out.println("arvo alussa: " + laskuri);
+
+        int i = 0;
+        while (i &lt; 10) {
+            laskuri.seuraava();
+            System.out.println("arvo: " + laskuri);
+            i++;
+        }
+    }
+}
+</pre>
+
+    <p>Laskurille asetetaan konstruktorissa ylärajaksi 4, joten laskurin arvo on luku 0:n ja 4:n väliltä. Huomaa, miten metodi <code>seuraava</code> vie laskurin arvoa eteenpäin, kunnes se pyörähtää 4:n jälkeen 0:aan:</p>
+
+    <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
+
+<pre>
+arvo alussa: 0
+arvo: 1
+arvo: 2
+arvo: 3
+arvo: 4
+arvo: 0
+arvo: 1
+arvo: 2
+arvo: 3
+arvo: 4
+arvo: 0
+</pre>
+
+    <h4 class="req">Etunolla tulostukseen</h4>
+
+    <p>Tee <code>toString</code>-metodista sellainen, että se lisää arvon merkkijonoesitykseen etunollan, jos laskurin arvo on vähemmän kuin 10. Eli jos laskurin arvo on esim. 3, palautetaan merkkijono "03", jos arvo taas on esim. 12, palautetaan normaaliin tapaan merkkijono "12".</p>
+
+    <p>Muuta pääohjelma seuraavaan muotoon ja varmista, että tulos on haluttu.</p>
+
+<pre class="sh_java">
+public class Paaohjelma {
+    public static void main(String[] args) {
+        YlhaaltaRajoitettuLaskuri laskuri = new YlhaaltaRajoitettuLaskuri(14);
+        System.out.println("arvo alussa: " + laskuri);
+
+        int i = 0;
+        while (i &lt; 16) {
+            laskuri.seuraava();
+            System.out.println("arvo: " + laskuri);
+            i++;
+        }
+    }
+}
+</pre>
+
+<pre>
+arvo alussa: 00
+arvo: 01
+arvo: 02
+arvo: 03
+arvo: 04
+arvo: 05
+arvo: 06
+arvo: 07
+arvo: 08
+arvo: 09
+arvo: 10
+arvo: 11
+arvo: 12
+arvo: 13
+arvo: 14
+arvo: 00
+arvo: 01
+</pre>
+
+    <h4 class="req">Kello, ensimmäinen versio</h4>
+
+    <p>Käyttämällä kahta laskuria voimme muodostaa kellon. Tuntimäärä on laskuri, jonka yläraja on 23, ja minuuttimäärä on laskuri jonka yläraja on 59. Kuten kaikki tietävät, kello toimii siten, että aina kun minuuttimäärä pyörähtää nollaan, tuntimäärä kasvaa yhdellä. </p>
+
+    <p>Tee ensin laskurille metodi <code>arvo</code>, joka palauttaa laskurin arvon:</p>
+
+<pre class="sh_java">
+public int arvo() {
+    // kirjoita koodia tähän
+}
+</pre>
+
+    <p>Tee sitten kello täydentämällä seuraava pääohjelmarunko (kopioi tämä pääohjelmaksesi sekä täydennä tarvittavilta osin kommenttien ohjaamalla tavalla):</p>
+
+<pre class="sh_java">
+public class Paaohjelma {
+    public static void main(String[] args) {
+        YlhaaltaRajoitettuLaskuri minuutit = new YlhaaltaRajoitettuLaskuri(59);
+        YlhaaltaRajoitettuLaskuri tunnit = new YlhaaltaRajoitettuLaskuri(23);
+
+        int i = 0;
+        while (i &lt; 121) {
+            System.out.println(tunnit + ":" + minuutit);   // tulostetaan nykyinen aika
+            // minuuttimäärä kasvaa
+            // jos minuuttimäärä menee nollaan, tuntimäärä kasvaa
+
+            i++;
+        }
+    }
+}
+</pre>
+
+    <p>Jos kellosi toimii oikein, sen tulostus näyttää suunnilleen seuraavalta:</p>
+
+<pre>
+00:00
+00:01
+...
+00:59
+01:00
+01:01
+01:02
+...
+01:59
+02:00
+</pre>
+
+    <h4>Kello, toinen versio</h4>
+
+    <p>Laajenna kelloasi myös sekuntiviisarilla. Tee lisäksi luokalle <code>YlhaaltaRajoitettuLaskuri</code> metodi <code>asetaArvo</code>, jolla laskurille pystyy asettamaan halutun arvon -- jos et ole ihan varma mitä tässä pitäisi tehdä, kertaa materiaalista kohta missä puhutaan "settereistä".</p>
+
+    <p>Jos laskurille yritetään asettaa kelvoton arvo eli negatiivinen luku tai ylärajaa suurempi luku, ei laskurin arvo muutu.</p>
+
+    <p>Tämän metodin avulla voit muuttaa kellon ajan heti ohjelman alussa haluamaksesi.</p>
+
+    <p>Voit testata kellon toimintaa seuraavalla ohjelmalla</p>
+
+<pre class="sh_java">
+import java.util.Scanner;
+
+public class Paaohjelma {
+    public static void main(String[] args)  {
+        Scanner lukija = new Scanner(System.in);
+        YlhaaltaRajoitettuLaskuri sekunnit = new YlhaaltaRajoitettuLaskuri(59);
+        YlhaaltaRajoitettuLaskuri minuutit = new YlhaaltaRajoitettuLaskuri(59);
+        YlhaaltaRajoitettuLaskuri tunnit = new YlhaaltaRajoitettuLaskuri(23);
+
+        System.out.print("sekunnit: ");
+        int sek = // kysy sekuntien alkuarvo käyttäjältä
+        System.out.print("minuutit: ");
+        int min = // kysy minuuttien alkuarvo käyttäjältä
+        System.out.print("tunnit: ");
+        int tun = // kysy tuntien alkuarvo käyttäjältä
+
+        sekunnit.asetaArvo(sek);
+        minuutit.asetaArvo(min);
+        tunnit.asetaArvo(tun);
+
+        int i = 0;
+        while (i &lt; 121) {
+            // lisää edelliseen myös sekuntiviisari
+            i++;
+        }
+
+    }
+}
+</pre>
+
+    <p>Kokeile laittaa kellosi alkamaan ajasta <i>23:59:50</i> ja varmista, että vuorokauden vaihteessa kello toimii odotetusti!</p>
+
+    <p><strong>Bonus-tehtävä: ikuisesti käyvä kello (tehtävää ei palauteta!)</strong></p>
+
+    <p>Ennen kuin alat tekemään tätä tehtävää, palauta jo tekemäsi kello!</p>
+
+    <p>Muuta pääohjelmasi seuraavaan muotoon:</p>
+
+<pre class="sh_java">
+public class Paaohjelma {
+    public static void main(String[] args) throws Exception {
+        YlhaaltaRajoitettuLaskuri sekunnit = new YlhaaltaRajoitettuLaskuri(59);
+        YlhaaltaRajoitettuLaskuri minuutit = new YlhaaltaRajoitettuLaskuri(59);
+        YlhaaltaRajoitettuLaskuri tunnit = new YlhaaltaRajoitettuLaskuri(23);
+
+        sekunnit.asetaArvo(50);
+        minuutit.asetaArvo(59);
+        tunnit.asetaArvo(23);
+
+        while (true) {
+            System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
+            Thread.sleep(1000);
+            // lisää kellon aikaa sekunnilla eteenpäin
+        }
+    }
+}
+
+</pre>
+    <p>Nyt kello käy ikuisesti ja kasvattaa arvoaan sekunnin välein. Sekunnin odotus tapahtuu komennolla <code>Thread.sleep(1000);</code>, komennon parametri kertoo nukuttavan ajan millisekunteina. Jotta komento toimisi, pitää main:in esittelyriville tehdä pieni lisäys: <code>public static void main(String[] args) <b>throws Exception</b> {</code>, eli tummennettuna oleva <code>throws Exception</code>.</p>
+
+    <p>Saat ohjelman lopetettua painamalla NetBeans-konsolin (eli sen osan johon kello tulostaa arvonsa) vasemmalla laidalla olevasta punaisesta laatikosta.</p>
+
+  </div>
+
+
+  <div class="tehtava">
+
+    <h3>Kellosta olio</h3>
+    
+    <p>Edellisellä tehtävässä rakennettiin luokka <code>YlhaaltaRajoitettuLaskuri</code> ja rakennettiin laskurien avulla pääohjelmaan kello. Tehdään nyt myös itse kellosta olio. Luokan kello runko näyttää seuraavalta:</p>
+
+  <pre class="sh_java">
+
+public class Kello {
+    private YlhaaltaRajoitettuLaskuri tunnit;
+    private YlhaaltaRajoitettuLaskuri minuutit;
+    private YlhaaltaRajoitettuLaskuri sekunnit;
+
+    public Kello(int tunnitAlussa, int minuutitAlussa, int sekunnitAlussa) {
+      // laskurit tunneille, minuuteille ja sekunneille; 
+      // laskurien arvot tulee asettaa parametreina saatuun aikaan
+    }
+
+    public void etene() {
+      // kello etenee sekunnilla
+    }
+
+    public String toString() {
+        // palauttaa kellon merkkijonoesityksen
+      }
+}
+</pre>
+
+  <p>Luokkaan YlhaaltaRajoitettuLaskuri on kopioitu eräs ratkaisu edelliseen tehtävään. Toteuta luokan <code>Kello</code> konstruktori ja puuttuvat metodit kolmea ylhäältä rajoitettua laskuria hyödyntäen.</p>
+
+    <p> Voit testata kelloasi seuraavalla pääohjelmalla:</p>
+
+  <pre class="sh_java">
+public class Main {
+    public static void main(String[] args) {
+        Kello kello = new Kello(23, 59, 50);
+
+        int i = 0;
+        while (i &lt; 20) {
+            System.out.println(kello);
+            kello.etene();
+            i++;
+        }
+    }
+}
+</pre>
+
+  <p>Tulostuksen tulisi edetä seuraavasti:</p>
+
+<pre>
+23:59:50
+23:59:51
+23:59:52
+23:59:53
+23:59:54
+23:59:55
+23:59:56
+23:59:57
+23:59:58
+23:59:59
+00:00:00
+00:00:01
+...
+</pre>
+</div>
+
+
+</div>
+
 
 
     <h2>Muutamia hyödyllisiä tekniikoita</h2>
@@ -14331,7 +14718,7 @@ public void tulosta(int kertaa, String... merkkijonot) // sallittu!
 <div class="tehtava">
 <h3>JoustavatHakuehdot</h3>
 
-<p>Muutamassa tehtävässä (mm. ohpen kirjasto ja ohjan sanatutkimus) törmäsimme tilanteeseen, jossa jouduimme filtteröimään listalta jotain hakuehtoa vastaavat oliot. Esim. sanatutkimuksessa metodit <code>zSisaltava, lLoppuiset, palindromit, kaikkiVoksSis</code> tekivät oleellisesti saman asian: ne kävivät läpi tiedoston sisällön sana kerrallaan ja tarkastivat jokaisen sanan kohdalla päteekö sille tietty ehto, ja jos pätee, ottivat sanan talteen. Koska kaikkien metodien ehto oli erilainen, ei toisteisuutta tehtävissä osattu poistaa vaan kaikkien koodi oli ehtoa vaille "copypastea". </p>
+<p>Muutamassa tehtävässä (mm. kirjasto ja sanatutkimus) törmäsimme tilanteeseen, jossa jouduimme filtteröimään listalta jotain hakuehtoa vastaavat oliot. Esim. sanatutkimuksessa metodit <code>zSisaltava, lLoppuiset, palindromit, kaikkiVoksSis</code> tekivät oleellisesti saman asian: ne kävivät läpi tiedoston sisällön sana kerrallaan ja tarkastivat jokaisen sanan kohdalla päteekö sille tietty ehto, ja jos pätee, ottivat sanan talteen. Koska kaikkien metodien ehto oli erilainen, ei toisteisuutta tehtävissä osattu poistaa vaan kaikkien koodi oli ehtoa vaille "copypastea". </p>
 
 <p>Tässä tehtävässä teemme ohjelman, jonka avulla on mahdollista filtteröidä rivejä <a href="http://www.gutenberg.org/">Project Gutenbergin</a> sivuilta löytyvistä kirjoista. Seuraavassa esimerkkinä Dostojevskin Rikos ja rangaistus. Haluamme, että erilaisia filtteröintiehtoja on monelaisia ja että filtteröinti voi tapahtua myös eri ehtojen kombinaationa. Ohjelman rakenteen pitää myös mahdollistaa uusien ehtojen lisääminen myöhemmin.</p>
 
@@ -14530,7 +14917,7 @@ Ehto sanat = new VahintaanYksi(
 
 Ehto oikeaPituus = new Molemmat(
                      new PituusVahintaan(20),
-                     new Ei( new PituusVahintaan(31))
+                     new Ei(new PituusVahintaan(31))
                    );
 
 Ehto halutut = new Molemmat(sanat, oikeaPituus);
@@ -14590,10 +14977,107 @@ public static String muotoile(int[] t) {
 </div>
 </div>
 
+<!--
     <div class="self-explanation" data-key="q-vanhaOhjanKoe"></div>
+-->
+
+<h2>Hieman isompia ohjelmia</h2>
 
 
-<h2>Hieman isompi ohjelma</h2>
+
+<div class="tehtavat">
+  <div class="tehtava">
+    <h3>Hirsipuu</h3>
+    
+    <p>Hirsipuu on peli, jossa käyttäjä yrittää arvata piilossa olevan sanan. Normaalissa hirsipuussa tietokone valitsee sanan, ja pitää sitä piilossa kun käyttäjä yrittää arvata sanaan liittyviä kirjaimia. Arvauskertoja on rajattu määrä: jos pelaaja arvaa kaikki sanaan liittyvän kirjaimet, hän voittaa pelin. Jos taas pelaaja ei arvaa sanoja, tietokone voittaa pelin.</p>
+
+    <p>Toteutetaan tässä palasia hieman ärsyttävämpään versioon hirsipuusta, missä tietokone pyrkii voittamaan pelin huijaamalla.</p>
+
+    <p>Huijauksen ideana on se, että tietokone voi vaihtaa valitsemansa sanan tarvittaessa lennosta. Pelin lopullinen toiminnallisuus on seuraava:</p> 
+
+<pre>
+...
+
+Sinulla on 3 arvausta jäljellä.
+Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j]
+Sana: -a--a
+Arvaus: <font color="red">r</font>
+Ei r-kirjaimia. 
+
+Sinulla on 2 arvausta jäljellä.
+Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j, r]
+Sana: -a--a
+Arvaus: <font color="red">s</font>
+Löytyi ainakin yksi s-kirjain.
+
+Sinulla on 2 arvausta jäljellä.
+Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j, r, s]
+Sana: -as-a
+Arvaus: <font color="red">p</font>
+Ei p-kirjaimia. 
+
+Sinulla on 1 arvaus jäljellä.
+Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j, p, r, s]
+Sana: -as-a
+Arvaus: <font color="red">t</font>
+Löytyi ainakin yksi t-kirjain.
+
+Sinulla on 1 arvaus jäljellä.
+Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j, p, r, s, t]
+Sana: -asta
+Arvaus: <font color="red">v</font>
+Ei v-kirjaimia. 
+
+Parempaa onnea ensi kerralla!
+Sana oli: rasta
+</pre>
+
+    <p>Ohjelman tekstikäyttöliittymä on toteutettu valmiiksi Main-luokkaan.</p>
+
+    <h4>Sanalista</h4>
+
+    <p>Tässä toteutettavaa luokkaa <code>Sanalista</code> käytetään käytettävissä olevien sanojen rajaamiseen. Luokkaan <code>Sanalista</code> on määritelty merkkijonolistan parametrina ottavan konstruktorin sekä seuraavat metodit.</p>
+
+    <ol>
+      <li><code>public List&lt;String&gt; sanat()</code> - palauttaa sanalistalla olevat sanat.</li>
+      <li><code>public Sanalista sanatJoidenPituusOn(int pituus)</code> - palauttaa uuden sanalista-olion, jossa on vain ne sanat, joiden pituus on parametrina annetun muuttujan arvo.</li>
+      <li><code>public Sanalista sanatJoissaEiEsiinnyKirjainta(char kirjain)</code> - palauttaa uuden sanalista-olion, jossa on vain ne sanat, joissa ei esiinny parametrina annettua kirjainmerkkiä.</li>
+      <li><code>public Sanalista sanatJoissaMerkit(String merkkijono)</code> - palauttaa uuden sanalista-olion, jossa on vain ne sanat, joissa on merkit parametrina annetun merkkijonon määräämissä kohdissa. Annettu merkkijono on muotoa <code>--d-</code>, missä viivat kuvaavat mitä tahansa merkkiä ja kirjaimet merkkejä, joiden täytyy olla sanassa juuri annetulla paikalla.</li>
+      <li><code>public int koko()</code> - palauttaa sanalistan sisältämien sanojen määrän.</li>
+    </ol>
+
+    <p>Toteuta edelliset metodit luokassa <code>Sanalista</code> oleviin metodirunkoihin.</p>
+
+    <h4>Hirsipuu, osa 1</h4>
+
+    <p>Luokka <code>Hirsipuu</code> pitää kirjaa hirsipuu-pelin tilanteesta. Hirsipuulla on konstruktori, joka saa parametrinaan sanalistan sekä arvausten määrän. Hirsipuu valitsee konstruktorissa myös arvattavan sanan annetulta sanalistalta.</p>
+
+    <p>Hirsipuu tarjoaa lisäksi ainakin seuraavat metodit.</p>
+
+    <ol>
+      <li><code>public boolean arvaa(Character merkki)</code> - arvaa parametrina annettua merkkiä. Lisää arvauksen arvauslistalle. Jos merkki löytyy arvattavasta sanasta, palauttaa true. Jos merkkiä taas ei löydy, vähentää arvausten määrää yhdellä, ja palauttaa false.</li>
+      <li><code>public List&lt;Character&gt; arvaukset()</code> - palauttaa tehdyt arvaukset listaoliona.</p>
+      <li><code>public int arvauksiaJaljella()</code> - kertoo jäljellä olevien arvausten määrän.</li>
+      <li><code>public String sana()</code> - kertoo arvattavan sanan siten, että kirjaimet, joita ei ole vielä arvattu, peitetään merkillä <code>-</code>.</li>
+      <li><code>public String oikeaSana()</code> - kertoo arvattavan sanan ilman peittelyä.</li>
+      <li><code>public boolean onLoppu()</code> - kertoo onko peli loppu. Peli on loppu jos kaikki arvattavan sanan merkit on arvattu.</li>
+    </ol> 
+    
+    <p>Toteuta edelliset metodit. Kun edelliset metodit on toteutettu, voit jo pelata hirsipuuta.</p>
+
+    <p>Tarkastele toteutuksen avuksi <code>Test Packages</code> -kansiossa sijaitsevaa luokkaa <code>BHirsipuuTest</code>. Voitko päätellä mitä luokassa olevat metodit tekevät?</p>
+
+    <h4>Hirsipuu, osa 2</h4>
+
+    <p>Jatka hirsipuun kehitystä siten, että hyödynnät sanalistaa ja pyrit tekemään hirsipuu-pelistä sellaisen, että se välttelee pelaajan arvauksia mahdollisimman hyvin. Kannattaa aloittaa arvaa-metodin parantamisesta.</p>
+
+    <p>Tähän osioon ei ole testejä -- palauta peli kun hirsipuu välttelee arvauksia mielestäsi tarpeeksi hyvin.</p>
+
+    <p>Kerro myös palautuksen yhteydessä hirsipuutekoälysi oleellisimmat tausta-ajatukset.</p>
+
+  </div>
+
+</div>
 
 
 <div class="tehtavat">
@@ -14757,7 +15241,126 @@ matopeli.start();
 </div>
 </div>
 
+
+<div class="panel-group" id="13yhteenveto">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#13yhteenveto" href="#13yhteenveto2">
+      <div class="panel-heading">
+	<h4 class="kysely" id="yhteenveto-13-form-legend">Viikon 13 Loppukysely</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="13yhteenveto2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="yhteenveto-13-form">
+            <fieldset>
+                <legend id="yhteenveto-13-legend">Viikon 13 Loppukysely</legend>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-13-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-13-form-tmc-tunnus" name="yhteenveto-13-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-13-form-tuntia">Kuinka monta tuntia käytit kurssin kolmanteentoista viikkoon (noin)</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-13-form-tuntia" name="yhteenveto-13-form-tuntia" type="number" class="form-control input-md">
+                    </div>
+                </div>
+
+		<p>&nbsp;</p>
+
+		<p>Alla on esitetty viikkoon liittyviä väittämiä. Jos olet täysin eri mieltä väittämän kanssa, valitse 1. Jos olet täysin samaa mieltä väittämän kanssa, valitse 7. Muuten, valitse luku väliltä.</p>
+
+                <div class="row" id="yhteenveto-13-form-skaala">
+                    <div class="col-md-3">Täysin eri mieltä.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Täysin samaa mieltä.</div>
+                </div>
+
+		<p>&nbsp;</p>
+
+                <div id="yhteenveto-13-form-vaittamat">
+		  <div class="row"><div class="col-md-3">1. Viikko oli työläs.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">2. Viikko oli opettavainen.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">3. Viikko oli turhauttava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">4. Viikko oli mukava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">5. Viikko oli vaikea.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="7" type="radio">7</label></div></div>
+                </div>
+		
+		<p>&nbsp;</p>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-13-form-vaikein">Vaikein asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-13-form-vaikein" name="yhteenveto-13-form-vaikein" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-13-form-helpoin">Helpoin asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-13-form-helpoin" name="yhteenveto-13-form-helpoin" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-13-form-turhauttavinta">Turhauttavinta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-13-form-turhauttavinta" name="yhteenveto-13-form-turhauttavinta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-13-form-parasta">Parasta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-13-form-parasta" name="yhteenveto-13-form-parasta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-13-form-palaute">Yleinen palaute:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-13-form-palaute" rows="6" name="yhteenveto-13-form-palaute" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <input type="hidden" id="yhteenveto-13-form-started-entering" name="yhteenveto-13-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="yhteenveto-13-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="yhteenveto-13-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+
+
 </section>
 
 <section class="viikkoraja" id="7" >
