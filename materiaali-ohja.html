@@ -11450,7 +11450,11 @@ sanakirja.tallenna();
 
   <p>Toteuta tehtäväpohjassa annettuun luokkaan <code>TunteikkaatArviot</code> metodi <code>public int sanojenLukumaara(String sana)</code>. Metodin tulee kertoa sille parametrina annetun merkkijonon <code>sana</code> esiintymislukumäärä luokan konstruktorille annetussa merkkijonolistassa.</p>
 
-  <p>Kannattanee tässä jo miettiä minkälainen tietorakenne olisi hyvä sanojen lukumäärän tallentamiseen. Saat merkkijonoon liittyvät yksittäiset sanat selville esimerkiksi String-luokan <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#split-java.lang.String-" target="_blank">split</a>-metodin avulla.</p>
+  <p>Kannattanee tässä jo miettiä minkälainen tietorakenne olisi hyvä sanojen lukumäärän tallentamiseen. Saat merkkijonoon liittyvät yksittäiset sanat selville esimerkiksi String-luokan <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#split-java.lang.String-" target="_blank">split</a>-metodin avulla:</p>
+
+<pre class="sh_java">
+String merkkijono = "hei kaikki siellä";
+String[] palat = merkkijono.split(" ");</pre>
 
   <p>Voit kokeilla ohjelmasi toimintaa esimerkiksi seuraavalla koodilla:</p>
 
@@ -15371,7 +15375,7 @@ matopeli.start();
   <div class="panel panel-default">
     <a class="panel-title" data-toggle="collapse" data-parent="#2yhdesta-sataan" href="#2yhdesta-sataan2">
       <div class="panel-heading">
-	<h4 id="ohja-kysely-osaaminen-form-legend">Kysely: Oma arvio osaamisesta</h4>
+	<h4 class="kysely" id="ohja-kysely-osaaminen-form-legend">Kysely: Oma arvio osaamisesta</h4>
     </div>
     </a>
     <div class="panel-collapse collapse" id="2yhdesta-sataan2">
@@ -15414,15 +15418,17 @@ matopeli.start();
                   
 		  <textarea class="form-control" rows="4" name="vaikeimmat"></textarea>
 
-		  <p>&nbsp;</p>
+		  <div class="hidden-in-mooc">
+		    <p>&nbsp;</p>
 
-		  <p>Tällä hetkellä, kuinka monta pistettä (0-15) uskot saavasi kurssikokeesta:</p>
-
-		  <input class="form-control" name="kurssikoe" style="width:200px"></input>
-
-		  <p>Tällä hetkellä, kuinka monta pistettä (0-15) uskot saavasi konekokeesta:</p>
-
-		  <input class="form-control" name="konekoe" style="width:200px"></input>
+		    <p>Tällä hetkellä, kuinka monta pistettä (0-15) uskot saavasi kurssikokeesta:</p>
+		    
+		    <input class="form-control" name="kurssikoe" style="width:200px"></input>
+		    
+		    <p>Tällä hetkellä, kuinka monta pistettä (0-15) uskot saavasi konekokeesta:</p>
+		    
+		    <input class="form-control" name="konekoe" style="width:200px"></input>
+		  </div>
 
                 </div>
 
@@ -15617,6 +15623,15 @@ matopeli.start();
 </div>
 -->
 
+    <div class="hidden-in-hy">
+
+      <h3>MOOC-kurssin suorittamisesta</h3>
+
+      <p>Kurssimme lähenee valitettavasti loppuaan. Tässä kohdassa on taas hyvä tutustua <a href="http://mooc.fi/courses/2016/ohjelmoinnin-mooc/kurssin-suorittaminen.html" target="_blank">MOOC-kurssin suorittamiseen liittyviin mahdollisuuksiin</a>. Kurssista on mahdollista saada esimerkiksi opintosuoritusmerkintä Helsingin yliopiston Avoimen yliopiston kautta maksutta.</p>
+
+      <p>Huom! Jos teet MOOCia väylänä yliopistoon, lue myös siihen liittyvä <a href="http://mooc.fi/courses/2016/ohjelmoinnin-mooc/opinto-oikeus.html" target="_blank">infosivu</a>. Erityisesti, jos olet vaaditun määrän tehtäviä annetussa aikataulusa, mutta et ole vielä saanut kutsua näyttökokeeseen, ota pikaisesti yhteyttä osoitteeseen <strong>mooc@cs.helsinki.fi</strong>.</p>
+
+    </div>
 
     <h2>Erilaisista ohjelmointiparadigmoista ja deklaratiivisesta ohjelmoinnista</h2>
 
@@ -15837,6 +15852,16 @@ lista.stream().filter(i -&gt; i &gt;= 0).mapToInt(i -&gt; i).average().ifPresent
 
     <p>IntStream-lukuvirran metodi <a href="" target="_blank">average</a> palauttaa <a href="" target="_blank">OptionalDouble</a>-tyyppisen alkion, joka tarjoaa metodin <code>ifPresent</code>, jonka avulla kerrotaan mitä tehdään jos keskiarvon laskeminen onnistuu. Tässä tapauksessa keskiarvo annetaan tulostusmetodille.</p>
 
+
+    <h4>Rajattujen tai käsiteltyjen alkioiden kerääminen</h4>
+
+    <p>Syötevirrassa käsiteltäviä alkioita voi myös kerätä collect-metodin avulla. Alla kerätään syötevirrasta alkiot, joiden arvon on yli 5.</p>
+
+<pre class="sh_java">
+List&lt;Integer&gt; luvut = lista.stream().filter(i -&gt; i &gt; 5).collect(Collectors.toList());</pre>
+
+
+
     <p>&nbsp;</p>
 
     <p>Oracle tarjoaa lisää oppaita tähän ohjelmointityyliin liittyen, hyvä lähtökohta lienee <a href="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html" target="_blank">Lambda QuickStart</a>.</p>
@@ -15846,7 +15871,9 @@ lista.stream().filter(i -&gt; i &gt;= 0).mapToInt(i -&gt; i).average().ifPresent
 
     <p>Kurssin viimeinen viikko koostuu edellä olevan pikakatsauksen lisäksi kurssilla nähtyjen teemojen kertauksesta. Osa tehtävistä on jo tuttuja, osa uusia. Kaikista tehtävistä on tehty sellaisia, että että niissä ei ole testejä -- olet täysin vastuussa ohjelman toiminnasta -- voit kokeilla edellä näkemiäsi menetelmiä, tai kerrata aiemmin tutuksi tulleita käsitteitä. Palauttamalla tehtävän takaat että se toimii toivotusti, jolloin saat siitä myös pisteet. Kertaa tehtäviä tehdessäsi materiaalia -- kannattaa varata tehtäville myös ajatteluaikaa.</p> 
 
+<!--
     <p class="hidden-in-mooc">Voit myös paikata yhden tekemättä jääneen viikon tekemällä TMC:ssä kurssin <code>XXX-ohja-kertaus</code> kokeeseen mennessä. Kertauskurssiin liittyvä materiaali löytyy <a href="https://www.cs.helsinki.fi/group/java/k13/materiaali-ohjakertaus.html" target="_blank">tämän linkin takaa</a>.</p>
+-->
 
 
     <div class="tehtavat">
@@ -15855,7 +15882,7 @@ lista.stream().filter(i -&gt; i &gt;= 0).mapToInt(i -&gt; i).average().ifPresent
 
 	<h3>Sademäärät</h3>
 
-	<p>Huom! Vaikka olisit tehnyt tehtävän jo kurssilla Ohjelmoinnin perusteet, tee se silti. Tee tehtävä nykyisen tietämyksesi perusteella, äläkä katso mahdollista aiempaa vastaustasi.</p>
+	<p>Huom! Vaikka olisit tehnyt tehtävän jo aiemmin, tee se silti uudestaan. Tee tehtävä nykyisen tietämyksesi perusteella, äläkä katso mahdollista aiempaa vastaustasi.</p>
 	
 	<p>Tässä ohjelmassa harjoitellaan toistolauseiden, lukujen käyttöä sekä käyttäjän antaman syötteen lukemista. Tehtäväpohjassa ei ole automaattisia testejä, joten testeistä ei ole apua ohjelman rakentamisessa. <strong>Tehtävä on kolmen tehtäväpisteen arvoinen</strong>.</p>
 	
@@ -15906,7 +15933,7 @@ Yhtään sademäärää ei syötetty.
 	<h3>Lintubongarin tietokanta</h3>
 
 
-	<p>Huom! Kuten edellisessä tehtässä; vaikka olisit tehnyt tehtävän jo kurssilla Ohjelmoinnin perusteet, tee se silti. Tee tehtävä nykyisen tietämyksesi perusteella, äläkä katso mahdollista aiempaa vastaustasi.</p>
+	<p>Huom! Kuten edellisessä tehtässä; vaikka olisit tehnyt tehtävän jo aiemmin, tee se silti uudestaan. Tee tehtävä nykyisen tietämyksesi perusteella, äläkä katso mahdollista aiempaa vastaustasi.</p>
 	
 
 	<p><b>Tehtävä vastaa kolmea yksiosaista tehtävää. </b></p>
@@ -16131,6 +16158,8 @@ false
 true
 </pre>
 </div>
+
+
 
 
       <div class="tehtava">
@@ -16376,6 +16405,242 @@ System.out.println(tutkimus.haeRistikkoon(&quot;s???is??s&quot;));
 
 
       </div>
+
+<!--
+      <div class="tehtava">
+	<h3>JoustavatHakuehdot</h3>
+	
+	<p>Näimme edellä tilanteen, jossa jouduimme filtteröimään listalta jotain hakuehtoa vastaavat oliot. Näissä useat metodit tekevät oleellisesti saman asian: ne käyvät läpi tiedoston sisällön sana kerrallaan ja tarkastavat jokaisen sanan kohdalla päteekö sille tietty ehto, ja jos pätee, ottavat sanan talteen. Koska kaikkien metodien ehto oli erilainen, ei toisteisuutta tehtävissä osattu poistaa vaan kaikkien koodi oli ehtoa vaille "copypastea". </p>
+
+	<p>Tässä tehtävässä teemme uudestaan edellisellä viikolla nähdyn ohjelman, jonka avulla on mahdollista filtteröidä rivejä <a href="http://www.gutenberg.org/">Project Gutenbergin</a> sivuilta löytyvistä kirjoista. Seuraavassa esimerkkinä Dostojevskin Rikos ja rangaistus. Haluamme, että erilaisia filtteröintiehtoja on monelaisia ja että filtteröinti voi tapahtua myös eri ehtojen kombinaationa. Ohjelman rakenteen pitää myös mahdollistaa uusien ehtojen lisääminen myöhemmin.</p>
+
+
+	<p>Sopiva ratkaisu edellisiltä viikoilta tilanteeseen on jokaisen filtteröintiehdon määritteleminen omana rajapinnan <code>Ehto</code> toteuttavana oliona. Seuraavassa rajapinnan määritelmä:</p>
+
+<pre class="sh_java">
+public interface Ehto {
+    boolean toteutuu(String rivi);
+}
+</pre>
+
+	<p>Seuraavassa eräs rajapinnan toteuttava filtteriluokka:</p>
+
+<pre class="sh_java">
+public class SisaltaaSanan implements Ehto {
+
+    String sana;
+
+    public SisaltaaSanan(String sana) {
+        this.sana = sana;
+    }
+
+    @Override
+    public boolean toteutuu(String rivi) {
+        return rivi.contains(sana);
+    }
+}
+</pre>
+
+        <p>Edellistä ehtoa voitaisiin käyttää esimerkiksi seuraavasti:</p>
+
+<pre class="sh_java">
+List&lt;String&gt; sanat = new ArrayList&lt;&gt;();
+sanat.add("eka");
+sanat.add("toka");
+sanat.add("kolmas");
+
+Ehto tarkistin = new SisaltaaSanan("ka");
+
+List&lt;String&gt; valitut = new ArrayList&lt;&gt;();
+for (String sana: sanat) {
+    if (ehto.toteutuu(sana)) {
+        valitut.add(sana);
+    }
+}
+</pre>
+
+      <p>Java 8:n syötevirtojen ja rajausten tuloksia voi myös kerätä (Collect). Edellinen esimerkki onnistuisi myös seuraavasti:</p>       
+
+<pre class="sh_java">
+List&lt;String&gt; sanat = new ArrayList&lt;&gt;();
+sanat.add("eka");
+sanat.add("toka");
+sanat.add("kolmas");
+
+Ehto tarkistin = new SisaltaaSanan("ka");
+List&lt;String&gt; valitut = sanat.stream()
+                                  .filter(s -> tarkistin.tarkista(s))
+                                  .collect(Collectors.toList());
+
+// tai:
+// List&lt;String&gt; valitut = sanat.stream()
+                                     .filter(s -> s.contains("ka"))
+                                     .collect(Collectors.toList());
+</pre>
+
+	<p>Tehtäväpohjan mukana saat valmiina luokan <code>GutenbergLukija</code>, jonka avulla voit tutkia kirjojen rivejä filtteröitynä parametrina annetun hakuehdon perusteella:</p>
+
+<pre class="sh_java">
+public class GutenbergLukija {
+
+    private List&lt;String&gt; sanat;
+
+    public GutenbergLukija(String osoite) throws IllegalArgumentException {
+        // kirjan verkosta hakeva koodi
+    }
+
+    public List&lt;String&gt; rivitJoilleVoimassa(Ehto ehto){
+        return sanat.stream()
+                    .filter(s -> ehto.tarkista(s))
+                    .collect(Collectors.toList());
+    }
+}
+</pre>
+
+<p>Seuraavassa tulostetaan Rikoksesta ja rangaistuksesta kaikki rivit, joilla esiintyy sana "beer":</p>
+
+<pre class="sh_java">
+String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+GutenbergLukija kirja = new GutenbergLukija(osoite);
+
+Ehto ehto = new SisaltaaSanan("beer");
+
+kirja.rivitJoilleVoimassa(ehto).stream().forEach(System.out::println);
+</pre>
+
+
+    <p><b>Huom:</b> Project Gutenbergin sivuilla olevat tekstit ovat tarkoitettu vain ihmisten luettaviksi. Jos tekstejä haluaa lukea koneellisesti eli esim. <em>GutenbergLukijalla</em>, on kirjan sivulta, esim. <a href="http://www.gutenberg.org/ebooks/2554">http://www.gutenberg.org/ebooks/2554</a> mentävä alakulmassa olevaan linkin <em>mirror sites</em> takaa löytyvälle sivulle, esim. bulgarialaiselle e-book Ltd:n sivulle ja luettava kirja sieltä löytyvästä osoitteesta.</p>
+
+    <h4>Kaikki sanat</h4>
+
+<p>Tee rajapinnan <code>ehto</code> toteuttava luokka <code>KaikkiRivit</code>, joka kelpuuttaa jokaisen rivin. Tämä ja muutkin tämän tehtävän luokat tulee toteuttaa pakkaukseen <code>lukija.ehdot</code>.</p>
+
+<pre class="sh_java">
+String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+GutenbergLukija kirja = new GutenbergLukija(osoite);
+
+Ehto ehto = new KaikkiRivit();
+
+kirja.rivitJoilleVoimassa(ehto).stream().forEach(System.out::println);
+</pre>
+
+
+    <h4>Loppuu huuto- tai kysymysmerkkiin</h4>
+
+    <p>Tee rajapinnan <code>ehto</code> toteuttava luokka <code>LoppuuHuutoTaiKysymysmerkkiin</code>, joka kelpuuttaa ne rivit, joiden viimeinen merkki on huuto- tai kysymysmerkki.</p>
+
+<pre class="sh_java">
+String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+GutenbergLukija kirja = new GutenbergLukija(osoite);
+
+Ehto ehto = new LoppuuHuutoTaiKysymysmerkkiin();
+
+kirja.rivitJoilleVoimassa(ehto).stream().forEach(System.out::println);
+</pre>
+
+<p><strong>Muistutus:</strong> merkkien vertailu Javassa tapahtuu == operaattorilla:</p>
+
+<pre class="sh_java">
+String nimi = "pekka";
+
+// HUOM: 'p' on merkki eli char p, "p" taas merkkojono, jonka ainoa merkki on p
+if (nimi.charAt(0) == 'p') {
+    System.out.println("alussa p");
+} else {
+    System.out.println("alussa jokin muu kuin p");
+}
+</pre>
+
+<h4>Pituus vähintään</h4>
+
+<p>Tee rajapinnan <code>ehto</code> toteuttava luokka <code>PituusVahintaan</code>, jonka oliot kelpuuttavat ne rivit, joiden pituus on vähintään olion konstruktorin parametrina annettu luku.</p>
+
+<pre class="sh_java">
+String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+GutenbergLukija kirja = new GutenbergLukija(osoite);
+
+Ehto ehto = new PituusVahintaan(40);
+
+for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
+    System.out.println(rivi);
+}
+</pre>
+
+<h4>molemmat</h4>
+
+<p>Tee rajapinnan <code>ehto</code> toteuttava luokka <code>Molemmat</code>. Luokan oliot saavat konstruktorin parametrina kaksi rajapinnan <code>Ehto</code> toteuttavaa olioa. <code>Molemmat</code>-olio kelpuuttavaa ne rivit, jotka sen kummatkin konstruktorissa saamansa ehdot kelpuuttavat. Seuraavassa tulostetaan kaikki huuto- tai kysymysmerkkiin loppuvat rivit, jotka sisältävät sanan "beer".
+</p>
+
+<pre class="sh_java">
+String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+GutenbergLukija kirja = new GutenbergLukija(osoite);
+
+Ehto ehto = new Molemmat(
+                new LoppuuHuutoTaiKysymysmerkkiin(),
+                new SisaltaaSanan("beer")
+            );
+
+for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
+    System.out.println(rivi);
+}
+</pre>
+
+<h4>negaatio</h4>
+
+<p>Tee rajapinnan <code>ehto</code> toteuttava luokka <code>Ei</code>. Luokan oliot saavat parametrina rajapinnan <code>Ehto</code> toteuttavaavan olion. <code>Ei</code>-olio kelpuuttaa ne rivit, joita sen parametrina saama ehto ei kelpuuta.
+Seuraavassa tulostetaan rivit, joiden pituus vähemmän kuin 10.
+</p>
+
+<pre class="sh_java">
+String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+GutenbergLukija kirja = new GutenbergLukija(osoite);
+
+Ehto ehto = new Ei( new PituusVahintaan(10) );
+
+for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
+    System.out.println(rivi);
+}
+</pre>
+
+<h4>vähintään yksi</h4>
+
+<p>Tee rajapinnan <code>ehto</code> toteuttava luokka <code>VahintaanYksi</code>. Luokan oliot saavat konstruktorin parametrina mielivaltaisen määrän rajapinnan <code>Ehto</code> toteuttavia olioita, konstruktorissa siis käytettävä vaihtuvanmittaista parametrilistaa. <code>VahintaanYksi</code>-oliot kelpuuttavat ne rivit, jotka ainakin yksi sen konstruktoriparametrina saamista ehdoista kelpuuttaa. Seuraavassa tulostetaan rivit, jotka sisältävät jonkun sanoista "beer", "milk" tai "oil".
+</p>
+
+<pre class="sh_java">
+String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+GutenbergLukija kirja = new GutenbergLukija(osoite);
+
+Ehto ehto = new VahintaanYksi(
+                new SisaltaaSanan("beer"),
+                new SisaltaaSanan("milk"),
+                new SisaltaaSanan("oil")
+            );
+
+for (String rivi : kirja.rivitJoilleVoimassa(ehto)) {
+    System.out.println(rivi);
+}
+</pre>
+
+<p>Huomaa, että ehtoja voi kombinoida mielivaltaisesti. Seuraavassa ehto, joka hyväksyy rivit, joilla on vähintään yksi sanoista "beer", "milk" tai "oil" ja jotka ovat pituudeltaan 20-30 merkkiä.</p>
+
+<pre class="sh_java">
+Ehto sanat = new VahintaanYksi(
+                new SisaltaaSanan("beer"),
+                new SisaltaaSanan("milk"),
+                new SisaltaaSanan("oil")
+            );
+
+Ehto oikeaPituus = new Molemmat(
+                     new PituusVahintaan(20),
+                     new Ei(new PituusVahintaan(31))
+                   );
+
+Ehto halutut = new Molemmat(sanat, oikeaPituus);
+</pre>
+
+</div>
+-->
 </div>
 
 
@@ -16742,10 +17007,130 @@ Kiitos!
 <p>Kun olet saanut ohjelman toimimaan, haasta kaverisi pelaamaan tekoälyn vastaan! :) -- eräs mallivastaus tehtävään julkaistaan vasta kurssin jälkeen..</p>
 	
       </div>
-    </div>  
+    </div>
 
+
+<div class="panel-group" id="14yhteenveto">
+  <div class="panel panel-default">
+    <a class="panel-title" data-toggle="collapse" data-parent="#14yhteenveto" href="#14yhteenveto2">
+      <div class="panel-heading">
+	<h4 class="kysely" id="yhteenveto-14-form-legend">Viikon 14 Loppukysely</h4>
+    </div>
+    </a>
+    <div class="panel-collapse collapse" id="14yhteenveto2">
+      <div class="panel-body">
+
+        <!-- Taustatiedot -->
+	<form class="form-horizontal" id="yhteenveto-14-form">
+            <fieldset>
+                <legend id="yhteenveto-14-legend">Viikon 14 Loppukysely</legend>
+
+                <!-- TMC-tunnus-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-14-form-tmc-tunnus">TMC-tunnus</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-14-form-tmc-tunnus" name="yhteenveto-14-form-tmc-tunnus" type="text" class="form-control input-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="yhteenveto-14-form-tuntia">Kuinka monta tuntia käytit kurssin neljänteentoista viikkoon (noin)</label>  
+                    <div class="col-md-4">
+                        <input id="yhteenveto-14-form-tuntia" name="yhteenveto-14-form-tuntia" type="number" class="form-control input-md">
+                    </div>
+                </div>
+
+		<p>&nbsp;</p>
+
+		<p>Alla on esitetty viikkoon liittyviä väittämiä. Jos olet täysin eri mieltä väittämän kanssa, valitse 1. Jos olet täysin samaa mieltä väittämän kanssa, valitse 7. Muuten, valitse luku väliltä.</p>
+
+                <div class="row" id="yhteenveto-14-form-skaala">
+                    <div class="col-md-3">Täysin eri mieltä.</div>
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-1">2</div>
+                    <div class="col-md-1">3</div>
+                    <div class="col-md-1">4</div>
+                    <div class="col-md-1">5</div>
+                    <div class="col-md-1">6</div>
+                    <div class="col-md-1">7</div>
+                    <div class="col-md-2">Täysin samaa mieltä.</div>
+                </div>
+
+		<p>&nbsp;</p>
+
+                <div id="yhteenveto-14-form-vaittamat">
+		  <div class="row"><div class="col-md-3">1. Viikko oli työläs.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-tyolas" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">2. Viikko oli opettavainen.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-opettavainen" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">3. Viikko oli turhauttava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-turhauttava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">4. Viikko oli mukava.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-mukava" value="7" type="radio">7</label></div></div>
+		  <div class="row"><div class="col-md-3">5. Viikko oli vaikea.</div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="1" type="radio">1</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="2" type="radio">2</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="3" type="radio">3</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="4" type="radio">4</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="5" type="radio">5</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="6" type="radio">6</label></div><div class="col-md-1"><label class="radio-inline"><input name="vaittamat-1-vaikea" value="7" type="radio">7</label></div></div>
+                </div>
+		
+		<p>&nbsp;</p>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-14-form-vaikein">Vaikein asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-14-form-vaikein" name="yhteenveto-14-form-vaikein" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-14-form-helpoin">Helpoin asia viikolla oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-14-form-helpoin" name="yhteenveto-14-form-helpoin" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-14-form-turhauttavinta">Turhauttavinta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-14-form-turhauttavinta" name="yhteenveto-14-form-turhauttavinta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-14-form-parasta">Parasta oli:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-14-form-parasta" name="yhteenveto-14-form-parasta" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="yhteenveto-14-form-palaute">Yleinen palaute:</label>  
+                  <div class="col-md-4">
+                    <textarea id="yhteenveto-14-form-palaute" rows="6" name="yhteenveto-14-form-palaute" class="form-control input-md"></textarea>
+                  </div>
+                </div>
+
+                <input type="hidden" id="yhteenveto-14-form-started-entering" name="yhteenveto-14-form-started-entering" value="">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <strong><label id="yhteenveto-14-form-validation-feedback" class="label label-danger hidden">Tarkistathan että vastasit kaikkiin kenttiin!</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+                    <div class="form-inline col-md-8">
+                        <button type="button" id="yhteenveto-14-form-submit" class="btn btn-primary">Lähetä lomake</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+<!--
     <div class="self-explanation" data-key="q-vanhaOhjanKoeOsa2"></div>
-
+-->
     
     <h2>Kurssipalaute</h2>
     
@@ -16756,7 +17141,9 @@ Kiitos!
 	<p class="hidden-in-mooc" >Olemme saaneet paljon arvokasta palautetta TMC:n kautta. Näin kurssin viimeisenä kysymyksenä haluaisimme koko kurssin sisältöä koskevan palautteen. Anna palaute täyttämällä <a href="https://ilmo.cs.helsinki.fi/kurssit/servlet/Valinta">täältä</a> löytyvä lomake. Palaute on anonyymi.</p>
 	
 	<p class="hidden-in-mooc">Jotta saat merkatuksi tämän tehtävän, aja tehtävän TMC-testit ja lähetä tehtävä palvelimelle. </p>
+
 	<p class="hidden-in-hy">Vaikka olemme saaneet paljon arvokasta palautetta TMC:n kautta yksittäisistä tehtävistä, palauttaessasi tätä, kirjoitathan kommenttikenttään palautteen koko MOOC-kurssista. Mainitsethan siinä, mikäli et halua palautettasi julkaistavan anonyymisti sivustoillamme. Vain osa palautteesta tullaan julkaisemaan.</p>
+
       </div>
     </div>
     
