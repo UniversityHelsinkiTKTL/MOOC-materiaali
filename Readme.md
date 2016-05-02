@@ -1,4 +1,4 @@
-# OhPe ja OhJa materiaali
+# OhPe ja OhJa materiaali - kesa2016
 
 Ohjelmoinnin perusteiden ja ohjelmoinnin jatkokurssin materiaalin sisältämä repositorio.
 
