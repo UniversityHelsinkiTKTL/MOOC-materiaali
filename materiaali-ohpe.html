@@ -2881,6 +2881,60 @@ komento (sammuta, vasen, oikea, liiku, liikuMonta, viereen, ratkaise): <font col
 </div>
 
 
+  <h2>Virhetilanteiden etsiminen ja korjaaminen</h2>
+
+  <p>Ohjelmia luodessa niihin päätyy virheitä. Joskus virheet eivät ole niin vakavia, ja aiheuttavat päänvaivaa lähinnä ohjelman käyttäjälle, mutta joskus virheet voivat johtaa hyvinkin vakaviin seurauksiin.</p>
+
+
+    <aside class="info">
+      <p><strong>Ohjelmistovirhe</strong></p>
+
+      <p>Osoitteessa <a href="http://sunnyday.mit.edu/accidents/MCO_report.pdf" target="_blank">http://sunnyday.mit.edu/accidents/MCO_report.pdf</a> oleva raportti kuvaa erään hieman vakavamman ohjelmistovirheestä johtuneen tapaturman, sekä ohjelmistovirheen.</p>
+
+      <p>Ohjelmistovirhe liittyi siihen, että käytetty ohjelma odotti, että ohjelmoija käyttäisi <a href="https://fi.wikipedia.org/wiki/Kansainv%C3%A4linen_yksikk%C3%B6j%C3%A4rjestelm%C3%A4" target="_blank">kansainvälistä yksikköjärjestelmää</a> laskuissa (metrit, kilogrammat, ...). Ohjelmoija oli kuitenkin käyttänyt <a href="https://en.wikipedia.org/wiki/English_Engineering_units" target="_blank">amerikkalaista mittajärjestelmää</a> erään järjestelmän osan laskuissa, jolloin satelliitin navigointiin liittynyt automaattinen korjausjärjestelmä ei toiminut oikein.</p>
+
+      <p>Satelliitti tuhoutui.</p>
+
+    </aside>
+
+
+  <p>Ohjelmien muuttuessa monimutkaisemmiksi, tulee virheiden löytämisestäkin koko ajan haastavampaa. NetBeansiin integroitu debuggeri voi olla avuksi virheiden löytämisessä. Seuraavalla screencastilla esitellään debuggerin käyttöä. Screencast esittelee myös miten projekteja voidaan luoda, avata ja sulkea sekä miten ohjelmia voidaan suorittaa NetBeansin ulkopuolella. Screencastissa on myös asioita, joita kurssilla ei vielä ole tullut -- älä huoli, nämä tulevat vastaan opintojen edetessä.</p>
+
+  <a href="http://www.youtube.com/watch?feature=player_embedded&v=2QlbAvDPmk8" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
+
+
+
+  <h3>Stack trace</h3>
+
+<p>Kun ohjelmassa tapahtuu virhe, se tyypillisesti tulostaa ns. stack tracen, eli niiden metodikutsujen listan, joiden seurauksena virhetilanne syntyi. Stack trace voi näyttää esimerkiksi seuraavalta:</p>
+
+<pre>
+Exception in thread "main" ...
+        at Ohjelma.main(Ohjelma.java:15)
+</pre>
+
+<p>Listan alussa kerrotaan minkälainen virhe tapahtui (tässä ...), ja seuraavalla rivillä kerrotaan missä virhe tapahtui. Rivi "at Ohjelma.main(Ohjelma.java:15)" sanoo, että virhe tapahtui Ohjelma.java-tiedoston rivillä 15.</p>
+
+<pre>
+        at Ohjelma.main(Ohjelma.java:15)
+</pre>
+
+
+<h3>Muistilista debuggaukseen</h3>
+
+<p>Jos koodisi ei toimi etkä tiedä missä on virhe, näillä askeleilla pääset alkuun.</p>
+
+<ol>
+  <li>Sisennä koodisi oikein ja selvitä, puuttuuko sulkuja.</li>
+  <li>Testaa ohjelman kulkua erilaisilla syötteillä, ja selvitä minkälaisella syötteellä ohjelma ei toimi halutusti. Jos sait virheen testeistä, testit saattavat myös kertoa käytetyn syötteen.</li>
+  <li>Lisää ohjelmaan tulostuskomentoja, joissa tulostat käytettävien muuttujien arvoja ohjelman suorituksen eri vaiheissa.</li>
+  <li>Tarkista, että kaikki käyttämäsi muuttujat on alustettu. Jos tätä ei ole tehty, seuraa virhe NullPointerException.</li>
+  <li>Jos ohjelmasi aiheuttaa poikkeuksen, kannattaa ehdottomasti kiinnittää huomiota poikkeuksen yhteydessä olevaan <em>stack traceen</em>, eli niiden metodikutsujen listaan, minkä seurauksena poikkeuksen aiheuttanut tilanne syntyi.</li>
+  <li>Opettele käyttämään debuggeria, aiemmin nähdyllä videolla pääsee alkuun.</li>
+</ol>
+
+
+
 
 <div class="panel-group" id="1yhteenveto">
   <div class="panel panel-default">
@@ -3505,6 +3559,58 @@ k = j;</pre>
 -->
     </ul>
   </div>
+
+  <h2>Virhetilanteiden etsiminen ja korjaaminen</h2>
+
+  <p>Ohjelmia luodessa niihin päätyy virheitä. Joskus virheet eivät ole niin vakavia, ja aiheuttavat päänvaivaa lähinnä ohjelman käyttäjälle, mutta joskus virheet voivat johtaa hyvinkin vakaviin seurauksiin.</p>
+
+
+    <aside class="info">
+      <p><strong>Ohjelmistovirhe</strong></p>
+
+      <p>Osoitteessa <a href="http://sunnyday.mit.edu/accidents/MCO_report.pdf" target="_blank">http://sunnyday.mit.edu/accidents/MCO_report.pdf</a> oleva raportti kuvaa erään hieman vakavamman ohjelmistovirheestä johtuneen tapaturman, sekä ohjelmistovirheen.</p>
+
+      <p>Ohjelmistovirhe liittyi siihen, että käytetty ohjelma odotti, että ohjelmoija käyttäisi <a href="https://fi.wikipedia.org/wiki/Kansainv%C3%A4linen_yksikk%C3%B6j%C3%A4rjestelm%C3%A4" target="_blank">kansainvälistä yksikköjärjestelmää</a> laskuissa (metrit, kilogrammat, ...). Ohjelmoija oli kuitenkin käyttänyt <a href="https://en.wikipedia.org/wiki/English_Engineering_units" target="_blank">amerikkalaista mittajärjestelmää</a> erään järjestelmän osan laskuissa, jolloin satelliitin navigointiin liittynyt automaattinen korjausjärjestelmä ei toiminut oikein.</p>
+
+      <p>Satelliitti tuhoutui.</p>
+
+    </aside>
+
+
+  <p>Ohjelmien muuttuessa monimutkaisemmiksi, tulee virheiden löytämisestäkin koko ajan haastavampaa. NetBeansiin integroitu debuggeri voi olla avuksi virheiden löytämisessä. Seuraavalla screencastilla esitellään debuggerin käyttöä. Screencast esittelee myös miten projekteja voidaan luoda, avata ja sulkea sekä miten ohjelmia voidaan suorittaa NetBeansin ulkopuolella. Screencastissa on myös asioita, joita kurssilla ei vielä ole tullut -- älä huoli, nämä tulevat vastaan opintojen edetessä.</p>
+
+  <a href="http://www.youtube.com/watch?feature=player_embedded&v=2QlbAvDPmk8" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
+
+
+
+  <h3>Stack trace</h3>
+
+<p>Kun ohjelmassa tapahtuu virhe, se tyypillisesti tulostaa ns. stack tracen, eli niiden metodikutsujen listan, joiden seurauksena virhetilanne syntyi. Stack trace voi näyttää esimerkiksi seuraavalta:</p>
+
+<pre>
+Exception in thread "main" ...
+        at Ohjelma.main(Ohjelma.java:15)
+</pre>
+
+<p>Listan alussa kerrotaan minkälainen virhe tapahtui (tässä ...), ja seuraavalla rivillä kerrotaan missä virhe tapahtui. Rivi "at Ohjelma.main(Ohjelma.java:15)" sanoo, että virhe tapahtui Ohjelma.java-tiedoston rivillä 15.</p>
+
+<pre>
+        at Ohjelma.main(Ohjelma.java:15)
+</pre>
+
+
+<h3>Muistilista debuggaukseen</h3>
+
+<p>Jos koodisi ei toimi etkä tiedä missä on virhe, näillä askeleilla pääset alkuun.</p>
+
+<ol>
+  <li>Sisennä koodisi oikein ja selvitä, puuttuuko sulkuja.</li>
+  <li>Testaa ohjelman kulkua erilaisilla syötteillä, ja selvitä minkälaisella syötteellä ohjelma ei toimi halutusti. Jos sait virheen testeistä, testit saattavat myös kertoa käytetyn syötteen.</li>
+  <li>Lisää ohjelmaan tulostuskomentoja, joissa tulostat käytettävien muuttujien arvoja ohjelman suorituksen eri vaiheissa.</li>
+  <li>Tarkista, että kaikki käyttämäsi muuttujat on alustettu. Jos tätä ei ole tehty, seuraa virhe NullPointerException.</li>
+  <li>Jos ohjelmasi aiheuttaa poikkeuksen, kannattaa ehdottomasti kiinnittää huomiota poikkeuksen yhteydessä olevaan <em>stack traceen</em>, eli niiden metodikutsujen listaan, minkä seurauksena poikkeuksen aiheuttanut tilanne syntyi.</li>
+  <li>Opettele käyttämään debuggeria, aiemmin nähdyllä videolla pääsee alkuun.</li>
+</ol>
 
 
   <h2>Uusia tehtävätyyppejä!</h2>
