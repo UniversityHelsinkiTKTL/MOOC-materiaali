@@ -9466,13 +9466,9 @@ komento (lopeta, vaalenna, tummenna, negatiivi, peilaa, andywarhol)?
 -->
 
 
-<h2>ArrayList ja HashMap</h2>
+<h2>ArrayList</h2>
 
-<p>Kerrataan ensin edellisellä viikolla tutuksi tullutta ArrayListia, jonka jälkeen tutustutaan toisenlaiseen tapaan tallentaa tietoa.</p>
-
-<h3>ArrayList</h3>
-
-<p>ArrayList on listarakenne, johon voidaan tallentaa lähes rajaton määrä arvoja. Uusi ArrayList-olio luodaan seuraavalla komennolla:</p>
+<p>Kerrataan edellisellä viikolla näkemäämme ArrayList-tietorakenteen käyttöä. Uusi ArrayList-olio luodaan seuraavalla komennolla:</p>
 
 <pre class="sh_java">
 ArrayList&lt;<em>Tyyppi</em>&gt; lista = new ArrayList&lt;&gt;();
@@ -9780,8 +9776,27 @@ Nimi ei ole listalla.
 </div>
 
 
-<p>ArrayList on erittäin hyödyllinen kun halutaan tallentaa muuttujien arvoja myöhempää käsittelyä varten. Siinä on kuitenkin pieni rajoite. Tiedon yhdistäminen toiseen tietoon, esimerkiksi puhelinnumeroihin liittyvien nimien hakeminen, sanakirjan sanakäännösparien etsiminen tai käsitteiden ilmentymien lukumäärien laskeminen on ArrayListin kanssa -- vaikkakin mahdollista -- on hieman haastavaa. Tutustutaan seuraavaksi HashMap-nimiseen apuvälineeseen, joka on varsin näppärä väline tietoparien tallentamiseen.</p>
+<p>ArrayList on erittäin hyödyllinen kun halutaan tallentaa muuttujien arvoja myöhempää käsittelyä varten. Sillä on myös helpohko tehdä muutama virhe..</p>
 
+<div class="tehtavat">
+  <div class="tehtava">
+    <h3>NullPointerException</h3>
+    
+    <p>Toteuta ohjelma, jossa käytät ArrayList-tietorakennetta, ja jonka suorittaminen tuottaa virheen <code>NullPointerException</code>. Ohjelman tulee olla sellainen, että käyttäjän ei tarvitse antaa konelle syötettä (esim. näppäimistöltä).</p>
+    
+    
+  </div>
+  
+  <div class="tehtava">
+
+    <h3>IndexOutOfBoundsException</h3>
+    
+    <p>Toteuta ohjelma, jossa käytät ArrayList-tietorakennetta, ja jonka suorittaminen tuottaa virheen <code>IndexOutOfBoundsException</code>. Ohjelman tulee olla sellainen, että käyttäjän ei tarvitse antaa konelle syötettä (esim. näppäimistöltä).</p>
+    
+  </div>
+</div>
+
+<!--
 <h3>HashMap</h3>
 
 <p>HashMap on apuväline tietoparien tallentamiseen. Sitä käytetään silloin kun halutaan tallentaa avain-arvo -pareja, kuten esimerkiksi viivakoodeihin liittyviä tuotteita tai henkilöihin liittyviä saldotilanteita. HashMap-olio luodaan seuraavasti:</p>
@@ -9989,9 +10004,7 @@ public class Bongauslaskuri {
 }
 </pre>
 
-<!--
 <p>TODO: selitystehtävä, kerro rivi riviltä ylläolevan ohjelman main-metodin toiminta.</p>
--->
 
 <div class="tehtavat">
 
@@ -10195,9 +10208,9 @@ for (int i = 0; i &lt; 18; i++) {
     <p><img src="http://www.cs.helsinki.fi/group/java/k15-images/material/vapaarobotti-kahdeksantoistakulmio.png" /></p>
 
   </div>
--->
 
 </div>
+-->
 
 
 <!--
@@ -15721,7 +15734,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
   <div class="tehtava">
     <h3>Ostoslista</h3>
 
-    <p>Toteutetaan sovellus ostoslistan hallintaan. Ostoslistalle voi lisätä ostettavia asioita, tarkistaa kunkin ostettavan asian lukumäärän, sekä poistaa ostettavia asioita. Voit toteuttaa Ostoslista-olion sisäisen toiminnallisuuden esimerkiksi HashMap- tai ArrayList-tietorakenteen avulla.</p> 
+    <p>Toteutetaan sovellus ostoslistan hallintaan. Ostoslistalle voi lisätä ostettavia asioita, tarkistaa kunkin ostettavan asian lukumäärän, sekä poistaa ostettavia asioita. </p> 
 
     <h4>Lisääminen ja kappalemäärä</h4>
     
